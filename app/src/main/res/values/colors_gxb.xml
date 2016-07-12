@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="draglist_bkg">#E3ECF3</color>
+    <color name="circle_bkg">#00A6F4</color>
+    <color name="deep_blue">#607a96</color>
+    <color name="divi_color">#EAE5E1</color>
+    <color name="pername_color">#6F6A64</color>
+    <color name="signatu">#AEAEAE</color>
+    <color name="head_bkg_color" >#99EEFF</color>
+    <color name="small_text_color">#8294a9</color>
+</resources>

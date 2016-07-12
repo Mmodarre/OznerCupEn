@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorLine"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:text="@string/gender"
+        android:textColor="@color/toolbar_text_color"
+        android:textSize="16dp" />
+
+    <ListView
+        android:id="@+id/lv_set_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white"
+        android:dividerHeight="1dp"
+        android:divider="@color/colorLine"
+        ></ListView>
+</LinearLayout>

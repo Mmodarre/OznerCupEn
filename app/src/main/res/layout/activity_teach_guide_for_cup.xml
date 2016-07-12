@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/rlay_over1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/top_mask"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/guide_top_bubble"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_texttop1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="点击可以进入"
+                android:textColor="@color/cupDetail_textcolor"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_textdown1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_texttop1"
+                android:layout_centerHorizontal="true"
+                android:text="TDS详情"
+                android:textColor="@color/cupDetail_textcolor"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_close1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_textdown1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/guide_close" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rlay_over2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/left_mask"
+
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/guide_left_bubble"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/tv_texttop2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="点击可以进入"
+                android:textColor="@color/cupDetail_textcolor"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_textdown2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_texttop2"
+                android:layout_centerHorizontal="true"
+                android:text="TDS详情"
+                android:textColor="@color/cupDetail_textcolor"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_close2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_textdown2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/guide_close" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/rlay_over3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/right_mask">
+
+        <RelativeLayout
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/guide_right_bubble"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/tv_texttop3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="点击可以进入"
+                android:textColor="@color/cupDetail_textcolor"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_textdown3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_texttop3"
+                android:layout_centerHorizontal="true"
+                android:text="TDS详情"
+                android:textColor="@color/cupDetail_textcolor"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_close3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_textdown3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/guide_close" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

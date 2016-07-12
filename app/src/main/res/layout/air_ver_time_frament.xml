@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLine" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="开机时间" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/maohao"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ib_start_hour_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="20dp"
+                android:src="@drawable/air220001" />
+
+            <TextView
+                android:id="@+id/tv_start_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08"
+                android:textColor="@color/theme_blue"
+                android:textSize="32dp" />
+
+            <ImageButton
+                android:id="@+id/ib_start_hour_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="20dp"
+                android:src="@drawable/air220002" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/maohao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="："
+            android:textColor="@color/theme_blue" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/maohao"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ib_start_min_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="20dp"
+                android:src="@drawable/air220001" />
+
+            <TextView
+                android:id="@+id/tv_start_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textColor="@color/theme_blue"
+                android:textSize="32dp" />
+
+            <ImageButton
+                android:id="@+id/ib_start_min_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="20dp"
+                android:src="@drawable/air220002" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="60dp"
+            android:layout_toRightOf="@+id/maohao"
+            android:text="AM"
+            android:textColor="@color/theme_blue"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/colorLine" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="关机时间" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/maohao1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ib_end_hour_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="20dp"
+                android:src="@drawable/air220001" />
+
+            <TextView
+                android:id="@+id/tv_end_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22"
+                android:textColor="@color/theme_blue"
+                android:textSize="32dp" />
+
+            <ImageButton
+                android:id="@+id/ib_end_hour_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="20dp"
+                android:src="@drawable/air220002" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/maohao1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="："
+            android:textColor="@color/theme_blue" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/maohao1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ib_end_min_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="20dp"
+                android:src="@drawable/air220001" />
+
+            <TextView
+                android:id="@+id/tv_end_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textColor="@color/theme_blue"
+                android:textSize="32dp" />
+
+            <ImageButton
+                android:id="@+id/ib_end_min_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="20dp"
+                android:src="@drawable/air220002" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="60dp"
+            android:layout_toRightOf="@+id/maohao1"
+            android:text="PM"
+            android:textColor="@color/theme_blue"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLine" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="选择周重复时间" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <CheckBox
+            android:id="@+id/cb_one"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:textColor="@drawable/week_text_selector"
+            android:background="@drawable/air_week_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="一" />
+        <CheckBox
+            android:id="@+id/cb_two"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:textColor="@drawable/week_text_selector"
+            android:background="@drawable/air_week_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="二" />
+
+        <CheckBox
+            android:id="@+id/cb_three"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:textColor="@drawable/week_text_selector"
+            android:background="@drawable/air_week_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="三" />
+
+        <CheckBox
+            android:id="@+id/cb_four"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:textColor="@drawable/week_text_selector"
+            android:background="@drawable/air_week_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="四" />
+
+        <CheckBox
+            android:id="@+id/cb_five"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:textColor="@drawable/week_text_selector"
+            android:background="@drawable/air_week_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="五" />
+
+        <CheckBox
+            android:id="@+id/cb_six"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:textColor="@drawable/week_text_selector"
+            android:background="@drawable/air_week_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="六" />
+
+        <CheckBox
+            android:id="@+id/cb_seven"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:textColor="@drawable/week_text_selector"
+            android:background="@drawable/air_week_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="日" />
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLine" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorLine"
+        android:layout_weight="1"/>
+
+</LinearLayout>

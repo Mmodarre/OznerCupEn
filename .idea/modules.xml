@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android_AylaLibrary_Public-release/Android_AylaLibrary_Public-release.iml" filepath="$PROJECT_DIR$/Android_AylaLibrary_Public-release/Android_AylaLibrary_Public-release.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OznerCupEn.iml" filepath="$PROJECT_DIR$/OznerCupEn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OznerLibrary/OznerLibrary.iml" filepath="$PROJECT_DIR$/OznerLibrary/OznerLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dragsortlistview/dragsortlistview.iml" filepath="$PROJECT_DIR$/dragsortlistview/dragsortlistview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photo_choose-release/photo_choose-release.iml" filepath="$PROJECT_DIR$/photo_choose-release/photo_choose-release.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xzy_ui_lib/xzy_ui_lib.iml" filepath="$PROJECT_DIR$/xzy_ui_lib/xzy_ui_lib.iml" />
+    </modules>
+  </component>
+</project>

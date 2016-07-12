@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="guideColor">#8dd0fb</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="gray">#666666</color>
+    <color name="bg_gray">#f3f5f9 </color>
+    <color name="theme_blue">#48b4e9</color>
+    <color name="white">#ffffff</color>
+    <color name="normal_bg">#ffffff</color>
+    <color name="zihong">#C33436</color>
+    <color name="font_black">#626262</color>
+    <color name="font_gray">#959595</color>
+    <color name="fz_red">#f26368</color>
+    <color name="fz_blue">#48b4e9</color>
+    <color name="fz_blue_s">#0276b0</color>
+    <color name="cupDetail_bgcolor">#ff9decff</color>
+    <color name="main_bgcolor">#afecff</color>
+    <color name="cupDetail_textcolor">#ff3b71df</color>
+    <color name="cupDetail_textNone">#773b71df</color>
+    <color name="health">#ff3c89f2</color>
+    <color name="generic">#ff7d58e7</color>
+    <color name="bad">#fff26264</color>
+    <color name="unchecked">#ff959595</color>
+    <color name="checked">#ff3c89f2</color>
+    <color name="unSelectColor">#ff959595</color>
+    <color name="toolbar_text_color">#1f1f1f</color>
+    <color name="main_text_color">#1b1b1b</color>
+    <color name="kindly_notice">#3c89f2</color>
+
+    //QQ
+    <color name="black">#000000</color>
+    <color name="top_bg_color">#18B4ED</color>
+    <color name="devide_line">#CBCED2</color>
+    <color name="departure">#083f65</color>
+    <color name="transparent">#00000000</color>
+    <color name="select_holit">#0075a9</color>
+    <color name="gold">#b89766</color>
+    <color name="red">#FF0000</color>
+    <color name="slidemenu_bg">#ff393939</color>
+    <color name="chat_item_bg">#E0E0E0</color>
+    <color name="gray_font">#818181</color>
+    <color name="left_drawer_no_login_tip_text">#ffb8b8b8</color>
+    <color name="left_drawer_user_name">#ffd4d4d4</color>
+    <color name="left_drawer_item_text_normal">#ffd4d4d4</color>
+    <color name="left_drawer_item_text_pressed">#ff4e4e4e</color>
+    <color name="left_drawer_item_text_tip">#fffe3232</color>
+    <color name="left_drawer_item_bg_normal">#ff393939</color>
+    <color name="left_drawer_item_bg_pressed">#ff292929</color>
+    <color name="left_drawer_item_line">#ff272727</color>
+    <color name="left_drawer_offline_line">#ff4bbff6</color>
+    <color name="left_drawer_offline_hint">#ff6699cc</color>
+    <color name="left_drawer_night_mode_text">#ffb8b8b8</color>
+    <color name="list_item_bg_normal">#ffffff</color>
+    <color name="list_item_bg_pressed">#0033FF</color>
+    <color name="setting_item_text">#ff333333</color>
+    
+    <color name="main_add">#3b536e</color>
+    <color name="main_addDetail">#3c89f2</color>
+    
+    
+    <color name="add_device">#80cef8</color>
+    <color name="water_replen_face">#69b7ff</color>
+    <color name="water_replen_skip_last">#c5d7ff</color>
+    <color name="water_replen_progress">#496ffd</color>
+    <color name="water_replen_progressbg">#81ffcb</color>
+
+</resources>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ozner.cup.mycenter.MyFriendsActivity">
+
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/MyCenter_ToolBar"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/rlay_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <ImageView
+                            android:id="@+id/iv_back"
+                            android:layout_width="12dp"
+                            android:layout_height="22dp"
+                            android:layout_centerInParent="true"
+
+                            android:background="@drawable/back" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:divider="@null"></TabWidget>
+
+                <RelativeLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/rlay_btnGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="35dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/iv_addFriend"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/iv_newMsg"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/my_newfirend_msg" />
+
+                            <ImageView
+                                android:id="@+id/iv_verifyTips"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="1dp"
+                                android:layout_marginTop="1dp"
+                                android:background="@drawable/new_friends_circle"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
+
+
+                        <ImageView
+                            android:id="@+id/iv_addFriend"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/add_friend" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rlay_myShort"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/tv_ranklistnone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/Center_None"
+                        android:textSize="16dp"
+                        android:visibility="gone" />
+
+                    <ListView
+                        android:id="@+id/lv_ranklist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@null"
+                        android:dividerHeight="10dp"
+                        android:padding="10dp"
+                        android:scrollbars="none">
+
+                    </ListView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlay_myFriends"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+
+                    <!--有好友-->
+                    <RelativeLayout
+                        android:id="@+id/rlay_hasFriend"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ExpandableListView
+                            android:id="@+id/elv_myFirendsList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/rlay_leaveMsg"
+                            android:divider="@color/cupDetail_line_gray"
+                            android:dividerHeight="1dp"
+                            android:groupIndicator="@null"
+                            android:scrollbars="none"></ExpandableListView>
+
+                        <RelativeLayout
+                            android:id="@+id/rlay_leaveMsg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/white"
+                            android:padding="5dp"
+                            android:visibility="gone">
+
+                            <EditText
+                                android:id="@+id/et_leaveMsg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_toLeftOf="@+id/btn_leaveMsgSend"
+                                android:gravity="top|left"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3" />
+
+
+                            <Button
+                                android:id="@+id/btn_leaveMsgSend"
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/btn_click_selector"
+                                android:enabled="false"
+                                android:text="@string/send" />
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <!--正在加载好友-->
+                    <RelativeLayout
+                        android:id="@+id/rlay_loadingFriend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <ProgressBar
+                            android:id="@+id/pb_loading"
+                            style="@style/Base.Widget.AppCompat.ProgressBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/pb_loading"
+                            android:text="@string/Center_Loading" />
+                    </RelativeLayout>
+
+                    <!--没有好友-->
+                    <LinearLayout
+                        android:id="@+id/llay_NoFriends"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <include layout="@layout/friend_list_empty_page" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+</RelativeLayout>

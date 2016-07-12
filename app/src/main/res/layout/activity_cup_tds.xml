@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/tds_layout_top"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="@color/tdsBackground"-->
+            <!-->-->
+
+            <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/iv_tds_back"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="50dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="match_parent">&ndash;&gt;-->
+            <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/back"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_margin="14dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/tv_tds"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="@string/tds_test"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textSize="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_centerHorizontal="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginTop="14dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/iv_tds_share"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="18.5dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="20.5dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/share"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="14dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/iv_tds_share"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:gravity="center"-->
+
+            <!-->-->
+            <!--<ImageButton-->
+            <!--android:layout_width="18.5dp"-->
+            <!--android:layout_height="20.5dp"-->
+            <!--android:background="@drawable/share" />-->
+            <!--</RelativeLayout>-->
+
+
+            <!--</RelativeLayout>-->
+            <include
+                android:id="@+id/tds_layout_top"
+                layout="@layout/cup_toolbar" />
+
+            <RelativeLayout
+                android:id="@+id/tds_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tds_layout_top"
+                android:background="@color/tdsBackground">
+
+                <LinearLayout
+                    android:id="@+id/tds_layout_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/tds_value_layout1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25.5dp"
+
+                        android:layout_weight="1"
+
+                        >
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/tv_tds_valuetext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tdsValue_test"
+                            android:textColor="@color/colorTds"
+                            android:textSize="18dp" />
+
+                        <ImageView
+                            android:id="@+id/iv_tds_introduce"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="5dp"
+                            android:visibility="gone"
+                            android:layout_toRightOf="@+id/tv_tds_valuetext"
+                            android:background="@drawable/kindly_notice_icon" />
+
+
+                        <TextView
+                            android:id="@+id/tv_tdstext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tdsValue"
+                            android:textColor="@color/colorTds"
+                            android:textSize="39dp" />
+
+                        <TextView
+                            android:id="@+id/tv_tds_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/tv_tdstext"
+                            android:text="0"
+                            android:textColor="@color/colorTds"
+                            android:textSize="39dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/tds_friend_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_tds_friend_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/friend_ranking"
+                            android:textColor="@color/colorTds"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_tds_friendtext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="0"
+                            android:textColor="@color/colorTds"
+                            android:textSize="39dp" />
+
+                        <ImageView
+                            android:id="@+id/iv_friend_value"
+                            android:layout_width="15.5dp"
+                            android:layout_height="15.5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="45dp"
+                            android:layout_toRightOf="@+id/tv_tds_friendtext"
+                            android:background="@drawable/friend" />
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/tds_consult_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="35dp"
+                        android:background="@drawable/btn_bg_blue_s_choose"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/iv_tds_consult_msg"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="7dp"
+                            android:src="@drawable/tds_msg"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_tds_consult_msg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="7dp"
+                            android:layout_toRightOf="@+id/iv_consult_msg"
+                            android:gravity="center"
+                            android:text="@string/consult_test"
+                            android:textColor="@color/colorTds"
+                            android:textSize="17dp"
+
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/tds_hint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tds_layout_center"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_tds_face"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tv_tds_facetest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="3dp"
+                        android:text="@string/face_test"
+                        android:textColor="@color/colorTds"
+                        android:textSize="13dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tds_distribution_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tds_layout"
+                android:background="@color/ozner_text_login">
+
+                <TextView
+                    android:id="@+id/tv_tds_distribution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/tdsdistribution_test"
+                    android:textColor="@color/colorTdsText"
+                    android:textSize="14dp" />
+
+                <RelativeLayout
+                    android:id="@+id/tds_waterdetail_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_tds_distribution"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/tds_time_choose_layout"
+                        android:layout_width="333dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/chart_time_selector_bg"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_time_day"
+                            android:layout_width="110dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/chart_time_first_tab_bg"
+                            android:gravity="center"
+                            android:text="@string/tds_day"
+                            android:textColor="@color/white"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_time_week"
+                            android:layout_width="110dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/chart_time_second_tab_bg"
+                            android:gravity="center"
+                            android:text="@string/tds_week"
+                            android:textColor="@color/colorTds"
+                            android:textSize="12dp"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_time_month"
+                            android:layout_width="110dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/chart_time_third_tab_bg"
+                            android:gravity="center"
+                            android:text="@string/tds_month"
+                            android:textColor="@color/colorTds"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/laly_tds_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tds_time_choose_layout"
+                        android:layout_marginTop="25dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iv_tds_left"
+                            android:layout_width="14.5dp"
+                            android:layout_height="29dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/zuo1"
+                            android:visibility="invisible" />
+
+                        <com.ozner.cup.UIView.UIXWaterDetailProgress
+                            android:id="@+id/progressView"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="50dp" />
+
+                        <ImageView
+                            android:id="@+id/iv_tds_right"
+                            android:layout_width="14.5dp"
+                            android:layout_height="29dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="50dp"
+                            android:src="@drawable/you1" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/tds_chartview_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tds_time_choose_layout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginRight="13dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone">
+
+                        <com.ozner.cup.UIView.TDSChartView
+                            android:id="@+id/chartView"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/chartView"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/tab1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:id="@+id/iv_tapHelathImg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="5dp"
+                                    android:src="@drawable/tap_health" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/iv_tapHelathImg"
+                                    android:text="@string/radio_health"
+                                    android:textColor="@color/tdsHealth"
+                                    android:textSize="14dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_tapHealthPre"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="100%"
+                                    android:textColor="@color/tdsHealth"
+                                    android:textSize="14dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=")"
+                                    android:textColor="@color/tdsHealth"
+                                    android:textSize="14dp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1.5"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_tapGenericImg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="8dp"
+                                    android:layout_marginRight="5dp"
+                                    android:src="@drawable/tds_tap_generic" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/iv_tapGenericImg"
+                                    android:text="@string/radio_ordinary"
+                                    android:textColor="@color/tdsGeneric"
+                                    android:textSize="14dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_tapGenericPre"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30%"
+                                    android:textColor="@color/tdsGeneric"
+                                    android:textSize="14dp" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=")"
+                                    android:textColor="@color/tdsGeneric"
+                                    android:textSize="14dp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/iv_tapBadImg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/tap_bad" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_toRightOf="@+id/iv_tapBadImg"
+                                    android:text="@string/radio_range"
+                                    android:textColor="@color/tdsBad"
+                                    android:textSize="14dp" />
+
+
+                                <TextView
+                                    android:id="@+id/tv_tapBadPre"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="45%"
+                                    android:textColor="@color/tdsBad"
+                                    android:textSize="14dp" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=")"
+                                    android:textColor="@color/tdsBad"
+                                    android:textSize="14dp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/iv_tds_line1"
+                android:layout_width="match_parent"
+                android:layout_height="9.5dp"
+                android:layout_below="@+id/tds_distribution_layout"
+                android:background="@color/colorLine"
+                android:visibility="gone" />
+
+
+            <RelativeLayout
+                android:id="@+id/tds_health_layout"
+                android:layout_width="match_parent"
+                android:layout_height="108.5dp"
+                android:layout_below="@+id/iv_tds_line1"
+                android:background="@color/ozner_text_login"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_tds_health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/tdshealth_test"
+                    android:textColor="@color/colorTdsText"
+                    android:textSize="21dp" />
+
+
+                <LinearLayout
+                    android:layout_width="333dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_tds_health"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/tds_health_know_layout"
+                        android:layout_width="152dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/btn_bg_blue_s_choose"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iv_health_know"
+                            android:layout_width="15dp"
+                            android:layout_height="19.5dp"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/water_know"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_health_know"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/iv_health_know"
+                            android:gravity="center"
+                            android:text="@string/water_know_test"
+                            android:textColor="@color/colorTds"
+                            android:textSize="17dp"
+
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tds_health_buy_layout"
+                        android:layout_width="152dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="29dp"
+                        android:background="@drawable/btn_bg_blue_choose"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iv_health_buy"
+                            android:layout_width="21dp"
+                            android:layout_height="19.5dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/buy_shop"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_health_buy_msg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/iv_health_buy"
+                            android:gravity="center"
+                            android:text="@string/buy_test"
+                            android:textColor="@color/colorTds"
+                            android:textSize="17dp"
+
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/iv_tds_line2"
+                android:layout_width="match_parent"
+                android:layout_height="9.5dp"
+                android:layout_below="@+id/tds_health_layout"
+                android:background="@color/colorLine"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

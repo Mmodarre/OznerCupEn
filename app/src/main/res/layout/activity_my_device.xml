@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ozner.cup.mycenter.MyDeviceActivity">
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="56dp"-->
+        <!--android:background="@color/MyCenter_ToolBar">-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rlay_back"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="15dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_marginLeft="15dp"-->
+                <!--android:layout_marginRight="15dp"-->
+                <!--android:background="@drawable/back" />-->
+        <!--</RelativeLayout>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="@string/Center_HadDevice"-->
+            <!--android:textColor="@color/MyCenter_FirstText"-->
+            <!--android:textSize="16dp" />-->
+    <!--</RelativeLayout>-->
+
+    <include android:id="@+id/center_toolbar" layout="@layout/toolbar"/>
+    <LinearLayout
+        android:id="@+id/llay_deviceGrid"
+        android:layout_below="@id/center_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MyCenter_bg"
+        android:padding="15dp">
+
+        <GridView
+
+            android:id="@+id/gv_myDevice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="3">
+
+        </GridView>
+    </LinearLayout>
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_below="@+id/center_toolbar"
+        android:padding="15dp"
+        android:id="@+id/rlay_deviceNone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:text="@string/Center_no_deivce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

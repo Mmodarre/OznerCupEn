@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/llay_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llay_cupHolder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/foot_heght"
+            android:orientation="vertical"></LinearLayout>
+    </LinearLayout>
+    <ScrollView
+        android:layout_above="@+id/llay_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/cup_toolbar" />
+            <!--脸眼手颈-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/tdsBackground"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_face"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/face"
+                        android:textColor="@color/kindly_notice" />
+
+                    <ImageView
+                        android:id="@+id/iv_face"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/body_parts_selector"
+                        android:src="@drawable/face_skin" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_eyes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/eye"
+                        android:textColor="@color/kindly_notice" />
+
+                    <ImageView
+                        android:id="@+id/iv_eyes"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/body_parts_selector"
+                        android:src="@drawable/eyes" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_hands"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/hand"
+                        android:textColor="@color/kindly_notice" />
+
+                    <ImageView
+                        android:id="@+id/iv_hands"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/body_parts_selector"
+                        android:src="@drawable/hands" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_bozi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/neck"
+                        android:textColor="@color/kindly_notice" />
+
+                    <ImageView
+                        android:id="@+id/iv_bozi"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/body_parts_selector"
+                        android:src="@drawable/bozi" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/tdsBackground"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_skin_water"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25"
+                    android:textColor="@color/kindly_notice"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textColor="@color/kindly_notice"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/tdsBackground"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/skin_condition"
+                    android:textColor="@color/kindly_notice" />
+
+                <TextView
+                    android:id="@+id/tv_skin_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="干燥"
+                    android:textColor="@color/kindly_notice" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/tdsBackground"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/ver_line"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:text="@string/water_replenish_skinLast"
+                        android:textColor="@color/kindly_notice"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/tv_skin_lastdata"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="42.6%"
+                        android:textColor="@color/kindly_notice"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/ver_line"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="15dp"
+                    android:alpha="0.8"
+                    android:background="@color/kindly_notice" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/ver_line"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:text="@string/water_replenish_skinAge"
+                        android:textColor="@color/kindly_notice"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/tv_skin_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="33.3%"
+                        android:textColor="@color/kindly_notice"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingLeft="2dp"
+                        android:text="(12次)"
+                        android:textColor="@color/kindly_notice" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/colorLine" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv_query_parts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/part_face"
+                    android:textColor="@color/kindly_notice" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/chart_time_selector_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_week"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/chart_time_first_tab_bg"
+                        android:gravity="center"
+                        android:text="@string/tds_week"
+                        android:textColor="@color/white"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/tv_month"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/chart_time_third_tab_bg"
+                        android:gravity="center"
+                        android:text="@string/tds_month"
+                        android:textColor="@color/colorTds"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <com.ozner.cup.WaterProbe.WaterReplenishMeter.UIWRMView
+                    android:id="@+id/wrm_View"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:minHeight="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:gravity="center"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/show_oily_instru"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/skin_oily_res"
+                        android:drawablePadding="5dp"
+                        android:drawableRight="@drawable/kindly_notice_icon"
+                        android:text="@string/oil"
+                        android:textColor="@color/zihong"
+                        android:paddingRight="20dp"/>
+
+                    <TextView
+                        android:id="@+id/show_water_instru"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/skin_water_res"
+                        android:drawablePadding="5dp"
+                        android:drawableRight="@drawable/kindly_notice_icon"
+                        android:text="@string/water"
+                        android:textColor="@color/health"
+                        android:paddingRight="20dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/skin_better_res"
+                        android:text="@string/hydra_standard"
+                        android:textColor="@color/Purifier_data_exp_text"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="5dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="您本周的皮肤水分偏离正常，请及时保湿补水。"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorLine"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/skin_zixun"
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/btn_bg_blue_s_choose"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/tds_msg"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="@string/consult_test"
+                        android:textColor="@color/colorTds"
+                        android:textSize="17dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/skin_buy_jinghua"
+                    android:layout_width="152dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="29dp"
+                    android:background="@drawable/btn_bg_blue_choose"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/buy_shop" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="@string/buy_jinghua_water"
+                        android:textColor="@color/colorTds"
+                        android:textSize="17dp"
+
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

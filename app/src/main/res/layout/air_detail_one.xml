@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rlay_open"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_openswitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/air_open"
+            android:textColor="@drawable/purifier_text_color_selector" />
+
+        <RelativeLayout
+            android:id="@+id/rlay_openswitch"
+            android:layout_width="68.5dp"
+            android:layout_height="68.5dp"
+            android:layout_below="@+id/tv_openswitch"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/purifier_switch_selector"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/iv_openswitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/air_power_selector" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlay_mode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_modeswitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/air_mode"
+            android:textColor="@drawable/purifier_text_color_selector" />
+
+        <RelativeLayout
+            android:id="@+id/rlay_modeswitch"
+            android:layout_width="68.5dp"
+            android:layout_height="68.5dp"
+            android:layout_below="@id/tv_modeswitch"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/purifier_switch_selector"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/iv_modeswitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/air_mode_off" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/rlay_timing"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+      <!-->-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_timingswitch"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:text="@string/air_timing"-->
+            <!--android:textColor="@drawable/purifier_text_color_selector" />-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rlay_timingswitch"-->
+            <!--android:layout_width="68.5dp"-->
+            <!--android:layout_height="68.5dp"-->
+            <!--android:layout_below="@id/tv_timingswitch"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:background="@drawable/purifier_switch_selector"-->
+            <!--android:clickable="true">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_timingswitch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:background="@drawable/air_clock_selector" />-->
+        <!--</RelativeLayout>-->
+    <!--</RelativeLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/rlay_lock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginRight="24dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_lockswitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/air_lock"
+            android:textColor="@drawable/purifier_text_color_selector" />
+
+        <RelativeLayout
+            android:id="@+id/rlay_lockswitch"
+            android:layout_width="68.5dp"
+            android:layout_height="68.5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_lockswitch"
+            android:background="@drawable/purifier_switch_selector"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/iv_lockswitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/air_lock_selector" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

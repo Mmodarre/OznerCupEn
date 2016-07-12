@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="test.tr.com.oznerapplication.guide_layout">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    </android.support.v4.view.ViewPager>
+    <!-- 展示用于指示圆点图片 -->
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        >
+        <ImageView
+            android:id="@+id/iv_guide1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:src="@drawable/dot"
+            android:maxHeight="10dp"
+            android:adjustViewBounds="true"
+            />
+        <ImageView
+            android:id="@+id/iv_guide2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:src="@drawable/dot"
+            android:maxHeight="10dp"
+            android:adjustViewBounds="true"
+            />
+        <ImageView
+            android:id="@+id/iv_guide3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:src="@drawable/dot"
+            android:maxHeight="10dp"
+            android:adjustViewBounds="true"
+            />
+    </LinearLayout>
+    <!-- 如果需要限制Imageview的最大大小 android:maxHeight android:maxWidth
+          必须将  android:adjustViewBounds="true"-->
+
+</RelativeLayout>

@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/temperature_layout_top"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="@color/tdsBackground"-->
+
+            <!-->-->
+
+            <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/iv_temperature_back"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="11dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="21dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@drawable/back"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="20dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_margin="14dp"&ndash;&gt;-->
+
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/iv_temperature_back"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="match_parent">-->
+            <!--<ImageButton-->
+            <!--android:layout_width="15dp"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:background="@drawable/back"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_margin="14dp"-->
+            <!--/>-->
+            <!--</RelativeLayout>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_temperature"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/temperature_text"-->
+            <!--android:textSize="20dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginTop="14dp"-->
+            <!--/>-->
+
+            <!--</RelativeLayout>-->
+            <include
+                android:id="@+id/temperature_layout_top"
+                layout="@layout/cup_toolbar" />
+
+            <RelativeLayout
+                android:id="@+id/temperature_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/temperature_layout_top"
+                android:background="@color/tdsBackground">
+
+                <LinearLayout
+                    android:id="@+id/temperature_layout_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/temperature_value_layout1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25.5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv_temperature_valuetext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/temperature_text"
+                            android:textColor="@color/colorTds"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_temperature_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:text="适中"
+                            android:textColor="@color/colorTds"
+                            android:textSize="30dp"
+
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/temperature_friend_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_temperature_friend_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/friend_ranking"
+                            android:textColor="@color/colorTds"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_temperature_friendtext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="5"
+                            android:textColor="@color/colorTds"
+                            android:textSize="43dp" />
+
+                        <ImageView
+                            android:id="@+id/iv_temperature_friend_value"
+                            android:layout_width="15.5dp"
+                            android:layout_height="15.5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="45dp"
+                            android:layout_toRightOf="@+id/tv_temperature_friendtext"
+                            android:background="@drawable/friend" />
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/temperature_consult_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="35dp"
+                        android:background="@drawable/btn_bg_blue_s_choose"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/iv_temperature_consult_msg"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="7dp"
+                            android:src="@drawable/tds_msg"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_temperature_consult_msg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="7dp"
+                            android:layout_toRightOf="@+id/iv_temperature_consult_msg"
+                            android:gravity="center"
+                            android:text="@string/consult_test"
+                            android:textColor="@color/colorTds"
+                            android:textSize="17dp"
+
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/temperature_hint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/temperature_layout_center"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_temperature_face"
+                        android:layout_width="15.5dp"
+                        android:layout_height="15.5dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tv_temperature_facetest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:text="@string/face_test"
+                        android:textColor="@color/colorTds"
+                        android:textSize="11dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/temperature_distribution_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/temperature_layout"
+                android:background="@color/ozner_text_login">
+
+                <TextView
+                    android:id="@+id/tv_temperature_distribution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/temperature_distri"
+                    android:textColor="@color/colorTdsText"
+                    android:textSize="13dp" />
+
+
+                <RelativeLayout
+                    android:id="@+id/temperature_waterdetail_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_temperature_distribution"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/temperature_time_choose_layout"
+                        android:layout_width="333dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/chart_time_selector_bg"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_temperature_time_day"
+                            android:layout_width="110dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/chart_time_first_tab_bg"
+                            android:gravity="center"
+                            android:text="@string/tds_day"
+                            android:textColor="@color/white"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_temperature_time_week"
+                            android:layout_width="110dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/chart_time_second_tab_bg"
+                            android:gravity="center"
+                            android:text="@string/tds_week"
+                            android:textColor="@color/colorTds"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_temperature_time_month"
+                            android:layout_width="110dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/chart_time_third_tab_bg"
+                            android:gravity="center"
+                            android:text="@string/tds_month"
+                            android:textColor="@color/colorTds"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/laly_temperature_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/temperature_time_choose_layout"
+                        android:layout_marginTop="25dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="visible"
+                        >
+
+                        <ImageView
+                            android:id="@+id/iv_temperature_left"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/zuo1"
+                            android:visibility="invisible" />
+
+                        <com.ozner.cup.UIView.UIXWaterTemperatureProgress
+                            android:id="@+id/temperature_progressView"
+                            android:layout_width="205dp"
+                            android:layout_height="205dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="50dp" />
+
+                        <ImageView
+                            android:id="@+id/iv_temperature_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="50dp"
+                            android:src="@drawable/you1" />
+
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/temperature_chartview_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/temperature_time_choose_layout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone">
+
+                        <com.ozner.cup.UIView.UIXTempChartView
+                            android:id="@+id/temperature_chartView"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/temperature_chartView"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/temperature_tab1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:id="@+id/iv_temperature_tapHelathImg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:src="@drawable/tds_tap_health" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/iv_temperature_tapHelathImg"
+                                    android:text="@string/down_temperature"
+                                    android:textColor="@color/tdsHealth"
+                                    android:textSize="14dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_temperature_tapHealthPre"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="17%"
+                                    android:textColor="@color/tdsHealth"
+                                    android:textSize="14dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=")"
+                                    android:textColor="@color/tdsHealth"
+                                    android:textSize="14dp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_temperature_tapGenericImg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="8dp"
+                                    android:layout_marginRight="5dp"
+                                    android:src="@drawable/tds_tap_generic" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/iv_temperature_tapGenericImg"
+                                    android:text="@string/nor_temperature"
+                                    android:textColor="@color/tdsGeneric"
+                                    android:textSize="14dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_temperature_tapGenericPre"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="100%"
+                                    android:textColor="@color/tdsGeneric"
+                                    android:textSize="14dp" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=")"
+                                    android:textColor="@color/tdsGeneric"
+                                    android:textSize="14dp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_weight="1">
+
+                                <ImageView
+                                    android:id="@+id/iv_temperature_tapBadImg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+
+                                    android:layout_marginLeft="8dp"
+                                    android:layout_marginRight="5dp"
+                                    android:src="@drawable/tds_tap_bad" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/iv_temperature_tapBadImg"
+                                    android:text="@string/hot_temperature"
+                                    android:textColor="@color/tdsBad"
+                                    android:textSize="14dp" />
+
+
+                                <TextView
+                                    android:id="@+id/tv_temperature_tapBadPre"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="45%"
+                                    android:textColor="@color/tdsBad"
+                                    android:textSize="14dp" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=")"
+                                    android:textColor="@color/tdsBad"
+                                    android:textSize="14dp" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+            <!--Temperature-->
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_temperature_line1"
+                android:layout_width="match_parent"
+                android:layout_height="9.5dp"
+                android:layout_below="@+id/temperature_distribution_layout"
+                android:background="@color/colorLine" />
+
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/temperature_health_layout"
+                android:layout_width="match_parent"
+                android:layout_height="108.5dp"
+                android:layout_below="@+id/iv_temperature_line1"
+                android:background="@color/ozner_text_login"
+                >
+
+                <TextView
+                    android:id="@+id/tv_temperature_health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/tdshealth_test"
+                    android:textColor="@color/colorTdsText"
+                    android:textSize="21dp" />
+
+
+                <LinearLayout
+                    android:layout_width="333dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_temperature_health"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/temperature_health_know_layout"
+                        android:layout_width="152dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/btn_bg_blue_s_choose"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iv_temperature_health_know"
+                            android:layout_width="15dp"
+                            android:layout_height="19.5dp"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/water_know"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_temperature_health_know"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/iv_temperature_health_know"
+                            android:gravity="center"
+                            android:text="@string/water_know_test"
+                            android:textColor="@color/colorTds"
+                            android:textSize="17dp"
+
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/temperature_health_buy_layout"
+                        android:layout_width="152dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="29dp"
+                        android:background="@drawable/btn_bg_blue_choose"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iv_temperature_health_buy"
+                            android:layout_width="21dp"
+                            android:layout_height="19.5dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/buy_shop"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_temperature_health_buy_msg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/iv_temperature_health_buy"
+                            android:gravity="center"
+                            android:text="@string/buy_test"
+                            android:textColor="@color/colorTds"
+                            android:textSize="17dp"
+
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_temperature_line2"
+                android:layout_width="match_parent"
+                android:layout_height="9.5dp"
+                android:layout_below="@+id/temperature_health_layout"
+                android:background="@color/colorLine" />
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

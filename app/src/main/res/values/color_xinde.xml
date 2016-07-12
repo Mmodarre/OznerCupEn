@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cupDetail_line_gray">#ffe3e3e3</color>
+    <color name="NormalTextColor">#ff3a3a3a</color>
+
+    <color name="Purifier_after">#ff3f88f1</color>
+    <color name="Purifier_before">#ffba52a7</color>
+    <color name="Purifier_data_exp_text">#ff09a110</color>
+
+    <color name="led_tape_blue">#ff3ca8f1</color>
+    <color name="led_tape_orange">#ffff9e40</color>
+    <color name="led_tape_red">#fff26262</color>
+
+    <color name="MyCenter_FirstTitleBg">#ffafecff</color>
+    <color name="MyCenter_FirstText">#ff3a3a3a</color>
+    <color name="MyCenter_newFirendNum">#fffe3c00</color>
+    <color name="MyCenter_NoFriendsBg">#ffafe0ff</color>
+    <color name="MyCenter_NoTextColor">#ff3b536f</color>
+    <color name="MyCenter_FriendChildItem">#fff1f1f1</color>
+    <color name="MyCenter_bg">#fff1f1f1</color>
+    <color name="MyCenter_ShortItemBg">#fff1f5fa</color>
+    <color name="MyCenter_RankText">#ff7fa1d1</color>
+    <color name="MyCenter_ToolBar">#fff9f9f9</color>
+    <color name="MyCenter_ProgressBarBg">#ffe5edf8</color>
+    <color name="MyCenter_RankValue">#ff626262</color>
+    <color name="MyCenter_LikeNum">#ff959595</color>
+    <color name="MyCenter_ProgressStart">#ff3387f9</color>
+    <color name="MyCenter_ProgressEnd">#fff83636</color>
+
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+    <color name="Purifier_MatchDeviceBlue">#ff48b4e9</color>
+    <color name="Purifier_BtnBlue">#0276b0</color>
+
+    <color name="Chat_FromBg">#ffe1ebf3</color>
+    <color name="Chat_ToBg">#ffc5e7fb</color>
+    <color name="Chat_ListViewBg">#fff1f8fd</color>
+    <color name="Chat_inputLine">#ffd8d8d8</color>
+</resources>

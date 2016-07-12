@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/iv_deviceImg"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/my_center_cup" />
+
+        <TextView
+            android:id="@+id/tv_deviceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_deviceImg"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:maxLines="2"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/MyCenter_LikeNum" />
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="38dp"
+            android:layout_height="22dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/center_mydevice_tips_bg"
+            android:gravity="center"
+            android:text="热卖"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

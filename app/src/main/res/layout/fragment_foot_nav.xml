@@ -1,0 +1,265 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_top"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    tools:context="com.ozner.cup.FootNavFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        >
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <LinearLayout
+            android:id="@+id/foot_view_sb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+
+
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/foot_iv_sb"
+                    android:layout_width="@dimen/foot_tab_image"
+                    android:layout_height="@dimen/foot_tab_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/tab_sb" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/foot_iv_sb"
+                    android:background="@drawable/btn_bg_red_radius"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="12"
+                    android:textColor="@color/white"
+
+                    android:visibility="gone"
+
+
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/foot_tv_sb"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/foot_tab_txt_margintop"
+                android:gravity="center"
+                android:text="@string/foot_sb"
+                android:textColor="@color/font_gray"
+                android:textSize="14dp"
+
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/foot_view_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/foot_iv_shop"
+                    android:layout_width="@dimen/foot_tab_image"
+                    android:layout_height="@dimen/foot_tab_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/tab_shop"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/foot_iv_shop"
+                    android:background="@drawable/btn_bg_red_radius"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="12"
+                    android:textColor="@color/white"
+
+                    android:visibility="gone"
+
+
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/foot_tv_shop"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/foot_tab_txt_margintop"
+                android:gravity="center"
+                android:text="@string/foot_shop"
+                android:textColor="@color/font_gray"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/foot_view_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+
+                <ImageView
+                    android:id="@+id/foot_iv_msg"
+                    android:layout_width="@dimen/foot_tab_image"
+                    android:layout_height="@dimen/foot_tab_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/tab_msg"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/foot_tv_msgcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@id/foot_iv_msg"
+                    android:background="@drawable/btn_bg_red_radius"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="12"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/foot_tv_msg"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/foot_tab_txt_margintop"
+                android:gravity="center"
+                android:text="@string/foot_msg"
+                android:textColor="@color/font_gray"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/foot_view_my"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+
+
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/foot_iv_myself"
+                    android:layout_width="@dimen/foot_tab_image"
+                    android:layout_height="@dimen/foot_tab_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/tab_my" />
+
+                <ImageView
+                    android:id="@+id/foot_iv_myself_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/foot_iv_myself"
+                    android:background="@drawable/btn_bg_red_readius_my"
+                    android:text=""
+                    android:textColor="@color/white"
+
+                    android:visibility="gone"
+
+
+                    />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/foot_tv_myself"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/foot_tab_txt_margintop"
+                android:gravity="center"
+                android:text="@string/foot_myself"
+                android:textColor="@color/font_gray"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

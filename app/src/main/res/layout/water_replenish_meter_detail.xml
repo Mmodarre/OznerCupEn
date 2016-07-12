@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_cup_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llay_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llay_cupHolder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/foot_heght"
+            android:orientation="vertical"></LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llay_placeholder"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/laly_water_replenish"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:background="@color/water_replen_face"
+            android:orientation="vertical">
+
+            <include layout="@layout/cup_detail_toobar" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_water_replenish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/water_replenish_tip"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/iv_water_replenish_face"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/nv1" />
+
+
+                <ImageView
+                    android:id="@+id/iv_water_replenish_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true" />
+
+
+                <!--设置，电量布局-->
+                <RelativeLayout
+                    android:id="@+id/rlay_top_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="15dp">
+
+                        <ImageView
+                            android:id="@+id/iv_battery"
+                            android:layout_width="30dp"
+                            android:layout_height="13dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/battery0" />
+
+                        <TextView
+                            android:id="@+id/tv_batteryText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_battery"
+                            android:text="@string/text_null"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_battery_notice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/tv_batteryText"
+                            android:paddingLeft="5dp"
+                            android:text="@string/notice_battery_wrm"
+                            android:textColor="@color/white"
+                            android:visibility="invisible" />
+                    </RelativeLayout>
+
+
+                    <ImageView
+                        android:id="@+id/iv_water_replenish_setup"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="10dp"
+                        android:src="@drawable/setting" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_data_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/loding_now"
+                    android:textColor="@color/white"
+                    android:textSize="13dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rely_round"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="-60dp"
+            android:layout_marginTop="-60dp"
+            android:background="@drawable/water_replenish_meter_blue"
+            android:clickable="false"
+            android:visibility="gone">
+
+
+            <ImageView
+                android:id="@+id/firmwar_pb_pic"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/progress"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_query_notice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/white" />
+
+            <RelativeLayout
+                android:id="@+id/query_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_fuzhi_class"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="水润"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_fuzhi_bili"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_fuzhi_class"
+                    android:layout_centerHorizontal="true"
+                    android:text="70.00"
+                    android:textColor="@color/white"
+                    android:textSize="50dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_fuzhi_class"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/tv_fuzhi_bili"
+                    android:text="%"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!--白色部分-->
+        <RelativeLayout
+            android:id="@+id/rlay_water_replenish_skin"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+
+            <!--白色部分  肤质-->
+            <LinearLayout
+                android:id="@+id/laly_water_replenish_skin"
+                android:layout_width="175.5dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_bg_blue_s_choose"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tv_water_replenishskin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/water_replenish_skin"
+                    android:textColor="@color/main_addDetail"
+                    android:textSize="16dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_water_replenish_skin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/text_null"
+                    android:textColor="@color/main_addDetail"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <!--白色部分  肤质详情-->
+            <RelativeLayout
+                android:id="@+id/rely_water_replenish_skin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/ver_line"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/water_replenish_skinLast"
+                        android:textColor="@color/water_replen_skip_last"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/tv_water_replenish_skinAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/text_null"
+                        android:textColor="@color/water_replen_skip_last"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/ver_line"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/water_replen_skip_last" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/ver_line"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/water_replenish_skinAge"
+                        android:textColor="@color/water_replen_skip_last"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/tv_water_replenish_skinLast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/text_null"
+                        android:textColor="@color/water_replen_skip_last"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_eyesSkin_notice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ver_line"
+                    android:alpha="0.6"
+                    android:padding="20dp"
+                    android:text=""
+                    android:textSize="12dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+    </LinearLayout>
+</RelativeLayout>

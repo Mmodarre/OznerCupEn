@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/tdsText_back_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="#ffffff"-->
+        <!-->-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/iv_tdsTest_back"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="match_parent">-->
+            <!--<ImageButton-->
+                <!--android:layout_width="15dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:background="@drawable/back"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_margin="14dp"-->
+                <!--/>-->
+        <!--</RelativeLayout>-->
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_tdsText"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/tdsWhat"-->
+            <!--android:textSize="19dp"-->
+            <!--android:textColor="@color/tdsTextTop"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginTop="14dp"-->
+            <!--/>-->
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_line"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_below="@+id/iv_tdsTest_back"-->
+            <!--android:background="#cccccc"-->
+            <!--/>-->
+    <!--</RelativeLayout>-->
+    <include
+        android:id="@+id/introduce_layout_top"
+        layout="@layout/tds_introduce_toolbar"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/introduce_layout_top"
+    android:background="#ffffff"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tdsText"
+        android:layout_gravity="center"
+        android:layout_marginTop="14dp"
+        android:textSize="16dp"
+        android:textColor="@color/tdsText1"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tdsTextIn"
+        android:textSize="16dp"
+        android:textColor="@color/tdsText1"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="14.5dp"
+        android:text="@string/tdsText1"
+        android:textSize="13dp"
+        android:textColor="@color/tdsText2"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/tdsText2"
+        android:textSize="13dp"
+        android:textColor="@color/tdsText2"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/tdsText3"
+        android:textSize="13dp"
+        android:textColor="@color/tdsText2"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/tdsText4"
+        android:textSize="13dp"
+        android:textColor="@color/tdsText2"
+        />
+
+</LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

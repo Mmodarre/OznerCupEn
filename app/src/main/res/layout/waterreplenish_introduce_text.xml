@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <include
+        android:id="@+id/introduce_layout_top"
+        layout="@layout/tds_introduce_toolbar"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/introduce_layout_top"
+    android:background="#ffffff"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_replenish_humTitle"
+        android:layout_gravity="center"
+        android:layout_marginTop="14dp"
+        android:textSize="18dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_replenish_humEye"
+        android:textSize="16dp"
+        android:textColor="@color/tdsText1"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_replenish_humFace"
+        android:textSize="16dp"
+        android:textColor="@color/tdsText1"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_replenish_humNeck"
+        android:textSize="16dp"
+        android:textColor="@color/tdsText1"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_replenish_humHands"
+        android:textSize="16dp"
+        android:textColor="@color/tdsText1"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_replenish_humHands"
+        android:textSize="16dp"
+        android:textColor="@color/tdsText1"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_replenish_humtip"
+        android:textSize="16dp"
+        android:textColor="@color/tdsText1"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_replenish_humSeason"
+        android:textSize="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        />
+    <TextView
+        android:id="@+id/textValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+
+
+</LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

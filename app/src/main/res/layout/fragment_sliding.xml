@@ -1,0 +1,77 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ozner.cup.SlidingFragment"
+    android:layout_marginBottom="45dp"
+    android:id="@+id/framen_sliding_left"
+    >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    >
+    <!-- TODO: Update blank fragment layout -->
+<Button
+    android:id="@+id/sliding_shuibei"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="智能水杯"
+    />
+    <Button
+        android:id="@+id/sliding_shuitantou"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="水探头"
+        />
+    <Button
+        android:id="@+id/sliding_yinshuiji"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="饮水机"
+        />
+    <Button
+        android:id="@+id/sliding_tds"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="TDS"
+        />
+    <Button
+        android:id="@+id/sliding_yishuiliang"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="饮水量"
+        />
+
+    <Button
+        android:id="@+id/sliding_shuiwen"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="水温"
+        />
+
+    <Button
+        android:id="@+id/sliding_addDevice"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="添加设备"
+        />
+    <Button
+        android:id="@+id/sliding_setup_cup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="智能杯设置"
+        />
+
+
+</LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+</FrameLayout>

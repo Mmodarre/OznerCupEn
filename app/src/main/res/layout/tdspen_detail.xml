@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llay_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llay_cupHolder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/foot_heght"
+            android:orientation="vertical"></LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llay_placeholder"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@drawable/cupdetail_bg"
+            android:orientation="vertical">
+
+            <include layout="@layout/cup_detail_toobar" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5">
+
+                <RelativeLayout
+                    android:id="@+id/rlay_top1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/iv_data_loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/air_loding" />
+
+                    <TextView
+                        android:id="@+id/tv_data_loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_toRightOf="@+id/iv_data_loading"
+                        android:text="@string/air_dataLoding"
+                        android:textColor="@color/white"
+                        android:textSize="13dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlay_top_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_alignParentBottom="true">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp">
+
+                        <ImageView
+                            android:id="@+id/iv_battery"
+                            android:layout_width="45dp"
+                            android:layout_height="19.5dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/battery30" />
+
+                        <TextView
+                            android:id="@+id/tv_batteryTem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_battery"
+                            android:text="@string/text_null"
+                            android:textColor="@color/white"
+                            android:textSize="19.5dp" />
+                    </RelativeLayout>
+
+                    <!--<RelativeLayout-->
+                    <!--android:id="@+id/rlay_filterStatus"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_marginBottom="10dp">-->
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/iv_filterState"-->
+                    <!--android:layout_width="16dp"-->
+                    <!--android:layout_height="33dp"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_alignParentLeft="true"-->
+                    <!--android:src="@drawable/filter_state0" />-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_filiteText"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_marginLeft="3dp"-->
+                    <!--android:layout_toRightOf="@+id/iv_filterState"-->
+                    <!--android:text="@string/filter_need_change"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="13dp" />-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_filterStatus"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_above="@+id/tv_filiteText"-->
+                    <!--android:layout_alignLeft="@+id/tv_filiteText"-->
+                    <!--android:layout_toRightOf="@+id/iv_filterState"-->
+                    <!--android:text="@string/text_null"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="18dp" />-->
+
+                    <!--</RelativeLayout>-->
+
+                    <ImageView
+                        android:id="@+id/iv_probe_setting"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/setting" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/rlay_top_bottom"
+                    android:layout_below="@+id/rlay_top">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="175dp"
+                        android:layout_centerVertical="true">
+
+                        <com.ozner.cup.WaterProbe.WaterDetailProgress
+                            android:id="@+id/waterProcess"
+                            android:layout_width="300dp"
+                            android:layout_height="160dp"
+                            android:layout_centerInParent="true" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/cup_detail_tds" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

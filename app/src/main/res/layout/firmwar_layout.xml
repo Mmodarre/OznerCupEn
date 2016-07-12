@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tdsText1"
+   >
+
+    <TextView
+        android:id="@+id/tv_firmware_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/firmware_upgrade"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:id="@+id/tv_firmware_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_firmware_title"
+        android:text="@string/firmware_hintOne"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rlay_firmwar_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_firmware_hint"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        >
+        <!--<ProgressBar-->
+            <!--android:id="@+id/firmwar_pb"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="200dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:indeterminate="true"-->
+            <!--android:max="100"-->
+            <!--android:progress="0"-->
+            <!--android:indeterminateDrawable="@drawable/progressbar_firmwar_on"-->
+            <!--/>-->
+        <com.ozner.cup.UIView.RoundProgressBar
+            android:id="@+id/firmwar_pb"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android_custom:roundColor="@color/white"
+            android_custom:roundWidth="3dp"
+            android_custom:roundProgressColor="@color/white"
+            android_custom:textIsDisplayable="false"
+            android:visibility="visible"
+            />
+
+
+
+
+        <ImageView
+            android:id="@+id/iv_firmware_loade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/firmware_upload"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/laly_firmwar_uploadValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/rlay_firmwar_upload"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_firmwar_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/firmware_uploadText"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/tv_firmwar_uploadValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:text="0%"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        >
+        <TextView
+            android:id="@+id/tv_firmware_choose"
+            android:layout_width="143dp"
+            android:layout_height="38dp"
+            android:background="@drawable/firmware_btn_bg_blue_radio"
+            android:text="@string/cancel"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/font_black"
+            />
+
+        <TextView
+            android:id="@+id/tv_firmware_cancel"
+            android:layout_width="143dp"
+            android:layout_height="38dp"
+            android:background="@drawable/firmware_btn_bg_blue_radio"
+            android:text="@string/cancel"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/font_black"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            />
+
+
+
+
+    </LinearLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_firmware_choose"-->
+        <!--android:layout_width="143dp"-->
+        <!--android:layout_height="38dp"-->
+        <!--android:background="@drawable/firmware_btn_bg_blue_radio"-->
+        <!--android:text="@string/cancel"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="16sp"-->
+        <!--android:textColor="@color/font_black"-->
+        <!--/>-->
+</RelativeLayout>

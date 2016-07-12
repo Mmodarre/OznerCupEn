@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorLine">#f1f1f1</color>
+    <color name="colorTds">#3c89f3</color>
+    <color name="colorTdsText">#626262</color>
+    <color name="tdsHealth">#ff3c89f2</color>
+    <color name="tdsGeneric">#ff7d58e7</color>
+    <color name="tdsBad">#fff26264</color>
+    <color name="tdsBackground">#afecff</color>
+    <color name="tdsBuybg">#e7f1fe</color>
+    <color name="ozner_text_login">#ffffff</color>
+    <color name="shareBack">#ffffff</color>
+
+
+    <color name="tdsTextTop">#1b1b1b</color>
+    <color name="tdsText1">#3c89f2</color>
+    <color name="tdsText2">#626262</color>
+
+    <color name="air_background">#5ecffe</color>
+    <color name="air_clean">#898e91</color>
+    <color name="air_text">#3b71df</color>
+    <color name="air_good">#a381fb</color>
+    <color name="air_bad">#fe6565</color>
+    <color name="air_case">#3a3a3a</color>
+    <color name="share_layout">#8dd0fb</color>
+
+
+</resources>

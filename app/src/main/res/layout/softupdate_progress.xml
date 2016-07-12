@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp">
+
+    <ProgressBar
+        android:id="@+id/update_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_marginBottom="5dp"
+            android:id="@+id/tv_loadper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="per" />
+
+
+
+
+        <TextView
+            android:id="@+id/tv_readLen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_loadper"
+            android:visibility="gone"
+            android:text="readlen" />
+        <TextView
+            android:id="@+id/tv_persign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_loadper"
+            android:visibility="gone"
+            android:layout_toRightOf="@+id/tv_readLen"
+            android:text="/" />
+        <TextView
+            android:id="@+id/tv_totalLen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_toRightOf="@+id/tv_persign"
+            android:layout_below="@+id/tv_loadper"
+            android:text="total" />
+
+    </RelativeLayout>
+</LinearLayout>
