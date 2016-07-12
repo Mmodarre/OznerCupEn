@@ -34,6 +34,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        //修改字体
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
