@@ -83,7 +83,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
 
     int[] volum;
 
-    //获取水温
+    //获取水温sss
 
     WaterTemperatureFragment waterTemperatureFragment;
 
