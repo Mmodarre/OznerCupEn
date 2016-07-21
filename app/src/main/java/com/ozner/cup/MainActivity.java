@@ -110,6 +110,7 @@ public class MainActivity extends BaseMainActivity {
 
 //        ShareSDK.initSDK(MainActivity.this);
         setContentView(R.layout.activity_main);
+        ((OznerApplication)getApplication()).setIsCN();
         InitBaiduPush();
         notifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         ImageLoaderInit.initImageLoader(getBaseContext());

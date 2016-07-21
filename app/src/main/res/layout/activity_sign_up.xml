@@ -1,34 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:gravity="center_horizontal"
-    tools:context="com.ozner.cup.Login.SignUpActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                tools:context="com.ozner.cup.Login.SignUpActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/sign_up"
-            android:textColor="@color/toolbar_text_color"
-            android:textSize="18dp" />
-
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/login_icon_v2" />
+        android:layout_marginTop="60dp"
+        android:src="@drawable/login_icon_v2"/>
 
 
     <LinearLayout
@@ -49,26 +35,66 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp">
+                android:layout_marginLeft="5dp"
+                android:orientation="horizontal">
 
 
                 <EditText
-                    android:id="@+id/et_username"
-                    android:layout_width="fill_parent"
+                    android:id="@+id/et_email"
+                    android:layout_width="0dp"
                     android:layout_height="fill_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/border_none"
                     android:hint="@string/username"
-                    android:inputType="number"
                     android:paddingLeft="5dp"
                     android:textColor="@color/font_black"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
+
+                <TextView
+                    android:id="@+id/tv_verifyCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/getCode"/>
             </LinearLayout>
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="9.5dp"
-                android:background="@color/theme_blue" />
+                android:background="@color/theme_blue"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:orientation="vertical"
+            android:paddingBottom="9.5dp"
+            android:paddingTop="9.5dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+
+                <EditText
+                    android:id="@+id/et_verCode"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/border_none"
+                    android:hint="@string/verifyCode"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/font_black"
+                    android:textSize="14dp"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="9.5dp"
+                android:background="@color/theme_blue"/>
         </LinearLayout>
 
         <LinearLayout
@@ -93,17 +119,17 @@
                     android:layout_height="fill_parent"
                     android:background="@drawable/border_none"
                     android:hint="@string/password"
-                    android:inputType="number"
+                    android:inputType="textPassword"
                     android:paddingLeft="5dp"
                     android:textColor="@color/font_black"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
             </LinearLayout>
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="9.5dp"
-                android:background="@color/theme_blue" />
+                android:background="@color/theme_blue"/>
         </LinearLayout>
 
         <LinearLayout
@@ -127,17 +153,17 @@
                     android:layout_height="fill_parent"
                     android:background="@drawable/border_none"
                     android:hint="@string/confirm_password"
-                    android:inputType="number"
+                    android:inputType="textPassword"
                     android:paddingLeft="5dp"
                     android:textColor="@color/font_black"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
             </LinearLayout>
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="9.5dp"
-                android:background="@color/theme_blue" />
+                android:background="@color/theme_blue"/>
         </LinearLayout>
 
         <Button
@@ -151,7 +177,36 @@
             android:text="@string/register"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="17dp" />
+            android:textSize="17dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_cb_xieyi"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:clickable="true"
+                android:src="@drawable/cb_on"/>
+
+            <TextView
+                android:id="@+id/login_btn_xieyi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/login_p_tishi"
+                android:textSize="12dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>

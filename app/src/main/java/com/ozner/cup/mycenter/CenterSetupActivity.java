@@ -4,9 +4,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +19,7 @@ import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.SlidButton;
-import com.ozner.cup.Login.LoginActivity;
+import com.ozner.cup.Login.LoginEnActivity;
 import com.ozner.cup.R;
 
 /*
@@ -108,7 +108,7 @@ public class CenterSetupActivity extends AppCompatActivity implements View.OnCli
                     public void onClick(DialogInterface dialog, int which) {
                         OznerPreference.SetValue(CenterSetupActivity.this, UserDataPreference.UserId, "");
                         OznerPreference.setUserToken(CenterSetupActivity.this, "");
-                        Intent loginIntent = new Intent(CenterSetupActivity.this, LoginActivity.class);
+                        Intent loginIntent = new Intent(CenterSetupActivity.this, LoginEnActivity.class);
 //                loginIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(loginIntent);
                         Intent logoutBroadIntent = new Intent(OznerBroadcastAction.Logout);

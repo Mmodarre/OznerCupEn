@@ -30,14 +30,14 @@
     <string name="server_Exception">Service Exception Error</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_other_device">您的账号在其他设备登录，请重新登录.</string>
-    <string name="login_p_tishi">I have read and agreed to OZNER IFAMILY Exception Clauses.</string>
+    <string name="login_p_tishi">Agreed to OZNER IFAMILY Clauses.</string>
     <string name="loging_ty_xiexi">请先同意《浩泽净水家免责条款》</string>
     <string name="login_btn_skip">跳过</string>
     <string name="login_btn_getphone">To obtain captcha by text message</string>
     <string name="login_et_phone">Please enter phone number</string>
-    <string name="innet_wrong">网络请求超时，请检查网络</string>
+    <string name="innet_wrong">Network Error</string>
     <string name="login_aync">Login</string>
-    <string name="login_aync_ing">正在登录</string>
+    <string name="login_aync_ing">logging in. . .</string>
     <string name="login_et_phone_code">Please enter  captcha</string>
     <string name="login_btn_login">Login</string>
     <string name="login_btn_voi">To obtain voice captcha</string>
@@ -47,12 +47,12 @@
     <string name="login_wrong_login_error">登陆失败检查手机号和验证码</string>
     <string name="login_wrong_Code_Outtime">登陆失败验证码过期</string>
     <string name="login_wrong_Code_error">登陆失败验证码错误</string>
-    <string name="login_wrong_msg">登陆失败</string>
+    <string name="login_wrong_msg">Login failed</string>
     <string name="login_wrong_code">您输入的验证码有误,请重新输入？</string>
     <string name="login_wrong_getcode">The captcha will sent out in text message,please keep an eye on check.</string>
     <string name="login_wrong_getvoice">ou will receive a 4001 voice telephony,please keep an eye on calls.</string>
     <string name="login_code_timeout">倒计时%d秒</string>
-    <string name="login_code_sendwrong">发送验证码失败</string>
+    <string name="login_code_sendwrong">Fail to send verification code</string>
     <string name="foot_sb">My device</string>
     <string name="foot_shop">Mall</string>
     <string name="foot_msg">Consult</string>
@@ -657,12 +657,12 @@
     <string name="ozner_smart_service">Ozner Intelligent Life Service</string>
     <string name="start_smart_service">Immediately add equipment and begin to experience the OZNER intelligent life service.</string>
 
-    <string name="username">username</string>
-    <string name="password">password</string>
-    <string name="confirm_password">Confirm password</string>
+    <string name="username">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="register">Sign up</string>
     <string name="sign_up">Sign up</string>
-    <string name="input_username">Please enter user name</string>
+    <string name="input_username">Please input your email</string>
     <string name="input_password">Please enter your password</string>
     <string name="acitivity_notFound">File does not exist, please try again</string>
     <string name="press">Press</string>
@@ -694,4 +694,45 @@
     <string name="skin_type">Other types of skin</string>
     <string name="equipment_name">Equipment name</string>
 
+    <string name="verifyCode">Verification Code</string>
+    <string name="getCode">GetCode</string>
+    <string name="sendEmailCode">Sending...</string>
+    <string name="resend">Resend</string>
+    <string name="second">s</string>
+    <string name="inputValidEmail">Please enter your vaild email</string>
+    <string name="inputVerCode">Please enter the verification code</string>
+    <string name="inputPassword">Please enter your password</string>
+    <string name="passDiff">The password is not the same</string>
+    <string name="regSucc">Regisiter success</string>
+    <string name="submitting">Submitting ...</string>
+    <string name="regFail">Registration failed</string>
+    <string name="loginFail">Login failed,check the email and password</string>
+
+    <!--错误码-->
+    <string name="Code_Accept_nofound">没有发现对应请求</string>
+    <string name="Code_AddFriend_exists">已经发送过请求</string>
+    <string name="Code_C_TokenNull">Token验证失败</string>
+    <string name="Code_Code_TimeOut">验证码过期</string>
+    <string name="Code_Code_Wrong">验证码错误</string>
+    <string name="Code_Device_Notfound">设备没有发现</string>
+    <string name="Code_Exception">异常错误</string>
+    <string name="Code_Failed">失败</string>
+    <string name="Code_Friend_NoGx">和目标用户没有好友关系</string>
+    <string name="Code_Friend_NoUser">对方不是浩泽用户</string>
+    <string name="Code_P_NotNull">参数不能为空</string>
+    <string name="Code_P_params_empty">参数不能为空</string>
+    <string name="Code_P_params_error">参数错误</string>
+    <string name="Code_Success">Success</string>
+    <string name="Code_W_AddUser">添加用户异常</string>
+    <string name="Code_W_TokenWrite">Token写入数据库失败</string>
+    <string name="Code_W_Uname">用户名错误</string>
+    <string name="Code_Baidu_idwrong">用户没有绑定baidu设备id或者手机类型</string>
+    <string name="Code_Baidu_nouser">没有此用户</string>
+    <string name="Code_Like_Liked">已经点过赞</string>
+    <string name="Code_Fiflter_CodeNotfound">二维码无效</string>
+    <string name="Code_Fiflter_CodeUsed">二维码已经使用过了</string>
+    <string name="Code_Fiflter_DeviceNotfound">设备未绑定</string>
+
+    <string name="Code_Login_Error">Login failed</string>
+    <string name="Code_UserNotFound">Not found user</string>
 </resources>

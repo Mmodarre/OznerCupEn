@@ -118,7 +118,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         llay_QRCodeScan.setOnClickListener(this);
         llay_Chat.setOnClickListener(this);
         llay_buyFilter.setOnClickListener(this);
-        if (!OznerApplication.isLanguageCN()) {
+        if (!((OznerApplication)getApplication()).isLanguageCN()) {
             findViewById(R.id.ll_en_no).setVisibility(View.GONE);
         }
         uiz_moreProject.setOnItemClickListener(new ProjectItemClickListener());

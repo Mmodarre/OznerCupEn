@@ -12,16 +12,13 @@ import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.mycenter.CheckForUpdate.LogUtilsLC;
 
-import java.util.Locale;
-
-import cn.sharesdk.framework.ShareSDK;
-
 /**
  * Created by mengdongya on 2015/11/26.
  */
 public class OznerApplication extends OznerBaseApplication {
     public static final String ACTION_ServiceInit = "ozner.service.init";
     public static Typeface numFace, textFace;
+    private boolean isCN = true;
 
     @Override
     protected void onBindService() {
@@ -33,10 +30,11 @@ public class OznerApplication extends OznerBaseApplication {
 
     @Override
     public void onCreate() {
-        ShareSDK.initSDK(getApplicationContext());
+//        ShareSDK.initSDK(getApplicationContext());
         numFace = Typeface.createFromAsset(getAssets(), "font/shuzi.otf");
         textFace = Typeface.createFromAsset(getAssets(), "font/wenzi.otf");
         LogUtilsLC.init(getApplicationContext());
+        isCN = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsCN, "true"));
         super.onCreate();
     }
 
@@ -82,12 +80,32 @@ public class OznerApplication extends OznerBaseApplication {
         }
     }
 
-    public static boolean isLanguageCN() {
-        if (Locale.getDefault().getLanguage().endsWith("zh")) {
-            return true;
-        } else {
-            return false;
-        }
+    public void setIsCN() {
+        isCN = true;
+        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsCN, "true");
+    }
+
+    public void setIsEN() {
+        isCN = false;
+        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsCN, "true");
+    }
+
+    /**
+     * 是否需要转英文版
+     * 邮箱登录的是英文版，手机验证码登录的是中文版
+     * 需要在登录的时候判断
+     * 默认是中文版
+     *
+     * @return true:中文版；false:英文版
+     */
+    public boolean isLanguageCN() {
+        isCN = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsCN, "true"));
+        return isCN;
+//        if (Locale.getDefault().getLanguage().endsWith("zh")) {
+//            return true;
+//        } else {
+//            return false;
+//        }
     }
 
     @Override

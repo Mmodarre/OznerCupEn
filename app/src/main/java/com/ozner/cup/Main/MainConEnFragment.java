@@ -96,7 +96,7 @@ public class MainConEnFragment extends Fragment implements FootFragmentListener 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (OznerApplication.isLanguageCN()) {
+                if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }else{
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();

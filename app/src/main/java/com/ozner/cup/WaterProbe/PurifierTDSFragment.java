@@ -88,7 +88,7 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
     @Override
     public void onResume() {
         super.onResume();
-        if(OznerApplication.isLanguageCN()){
+        if(((OznerApplication)getActivity().getApplication()).isLanguageCN()){
             ((MainActivity) getActivity()).isShouldResume = false;
         }else {
             ((MainEnActivity) getActivity()).isShouldResume = false;
@@ -98,7 +98,7 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if(OznerApplication.isLanguageCN()){
+        if(((OznerApplication)getActivity().getApplication()).isLanguageCN()){
             ((MainActivity) getActivity()).isShouldResume = true;
         }else{
             ((MainEnActivity) getActivity()).isShouldResume = false;
@@ -178,7 +178,7 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
         laly_consult.setOnClickListener(this);
         wateryield_health_know_layout.setOnClickListener(this);
         wateryield_health_buy_layout.setOnClickListener(this);
-        if (OznerApplication.isLanguageCN()) {
+        if (((OznerApplication)(getActivity().getApplication())).isLanguageCN()) {
             rootView.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
             rootView.findViewById(R.id.ll_en_no).setVisibility(View.VISIBLE);
         } else {

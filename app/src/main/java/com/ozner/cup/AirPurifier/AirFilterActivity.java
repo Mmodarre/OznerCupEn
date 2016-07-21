@@ -110,7 +110,7 @@ public class AirFilterActivity extends AppCompatActivity implements View.OnClick
         }
 
         tds_health_layout = (RelativeLayout) findViewById(R.id.tds_health_layout);
-        if (!OznerApplication.isLanguageCN()) {
+        if (!((OznerApplication)getApplication()).isLanguageCN()) {
             tds_health_layout.setVisibility(View.GONE);
         }
     }

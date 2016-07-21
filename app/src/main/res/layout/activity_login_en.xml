@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    tools:context="com.ozner.cup.Login.LoginEnActivity">
-
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              tools:context="com.ozner.cup.Login.LoginEnActivity">
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
-        android:src="@drawable/login_icon_v2" />
+        android:src="@drawable/login_icon_v2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/login_user" />
+                    android:src="@drawable/login_user"/>
 
                 <EditText
                     android:id="@+id/et_username"
@@ -46,17 +45,16 @@
                     android:layout_height="fill_parent"
                     android:background="@drawable/border_none"
                     android:hint="@string/username"
-                    android:inputType="number"
                     android:paddingLeft="5dp"
                     android:textColor="@color/font_black"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
             </LinearLayout>
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="9.5dp"
-                android:background="@color/theme_blue" />
+                android:background="@color/theme_blue"/>
         </LinearLayout>
 
         <LinearLayout
@@ -78,26 +76,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/login_lock" />
+                    android:src="@drawable/login_lock"/>
 
                 <EditText
-                    android:id="@+id/et_password"
+                    android:id="@+id/et_pass"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:background="@drawable/border_none"
                     android:hint="@string/password"
-                    android:inputType="number"
+                    android:inputType="textPassword"
                     android:paddingLeft="5dp"
                     android:textColor="@color/font_black"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
             </LinearLayout>
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="9.5dp"
-                android:background="@color/theme_blue" />
+                android:background="@color/theme_blue"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_wrong"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/fz_red"/>
 
         <Button
             android:id="@+id/btn_login"
@@ -105,19 +111,20 @@
             android:layout_height="40dp"
             android:layout_marginLeft="48dp"
             android:layout_marginRight="48dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/selector_btn_login"
             android:text="@string/login_btn_login"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="17dp" />
+            android:textSize="17dp"/>
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingBottom="25dp">
 
@@ -129,41 +136,43 @@
             android:padding="10dp"
             android:text="@string/sign_up"
             android:textColor="@color/fz_blue"
-            android:textSize="14dp" />
+            android:textSize="14dp"/>
 
         <TextView
-            android:layout_marginTop="15dp"
+            android:id="@+id/tv_verifyLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/other_log" />
+            android:layout_marginTop="15dp"
+            android:text="@string/other_log"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ImageButton
                 android:id="@+id/ibtn_facebook"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="25dp"
-                android:src="@drawable/ssdk_oks_logo_facebook" />
+                android:src="@drawable/ssdk_oks_logo_facebook"/>
 
             <ImageButton
                 android:id="@+id/ibtn_googleplus"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="25dp"
-                android:src="@drawable/ssdk_oks_logo_googleplus" />
+                android:src="@drawable/ssdk_oks_logo_googleplus"/>
 
             <ImageButton
                 android:id="@+id/ibtn_linkedin"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ssdk_oks_logo_linkedin" />
+                android:src="@drawable/ssdk_oks_logo_linkedin"/>
         </LinearLayout>
     </LinearLayout>
 

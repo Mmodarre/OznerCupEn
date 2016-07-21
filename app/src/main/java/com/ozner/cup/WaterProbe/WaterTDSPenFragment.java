@@ -141,7 +141,7 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
     }
 
     public void InitView(View view) {
-        if (OznerApplication.isLanguageCN()) {
+        if (((OznerApplication)(getActivity().getApplication())).isLanguageCN()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);

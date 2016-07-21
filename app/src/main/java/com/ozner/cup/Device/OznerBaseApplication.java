@@ -38,7 +38,8 @@ public abstract class OznerBaseApplication extends Application {
 
     @Override
     public void onCreate() {
-        super.onCreate();
+
+//        ShareSDK.initSDK(getApplicationContext());
         CrashReport.initCrashReport(getApplicationContext(), "900033413", false);
         mServiceConnection = new ServiceConnection() {
             @Override
@@ -65,7 +66,7 @@ public abstract class OznerBaseApplication extends Application {
         IntentFilter bindFilter = new IntentFilter();
         bindFilter.addAction(OznerBroadcastAction.UpdateUserInfo);
         registerReceiver(bpOnBindBroRece, bindFilter);
-
+        super.onCreate();
     }
 
     class OznerBPOnBindBroRece extends BroadcastReceiver {

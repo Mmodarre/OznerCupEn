@@ -88,6 +88,7 @@ public class MainEnActivity extends BaseMainActivity {
         Log.e("tag", "Main_onCreate");
 //        ShareSDK.initSDK(this);
         setContentView(R.layout.activity_main_en);
+        ((OznerApplication)getApplication()).setIsEN();
         notifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         ImageLoaderInit.initImageLoader(getBaseContext());
         DisplayMetrics dm = new DisplayMetrics();

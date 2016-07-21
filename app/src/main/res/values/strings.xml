@@ -23,7 +23,7 @@
     <string name="login_btn_skip">跳过</string>
     <string name="login_btn_getphone">获取验证码</string>
     <string name="login_et_phone">请输入手机号</string>
-    <string name="innet_wrong">网络请求超时，请检查网络</string>
+    <string name="innet_wrong">网络请求失败，请检查网络</string>
     <string name="login_aync">登录</string>
     <string name="login_aync_ing">正在登录</string>
     <string name="login_et_phone_code">请输入验证码</string>
@@ -642,12 +642,12 @@
     <string name="stop_time">结束时间</string>
     <string name="ozner_smart_service">浩泽智能化生活服务</string>
     <string name="start_smart_service">立即添加设备，开始体验浩泽智能化生活服务。</string>
-    <string name="username">用户名</string>
+    <string name="username">邮箱</string>
     <string name="password">密码</string>
     <string name="confirm_password">确认密码</string>
     <string name="register">注册</string>
     <string name="sign_up">注册账号</string>
-    <string name="input_username">请输入用户名</string>
+    <string name="input_username">请输入邮箱</string>
     <string name="input_password">请输入密码</string>
     <string name="acitivity_notFound">文件不存在，请重试</string>
     <string name="press">同时按下</string>
@@ -655,7 +655,7 @@
     <string name="lamp_blinks">，WIFI指示灯闪烁</string>
     <string name="outdoor_air">室外空气:</string>
     <string name="insidedoor_air">室内空气</string>
-    <string name="other_log">其他方式登录</string>
+    <string name="other_log">验证码登录</string>
     <string name="title_activity_base_main">BaseMainActivity</string>
     <string name="current_filter_state">当前滤芯状态</string>
     <string name="warmly_notice">温馨提醒：及时更换滤芯才能保证饮用水的安全</string>
@@ -679,6 +679,46 @@
     <string name="skin_type">其他肤质类型</string>
     <string name="equipment_name">设备名</string>
 
+    <string name="verifyCode">验证码</string>
+    <string name="getCode">获取验证码</string>
+    <string name="sendEmailCode">正在发送验证码...</string>
+    <string name="resend">重发</string>
+    <string name="second">秒</string>
+    <string name="inputValidEmail">请输入正确的邮箱</string>
+    <string name="inputVerCode">请输入验证码</string>
+    <string name="inputPassword">请输入密码</string>
+    <string name="passDiff">密码不一样</string>
+    <string name="regSucc">注册成功</string>
+    <string name="submitting">提交中...</string>
+    <string name="regFail">注册失败</string>
+    <string name="loginFail">登录失败，请检查邮箱和密码</string>
+    
+    
+    <!--错误码-->
+    <string name="Code_Accept_nofound">没有发现对应请求</string>
+    <string name="Code_AddFriend_exists">已经发送过请求</string>
+    <string name="Code_C_TokenNull">Token验证失败</string>
+    <string name="Code_Code_TimeOut">验证码过期</string>
+    <string name="Code_Code_Wrong">验证码错误</string>
+    <string name="Code_Device_Notfound">设备没有发现</string>
+    <string name="Code_Exception">异常错误</string>
+    <string name="Code_Failed">失败</string>
+    <string name="Code_Friend_NoGx">和目标用户没有好友关系</string>
+    <string name="Code_Friend_NoUser">对方不是浩泽用户</string>
+    <string name="Code_P_NotNull">参数不能为空</string>
+    <string name="Code_P_params_empty">参数不能为空</string>
+    <string name="Code_P_params_error">参数错误</string>
+    <string name="Code_Success">Success</string>
+    <string name="Code_W_AddUser">添加用户异常</string>
+    <string name="Code_W_TokenWrite">Token写入数据库失败</string>
+    <string name="Code_W_Uname">用户名错误</string>
+    <string name="Code_Baidu_idwrong">用户没有绑定baidu设备id或者手机类型</string>
+    <string name="Code_Baidu_nouser">没有此用户</string>
+    <string name="Code_Like_Liked">已经点过赞</string>
+    <string name="Code_Fiflter_CodeNotfound">二维码无效</string>
+    <string name="Code_Fiflter_CodeUsed">二维码已经使用过了</string>
+    <string name="Code_Fiflter_DeviceNotfound">设备未绑定</string>
 
-
+    <string name="Code_Login_Error">登录失败</string>
+    <string name="Code_UserNotFound">没有发现此用户</string>
 </resources>

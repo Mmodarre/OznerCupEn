@@ -394,7 +394,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     }
 
     private void initView(View view) {
-        if (OznerApplication.isLanguageCN()) {
+        if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -567,7 +567,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                 startActivityForResult(intent, 0x1111);
                 break;
             case R.id.rlay_menu:
-                if (OznerApplication.isLanguageCN()) {
+                if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();

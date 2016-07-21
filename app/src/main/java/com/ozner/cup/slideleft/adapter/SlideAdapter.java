@@ -1,5 +1,6 @@
 package com.ozner.cup.slideleft.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -32,6 +33,7 @@ import java.util.List;
 public class SlideAdapter extends ArrayAdapter<DeviceData> {
 
     static SlideAdapter instance;
+    private Context mContext;
     private List<DeviceData> slideBeans;
     public List<View> myViewGroup = new ArrayList<View>();
     public View lastview;
@@ -41,6 +43,7 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
     public SlideAdapter(Context context, List<DeviceData> deviceDatas) {
         super(context, R.layout.list_item_handle_left, R.id.title_text, deviceDatas);
         this.slideBeans = deviceDatas;
+        mContext = context;
         instance = this;
     }
 
@@ -74,7 +77,7 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = super.getView(position, convertView, parent);
         String Mac,NewMac = null;
-        if (OznerApplication.isLanguageCN()) {
+        if (((OznerApplication)((Activity)mContext).getApplication()).isLanguageCN()) {
              Mac = ((MainActivity) getContext()).MAC;
              NewMac = ((MainActivity) getContext()).NewAddMAC;
         }else{

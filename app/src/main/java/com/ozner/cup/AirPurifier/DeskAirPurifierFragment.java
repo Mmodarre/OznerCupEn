@@ -147,7 +147,7 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         if (networkInfo != null) {
             getData();
         }
-        if (!OznerApplication.isLanguageCN()){
+        if (!((OznerApplication)getActivity().getApplication()).isLanguageCN()){
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
         }
         return view;
@@ -179,7 +179,7 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (OznerApplication.isLanguageCN()) {
+                if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();

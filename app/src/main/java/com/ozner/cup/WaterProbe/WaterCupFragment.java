@@ -183,7 +183,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
 
     private void initView(View view) {
         layout_cup_detail = (RelativeLayout) view.findViewById(R.id.layout_cup_detail);
-        if (OznerApplication.isLanguageCN()) {
+        if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -610,7 +610,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                 startActivityForResult(setting, 0);
                 break;
             case R.id.rlay_menu://侧边栏菜单
-                if (OznerApplication.isLanguageCN()) {
+                if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();

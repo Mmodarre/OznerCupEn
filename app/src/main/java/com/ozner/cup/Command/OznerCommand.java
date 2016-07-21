@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.PowerManager;
 import android.provider.ContactsContract;
@@ -79,8 +80,7 @@ public class OznerCommand {
      * 判断某个界面是否在前台
      *
      * @param context
-     * @param className
-     *            某个界面名称
+     * @param className 某个界面名称
      */
     public static boolean isAppRunBackound(Context context, String className) {
         if (context == null || TextUtils.isEmpty(className)) {
@@ -100,7 +100,7 @@ public class OznerCommand {
     }
 
     public static void setAppRunForegroud(Context context) {
-        Log.e("tag","设置为前台模式");
+        Log.e("tag", "设置为前台模式");
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> appProcessInfos = activityManager.getRunningAppProcesses();
@@ -315,9 +315,6 @@ public class OznerCommand {
     /**
      * 发送验证消息
      * 需要填充部分NetUserVfMessage 成员
-     *
-     * @NetUserVfMessage.FriendMobile 对方手机号
-     * @NetUserVfMessage.RequestContent 请求的验证消息
      */
     public static NetJsonObject AddFriend(final Activity activity, NetUserVfMessage netUserVfMessage) {
         List<NetUserVfMessage> listresult = new ArrayList<NetUserVfMessage>();
@@ -591,6 +588,57 @@ public class OznerCommand {
     }
 
     /**
+     * 获取邮箱验证码
+     *
+     * @param context
+     * @param email
+     * @param callback
+     */
+    public static void getEmailCode(final Context context, String email, HttpCallback callback) {
+        String url = OznerPreference.ServerAddress(context) + "OznerServer/GetEmailCode";
+        List<NameValuePair> httpParms = new ArrayList<>();
+        httpParms.add(new BasicNameValuePair("email", email));
+        new NormalAsyncTask(context, url, httpParms, callback).execute();
+    }
+
+    /**
+     * 邮箱注册
+     *
+     * @param context
+     * @param email
+     * @param password
+     * @param code
+     * @param callback
+     */
+    public static void mailRegister(final Context context, String email, String password, String code, HttpCallback callback) {
+        String url = OznerPreference.ServerAddress(context) + "OznerServer/MailRegister";
+        List<NameValuePair> httpParms = new ArrayList<>();
+        httpParms.add(new BasicNameValuePair("username", email));
+        httpParms.add(new BasicNameValuePair("password", password));
+        httpParms.add(new BasicNameValuePair("code", code));
+
+        new NormalAsyncTask(context, url, httpParms, callback).execute();
+    }
+
+    /**
+     * 邮箱登录
+     *
+     * @param context
+     * @param email
+     * @param password
+     */
+    public static NetJsonObject mailLogin(final Context context, String email, String password) {
+        String url = OznerPreference.ServerAddress(context) + "OznerServer/MailLogin";
+        List<NameValuePair> httpParms = new ArrayList<>();
+        httpParms.add(new BasicNameValuePair("username", email));
+        httpParms.add(new BasicNameValuePair("password", password));
+        httpParms.add(new BasicNameValuePair("miei", getImie(context)));
+        httpParms.add(new BasicNameValuePair("devicename", android.os.Build.MANUFACTURER));
+//        new NormalAsyncTask(context, url, httpParms, callback).execute();
+        return OznerDataHttp.OznerWebServer(context, url, httpParms);
+    }
+
+    /**
      * 获取网络设备列表
      */
     public static List<NetDevice> GetNetDeviceList(final Context context) {
@@ -800,6 +848,37 @@ public class OznerCommand {
             return telephonemanage.getDeviceId();
         } catch (Exception ex) {
             return UUID.randomUUID().toString();
+        }
+    }
+
+    public interface HttpCallback {
+        void HandleResult(NetJsonObject result);
+    }
+
+    //通用异步请求任务
+    private static class NormalAsyncTask extends AsyncTask<String, Integer, NetJsonObject> {
+        private Context mContext;
+        private HttpCallback httpCallback;
+        private String httpUrl;
+        private List<NameValuePair> httpParms;
+
+        public NormalAsyncTask(Context context, String httpUrl, List<NameValuePair> httpParms, HttpCallback callback) {
+            this.mContext = context;
+            this.httpCallback = callback;
+            this.httpUrl = httpUrl;
+            this.httpParms = httpParms;
+        }
+
+        @Override
+        protected NetJsonObject doInBackground(String... params) {
+            return OznerDataHttp.OznerWebServer(mContext, httpUrl, httpParms);
+        }
+
+        @Override
+        protected void onPostExecute(NetJsonObject netJsonObject) {
+            if (httpCallback != null) {
+                httpCallback.HandleResult(netJsonObject);
+            }
         }
     }
 }
