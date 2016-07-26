@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/normal_bg"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context="com.ozner.cup.Login.LoginActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/normal_bg"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical"
+                tools:context="com.ozner.cup.Login.LoginActivity">
 
     <TableLayout
         android:layout_width="fill_parent"
@@ -50,12 +50,14 @@
                     android:layout_height="150dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/login_icon_v2" />
+                    android:src="@drawable/login_icon_v2"/>
             </RelativeLayout>
 
         </TableRow>
 
-        <TableRow android:layout_width="fill_parent">
+        <TableRow
+            android:layout_width="fill_parent"
+            android:gravity="center">
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -68,8 +70,8 @@
                     android:layout_marginLeft="48dp"
                     android:layout_marginRight="48dp"
                     android:orientation="vertical"
-                    android:paddingTop="9.5dp"
-                    android:paddingBottom="9.5dp">
+                    android:paddingBottom="9.5dp"
+                    android:paddingTop="9.5dp">
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -79,7 +81,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/login_phone" />
+                            android:src="@drawable/login_phone"/>
 
                         <EditText
                             android:id="@+id/login_et_phone"
@@ -90,14 +92,14 @@
                             android:inputType="number"
                             android:paddingLeft="5dp"
                             android:textColor="@color/font_black"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"/>
                     </LinearLayout>
 
                     <ImageView
                         android:layout_width="fill_parent"
                         android:layout_height="0.5dp"
                         android:layout_marginTop="9.5dp"
-                        android:background="@color/theme_blue" />
+                        android:background="@color/theme_blue"/>
                 </LinearLayout>
             </LinearLayout>
         </TableRow>
@@ -125,7 +127,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/login_password" />
+                            android:src="@drawable/login_password"/>
 
                         <EditText
                             android:id="@+id/login_et_code"
@@ -137,7 +139,7 @@
                             android:paddingLeft="5dp"
                             android:paddingTop="9.5dp"
                             android:textColor="@color/font_black"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"/>
                     </LinearLayout>
 
                     <ImageView
@@ -146,7 +148,7 @@
                         android:layout_marginTop="9.5dp"
                         android:background="@color/theme_blue"
                         android:clickable="true"
-                        android:orientation="horizontal" />
+                        android:orientation="horizontal"/>
                 </LinearLayout>
 
                 <TextView
@@ -158,14 +160,14 @@
                     android:background="@drawable/selector_btn_voice"
                     android:clickable="true"
                     android:gravity="center"
-                    android:maxWidth="96dp"
+                    android:maxWidth="120dp"
                     android:paddingBottom="5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="5dp"
                     android:text="@string/login_btn_getphone"
                     android:textColor="@color/theme_blue"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
 
             </LinearLayout>
         </TableRow>
@@ -179,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/fz_red" />
+                android:textColor="@color/fz_red"/>
         </TableRow>
 
         <TableRow
@@ -205,7 +207,7 @@
                     android:text="@string/login_btn_login"
                     android:textColor="@color/white"
 
-                    android:textSize="17dp" />
+                    android:textSize="17dp"/>
 
             </LinearLayout>
         </TableRow>
@@ -225,7 +227,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:clickable="true"
-                    android:src="@drawable/cb_on" />
+                    android:src="@drawable/cb_on"/>
 
                 <TextView
                     android:id="@+id/login_btn_xieyi"
@@ -235,7 +237,7 @@
                     android:clickable="true"
                     android:gravity="center"
                     android:text="@string/login_p_tishi"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"/>
             </LinearLayout>
 
         </TableRow>
@@ -271,7 +273,7 @@
                         android:paddingLeft="13dp"
                         android:paddingRight="13dp"
                         android:text="@string/login_no_code"
-                        android:textSize="12dp" />
+                        android:textSize="12dp"/>
                 </RelativeLayout>
 
                 <TextView
@@ -287,7 +289,7 @@
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:text="@string/login_btn_voi"
-                    android:textSize="17dp" />
+                    android:textSize="17dp"/>
             </LinearLayout>
         </TableRow>
     </TableLayout>

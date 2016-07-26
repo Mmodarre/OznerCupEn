@@ -32,13 +32,13 @@
     <string name="login_other_device">您的账号在其他设备登录，请重新登录.</string>
     <string name="login_p_tishi">Agreed to OZNER IFAMILY Clauses.</string>
     <string name="loging_ty_xiexi">请先同意《浩泽净水家免责条款》</string>
-    <string name="login_btn_skip">跳过</string>
-    <string name="login_btn_getphone">To obtain captcha by text message</string>
-    <string name="login_et_phone">Please enter phone number</string>
+    <string name="login_btn_skip">Skip</string>
+    <string name="login_btn_getphone">Obtain code</string>
+    <string name="login_et_phone">Phone number</string>
     <string name="innet_wrong">Network Error</string>
     <string name="login_aync">Login</string>
     <string name="login_aync_ing">logging in. . .</string>
-    <string name="login_et_phone_code">Please enter  captcha</string>
+    <string name="login_et_phone_code">Captcha</string>
     <string name="login_btn_login">Login</string>
     <string name="login_btn_voi">To obtain voice captcha</string>
     <string name="login_no_code">Fail to receive captcha by text message?</string>
