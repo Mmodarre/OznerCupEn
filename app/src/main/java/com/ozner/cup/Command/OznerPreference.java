@@ -11,7 +11,7 @@ public class OznerPreference {
     public final static String IsLogin = "islogin";
     public final static String UserToken = "usertoken";
     public final static String ServerAddress = "serveraddress";
-    public final static String IsCN = "isCN";
+    public final static String IsLoginPhone = "isLoginPhone";
 
     private static SharedPreferences Init(Context context) {
         if (context != null)

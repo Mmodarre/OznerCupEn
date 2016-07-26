@@ -102,7 +102,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
                 startActivity(new Intent(getContext(), MyCenterActivity.class));
             }
         });
-        if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
+        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
             user_info.setVisibility(View.GONE);
             rootview.findViewById(R.id.llay_holder).setVisibility(View.VISIBLE);
         } else {
@@ -115,7 +115,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
 //        view.setBackgroundResource(R.drawable.left_backgroud);
         view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.main_bgcolor));
         iv_left_buble.setVisibility(View.VISIBLE);
-        if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
+        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
             iv_left_buble.setImageResource(R.drawable.left_buble_cn);
         } else {
             iv_left_buble.setImageResource(R.drawable.left_buble);
@@ -248,7 +248,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
         addDvice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
+                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();

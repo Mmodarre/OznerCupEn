@@ -108,6 +108,7 @@ public class CenterSetupActivity extends AppCompatActivity implements View.OnCli
                     public void onClick(DialogInterface dialog, int which) {
                         OznerPreference.SetValue(CenterSetupActivity.this, UserDataPreference.UserId, "");
                         OznerPreference.setUserToken(CenterSetupActivity.this, "");
+                        ((OznerApplication) getApplication()).setIsPhone();
                         Intent loginIntent = new Intent(CenterSetupActivity.this, LoginEnActivity.class);
 //                loginIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(loginIntent);

@@ -213,7 +213,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         if (networkInfo != null) {
             getData();
         }
-        if (!((OznerApplication)getActivity().getApplication()).isLanguageCN()){
+        if (!((OznerApplication)getActivity().getApplication()).isLoginPhone()){
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
         }
         return view;
@@ -332,7 +332,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
+                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();

@@ -87,7 +87,7 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
         airVoc = (LinearLayout) findViewById(R.id.air_value_layout1);
         tds_distribution_layout = (RelativeLayout) findViewById(R.id.tds_distribution_layout);
         tds_health_layout = (RelativeLayout) findViewById(R.id.tds_health_layout);
-        if (!((OznerApplication)(getApplication())).isLanguageCN()){
+        if (!((OznerApplication)(getApplication())).isLoginPhone()){
             tds_health_layout.setVisibility(View.GONE);
         }
         currentDate = new Date();

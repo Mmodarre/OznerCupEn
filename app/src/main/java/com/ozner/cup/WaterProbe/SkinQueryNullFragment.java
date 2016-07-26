@@ -66,7 +66,7 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
             }
         });
 
-        if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
+        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);

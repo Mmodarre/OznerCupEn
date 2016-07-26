@@ -88,7 +88,7 @@ public class MainEnActivity extends BaseMainActivity {
         Log.e("tag", "Main_onCreate");
 //        ShareSDK.initSDK(this);
         setContentView(R.layout.activity_main_en);
-        ((OznerApplication)getApplication()).setIsEN();
+
         notifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         ImageLoaderInit.initImageLoader(getBaseContext());
         DisplayMetrics dm = new DisplayMetrics();
@@ -125,6 +125,7 @@ public class MainEnActivity extends BaseMainActivity {
         UserDataPreference.SetUserData(getBaseContext(), UserDataPreference.ChatUserKfId, "");
         //是否登陆
         if (userid != null && userid.length() > 0) {
+            ((OznerApplication) getApplication()).setIsEmail();
             LocalInitDataLeft();//初始化本地数据
         }
         InitLeftFragment();//初始化侧边栏

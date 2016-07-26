@@ -77,7 +77,7 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = super.getView(position, convertView, parent);
         String Mac,NewMac = null;
-        if (((OznerApplication)((Activity)mContext).getApplication()).isLanguageCN()) {
+        if (((OznerApplication)((Activity)mContext).getApplication()).isLoginPhone()) {
              Mac = ((MainActivity) getContext()).MAC;
              NewMac = ((MainActivity) getContext()).NewAddMAC;
         }else{

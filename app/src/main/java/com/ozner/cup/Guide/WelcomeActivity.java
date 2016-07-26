@@ -133,7 +133,7 @@ public class WelcomeActivity extends Activity {
                                             }
                                             //初始化用户设备列表
 //                                        NetDeviceList netDeviceList=OznerDataHttp.RefreshDeviceList(getBaseContext());
-                                            if (((OznerApplication) getApplication()).isLanguageCN())
+                                            if (((OznerApplication) getApplication()).isLoginPhone())
                                                 ShowMainPage(null);
                                             else {
                                                 ShowMainENPage();
@@ -141,7 +141,7 @@ public class WelcomeActivity extends Activity {
                                             stopService(new Intent(WelcomeActivity.this, LoginService.class));
                                         } catch (Exception ex) {
                                             ex.getMessage();
-                                            ShowLoginEnPage();
+                                            showNexLoginPage();
                                         }
                                     } else if (netUserInfo.state == 0) {
                                         new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -150,12 +150,12 @@ public class WelcomeActivity extends Activity {
                                                 Toast.makeText(getBaseContext(), getString(R.string.innet_wrong), Toast.LENGTH_SHORT).show();
                                             }
                                         });
-                                        ShowLoginEnPage();
+                                        showNexLoginPage();
                                     } else {
-                                        ShowLoginEnPage();
+                                        showNexLoginPage();
                                     }
                                 } else {
-                                    ShowLoginEnPage();
+                                    showNexLoginPage();
                                 }
                             }
                         });
@@ -168,19 +168,20 @@ public class WelcomeActivity extends Activity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-////                ShowMainPage(null);
-////                if (OznerApplication.isLanguageCN()) {
-////                    ShowLoginPage();
-////                } else {
-//                    ShowLoginEnPage();
-////
-////                }
-//
-//            }
-//        }, 2000);
+
+    }
+
+    /**
+     * 根据系统语言跳转到登录界面
+     * 中文：手机号登录；英文：邮箱登录
+     */
+    private void showNexLoginPage() {
+        Log.e("login", "isLoginPhone:" +((OznerApplication) getApplication()).isLanguageCN());
+        if (((OznerApplication) getApplication()).isLanguageCN()) {
+            ShowLoginPage();
+        } else {
+            ShowLoginEnPage();
+        }
     }
 
     /*

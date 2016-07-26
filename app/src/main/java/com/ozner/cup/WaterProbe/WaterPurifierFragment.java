@@ -153,7 +153,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     }
 
     private void initView(View view) {
-        if (((OznerApplication)(getActivity().getApplication())).isLanguageCN()) {
+        if (((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -806,7 +806,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                 showDialog();
                 break;
             case R.id.rlay_menu:
-                if (((OznerApplication)(getActivity().getApplication())).isLanguageCN()) {
+                if (((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();

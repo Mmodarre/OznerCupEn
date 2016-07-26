@@ -114,7 +114,7 @@ public class WaterQuantityFragment extends Fragment {
     public void onResume() {
         super.onResume();
         initView(getView());
-        if(((OznerApplication)(getActivity().getApplication())).isLanguageCN()) {
+        if(((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
             ((MainActivity) getActivity()).isShouldResume = false;
         }else{
             ((MainEnActivity) getActivity()).isShouldResume = false;
@@ -124,7 +124,7 @@ public class WaterQuantityFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if(((OznerApplication)(getActivity().getApplication())).isLanguageCN()) {
+        if(((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
             ((MainActivity) getActivity()).isShouldResume = true;
         }else{
             ((MainEnActivity) getActivity()).isShouldResume = true;

@@ -12,13 +12,15 @@ import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.mycenter.CheckForUpdate.LogUtilsLC;
 
+import java.util.Locale;
+
 /**
  * Created by mengdongya on 2015/11/26.
  */
 public class OznerApplication extends OznerBaseApplication {
     public static final String ACTION_ServiceInit = "ozner.service.init";
     public static Typeface numFace, textFace;
-    private boolean isCN = true;
+    private boolean isLoginPhone = true;
 
     @Override
     protected void onBindService() {
@@ -34,7 +36,7 @@ public class OznerApplication extends OznerBaseApplication {
         numFace = Typeface.createFromAsset(getAssets(), "font/shuzi.otf");
         textFace = Typeface.createFromAsset(getAssets(), "font/wenzi.otf");
         LogUtilsLC.init(getApplicationContext());
-        isCN = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsCN, "true"));
+        isLoginPhone = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsLoginPhone, "true"));
         super.onCreate();
     }
 
@@ -80,32 +82,48 @@ public class OznerApplication extends OznerBaseApplication {
         }
     }
 
-    public void setIsCN() {
-        isCN = true;
-        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsCN, "true");
-    }
-
-    public void setIsEN() {
-        isCN = false;
-        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsCN, "true");
+    /**
+     * 设置手机号登录
+     */
+    public void setIsPhone() {
+        isLoginPhone = true;
+        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsLoginPhone, String.valueOf(isLoginPhone));
     }
 
     /**
-     * 是否需要转英文版
-     * 邮箱登录的是英文版，手机验证码登录的是中文版
-     * 需要在登录的时候判断
-     * 默认是中文版
+     * 设置，邮箱登录
+     */
+    public void setIsEmail() {
+        isLoginPhone = false;
+        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsLoginPhone, String.valueOf(isLoginPhone));
+    }
+
+    /**
+     * 是否是用手机号登录
+     *
+     * @return true:手机登录；fasle:邮箱登录；默认true
+     */
+    public boolean isLoginPhone() {
+        isLoginPhone = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsLoginPhone, "true"));
+        return isLoginPhone;
+    }
+
+    /**
+     * 系统语言是否是中文
      *
      * @return true:中文版；false:英文版
      */
     public boolean isLanguageCN() {
-        isCN = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsCN, "true"));
-        return isCN;
-//        if (Locale.getDefault().getLanguage().endsWith("zh")) {
-//            return true;
-//        } else {
-//            return false;
-//        }
+        try {
+            if (Locale.getDefault().getLanguage().endsWith("zh")) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return true;
+        }
     }
 
     @Override

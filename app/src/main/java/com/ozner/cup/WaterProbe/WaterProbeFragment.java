@@ -152,7 +152,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     }
 
     public void InitView(View view) {
-        if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
+        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -737,7 +737,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                 ShowSettingPage();
                 break;
             case R.id.rlay_menu:
-                if (((OznerApplication)getActivity().getApplication()).isLanguageCN()) {
+                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
