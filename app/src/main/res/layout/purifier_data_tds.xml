@@ -256,7 +256,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="完美水质，体内每个细胞都说好"
+                        android:text="@string/waterTds_faceLow"
                         android:textColor="@color/colorTds" />
 
                 </LinearLayout>

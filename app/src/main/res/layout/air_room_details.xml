@@ -73,7 +73,7 @@
                             android:gravity="center"
                             android:text="@string/text_null"
                             android:textColor="@color/colorTds"
-                            android:textSize="43dp" />
+                            android:textSize="39dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -123,7 +123,7 @@
                             android:layout_weight="1"
                             android:text="@string/text_null"
                             android:textColor="@color/colorTds"
-                            android:textSize="43dp" />
+                            android:textSize="39dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
