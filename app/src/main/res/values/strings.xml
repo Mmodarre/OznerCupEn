@@ -724,4 +724,5 @@
 
     <string name="Code_Login_Error">登录失败</string>
     <string name="Code_UserNotFound">没有发现此用户</string>
+    <string name="PressToExit">再按一次退出程序</string>
 </resources>

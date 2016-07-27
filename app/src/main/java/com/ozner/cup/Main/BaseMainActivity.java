@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.ozner.cup.ACSqlLite.CCacheWorking;
 import com.ozner.cup.CChat.CChatFragment;
 import com.ozner.cup.Command.DeviceData;
@@ -71,6 +73,7 @@ public abstract class BaseMainActivity extends AppCompatActivity implements Foot
             //更改底部导航栏颜色(限有底部的手机)
             window.setNavigationBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
         }
+        InitBaiduPush();
         MobclickAgent.setDebugMode(true);
         //是否登陆
         OznerUpdateManager oznerUpdateManager = new OznerUpdateManager(BaseMainActivity.this, false);
@@ -78,7 +81,12 @@ public abstract class BaseMainActivity extends AppCompatActivity implements Foot
         LocalInitData();
         new OznerUpdateManager(BaseMainActivity.this, false).checkUpdate();
     }
+    public void InitBaiduPush() {
+        PushManager.startWork(getApplicationContext(),
+                PushConstants.LOGIN_TYPE_API_KEY,
+                getString(R.string.Baidu_Push_ApiKey));
 
+    }
     /*
    * 初始化本地数据
    * */
