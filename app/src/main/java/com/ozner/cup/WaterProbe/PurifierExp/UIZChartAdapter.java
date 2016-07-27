@@ -2,6 +2,7 @@ package com.ozner.cup.WaterProbe.PurifierExp;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by xinde on 15/11/27.
@@ -11,7 +12,9 @@ public abstract class UIZChartAdapter {
 
     private Date viewDate = new Date();
     private AdapterListener adapterListener;
+    private final String[] weekdayEn = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
     private final String[] weekday = {"周一", "周二", "周三", "周四", "周五", "周六", "周日"};
+    private final String[] monthsStr = {"Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."};
 
     public interface AdapterListener {
         void onUpdate(UIZChartAdapter adapter);
@@ -32,13 +35,28 @@ public abstract class UIZChartAdapter {
                 return String.valueOf(postion);
             case Week:
                 // return String.valueOf(postion+1);
-                return weekday[postion];
+                if (Locale.getDefault().getLanguage().endsWith("zh")) {
+                    return weekday[postion];
+                } else {
+                    return weekdayEn[postion];
+                }
             case Month:
+//                if (postion == 0) {
+//                    Calendar c = Calendar.getInstance();
+//                    int month = c.get(Calendar.MONTH) +1;
+//
+//                    return month + "月1日";
+//                }
+//                return String.valueOf(postion + 1);
+
                 if (postion == 0) {
                     Calendar c = Calendar.getInstance();
-                    int month = c.get(Calendar.MONTH) +1;
-
-                    return month + "月1日";
+                    int month = c.get(Calendar.MONTH);
+                    if (Locale.getDefault().getLanguage().endsWith("zh")) {
+                        return (month + 1) + "月1日";
+                    } else {
+                        return monthsStr[month] + " 1st";
+                    }
                 }
                 return String.valueOf(postion + 1);
         }

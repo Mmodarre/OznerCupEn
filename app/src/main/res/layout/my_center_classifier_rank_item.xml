@@ -135,6 +135,13 @@
             android:layout_centerVertical="true"
             android:src="@drawable/my_center_tap" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/rank_right_arrow" />
+
         <TextView
             android:id="@+id/tv_firstText"
             android:layout_width="wrap_content"
@@ -145,12 +152,5 @@
             android:text=""
             android:textColor="@color/MyCenter_RankText"
             android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/rank_right_arrow" />
     </RelativeLayout>
 </LinearLayout>

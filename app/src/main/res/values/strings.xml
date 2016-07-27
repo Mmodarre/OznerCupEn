@@ -725,4 +725,8 @@
     <string name="Code_Login_Error">登录失败</string>
     <string name="Code_UserNotFound">没有发现此用户</string>
     <string name="PressToExit">再按一次退出程序</string>
+    <string name="Center_obtainChamp">夺得%s月排行榜冠军</string>
+    <string name="nin">您</string>
+    <string name="Safety">安全</string>
+    <string name="general">一般</string>
 </resources>

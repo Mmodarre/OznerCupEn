@@ -50,7 +50,7 @@ public abstract class PurifierExpBaseView extends UIXBaseView {
         if (adapter == null || adapter2 == null) return;
 
         int maxValue = adapter.getMax();
-        float x = tagPaint.measureText(String.valueOf(valueTag.get(adapter))) + dpToPx(6);
+        float x = tagPaint.measureText(String.valueOf(valueTag.get(adapter))) + dpToPx(25);
         float y = 0;
         gridRect = new RectF(x, dpToPx(8), getMeasuredWidth() - dpToPx(6), getMeasuredHeight() - dpToPx(20));
         valueRect = new RectF(gridRect.left + dpToPx(2), gridRect.top + dpToPx(3),
