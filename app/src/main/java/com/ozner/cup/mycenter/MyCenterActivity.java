@@ -72,5 +72,7 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-
+    public void backUp(View view){
+        finish();
+    }
 }
