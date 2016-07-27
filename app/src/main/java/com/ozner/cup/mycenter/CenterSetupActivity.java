@@ -19,6 +19,7 @@ import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.SlidButton;
+import com.ozner.cup.Login.LoginActivity;
 import com.ozner.cup.Login.LoginEnActivity;
 import com.ozner.cup.R;
 
@@ -109,7 +110,7 @@ public class CenterSetupActivity extends AppCompatActivity implements View.OnCli
                         OznerPreference.SetValue(CenterSetupActivity.this, UserDataPreference.UserId, "");
                         OznerPreference.setUserToken(CenterSetupActivity.this, "");
                         ((OznerApplication) getApplication()).setIsPhone();
-                        Intent loginIntent = new Intent(CenterSetupActivity.this, LoginEnActivity.class);
+                        Intent loginIntent = new Intent(CenterSetupActivity.this, LoginActivity.class);
 //                loginIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(loginIntent);
                         Intent logoutBroadIntent = new Intent(OznerBroadcastAction.Logout);
