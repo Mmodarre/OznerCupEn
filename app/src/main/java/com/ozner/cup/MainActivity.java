@@ -16,8 +16,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -111,7 +109,7 @@ public class MainActivity extends BaseMainActivity {
 //        ShareSDK.initSDK(MainActivity.this);
         setContentView(R.layout.activity_main);
 
-        InitBaiduPush();
+//        InitBaiduPush();
         notifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         ImageLoaderInit.initImageLoader(getBaseContext());
         DisplayMetrics dm = new DisplayMetrics();
@@ -148,7 +146,7 @@ public class MainActivity extends BaseMainActivity {
         UserDataPreference.SetUserData(getBaseContext(), UserDataPreference.ChatUserKfId, "");
         //是否登陆
         if (userid != null && userid.length() > 0) {
-            ((OznerApplication)getApplication()).setIsPhone();
+            ((OznerApplication) getApplication()).setIsPhone();
             LocalInitDataLeft();//初始化本地数据
         }
         InitLeftFragment();//初始化侧边栏
@@ -158,12 +156,12 @@ public class MainActivity extends BaseMainActivity {
         myHandler = new MsgHandler(MainActivity.this);
     }
 
-    public void InitBaiduPush() {
-        PushManager.startWork(getApplicationContext(),
-                PushConstants.LOGIN_TYPE_API_KEY,
-                getString(R.string.Baidu_Push_ApiKey));
-
-    }
+//    public void InitBaiduPush() {
+//        PushManager.startWork(getApplicationContext(),
+//                PushConstants.LOGIN_TYPE_API_KEY,
+//                getString(R.string.Baidu_Push_ApiKey));
+//
+//    }
 
     //检查验证信息
     public void checkCenterVFstate() {
@@ -332,7 +330,7 @@ public class MainActivity extends BaseMainActivity {
         Timer tExit = null;
         if (isExit == false) {
             isExit = true; // 准备退出
-            Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.PressToExit), Toast.LENGTH_SHORT).show();
             tExit = new Timer();
             tExit.schedule(new TimerTask() {
                 @Override

@@ -29,9 +29,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="server_Exception">Service Exception Error</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login_other_device">您的账号在其他设备登录，请重新登录.</string>
+    <string name="login_other_device">Other devices in your account login, please sign in again.</string>
     <string name="login_p_tishi">Agreed to OZNER IFAMILY Clauses.</string>
-    <string name="loging_ty_xiexi">请先同意《浩泽净水家免责条款》</string>
+    <string name="loging_ty_xiexi">Please agree "OZNER IFAMILY Disclaimer"</string>
     <string name="login_btn_skip">Skip</string>
     <string name="login_btn_getphone">Obtain captcha</string>
     <string name="login_et_phone">Phone number</string>
@@ -43,20 +43,20 @@
     <string name="login_btn_voi">To obtain voice captcha</string>
     <string name="login_no_code">Fail to receive captcha by text message?</string>
     <string name="login_wrong_phone">Please enter phone number of 11 Arabic numbers </string>
-    <string name="login_wrong_emptycode">Please enter  captcha</string>
-    <string name="login_wrong_login_error">登陆失败检查手机号和验证码</string>
-    <string name="login_wrong_Code_Outtime">登陆失败验证码过期</string>
+    <string name="login_wrong_emptycode">Please enter captcha</string>
+    <string name="login_wrong_login_error">Login failed check the phone number and verification code</string>
+    <string name="login_wrong_Code_Outtime">Login failed verification code expired</string>
     <string name="login_wrong_Code_error">登陆失败验证码错误</string>
     <string name="login_wrong_msg">Login failed</string>
     <string name="login_wrong_code">您输入的验证码有误,请重新输入？</string>
     <string name="login_wrong_getcode">The captcha will sent out in text message,please keep an eye on check.</string>
-    <string name="login_wrong_getvoice">ou will receive a 4001 voice telephony,please keep an eye on calls.</string>
-    <string name="login_code_timeout">倒计时%d秒</string>
+    <string name="login_wrong_getvoice">You will receive 400 calls from voice, please note answer</string>
+    <string name="login_code_timeout">%ds</string>
     <string name="login_code_sendwrong">Fail to send verification code</string>
     <string name="foot_sb">My device</string>
     <string name="foot_shop">Mall</string>
     <string name="foot_msg">Consult</string>
-    <string name="foot_myself">I </string>
+    <string name="foot_myself">Me</string>
     <string name="pre_purifier">Before</string>
     <string name="after_purifier">After</string>
     <string name="filter_status">Filter cartridge status</string>
@@ -70,7 +70,7 @@
 
     <string name="cupDetail_tdsTitle">TDS value</string>
     <string name="cupDetail_tdsLevelNormal">SO-so</string>
-    <string name="cupDetail_tdsValueNone">Not available</string>
+    <string name="cupDetail_tdsValueNone">No</string>
     <string name="cupDetail_tdsShort_left">击败了</string>
     <string name="cupDetail_tdsShort_right">的用户</string>
     <string name="cupDetail_battery">d%</string>
@@ -107,22 +107,22 @@
 
     <string name="Center_GetMoney">Receiving bonus</string>
     <string name="Center_MyCoffers">My private coffer</string>
-    <string name="Center_Vip">会员</string>
+    <string name="Center_Vip">vip</string>
     <string name="Center_Month">Month</string>
     <string name="Center_Day">Day</string>
     <string name="Center_PM">Afternoon</string>
-    <string name="Center_None">暂无数据</string>
-    <string name="Center_Repeat">回复:</string>
-    <string name="Center_LoadFail">加载失败!</string>
+    <string name="Center_None">No data</string>
+    <string name="Center_Repeat">Reply:</string>
+    <string name="Center_LoadFail">Failed to load!</string>
     <string name="Center_LoadVolumRank">加载饮水量排名</string>
     <string name="Center_LoadTDSRank">加载TDS排名</string>
     <string name="Center_Loading">正在加载...</string>
-    <string name="Center_LeavingMsg">正在发送留言...</string>
-    <string name="Center_MyShort">My ranking</string>
-    <string name="Center_MyFriend">My friends</string>
+    <string name="Center_LeavingMsg">Sending...</string>
+    <string name="Center_MyShort">Ranking</string>
+    <string name="Center_MyFriend">Friends</string>
     <string name="Center_SearchFail">没有搜索到好友</string>
     <string name="Center_HadDevice">Existing device</string>
-    <string name="Center_Add_Friend">添加好友</string>
+    <string name="Center_Add_Friend">Add Friend</string>
     <string name="Center_Immediately_Add">立即添加</string>
     <string name="Center_Device_Friend">设备好友</string>
     <string name="Center_No_Friend_0">与好友一起开始体验</string>
@@ -131,16 +131,18 @@
     <string name="Center_Send">Send</string>
     <string name="Center_Cancel">Cancel</string>
     <string name="Center_Add">Add</string>
-    <string name="Center_Wait_Verify">等待验证</string>
-    <string name="Center_Added">已添加</string>
-    <string name="Center_PurifierTdsRank">净水器TDS排行</string>
-    <string name="Center_TapTdsRank">水探头TDS排行</string>
-    <string name="Center_CupTdsRank">智能杯TDS排行</string>
-    <string name="Center_CupWaterRank">智能杯饮水量排行</string>
-    <string name="Center_LikeMe">赞我的人</string>
+
+    <string name="Center_Added">Added</string>
+    <string name="Center_PurifierTdsRank">Water purifier TDS Ranking </string>
+    <string name="Center_TapTdsRank">Water Probe TDS Ranking</string>
+    <string name="Center_CupTdsRank">Smart cup TDS Ranking</string>
+    <string name="Center_CupWaterRank">Smart cup water intake Ranking</string>
+    <string name="Center_LikeMe">Like me</string>
+    <string name="Center_Wait_Verify">Awaiting verification</string>
+
     <string name="Center_Adsive">My proposal</string>
-    <string name="Center_Advise_Result_up">感谢您的宝贵意见</string>
-    <string name="Center_Advise_Result_down">我们会尽快处理</string>
+    <string name="Center_Advise_Result_up">Thanks for your comments</string>
+    <string name="Center_Advise_Result_down">We will as soon as possible</string>
     <string name="Center_Adsive_Hint">If you use the process, have any questions or suggestions, please leave your valuable comments and suggestions, we will try to solve your problem.</string>
     <string name="Center_Submit">Submit</string>
     <string name="TDS">TDS</string>
@@ -176,7 +178,7 @@
     <string name="soft_update_cancel">Cancel</string>
     <string name="select_new_device">Select smart device</string>
     <string name="menu_settings">Settings</string>
-    <string name="scan_text">The two-dimensional code into the box, it can automatically scan</string>
+    <string name="scan_text">Put QR code into the box to scan</string>
     <string name="not_url">Not a valid link, please rescan</string>
 
     <string name="Purifier_ConnectWifi">Connect WLAN</string>
@@ -193,9 +195,9 @@
 
     <string name="ShouldLogin">You are not logged in, please login</string>
 
-    <string name="Center_Rank_Tap_Tds">Water Probe pure water TDS value</string>
-    <string name="Center_Rank_Purifier_Tds">Water purifiers pure water TDS value</string>
-    <string name="Center_Rank_Cup_Tds">Smart cup pure water TDS value</string>
+    <string name="Center_Rank_Tap_Tds">Water Probe TDS</string>
+    <string name="Center_Rank_Purifier_Tds">Water purifiers TDS</string>
+    <string name="Center_Rank_Cup_Tds">Smart cup TDS</string>
     <string name="Center_Rank_Cup_Vol">Smart cup water intake</string>
 
     <string name="Chat_SimCardTips">Check the SIM card status</string>
@@ -203,8 +205,8 @@
     <string name="Chat_Tap_Title">About Ho Chak water probe on intelligent use of the process have some questions, need advice</string>
     <string name="Chat_Purifier_Title">About Ho Chak water purifier on the course there are some questions, need advice</string>
     <string name="Chat_AirPur_Title">About Ho Chak air purifier course there are some questions, need advice</string>
-    <string name="Chat_Camera">拍照</string>
-    <string name="Chat_Picture">照片</string>
+    <string name="Chat_Camera">Photo</string>
+    <string name="Chat_Picture">Picture</string>
     <string name="Chat_MatchingKF">正在等待客服应答...</string>
     <string name="Chat_MatchFail">客服正忙，请稍后再试</string>
     <string name="Chat_MatchSuccess">已经连接到客服，您可以开始咨询了</string>
@@ -354,8 +356,8 @@
     <string name="tds_test">TDS</string>
     <string name="tdsValue_test">TDS</string>
     <string name="tdsValue">TDS</string>
-    <string name="friend_ranking">Friends Ranking</string>
-    <string name="consult_test">Consult</string>
+    <string name="friend_ranking">Ranking</string>
+    <string name="consult_test">Chat</string>
     <string name="face_test">Perfect water quality benefits every cell in body.</string>
     <string name="tdsdistribution_test">Drinking water purification index distribution</string>
     <string name="tdshealth_test">Improve your way of drinking water</string>
@@ -363,8 +365,8 @@
     <string name="tds_week">Week</string>
     <string name="tds_month">Month</string>
 
-    <string name="water_know_test">Knowledge of healthy water</string>
-    <string name="buy_test">Purchase water purifier</string>
+    <string name="water_know_test">Knowledge</string>
+    <string name="buy_test">Purchase</string>
     <string name="buy_jinghua_water">Buy essence</string>
     <string name="buy_air_lvxin">Buy filter cartridge</string>
     <string name="radio_health">Healthy(</string>
@@ -466,7 +468,7 @@
 
 
     <string name="temp_null">Cannot measure</string>
-    <string name="text_null">Not available</string>
+    <string name="text_null">No</string>
     <string name="null_text">No data</string>
     <string name="text_mall">Mall</string>
 
@@ -630,7 +632,7 @@
     <string name="Chat_pic_upload_Err">Image upload failed</string>
     <string name="Center_app_not_found">Can not find the application, can not score</string>
     <string name="Center_no_contacts_frient">No contacts friends</string>
-    <string name="Center_input_fre_phone">Enter your friend\'s phone number</string>
+    <string name="Center_input_fre_phone">Phone number</string>
     <string name="Center_contacts_friend">Contacts Friends</string>
     <string name="Center_sending_req">Sending request ...</string>
     <string name="Center_add_failed">Add failed</string>
@@ -640,8 +642,8 @@
     <string name="Center_send_err">Failed to send</string>
     <string name="url_null">URL parameter is empty</string>
     <string name="rank">Ranking</string>
-    <string name="today_best_tds">Today you are the best(TDS)</string>
-    <string name="get_mark">Get thumbs up</string>
+    <string name="today_best_tds">Best(TDS)</string>
+    <string name="get_mark">Like</string>
     <string name="number_message">Shouts</string>
     <string name="access_net_err">Access to a network failure</string>
     <string name="press_speak">Press and hold the talk</string>
@@ -696,9 +698,9 @@
     <string name="check_count">The cumulative number of detections</string>
     <string name="skin_type">Other types of skin</string>
     <string name="equipment_name">Equipment name</string>
-
-    <string name="verifyCode">Verification Code</string>
-    <string name="getCode">GetCode</string>
+    <string name="skin_notices">Your skin moisture deviate from the normal week, please moisturizing.</string>
+    <string name="verifyCode">Captcha</string>
+    <string name="getCode">Obtain captcha</string>
     <string name="sendEmailCode">Sending...</string>
     <string name="resend">Resend</string>
     <string name="second">s</string>
@@ -712,30 +714,37 @@
     <string name="loginFail">Login failed,check the email and password</string>
 
     <!--错误码-->
-    <string name="Code_Accept_nofound">没有发现对应请求</string>
-    <string name="Code_AddFriend_exists">已经发送过请求</string>
-    <string name="Code_C_TokenNull">Token验证失败</string>
-    <string name="Code_Code_TimeOut">验证码过期</string>
-    <string name="Code_Code_Wrong">验证码错误</string>
-    <string name="Code_Device_Notfound">设备没有发现</string>
-    <string name="Code_Exception">异常错误</string>
-    <string name="Code_Failed">失败</string>
+    <string name="Code_Accept_nofound">Not find the corresponding request</string>
+    <string name="Code_AddFriend_exists">had sent a request</string>
+    <string name="Code_C_TokenNull">Token Authentication failed</string>
+    <string name="Code_Code_TimeOut">captcha expired</string>
+    <string name="Code_Code_Wrong">captcha error</string>
+    <string name="Code_Device_Notfound">Device not found</string>
+    <string name="Code_Exception">Exception Error</string>
+    <string name="Code_Failed">Failed</string>
     <string name="Code_Friend_NoGx">和目标用户没有好友关系</string>
-    <string name="Code_Friend_NoUser">对方不是浩泽用户</string>
-    <string name="Code_P_NotNull">参数不能为空</string>
-    <string name="Code_P_params_empty">参数不能为空</string>
-    <string name="Code_P_params_error">参数错误</string>
+    <string name="Code_Friend_NoUser">not OZNER user</string>
+    <string name="Code_P_NotNull">Parameter can not be empty</string>
+    <string name="Code_P_params_empty">Parameter can not be empty</string>
+    <string name="Code_P_params_error">Parameter error</string>
     <string name="Code_Success">Success</string>
-    <string name="Code_W_AddUser">添加用户异常</string>
-    <string name="Code_W_TokenWrite">Token写入数据库失败</string>
-    <string name="Code_W_Uname">用户名错误</string>
-    <string name="Code_Baidu_idwrong">用户没有绑定baidu设备id或者手机类型</string>
-    <string name="Code_Baidu_nouser">没有此用户</string>
-    <string name="Code_Like_Liked">已经点过赞</string>
-    <string name="Code_Fiflter_CodeNotfound">二维码无效</string>
-    <string name="Code_Fiflter_CodeUsed">二维码已经使用过了</string>
-    <string name="Code_Fiflter_DeviceNotfound">设备未绑定</string>
+    <string name="Code_W_AddUser">Adding user exception</string>
+    <string name="Code_W_TokenWrite">Token written to the database failure</string>
+    <string name="Code_W_Uname">Username error</string>
+    <string name="Code_Baidu_idwrong">Not bound device ID</string>
+    <string name="Code_Baidu_nouser">user does not exist</string>
+    <string name="Code_Like_Liked">Liked</string>
+    <string name="Code_Fiflter_CodeNotfound">QR code is invalid</string>
+    <string name="Code_Fiflter_CodeUsed">QR code has been used up</string>
+    <string name="Code_Fiflter_DeviceNotfound">Device does not bind</string>
 
     <string name="Code_Login_Error">Login failed</string>
     <string name="Code_UserNotFound">Not found user</string>
+
+    <string name="PressToExit">Press again to exit</string>
+    <string name="Center_obtainChamp">Get the champion in %s</string>
+    <string name="nin">You </string>
+
+    <string name="Safety">Safety</string>
+    <string name="general">general</string>
 </resources>

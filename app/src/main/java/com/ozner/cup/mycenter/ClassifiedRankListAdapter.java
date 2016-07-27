@@ -3,6 +3,7 @@ package com.ozner.cup.mycenter;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -48,6 +49,7 @@ public class ClassifiedRankListAdapter extends BaseAdapter implements View.OnCli
     // private List<ClassifiedRankInfo> dataList = new ArrayList<ClassifiedRankInfo>();
     private List<ClassifiedRankInfo2> dataList;
     private onDeleteItemLinster deleteLisenter;
+    private final String[] monthsStr = {"Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."};
     /**
      * 执行动画的时间
      */
@@ -98,7 +100,7 @@ public class ClassifiedRankListAdapter extends BaseAdapter implements View.OnCli
         if (null == convertView) {
             rankViewHolder = new RankViewHolder();
             convertView = mInflater.inflate(R.layout.my_center_classifier_rank_item, null);
-            OznerApplication.changeTextFont((ViewGroup)convertView);
+            OznerApplication.changeTextFont((ViewGroup) convertView);
             rankViewHolder.llay_root = (LinearLayout) convertView.findViewById(R.id.llay_root);
             rankViewHolder.iv_deviceImg = (ImageView) convertView.findViewById(R.id.iv_deviceImg);
             rankViewHolder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
@@ -133,7 +135,7 @@ public class ClassifiedRankListAdapter extends BaseAdapter implements View.OnCli
                 break;
             case RankType.CupVolumType:
                 deviceImgid = R.drawable.my_center_cup;
-                titleStrid =R.string.Center_Rank_Cup_Vol;
+                titleStrid = R.string.Center_Rank_Cup_Vol;
                 break;
         }
         rankViewHolder.iv_deviceImg.setImageResource(deviceImgid);
@@ -170,18 +172,28 @@ public class ClassifiedRankListAdapter extends BaseAdapter implements View.OnCli
         rankViewHolder.llay_LikeMe.setOnClickListener(this);
         rankViewHolder.llay_LikeMe.setTag(position);
 
-        StringBuilder firstText = new StringBuilder();
+//        StringBuilder firstText = new StringBuilder();
+        String you = "";
         if (dataList.get(position).getUserid() != null && dataList.get(position).getUserid() == userid) {
-            firstText.append("您");
+//            firstText.append("您");
+            you = mContext.getString(R.string.nin) + " ";
         }
-        firstText.append("夺得");
+//        firstText.append("夺得");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date(dataList.get(position).getNotime()));
+//
+//        firstText.append(calendar.get(Calendar.MONTH) + 1);
+//        firstText.append("月排行榜冠军");
+        String month = "";
+        if (((OznerApplication) ((Activity) mContext).getApplication()).isLanguageCN()) {
+            month = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+        } else {
+            month = monthsStr[calendar.get(Calendar.MONTH)];
+        }
 
-        firstText.append(calendar.get(Calendar.MONTH) + 1);
-        firstText.append("月排行榜冠军");
-
-        rankViewHolder.tv_firstText.setText(firstText);
+//        rankViewHolder.tv_firstText.setText(firstText);
+//        String strFormat =
+        rankViewHolder.tv_firstText.setText(String.format(mContext.getString(R.string.Center_obtainChamp), month));
         return convertView;
     }
 
@@ -315,7 +327,7 @@ public class ClassifiedRankListAdapter extends BaseAdapter implements View.OnCli
     class MyLoadImgListener extends SimpleImageLoadingListener {
         @Override
         public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-            ((ImageView) view).setImageBitmap(ImageHelper.toRoundBitmap(mContext,loadedImage));
+            ((ImageView) view).setImageBitmap(ImageHelper.toRoundBitmap(mContext, loadedImage));
             super.onLoadingComplete(imageUri, view, loadedImage);
         }
     }

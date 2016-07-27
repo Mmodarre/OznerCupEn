@@ -681,7 +681,7 @@
     <string name="check_count">累计检测次数</string>
     <string name="skin_type">其他肤质类型</string>
     <string name="equipment_name">设备名</string>
-
+    <string name="skin_notices">您本周的皮肤水分偏离正常，请及时保湿补水。</string>
     <string name="verifyCode">验证码</string>
     <string name="getCode">获取验证码</string>
     <string name="sendEmailCode">正在发送验证码...</string>
@@ -724,4 +724,9 @@
 
     <string name="Code_Login_Error">登录失败</string>
     <string name="Code_UserNotFound">没有发现此用户</string>
+    <string name="PressToExit">再按一次退出程序</string>
+    <string name="Center_obtainChamp">夺得%s月排行榜冠军</string>
+    <string name="nin">您</string>
+    <string name="Safety">安全</string>
+    <string name="general">一般</string>
 </resources>

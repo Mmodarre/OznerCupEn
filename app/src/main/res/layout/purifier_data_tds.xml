@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+    <View
+        android:id="@+id/llay_cupHolder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/foot_heght"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"/>
+
     <ScrollView
-        android:layout_above="@+id/llay_placeholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/llay_cupHolder"
         android:scrollbars="none">
 
         <LinearLayout
@@ -24,9 +32,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/tdsBackground">
+
                 <include
                     android:id="@+id/purifier_data_toorbar"
-                    layout="@layout/cup_toolbar" />
+                    layout="@layout/cup_toolbar"/>
 
                 <LinearLayout
                     android:id="@+id/llay_top_center"
@@ -42,7 +51,7 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3">
+                        android:layout_weight="2.5">
 
                         <LinearLayout
                             android:id="@+id/llay_purifierText"
@@ -51,12 +60,12 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:textColor="@color/colorTds"
                                 android:id="@+id/tv_purifierText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/tdsValue_test"
-                                android:textSize="18dp" />
+                                android:textColor="@color/colorTds"
+                                android:textSize="18dp"/>
 
                             <ImageView
                                 android:id="@+id/iv_purifierTips"
@@ -64,7 +73,7 @@
                                 android:layout_height="18dp"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="5dp"
-                                android:src="@drawable/bangzhu" />
+                                android:src="@drawable/bangzhu"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -75,9 +84,9 @@
                             android:orientation="horizontal">
 
                             <RelativeLayout
-                                android:layout_gravity="center_vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
                                 android:gravity="center_horizontal">
 
                                 <TextView
@@ -87,7 +96,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/text_null"
                                     android:textColor="@color/Purifier_before"
-                                    android:textSize="23dp" />
+                                    android:textSize="23dp"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -96,8 +105,8 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginBottom="2dp"
                                     android:text="@string/pre_purifier"
-                                    android:textSize="13dp"
-                                    android:textColor="@color/Purifier_before" />
+                                    android:textColor="@color/Purifier_before"
+                                    android:textSize="13dp"/>
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -112,13 +121,13 @@
                                     android:layout_marginRight="5dp"
                                     android:text="/"
                                     android:textColor="@color/cupDetail_textcolor"
-                                    android:textSize="27dp" />
+                                    android:textSize="27dp"/>
                             </RelativeLayout>
 
                             <RelativeLayout
-                                android:layout_gravity="center_vertical"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical">
 
                                 <TextView
                                     android:id="@+id/tv_afterValue"
@@ -127,7 +136,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/text_null"
                                     android:textColor="@color/Purifier_after"
-                                    android:textSize="23dp" />
+                                    android:textSize="23dp"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -135,8 +144,8 @@
                                     android:layout_below="@+id/tv_afterValue"
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/after_purifier"
-                                    android:textSize="13dp"
-                                    android:textColor="@color/Purifier_after" />
+                                    android:textColor="@color/Purifier_after"
+                                    android:textSize="13dp"/>
                             </RelativeLayout>
                         </LinearLayout>
                     </RelativeLayout>
@@ -144,22 +153,23 @@
                     <LinearLayout
                         android:id="@+id/ll_en_no"
                         android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="4"
-                        android:gravity="center"
-                        android:layout_height="match_parent">
+                        android:gravity="center">
+
                         <RelativeLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="2">
 
                             <TextView
-                                android:textColor="@color/colorTds"
                                 android:id="@+id/tv_friend_shortText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:text="@string/friend_ranking"
-                                android:textSize="18dp" />
+                                android:textColor="@color/colorTds"
+                                android:textSize="18dp"/>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -176,7 +186,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="0"
                                     android:textColor="@color/Purifier_after"
-                                    android:textSize="45dp" />
+                                    android:textSize="45dp"/>
 
                                 <ImageView
                                     android:layout_width="20dp"
@@ -185,7 +195,7 @@
                                     android:layout_marginLeft="3dp"
                                     android:layout_toRightOf="@id/tv_friend_shortValueText"
                                     android:background="@drawable/friend"
-                                    android:baselineAlignBottom="true" />
+                                    android:baselineAlignBottom="true"/>
 
                             </LinearLayout>
 
@@ -209,12 +219,12 @@
 
                                 <ImageView
                                     android:id="@+id/iv_wateryield_consult_msg"
-                                    android:layout_width="30dp"
+                                    android:layout_width="25dp"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="7dp"
-                                    android:src="@drawable/tds_msg" />
+                                    android:src="@drawable/tds_msg"/>
 
                                 <TextView
                                     android:id="@+id/tv_wateryield_consult_msg"
@@ -227,7 +237,7 @@
                                     android:gravity="center"
                                     android:text="@string/consult_test"
                                     android:textColor="@color/colorTds"
-                                    android:textSize="18dp" />
+                                    android:textSize="18dp"/>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -242,14 +252,14 @@
                     android:layout_marginRight="20dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
 
                     <ImageView
                         android:id="@+id/iv_tdsface"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:src="@drawable/lianghao" />
+                        android:src="@drawable/lianghao"/>
 
                     <TextView
                         android:id="@+id/tv_tdsTips"
@@ -257,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="@string/waterTds_faceLow"
-                        android:textColor="@color/colorTds" />
+                        android:textColor="@color/colorTds"/>
 
                 </LinearLayout>
 
@@ -283,7 +293,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/Purifier_quality_exp"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"/>
 
                     <LinearLayout
                         android:id="@+id/llay_btn_group"
@@ -302,7 +312,8 @@
                             android:layout_height="30dp"
                             android:layout_weight="1"
                             android:background="@drawable/purifier_data_exp_week_btn"
-                            android:text="@string/tds_week" />
+                            android:text="@string/tds_week"
+                            android:textAllCaps="false"/>
 
                         <Button
                             android:id="@+id/btn_month"
@@ -310,7 +321,8 @@
                             android:layout_height="30dp"
                             android:layout_weight="1"
                             android:background="@drawable/purifier_data_exp_month_btn"
-                            android:text="@string/tds_month" />
+                            android:text="@string/tds_month"
+                            android:textAllCaps="false"/>
                     </LinearLayout>
 
                     <com.ozner.cup.WaterProbe.PurifierExp.UIZPurifierExpView
@@ -320,7 +332,7 @@
                         android:layout_above="@+id/data_legend"
                         android:layout_below="@+id/llay_btn_group"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp" />
+                        android:layout_marginRight="10dp"/>
 
 
                     <LinearLayout
@@ -349,7 +361,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="8dp"
-                                android:src="@drawable/purifier_legend_before" />
+                                android:src="@drawable/purifier_legend_before"/>
 
                             <TextView
                                 android:id="@+id/tv_tapGenericPre"
@@ -358,7 +370,7 @@
                                 android:layout_toRightOf="@+id/iv_tapGenericImg"
                                 android:text="@string/pre_purifier"
                                 android:textColor="@color/Purifier_before"
-                                android:textSize="16dp" />
+                                android:textSize="16dp"/>
 
 
                         </RelativeLayout>
@@ -376,7 +388,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="8dp"
-                                android:src="@drawable/purifier_legend_after" />
+                                android:src="@drawable/purifier_legend_after"/>
 
                             <TextView
                                 android:id="@+id/tv_tapHealthPre"
@@ -385,7 +397,7 @@
                                 android:layout_toRightOf="@+id/iv_tapHelathImg"
                                 android:text="@string/after_purifier"
                                 android:textColor="@color/Purifier_after"
-                                android:textSize="16dp" />
+                                android:textSize="16dp"/>
 
                         </RelativeLayout>
                         <!--</LinearLayout>-->
@@ -409,7 +421,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="@string/tdshealth_test"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -419,19 +431,20 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
 
                     <LinearLayout
                         android:id="@+id/wateryield_health_know_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minHeight="45dp"
-                        android:minWidth="152dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
                         android:background="@drawable/btn_bg_blue_s_choose"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:minHeight="45dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
 
                         <ImageView
                             android:id="@+id/iv_wateryield_health_know"
@@ -439,7 +452,6 @@
                             android:layout_height="19.5dp"
                             android:layout_centerVertical="true"
                             android:background="@drawable/water_know"
-
                             />
 
                         <TextView
@@ -459,21 +471,21 @@
 
                     <LinearLayout
                         android:id="@+id/wateryield_health_buy_layout"
-                        android:layout_width="152dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="29dp"
+                        android:layout_marginLeft="20dp"
                         android:background="@drawable/btn_bg_blue_choose"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
 
                         <ImageView
                             android:id="@+id/iv_wateryield_health_buy"
                             android:layout_width="21dp"
                             android:layout_height="19.5dp"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/buy_shop"
-
-                            />
+                            android:src="@drawable/buy_shop"/>
 
                         <TextView
                             android:id="@+id/tv_wateryield_health_buy_msg"
@@ -493,9 +505,5 @@
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
-    <View
-        android:id="@+id/llay_cupHolder"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/foot_heght"
-        android:background="@color/white"/>
-</LinearLayout>
+
+</RelativeLayout>

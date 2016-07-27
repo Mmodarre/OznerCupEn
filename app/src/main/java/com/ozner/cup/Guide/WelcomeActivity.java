@@ -151,7 +151,11 @@ public class WelcomeActivity extends Activity {
                                                 Toast.makeText(getBaseContext(), getString(R.string.innet_wrong), Toast.LENGTH_SHORT).show();
                                             }
                                         });
-                                        showNexLoginPage();
+                                        if (((OznerApplication) getApplication()).isLoginPhone())
+                                            ShowMainPage(null);
+                                        else {
+                                            ShowMainENPage();
+                                        }
                                     } else {
                                         showNexLoginPage();
                                     }

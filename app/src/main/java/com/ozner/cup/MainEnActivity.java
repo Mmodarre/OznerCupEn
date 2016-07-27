@@ -305,7 +305,7 @@ public class MainEnActivity extends BaseMainActivity {
         Timer tExit = null;
         if (isExit == false) {
             isExit = true; // 准备退出
-            Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.PressToExit), Toast.LENGTH_SHORT).show();
             tExit = new Timer();
             tExit.schedule(new TimerTask() {
                 @Override
