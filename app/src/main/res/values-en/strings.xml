@@ -29,9 +29,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="server_Exception">Service Exception Error</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login_other_device">您的账号在其他设备登录，请重新登录.</string>
+    <string name="login_other_device">Other devices in your account login, please sign in again.</string>
     <string name="login_p_tishi">Agreed to OZNER IFAMILY Clauses.</string>
-    <string name="loging_ty_xiexi">请先同意《浩泽净水家免责条款》</string>
+    <string name="loging_ty_xiexi">Please agree "OZNER IFAMILY Disclaimer"</string>
     <string name="login_btn_skip">Skip</string>
     <string name="login_btn_getphone">Obtain captcha</string>
     <string name="login_et_phone">Phone number</string>
@@ -44,8 +44,8 @@
     <string name="login_no_code">Fail to receive captcha by text message?</string>
     <string name="login_wrong_phone">Please enter phone number of 11 Arabic numbers </string>
     <string name="login_wrong_emptycode">Please enter captcha</string>
-    <string name="login_wrong_login_error">登陆失败检查手机号和验证码</string>
-    <string name="login_wrong_Code_Outtime">登陆失败验证码过期</string>
+    <string name="login_wrong_login_error">Login failed check the phone number and verification code</string>
+    <string name="login_wrong_Code_Outtime">Login failed verification code expired</string>
     <string name="login_wrong_Code_error">登陆失败验证码错误</string>
     <string name="login_wrong_msg">Login failed</string>
     <string name="login_wrong_code">您输入的验证码有误,请重新输入？</string>
@@ -111,7 +111,7 @@
     <string name="Center_Month">Month</string>
     <string name="Center_Day">Day</string>
     <string name="Center_PM">Afternoon</string>
-    <string name="Center_None">暂无数据</string>
+    <string name="Center_None">No data</string>
     <string name="Center_Repeat">Reply:</string>
     <string name="Center_LoadFail">加载失败!</string>
     <string name="Center_LoadVolumRank">加载饮水量排名</string>
@@ -131,16 +131,16 @@
     <string name="Center_Send">Send</string>
     <string name="Center_Cancel">Cancel</string>
     <string name="Center_Add">Add</string>
-    <string name="Center_Wait_Verify">等待验证</string>
-    <string name="Center_Added">已添加</string>
+    <string name="Center_Wait_Verify">Awaiting verification</string>
+    <string name="Center_Added">Added</string>
     <string name="Center_PurifierTdsRank">净水器TDS排行</string>
     <string name="Center_TapTdsRank">水探头TDS排行</string>
     <string name="Center_CupTdsRank">智能杯TDS排行</string>
     <string name="Center_CupWaterRank">智能杯饮水量排行</string>
     <string name="Center_LikeMe">赞我的人</string>
     <string name="Center_Adsive">My proposal</string>
-    <string name="Center_Advise_Result_up">感谢您的宝贵意见</string>
-    <string name="Center_Advise_Result_down">我们会尽快处理</string>
+    <string name="Center_Advise_Result_up">Thanks for your comments</string>
+    <string name="Center_Advise_Result_down">We will as soon as possible</string>
     <string name="Center_Adsive_Hint">If you use the process, have any questions or suggestions, please leave your valuable comments and suggestions, we will try to solve your problem.</string>
     <string name="Center_Submit">Submit</string>
     <string name="TDS">TDS</string>
@@ -696,7 +696,7 @@
     <string name="check_count">The cumulative number of detections</string>
     <string name="skin_type">Other types of skin</string>
     <string name="equipment_name">Equipment name</string>
-
+    <string name="skin_notices">Your skin moisture deviate from the normal week, please moisturizing.</string>
     <string name="verifyCode">Captcha</string>
     <string name="getCode">Obtain captcha</string>
     <string name="sendEmailCode">Sending...</string>

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
 
     android:background="@color/white">
+
     <LinearLayout
         android:id="@+id/llay_placeholder"
         android:layout_width="match_parent"
@@ -17,10 +18,11 @@
             android:layout_height="@dimen/foot_heght"
             android:orientation="vertical"></LinearLayout>
     </LinearLayout>
+
     <ScrollView
-        android:layout_above="@+id/llay_placeholder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/llay_placeholder"
         android:scrollbars="none">
 
         <LinearLayout
@@ -179,7 +181,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/tdsBackground"
-                android:padding="20dp">
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -211,7 +216,7 @@
                     android:layout_width="1dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:alpha="0.8"
                     android:background="@color/kindly_notice" />
 
@@ -219,7 +224,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/ver_line"
                     android:orientation="horizontal">
 
@@ -306,64 +311,64 @@
                     android:id="@+id/wrm_View"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:minHeight="200dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="200dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
                     android:gravity="center"
-                    android:layout_gravity="center">
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
 
                     <TextView
                         android:id="@+id/show_oily_instru"
                         android:layout_width="0dp"
                         android:layout_height="25dp"
-                        android:gravity="center_vertical"
                         android:layout_weight="1"
                         android:drawableLeft="@drawable/skin_oily_res"
                         android:drawablePadding="5dp"
                         android:drawableRight="@drawable/kindly_notice_icon"
+                        android:gravity="center_vertical"
+                        android:paddingRight="20dp"
                         android:text="@string/oil"
-                        android:textColor="@color/zihong"
-                        android:paddingRight="20dp"/>
+                        android:textColor="@color/zihong" />
 
                     <TextView
                         android:id="@+id/show_water_instru"
                         android:layout_width="0dp"
                         android:layout_height="25dp"
-                        android:gravity="center_vertical"
                         android:layout_weight="1"
                         android:drawableLeft="@drawable/skin_water_res"
                         android:drawablePadding="5dp"
                         android:drawableRight="@drawable/kindly_notice_icon"
+                        android:gravity="center_vertical"
+                        android:paddingRight="20dp"
                         android:text="@string/water"
-                        android:textColor="@color/health"
-                        android:paddingRight="20dp"/>
+                        android:textColor="@color/health" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="25dp"
                         android:layout_weight="1"
                         android:drawableLeft="@drawable/skin_better_res"
-                        android:text="@string/hydra_standard"
-                        android:textColor="@color/Purifier_data_exp_text"
+                        android:drawablePadding="5dp"
                         android:gravity="center_vertical"
-                        android:drawablePadding="5dp"/>
+                        android:text="@string/hydra_standard"
+                        android:textColor="@color/Purifier_data_exp_text" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="20dp"
-                    android:text="您本周的皮肤水分偏离正常，请及时保湿补水。"/>
+                    android:text="@string/skin_notices" />
 
             </LinearLayout>
 
@@ -380,14 +385,14 @@
                     android:layout_height="45dp"
                     android:background="@drawable/btn_bg_blue_s_choose"
                     android:gravity="center"
+                    android:padding="10dp"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="20dp"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/tds_msg"
-                        />
+                        android:background="@drawable/tds_msg" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -396,8 +401,7 @@
                         android:gravity="center"
                         android:text="@string/consult_test"
                         android:textColor="@color/colorTds"
-                        android:textSize="17dp"
-                        />
+                        android:textSize="17dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -407,6 +411,7 @@
                     android:layout_marginLeft="29dp"
                     android:background="@drawable/btn_bg_blue_choose"
                     android:gravity="center"
+                    android:padding="10dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -424,7 +429,6 @@
                         android:text="@string/buy_jinghua_water"
                         android:textColor="@color/colorTds"
                         android:textSize="17dp"
-
                         />
                 </LinearLayout>
             </LinearLayout>

@@ -681,7 +681,7 @@
     <string name="check_count">累计检测次数</string>
     <string name="skin_type">其他肤质类型</string>
     <string name="equipment_name">设备名</string>
-
+    <string name="skin_notices">您本周的皮肤水分偏离正常，请及时保湿补水。</string>
     <string name="verifyCode">验证码</string>
     <string name="getCode">获取验证码</string>
     <string name="sendEmailCode">正在发送验证码...</string>
