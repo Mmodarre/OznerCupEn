@@ -26,6 +26,18 @@ public class OznerPreference {
             return null;
     }
 
+    public static boolean isLoginPhone(Context context){
+        SharedPreferences ozner = Init(context);
+        Boolean isloginphone = ozner.getBoolean(IsLoginPhone, true);
+        return isloginphone;
+    }
+
+    public static void setIsLoginPhone(Context myContext, Boolean isPhone) {
+        SharedPreferences.Editor ozner = InitEditor(myContext);
+        ozner.putBoolean(IsLoginPhone, isPhone);
+        ozner.commit();
+    }
+
     public static boolean IsLogin(Context myContext) {
         SharedPreferences ozner = Init(myContext);
         Boolean islogin = ozner.getBoolean(IsLogin, false);

@@ -133,6 +133,7 @@ public class WelcomeActivity extends Activity {
                                             }
                                             //初始化用户设备列表
 //                                        NetDeviceList netDeviceList=OznerDataHttp.RefreshDeviceList(getBaseContext());
+                                            Log.e("lingchen", "welcomActivity_isPhone: " + ((OznerApplication) getApplication()).isLoginPhone());
                                             if (((OznerApplication) getApplication()).isLoginPhone())
                                                 ShowMainPage(null);
                                             else {
@@ -176,7 +177,7 @@ public class WelcomeActivity extends Activity {
      * 中文：手机号登录；英文：邮箱登录
      */
     private void showNexLoginPage() {
-        Log.e("login", "isLoginPhone:" +((OznerApplication) getApplication()).isLanguageCN());
+        Log.e("login", "isLoginPhone:" + ((OznerApplication) getApplication()).isLanguageCN());
         if (((OznerApplication) getApplication()).isLanguageCN()) {
             ShowLoginPage();
         } else {

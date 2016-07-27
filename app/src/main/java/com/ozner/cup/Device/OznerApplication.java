@@ -2,6 +2,7 @@ package com.ozner.cup.Device;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import java.util.Locale;
 public class OznerApplication extends OznerBaseApplication {
     public static final String ACTION_ServiceInit = "ozner.service.init";
     public static Typeface numFace, textFace;
-    private boolean isLoginPhone = true;
+//    private boolean isLoginPhone = true;
 
     @Override
     protected void onBindService() {
@@ -36,7 +37,7 @@ public class OznerApplication extends OznerBaseApplication {
         numFace = Typeface.createFromAsset(getAssets(), "font/shuzi.otf");
         textFace = Typeface.createFromAsset(getAssets(), "font/wenzi.otf");
         LogUtilsLC.init(getApplicationContext());
-        isLoginPhone = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsLoginPhone, "true"));
+//        isLoginPhone = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsLoginPhone, "true"));
         super.onCreate();
     }
 
@@ -86,16 +87,20 @@ public class OznerApplication extends OznerBaseApplication {
      * 设置手机号登录
      */
     public void setIsPhone() {
-        isLoginPhone = true;
-        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsLoginPhone, String.valueOf(isLoginPhone));
+        Log.e("lingchen", "setIsPhone: true");
+//        isLoginPhone = true;
+//        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsLoginPhone,"true");
+        OznerPreference.setIsLoginPhone(getApplicationContext(), true);
     }
 
     /**
      * 设置，邮箱登录
      */
     public void setIsEmail() {
-        isLoginPhone = false;
-        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsLoginPhone, String.valueOf(isLoginPhone));
+        Log.e("lingchen", "setIsPhone: false");
+//        isLoginPhone = false;
+//        OznerPreference.SetValue(getApplicationContext(), OznerPreference.IsLoginPhone, "false");
+        OznerPreference.setIsLoginPhone(getApplicationContext(), false);
     }
 
     /**
@@ -104,8 +109,10 @@ public class OznerApplication extends OznerBaseApplication {
      * @return true:手机登录；fasle:邮箱登录；默认true
      */
     public boolean isLoginPhone() {
-        isLoginPhone = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsLoginPhone, "true"));
-        return isLoginPhone;
+//        isLoginPhone = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsLoginPhone, "true"));
+//        return isLoginPhone;
+
+        return OznerPreference.isLoginPhone(getApplicationContext());
     }
 
     /**

@@ -160,7 +160,7 @@
                     android:background="@drawable/selector_btn_voice"
                     android:clickable="true"
                     android:gravity="center"
-                    android:maxWidth="120dp"
+                    android:maxWidth="140dp"
                     android:paddingBottom="5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
