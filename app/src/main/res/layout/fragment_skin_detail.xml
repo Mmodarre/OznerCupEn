@@ -315,6 +315,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="20dp"
+                    android:visibility="gone"
                     android:minHeight="200dp" />
 
                 <LinearLayout
@@ -324,42 +325,42 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         android:id="@+id/show_oily_instru"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:layout_weight="1"
                         android:drawableLeft="@drawable/skin_oily_res"
                         android:drawablePadding="5dp"
                         android:drawableRight="@drawable/kindly_notice_icon"
-                        android:gravity="center_vertical"
-                        android:paddingRight="20dp"
+                        android:gravity="center"
+                        android:paddingRight="10dp"
                         android:text="@string/oil"
                         android:textColor="@color/zihong" />
 
                     <TextView
                         android:id="@+id/show_water_instru"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:layout_weight="1"
                         android:drawableLeft="@drawable/skin_water_res"
                         android:drawablePadding="5dp"
                         android:drawableRight="@drawable/kindly_notice_icon"
-                        android:gravity="center_vertical"
-                        android:paddingRight="20dp"
+                        android:gravity="center"
+                        android:paddingRight="10dp"
                         android:text="@string/water"
                         android:textColor="@color/health" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:layout_weight="1"
                         android:drawableLeft="@drawable/skin_better_res"
                         android:drawablePadding="5dp"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:text="@string/hydra_standard"
                         android:textColor="@color/Purifier_data_exp_text" />
                 </LinearLayout>
