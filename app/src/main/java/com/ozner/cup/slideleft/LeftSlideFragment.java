@@ -102,11 +102,12 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
                 startActivity(new Intent(getContext(), MyCenterActivity.class));
             }
         });
-        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {
+            user_info.setVisibility(View.VISIBLE);
+            rootview.findViewById(R.id.llay_holder).setVisibility(View.GONE);
+        } else {
             user_info.setVisibility(View.GONE);
             rootview.findViewById(R.id.llay_holder).setVisibility(View.VISIBLE);
-        } else {
-            rootview.findViewById(R.id.llay_holder).setVisibility(View.GONE);
         }
         return rootview;
     }

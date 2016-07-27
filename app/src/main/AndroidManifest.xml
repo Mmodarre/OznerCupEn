@@ -172,8 +172,6 @@
             android:name=".TeachGuide.CupTeachGuideActivity"
             android:launchMode="singleInstance"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -195,13 +193,11 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="AuthorizeAdapter"
                 android:value="com.ozner.cup.Login.ShareSDKAdapter" />
-
         </activity>
-
-
         <activity
             android:name=".mycenter.MyFriendsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -272,6 +268,7 @@
         <!-- push service start -->
         <receiver android:name=".BaiduPush.OznerBaiduPushReceiver">
             <intent-filter>
+
                 <!-- 接收push消息 -->
                 <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
                 <!-- 接收bind、setTags等method的返回结果 -->
@@ -363,8 +360,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Login.SignUpActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Login.ResetPwdActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

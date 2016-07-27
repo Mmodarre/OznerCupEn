@@ -644,7 +644,10 @@
     <string name="start_smart_service">立即添加设备，开始体验浩泽智能化生活服务。</string>
     <string name="username">邮箱</string>
     <string name="password">密码</string>
+    <string name="oldpassword">旧密码</string>
+    <string name="newpassword">新密码</string>
     <string name="confirm_password">确认密码</string>
+    <string name="different_pwd">新密码输入不一致</string>
     <string name="register">注册</string>
     <string name="sign_up">注册账号</string>
     <string name="input_username">请输入邮箱</string>
@@ -692,8 +695,8 @@
     <string name="submitting">提交中...</string>
     <string name="regFail">注册失败</string>
     <string name="loginFail">登录失败，请检查邮箱和密码</string>
-    
-    
+
+
     <!--错误码-->
     <string name="Code_Accept_nofound">没有发现对应请求</string>
     <string name="Code_AddFriend_exists">已经发送过请求</string>

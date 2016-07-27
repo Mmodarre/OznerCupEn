@@ -38,7 +38,7 @@
             android:layout_below="@id/rlay_person_photo_bg"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="11dp"
-            android:text="@string/Center_click_to_login"
+            android:text="Ozner"
             android:textSize="18dp" />
 
     </RelativeLayout>
@@ -51,6 +51,7 @@
 
         <TextView
             style="@style/TextGongffView"
+            android:drawableLeft="@drawable/center_myorder"
             android:text="@string/my_device" />
 
         <ImageView

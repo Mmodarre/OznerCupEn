@@ -68,6 +68,11 @@ public class LoginEnActivity extends AppCompatActivity implements View.OnClickLi
         setListener();
     }
 
+    public void resetPwd(View view){
+        startActivity(new Intent(LoginEnActivity.this,ResetPwdActivity.class));
+        finish();
+    }
+
     private void setListener() {
         tv_register.setOnClickListener(this);
         btn_login.setOnClickListener(this);

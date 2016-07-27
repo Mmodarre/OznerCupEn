@@ -621,6 +621,25 @@ public class OznerCommand {
     }
 
     /**
+     * 重置密码
+     *
+     * @param context
+     * @param email
+     * @param password
+     * @param code
+     * @param callback
+     */
+    public static void resetPwd(final Context context, String email, String password, String code, HttpCallback callback) {
+        String url = OznerPreference.ServerAddress(context) + "OznerServer/ResetPassword";
+        List<NameValuePair> httpParms = new ArrayList<>();
+        httpParms.add(new BasicNameValuePair("username", email));
+        httpParms.add(new BasicNameValuePair("password", password));
+        httpParms.add(new BasicNameValuePair("code", code));
+
+        new NormalAsyncTask(context, url, httpParms, callback).execute();
+    }
+
+    /**
      * 邮箱登录
      *
      * @param context
