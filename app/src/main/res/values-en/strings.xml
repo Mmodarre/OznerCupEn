@@ -59,8 +59,8 @@
     <string name="foot_myself">Me</string>
     <string name="pre_purifier">Before</string>
     <string name="after_purifier">After</string>
-    <string name="filter_status">Filter cartridge status</string>
-    <string name="filter_need_change">Filter </string>
+    <string name="filter_status">Filter Status</string>
+    <string name="filter_need_change">Please replace the filter</string>
     <string name="warm">Heat</string>
     <string name="refrigeration">Cool</string>
     <string name="power">Power</string>
@@ -368,7 +368,7 @@
     <string name="water_know_test">Knowledge</string>
     <string name="buy_test">Purchase</string>
     <string name="buy_jinghua_water">Buy essence</string>
-    <string name="buy_air_lvxin">Buy filter cartridge</string>
+    <string name="buy_air_lvxin">Buy</string>
     <string name="radio_health">Healthy(</string>
     <string name="radio_ordinary">So-so(</string>
     <string name="radio_range">Bad(</string>

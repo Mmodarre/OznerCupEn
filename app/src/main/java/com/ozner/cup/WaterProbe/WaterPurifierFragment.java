@@ -645,7 +645,9 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     }
 
     private void told() {
-        new AlertDialog.Builder(getContext()).setMessage(getString(R.string.filter_need_change)).setPositiveButton(getString(R.string.buy_air_lvxin), new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(getContext())
+                .setMessage(getString(R.string.filter_need_change))
+                .setPositiveButton(getString(R.string.buy_air_lvxin), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 buyFilter();
