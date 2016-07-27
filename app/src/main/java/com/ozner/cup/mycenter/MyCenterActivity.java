@@ -1,6 +1,9 @@
 package com.ozner.cup.mycenter;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,12 +12,14 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ozner.cup.BaiduPush.OznerBroadcastAction;
 import com.ozner.cup.R;
 
 public class MyCenterActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView userImage;
     TextView userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,16 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.setting_layout).setOnClickListener(this);
         userImage = (ImageView) findViewById(R.id.iv_person_photo);
         userName = (TextView) findViewById(R.id.tv_name);
+
+        IntentFilter filter = new IntentFilter(OznerBroadcastAction.Logout);
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals(OznerBroadcastAction.Logout)) {
+                    MyCenterActivity.this.finish();
+                }
+            }
+        }, filter);
     }
 
     @Override
@@ -43,17 +58,19 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
 //                intent.setClass();
                 break;
             case R.id.center_my_device:
-                intent.setClass(this,MyDeviceActivity.class);
-                startActivityForResult(intent,0x2134);
+                intent.setClass(this, MyDeviceActivity.class);
+                startActivityForResult(intent, 0x2134);
                 break;
             case R.id.private_message_layout:
-                intent.setClass(this,AdviseActivity.class);
-                startActivityForResult(intent,0x2135);
+                intent.setClass(this, AdviseActivity.class);
+                startActivityForResult(intent, 0x2135);
                 break;
             case R.id.setting_layout:
-                intent.setClass(this,CenterSetupActivity.class);
-                startActivityForResult(intent,0x2136);
+                intent.setClass(this, CenterSetupActivity.class);
+                startActivityForResult(intent, 0x2136);
                 break;
         }
     }
+
+
 }
