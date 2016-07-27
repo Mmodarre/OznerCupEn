@@ -8,17 +8,16 @@ import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.util.Log;
 
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-
 import com.ozner.cup.Command.ImageHelper;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
@@ -243,8 +242,16 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
             span_Desc.setSpan(new ForegroundColorSpan(ContextCompat.getColor(mContext, R.color.checked)), toStart, toStart + to.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
         }
         int start = span_Desc.toString().indexOf(mContext.getString(R.string.repeat));
+//        int offset = 2;
+//        if (!((OznerApplication) ((Activity) mContext).getApplication()).isLanguageCN()) {
+//            offset = 5;
+//        }
         if (start > 0) {
-            span_Desc.setSpan(new ForegroundColorSpan(Color.BLACK), start, start + 2, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+//            if (((OznerApplication) ((Activity) mContext).getApplication()).isLanguageCN())
+            if (span_Desc.toString().indexOf("回复") > 0)
+                span_Desc.setSpan(new ForegroundColorSpan(Color.BLACK), start, start + 2, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            else
+                span_Desc.setSpan(new ForegroundColorSpan(Color.BLACK), start, start + 5, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
         }
         String msgText = leMsgList.get(childPosition).getMessage();
         span_Desc.append(msgText);

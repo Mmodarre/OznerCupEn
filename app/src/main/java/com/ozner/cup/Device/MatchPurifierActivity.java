@@ -424,13 +424,13 @@ public class MatchPurifierActivity extends AppCompatActivity implements SpinnerP
 
     class WifiPairImp implements WifiPair.WifiPairCallback {
 
-//        @Override
-//        public void onStartPairAyla() {
-//            Message msg = new Message();
-//            msg.what = 2;
-//            msg.obj = QUERYING_AYLA;
-//            myHandler.sendMessage(msg);
-//        }
+        @Override
+        public void onStartPairAyla() {
+            Message msg = new Message();
+            msg.what = 2;
+            msg.obj = QUERYING_AYLA;
+            myHandler.sendMessage(msg);
+        }
 
         @Override
         public void onStartPariMxChip() {

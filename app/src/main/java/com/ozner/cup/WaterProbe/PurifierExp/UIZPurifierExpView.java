@@ -13,6 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import com.ozner.cup.CupRecord;
+import com.ozner.cup.R;
 
 import java.util.ArrayList;
 
@@ -122,9 +123,9 @@ public class UIZPurifierExpView extends PurifierExpBaseView {
     @Override
     protected void init() {
         super.init();
-        valueTag.put(CupRecord.TDS_Good_Value, "安全");
-        valueTag.put(100, "一般");
-        valueTag.put(200, "较差");
+        valueTag.put(CupRecord.TDS_Good_Value, getResources().getString(R.string.Safety));
+        valueTag.put(100,getResources().getString(R.string.general));
+        valueTag.put(200, getResources().getString(R.string.bad));
     }
 
     @Override

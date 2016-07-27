@@ -305,13 +305,13 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
 
     class WifiPairImp implements WifiPair.WifiPairCallback {
 //
-//        @Override
-//        public void onStartPairAyla() {
-//            Message msg = new Message();
-//            msg.what = 2;
-//            msg.obj = QUERYING_AYLA;
-//            myHandler.sendMessage(msg);
-//        }
+        @Override
+        public void onStartPairAyla() {
+            Message msg = new Message();
+            msg.what = 2;
+            msg.obj = QUERYING_AYLA;
+            myHandler.sendMessage(msg);
+        }
 
         @Override
         public void onStartPariMxChip() {
