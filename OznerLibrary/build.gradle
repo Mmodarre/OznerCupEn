@@ -21,6 +21,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.alibaba:fastjson:1.2.7'
-    //    compile 'com.android.support:support-v13:23.1.0'
+    compile 'com.android.support:support-v13:23.1.0'
     compile 'org.fusesource.mqtt-client:mqtt-client:1.12'
+    compile project(':Android_AylaLibrary_Public-release')
 }
