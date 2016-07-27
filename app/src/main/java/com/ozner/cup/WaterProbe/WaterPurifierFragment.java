@@ -103,8 +103,6 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private boolean isFirst = false;
     private boolean hasType = false;
     private boolean isZero = false;
-    private boolean isZh;
-
     public WaterPurifierFragment() {
         // Required empty public constructor
     }
@@ -221,46 +219,24 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 
     public void InitData() {
         isOffLine = waterPurifier.isOffline();
-
-        if (waterPurifier.sensor().TDS1() == 0 && waterPurifier.sensor().TDS2() == 0) {
-//            isZero = true;
-        } else {
-//            isZero = false;
-            if (waterPurifier.sensor().TDS1() == 0) {
-//                tds1 = waterPurifier.sensor().TDS1() + 1;
-            } else {
-                tds1 = waterPurifier.sensor().TDS1();
-//                tds2 = waterPurifier.sensor().TDS2();
-            }
-            if (waterPurifier.sensor().TDS2() == 0) {
-//                tds2 = waterPurifier.sensor().TDS2() + 1;
-            } else {
-//                tds1 = waterPurifier.sensor().TDS1();
-                tds2 = waterPurifier.sensor().TDS2();
-            }
+        if (waterPurifier.sensor().TDS1()>0&&waterPurifier.sensor().TDS2()>0){
+            isZero = false;
+            tds1 = waterPurifier.sensor().TDS1();
+            tds2 = waterPurifier.sensor().TDS2();
             if (tds1 < tds2) {
                 tdsMid = tds1;
                 tds1 = tds2;
                 tds2 = tdsMid;
             }
+        }else {
+            tds1 = waterPurifier.sensor().TDS1();
+            tds2 = waterPurifier.sensor().TDS2();
+            isZero = true;
         }
         isPowerOn = waterPurifier.status().Power();
-//        if ("true".equals(cool)) {
-//            isCoolOn = waterPurifier.status().Cool();
-//        }
-//        if ("true".equals(hot)) {
-//            isHotOn = waterPurifier.status().Hot();
-//        }
     }
-
     //
     public void BindDataToView() {
-
-//        if (isZero) {
-//            rlay_purifier_tds.setClickable(false);
-//            tv_preValue.setText(getString(R.string.text_null));
-//            tv_afterValue.setText(getString(R.string.text_null));
-//        }
         if (isNet != 0 && !isOffLine) {
             laly_phone_nonet.setVisibility(View.INVISIBLE);
             purifier_nonet.setVisibility(View.INVISIBLE);
@@ -302,14 +278,24 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             }
             if (tds1 != 65535) {
                 OznerApplication.setControlNumFace(tv_preValue);
-                if (waterPurifier.sensor().TDS1() == 0 | waterPurifier.sensor().TDS2() == 0) {
+                if(isZero){
+                    OznerApplication.setControlTextFace(tv_preValue);
+                    OznerApplication.setControlTextFace(tv_afterValue);
                     tv_preValue.setText(getResources().getString(R.string.text_null));
                     tv_afterValue.setText(getString(R.string.text_null));
                     rlay_purifier_tds.setClickable(false);
-                } else {
+                }else{
                     rlay_purifier_tds.setClickable(true);
                     tv_preValue.setText(tds1 + "");
                 }
+//                if (tds1 < 0) {
+//                    tv_preValue.setText(getResources().getString(R.string.text_null));
+//                    tv_afterValue.setText(getString(R.string.text_null));
+//                    rlay_purifier_tds.setClickable(false);
+//                } else {
+//                    rlay_purifier_tds.setClickable(true);
+//                    tv_preValue.setText(tds1 + "");
+//                }
 //            tv_preValue.setTextSize(45);
             } else {
                 OznerApplication.setControlTextFace(tv_preValue);
@@ -319,14 +305,24 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 
             if (tds2 != 65535) {
                 OznerApplication.setControlNumFace(tv_afterValue);
-//                tv_afterValue.setText(tds2 + "");
-                if (waterPurifier.sensor().TDS1() == 0 | waterPurifier.sensor().TDS2() == 0) {
+                if(isZero){
+                    OznerApplication.setControlTextFace(tv_preValue);
+                    OznerApplication.setControlTextFace(tv_afterValue);
                     tv_preValue.setText(getResources().getString(R.string.text_null));
+                    tv_afterValue.setText(getString(R.string.text_null));
                     rlay_purifier_tds.setClickable(false);
-                } else {
+                }else{
                     rlay_purifier_tds.setClickable(true);
-                    tv_preValue.setText(tds2 + "");
+                    tv_preValue.setText(tds1 + "");
                 }
+//                if (tds2<0) {
+//                    tv_preValue.setText(getResources().getString(R.string.text_null));
+//                    tv_afterValue.setText(getString(R.string.text_null));
+//                    rlay_purifier_tds.setClickable(false);
+//                } else {
+//                    rlay_purifier_tds.setClickable(true);
+//                    tv_preValue.setText(tds2 + "");
+//                }
 //            tv_afterValue.setTextSize(45);
             } else {
                 OznerApplication.setControlTextFace(tv_afterValue);
@@ -334,104 +330,114 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 //            tv_afterValue.setTextSize(30);
             }
             if (tds1 != 65535 && tds2 != 65535) {
-                if (tds1Old != tds1New) {
-                    final ValueAnimator animator = ValueAnimator.ofInt(tds1Old, tds1New);
-                    animator.setDuration(500);
-                    animator.setInterpolator(new LinearInterpolator());//线性效果变化
-                    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                        @Override
-                        public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                            Integer integer = (Integer) animator.getAnimatedValue();
-                            tv_preValue.setText("" + integer);
-                            OznerApplication.setControlNumFace(tv_preValue);
+                if(isZero){
+                    OznerApplication.setControlTextFace(tv_preValue);
+                    OznerApplication.setControlTextFace(tv_afterValue);
+                    tv_preValue.setText(getResources().getString(R.string.text_null));
+                    tv_afterValue.setText(getString(R.string.text_null));
+                    rlay_purifier_tds.setClickable(false);
+                }else {
+                    rlay_purifier_tds.setClickable(true);
+                    tv_preValue.setText(tds1 + "");
+                    tv_afterValue.setText(tds2 + "");
+
+                    if (tds1Old != tds1New) {
+                        final ValueAnimator animator = ValueAnimator.ofInt(tds1Old, tds1New);
+                        animator.setDuration(500);
+                        animator.setInterpolator(new LinearInterpolator());//线性效果变化
+                        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                            @Override
+                            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                                Integer integer = (Integer) animator.getAnimatedValue();
+                                tv_preValue.setText("" + integer);
+                                OznerApplication.setControlNumFace(tv_preValue);
 //                        tv_preValue.setTextSize(45);
-                        }
-                    });
-                    animator.start();
-                    if (tds1 > 250) {
-                        waterProcess.update(100, Math.round((tds2 / 250f) * 100));
-                    } else {
-                        try {
-                            waterProcess.update(Math.round((tds1 / 250f) * 100), Math.round((tds2 / 250f) * 100));
+                            }
+                        });
+                        animator.start();
+                        if (tds1 > 250) {
+                            waterProcess.update(100, Math.round((tds2 / 250f) * 100));
+                        } else {
+                            try {
+                                waterProcess.update(Math.round((tds1 / 250f) * 100), Math.round((tds2 / 250f) * 100));
 //                        Log.e("TAG", "WateProcess.Update" + Math.round((value / 400f) * 100));
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                            waterProcess.update(0, 0);
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                                waterProcess.update(0, 0);
+                            }
                         }
+                    } else {
+                        OznerApplication.setControlNumFace(tv_preValue);
+                        tv_preValue.setText(String.valueOf(tds1New));
+                        tds1Old = Integer.parseInt(tv_preValue.getText().toString());
                     }
-                } else {
-                    OznerApplication.setControlNumFace(tv_preValue);
-                    tv_preValue.setText(String.valueOf(tds1New));
-                    tds1Old = Integer.parseInt(tv_preValue.getText().toString());
-                }
-
-                if (tds2Old != tds2New) {
-                    final ValueAnimator animator = ValueAnimator.ofInt(tds2Old, tds2New);
-                    animator.setDuration(500);
-                    animator.setInterpolator(new LinearInterpolator());//线性效果变化
-                    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                        @Override
-                        public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                            Integer integer = (Integer) animator.getAnimatedValue();
-                            OznerApplication.setControlNumFace(tv_afterValue);
-                            tv_afterValue.setText("" + integer);
+                    if (tds2Old != tds2New) {
+                        final ValueAnimator animator = ValueAnimator.ofInt(tds2Old, tds2New);
+                        animator.setDuration(500);
+                        animator.setInterpolator(new LinearInterpolator());//线性效果变化
+                        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                            @Override
+                            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                                Integer integer = (Integer) animator.getAnimatedValue();
+                                OznerApplication.setControlNumFace(tv_afterValue);
+                                tv_afterValue.setText("" + integer);
 //                        tv_afterValue.setTextSize(45);
-                        }
-                    });
-                    animator.start();
-                    if (tds2 >= 250) {
-                        waterProcess.update(Math.round((tds1 / 250f) * 100), 100);
-                    } else {
-                        try {
-                            waterProcess.update(Math.round((tds1 / 250f) * 100), Math.round((tds2 / 250f) * 100));
+                            }
+                        });
+                        animator.start();
+                        if (tds2 >= 250) {
+                            waterProcess.update(Math.round((tds1 / 250f) * 100), 100);
+                        } else {
+                            try {
+                                waterProcess.update(Math.round((tds1 / 250f) * 100), Math.round((tds2 / 250f) * 100));
 //                        Log.e("TAG", "WateProcess.Update" + Math.round((value / 400f) * 100));
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                            waterProcess.update(0, 0);
-                        }
-                    }
-                } else {
-                    OznerApplication.setControlNumFace(tv_afterValue);
-                    tv_afterValue.setText(String.valueOf(tds2New));
-                    tds2Old = Integer.parseInt(tv_afterValue.getText().toString());
-                }
-
-                rlay_purifier_tds.setClickable(true);
-
-                //上传净水器净化前后的TDS值
-                if (waterPurifier.sensor().TDS1() > 0 && waterPurifier.sensor().TDS2() > 0) {
-                    if (waterPurifier.sensor().TDS1() > waterPurifier.sensor().TDS2()) {
-                        if (waterPurifier.sensor().TDS1() != tdsPre || waterPurifier.sensor().TDS2() != tdsAfter) {
-                            tdsPre = waterPurifier.sensor().TDS1();
-                            tdsAfter = waterPurifier.sensor().TDS2();
-                            uploadTds(MAC, waterPurifier.Type(), tdsPre, tdsAfter);
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                                waterProcess.update(0, 0);
+                            }
                         }
                     } else {
-                        if (waterPurifier.sensor().TDS2() != tdsPre || waterPurifier.sensor().TDS1() != tdsAfter) {
-                            tdsPre = waterPurifier.sensor().TDS2();
-                            tdsAfter = waterPurifier.sensor().TDS1();
-                            uploadTds(MAC, waterPurifier.Type(), tdsPre, tdsAfter);
+                        OznerApplication.setControlNumFace(tv_afterValue);
+                        tv_afterValue.setText(String.valueOf(tds2New));
+                        tds2Old = Integer.parseInt(tv_afterValue.getText().toString());
+                    }
+                    rlay_purifier_tds.setClickable(true);
+
+                    //上传净水器净化前后的TDS值
+                    if (waterPurifier.sensor().TDS1() > 0 && waterPurifier.sensor().TDS2() > 0) {
+                        if (waterPurifier.sensor().TDS1() > waterPurifier.sensor().TDS2()) {
+                            if (waterPurifier.sensor().TDS1() != tdsPre || waterPurifier.sensor().TDS2() != tdsAfter) {
+                                tdsPre = waterPurifier.sensor().TDS1();
+                                tdsAfter = waterPurifier.sensor().TDS2();
+                                uploadTds(MAC, waterPurifier.Type(), tdsPre, tdsAfter);
+                            }
+                        } else {
+                            if (waterPurifier.sensor().TDS2() != tdsPre || waterPurifier.sensor().TDS1() != tdsAfter) {
+                                tdsPre = waterPurifier.sensor().TDS2();
+                                tdsAfter = waterPurifier.sensor().TDS1();
+                                uploadTds(MAC, waterPurifier.Type(), tdsPre, tdsAfter);
+                            }
                         }
                     }
-                }
-                if (tds2 > 0 && tds2 <= CupRecord.TDS_Good_Value) {
-                    tv_tdsLevelText.setText(getResources().getString(R.string.health));
-                    iv_tdsLevelImg.setImageResource(R.drawable.lianghao);
-                    iv_tdsLevelImg.setVisibility(View.VISIBLE);
-                    tv_tdsLevelText.setVisibility(View.VISIBLE);
-                } else if (tds2 > CupRecord.TDS_Good_Value && tds2 <= CupRecord.TDS_Bad_Value) {
-                    tv_tdsLevelText.setText(getResources().getString(R.string.generic));
-                    iv_tdsLevelImg.setImageResource(R.drawable.yiban);
-                    iv_tdsLevelImg.setVisibility(View.VISIBLE);
-                    tv_tdsLevelText.setVisibility(View.VISIBLE);
-                } else {
-                    if (tds2 == 0) {
-                        tv_tdsLevelText.setVisibility(View.GONE);
-                        iv_tdsLevelImg.setVisibility(View.GONE);
-                    } else {
-                        tv_tdsLevelText.setText(getResources().getString(R.string.bad));
-                        iv_tdsLevelImg.setImageResource(R.drawable.jingbao);
+                    if (tds2 > 0 && tds2 <= CupRecord.TDS_Good_Value) {
+                        tv_tdsLevelText.setText(getResources().getString(R.string.health));
+                        iv_tdsLevelImg.setImageResource(R.drawable.lianghao);
                         iv_tdsLevelImg.setVisibility(View.VISIBLE);
+                        tv_tdsLevelText.setVisibility(View.VISIBLE);
+                    } else if (tds2 > CupRecord.TDS_Good_Value && tds2 <= CupRecord.TDS_Bad_Value) {
+                        tv_tdsLevelText.setText(getResources().getString(R.string.generic));
+                        iv_tdsLevelImg.setImageResource(R.drawable.yiban);
+                        iv_tdsLevelImg.setVisibility(View.VISIBLE);
+                        tv_tdsLevelText.setVisibility(View.VISIBLE);
+                    } else {
+                        if (tds2 == 0) {
+                            tv_tdsLevelText.setVisibility(View.GONE);
+                            iv_tdsLevelImg.setVisibility(View.GONE);
+                        } else {
+                            tv_tdsLevelText.setText(getResources().getString(R.string.bad));
+                            iv_tdsLevelImg.setImageResource(R.drawable.jingbao);
+                            iv_tdsLevelImg.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             } else {

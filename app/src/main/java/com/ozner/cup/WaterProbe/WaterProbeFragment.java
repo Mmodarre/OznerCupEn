@@ -627,7 +627,12 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             iv_tdsLevelImg.setVisibility(View.GONE);
             lay_tdsShort.setVisibility(View.GONE);
         } else {
-            lay_tdsShort.setVisibility(View.VISIBLE);
+            if(OznerPreference.isLoginPhone(getContext())){
+                lay_tdsShort.setVisibility(View.VISIBLE);
+            }else{
+                lay_tdsShort.setVisibility(View.GONE);
+            }
+
             //tds的状态
             if (value > 0 && value <= CupRecord.TDS_Good_Value) {
                 tv_tdsLevelText.setText(getResources().getString(R.string.health));
@@ -654,7 +659,11 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             //数字跑马灯效果
 
             if (value != 0) {
-                lay_tdsShort.setVisibility(View.VISIBLE);
+                if(OznerPreference.isLoginPhone(getContext())){
+                    lay_tdsShort.setVisibility(View.VISIBLE);
+                }else{
+                    lay_tdsShort.setVisibility(View.GONE);
+                }
                 OznerApplication.setControlNumFace(tv_tdsValue);
                 tv_tdsValue.setTextSize(60);
                 if (tdsOld != value) {
@@ -683,7 +692,11 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     tv_tdsValue.setTextSize(60);
                     if (tdsNew != 0) {
                         tv_tdsValue.setText(String.valueOf(tdsNew));
-                        lay_tdsShort.setVisibility(View.VISIBLE);
+                        if(OznerPreference.isLoginPhone(getContext())){
+                            lay_tdsShort.setVisibility(View.VISIBLE);
+                        }else{
+                            lay_tdsShort.setVisibility(View.GONE);
+                        }
                     } else {
                         OznerApplication.setControlTextFace(tv_tdsValue);
                         tv_tdsValue.setTextSize(45);
@@ -698,7 +711,6 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                 lay_tdsShort.setVisibility(View.GONE);
                 tv_tdsLevelText.setText(getResources().getString(R.string.text_null));
                 iv_tdsLevelImg.setVisibility(View.GONE);
-                lay_tdsShort.setVisibility(View.GONE);
                 waterProcess.update(0);
             }
         }

@@ -22,6 +22,7 @@ import com.ozner.cup.CupRecord;
 import com.ozner.cup.CupRecordList;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.OznerMallFragment;
+import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.cup.MainActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.UIView.ChartAdapter;
@@ -97,13 +98,13 @@ public class TDSFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).isShouldResume = false;
+        ((BaseMainActivity) getActivity()).isShouldResume = false;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ((MainActivity) getActivity()).isShouldResume = true;
+        ((BaseMainActivity) getActivity()).isShouldResume = true;
     }
 
     @Override

@@ -16,16 +16,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ozner.WaterPurifier.WaterPurifier;
-import com.ozner.cup.CupRecord;
 import com.ozner.cup.CChat.CChatFragment;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
+import com.ozner.cup.CupRecord;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.OznerMallFragment;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.HttpHelper.OznerDataHttp;
+import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.cup.MainActivity;
-import com.ozner.cup.MainEnActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.WaterCup.TDSIntroduceFragment;
 import com.ozner.cup.WaterCup.WaterKnowActivity;
@@ -89,9 +89,9 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
     public void onResume() {
         super.onResume();
         if(((OznerApplication)getActivity().getApplication()).isLoginPhone()){
-            ((MainActivity) getActivity()).isShouldResume = false;
+            ((BaseMainActivity) getActivity()).isShouldResume = false;
         }else {
-            ((MainEnActivity) getActivity()).isShouldResume = false;
+            ((BaseMainActivity) getActivity()).isShouldResume = false;
         }
     }
 
@@ -99,9 +99,9 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
     public void onDestroyView() {
         super.onDestroyView();
         if(((OznerApplication)getActivity().getApplication()).isLoginPhone()){
-            ((MainActivity) getActivity()).isShouldResume = true;
+            ((BaseMainActivity) getActivity()).isShouldResume = true;
         }else{
-            ((MainEnActivity) getActivity()).isShouldResume = false;
+            ((BaseMainActivity) getActivity()).isShouldResume = false;
         }
 
     }

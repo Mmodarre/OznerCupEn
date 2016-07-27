@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupRecord;
 import com.ozner.cup.CupRecordList;
+import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.device.OznerDeviceManager;
 
 import com.ozner.cup.CChat.CChatFragment;
@@ -106,12 +107,12 @@ public class WaterTemperatureFragment extends Fragment {
     public void onResume()
     {
         super.onResume();
-        ((MainActivity)getActivity()).isShouldResume=false;
+        ((BaseMainActivity)getActivity()).isShouldResume=false;
     }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ((MainActivity)getActivity()).isShouldResume=true;
+        ((BaseMainActivity)getActivity()).isShouldResume=true;
     }
     private void initData() {
         //折线图数据的切换  taoran
