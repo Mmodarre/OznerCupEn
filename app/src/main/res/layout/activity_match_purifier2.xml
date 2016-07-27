@@ -375,6 +375,7 @@
                     android:scrollbars="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:paddingTop="10dp"
                     android:layout_gravity="center_horizontal|bottom"
                     />
             </LinearLayout>
@@ -420,7 +421,7 @@
             <EditText
                 android:id="@+id/et_purifierName"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:hint="@string/edit_purifier_name"
@@ -430,7 +431,7 @@
             <EditText
                 android:id="@+id/et_purifierPos"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center" />
 
