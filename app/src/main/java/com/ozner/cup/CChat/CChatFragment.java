@@ -52,9 +52,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.alibaba.fastjson.JSON;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.ozner.cup.BuildConfig;
 import com.ozner.cup.CChat.bean.ChatMessage;
 import com.ozner.cup.CChat.adapter.FaceGVAdapter;
 import com.ozner.cup.CChat.adapter.FaceVPAdapter;
@@ -166,9 +168,9 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
             throw new ClassCastException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
-        Log.e("tag", "CChatFragment_onAttach");
+        Log.e(TAG, "CChatFragment_onAttach");
 
-//        Log.e("tag", "userid:" + OznerPreference.GetValue(context, UserDataPreference.UserId, null));
+//        Log.e(TAG, "userid:" + OznerPreference.GetValue(context, UserDataPreference.UserId, null));
 //        chatUserId = OznerPreference.GetValue(getContext(), UserDataPreference.UserId, null);
 //        if (chatUserId != null) {
 //            chatUserId = chatUserId.replace("-", "");
@@ -185,7 +187,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
             waitDialog.dismiss();
             waitDialog = null;
         }
-        Log.e("tag", "CChatFragment_onDetach");
+        Log.e(TAG, "CChatFragment_onDetach");
         super.onDetach();
     }
 
@@ -216,7 +218,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
 
     private void initChatMsgList() {
 
-        Log.e("tag", "userid:" + OznerPreference.GetValue(getContext(), UserDataPreference.UserId, null));
+        Log.e(TAG, "userid:" + OznerPreference.GetValue(getContext(), UserDataPreference.UserId, null));
         chatUserId = OznerPreference.GetValue(getContext(), UserDataPreference.UserId, null);
         if (chatUserId != null) {
             chatUserId = chatUserId.replace("-", "");
@@ -227,7 +229,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
 
         if (msgList != null && msgList.size() > 0) {
             infos.clear();
-            Log.e("tag", "MsgList_size:" + msgList.size());
+            Log.e(TAG, "MsgList_size:" + msgList.size());
             for (ChatMessage msgItem : msgList) {
                 insertChatMsg(msgItem);
             }
@@ -404,7 +406,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
 //                }
                 break;
             case R.id.input_sms://输入框
-                Log.e("tag", "input_click");
+                Log.e(TAG, "input_click");
                 hideFootNav();
                 if (chat_face_container.getVisibility() == View.VISIBLE) {
                     chat_face_container.setVisibility(View.GONE);
@@ -429,7 +431,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                     reply = input.getText().toString();
                     if (!TextUtils.isEmpty(reply)) {
                         String msg = faceTransToMsg(reply);
-                        Log.e("tag", "sendmsg:" + msg);
+                        Log.e(TAG, "sendmsg:" + msg);
                         isSending = true;
                         isSendImg = false;
                         chatSendMsg(mCustomId, msg, token, newSign);
@@ -670,6 +672,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
      * 发送的信息
      *
      * @param message
+     *
      * @return
      */
     private ChatInfo getChatInfoTo(String message) {
@@ -693,6 +696,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
      * 接收的信息
      *
      * @param message
+     *
      * @return
      */
     private ChatInfo getChatInfoFrom(String message) {
@@ -830,7 +834,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                     case 0x123://获取token
                         ChatCommand.OznerChatToken chatToken = (ChatCommand.OznerChatToken) msg.obj;
                         if (chatToken.state == 0) {
-                            Log.e("tag", "token:" + chatToken.access_token);
+                            Log.e(TAG, "token:" + chatToken.access_token);
                             token = chatToken.access_token;
                             String newstr = "access_token=" + token + "&appid=" + ChatCommand.appid + "&appsecret=" + ChatCommand.appsecret;
                             newSign = ChatCommand.Md5(newstr);
@@ -844,7 +848,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                                 Toast.makeText(getContext(), getString(R.string.Chat_Phone_Err), Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Log.e("tag", "获取token失败，msg:" + chatToken.msg + ",code:" + chatToken.state);
+                            Log.e(TAG, "获取token失败，msg:" + chatToken.msg + ",code:" + chatToken.state);
                         }
                         break;
                     case 0x124://登录
@@ -852,9 +856,12 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                             waitDialog.dismiss();
                         }
                         ChatCommand.OznerChatLoginInfo chatLoginInfo = (ChatCommand.OznerChatLoginInfo) msg.obj;
+                        if (BuildConfig.DEBUG) {
+                            Log.e(TAG, "chatLogin:" + chatLoginInfo != null ? JSON.toJSONString(chatLoginInfo) : "null");
+                        }
                         if (chatLoginInfo.state == 0) {
                             isChatLogin = true;
-                            Log.e("tag", "chatLoginInfo:" + chatLoginInfo.kfName + "," + chatLoginInfo.kfid);
+                            Log.e(TAG, "chatLoginInfo:" + chatLoginInfo.kfName + "," + chatLoginInfo.kfid);
                             mKf_id = String.valueOf(chatLoginInfo.kfid);
                         } else {
                             if (chatLoginInfo.msg != null) {
@@ -899,7 +906,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                         if (resInfo != null) {
                             if (resInfo.state == 0) {
                                 if (resInfo.userCount > 0) {
-                                    Log.e("tag", "userInfo:" + resInfo.UserList.get(0).customer_name + ", " + resInfo.UserList.get(0).customer_id + ", "
+                                    Log.e(TAG, "userInfo:" + resInfo.UserList.get(0).customer_name + ", " + resInfo.UserList.get(0).customer_id + ", "
                                             + resInfo.UserList.get(0).mobile + ", "
                                             + resInfo.UserList.get(0).BigAreaName + ", " + resInfo.UserList.get(0).weixin_openId);
                                     mCustomId = resInfo.UserList.get(0).customer_id;
@@ -910,23 +917,23 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                                     }
                                 } else {
                                     Toast.makeText(getContext(), getString(R.string.Chat_not_focus_ozner), Toast.LENGTH_SHORT).show();
-                                    Log.e("tag", "LoginFail:没有关注净水家公众号");
+                                    Log.e(TAG, "LoginFail:没有关注净水家公众号");
                                 }
                             } else {
                                 if (resInfo.msg != null) {
                                     Toast.makeText(getContext(), resInfo.msg, Toast.LENGTH_SHORT).show();
                                 }
-                                Log.e("tag", "userInfo:state:" + resInfo.state + ",msg:" + resInfo.msg);
+                                Log.e(TAG, "userInfo:state:" + resInfo.state + ",msg:" + resInfo.msg);
                             }
                         } else {
                             Toast.makeText(getContext(), getString(R.string.innet_wrong), Toast.LENGTH_SHORT).show();
-                            Log.e("tag", "userInfo:fail");
+                            Log.e(TAG, "userInfo:fail");
                         }
                         break;
                     case 0x127://获取历史信息
                         ChatCommand.OznerHistoryResult historyResult = (ChatCommand.OznerHistoryResult) msg.obj;
                         if (historyResult.state == 0) {
-                            Log.e("tag", "historyRes:total:" + historyResult.totalCount + ", get:" + historyResult.getCount);
+                            Log.e(TAG, "historyRes:total:" + historyResult.totalCount + ", get:" + historyResult.getCount);
                             if (historyResult.getCount > 0) {
                                 ChatMessage lastMsg = null;
                                 if (msgList != null && msgList.size() > 0)
@@ -953,7 +960,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                                 scrollMsgListTo(historyResult.getCount);
                             }
                         }
-                        Log.e("tag", "historyRes:" + historyResult.state + ", " + historyResult.msg);
+                        Log.e(TAG, "historyRes:" + historyResult.state + ", " + historyResult.msg);
                         break;
                     case 0x128://上传图片
                         ChatCommand.OznerUploadResult oznerUploadResult = (ChatCommand.OznerUploadResult) msg.obj;
@@ -965,7 +972,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                             if (oznerUploadResult.msg != null) {
                                 Toast.makeText(getContext(), oznerUploadResult.msg, Toast.LENGTH_SHORT).show();
                             }
-                            Log.e("tag", "uploadFail:" + oznerUploadResult.state + ", " + oznerUploadResult.msg);
+                            Log.e(TAG, "uploadFail:" + oznerUploadResult.state + ", " + oznerUploadResult.msg);
                         }
                         break;
                     case 0x129:
@@ -1011,6 +1018,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
      * bitmap转为base64
      *
      * @param bitmap
+     *
      * @return
      */
     public static String bitmapToBase64(Bitmap bitmap) {
@@ -1085,7 +1093,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
      */
     private void chatLogout(final String customid, final String ac_token, final String sign) {
         String result = ChatCommand.oznerChatLogout(customid, ac_token, sign);
-        Log.e("tag", "CChatLogout:" + result);
+        Log.e(TAG, "CChatLogout:" + result);
     }
 
     /*
@@ -1300,7 +1308,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                     ArrayList picList = data.getStringArrayListExtra(PictureChooseActivity.INTENT_PICTRUES);
                     if (camertData != null) {
                         for (String str : camertData) {
-                            Log.e("tag", "resultCameraData:" + str);
+                            Log.e(TAG, "resultCameraData:" + str);
 //                            chatUploadImg(str, token, newSign);
                             chatUploadImg2(str, token, newSign, false);
                             setToMsg(String.format("<img src=\"%s\"/>", str));
@@ -1314,13 +1322,13 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                             setToMsg(String.format("<img src=\"%s\"/>", filePath));
                         }
                     } else {
-                        Log.e("tag", "select nothing");
+                        Log.e(TAG, "select nothing");
                     }
                 }
                 break;
             case RequestCamera:
                 if (resultCode == getActivity().RESULT_OK) {
-                    Log.e("tag", "camera_img_getAbsolutePath:" + cameraFile.getAbsolutePath());
+                    Log.e(TAG, "camera_img_getAbsolutePath:" + cameraFile.getAbsolutePath());
                     chatUploadImg2(cameraFile.getAbsolutePath(), token, newSign, true);
 //                    insert(cameraFile.getAbsolutePath());
                     setToMsg(String.format("<img src=\"%s\"/>", cameraFile.getAbsolutePath()));
@@ -1376,7 +1384,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("tag", "Chat_RecvChatData:" + e.getMessage());
+            Log.e(TAG, "Chat_RecvChatData:" + e.getMessage());
         }
     }
 
