@@ -20,6 +20,7 @@ import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
 import com.ozner.cup.Command.DeviceData;
 import com.ozner.cup.Command.FootFragmentListener;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.AddDeviceActivity;
@@ -254,9 +255,10 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
                 } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }
-                Intent intent = new Intent(getActivity(), AddDeviceActivity.class);
-//                Intent intent = new Intent(getActivity(), MatchCupActivity.class);
-                getActivity().startActivity(intent);
+                if (OznerPreference.IsLogin(getActivity())) {
+                    Intent intent = new Intent(getActivity(), AddDeviceActivity.class);
+                    getActivity().startActivity(intent);
+                }
             }
         });
         ListView lv = mDslv;

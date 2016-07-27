@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ozner.cup.Command.FootFragmentListener;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.AddDeviceActivity;
 import com.ozner.cup.Device.OznerApplication;
@@ -102,9 +103,10 @@ public class MainConFragment extends Fragment implements FootFragmentListener {
         addDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent intent=new Intent(getActivity(), AddDeviceActivity.class);
-                getActivity().startActivity(intent);
-
+                if (OznerPreference.IsLogin(getActivity())) {
+                    Intent intent = new Intent(getActivity(), AddDeviceActivity.class);
+                    getActivity().startActivity(intent);
+                }
             }
         });
         cProessbarView = (CProessbarView) view.findViewById(R.id.my_cproessbarview);

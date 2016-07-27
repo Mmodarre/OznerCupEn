@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ozner.cup.BaiduPush.OznerBroadcastAction;
 import com.ozner.cup.Command.OznerPreference;
@@ -102,30 +103,39 @@ public class CenterSetupActivity extends AppCompatActivity implements View.OnCli
             case R.id.rlay_Logout:
                 //   int i=3/0;
 //                VibratorUtil.Vibrate(getBaseContext(),3000);
-                AlertDialog logoutDialog = new AlertDialog.Builder(CenterSetupActivity.this).create();
-                logoutDialog.setMessage(getString(R.string.Center_ToLogOut));
-                logoutDialog.setButton(Dialog.BUTTON_NEGATIVE, getString(R.string.ensure), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        OznerPreference.SetValue(CenterSetupActivity.this, UserDataPreference.UserId, "");
-                        OznerPreference.setUserToken(CenterSetupActivity.this, "");
-                        ((OznerApplication) getApplication()).setIsPhone();
-                        Intent loginIntent = new Intent(CenterSetupActivity.this, LoginActivity.class);
+                if (OznerPreference.IsLogin(this)) {
+                    AlertDialog logoutDialog = new AlertDialog.Builder(CenterSetupActivity.this).create();
+                    logoutDialog.setMessage(getString(R.string.Center_ToLogOut));
+                    logoutDialog.setButton(Dialog.BUTTON_NEGATIVE, getString(R.string.ensure), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            OznerPreference.SetValue(CenterSetupActivity.this, UserDataPreference.UserId, "");
+                            OznerPreference.setUserToken(CenterSetupActivity.this, "");
+                            ((OznerApplication) getApplication()).setIsPhone();
+                            if (((OznerApplication) getApplication()).isLanguageCN()) {
+                                Intent loginIntent = new Intent(CenterSetupActivity.this, LoginActivity.class);
+                                startActivity(loginIntent);
+                            } else {
+                                Intent loginIntent = new Intent(CenterSetupActivity.this, LoginEnActivity.class);
 //                loginIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                        startActivity(loginIntent);
-                        Intent logoutBroadIntent = new Intent(OznerBroadcastAction.Logout);
-                        logoutBroadIntent.putExtra("Address", "logout");
-                        sendBroadcast(logoutBroadIntent);
-                        CenterSetupActivity.this.finish();
-                    }
-                });
-                logoutDialog.setButton(Dialog.BUTTON_POSITIVE, getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                logoutDialog.show();
+                                startActivity(loginIntent);
+                            }
+                            Intent logoutBroadIntent = new Intent(OznerBroadcastAction.Logout);
+                            logoutBroadIntent.putExtra("Address", "logout");
+                            sendBroadcast(logoutBroadIntent);
+                            CenterSetupActivity.this.finish();
+                        }
+                    });
+                    logoutDialog.setButton(Dialog.BUTTON_POSITIVE, getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    logoutDialog.show();
+                }else {
+                    Toast.makeText(this,getString(R.string.ShouldLogin),Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
