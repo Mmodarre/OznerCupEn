@@ -60,6 +60,10 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         tv_freeItem = (TextView) findViewById(R.id.tv_freeItem);
         rlay_mark = (RelativeLayout) findViewById(R.id.rlay_mark);
         rlay_checkVersion = (RelativeLayout) findViewById(R.id.rlay_checkVersion);
+
+        if (!((OznerApplication) getApplication()).isLanguageCN()) {
+            tv_freeItem.setVisibility(View.GONE);
+        }
 //        rlay_back.setOnClickListener(this);
         tv_freeItem.setOnClickListener(this);
         rlay_mark.setOnClickListener(this);

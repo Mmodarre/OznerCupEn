@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/MyCenter_FirstTitleBg"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp">
+        android:paddingBottom="20dp">
 
         <RelativeLayout
             android:id="@+id/rlay_person_photo_bg"
             android:layout_width="90dp"
             android:layout_height="90dp"
+            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/center_person_bg">
 
@@ -40,6 +40,14 @@
             android:layout_marginTop="11dp"
             android:text="Ozner"
             android:textSize="18dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:onClick="backUp"
+            android:background="@null"
+            android:padding="20dp"/>
 
     </RelativeLayout>
 

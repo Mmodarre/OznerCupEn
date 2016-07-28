@@ -52,6 +52,10 @@ public class ResetPwdActivity extends AppCompatActivity {
         });
     }
 
+    public void backUp(View view){
+        finish();
+    }
+
     private void getEmailCode(String email) {
         dialog = ProgressDialog.show(this, null, getString(R.string.sendEmailCode));
         dialog.setCanceledOnTouchOutside(false);

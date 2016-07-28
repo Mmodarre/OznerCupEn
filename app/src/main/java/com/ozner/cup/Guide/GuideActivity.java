@@ -12,11 +12,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.ozner.cup.Device.OznerApplication;
+import com.ozner.cup.Login.LoginActivity;
+import com.ozner.cup.Login.LoginEnActivity;
+import com.ozner.cup.R;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
-
-import com.ozner.cup.Login.LoginActivity;
-import com.ozner.cup.R;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class GuideActivity extends Activity {
     private int[] images = {R.drawable.guide1, R.drawable.guide2, R.drawable.guide3};//引导页图片
     private ImageView[] icons;//用来存储指示性图标的数组
     private int lastposition;
+    private boolean isShowLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +63,7 @@ public class GuideActivity extends Activity {
                 iv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(GuideActivity.this, LoginActivity.class);
-                        GuideActivity.this.startActivity(intent);
-                        GuideActivity.this.finish();
+                        ShowNextLoginPage();
                     }
                 });
             }
@@ -114,9 +114,10 @@ public class GuideActivity extends Activity {
 //				Log.i(TAG, "positionOffsetPixels------------"+positionOffsetPixels);
                 Log.i("tag", "onPageScrolled------position------" + position);
                 if (lastposition == position && lastposition == images.length - 1) {
-                    Intent intent = new Intent(GuideActivity.this, LoginActivity.class);
-                    GuideActivity.this.startActivity(intent);
-                    GuideActivity.this.finish();
+//                    Intent intent = new Intent(GuideActivity.this, LoginActivity.class);
+//                    GuideActivity.this.startActivity(intent);
+//                    GuideActivity.this.finish();
+                    ShowNextLoginPage();
                 }
                 lastposition = position;
 
@@ -169,6 +170,20 @@ public class GuideActivity extends Activity {
 
             }
         });
+    }
+
+    private void ShowNextLoginPage() {
+        if (!isShowLogin) {
+            Intent intent = new Intent();
+            if (((OznerApplication) getApplication()).isLanguageCN()) {
+                intent.setClass(GuideActivity.this, LoginActivity.class);
+            } else {
+                intent.setClass(GuideActivity.this, LoginEnActivity.class);
+            }
+            GuideActivity.this.startActivity(intent);
+            GuideActivity.this.finish();
+            isShowLogin = true;
+        }
     }
     /*
      * 声明方法初始化指示图标

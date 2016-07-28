@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
@@ -258,6 +259,8 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
                 if (OznerPreference.IsLogin(getActivity())) {
                     Intent intent = new Intent(getActivity(), AddDeviceActivity.class);
                     getActivity().startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), getString(R.string.ShouldLogin), Toast.LENGTH_SHORT).show();
                 }
             }
         });

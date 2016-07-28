@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.OznerPreference;
@@ -106,6 +107,8 @@ public class MainConFragment extends Fragment implements FootFragmentListener {
                 if (OznerPreference.IsLogin(getActivity())) {
                     Intent intent = new Intent(getActivity(), AddDeviceActivity.class);
                     getActivity().startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), getString(R.string.ShouldLogin), Toast.LENGTH_SHORT).show();
                 }
             }
         });

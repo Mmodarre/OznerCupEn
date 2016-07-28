@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ozner.cup.Command.FootFragmentListener;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.AddDeviceActivity;
 import com.ozner.cup.Device.OznerApplication;
@@ -96,9 +98,9 @@ public class MainConEnFragment extends Fragment implements FootFragmentListener 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                }else{
+                } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }
             }
@@ -107,9 +109,12 @@ public class MainConEnFragment extends Fragment implements FootFragmentListener 
         addDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent intent=new Intent(getActivity(), AddDeviceActivity.class);
-                getActivity().startActivity(intent);
-
+                if (OznerPreference.IsLogin(getActivity())) {
+                    Intent intent = new Intent(getActivity(), AddDeviceActivity.class);
+                    getActivity().startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), getString(R.string.ShouldLogin), Toast.LENGTH_SHORT).show();
+                }
             }
         });
         cProessbarView = (CProessbarView) view.findViewById(R.id.my_cproessbarview);
