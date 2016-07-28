@@ -102,6 +102,11 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), MyCenterActivity.class));
+                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
+                } else {
+                    ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
+                }
             }
         });
         if (!((OznerApplication) getActivity().getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {

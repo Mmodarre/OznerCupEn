@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ozner.cup.BaiduPush.OznerBroadcastAction;
+import com.ozner.cup.Command.PageState;
 import com.ozner.cup.R;
 
 public class MyCenterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -72,7 +73,20 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    public void backUp(View view){
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0x2134) {
+            switch (resultCode) {
+                case PageState.CenterDeviceClick:
+                    setResult(PageState.CenterDeviceClick, data);
+                    finish();
+                    break;
+            }
+        }
+    }
+
+    public void backUp(View view) {
         finish();
     }
 }
