@@ -192,12 +192,13 @@ public class WaterQuantityFragment extends Fragment {
         //周
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+//        cal.set(Calendar.DAY_OF_WEEK_IN_MONTH,Calendar.SUNDAY);
         Date timeWeek = new Date(cal.getTime().getTime() / 86400000 * 86400000);
         Log.e("trtagWeek",timeWeek.toString());
         cupRecordList = cup.Volume();
         if (cupRecordList != null) {
-            cupRecords = cupRecordList.getRecordByDate(timeWeek, CupRecordList.QueryInterval.Week);
-            Log.e("trtagWeek",cupRecords.length+"======================cupRecords的条数");
+            cupRecords = cupRecordList.getRecordByDate(timeWeek, CupRecordList.QueryInterval.Day);
+            Log.e("trtagWeek",cupRecords.length+"======================cupRecords的周条数");
             if (cupRecords != null) {
                 for (int i = 0; i < dataWeek.length; i++) {
                     for (int j = 0; j < cupRecords.length; j++) {
@@ -243,6 +244,7 @@ public class WaterQuantityFragment extends Fragment {
         cupRecordList = cup.Volume();
         if (cupRecordList != null) {
             cupRecords = cupRecordList.getRecordByDate(timeMonth, CupRecordList.QueryInterval.Day);
+            Log.e("trtagWeek",cupRecords.length+"======================cupRecords的月条数");
             if (cupRecords != null) {
                 for (int i = 0; i < dataMonth.length; i++) {
                     for (int j = 0; j < cupRecords.length; j++) {
