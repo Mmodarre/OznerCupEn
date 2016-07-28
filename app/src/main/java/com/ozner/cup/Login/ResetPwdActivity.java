@@ -2,10 +2,10 @@ package com.ozner.cup.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -52,7 +52,8 @@ public class ResetPwdActivity extends AppCompatActivity {
         });
     }
 
-    public void backUp(View view){
+    public void backUp(View view) {
+        startActivity(new Intent(ResetPwdActivity.this, LoginEnActivity.class));
         finish();
     }
 
@@ -78,6 +79,8 @@ public class ResetPwdActivity extends AppCompatActivity {
             Toast.makeText(ResetPwdActivity.this, getString(R.string.different_pwd), Toast.LENGTH_SHORT).show();
             return;
         } else {
+            dialog = ProgressDialog.show(ResetPwdActivity.this, null, getString(R.string.submiting));
+            dialog.setCanceledOnTouchOutside(false);
             OznerCommand.resetPwd(ResetPwdActivity.this, et_email.getText().toString(), et_new_password.getText().toString(), et_verCode.getText().toString(), new OznerCommand.HttpCallback() {
                 @Override
                 public void HandleResult(NetJsonObject result) {
@@ -105,17 +108,7 @@ public class ResetPwdActivity extends AppCompatActivity {
                     if (regRes != null) {
                         Log.e("123456", ((NetJsonObject) msg.obj).value.toString());
                         if (regRes.state > 0) {
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Thread.sleep(1000);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                    startActivity(new Intent(ResetPwdActivity.this, LoginEnActivity.class));
-                                }
-                            }).start();
+                            startActivity(new Intent(ResetPwdActivity.this, LoginEnActivity.class));
                             finish();
                         } else {
                             NetErrDecode.ShowErrMsgDialog(ResetPwdActivity.this, regRes.state, getString(R.string.regFail));

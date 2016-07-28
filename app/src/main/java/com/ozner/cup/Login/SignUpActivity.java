@@ -48,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
         setListener();
     }
 
+
     private void initViews() {
         btn_sign_up = (Button) findViewById(R.id.btn_sign_up);
         tv_verifyCode = (TextView) findViewById(R.id.tv_verifyCode);
@@ -56,6 +57,11 @@ public class SignUpActivity extends AppCompatActivity {
         et_password = (EditText) findViewById(R.id.et_password);
         et_confirm_password = (EditText) findViewById(R.id.et_confirm_password);
         iv_cb_xieyi = (ImageView) findViewById(R.id.iv_cb_xieyi);
+    }
+
+    public void backUp(View view) {
+//        startActivity(new Intent(SignUpActivity.this, LoginEnActivity.class));
+        finish();
     }
 
     private void setListener() {

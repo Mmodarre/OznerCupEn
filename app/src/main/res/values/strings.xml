@@ -731,4 +731,5 @@
     <string name="general">一般</string>
     <string name="act_member">代理会员</string>
     <string name="center_i">我</string>
+    <string name="submiting">正在提交...</string>
 </resources>
