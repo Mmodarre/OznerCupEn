@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +16,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ozner.cup.Cup;
-import com.ozner.cup.CupRecord;
-import com.ozner.cup.CupRecordList;
 import com.ozner.cup.CChat.CChatFragment;
 import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.Command.PageState;
+import com.ozner.cup.Cup;
+import com.ozner.cup.CupRecord;
+import com.ozner.cup.CupRecordList;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.OznerMallFragment;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.cup.MainActivity;
-import com.ozner.cup.MainEnActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.UIView.ChartAdapter;
 import com.ozner.cup.UIView.UIXVolumeChartView;
@@ -126,9 +126,9 @@ public class WaterQuantityFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         if(((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
-            ((MainActivity) getActivity()).isShouldResume = true;
+            ((BaseMainActivity) getActivity()).isShouldResume = true;
         }else{
-            ((MainEnActivity) getActivity()).isShouldResume = true;
+            ((BaseMainActivity) getActivity()).isShouldResume = true;
         }
     }
 
@@ -193,14 +193,16 @@ public class WaterQuantityFragment extends Fragment {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         Date timeWeek = new Date(cal.getTime().getTime() / 86400000 * 86400000);
+        Log.e("trtagWeek",timeWeek.toString());
         cupRecordList = cup.Volume();
         if (cupRecordList != null) {
             cupRecords = cupRecordList.getRecordByDate(timeWeek, CupRecordList.QueryInterval.Week);
+            Log.e("trtagWeek",cupRecords.length+"======================cupRecords的条数");
             if (cupRecords != null) {
                 for (int i = 0; i < dataWeek.length; i++) {
                     for (int j = 0; j < cupRecords.length; j++) {
                         if (cupRecords[j].start.getDay() != 0) {
-                            dataWeek[cupRecords[j].start.getDay()] = cupRecords[j].Volume;
+                            dataWeek[cupRecords[j].start.getDay()-1] = cupRecords[j].Volume;
                         } else {
                             Date today = new Date();
                             if (today.getDay() == 0) {
