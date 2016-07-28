@@ -22,4 +22,7 @@ public class OznerBroadcastAction {
     public final static String LoginNotify = "net.ozner.oznerproject.login_notify";
     //退出登录通知
     public final static String Logout = "net.ozner.oznerproject.logout";
+
+    //英文版个人中心设备点击广播
+    public final static String EN_Center_Click = "en_center_click";
 }

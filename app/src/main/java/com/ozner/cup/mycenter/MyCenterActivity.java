@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -79,7 +80,11 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
         if (requestCode == 0x2134) {
             switch (resultCode) {
                 case PageState.CenterDeviceClick:
-                    setResult(PageState.CenterDeviceClick, data);
+                    String centerAddress = data.getStringExtra(PageState.CENTER_DEVICE_ADDRESS);
+                    Log.e("tag", "英文版_centerAddress: " + centerAddress);
+                    Intent intent = new Intent(OznerBroadcastAction.EN_Center_Click);
+                    intent.putExtra("Address", centerAddress);
+                    sendBroadcast(intent);
                     finish();
                     break;
             }
