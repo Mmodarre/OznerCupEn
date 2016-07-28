@@ -25,6 +25,9 @@ android {
             jniDebuggable true
         }
     }
+    dexOptions {
+        incremental true
+    }
 //    sourceSets {
 //        main.jniLibs.srcDirs = ['libs']
 //    }

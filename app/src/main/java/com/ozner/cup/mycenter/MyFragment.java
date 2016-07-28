@@ -39,6 +39,7 @@ import com.ozner.cup.Login.LoginActivity;
 import com.ozner.cup.MainActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.mycenter.CenterBean.CenterNotification;
+import com.ozner.cup.mycenter.CenterBean.CenterVipUtil;
 import com.ozner.cup.slideleft.BaseFragment;
 import com.ozner.device.OznerDeviceManager;
 
@@ -56,6 +57,7 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
  * Created by gong on 2015/11/27.
  */
 public class MyFragment extends BaseFragment implements View.OnClickListener, FootFragmentListener {
+    private static final String TAG = "MyFragment";
     private final int NORESULT = 0;//没有获取到网络数据
     private final int USER_HEAD_INFO = 1;//
     private final int ADVISE_REQUEST = 2;
@@ -294,11 +296,25 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
                             }
                             if (netUserHeadImg.gradename != null && netUserHeadImg.gradename != "") {
                                 String gradename = netUserHeadImg.gradename;
+//                                if (gradename.contains("会员")) {
+//                                    gradename = gradename.replace("会员", "代理会员");
+//                                } else {
+//                                    gradename += "代理会员";
+//                                }
+
                                 if (gradename.contains("会员")) {
-                                    gradename = gradename.replace("会员", "代理会员");
-                                } else {
-                                    gradename += "代理会员";
+                                    int index = gradename.indexOf("会员");
+                                    gradename = gradename.substring(0, index);
                                 }
+
+                                if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                    if (CenterVipUtil.hasValue(gradename)) {
+                                        gradename = CenterVipUtil.getEnValue(gradename);
+                                    }
+                                }
+
+                                gradename += getString(R.string.act_member);
+
                                 tv_gradeNmae.setText(gradename);
                                 tv_gradeNmae.setVisibility(View.VISIBLE);
                             }

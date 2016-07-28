@@ -625,8 +625,7 @@
     <string name="keep_use_replenish">Stick with the essence of water, can effectively improve the skin condition.</string>
     <string name="water_replenish_use_instru">Water meter for use</string>
 
-
-    <string name="Chat_not_focus_ozner">No public attention at home water purifier No.</string>
+    <string name="Chat_not_focus_ozner">No attention OZNER IFAMILY official accounts</string>
     <string name="Chat_Phone_Err">User\'s phone number is incorrect</string>
     <string name="Chat_Login_err">Login failed</string>
     <string name="Chat_pic_upload_Err">Image upload failed</string>
@@ -748,4 +747,5 @@
     <string name="Safety">Safety</string>
     <string name="general">general</string>
     <string name="title_activity_base_main">BaseMainActivity</string>
+    <string name="act_member">Acting Member</string>
 </resources>

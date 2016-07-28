@@ -730,4 +730,5 @@
     <string name="nin">您</string>
     <string name="Safety">安全</string>
     <string name="general">一般</string>
+    <string name="act_member">代理会员</string>
 </resources>
