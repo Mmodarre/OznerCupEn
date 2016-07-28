@@ -19,10 +19,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
         debug {
             debuggable true
             jniDebuggable true
+            signingConfig signingConfigs.debug
         }
     }
     dexOptions {
@@ -32,14 +34,7 @@ android {
 //        main.jniLibs.srcDirs = ['libs']
 //    }
     signingConfigs {
-//        debug {
-//            storeFile file('G:/编程工具/ozner_new.keystore')
-//            storePassword "1234567890"
-//            keyAlias "ozner"
-//            keyPassword "123456789"
-//        }
-
-        config1 {
+        debug {
             keyAlias 'ozner'
             keyPassword '123456789'
             storeFile file('D:/ozner/oznerCup/ozner_ifamily.jks')

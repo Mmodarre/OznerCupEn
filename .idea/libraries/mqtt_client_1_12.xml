@@ -6,7 +6,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$APPLICATION_HOME_DIR$/gradle/gradle-2.10/caches/modules-2/files-2.1/org.fusesource.mqtt-client/mqtt-client/1.12/3445fc0c4e3162e9a7c310f639beeb24fc7f5d12/mqtt-client-1.12-sources.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/gradle/gradle-2.8/caches/modules-2/files-2.1/org.fusesource.mqtt-client/mqtt-client/1.12/3445fc0c4e3162e9a7c310f639beeb24fc7f5d12/mqtt-client-1.12-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

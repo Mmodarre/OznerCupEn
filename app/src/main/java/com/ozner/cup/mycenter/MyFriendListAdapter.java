@@ -212,7 +212,7 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
                 && !leMsgList.get(childPosition).getSenduserid().equals("")
                 && leMsgList.get(childPosition).getSenduserid().equals(mUserid)) {
 //            from = mNickname != "" ? mNickname : mMobile;
-            from = "我";
+            from = mContext.getString(R.string.center_i);
             to = friendInfoList.get(groupPosition).getNickname() != null
                     && !friendInfoList.get(groupPosition).getNickname().equals("")
                     ? friendInfoList.get(groupPosition).getNickname() : leMsgList.get(childPosition).getMobile();
@@ -220,7 +220,7 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
                 && !leMsgList.get(childPosition).getRecvuserid().equals("")
                 && leMsgList.get(childPosition).getRecvuserid().equals(mUserid)) {
 //            to = mNickname != "" ? mNickname : mMobile;
-            to = mContext.getString(R.string.foot_myself);
+            to = mContext.getString(R.string.center_i);
             from = friendInfoList.get(groupPosition).getNickname() != null
                     && !friendInfoList.get(groupPosition).getNickname().equals("")
                     ? friendInfoList.get(groupPosition).getNickname() : leMsgList.get(childPosition).getMobile();

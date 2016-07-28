@@ -7,7 +7,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$APPLICATION_HOME_DIR$/gradle/gradle-2.10/caches/modules-2/files-2.1/com.tencent.bugly/nativecrashreport/2.2.0/115172d0932b0a61b79a1af35930613b847583e4/nativecrashreport-2.2.0-sources.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/gradle/gradle-2.8/caches/modules-2/files-2.1/com.tencent.bugly/nativecrashreport/2.2.0/115172d0932b0a61b79a1af35930613b847583e4/nativecrashreport-2.2.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
