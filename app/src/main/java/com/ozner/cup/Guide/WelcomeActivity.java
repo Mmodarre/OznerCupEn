@@ -40,7 +40,7 @@ import org.json.JSONObject;
 
 
 public class WelcomeActivity extends Activity {
-    private final int SPLASH_DISPLAY_LENGHT = 500;
+    private final int SPLASH_DISPLAY_LENGHT = 1000;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private boolean isFirst;//程序是否第一次加载的标记
@@ -83,16 +83,24 @@ public class WelcomeActivity extends Activity {
         editor = sharedPreferences.edit();
         isFirst = sharedPreferences.getBoolean("isFirst", true);
         try {
-            if(((OznerApplication) getApplication()).isLanguageCN()){
-                editor.putBoolean("isFirst", false);
-            }
+//            if(((OznerApplication) getApplication()).isLanguageCN()){
+//               isFirst=false;
+//                editor.putBoolean("isFirst", false);
+//                editor.commit();
+//            }
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     if (isFirst) {
-                        editor.putBoolean("isFirst", false);
-                        editor.commit();
-                        ShowGuidePage();
+                        if(((OznerApplication) getApplication()).isLanguageCN()){
+                            editor.putBoolean("isFirst", false);
+                            editor.commit();
+                            ShowGuidePage();
+                        }else{
+                            editor.putBoolean("isFirst", false);
+                            editor.commit();
+                            showNexLoginPage();
+                        }
                     } else {
                         Thread t = new Thread(new Runnable() {
                             public void run() {
