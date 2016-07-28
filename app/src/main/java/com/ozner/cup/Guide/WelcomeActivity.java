@@ -83,15 +83,16 @@ public class WelcomeActivity extends Activity {
         editor = sharedPreferences.edit();
         isFirst = sharedPreferences.getBoolean("isFirst", true);
         try {
+            if(((OznerApplication) getApplication()).isLanguageCN()){
+                editor.putBoolean("isFirst", false);
+            }
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     if (isFirst) {
-                        if(((OznerApplication) getApplication()).isLanguageCN()){
-                            editor.putBoolean("isFirst", false);
-                            editor.commit();
-                            ShowGuidePage();
-                        }
+                        editor.putBoolean("isFirst", false);
+                        editor.commit();
+                        ShowGuidePage();
                     } else {
                         Thread t = new Thread(new Runnable() {
                             public void run() {
