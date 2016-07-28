@@ -14,9 +14,9 @@
     <string name="Center_Setup">Settings</string>
     <string name="Center_Allow_PushMsg">Allow message pushing</string>
     <string name="Center_Unit">Measurement unit</string>
-    <string name="Center_About_Ozner">About OZNER IFAMILY</string>
+    <string name="Center_About_Ozner">About</string>
     <string name="Center_AM">AM</string>
-    <string name="Center_About">About OZNER IFAMILY</string>
+    <string name="Center_About">About</string>
     <string name="Center_Logout">Log out</string>
     <string name="Center_ToLogOut">To log out?</string>
     <string name="Center_Verify_Msg">Validation message</string>
@@ -210,8 +210,8 @@
     <string name="Chat_MatchingKF">Waiting reply...</string>
     <string name="Chat_MatchFail">Customers are busy, please try again later</string>
     <string name="Chat_MatchSuccess">Already connected to customer service, you can start consulting</string>
-    <string name="Filter_Project1">OZNER Smart Water Tester</string>
-    <string name="Filter_Project2">Golden Novowater Series</string>
+    <string name="Filter_Project1">Smart Water Probe</string>
+    <string name="Filter_Project2">Golden Novowater</string>
     <string name="Filter_Project3">OZNER Cup</string>
     <string name="Filter_Scan">Scan it</string>
     <string name="Filter_ParmErr">Device address error</string>
