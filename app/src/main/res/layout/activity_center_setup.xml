@@ -45,10 +45,10 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/allow_push"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            android:paddingLeft="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,14 +63,16 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
                 android:layout_centerVertical="true" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/cupDetail_line_gray" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="15dp"
-            android:background="@color/cupDetail_line_gray" />
+
 
         <RelativeLayout
             android:id="@+id/rlay_utilsetup"

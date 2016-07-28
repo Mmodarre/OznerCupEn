@@ -29,7 +29,7 @@ import com.ozner.cup.R;
  */
 
 public class CenterSetupActivity extends AppCompatActivity implements View.OnClickListener {
-    RelativeLayout rlay_utilsetup, rlay_aboutOzner, rlay_Logout;
+    RelativeLayout rlay_utilsetup, rlay_aboutOzner, rlay_Logout, allow_push;
     SlidButton sb_switch;
     //    private SharedPreferences sharePre;
 //    private SharedPreferences.Editor editor;
@@ -72,6 +72,10 @@ public class CenterSetupActivity extends AppCompatActivity implements View.OnCli
         rlay_utilsetup = (RelativeLayout) findViewById(R.id.rlay_utilsetup);
         rlay_aboutOzner = (RelativeLayout) findViewById(R.id.rlay_aboutOzner);
         rlay_Logout = (RelativeLayout) findViewById(R.id.rlay_Logout);
+        allow_push = (RelativeLayout) findViewById(R.id.allow_push);
+//        if (!((OznerApplication)getApplication()).isLanguageCN()){
+        allow_push.setVisibility(View.GONE);
+//        }
         sb_switch = (SlidButton) findViewById(R.id.sb_switch);
 //        rlay_back.setOnClickListener(this);
         rlay_Logout.setOnClickListener(this);
@@ -133,8 +137,8 @@ public class CenterSetupActivity extends AppCompatActivity implements View.OnCli
                         }
                     });
                     logoutDialog.show();
-                }else {
-                    Toast.makeText(this,getString(R.string.ShouldLogin),Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.ShouldLogin), Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
