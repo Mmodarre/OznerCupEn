@@ -71,8 +71,8 @@
     <string name="cupDetail_tdsTitle">TDS value</string>
     <string name="cupDetail_tdsLevelNormal">SO-so</string>
     <string name="cupDetail_tdsValueNone">No</string>
-    <string name="cupDetail_tdsShort_left">击败了</string>
-    <string name="cupDetail_tdsShort_right">的用户</string>
+    <string name="cupDetail_tdsShort_left">beat&#160;</string>
+    <string name="cupDetail_tdsShort_right">&#160;of users</string>
     <string name="cupDetail_battery">d%</string>
     <string name="cupDetail_waterVolum">Water intake today:</string>
     <string name="cupDetail_waterTarget">Goal:</string>
@@ -114,8 +114,8 @@
     <string name="Center_None">No data</string>
     <string name="Center_Repeat">Reply:</string>
     <string name="Center_LoadFail">Failed to load!</string>
-    <string name="Center_LoadVolumRank">加载饮水量排名</string>
-    <string name="Center_LoadTDSRank">加载TDS排名</string>
+    <string name="Center_LoadVolumRank">Loading water intake ranking</string>
+    <string name="Center_LoadTDSRank">Loading TDS Ranking</string>
     <string name="Center_Loading">Loading...</string>
     <string name="Center_LeavingMsg">Sending...</string>
     <string name="Center_MyShort">Ranking</string>
