@@ -58,7 +58,6 @@
     <string name="cupDetail_tdsTitle">水质纯净值TDS</string>
     <string name="cupDetail_tdsLevelNormal">一般</string>
     <string name="cupDetail_tdsValueNone">暂无</string>
-    <string name="cupDetail_tdsShort">击败了%s的用户</string>
     <string name="cupDetail_tdsShort_left">击败了</string>
     <string name="cupDetail_tdsShort_right">的用户</string>
     <string name="cupDetail_battery">d%</string>
@@ -731,4 +730,5 @@
     <string name="Safety">安全</string>
     <string name="general">一般</string>
     <string name="act_member">代理会员</string>
+    <string name="center_i">我</string>
 </resources>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.ozner.cup.mycenter.MyFriendsActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.ozner.cup.mycenter.MyFriendsActivity">
 
     <TabHost
         android:id="@+id/tabHost"
@@ -40,7 +40,7 @@
                             android:layout_height="22dp"
                             android:layout_centerInParent="true"
 
-                            android:background="@drawable/back" />
+                            android:background="@drawable/back"/>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -76,7 +76,7 @@
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/my_newfirend_msg" />
+                                android:src="@drawable/my_newfirend_msg"/>
 
                             <ImageView
                                 android:id="@+id/iv_verifyTips"
@@ -86,7 +86,7 @@
                                 android:layout_marginRight="1dp"
                                 android:layout_marginTop="1dp"
                                 android:background="@drawable/new_friends_circle"
-                                android:visibility="gone" />
+                                android:visibility="gone"/>
 
                         </RelativeLayout>
 
@@ -99,7 +99,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="15dp"
                             android:layout_marginRight="20dp"
-                            android:src="@drawable/add_friend" />
+                            android:src="@drawable/add_friend"/>
                     </RelativeLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -124,7 +124,7 @@
                         android:layout_marginTop="15dp"
                         android:text="@string/Center_None"
                         android:textSize="16dp"
-                        android:visibility="gone" />
+                        android:visibility="gone"/>
 
                     <ListView
                         android:id="@+id/lv_ranklist"
@@ -184,7 +184,7 @@
                                 android:layout_toLeftOf="@+id/btn_leaveMsgSend"
                                 android:gravity="top|left"
                                 android:inputType="textMultiLine"
-                                android:maxLines="3" />
+                                android:maxLines="3"/>
 
 
                             <Button
@@ -195,7 +195,8 @@
                                 android:layout_centerVertical="true"
                                 android:background="@drawable/btn_click_selector"
                                 android:enabled="false"
-                                android:text="@string/send" />
+                                android:text="@string/send"
+                                android:textAllCaps="false"/>
 
                         </RelativeLayout>
                     </RelativeLayout>
@@ -213,14 +214,14 @@
                             style="@style/Base.Widget.AppCompat.ProgressBar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true" />
+                            android:layout_centerInParent="true"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_toRightOf="@+id/pb_loading"
-                            android:text="@string/Center_Loading" />
+                            android:text="@string/Center_Loading"/>
                     </RelativeLayout>
 
                     <!--没有好友-->
@@ -231,7 +232,7 @@
                         android:orientation="vertical"
                         android:visibility="gone">
 
-                        <include layout="@layout/friend_list_empty_page" />
+                        <include layout="@layout/friend_list_empty_page"/>
                     </LinearLayout>
                 </RelativeLayout>
             </FrameLayout>
