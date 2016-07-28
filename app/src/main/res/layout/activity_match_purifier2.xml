@@ -55,7 +55,11 @@
                     android:id="@+id/tv_matchTips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="2dp"
                     android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
                     android:text="@string/Purifier_SelectWifi"
                     android:textColor="@color/white"
                     android:textSize="14dp" />

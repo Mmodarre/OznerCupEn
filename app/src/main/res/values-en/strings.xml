@@ -482,7 +482,7 @@
 
     <string name="probe_null">Filter has expired</string>
 
-    <string name="device_null">Edevice disconnected</string>
+    <string name="device_null">Disconnected</string>
     <string name="sending_order">Sending commands</string>
     <string name="sending_failed">Failed to send command</string>
 
