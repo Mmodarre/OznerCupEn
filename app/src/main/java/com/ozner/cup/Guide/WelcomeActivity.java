@@ -87,9 +87,11 @@ public class WelcomeActivity extends Activity {
                 @Override
                 public void run() {
                     if (isFirst) {
-                        editor.putBoolean("isFirst", false);
-                        editor.commit();
-                        ShowGuidePage();
+                        if(((OznerApplication) getApplication()).isLanguageCN()){
+                            editor.putBoolean("isFirst", false);
+                            editor.commit();
+                            ShowGuidePage();
+                        }
                     } else {
                         Thread t = new Thread(new Runnable() {
                             public void run() {
