@@ -454,6 +454,7 @@ public class MainEnActivity extends BaseMainActivity {
         filter.addAction(OznerBroadcastAction.NewMessage);//新的留言
         filter.addAction(OznerBroadcastAction.Logout);//退出登录
         filter.addAction(OznerBroadcastAction.LoginNotify);//登录通知
+        filter.addAction(OznerBroadcastAction.EN_Center_Click);//英文版设备点击广播
         this.registerReceiver(mMonitor, filter);//注册蓝牙监听
     }
 
@@ -462,6 +463,7 @@ public class MainEnActivity extends BaseMainActivity {
      */
     @Override
     public void ShowContent(int index, String mac) {
+        Log.e("tag", "ShowContent: index:" + index + " , mac:" + mac);
         if (index != pagenow) {
             switch (index) {
                 case PageState.WODESHEBEI://我的设备页面
@@ -672,6 +674,7 @@ public class MainEnActivity extends BaseMainActivity {
                 break;
             case PageState.CenterDeviceClick:
                 String centerAddress = data.getStringExtra(PageState.CENTER_DEVICE_ADDRESS);
+                Log.e("tag", "英文版_Main_centerAddress: " + centerAddress);
 //                footNavFragment.ShowContent(PageState.DEVICECHANGE, centerAddress);
                 ShowContent(PageState.DEVICECHANGE, centerAddress);
 //                ShowDevicePage(PageState.DEVICECHANGE, centerAddress);
@@ -1139,6 +1142,12 @@ public class MainEnActivity extends BaseMainActivity {
                             startActivity(loginIntent);
                             MainEnActivity.this.finish();
                         }
+                        break;
+                    case OznerBroadcastAction.EN_Center_Click:
+//                        String centerAddress = data.getStringExtra(PageState.CENTER_DEVICE_ADDRESS);
+                        Log.e("tag", "英文版_Broadcast_centerAddress: " + sendoraddress);
+//                footNavFragment.ShowContent(PageState.DEVICECHANGE, centerAddress);
+                        ShowContent(PageState.DEVICECHANGE, sendoraddress);
                         break;
                     default:
                         break;
