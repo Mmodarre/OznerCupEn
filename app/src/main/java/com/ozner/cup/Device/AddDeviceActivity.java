@@ -22,14 +22,14 @@ import com.ozner.cup.R;
  * Modify by C-sir@hotmail.com
  */
 public class AddDeviceActivity extends AppCompatActivity {
-    //    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi };
-    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi,R.drawable.water_replenishment_meter };
-    //    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
-    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi,R.string.water_replen_meter};
-    //    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
-    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth, R.drawable.bluetooth};
-    //    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
-    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection,R.string.bluetooth_connection};
+        private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi };
+//    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi,R.drawable.water_replenishment_meter };
+        private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
+//    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi,R.string.water_replen_meter};
+        private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
+//    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth, R.drawable.bluetooth};
+        private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
+//    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection,R.string.bluetooth_connection};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,20 +75,20 @@ public class AddDeviceActivity extends AppCompatActivity {
                     intent.setClass(AddDeviceActivity.this, MatchProbeActivity.class);
                     break;
                 case 2:
-                    intent.setClass(AddDeviceActivity.this, MatchTdsPenActivity.class);
-                    break;
-                case 3:
+//                    intent.setClass(AddDeviceActivity.this, MatchTdsPenActivity.class);
+//                    break;
+//                case 3:
                     intent.setClass(AddDeviceActivity.this, MatchPurifierActivity.class);
                     break;
-                case 4:
+                case 3:
                     intent.setClass(AddDeviceActivity.this, MatchAirPuriVerActivity.class);
                     break;
-                case 5:
+                case 4:
                     intent.setClass(AddDeviceActivity.this,MatchAirPuriTaiActivity.class);
                     break;
-                case 6:
-                    intent.setClass(AddDeviceActivity.this, MatchWaterReplenishmentMeterActivity.class);
-                    break;
+//                case 6:
+//                    intent.setClass(AddDeviceActivity.this, MatchWaterReplenishmentMeterActivity.class);
+//                    break;
                 default:
                     break;
             }
