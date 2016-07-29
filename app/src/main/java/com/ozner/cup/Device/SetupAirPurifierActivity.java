@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.ozner.AirPurifier.AirPurifier;
 import com.ozner.AirPurifier.AirPurifierManager;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.device.OznerDeviceManager;
 
 import com.ozner.cup.Command.PageState;
@@ -85,6 +86,11 @@ public class SetupAirPurifierActivity extends AppCompatActivity implements View.
             ll_airpurifier_instru.setVisibility(View.VISIBLE);
         }else{
             ll_airpurifier_instru.setVisibility(View.GONE);
+        }
+        if(OznerPreference.isLoginPhone(SetupAirPurifierActivity.this)){
+            findViewById(R.id.ll_common_problem).setVisibility(View.VISIBLE);
+        }else{
+            findViewById(R.id.ll_common_problem).setVisibility(View.GONE);
         }
     }
 
