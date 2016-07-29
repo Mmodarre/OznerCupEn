@@ -15,10 +15,12 @@ import android.widget.TextView;
 
 import com.ozner.cup.BaiduPush.OznerBroadcastAction;
 import com.ozner.cup.Command.PageState;
+import com.ozner.cup.Command.UserDataPreference;
+import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.R;
 
 public class MyCenterActivity extends AppCompatActivity implements View.OnClickListener {
-
+    private String userid;
     ImageView userImage;
     TextView userName;
 
@@ -28,9 +30,9 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.add_device));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
             //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.add_device));
+            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
         }
         setContentView(R.layout.activity_my_center);
 
@@ -40,6 +42,18 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.setting_layout).setOnClickListener(this);
         userImage = (ImageView) findViewById(R.id.iv_person_photo);
         userName = (TextView) findViewById(R.id.tv_name);
+        userid = UserDataPreference.GetUserData(this, UserDataPreference.UserId, null);
+        if (!((OznerApplication) getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {
+            String nickname = UserDataPreference.GetUserData(this, "Nickname", null);
+            if (nickname != null && nickname.length() > 0) {
+                userName.setText(nickname);
+            } else {
+                nickname = UserDataPreference.GetUserData(this, "Email", null);
+                if (nickname != null && nickname.length() > 0) {
+                    userName.setText(nickname);
+                }
+            }
+        }
 
         IntentFilter filter = new IntentFilter(OznerBroadcastAction.Logout);
         registerReceiver(new BroadcastReceiver() {
