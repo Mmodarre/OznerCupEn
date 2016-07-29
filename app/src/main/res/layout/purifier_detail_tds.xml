@@ -146,7 +146,8 @@
         <ImageView
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_gravity="start"
+            android:layout_marginTop="3dp"
+            android:layout_gravity="top"
             android:layout_marginRight="3dp"
             android:src="@drawable/attention" />
 
@@ -154,7 +155,7 @@
             android:id="@+id/tv_tdsTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="top"
             android:maxWidth="230dp"
             android:text="@string/purifierDetail_after"
             android:textColor="@color/cupDetail_textcolor"
