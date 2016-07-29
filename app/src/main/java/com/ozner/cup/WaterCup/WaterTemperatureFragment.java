@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupRecord;
 import com.ozner.cup.CupRecordList;
@@ -54,7 +55,7 @@ public class WaterTemperatureFragment extends Fragment {
     private String mac;
     private Cup cup;
     private LinearLayout healthKnow, temperature_health_buy_layout, temperature_consult_layout, laly_temperature_value;
-    private RelativeLayout temperatureBack;
+    private RelativeLayout temperatureBack,temperature_friend_layout,temperature_health_layout;
     private MyListener myListener = new MyListener();
     int w_count = 0, w_countHot = 0, w_countCold = 0, w_countNor = 0;
     int count = 0, countHot = 0, countCold = 0, countNor = 0;
@@ -69,7 +70,7 @@ public class WaterTemperatureFragment extends Fragment {
             tv_temperature_value, tv_temperature_distribution;
 
     private TextView tv_temperature_facetest;
-    private ImageView iv_temperature_face, iv_temperature_left, iv_temperature_right;
+    private ImageView iv_temperature_face, iv_temperature_left, iv_temperature_right,iv_temperature_line1,iv_height;
 
 
     private CupRecordList cupRecordList;
@@ -413,12 +414,44 @@ public class WaterTemperatureFragment extends Fragment {
         temperature_health_buy_layout.setOnClickListener(myListener);
         temperature_consult_layout = (LinearLayout) view.findViewById(R.id.temperature_consult_layout);
         temperature_consult_layout.setOnClickListener(myListener);
+        if(OznerPreference.isLoginPhone(getContext())){
+            temperature_consult_layout.setVisibility(View.VISIBLE);
+        }else{
+            temperature_consult_layout.setVisibility(View.GONE);
+        }
 
+//        temperature_friend_layout=(RelativeLayout)view.findViewById(R.id.temperature_friend_layout);
+//        if(OznerPreference.isLoginPhone(getContext())){
+//            temperature_friend_layout.setVisibility(View.VISIBLE);
+//        }else{
+//            temperature_friend_layout.setVisibility(View.GONE);
+//        }
         iv_temperature_left = (ImageView) view.findViewById(R.id.iv_temperature_left);
         iv_temperature_left.setOnClickListener(myListener);
         iv_temperature_right = (ImageView) view.findViewById(R.id.iv_temperature_right);
         iv_temperature_right.setOnClickListener(myListener);
 
+
+        iv_temperature_line1=(ImageView)view.findViewById(R.id.iv_temperature_line1);
+        if(OznerPreference.isLoginPhone(getContext())){
+            iv_temperature_line1.setVisibility(View.VISIBLE);
+        }else{
+            iv_temperature_line1.setVisibility(View.GONE);
+        }
+
+        temperature_health_layout=(RelativeLayout)view.findViewById(R.id.temperature_health_layout);
+        if(OznerPreference.isLoginPhone(getContext())){
+            temperature_health_layout.setVisibility(View.VISIBLE);
+        }else{
+            temperature_health_layout.setVisibility(View.GONE);
+        }
+
+        iv_height=(ImageView)view.findViewById(R.id.iv_height);
+        if(OznerPreference.isLoginPhone(getContext())){
+            iv_height.setVisibility(View.VISIBLE);
+        }else{
+            iv_height.setVisibility(View.GONE);
+        }
 
     }
 

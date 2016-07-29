@@ -8,7 +8,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="foot_heght">60dp</dimen>
-
+    <dimen name="footen_heght">65dp</dimen>
     <dimen name="foot_tab_image">32dp</dimen>
     <dimen name="foot_tab_txt_margintop">0dp</dimen>
 
