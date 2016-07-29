@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ozner.WaterPurifier.WaterPurifier;
@@ -26,6 +27,7 @@ public class SetupWaterPurifierActivity extends AppCompatActivity implements Vie
     String url = null;
     Toolbar toolbar;
     TextView toolbar_save, tv_purifier_name,water_purifier_mac;
+    LinearLayout ll_about_water_purifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +66,14 @@ public class SetupWaterPurifierActivity extends AppCompatActivity implements Vie
         tv_purifier_name.setOnClickListener(this);
         water_purifier_mac = (TextView) findViewById(R.id.water_purifier_mac);
         water_purifier_mac.setText(Mac);
-        findViewById(R.id.ll_about_water_purifier).setOnClickListener(this);
+        ll_about_water_purifier = (LinearLayout) findViewById(R.id.ll_about_water_purifier);
+        ll_about_water_purifier.setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
-
+        if (((OznerApplication)getApplication()).isLanguageCN()){
+            ll_about_water_purifier.setVisibility(View.VISIBLE);
+        }else{
+            ll_about_water_purifier.setVisibility(View.GONE);
+        }
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         initview();
     }

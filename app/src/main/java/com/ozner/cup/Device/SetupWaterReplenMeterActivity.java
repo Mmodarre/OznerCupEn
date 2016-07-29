@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
@@ -30,6 +31,7 @@ public class SetupWaterReplenMeterActivity extends AppCompatActivity implements 
     private TextView toolbar_save, tv_sex;
     private EditText et_device_name;
     private WaterReplenishmentMeter waterReplenishmentMeter;
+    private RelativeLayout rl_replenmeter_instru;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,15 @@ public class SetupWaterReplenMeterActivity extends AppCompatActivity implements 
         findViewById(R.id.rl_set_sex).setOnClickListener(this);
         findViewById(R.id.rl_set_remind_time).setOnClickListener(this);
         findViewById(R.id.rl_goumai).setOnClickListener(this);
-        findViewById(R.id.rl_replenmeter_instru).setOnClickListener(this);
+        rl_replenmeter_instru = (RelativeLayout) findViewById(R.id.rl_replenmeter_instru);
+        rl_replenmeter_instru.setOnClickListener(this);
+
+        if (((OznerApplication)getApplication()).isLanguageCN()){
+            rl_replenmeter_instru.setVisibility(View.VISIBLE);
+        }else{
+            rl_replenmeter_instru.setVisibility(View.GONE);
+        }
+
 //        findViewById(R.id.rl_play_show).setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
         toolbar_save.setOnClickListener(this);

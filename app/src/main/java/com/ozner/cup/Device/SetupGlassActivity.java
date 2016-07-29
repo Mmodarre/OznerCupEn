@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -57,6 +58,7 @@ public class SetupGlassActivity extends AppCompatActivity implements View.OnClic
     private boolean flag;
     List<String> dropList = new ArrayList<String>();
     SpinnerPopWindow mSpinner;
+    LinearLayout ll_about_smart_glass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -280,7 +282,13 @@ public class SetupGlassActivity extends AppCompatActivity implements View.OnClic
         btn_takewater_temperature.setOnClickListener(this);
         btn_takewater_tds.setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
-//        findViewById(R.id.ll_about_smart_glass).setOnClickListener(this);
+        ll_about_smart_glass = (LinearLayout) findViewById(R.id.ll_about_smart_glass);
+        ll_about_smart_glass.setOnClickListener(this);
+        if (((OznerApplication)getApplication()).isLanguageCN()){
+            ll_about_smart_glass.setVisibility(View.VISIBLE);
+        }else{
+            ll_about_smart_glass.setVisibility(View.GONE);
+        }
         takewater_time.setOnClickListener(this);
         takewater_timeInterval.setOnClickListener(this);
         toolbar_save.setOnClickListener(this);
@@ -398,11 +406,11 @@ public class SetupGlassActivity extends AppCompatActivity implements View.OnClic
                 findViewById(R.id.show_as_temp).setVisibility(View.INVISIBLE);
                 findViewById(R.id.show_as_tds).setVisibility(View.VISIBLE);
                 break;
-//            case R.id.ll_about_smart_glass:
-//                intent.setClass(this, AboutDeviceActivity.class);
-//                intent.putExtra("MAC", Mac);
-//                startActivityForResult(intent, 1);
-//                break;
+            case R.id.ll_about_smart_glass:
+                intent.setClass(this, AboutDeviceActivity.class);
+                intent.putExtra("MAC", Mac);
+                startActivityForResult(intent, 1);
+                break;
             case R.id.tv_delDeviceBtn:
                 new AlertDialog.Builder(this).setTitle("").setMessage(getString(R.string.weather_delete_device))
                         .setPositiveButton(getString(R.string.yes), new AlertDialog.OnClickListener() {

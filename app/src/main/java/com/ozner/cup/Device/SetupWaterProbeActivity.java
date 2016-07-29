@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -34,6 +35,7 @@ public class SetupWaterProbeActivity extends AppCompatActivity implements View.O
     TextView tv_probe_name, tv_time1_display, tv_time2_display, toolbar_save;
     Date time1, time2;
     RadioButton first, second;
+    LinearLayout ll_about_water_probe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +80,16 @@ public class SetupWaterProbeActivity extends AppCompatActivity implements View.O
         toolbar_save.setOnClickListener(this);
         findViewById(R.id.ll_detection_time1).setOnClickListener(this);
         findViewById(R.id.ll_detection_time2).setOnClickListener(this);
-        findViewById(R.id.ll_about_water_probe).setOnClickListener(this);
+        ll_about_water_probe= (LinearLayout) findViewById(R.id.ll_about_water_probe);
+        ll_about_water_probe.setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
         tv_probe_name.setOnClickListener(this);
+        if (((OznerApplication)getApplication()).isLanguageCN()){
+            ll_about_water_probe.setVisibility(View.VISIBLE);
+        }else{
+            ll_about_water_probe.setVisibility(View.GONE);
+        }
+
         initView();
     }
 

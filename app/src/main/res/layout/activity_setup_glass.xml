@@ -12,7 +12,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:layout_below="@+id/toolbar_setup_activity"
         android:background="@color/colorLine" />
 
@@ -71,7 +71,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
                     android:background="@color/colorLine" />
 
                 <LinearLayout
@@ -146,7 +146,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
                     android:background="@color/colorLine" />
 
                 <RelativeLayout
@@ -275,7 +275,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:background="@color/colorLine" />
 
             <TextView
@@ -288,7 +288,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:background="@color/colorLine" />
 
             <LinearLayout
@@ -331,7 +331,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
                     android:background="@color/colorLine" />
 
                 <LinearLayout
@@ -383,7 +383,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
                     android:background="@color/colorLine" />
 
                 <LinearLayout
@@ -411,7 +411,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
                     android:background="@color/colorLine" />
 
                 <RelativeLayout
@@ -441,7 +441,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
                     android:background="@color/colorLine"
                     android:visibility="gone" />
 
@@ -474,7 +474,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:background="@color/colorLine" />
 
             <TextView
@@ -487,7 +487,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:background="@color/colorLine" />
 
             <LinearLayout
@@ -694,7 +694,7 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
+                            android:layout_height="0.5dp"
                             android:layout_alignParentTop="true"
                             android:background="@color/colorLine" />
 
@@ -720,13 +720,13 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:background="@color/colorLine" />
 
             <ImageView
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginTop="15dp"
                 android:background="@color/colorLine" />
 
@@ -762,7 +762,7 @@
             <ImageView
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:background="@color/colorLine" />
 
             <RelativeLayout
