@@ -648,7 +648,7 @@
     <string name="press_speak">Press and hold the talk</string>
 
     <string name="loding_success">Connected</string>
-    <string name="loding_null">No</string>
+    <string name="loding_null">Disconnected</string>
     <string name="not_connected">Not Connected</string>
 
 
