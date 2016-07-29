@@ -127,7 +127,6 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         OznerApplication.setControlNumFace(tv_remainTime);
         OznerApplication.setControlNumFace(tv_remainPre);
         init();
-
     }
 
     public class ProjectItemClickListener implements AdapterView.OnItemClickListener {
