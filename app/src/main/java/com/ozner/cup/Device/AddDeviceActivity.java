@@ -100,7 +100,7 @@ public class AddDeviceActivity extends AppCompatActivity {
     private class DeviceAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return 7;
+            return 5;
         }
 
         @Override
