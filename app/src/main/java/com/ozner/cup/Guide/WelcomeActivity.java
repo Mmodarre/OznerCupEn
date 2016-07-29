@@ -29,6 +29,7 @@ import com.ozner.cup.Login.LoginEnActivity;
 import com.ozner.cup.MainActivity;
 import com.ozner.cup.MainEnActivity;
 import com.ozner.cup.R;
+import com.ozner.cup.mycenter.CheckForUpdate.LogUtilsLC;
 import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONObject;
@@ -40,6 +41,7 @@ import org.json.JSONObject;
 
 
 public class WelcomeActivity extends Activity {
+    private static final String TAG = "WelcomeActivity";
     private final int SPLASH_DISPLAY_LENGHT = 1000;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -92,11 +94,11 @@ public class WelcomeActivity extends Activity {
                 @Override
                 public void run() {
                     if (isFirst) {
-                        if(((OznerApplication) getApplication()).isLanguageCN()){
+                        if (((OznerApplication) getApplication()).isLanguageCN()) {
                             editor.putBoolean("isFirst", false);
                             editor.commit();
                             ShowGuidePage();
-                        }else{
+                        } else {
                             editor.putBoolean("isFirst", false);
                             editor.commit();
                             showNexLoginPage();
@@ -127,6 +129,7 @@ public class WelcomeActivity extends Activity {
                                                     @Override
                                                     public void handleMessage(Message msg) {
                                                         String token = OznerPreference.UserToken(getBaseContext());
+                                                        LogUtilsLC.E(TAG, "setOwner: owner:" + msg.obj.toString() + " , token:" + token);
                                                         OznerDeviceManager.Instance().setOwner(msg.obj.toString(), token);
                                                         try {
                                                             CSqlCommand.getInstance().SetTableName(getBaseContext(), "N" + msg.obj.toString().replace("-", ""));
