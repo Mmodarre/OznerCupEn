@@ -119,6 +119,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
         return rootview;
     }
 
+
     private void ShowNoDeviceView(View view) {
 //        view.setBackgroundResource(R.drawable.left_backgroud);
         view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.main_bgcolor));
@@ -196,6 +197,19 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
      * 初始化本地数据
      * */
     private void LocalInitData() {
+        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {
+            String nickname = UserDataPreference.GetUserData(getContext(), "Nickname", null);
+            if (nickname != null && nickname.length() > 0) {
+                user_name.setText(nickname);
+            } else {
+                nickname = UserDataPreference.GetUserData(getContext(), "Email", null);
+                if (nickname != null && nickname.length() > 0) {
+                    user_name.setText(nickname);
+                }
+            }
+        }
+
+
         if (OznerDeviceManager.Instance() != null) {
             myDeviceList.clear();
             //获取本地数据库设备列表

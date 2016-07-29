@@ -108,7 +108,7 @@ public class WelcomeActivity extends Activity {
                                 if (netUserInfo != null) {
                                     try {
                                         if (BuildConfig.DEBUG) {
-                                            Log.e("tag", "netUserInfo:" + netUserInfo.userinfo.toString());
+                                            Log.e("tag", "welcome_netUserInfo:" + netUserInfo.userinfo.toString());
                                         }
                                     } catch (Exception ex) {
                                         ex.printStackTrace();

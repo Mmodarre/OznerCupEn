@@ -585,7 +585,7 @@
     <string name="win_infor">Winning information</string>
     <string name="share_card">Share Gift Card</string>
     <string name="please_open_power">Please turn the power switch</string>
-    <string name="get_waterpurifiertype_fail">Water type acquisition failure</string>
+    <string name="get_waterpurifiertype_fail">Water purifier type acquisition failure</string>
     <string name="send_status_fail">Send Status: Failed to send</string>
     <string name="send_status_success">Send Status: sent successfully</string>
     <string name="count">Secondary</string>
