@@ -541,7 +541,7 @@
     <string name="normal">正常</string>
     <string name="wetness">湿润</string>
     <string name="skin_query_null">肤质查询</string>
-
+    <string name="avg_times">%1$2.1f%%(%2$d次)</string>
     <string name="water_replenish_titleHum">水分</string>
     <string name="water_replenish_humTitle">人体部位正常水分率</string>
     <string name="water_replenish_humEye">眼部\t35%-45%</string>

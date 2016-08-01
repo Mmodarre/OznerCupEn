@@ -62,12 +62,12 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     private LinearLayout laly_water_replenish, laly_water_replenish_skin;
     private int progress = 0;
     int queryTimes = 0, queryHands, queryFace, queryEyes, queryNeck, times;
-    float varHandsValue, varFaceValue, varEyesValue, varNeckValue = 0.0f;
+    float varHandsValue, varFaceValue, varEyesValue, varNeckValue = 0;
     SharedPreferences sh;
     SharedPreferences.Editor editor;
     BaseDeviceIO.ConnectStatus connectStatus;
     float battery;
-    private float faceTotalValue, handTotalValue, neckTotalValue, eyesTotalValue, skinVarValue = 0.0f;
+    private float faceTotalValue, handTotalValue, neckTotalValue, eyesTotalValue, skinVarValue = 0;
 
     @Nullable
     @Override
@@ -488,12 +488,13 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
         tv_query_notice.setText(getResources().getString(R.string.query_notice_face));
         state = 1;
-        varValue.setText(varFaceValue + "%(" + queryFace + "次)");
+//        varValue.setText(varFaceValue + "%(" + queryFace + "次)");
+        varValue.setText(String.format(getString(R.string.avg_times),varFaceValue,queryFace));
         String faceLastValue = sh.getString(Mac + "face", null);
         if (faceLastValue != null) {
             lastValue.setText(faceLastValue + "%");
         }
-//        varValue.setText(String.format(getString(R.string.var_skin_value),queryFace,queryFace));
+
 
     }
 
@@ -506,7 +507,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
         tv_query_notice.setText(getResources().getString(R.string.query_notice_hand));
         state = 2;
-        varValue.setText(varHandsValue + "%(" + queryHands + "次)");
+//        varValue.setText(varHandsValue + "%(" + queryHands + "次)");
+        varValue.setText(String.format(getString(R.string.avg_times),varHandsValue,queryHands));
         String handsLastValue = sh.getString(Mac + "hands", null);
         if (null != handsLastValue) {
             lastValue.setText(handsLastValue + "%");
@@ -522,7 +524,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
         tv_query_notice.setText(getResources().getString(R.string.query_notice_eyes));
         state = 3;
-        varValue.setText(varEyesValue + "%(" + queryEyes + "次)");
+//        varValue.setText(varEyesValue + "%(" + queryEyes + "次)");
+        varValue.setText(String.format(getString(R.string.avg_times),varEyesValue,queryEyes));
         String eyesLastValue = sh.getString(Mac + "eyes", null);
         if (eyesLastValue != null) {
             lastValue.setText(eyesLastValue + "%");
@@ -538,7 +541,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
         tv_query_notice.setText(getResources().getString(R.string.query_notice_bozi));
         state = 4;
-        varValue.setText(varNeckValue + "%(" + queryNeck + "次)");
+//        varValue.setText(varNeckValue + "%(" + queryNeck + "次)");
+        varValue.setText(String.format(getString(R.string.avg_times),varNeckValue,queryNeck));
         String neckLastValue = sh.getString(Mac + "neck", null);
         if (neckLastValue != null) {
             lastValue.setText(neckLastValue + "%");

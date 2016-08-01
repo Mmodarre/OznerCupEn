@@ -100,9 +100,10 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private int IsShowDueDay = 0;
     private TextView tv_phone_nonet, tv_detail_nonet, purifier_nonet;
     private int isNet;
-    private boolean isFirst = false;
+    private boolean isFirst = true;
     private boolean hasType = false;
     private boolean isZero = false;
+
     public WaterPurifierFragment() {
         // Required empty public constructor
     }
@@ -127,7 +128,14 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 //            new GetMachineTypeAsyncTask().execute();
         }
         OznerApplication.changeTextFont((ViewGroup) view);
-        isFirst = true;
+//        isFirst = true;
+
+        if (isFirst) {
+            if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                new GetLvxinTimeAsyncTask().execute();
+            }
+            isFirst = false;
+        }
         return view;
     }
 
@@ -140,18 +148,12 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
         UiPowerUpdateAsyncTask uiPowerUpdateAsyncTask = new UiPowerUpdateAsyncTask();
         uiPowerUpdateAsyncTask.execute("ss");
 
-
-        if (isFirst) {
-            new GetLvxinTimeAsyncTask().execute();
-            isFirst = false;
-        }
-
         initWaterPurifierFilter();
         OznerApplication.setControlNumFace(tv_spec);
     }
 
     private void initView(View view) {
-        if (((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
+        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -219,7 +221,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 
     public void InitData() {
         isOffLine = waterPurifier.isOffline();
-        if (waterPurifier.sensor().TDS1()>0&&waterPurifier.sensor().TDS2()>0){
+        if (waterPurifier.sensor().TDS1() > 0 && waterPurifier.sensor().TDS2() > 0) {
             isZero = false;
             tds1 = waterPurifier.sensor().TDS1();
             tds2 = waterPurifier.sensor().TDS2();
@@ -228,13 +230,14 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                 tds1 = tds2;
                 tds2 = tdsMid;
             }
-        }else {
+        } else {
             tds1 = waterPurifier.sensor().TDS1();
             tds2 = waterPurifier.sensor().TDS2();
             isZero = true;
         }
         isPowerOn = waterPurifier.status().Power();
     }
+
     //
     public void BindDataToView() {
         if (isNet != 0 && !isOffLine) {
@@ -278,13 +281,13 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             }
             if (tds1 != 65535) {
                 OznerApplication.setControlNumFace(tv_preValue);
-                if(isZero){
+                if (isZero) {
                     OznerApplication.setControlTextFace(tv_preValue);
                     OznerApplication.setControlTextFace(tv_afterValue);
                     tv_preValue.setText(getResources().getString(R.string.text_null));
                     tv_afterValue.setText(getString(R.string.text_null));
                     rlay_purifier_tds.setClickable(false);
-                }else{
+                } else {
                     rlay_purifier_tds.setClickable(true);
                     tv_preValue.setText(tds1 + "");
                 }
@@ -305,13 +308,13 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 
             if (tds2 != 65535) {
                 OznerApplication.setControlNumFace(tv_afterValue);
-                if(isZero){
+                if (isZero) {
                     OznerApplication.setControlTextFace(tv_preValue);
                     OznerApplication.setControlTextFace(tv_afterValue);
                     tv_preValue.setText(getResources().getString(R.string.text_null));
                     tv_afterValue.setText(getString(R.string.text_null));
                     rlay_purifier_tds.setClickable(false);
-                }else{
+                } else {
                     rlay_purifier_tds.setClickable(true);
                     tv_preValue.setText(tds1 + "");
                 }
@@ -330,13 +333,13 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 //            tv_afterValue.setTextSize(30);
             }
             if (tds1 != 65535 && tds2 != 65535) {
-                if(isZero){
+                if (isZero) {
                     OznerApplication.setControlTextFace(tv_preValue);
                     OznerApplication.setControlTextFace(tv_afterValue);
                     tv_preValue.setText(getResources().getString(R.string.text_null));
                     tv_afterValue.setText(getString(R.string.text_null));
                     rlay_purifier_tds.setClickable(false);
-                }else {
+                } else {
                     rlay_purifier_tds.setClickable(true);
                     tv_preValue.setText(tds1 + "");
                     tv_afterValue.setText(tds2 + "");
@@ -648,12 +651,12 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
         new AlertDialog.Builder(getContext())
                 .setMessage(getString(R.string.filter_need_change))
                 .setPositiveButton(getString(R.string.buy_air_lvxin), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                buyFilter();
-                dialog.dismiss();
-            }
-        }).setNegativeButton(getString(R.string.airOutside_know), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        buyFilter();
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton(getString(R.string.airOutside_know), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -814,7 +817,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                 showDialog();
                 break;
             case R.id.rlay_menu:
-                if (((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
+                if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();

@@ -66,10 +66,12 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
             }
         });
 
-        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.skin_buy_layout).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
+            view.findViewById(R.id.skin_buy_layout).setVisibility(View.GONE);
         }
         toolbar_text = (TextView) view.findViewById(R.id.toolbar_text);
         toolbar_text.setText(getString(R.string.skin_query_null));
@@ -239,26 +241,30 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
                         skinVarValue += time * oil;
                         times += time;
                     }
-                    float oil = skinVarValue / times;
-                    if (oil <= 12) {
-                        skin_show.setText(getString(R.string.skin_dry));
-                        skin_dry.setVisibility(View.GONE);
-                        skin_oily.setSelected(true);
-                        tv_skin_notice.setText(getString(R.string.skin_oily_notice));
-                        skin_show_remind.setText(getString(R.string.skin_dry_notice));
-                        iv_skin_class.setImageResource(R.drawable.ganzao);
-                    } else if (oil > 12 && oil <= 20) {
-                        skin_show.setText(getString(R.string.skin_mid));
-                        skin_middle.setVisibility(View.GONE);
-                        skin_show_remind.setText(getString(R.string.skin_mid_notice));
-                        iv_skin_class.setImageResource(R.drawable.zhongxing_03);
-                    } else if (oil > 20) {
-                        skin_show.setText(getString(R.string.skin_oily));
-                        skin_oily.setVisibility(View.GONE);
-                        skin_show_remind.setText(getString(R.string.skin_oily_notice));
-                        iv_skin_class.setImageResource(R.drawable.youxing_03);
+                    if (times != 0) {
+                        float oil = skinVarValue / times;
+                        if (oil <= 12) {
+                            skin_show.setText(getString(R.string.skin_dry));
+                            skin_dry.setVisibility(View.GONE);
+                            skin_oily.setSelected(true);
+                            tv_skin_notice.setText(getString(R.string.skin_oily_notice));
+                            skin_show_remind.setText(getString(R.string.skin_dry_notice));
+                            iv_skin_class.setImageResource(R.drawable.ganzao);
+                        } else if (oil > 12 && oil <= 20) {
+                            skin_show.setText(getString(R.string.skin_mid));
+                            skin_middle.setVisibility(View.GONE);
+                            skin_show_remind.setText(getString(R.string.skin_mid_notice));
+                            iv_skin_class.setImageResource(R.drawable.zhongxing_03);
+                        } else if (oil > 20) {
+                            skin_show.setText(getString(R.string.skin_oily));
+                            skin_oily.setVisibility(View.GONE);
+                            skin_show_remind.setText(getString(R.string.skin_oily_notice));
+                            iv_skin_class.setImageResource(R.drawable.youxing_03);
+                        }
+                        notice_skin.setText(getString(R.string.query_times_unenough));
+                    } else {
+                        notice_skin.setText(getString(R.string.never_query));
                     }
-                    notice_skin.setText(getString(R.string.query_times_unenough));
                 } catch (Exception e) {
                 }
             }

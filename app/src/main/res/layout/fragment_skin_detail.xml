@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/white">
 
     <LinearLayout
@@ -145,7 +144,7 @@
                     android:id="@+id/tv_skin_water"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25"
+                    android:text="0"
                     android:textColor="@color/kindly_notice"
                     android:textSize="50sp" />
 
@@ -173,7 +172,7 @@
                     android:id="@+id/tv_skin_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="干燥"
+                    android:text=""
                     android:textColor="@color/kindly_notice" />
             </LinearLayout>
 
@@ -206,7 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:text="42.6%"
+                        android:text=""
                         android:textColor="@color/kindly_notice"
                         android:textSize="16dp" />
                 </LinearLayout>
@@ -241,18 +240,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:text="33.3%"
+                        android:text=""
                         android:textColor="@color/kindly_notice"
                         android:textSize="16dp" />
 
-                    <TextView
-                        android:id="@+id/tv_times"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.8"
-                        android:paddingLeft="2dp"
-                        android:text="(12次)"
-                        android:textColor="@color/kindly_notice" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_times"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:alpha="0.8"-->
+                        <!--android:paddingLeft="2dp"-->
+                        <!--android:text="(12次)"-->
+                        <!--android:textColor="@color/kindly_notice" />-->
                 </LinearLayout>
             </RelativeLayout>
 
@@ -315,7 +314,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="20dp"
-                    android:visibility="gone"
                     android:minHeight="200dp" />
 
                 <LinearLayout
@@ -407,7 +405,7 @@
 
                 <LinearLayout
                     android:id="@+id/skin_buy_jinghua"
-                    android:layout_width="152dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_marginLeft="29dp"
                     android:background="@drawable/btn_bg_blue_choose"

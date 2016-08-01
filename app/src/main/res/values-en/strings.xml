@@ -502,7 +502,7 @@
     <string name="water_replenish_skin">Skin type</string>
     <string name="water_replenish_tip">Please click the part you want to check</string>
     <string name="water_replenish_skinLast">Last Detected</string>
-    <string name="water_replenish_skinAge">average value</string>
+    <string name="water_replenish_skinAge">MEAN</string>
     <string name="never_query">You have never been detected oh</string>
     <string name="query_times_unenough">Statistics by data accumulation,only for reference</string>
     <string name="kindly_notice">Warm tip:</string>
@@ -534,7 +534,7 @@
     <string name="normal">Normal</string>
     <string name="wetness">Moist</string>
     <string name="skin_query_null">Skin Type</string>
-
+    <string name="avg_times">%1$2.1f%%(%2$dtimes)</string>
     <string name="water_replenish_titleHum">Water</string>
     <string name="water_replenish_humTitle">Human body parts normal water rate</string>
     <string name="water_replenish_humEye">Eye\t35%-45%</string>
