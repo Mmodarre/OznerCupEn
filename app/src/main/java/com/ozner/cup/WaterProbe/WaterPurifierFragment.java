@@ -533,8 +533,9 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                     if (!Attr.equals("null")) {
                         cool = Attr.split(",")[0].split(":")[1];
                         hot = Attr.split(",")[1].split(":")[1];
+
                     }
-                    initHotCool();
+//                    initHotCool();
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.e("1234", "coolhot");
@@ -567,6 +568,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
         @Override
         protected String doInBackground(String... params) {
             InitData();
+            initHotCool();
             return null;
         }
 
@@ -586,6 +588,8 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 //                    tv_afterValue.setText(getString(R.string.text_null));
 //                } else {
                 BindDataToView();
+                switchCool(isCoolOn);
+                switchHot(isHotOn);
 //                }
             }
         }
@@ -602,9 +606,13 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private void initHotCool() {
         if ("true".equals(cool)) {
             isCoolOn = waterPurifier.status().Cool();
+            Log.e("trcool","sssssssssssssss");
+
         }
         if ("true".equals(hot)) {
             isHotOn = waterPurifier.status().Hot();
+            Log.e("trcool","dddddddddddddddddddd");
+
         }
     }
 
@@ -835,6 +843,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                         if (isPowerOn) {
                             switchCool(!isCoolOn);
                             waterPurifier.status().setCool(!waterPurifier.status().Cool(), this);
+                            Log.e("TR",waterPurifier.status().Cool()+"dddddddddd");
                         } else {
                             Toast.makeText(getContext(), getString(R.string.please_open_power), Toast.LENGTH_SHORT).show();
                         }
