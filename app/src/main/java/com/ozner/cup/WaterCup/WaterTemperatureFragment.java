@@ -173,7 +173,7 @@ public class WaterTemperatureFragment extends Fragment {
         Date timeWeek = new Date(cal.getTime().getTime() / 86400000 * 86400000);
         cupRecordList = cup.Volume();
         if (cupRecordList != null) {
-            cupRecords = cupRecordList.getRecordByDate(timeWeek, CupRecordList.QueryInterval.Week);
+            cupRecords = cupRecordList.getRecordByDate(timeWeek, CupRecordList.QueryInterval.Day);
             if (cupRecords != null) {
                 for (int i = 0; i < dataWeek.length; i++) {
                     for (int j = 0; j < cupRecords.length; j++) {
