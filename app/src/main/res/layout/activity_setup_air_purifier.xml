@@ -76,8 +76,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="20dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="50dp"
         android:paddingTop="20dp">
 
         <LinearLayout
@@ -85,11 +83,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:background="@drawable/air_tape_blue" />
 
             <TextView
@@ -107,13 +106,14 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:src="@drawable/air_tape_zise" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:layout_marginTop="10dp"
                 android:text="@string/bad_less" />
         </LinearLayout>
@@ -123,16 +123,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="10dp"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:src="@drawable/air_tape_red" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:layout_marginTop="10dp"
                 android:text="@string/bad_more" />
         </LinearLayout>

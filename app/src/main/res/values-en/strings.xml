@@ -416,9 +416,12 @@
     <string name="air_mode">Mode</string>
     <string name="air_timing">Timing</string>
     <string name="air_lock">Child Lock</string>
-    <string name="air_low">Low wind speed</string>
-    <string name="air_middle">Middle wind speed</string>
-    <string name="air_high">High wind speed</string>
+    <string name="air_low">Low speeds</string>
+    <string name="air_middle">Middle speeds</string>
+    <string name="air_high">High speeds</string>
+    <string name="wind_low">Low</string>
+    <string name="wind_middle">Middle</string>
+    <string name="wind_high">High</string>
     <string name="air_dataLoding">loading</string>
     <string name="air_ver_dataLoding">air purifier loading</string>
     <string name="air_dataLodingfair">Loading failed, please try again</string>
@@ -610,8 +613,8 @@
 
     <string name="detection_time2">Detection time 2</string>
     <string name="you">Excellent</string>
-    <string name="bad_less">Less polluting</string>
-    <string name="bad_more">Serious pollution</string>
+    <string name="bad_less">Less pollution</string>
+    <string name="bad_more">Serious</string>
     <string name="temp_blow">25℃ below</string>
     <string name="temp_up">above 50℃</string>
     <string name="tds_blow">50 below</string>

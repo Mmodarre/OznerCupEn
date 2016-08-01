@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.ozner.cup.R;
+
 /**
  * Created by C-sir@hotmail.com  on 2015/12/23.
  */
@@ -154,11 +156,11 @@ public class CProessbarView extends View implements View.OnTouchListener {
             float textwidth = mPaint.measureText(textvalue);
             canvas.drawText(textvalue, drawx - textwidth / 2, r, mPaint);
             if (persent <= 40) {
-                texttips = "低速";
+                texttips = getResources().getString(R.string.wind_low);
             } else if (persent <= 60) {
-                texttips = "中速";
+                texttips = getResources().getString(R.string.wind_middle);
             } else {
-                texttips = "高速";
+                texttips = getResources().getString(R.string.wind_high);
             }
             mPaint.setTextSize(19);
             textwidth = mPaint.measureText(texttips);
