@@ -426,7 +426,7 @@
     <string name="air_ver_dataLoding">air purifier loading</string>
     <string name="air_dataLodingfair">Loading failed, please try again</string>
     <string name="airRoom_pm">PM2.5</string>
-    <string name="airRoom_pmtext">PM2.5 is an abbr\nfor fine Particulate Matter</string>
+    <string name="airRoom_pmtext">PM2.5 is an abbr for fine Particulate Matter</string>
     <string name="airRoom_voc">VOC</string>
     <string name="airRoom_voctext">VOC is volatile\norganic compounds</string>
     <string name="airRoom_case">Warm tip: Timely replace the filter cartridge and enjoy pure air</string>
