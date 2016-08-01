@@ -118,15 +118,15 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         llay_QRCodeScan.setOnClickListener(this);
         llay_Chat.setOnClickListener(this);
         llay_buyFilter.setOnClickListener(this);
-        if (!((OznerApplication)getApplication()).isLoginPhone()) {
+        if (!((OznerApplication) getApplication()).isLoginPhone()) {
             findViewById(R.id.ll_en_no).setVisibility(View.GONE);
+        } else {
+            uiz_moreProject.setOnItemClickListener(new ProjectItemClickListener());
         }
-        uiz_moreProject.setOnItemClickListener(new ProjectItemClickListener());
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         OznerApplication.setControlNumFace(tv_remainTime);
         OznerApplication.setControlNumFace(tv_remainPre);
         init();
-
     }
 
     public class ProjectItemClickListener implements AdapterView.OnItemClickListener {

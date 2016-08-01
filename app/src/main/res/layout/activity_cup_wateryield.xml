@@ -47,7 +47,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/wateryield_finish"
                             android:textColor="@color/colorTds"
-                            android:textSize="18dp" />
+                            android:textSize="12dp" />
 
                         <TextView
                             android:id="@+id/tv_wateryield_value"
@@ -65,8 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
-                        android:layout_weight="2"
-                        android:visibility="gone">
+                        android:layout_weight="1.5">
 
                         <TextView
                             android:id="@+id/tv_wateryield_friend_value"
@@ -104,8 +103,7 @@
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="35dp"
                         android:background="@drawable/btn_bg_blue_s_choose"
-                        android:gravity="center"
-                        android:visibility="gone">
+                        android:gravity="center">
 
                         <ImageView
                             android:id="@+id/iv_wateryield_consult_msg"
@@ -289,7 +287,7 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/tdshealth_test"
                     android:textColor="@color/colorTdsText"
-                    android:textSize="21dp" />
+                    android:textSize="15dp" />
 
 
                 <LinearLayout
@@ -378,6 +376,14 @@
                 android:layout_below="@+id/wateryield_health_layout"
                 android:background="@color/colorLine"
                 android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_height"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/footen_heght"
+                android:layout_below="@+id/tds_health_layout"
+                android:background="@color/colorLine"
+                android:visibility="visible" />
 
         </LinearLayout>
 

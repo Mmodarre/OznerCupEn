@@ -91,30 +91,30 @@
                     <RelativeLayout
                         android:id="@+id/tds_value_layout1"
                         android:layout_width="0dp"
+                        android:layout_weight="2"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:layout_marginLeft="25.5dp"
 
-                        android:layout_weight="1"
-
                         >
-
                         <TextView
-                            android:visibility="gone"
                             android:id="@+id/tv_tds_valuetext"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/tdsValue_test"
+                            android:textSize="18dp"
                             android:textColor="@color/colorTds"
-                            android:textSize="18dp" />
-
+                            android:text="@string/tdsValue_test"
+                            />
                         <ImageView
                             android:id="@+id/iv_tds_introduce"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_marginLeft="5dp"
-                            android:visibility="gone"
                             android:layout_toRightOf="@+id/tv_tds_valuetext"
-                            android:background="@drawable/kindly_notice_icon" />
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/kindly_notice_icon"
+                            />
+
+
 
 
                         <TextView
@@ -122,54 +122,57 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/tdsValue"
+                            android:textSize="18dp"
                             android:textColor="@color/colorTds"
-                            android:textSize="39dp" />
-
+                            android:layout_marginTop="36dp"
+                            />
                         <TextView
                             android:id="@+id/tv_tds_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_toRightOf="@+id/tv_tdstext"
                             android:text="0"
+                            android:textSize="39dp"
                             android:textColor="@color/colorTds"
-                            android:textSize="39dp" />
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@+id/tv_tdstext"
+                            android:layout_marginLeft="5dp"
+                            />
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/tds_friend_layout"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
-                        android:layout_weight="1"
-                        android:visibility="gone">
+                        android:layout_marginLeft="20dp"
+                        >
 
                         <TextView
                             android:id="@+id/tv_tds_friend_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/friend_ranking"
+                            android:textSize="18dp"
                             android:textColor="@color/colorTds"
-                            android:textSize="18dp" />
-
+                            android:text="@string/friend_ranking"
+                            />
                         <TextView
                             android:id="@+id/tv_tds_friendtext"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
                             android:text="0"
+                            android:textSize="39dp"
                             android:textColor="@color/colorTds"
-                            android:textSize="39dp" />
-
+                            android:layout_marginTop="20dp"
+                            />
                         <ImageView
                             android:id="@+id/iv_friend_value"
                             android:layout_width="15.5dp"
                             android:layout_height="15.5dp"
-                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="45dp"
                             android:layout_toRightOf="@+id/tv_tds_friendtext"
-                            android:background="@drawable/friend" />
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/friend"
+                            />
 
                     </RelativeLayout>
 
@@ -178,22 +181,21 @@
                         android:id="@+id/tds_consult_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="20dp"
                         android:layout_marginTop="35dp"
-                        android:background="@drawable/btn_bg_blue_s_choose"
-                        android:clickable="false"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="5dp"
                         android:gravity="center"
-                        android:visibility="gone">
+                        android:background="@drawable/btn_bg_blue_s_choose"
+                        >
 
                         <ImageView
                             android:id="@+id/iv_tds_consult_msg"
                             android:layout_width="30dp"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="7dp"
                             android:src="@drawable/tds_msg"
+                            android:layout_gravity="center"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="7dp"
 
 
                             />
@@ -202,19 +204,20 @@
                             android:id="@+id/tv_tds_consult_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="7dp"
-                            android:layout_toRightOf="@+id/iv_consult_msg"
-                            android:gravity="center"
                             android:text="@string/consult_test"
                             android:textColor="@color/colorTds"
+                            android:layout_toRightOf="@+id/iv_consult_msg"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="7dp"
                             android:textSize="17dp"
+                            android:gravity="center"
+                            android:layout_centerVertical="true"
 
                             />
                     </LinearLayout>
 
                 </LinearLayout>
+
 
 
                 <LinearLayout
@@ -252,6 +255,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tds_layout"
+                android:layout_marginBottom="5dp"
                 android:background="@color/ozner_text_login">
 
                 <TextView
@@ -540,7 +544,7 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/tdshealth_test"
                     android:textColor="@color/colorTdsText"
-                    android:textSize="21dp" />
+                    android:textSize="15dp" />
 
 
                 <LinearLayout
@@ -630,6 +634,13 @@
                 android:background="@color/colorLine"
                 android:visibility="gone" />
 
+            <ImageView
+                android:id="@+id/iv_height"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/footen_heght"
+                android:layout_below="@+id/iv_tds_line2"
+                android:background="@color/colorLine"
+                android:visibility="visible" />
 
         </RelativeLayout>
 

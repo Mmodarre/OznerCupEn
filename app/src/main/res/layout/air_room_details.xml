@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
 
             <include
                 android:id="@+id/tds_layout_top"
-                layout="@layout/cup_toolbar" />
+                layout="@layout/cup_toolbar"/>
 
             <RelativeLayout
                 android:id="@+id/tds_layout"
@@ -52,7 +52,7 @@
                                 android:layout_centerInParent="true"
                                 android:text="@string/airRoom_pm"
                                 android:textColor="@color/colorTds"
-                                android:textSize="18dp" />
+                                android:textSize="18dp"/>
 
                             <ImageView
                                 android:id="@+id/iv_airpm_introduce"
@@ -60,7 +60,7 @@
                                 android:layout_height="20dp"
                                 android:layout_marginLeft="5dp"
                                 android:layout_toRightOf="@+id/tv_tds_valuetext"
-                                android:background="@drawable/kindly_notice_icon" />
+                                android:background="@drawable/kindly_notice_icon"/>
                         </RelativeLayout>
 
                         <TextView
@@ -73,15 +73,16 @@
                             android:gravity="center"
                             android:text="@string/text_null"
                             android:textColor="@color/colorTds"
-                            android:textSize="39dp" />
+                            android:textSize="39dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:gravity="center"
                             android:text="@string/airRoom_pmtext"
                             android:textColor="@color/colorTds"
-                            android:textSize="10dp" />
+                            android:textSize="10dp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -103,7 +104,7 @@
                                 android:layout_centerInParent="true"
                                 android:text="@string/airRoom_voc"
                                 android:textColor="@color/colorTds"
-                                android:textSize="18dp" />
+                                android:textSize="18dp"/>
 
                             <ImageView
                                 android:id="@+id/iv_airvoc_introduce"
@@ -111,7 +112,7 @@
                                 android:layout_height="20dp"
                                 android:layout_marginLeft="7dp"
                                 android:layout_toRightOf="@+id/tv_air_valuetext"
-                                android:background="@drawable/kindly_notice_icon" />
+                                android:background="@drawable/kindly_notice_icon"/>
                         </RelativeLayout>
 
                         <TextView
@@ -123,15 +124,16 @@
                             android:layout_weight="1"
                             android:text="@string/text_null"
                             android:textColor="@color/colorTds"
-                            android:textSize="39dp" />
+                            android:textSize="39dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:gravity="center"
                             android:text="@string/airRoom_voctext"
                             android:textColor="@color/colorTds"
-                            android:textSize="10dp" />
+                            android:textSize="10dp"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -147,14 +149,17 @@
                 android:background="@color/ozner_text_login">
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/tv_air_cleans"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="19dp"
                     android:text="@string/air_cleans_value"
                     android:textColor="@color/air_clean"
-                    android:textSize="11dp" />
+                    android:textSize="11dp"/>
 
 
                 <TextView
@@ -167,7 +172,7 @@
                     android:layout_marginTop="12dp"
                     android:text="@string/text_null"
                     android:textColor="@color/air_text"
-                    android:textSize="43dp" />
+                    android:textSize="43dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -177,7 +182,7 @@
                     android:layout_toRightOf="@+id/tv_air_cleans_value"
                     android:text="mg"
                     android:textColor="@color/air_text"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
             </RelativeLayout>
 
 
@@ -186,7 +191,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="9dp"
                 android:layout_below="@+id/tds_distribution_layout"
-                android:background="@color/colorLine" />
+                android:background="@color/colorLine"/>
 
             <LinearLayout
                 android:id="@+id/rlay_air_filter_residue"
@@ -207,7 +212,7 @@
                         android:id="@+id/tv_air_filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/air_filter_value" />
+                        android:text="@string/air_filter_value"/>
 
                 </RelativeLayout>
 
@@ -223,7 +228,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/air_room_filter" />
+                        android:src="@drawable/air_room_filter"/>
 
                     <TextView
                         android:id="@+id/tv_air_room_filter"
@@ -232,14 +237,14 @@
                         android:layout_marginLeft="8dp"
                         android:text="@string/text_null"
                         android:textColor="@color/air_text"
-                        android:textSize="43dp" />
+                        android:textSize="43dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="%"
                         android:textColor="@color/air_text"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"/>
 
                 </LinearLayout>
 
@@ -248,7 +253,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" />
+                    android:layout_marginRight="20dp"/>
 
             </LinearLayout>
 
@@ -257,7 +262,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@+id/rlay_air_filter_residue"
-                android:background="@color/colorLine" />
+                android:background="@color/colorLine"/>
 
             <RelativeLayout
                 android:id="@+id/rlay_air_filter_case"
@@ -274,7 +279,7 @@
                     android:gravity="center"
                     android:text="@string/airRoom_case"
                     android:textColor="@color/air_case"
-                    android:textSize="11dp" />
+                    android:textSize="11dp"/>
 
             </RelativeLayout>
 
@@ -290,7 +295,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="9.5dp"
                     android:layout_alignParentTop="true"
-                    android:background="@color/colorLine" />
+                    android:background="@color/colorLine"/>
 
                 <LinearLayout
                     android:layout_width="333dp"
@@ -315,7 +320,7 @@
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginLeft="7dp"
-                            android:src="@drawable/tds_msg" />
+                            android:src="@drawable/tds_msg"/>
 
                         <TextView
                             android:id="@+id/tv_tds_consult_msg"
@@ -348,7 +353,7 @@
                             android:layout_height="19.5dp"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="12dp"
-                            android:src="@drawable/buy_shop" />
+                            android:src="@drawable/buy_shop"/>
 
                         <TextView
                             android:id="@+id/tv_health_buy_msg"
@@ -360,7 +365,7 @@
                             android:gravity="center"
                             android:text="@string/buy_air_lvxin"
                             android:textColor="@color/colorTds"
-                            android:textSize="17dp" />
+                            android:textSize="17dp"/>
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>

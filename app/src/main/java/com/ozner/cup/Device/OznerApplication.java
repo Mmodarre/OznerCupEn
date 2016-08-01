@@ -2,6 +2,7 @@ package com.ozner.cup.Device;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,14 @@ public class OznerApplication extends OznerBaseApplication {
     @Override
     public void onCreate() {
 //        ShareSDK.initSDK(getApplicationContext());
-        numFace = Typeface.createFromAsset(getAssets(), "font/shuzi.otf");
-        textFace = Typeface.createFromAsset(getAssets(), "font/wenzi.otf");
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                numFace = Typeface.createFromAsset(getAssets(), "font/shuzi.otf");
+                textFace = Typeface.createFromAsset(getAssets(), "font/wenzi.otf");
+            }
+        });
+
         LogUtilsLC.init(getApplicationContext());
 //        isLoginPhone = Boolean.getBoolean(OznerPreference.GetValue(getApplicationContext(), OznerPreference.IsLoginPhone, "true"));
         super.onCreate();

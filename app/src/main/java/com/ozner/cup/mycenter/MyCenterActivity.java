@@ -24,6 +24,15 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
     ImageView userImage;
     TextView userName;
 
+    BroadcastReceiver monitor = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(OznerBroadcastAction.Logout)) {
+                MyCenterActivity.this.finish();
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,15 +65,9 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
         }
 
         IntentFilter filter = new IntentFilter(OznerBroadcastAction.Logout);
-        registerReceiver(new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.getAction().equals(OznerBroadcastAction.Logout)) {
-                    MyCenterActivity.this.finish();
-                }
-            }
-        }, filter);
+        registerReceiver(monitor, filter);
     }
+
 
     @Override
     public void onClick(View v) {

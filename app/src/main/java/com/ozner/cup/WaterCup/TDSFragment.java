@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ozner.cup.CChat.CChatFragment;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupRecord;
@@ -40,7 +41,7 @@ import java.util.Date;
 public class TDSFragment extends Fragment {
 
     private TextView time_day, time_week, time_month;
-    private RelativeLayout tds_layout, chartView_layout;
+    private RelativeLayout tds_layout, chartView_layout,tds_friend_layout,tds_health_layout;
     private TDSChartView tdsChartView;
     private UIXWaterDetailProgress progressView;
     private ChartAdapter.ViewMode mode = ChartAdapter.ViewMode.Day;
@@ -62,7 +63,7 @@ public class TDSFragment extends Fragment {
     int m_hot = 0, m_bad = 0, m_nor = 0;
     int hot = 0, bad = 0, nor = 0;
 
-    private ImageView tdsIntroduce, iv_tds_left, iv_tds_right;
+    private ImageView tdsIntroduce, iv_tds_left, iv_tds_right,iv_tds_line1,iv_height;
     private LinearLayout healthKnow, tds_health_buy_layout, tds_consult_layout, laly_tds_value;
     private Toolbar toolbar;
     //    private ImageButton tdsShare;
@@ -398,6 +399,13 @@ public class TDSFragment extends Fragment {
         tds_health_buy_layout.setOnClickListener(myListener);
         tds_consult_layout = (LinearLayout) view.findViewById(R.id.tds_consult_layout);
         tds_consult_layout.setOnClickListener(myListener);
+        if(OznerPreference.isLoginPhone(getContext())){
+            tds_consult_layout.setVisibility(View.VISIBLE);
+        }else{
+            tds_consult_layout.setVisibility(View.GONE);
+        }
+
+
 
         iv_tds_left = (ImageView) view.findViewById(R.id.iv_tds_left);
         iv_tds_left.setOnClickListener(myListener);
@@ -405,6 +413,35 @@ public class TDSFragment extends Fragment {
         iv_tds_right.setOnClickListener(myListener);
 
         tv_tds_friendtext = (TextView) view.findViewById(R.id.tv_tds_friendtext);
+
+        tds_friend_layout=(RelativeLayout)view.findViewById(R.id.tds_friend_layout);
+        if(OznerPreference.isLoginPhone(getContext())){
+            tds_friend_layout.setVisibility(View.VISIBLE);
+        }else{
+            tds_friend_layout.setVisibility(View.GONE);
+        }
+
+        iv_tds_line1=(ImageView)view.findViewById(R.id.iv_tds_line1);
+        if(OznerPreference.isLoginPhone(getContext())){
+            iv_tds_line1.setVisibility(View.VISIBLE);
+        }else{
+            iv_tds_line1.setVisibility(View.GONE);
+        }
+
+
+        iv_height=(ImageView)view.findViewById(R.id.iv_height);
+        if(OznerPreference.isLoginPhone(getContext())){
+            iv_height.setVisibility(View.VISIBLE);
+        }else{
+            iv_height.setVisibility(View.GONE);
+        }
+
+        tds_health_layout=(RelativeLayout)view.findViewById(R.id.tds_health_layout);
+        if(OznerPreference.isLoginPhone(getContext())){
+            tds_health_layout.setVisibility(View.VISIBLE);
+        }else{
+            tds_health_layout.setVisibility(View.GONE);
+        }
     }
 
     MyListener myListener = new MyListener();

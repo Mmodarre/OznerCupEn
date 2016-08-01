@@ -14,10 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ozner.cup.CChat.CChatFragment;
 import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupRecord;
@@ -58,7 +60,7 @@ public class WaterQuantityFragment extends Fragment {
     private Toolbar toolbar;
     //    private ImageButton waterShare;
     private TextView waterText, tv_wateryield_friendtext, tv_wateryield_value, tv_wateryield_facetest, tv_wateryield_distribution;
-    private ImageView iv_wateryield_face;
+    private ImageView iv_wateryield_face,iv_wateryield_line1,iv_height;
     private int volum, rank;
     private CupRecordList cupRecordList;
     private CupRecord cupRecord;
@@ -66,6 +68,12 @@ public class WaterQuantityFragment extends Fragment {
     float volumCount;
     int volumDrink;
     private String imagePath;
+
+    private RelativeLayout wateryield_health_layout,wateryield_friend_layout;
+
+
+
+
     private Handler waterhandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -386,8 +394,41 @@ public class WaterQuantityFragment extends Fragment {
         wateryield_health_buy_layout.setOnClickListener(myListener);
         wateryield_consult_layout = (LinearLayout) view.findViewById(R.id.wateryield_consult_layout);
         wateryield_consult_layout.setOnClickListener(myListener);
+        if(OznerPreference.isLoginPhone(getContext())){
+            wateryield_consult_layout.setVisibility(View.VISIBLE);
+        }else{
+            wateryield_consult_layout.setVisibility(View.GONE);
+        }
         tv_wateryield_friendtext = (TextView) view.findViewById(R.id.tv_wateryield_friendtext);
         OznerApplication.setControlNumFace(tv_wateryield_friendtext);
+
+        iv_wateryield_line1=(ImageView)view.findViewById(R.id.iv_wateryield_line1);
+        if(OznerPreference.isLoginPhone(getContext())){
+            iv_wateryield_line1.setVisibility(View.VISIBLE);
+        }else{
+            iv_wateryield_line1.setVisibility(View.GONE);
+        }
+        wateryield_health_layout=(RelativeLayout)view.findViewById(R.id.wateryield_health_layout);
+        if(OznerPreference.isLoginPhone(getContext())){
+            wateryield_health_layout.setVisibility(View.VISIBLE);
+        }else{
+            wateryield_health_layout.setVisibility(View.GONE);
+        }
+
+        wateryield_friend_layout=(RelativeLayout)view.findViewById(R.id.wateryield_friend_layout);
+        if(OznerPreference.isLoginPhone(getContext())){
+            wateryield_friend_layout.setVisibility(View.VISIBLE);
+        }else{
+            wateryield_friend_layout.setVisibility(View.GONE);
+        }
+        iv_height=(ImageView)view.findViewById(R.id.iv_height);
+        if(OznerPreference.isLoginPhone(getContext())){
+            iv_height.setVisibility(View.VISIBLE);
+        }else{
+            iv_height.setVisibility(View.GONE);
+        }
+
+
     }
 
     private class MyListener implements View.OnClickListener {

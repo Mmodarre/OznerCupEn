@@ -81,7 +81,7 @@
     <string name="cupDetail_waterDrinkOk">Suitable for drinking</string>
     <string name="cupDetail_waterDrinkNo">Unsuitable for drinking</string>
     <string name="cupDetail_waterUtil">ml</string>
-    <string name="purifierDetail_after">After purification,the water quality is healthy,which is suitable for you to drink</string>
+    <string name="purifierDetail_after">After purified, could direct drinking</string>
     <string name="purifierDetail_none">Unused,no data displayed</string>
     <string name="ozner_text">COPYRIGHT©2015 OZNER.ALL RIGHTS RESERVED</string>
     <string name="match_failed_csir">Pairing failed:</string>
@@ -412,7 +412,7 @@
     <string name="tdsText2">\t\tTotal dissolved solids refer to the total amount of all the solutes in water,including both inorganic and organic matter. Can probably understand the conductivity value in the solution of salt,in general,the higher the conductivity,salinity is higher,the higher the TDS.</string>
     <string name="tdsText3">\t\tIn the inorganic matter,in addition to dissolve into the ionic composition,but also may have a molecular like inorganic. Because the organic matter contained in the natural water and the inorganic substance which is in the form of molecular like can not be considered in general,so the salt content is generally called as total dissolved solid.</string>
     <string name="tdsText4">\t\tHowever,TDS does not reflect the quality of water in the specific water. Such as electrolytic water,due to the electrolysis of water,[OH]- and other charged ions significantly increased,the corresponding increase in the amount of conductive. For example,the original TDS in 17 of pure water by electrolysis of water machine after the alkaline water TDS value of about 300.</string>
-    <string name="air_open">Switch</string>
+    <string name="air_open">Power</string>
     <string name="air_mode">Mode</string>
     <string name="air_timing">Timing</string>
     <string name="air_lock">Child Lock</string>
@@ -423,9 +423,9 @@
     <string name="air_ver_dataLoding">air purifier loading</string>
     <string name="air_dataLodingfair">Loading failed, please try again</string>
     <string name="airRoom_pm">PM2.5</string>
-    <string name="airRoom_pmtext">PM2.5 fine particulate matter in air</string>
+    <string name="airRoom_pmtext">PM2.5 is an abbr\nfor fine Particulate Matter</string>
     <string name="airRoom_voc">VOC</string>
-    <string name="airRoom_voctext">VOC volatile organic compounds in air</string>
+    <string name="airRoom_voctext">VOC is volatile\norganic compounds</string>
     <string name="airRoom_case">Warm tip: Timely replace the filter cartridge and enjoy pure air</string>
 
     <string name="airRoom_pm_what">What is PM2.5</string>
@@ -435,7 +435,7 @@
 
     <string name="airRoom_voc_what">What\'s VOC</string>
     <string name="airRoom_voc_text1">Volatile Organic Compounds</string>
-    <string name="airRoom_voc_text2">Volatile Organic Comounds,Abbreviation:VOC</string>
+    <string name="airRoom_voc_text2">Volatile Organic Comounds,Abbr:VOC</string>
     <string name="airRoom_vocText">\t\tAt room temperature usually refers to volatile organic compounds. More common as benzene, toluene, xylene, ethylbenzene, styrene, formaldehyde, TVOC (6-16 carbons alkanes), ketones and the like. These compounds have a volatile and pro-oil, it is widely used in industrial fields of footwear, toys, paints and graphite, adhesives, cosmetics, cars and interior decoration materials. VOC has a huge impact on human health, harm the liver, kidneys, brain and nervous system, causing memory loss and other serious consequences, and may even cause cancer.</string>
 
 
@@ -449,7 +449,7 @@
     <string name="airOutside_temp">Temperature：</string>
     <string name="airOutside_humidity">Humidity：</string>
     <string name="airOutside_data">Data source：</string>
-    <string name="airOutside_know">I see</string>
+    <string name="airOutside_know">Got it</string>
 
 
     <string name="waterTemp_faceClod">Water temperature is too cold!</string>
