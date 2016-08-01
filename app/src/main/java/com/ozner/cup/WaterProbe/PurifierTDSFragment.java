@@ -177,6 +177,16 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
         wateryield_health_buy_layout = (LinearLayout) rootView.findViewById(R.id.wateryield_health_buy_layout);
         laly_consult.setOnClickListener(this);
         wateryield_health_know_layout.setOnClickListener(this);
+
+        if(OznerPreference.isLoginPhone(getContext())){
+            wateryield_health_know_layout.setVisibility(View.VISIBLE);
+            rootView.findViewById(R.id.iv_tds_line2).setVisibility(View.VISIBLE);
+        }else {
+            wateryield_health_know_layout.setVisibility(View.GONE);
+            rootView.findViewById(R.id.iv_tds_line2).setVisibility(View.GONE);
+        }
+
+
         wateryield_health_buy_layout.setOnClickListener(this);
         if (((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
             rootView.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
