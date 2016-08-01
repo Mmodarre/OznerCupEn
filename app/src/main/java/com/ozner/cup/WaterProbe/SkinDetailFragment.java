@@ -31,6 +31,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -109,6 +110,15 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
 
     private void setData() {
         switchWeek(true);
+        int n = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        int m = faceOilyW[n];
+        if (m <= 12) {
+            tv_skin_state.setText(getString(R.string.skin_dry));
+        } else if (m > 12 && m <= 20) {
+            tv_skin_state.setText(getString(R.string.skin_mid));
+        } else if (m > 20) {
+            tv_skin_state.setText(getString(R.string.skin_oily));
+        }
         switch (state) {
             case 1:
                 iv_face.setSelected(true);
@@ -133,11 +143,14 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 }
 
                 if (queryFaceTimes != 0) {
-                    tv_skin_average.setText(faceTotalValue / queryFaceTimes + "%");
+                    float a = faceTotalValue / queryFaceTimes;
+//                    tv_skin_average.setText(faceTotalValue / queryFaceTimes + "%");
+                    String avg = String.format(getString(R.string.avg_times), a, queryFaceTimes);
+                    tv_skin_average.setText(avg);
                 } else {
-                    tv_skin_average.setText("0.0%");
+                    tv_skin_average.setText(String.format(getResources().getString(R.string.avg_times), 0.0f, 0));
                 }
-                tv_times.setText("(" + queryFaceTimes + "次)");
+//                tv_times.setText("(" + queryFaceTimes + "次)");
                 break;
             case 2:
                 iv_hands.setSelected(true);
@@ -161,11 +174,14 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                     tv_skin_state.setText(getString(R.string.text_null));
                 }
                 if (queryHandsTimes != 0) {
-                    tv_skin_average.setText(handTotalValue / queryHandsTimes + "%");
+//                    tv_skin_average.setText(handTotalValue / queryHandsTimes + "%");
+                    float a = handTotalValue / queryHandsTimes;
+                    String avg = String.format(getString(R.string.avg_times), a, queryHandsTimes);
+                    tv_skin_average.setText(avg);
                 } else {
-                    tv_skin_average.setText("0.0%");
+                    tv_skin_average.setText(String.format(getResources().getString(R.string.avg_times), 0.0f, 0));
                 }
-                tv_times.setText("(" + queryHandsTimes + "次)");
+//                tv_times.setText("(" + queryHandsTimes + "次)");
                 break;
             case 3:
                 iv_eyes.setSelected(true);
@@ -189,11 +205,14 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                     tv_skin_state.setText(getString(R.string.text_null));
                 }
                 if (queryEyesTimes != 0) {
-                    tv_skin_average.setText(eyesTotalValue / queryEyesTimes + "%");
+//                    tv_skin_average.setText(eyesTotalValue / queryEyesTimes + "%");
+                    float a = eyesTotalValue / queryEyesTimes;
+                    String avg = String.format(getString(R.string.avg_times), a, queryEyesTimes);
+                    tv_skin_average.setText(avg);
                 } else {
-                    tv_skin_average.setText("0.0%");
+                    tv_skin_average.setText(String.format(getResources().getString(R.string.avg_times), 0.0f, 0));
                 }
-                tv_times.setText("(" + queryEyesTimes + "次)");
+//                tv_times.setText("(" + queryEyesTimes + "次)");
                 break;
             case 4:
                 iv_bozi.setSelected(true);
@@ -217,11 +236,14 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                     tv_skin_state.setText(getString(R.string.text_null));
                 }
                 if (queryNeckTimes != 0) {
-                    tv_skin_average.setText(neckTotalValue / queryNeckTimes + "%");
+//                    tv_skin_average.setText(neckTotalValue / queryNeckTimes + "%");
+                    float a = neckTotalValue / queryNeckTimes;
+                    String avg = String.format(getString(R.string.avg_times), a, queryNeckTimes);
+                    tv_skin_average.setText(avg);
                 } else {
-                    tv_skin_average.setText("0.0%");
+                    tv_skin_average.setText(String.format(getResources().getString(R.string.avg_times), 0.0f, 0));
                 }
-                tv_times.setText("(" + queryNeckTimes + getString(R.string.count)+")");
+//                tv_times.setText("(" + queryNeckTimes + getString(R.string.count)+")");
                 break;
             default:
                 break;
@@ -238,7 +260,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
             }
         });
 
-        if (((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
+        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -256,7 +278,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         tv_skin_state = (TextView) view.findViewById(R.id.tv_skin_state); //今日肌肤状态
         tv_skin_lastdata = (TextView) view.findViewById(R.id.tv_skin_lastdata); //上次检测值
         tv_skin_average = (TextView) view.findViewById(R.id.tv_skin_average); //平均值
-        tv_times = (TextView) view.findViewById(R.id.tv_times);  //检测次数
+//        tv_times = (TextView) view.findViewById(R.id.tv_times);  //检测次数
         tv_query_parts = (TextView) view.findViewById(R.id.tv_query_parts);  //部位   脸部，手，眼，颈
         uiwrmView = (UIWRMView) view.findViewById(R.id.wrm_View);
         switchWeek(true);
