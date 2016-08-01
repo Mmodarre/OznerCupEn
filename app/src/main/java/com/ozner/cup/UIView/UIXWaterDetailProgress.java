@@ -2,6 +2,7 @@ package com.ozner.cup.UIView;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ozner.cup.Device.OznerApplication;
 import com.ozner.ui.library.UIXBaseView;
 
 /**
@@ -31,6 +33,7 @@ public class UIXWaterDetailProgress extends UIXBaseView {
     }
 
     private Context mcontext;
+    private Activity activity;
     private RelativeLayout chart_layout;
     private LinearLayout tds_layout;
     private TextView tv1,tv2;
@@ -186,6 +189,7 @@ public class UIXWaterDetailProgress extends UIXBaseView {
     public UIXWaterDetailProgress(Context context, AttributeSet attrs) {
         super(context, attrs);
         mcontext=context;
+        activity=(Activity)context;
         init();
     }
     private void drawBackgroundLine(RectF rect, Canvas canvas) {
@@ -286,19 +290,31 @@ public class UIXWaterDetailProgress extends UIXBaseView {
             goodPaint.setAlpha(_ani_good_alpha);
         }
 
+        if(((OznerApplication)activity.getApplication()).isLanguageCN()){
+            String text = String.format(getResources().getString(com.ozner.ui.library.R.string.bad_water)+" %d%%", _bad_progress);
+            canvas.drawText(text, this.getWidth() / 2 - space, offset, badPaint);
+            offset += _space + _lineWidth;
 
-        String text = String.format("Bad"+" %d%%", _bad_progress);
-        canvas.drawText(text, this.getWidth() / 2 - space, offset, badPaint);
-        offset += _space + _lineWidth;
-
-        text = String.format("So-so"+" %d%%", _normal_progress);
-        canvas.drawText(text, this.getWidth() / 2 - space, offset, normalPaint);
+            text = String.format(getResources().getString(com.ozner.ui.library.R.string.normal_water)+" %d%%", _normal_progress);
+            canvas.drawText(text, this.getWidth() / 2 - space, offset, normalPaint);
 
 
-        offset += _space + _lineWidth;
-        text = String.format("Healthy"+" %d%%", _good_progress);
-        canvas.drawText(text, this.getWidth() / 2 - space, offset, goodPaint);
+            offset += _space + _lineWidth;
+            text = String.format(getResources().getString(com.ozner.ui.library.R.string.good_water)+" %d%%", _good_progress);
+            canvas.drawText(text, this.getWidth() / 2 - space, offset, goodPaint);
+        }else {
+            String text = String.format("Bad" + " %d%%", _bad_progress);
+            canvas.drawText(text, this.getWidth() / 2 - space, offset, badPaint);
+            offset += _space + _lineWidth;
 
+            text = String.format("So-so" + " %d%%", _normal_progress);
+            canvas.drawText(text, this.getWidth() / 2 - space, offset, normalPaint);
+
+
+            offset += _space + _lineWidth;
+            text = String.format("Healthy" + " %d%%", _good_progress);
+            canvas.drawText(text, this.getWidth() / 2 - space, offset, goodPaint);
+        }
     }
 
     @Override
