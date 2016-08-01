@@ -522,6 +522,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                 try {
 //                    Log.e("net", "value==="+netJsonObject.value);
                     JSONObject jsonObject = netJsonObject.getJSONObject().getJSONObject("data");
+//                    Log.e("net", "value==="+jsonObject.toString());
                     MachineType = jsonObject.getString("MachineType");
                     smlinkurl = jsonObject.getString("smlinkurl");
                     buylinkurl = jsonObject.getString("buylinkurl").trim();
@@ -849,7 +850,11 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                         }
                     } else {
                         if (!"".equals(tips)) {
-                            Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
+                            if ("不支持此功能".equals(tips)){
+                                Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 } else {
@@ -867,7 +872,11 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                         }
                     } else {
                         if (!"".equals(tips)) {
-                            Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
+                            if ("不支持此功能".equals(tips)){
+                                Toast.makeText(getActivity(),getString(R.string.not_support), Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 } else {

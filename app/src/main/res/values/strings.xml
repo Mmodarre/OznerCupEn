@@ -627,7 +627,7 @@
     <string name="good">良</string>
     <string name="bads">差</string>
     <string name="ordinary">一般</string>
-
+    <string name="not_support">不支持此功能</string>
     <string name="set_success">设置成功</string>
     <string name="set_fail">设置失败</string>
 

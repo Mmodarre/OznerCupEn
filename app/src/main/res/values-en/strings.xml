@@ -430,7 +430,7 @@
     <string name="airRoom_voc">VOC</string>
     <string name="airRoom_voctext">VOC is volatile\norganic compounds</string>
     <string name="airRoom_case">Warm tip: Timely replace the filter cartridge and enjoy pure air</string>
-
+    <string name="not_support">Not Supported</string>
     <string name="airRoom_pm_what">What is PM2.5</string>
     <string name="airRoom_pm_text">Fine particulars(PM2.5)</string>
     <string name="airRoom_pmText">\t\tPM2.5 refers to particles with diameter shorter or equal to 2.5 micron. It is also known as fine particles or inhalable particles,which can directly enter the lung. Once PM 2.5 precipitate into alveoli,it cannot be removed and will seriously damage respiratory system and cardiovascular  system and cause diseases including bronchitis,asthma,coronary heart disease,etc.</string>
