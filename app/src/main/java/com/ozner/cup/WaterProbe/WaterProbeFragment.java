@@ -798,7 +798,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     ;
                     pre = 1;
                 }
-                if (pre >= 1) {
+//                if (pre >= 1) {
                     asyncTask = new UiUpdateAsyncTask();
                     asyncTask.execute();
                     Log.e("CSIR", "TDS-WATER-TAP " + this.tap.Sensor().TDSFix);
@@ -820,7 +820,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                         UpdateTdsAsyncTask tdsAsyncTask = new UpdateTdsAsyncTask();
                         tdsAsyncTask.execute("taptds");
                     }
-                }
+//                }
             }
         }
     }
