@@ -43,7 +43,7 @@ public class ResetPwdActivity extends AppCompatActivity {
         tv_verifyCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et_email.getText().length() <= 0 && et_email.getText().toString() == null) {
+                if (et_email.getText().length() <= 0) {
                     Toast.makeText(ResetPwdActivity.this, getString(R.string.input_username), Toast.LENGTH_SHORT).show();
                 } else {
                     getEmailCode(et_email.getText().toString().trim());
