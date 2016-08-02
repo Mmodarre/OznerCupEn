@@ -210,7 +210,7 @@ public class WelcomeActivity extends Activity {
         OznerPreference.SetValue(getBaseContext(), UserDataPreference.UserId, null);
         Intent mainIntent = new Intent(WelcomeActivity.this, LoginActivity.class);
         WelcomeActivity.this.startActivity(mainIntent);
-        WelcomeActivity.this.finish();
+        welcomFinish();
     }
 
     /*
@@ -220,27 +220,39 @@ public class WelcomeActivity extends Activity {
 //        OznerPreference.SetValue(getBaseContext(), UserDataPreference.UserId, null);
         Intent mainIntent = new Intent(WelcomeActivity.this, LoginEnActivity.class);
         WelcomeActivity.this.startActivity(mainIntent);
-        WelcomeActivity.this.finish();
+        welcomFinish();
     }
 
     private void ShowGuidePage() {
         OznerPreference.SetValue(getBaseContext(), UserDataPreference.UserId, null);
         Intent mainIntent = new Intent(WelcomeActivity.this, GuideActivity.class);
         WelcomeActivity.this.startActivity(mainIntent);
-        WelcomeActivity.this.finish();
+        welcomFinish();
     }
 
     private void ShowMainPage(NetDeviceList devicejson) {
         Intent mainIntent = new Intent(WelcomeActivity.this, MainActivity.class);
 //        mainIntent.putExtra("devicelist", (Serializable) devicejson);
         WelcomeActivity.this.startActivity(mainIntent);
-        WelcomeActivity.this.finish();
+        welcomFinish();
     }
 
     private void ShowMainENPage() {
         Intent mainIntent = new Intent(WelcomeActivity.this, MainEnActivity.class);
 //        mainIntent.putExtra("devicelist", (Serializable) devicejson);
         WelcomeActivity.this.startActivity(mainIntent);
-        WelcomeActivity.this.finish();
+        welcomFinish();
+    }
+
+
+    private void welcomFinish(){
+        Looper.prepare();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                WelcomeActivity.this.finish();
+            }
+        },500);
+        Looper.loop();
     }
 }
