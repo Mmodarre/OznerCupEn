@@ -32,7 +32,6 @@ import com.ozner.bluetooth.BluetoothIO;
 import com.ozner.cup.Command.DeviceData;
 import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.OznerCommand;
-import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupRecord;
@@ -251,6 +250,11 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
         }
         OznerApplication.changeTextFont((ViewGroup) view);
         initTypeFace();
+        if(((OznerApplication)getActivity().getApplication()).isLoginPhone()){
+            lay_tdsShort.setVisibility(View.VISIBLE);
+        }else{
+            lay_tdsShort.setVisibility(View.GONE);
+        }
     }
 
 
@@ -464,11 +468,11 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
             }
             if(TDSFix!=0) {
 
-                if(OznerPreference.isLoginPhone(getContext())){
-                    lay_tdsShort.setVisibility(View.VISIBLE);
-                }else{
-                    lay_tdsShort.setVisibility(View.GONE);
-                }
+//                if(OznerPreference.isLoginPhone(getContext())){
+//                    lay_tdsShort.setVisibility(View.VISIBLE);
+//                }else{
+//                    lay_tdsShort.setVisibility(View.GONE);
+//                }
                 rlay_tdsdetail.setEnabled(true);
                 if (tdsOld != TDSFix) {
                     final ValueAnimator animator = ValueAnimator.ofInt(tdsOld, TDSFix);
@@ -481,11 +485,6 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                             setTDSnumFace();
                             OznerApplication.setControlNumFace(tv_tdsValue);
                             tv_tdsValue.setText("" + integer);
-                            if(OznerPreference.isLoginPhone(getContext())){
-                                lay_tdsShort.setVisibility(View.VISIBLE);
-                            }else{
-                                lay_tdsShort.setVisibility(View.GONE);
-                            }
 //                                rlay_tdsdetail.setEnabled(true);
                         }
                     });

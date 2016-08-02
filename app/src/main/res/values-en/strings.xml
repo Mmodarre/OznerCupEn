@@ -445,7 +445,7 @@
     <string name="air_cleans_value">Air purifier purify the current total amount of the update cycle 1 minute</string>
     <string name="air_filter_value">Filter cartridge left</string>
 
-    <string name="airOutside">Outdoor air</string>
+    <string name="airOutside">Outdoor</string>
     <string name="airOutside_city">City ：</string>
     <string name="airOutside_pm">Fine particulars(PM2.5)：</string>
     <string name="airOutside_aqi">Air quality index(AQI)：</string>

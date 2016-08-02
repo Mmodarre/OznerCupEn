@@ -92,6 +92,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:gravity="center"
                     android:textColor="@color/fz_blue"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
