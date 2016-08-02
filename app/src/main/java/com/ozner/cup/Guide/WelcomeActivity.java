@@ -252,7 +252,7 @@ public class WelcomeActivity extends Activity {
             public void run() {
                 WelcomeActivity.this.finish();
             }
-        },500);
+        },1000);
         Looper.loop();
     }
 }
