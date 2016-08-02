@@ -46,6 +46,8 @@ public class ChinaCities {
         cityMap.put("西宁","xining");
         cityMap.put("拉萨","lasa");
         cityMap.put("海口","haikou");
+        cityMap.put("乌鲁木齐","wulumuqi");
+        cityMap.put("呼和浩特","huhehaote");
 
     }
 
