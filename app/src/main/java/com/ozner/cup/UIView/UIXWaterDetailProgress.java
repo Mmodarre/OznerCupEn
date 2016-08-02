@@ -298,7 +298,6 @@ public class UIXWaterDetailProgress extends UIXBaseView {
             text = String.format(getResources().getString(com.ozner.ui.library.R.string.normal_water)+" %d%%", _normal_progress);
             canvas.drawText(text, this.getWidth() / 2 - space, offset, normalPaint);
 
-
             offset += _space + _lineWidth;
             text = String.format(getResources().getString(com.ozner.ui.library.R.string.good_water)+" %d%%", _good_progress);
             canvas.drawText(text, this.getWidth() / 2 - space, offset, goodPaint);
@@ -309,7 +308,6 @@ public class UIXWaterDetailProgress extends UIXBaseView {
 
             text = String.format("So-so" + " %d%%", _normal_progress);
             canvas.drawText(text, this.getWidth() / 2 - space, offset, normalPaint);
-
 
             offset += _space + _lineWidth;
             text = String.format("Healthy" + " %d%%", _good_progress);
