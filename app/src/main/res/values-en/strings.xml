@@ -255,7 +255,7 @@
     <string name="restart_match">Try again</string>
     <string name="match_glass_notice">Inverse Ozner Cup</string>
     <string name="match_purifier_notice">Please press the two buttons “Heat” and “Cool” at the same time</string>
-    <string name="match_probe_notice">Press the start button for 3 seconds</string>
+    <string name="match_probe_notice">Press the start button for 3S</string>
     <string name="match_replenish_meter_notice">Press the key to open 5 seconds, blue lights flashing</string>
     <string name="matching_bluetooth">Bluetooth pairing</string>
     <string name="matching_wifi">WIFI connecting</string>
