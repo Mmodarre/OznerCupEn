@@ -80,9 +80,8 @@
                 android:visibility="invisible"
                 android:text="@string/matching_wifi"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="18dp" />
         </RelativeLayout>
-
 
         <TextView
             android:id="@+id/match_airpurifier_wifi"
@@ -90,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/rl_notice"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:text="@string/matching_wifi"
             android:textColor="@color/white"
             android:visibility="visible" />
