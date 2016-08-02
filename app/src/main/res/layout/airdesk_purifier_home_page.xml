@@ -234,13 +234,13 @@
             <RelativeLayout
                 android:id="@+id/rlay_filter"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_alignParentBottom="true">
 
                 <RelativeLayout
                     android:id="@+id/rlay_filterStatus"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="55dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="15dp">
@@ -248,7 +248,7 @@
                     <ImageView
                         android:id="@+id/iv_filterState"
                         android:layout_width="16dp"
-                        android:layout_height="33dp"
+                        android:layout_height="35dp"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentLeft="true"
                         android:src="@drawable/air_filter" />
@@ -271,6 +271,7 @@
                         android:layout_alignLeft="@+id/tv_filiteText"
                         android:layout_toRightOf="@+id/iv_filterState"
                         android:text="0%"
+                        android:layout_marginBottom="1dp"
                         android:textColor="@color/white"
                         android:textSize="18dp" />
 
@@ -385,13 +386,14 @@
             <ImageView
                 android:id="@+id/iv_deskair_low"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:src="@drawable/deskair_low" />
 
             <TextView
                 android:id="@+id/tv_deskair_low"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_below="@+id/iv_deskair_low"
                 android:layout_marginTop="15dp"
                 android:text="@string/air_low" />
@@ -417,13 +419,14 @@
             <ImageView
                 android:id="@+id/iv_deskair_high"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:src="@drawable/deskair_high" />
 
             <TextView
                 android:id="@+id/tv_deskair_high"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_below="@+id/iv_deskair_high"
                 android:layout_marginTop="15dp"
                 android:text="@string/air_high" />

@@ -85,7 +85,15 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                                 tv_air_address.setText(weather.city);
                             }
                             if (weather.qlty != null) {
-                                tv_air_quality.setText(weather.qlty);
+                                if ("优".equals(weather.qlty)){
+                                    tv_air_quality.setText(getResources().getString(R.string.excellent));
+                                }else if ("良".equals(weather.qlty)){
+                                    tv_air_quality.setText(getResources().getString(R.string.good));
+                                }else if ("差".equals(weather.qlty)){
+                                    tv_air_quality.setText(getResources().getString(R.string.bads));
+                                }else {
+                                    tv_air_quality.setText(weather.qlty);
+                                }
                             }
                         } else {
                             lay_air_pm.setEnabled(false);

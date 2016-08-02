@@ -416,9 +416,12 @@
     <string name="air_mode">Mode</string>
     <string name="air_timing">Timing</string>
     <string name="air_lock">Child Lock</string>
-    <string name="air_low">Low wind speed</string>
-    <string name="air_middle">Middle wind speed</string>
-    <string name="air_high">High wind speed</string>
+    <string name="air_low">Low speeds</string>
+    <string name="air_middle">Middle speeds</string>
+    <string name="air_high">High speeds</string>
+    <string name="wind_low">Low</string>
+    <string name="wind_middle">Middle</string>
+    <string name="wind_high">High</string>
     <string name="air_dataLoding">loading</string>
     <string name="air_ver_dataLoding">air purifier loading</string>
     <string name="air_dataLodingfair">Loading failed, please try again</string>
@@ -427,7 +430,7 @@
     <string name="airRoom_voc">VOC</string>
     <string name="airRoom_voctext">VOC is volatile\norganic compounds</string>
     <string name="airRoom_case">Warm tip: Timely replace the filter cartridge and enjoy pure air</string>
-
+    <string name="not_support">Not Supported</string>
     <string name="airRoom_pm_what">What is PM2.5</string>
     <string name="airRoom_pm_text">Fine particulars(PM2.5)</string>
     <string name="airRoom_pmText">\t\tPM2.5 refers to particles with diameter shorter or equal to 2.5 micron. It is also known as fine particles or inhalable particles,which can directly enter the lung. Once PM 2.5 precipitate into alveoli,it cannot be removed and will seriously damage respiratory system and cardiovascular  system and cause diseases including bronchitis,asthma,coronary heart disease,etc.</string>
@@ -610,8 +613,8 @@
 
     <string name="detection_time2">Detection time 2</string>
     <string name="you">Excellent</string>
-    <string name="bad_less">Less polluting</string>
-    <string name="bad_more">Serious pollution</string>
+    <string name="bad_less">Less pollution</string>
+    <string name="bad_more">Serious</string>
     <string name="temp_blow">25℃ below</string>
     <string name="temp_up">above 50℃</string>
     <string name="tds_blow">50 below</string>

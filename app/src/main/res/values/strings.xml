@@ -424,6 +424,9 @@
     <string name="air_low">低风速</string>
     <string name="air_middle">中风速</string>
     <string name="air_high">高风速</string>
+    <string name="wind_low">低风速</string>
+    <string name="wind_middle">中风速</string>
+    <string name="wind_high">高风速</string>
     <string name="air_dataLoding">数据加载中</string>
     <string name="air_ver_dataLoding">空净数据加载中</string>
     <string name="air_dataLodingfair">数据加载失败，请重试</string>
@@ -624,7 +627,7 @@
     <string name="good">良</string>
     <string name="bads">差</string>
     <string name="ordinary">一般</string>
-
+    <string name="not_support">不支持此功能</string>
     <string name="set_success">设置成功</string>
     <string name="set_fail">设置失败</string>
 
