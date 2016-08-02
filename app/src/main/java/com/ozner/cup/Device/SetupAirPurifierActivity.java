@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ozner.AirPurifier.AirPurifier;
@@ -27,7 +28,7 @@ public class SetupAirPurifierActivity extends AppCompatActivity implements View.
     TextView toolbar_save, toolbar_text, tv_airpurifier_name, tv_airpurifier_type;
     String Mac = null;
     AirPurifier airPurifier;
-    LinearLayout ll_airpurifier_instru;
+    RelativeLayout ll_airpurifier_instru;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,7 @@ public class SetupAirPurifierActivity extends AppCompatActivity implements View.
         }
 
         findViewById(R.id.tv_airpurifier_name).setOnClickListener(this);
-        ll_airpurifier_instru= (LinearLayout) findViewById(R.id.ll_airpurifier_instru);
+        ll_airpurifier_instru= (RelativeLayout) findViewById(R.id.ll_airpurifier_instru);
         ll_airpurifier_instru.setOnClickListener(this);
         findViewById(R.id.ll_common_problem).setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);

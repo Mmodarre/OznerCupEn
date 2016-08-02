@@ -81,9 +81,9 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
             <ImageView
@@ -113,17 +113,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
                 android:layout_marginTop="10dp"
+                android:singleLine="true"
                 android:text="@string/bad_less" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginRight="10dp"
             android:orientation="vertical">
 
             <ImageView
@@ -134,8 +134,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
                 android:layout_marginTop="10dp"
+                android:singleLine="true"
                 android:text="@string/bad_more" />
         </LinearLayout>
     </LinearLayout>
@@ -145,46 +145,47 @@
         android:layout_height="1dp"
         android:background="@color/colorLine" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorLine" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ll_airpurifier_instru"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorLine" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
             android:gravity="center_vertical"
             android:text="@string/air_purifier_use_instru"
             android:textColor="@color/toolbar_text_color" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2" />
-
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
             android:src="@drawable/next_right" />
-    </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/colorLine" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorLine" />
 
-    <LinearLayout
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/ll_common_problem"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -197,25 +198,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
             android:gravity="center_vertical"
             android:text="@string/common_problem"
             android:textColor="@color/toolbar_text_color" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2" />
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:src="@drawable/next_right" />
-    </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorLine" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorLine" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
