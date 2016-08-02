@@ -850,7 +850,8 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                         }
                     } else {
                         if (!"".equals(tips)) {
-                            if ("不支持此功能".equals(tips)){
+//                            if ("不支持此功能".equals(tips)){
+                            if (tips.contains("不支持此功能")){
                                 Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
                             }else {
                                 Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
@@ -872,7 +873,8 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                         }
                     } else {
                         if (!"".equals(tips)) {
-                            if ("不支持此功能".equals(tips)){
+//                            if ("不支持此功能".equals(tips)){
+                            if (tips.contains("不支持此功能")){
                                 Toast.makeText(getActivity(),getString(R.string.not_support), Toast.LENGTH_SHORT).show();
                             }else {
                                 Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
