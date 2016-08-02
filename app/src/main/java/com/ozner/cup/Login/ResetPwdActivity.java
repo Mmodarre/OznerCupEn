@@ -111,7 +111,7 @@ public class ResetPwdActivity extends AppCompatActivity {
                             startActivity(new Intent(ResetPwdActivity.this, LoginEnActivity.class));
                             finish();
                         } else {
-                            NetErrDecode.ShowErrMsgDialog(ResetPwdActivity.this, regRes.state, getString(R.string.regFail));
+                            NetErrDecode.ShowErrMsgDialog(ResetPwdActivity.this, regRes.state, getString(R.string.submit_fail));
                         }
                     } else {
                         Toast.makeText(ResetPwdActivity.this, getString(R.string.innet_wrong), Toast.LENGTH_SHORT).show();
