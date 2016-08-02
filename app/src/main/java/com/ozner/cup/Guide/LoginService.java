@@ -26,7 +26,7 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class LoginService extends Service{
 
     static int taskCount = 0;
-    final int MaxCount = 6;
+    final int MaxCount = 3;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {

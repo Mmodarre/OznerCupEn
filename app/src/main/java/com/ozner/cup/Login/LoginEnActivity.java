@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -33,7 +32,7 @@ import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONObject;
 
-public class LoginEnActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginEnActivity extends BaseLoginActivity implements View.OnClickListener {
     private static final String TAG = "LoginEnActivity";
     EditText et_username, et_pass;
     TextView tv_register, tv_wrong, tv_verifyLogin;
@@ -53,6 +52,7 @@ public class LoginEnActivity extends AppCompatActivity implements View.OnClickLi
             window.setNavigationBarColor(ContextCompat.getColor(this, R.color.guideColor));
         }
         initViews();
+        checkOtherLogin();
     }
 
     private void initViews() {
@@ -68,8 +68,8 @@ public class LoginEnActivity extends AppCompatActivity implements View.OnClickLi
         setListener();
     }
 
-    public void resetPwd(View view){
-        startActivity(new Intent(LoginEnActivity.this,ResetPwdActivity.class));
+    public void resetPwd(View view) {
+        startActivity(new Intent(LoginEnActivity.this, ResetPwdActivity.class));
         finish();
     }
 
@@ -210,6 +210,7 @@ public class LoginEnActivity extends AppCompatActivity implements View.OnClickLi
 
         @Override
         protected void onPostExecute(NetJsonObject result) {
+            Log.d(TAG, "onPostExecute: state:" + result.state + " , value:" + result.value);
             if (dialog != null)
                 dialog.dismiss();
             if (result != null && result.state > 0) {

@@ -44,6 +44,7 @@ import com.ozner.cup.HttpHelper.NetDeviceList;
 import com.ozner.cup.HttpHelper.NetUserVfMessage;
 import com.ozner.cup.HttpHelper.OznerDataHttp;
 import com.ozner.cup.Login.LoginActivity;
+import com.ozner.cup.Login.LoginEnActivity;
 import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.cup.Main.MainConFragment;
 import com.ozner.cup.WaterProbe.WaterCupFragment;
@@ -1153,7 +1154,13 @@ public class MainActivity extends BaseMainActivity {
                         if (localUserid != null
                                 && localUserid.equals(loginUserid)
                                 && !loginToken.equals(OznerPreference.UserToken(MainActivity.this))) {
-                            Intent loginIntent = new Intent(getBaseContext(), LoginActivity.class);
+                            Intent loginIntent = new Intent();
+                            if (((OznerApplication) getApplication()).isLanguageCN()) {
+                                intent.setClass(getBaseContext(), LoginActivity.class);
+                            } else {
+                                intent.setClass(getBaseContext(), LoginEnActivity.class);
+                            }
+//                            (getBaseContext(), LoginActivity.class);
                             loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             loginIntent.putExtra(PushBroadcastKey.IsOtherLogin, true);
                             startActivity(loginIntent);

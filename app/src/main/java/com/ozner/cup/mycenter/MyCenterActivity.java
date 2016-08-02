@@ -111,4 +111,10 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
     public void backUp(View view) {
         finish();
     }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(monitor);
+        super.onDestroy();
+    }
 }

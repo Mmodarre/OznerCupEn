@@ -1,8 +1,6 @@
 package com.ozner.cup.Login;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +17,6 @@ import android.widget.TextView;
 
 import com.ozner.cup.ACSqlLite.CSqlCommand;
 import com.ozner.cup.BaiduPush.OznerBroadcastAction;
-import com.ozner.cup.BaiduPush.PushBroadcastKey;
 import com.ozner.cup.Command.Contants;
 import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.Command.OznerPreference;
@@ -49,7 +45,7 @@ import java.util.TimerTask;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseLoginActivity {
 
     private TextView tv_skip, tv_codeget, tv_login, tv_xiexi, tv_voice, tv_wrong;
     private EditText et_phone, et_code;
@@ -183,27 +179,7 @@ public class LoginActivity extends AppCompatActivity {
         checkOtherLogin();
     }
 
-    private void checkOtherLogin() {
-        try {
-            boolean isOtherLogin = getIntent().getBooleanExtra(PushBroadcastKey.IsOtherLogin, false);
-            Log.e("tag", "OtherLogin:" + isOtherLogin);
-            if (isOtherLogin) {
-                AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
-                alertDialog.setMessage(getString(R.string.login_other_device));
-                alertDialog.setCanceledOnTouchOutside(false);
-                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.ensure), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                alertDialog.show();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.e("tag", "OtherLogin_Ex:" + e.getMessage());
-        }
-    }
+
 
     //                RequestParams params = new RequestParams();
 //                params.put("phone", "13526885317");
