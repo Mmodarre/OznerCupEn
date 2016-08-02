@@ -15,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -82,6 +83,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
             switch (msg.what) {
                 case 1:
                     NetWeather weather = (NetWeather) msg.obj;
+
                     if (weather != null) {
 //                        if (iv_data_loading != null) {
 //                            if (iv_data_loading.getAnimation() != null) {
@@ -99,10 +101,22 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
                             OznerApplication.setControlNumFace(tv_air_pmvalue);
                         }
                         if (weather.city != null) {
-                            tv_air_address.setText(weather.city);
+                            if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
+                            } else {
+                                tv_air_address.setText(weather.city);
+                            }
                         }
                         if (weather.qlty != null) {
-                            tv_air_quality.setText(weather.qlty);
+                            if ("优".equals(weather.qlty)) {
+                                tv_air_quality.setText(getResources().getString(R.string.excellent));
+                            } else if ("良".equals(weather.qlty)) {
+                                tv_air_quality.setText(getResources().getString(R.string.good));
+                            } else if ("差".equals(weather.qlty)) {
+                                tv_air_quality.setText(getResources().getString(R.string.bads));
+                            } else {
+                                tv_air_quality.setText(weather.qlty);
+                            }
                         }
                     } else {
 //                        if (iv_data_loading != null) {
@@ -213,7 +227,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         if (networkInfo != null) {
             getData();
         }
-        if (!((OznerApplication)getActivity().getApplication()).isLoginPhone()){
+        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
         }
         return view;
@@ -332,9 +346,9 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                }else {
+                } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }
             }
@@ -497,10 +511,10 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
 //            switchMiddle(isMiddleOn);
 //            switchLow(isLowOn);
 
-        if (isNet == 0|| isOffLine){
+        if (isNet == 0 || isOffLine) {
             tv_tdsValue.setText(getString(R.string.detail_nonet));
 //            tv_tdsValue.setTextSize(35f);
-        }else if (65535 == pm25 || pm25 <= 0) {
+        } else if (65535 == pm25 || pm25 <= 0) {
             tv_tdsValue.setText(getString(R.string.null_text));
             OznerApplication.setControlTextFace(tv_tdsValue);
             tv_tds.setText(" - ");
@@ -629,10 +643,10 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
                     Intent intent = new Intent(getContext(), VerAirFilterActivity.class);
                     intent.putExtra("MAC", Mac);
                     startActivityForResult(intent, 0x2323);
-                }else {
+                } else {
                     if (isNet == 0) {
                         showDialog();
-                    }else if (isOffLine){
+                    } else if (isOffLine) {
                         showDialog();
                     }
                 }
@@ -1017,7 +1031,12 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
                         tv_airOutside_data.setText(getString(R.string.text_null));
                     }
                     if (airWeather.city != null) {
-                        tv_airOutside_city.setText(airWeather.city);
+                        if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                            tv_airOutside_city.setText(ChinaCities.getCityEnString(airWeather.city));
+                        } else {
+                            tv_airOutside_city.setText(airWeather.city);
+                        }
+//                        tv_airOutside_city.setText(airWeather.city);
                     }
                 } else {
                     tv_airOutside_pm.setText(0 + "μg/m3");
@@ -1041,8 +1060,8 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
     private void showDialog() {
         final Dialog airDialog = new Dialog(getContext(), R.style.dialog_style);
         airDialog.setContentView(R.layout.device_nonet_notice);
-        TextView purifier_tip =(TextView)airDialog.findViewById(R.id.purifier_tip);
-        purifier_tip.setText("4"+getString(R.string.device_nonet_notice2));
+        TextView purifier_tip = (TextView) airDialog.findViewById(R.id.purifier_tip);
+        purifier_tip.setText("4" + getString(R.string.device_nonet_notice2));
         airDialog.getWindow().setGravity(Gravity.BOTTOM);
         WindowManager windowManager = getActivity().getWindowManager();
         Display display = windowManager.getDefaultDisplay();

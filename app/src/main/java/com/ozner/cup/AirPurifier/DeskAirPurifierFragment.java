@@ -82,16 +82,20 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                                 tv_air_pmvalue.setText(weather.pm25);
                             }
                             if (weather.city != null) {
-                                tv_air_address.setText(weather.city);
+                                if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                    tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
+                                } else {
+                                    tv_air_address.setText(weather.city);
+                                }
                             }
                             if (weather.qlty != null) {
-                                if ("优".equals(weather.qlty)){
+                                if ("优".equals(weather.qlty)) {
                                     tv_air_quality.setText(getResources().getString(R.string.excellent));
-                                }else if ("良".equals(weather.qlty)){
+                                } else if ("良".equals(weather.qlty)) {
                                     tv_air_quality.setText(getResources().getString(R.string.good));
-                                }else if ("差".equals(weather.qlty)){
+                                } else if ("差".equals(weather.qlty)) {
                                     tv_air_quality.setText(getResources().getString(R.string.bads));
-                                }else {
+                                } else {
                                     tv_air_quality.setText(weather.qlty);
                                 }
                             }
@@ -155,7 +159,7 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         if (networkInfo != null) {
             getData();
         }
-        if (!((OznerApplication)getActivity().getApplication()).isLoginPhone()){
+        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
         }
         return view;
@@ -187,9 +191,9 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                }else {
+                } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }
             }
@@ -357,8 +361,8 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         fengsu = airPurifier.status().RPM();//获得机器传过来的风速
         Log.e("taoran_fengsu", "initData风速:" + airPurifier.status().RPM() + isOpenOn);
         filterTime = airPurifier.sensor().FilterStatus().workTime;
-        if(filterTime>60000){
-            filterTime=60000;
+        if (filterTime > 60000) {
+            filterTime = 60000;
         }
         Log.e("trFil", airPurifier.sensor().FilterStatus().workTime + "==========");
         Log.e("trFil", GetFilterTime.getFilter(airPurifier.sensor().FilterStatus().workTime) + "==========");
@@ -565,7 +569,12 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
 
                     tv_airOutside_city = (TextView) airDialog.findViewById(R.id.tv_airOutside_city);
                     if (airWeather.city != null) {
-                        tv_airOutside_city.setText(airWeather.city);
+                        if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                            tv_airOutside_city.setText(ChinaCities.getCityEnString(airWeather.city));
+                        } else {
+                            tv_airOutside_city.setText(airWeather.city);
+                        }
+//                        tv_airOutside_city.setText(airWeather.city);
                     } else {
                         tv_airOutside_city.setText(getResources().getString(R.string.text_null));
                     }
