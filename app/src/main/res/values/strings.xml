@@ -647,6 +647,7 @@
     <string name="start_smart_service">立即添加设备，开始体验浩泽智能化生活服务。</string>
     <string name="username">邮箱</string>
     <string name="password">密码</string>
+    <string name="reset">重置</string>
     <string name="oldpassword">旧密码</string>
     <string name="newpassword">新密码</string>
     <string name="confirm_password">确认密码</string>

@@ -663,6 +663,7 @@
 
     <string name="username">Email</string>
     <string name="password">Password</string>
+    <string name="reset">Reset</string>
     <string name="oldpassword">Old Password</string>
     <string name="newpassword">New Password</string>
     <string name="confirm_password">Confirm Password</string>
