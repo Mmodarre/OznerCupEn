@@ -31,6 +31,7 @@ import com.ozner.cup.MainEnActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.mycenter.CheckForUpdate.LogUtilsLC;
 import com.ozner.device.OznerDeviceManager;
+import com.ozner.wifi.ThreadHandler;
 
 import org.json.JSONObject;
 
@@ -246,13 +247,11 @@ public class WelcomeActivity extends Activity {
 
 
     private void welcomFinish(){
-        Looper.prepare();
-        new Handler().postDelayed(new Runnable() {
+        new ThreadHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 WelcomeActivity.this.finish();
             }
         },1000);
-        Looper.loop();
     }
 }
