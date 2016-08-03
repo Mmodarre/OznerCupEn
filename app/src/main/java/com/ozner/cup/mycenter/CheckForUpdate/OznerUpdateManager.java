@@ -109,7 +109,7 @@ public class OznerUpdateManager {
             public void run() {
                 List<NameValuePair> pars = new ArrayList<NameValuePair>();
 //                pars.add(new BasicNameValuePair("code", String.valueOf(getVersionCode(mContext))));
-                pars.add(new BasicNameValuePair("os", "androiden"));
+                pars.add(new BasicNameValuePair("os", "android"));
 //                pars.add(new BasicNameValuePair("appname", mContext.getPackageName()));
 //                pars.add(new BasicNameValuePair("appname", "com.hoyo.ozner.hoyoproject"));
                 NetJsonObject result = OznerDataHttp.OznerWebServer(mContext, checkVerUrl, pars);
