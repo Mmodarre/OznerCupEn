@@ -593,6 +593,14 @@ public class MainEnActivity extends BaseMainActivity {
                                     .commitAllowingStateLoss();
                             this.MAC = mac;
                             return;
+                        case WaterAylaType:
+                            WaterPurifierFragment waterPurifierAylaFragment = new WaterPurifierFragment();
+                            waterPurifierAylaFragment.setArguments(params);
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.framen_main_con, waterPurifierAylaFragment, WaterAylaType)
+                                    .commitAllowingStateLoss();
+                            this.MAC = mac;
+                            return;
                         case AirPurifierTypeVer:
                             VerticalAirPurifierFragment verticalAirPurifierFragment = new VerticalAirPurifierFragment();
                             verticalAirPurifierFragment.setArguments(params);

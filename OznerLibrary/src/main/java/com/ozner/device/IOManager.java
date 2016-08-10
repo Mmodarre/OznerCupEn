@@ -64,11 +64,24 @@ public abstract class IOManager extends XObject {
         }
     }
 
+    public boolean isMyIO(BaseDeviceIO io)
+    {
+        synchronized (devices)
+        {
+            return devices.containsKey(io.getAddress());
+        }
+
+    }
 
     public BaseDeviceIO getAvailableDevice(String address) {
         synchronized (devices) {
             return devices.get(address);
         }
+    }
+
+    public void removeDevice(BaseDeviceIO io)
+    {
+
     }
 
     /**

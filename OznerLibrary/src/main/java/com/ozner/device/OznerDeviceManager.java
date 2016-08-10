@@ -64,7 +64,7 @@ public class OznerDeviceManager extends XObject {
         return ioManagerList;
     }
 
-
+    public DeviceManagerList deviceManagers() {return mManagers;}
     /**
      * 获取用户对应的表名
      */
@@ -228,6 +228,11 @@ public class OznerDeviceManager extends XObject {
         Intent intent = new Intent(ACTION_OZNER_MANAGER_DEVICE_REMOVE);
         intent.putExtra("Address", address);
         context().sendBroadcast(intent);
+
+        if (device.IO()!=null)
+        {
+            ioManagerList.removeDevice(device.IO());
+        }
 
 //        if (device.IO() != null) {
 //            device.IO().close();
