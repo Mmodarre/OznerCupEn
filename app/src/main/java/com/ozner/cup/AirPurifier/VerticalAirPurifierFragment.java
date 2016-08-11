@@ -15,7 +15,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -101,10 +100,15 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
                             OznerApplication.setControlNumFace(tv_air_pmvalue);
                         }
                         if (weather.city != null) {
-                            if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                                tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
-                            } else {
-                                tv_air_address.setText(weather.city);
+                            if (VerticalAirPurifierFragment.this.isAdded()
+                                    && !VerticalAirPurifierFragment.this.isDetached()
+                                    && !VerticalAirPurifierFragment.this.isRemoving()) {
+
+                                if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                    tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
+                                } else {
+                                    tv_air_address.setText(weather.city);
+                                }
                             }
                         }
                         if (weather.qlty != null) {

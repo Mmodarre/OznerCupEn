@@ -306,13 +306,15 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
                                     int index = gradename.indexOf("会员");
                                     gradename = gradename.substring(0, index);
                                 }
-
-                                if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                                    if (CenterVipUtil.hasValue(gradename)) {
-                                        gradename = CenterVipUtil.getEnValue(gradename);
+                                if (MyFragment.this.isAdded() &&
+                                        !MyFragment.this.isRemoving() &&
+                                        !MyFragment.this.isDetached()) {
+                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                        if (CenterVipUtil.hasValue(gradename)) {
+                                            gradename = CenterVipUtil.getEnValue(gradename);
+                                        }
                                     }
                                 }
-
                                 gradename += getString(R.string.act_member);
 
                                 tv_gradeNmae.setText(gradename);

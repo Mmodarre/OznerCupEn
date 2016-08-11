@@ -60,7 +60,7 @@ public class WaterQuantityFragment extends Fragment {
     private Toolbar toolbar;
     //    private ImageButton waterShare;
     private TextView waterText, tv_wateryield_friendtext, tv_wateryield_value, tv_wateryield_facetest, tv_wateryield_distribution;
-    private ImageView iv_wateryield_face,iv_wateryield_line1,iv_height;
+    private ImageView iv_wateryield_face, iv_wateryield_line1, iv_height;
     private int volum, rank;
     private CupRecordList cupRecordList;
     private CupRecord cupRecord;
@@ -69,9 +69,7 @@ public class WaterQuantityFragment extends Fragment {
     int volumDrink;
     private String imagePath;
 
-    private RelativeLayout wateryield_health_layout,wateryield_friend_layout;
-
-
+    private RelativeLayout wateryield_health_layout, wateryield_friend_layout;
 
 
     private Handler waterhandler = new Handler() {
@@ -123,9 +121,9 @@ public class WaterQuantityFragment extends Fragment {
     public void onResume() {
         super.onResume();
         initView(getView());
-        if(((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
+        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
             ((BaseMainActivity) getActivity()).isShouldResume = false;
-        }else{
+        } else {
             ((BaseMainActivity) getActivity()).isShouldResume = false;
         }
     }
@@ -133,10 +131,14 @@ public class WaterQuantityFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if(((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
-            ((BaseMainActivity) getActivity()).isShouldResume = true;
-        }else{
-            ((BaseMainActivity) getActivity()).isShouldResume = true;
+        if (!WaterQuantityFragment.this.isRemoving()
+                && !WaterQuantityFragment.this.isDetached()
+                && WaterQuantityFragment.this.isAdded()) {
+            if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
+                ((BaseMainActivity) getActivity()).isShouldResume = true;
+            } else {
+                ((BaseMainActivity) getActivity()).isShouldResume = true;
+            }
         }
     }
 
@@ -202,16 +204,16 @@ public class WaterQuantityFragment extends Fragment {
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
 //        cal.set(Calendar.DAY_OF_WEEK_IN_MONTH,Calendar.SUNDAY);
         Date timeWeek = new Date(cal.getTime().getTime() / 86400000 * 86400000);
-        Log.e("trtagWeek",timeWeek.toString());
+        Log.e("trtagWeek", timeWeek.toString());
         cupRecordList = cup.Volume();
         if (cupRecordList != null) {
             cupRecords = cupRecordList.getRecordByDate(timeWeek, CupRecordList.QueryInterval.Day);
-            Log.e("trtagWeek",cupRecords.length+"======================cupRecords的周条数");
+            Log.e("trtagWeek", cupRecords.length + "======================cupRecords的周条数");
             if (cupRecords != null) {
                 for (int i = 0; i < dataWeek.length; i++) {
                     for (int j = 0; j < cupRecords.length; j++) {
                         if (cupRecords[j].start.getDay() != 0) {
-                            dataWeek[cupRecords[j].start.getDay()-1] = cupRecords[j].Volume;
+                            dataWeek[cupRecords[j].start.getDay() - 1] = cupRecords[j].Volume;
                         } else {
                             Date today = new Date();
                             if (today.getDay() == 0) {
@@ -252,7 +254,7 @@ public class WaterQuantityFragment extends Fragment {
         cupRecordList = cup.Volume();
         if (cupRecordList != null) {
             cupRecords = cupRecordList.getRecordByDate(timeMonth, CupRecordList.QueryInterval.Day);
-            Log.e("trtagWeek",cupRecords.length+"======================cupRecords的月条数");
+            Log.e("trtagWeek", cupRecords.length + "======================cupRecords的月条数");
             if (cupRecords != null) {
                 for (int i = 0; i < dataMonth.length; i++) {
                     for (int j = 0; j < cupRecords.length; j++) {
@@ -394,37 +396,37 @@ public class WaterQuantityFragment extends Fragment {
         wateryield_health_buy_layout.setOnClickListener(myListener);
         wateryield_consult_layout = (LinearLayout) view.findViewById(R.id.wateryield_consult_layout);
         wateryield_consult_layout.setOnClickListener(myListener);
-        if(OznerPreference.isLoginPhone(getContext())){
+        if (OznerPreference.isLoginPhone(getContext())) {
             wateryield_consult_layout.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             wateryield_consult_layout.setVisibility(View.GONE);
         }
         tv_wateryield_friendtext = (TextView) view.findViewById(R.id.tv_wateryield_friendtext);
         OznerApplication.setControlNumFace(tv_wateryield_friendtext);
 
-        iv_wateryield_line1=(ImageView)view.findViewById(R.id.iv_wateryield_line1);
-        if(OznerPreference.isLoginPhone(getContext())){
+        iv_wateryield_line1 = (ImageView) view.findViewById(R.id.iv_wateryield_line1);
+        if (OznerPreference.isLoginPhone(getContext())) {
             iv_wateryield_line1.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             iv_wateryield_line1.setVisibility(View.GONE);
         }
-        wateryield_health_layout=(RelativeLayout)view.findViewById(R.id.wateryield_health_layout);
-        if(OznerPreference.isLoginPhone(getContext())){
+        wateryield_health_layout = (RelativeLayout) view.findViewById(R.id.wateryield_health_layout);
+        if (OznerPreference.isLoginPhone(getContext())) {
             wateryield_health_layout.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             wateryield_health_layout.setVisibility(View.GONE);
         }
 
-        wateryield_friend_layout=(RelativeLayout)view.findViewById(R.id.wateryield_friend_layout);
-        if(OznerPreference.isLoginPhone(getContext())){
+        wateryield_friend_layout = (RelativeLayout) view.findViewById(R.id.wateryield_friend_layout);
+        if (OznerPreference.isLoginPhone(getContext())) {
             wateryield_friend_layout.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             wateryield_friend_layout.setVisibility(View.GONE);
         }
-        iv_height=(ImageView)view.findViewById(R.id.iv_height);
-        if(OznerPreference.isLoginPhone(getContext())){
+        iv_height = (ImageView) view.findViewById(R.id.iv_height);
+        if (OznerPreference.isLoginPhone(getContext())) {
             iv_height.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             iv_height.setVisibility(View.GONE);
         }
 

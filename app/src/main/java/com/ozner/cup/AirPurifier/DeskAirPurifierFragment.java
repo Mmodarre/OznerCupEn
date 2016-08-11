@@ -82,11 +82,14 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                                 tv_air_pmvalue.setText(weather.pm25);
                             }
                             if (weather.city != null) {
-                                if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                                    tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
-                                } else {
-                                    tv_air_address.setText(weather.city);
-                                }
+                                if (DeskAirPurifierFragment.this.isAdded()
+                                        && !DeskAirPurifierFragment.this.isRemoving()
+                                        && !DeskAirPurifierFragment.this.isDetached())
+                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                        tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
+                                    } else {
+                                        tv_air_address.setText(weather.city);
+                                    }
                             }
                             if (weather.qlty != null) {
                                 if ("优".equals(weather.qlty)) {

@@ -88,19 +88,24 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
     @Override
     public void onResume() {
         super.onResume();
-        if(((OznerApplication)getActivity().getApplication()).isLoginPhone()){
-            ((BaseMainActivity) getActivity()).isShouldResume = false;
-        }else {
-            ((BaseMainActivity) getActivity()).isShouldResume = false;
+        if (PurifierTDSFragment.this.isAdded()
+                && !PurifierTDSFragment.this.isRemoving()
+                && !PurifierTDSFragment.this.isDetached()) {
+
+            if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+                ((BaseMainActivity) getActivity()).isShouldResume = false;
+            } else {
+                ((BaseMainActivity) getActivity()).isShouldResume = false;
+            }
         }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if(((OznerApplication)getActivity().getApplication()).isLoginPhone()){
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             ((BaseMainActivity) getActivity()).isShouldResume = true;
-        }else{
+        } else {
             ((BaseMainActivity) getActivity()).isShouldResume = false;
         }
 
@@ -178,17 +183,17 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
         laly_consult.setOnClickListener(this);
         wateryield_health_know_layout.setOnClickListener(this);
 
-        if(OznerPreference.isLoginPhone(getContext())){
+        if (OznerPreference.isLoginPhone(getContext())) {
             wateryield_health_know_layout.setVisibility(View.VISIBLE);
             rootView.findViewById(R.id.iv_tds_line2).setVisibility(View.VISIBLE);
-        }else {
+        } else {
             wateryield_health_know_layout.setVisibility(View.GONE);
             rootView.findViewById(R.id.iv_tds_line2).setVisibility(View.GONE);
         }
 
 
         wateryield_health_buy_layout.setOnClickListener(this);
-        if (((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
+        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
             rootView.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
             rootView.findViewById(R.id.ll_en_no).setVisibility(View.VISIBLE);
         } else {
