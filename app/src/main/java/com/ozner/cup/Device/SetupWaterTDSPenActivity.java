@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.R;
 import com.ozner.device.OznerDeviceManager;
@@ -63,6 +64,12 @@ public class SetupWaterTDSPenActivity extends AppCompatActivity implements View.
         toolbar_save.setVisibility(View.VISIBLE);
         toolbar_save.setOnClickListener(this);
         findViewById(R.id.ll_about_water_probe).setOnClickListener(this);
+
+        if(OznerPreference.isLoginPhone(SetupWaterTDSPenActivity.this)){
+            findViewById(R.id.ll_about_water_probe).setVisibility(View.VISIBLE);
+        }else{
+            findViewById(R.id.ll_about_water_probe).setVisibility(View.GONE);
+        }
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
         initView();
     }
