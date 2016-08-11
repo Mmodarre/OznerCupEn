@@ -1162,7 +1162,7 @@ public class MainActivity extends BaseMainActivity {
                         if (localUserid != null
                                 && localUserid.equals(loginUserid)
                                 && !loginToken.equals(OznerPreference.UserToken(MainActivity.this))) {
-                            Intent loginIntent = new Intent();
+                            Intent loginIntent = new Intent(getBaseContext(), LoginActivity.class);
                             if (((OznerApplication) getApplication()).isLanguageCN()) {
                                 intent.setClass(getBaseContext(), LoginActivity.class);
                             } else {
