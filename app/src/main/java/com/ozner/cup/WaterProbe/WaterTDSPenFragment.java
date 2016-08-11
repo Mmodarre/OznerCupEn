@@ -142,7 +142,7 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
     }
 
     public void InitView(View view) {
-        if (((OznerApplication)(getActivity().getApplication())).isLoginPhone()) {
+        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -151,9 +151,9 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
         tv_name = (TextView) view.findViewById(R.id.tv_name);
         tdsChartView = (TapTDSChartView) view.findViewById(R.id.tdsChartView);
         lay_tdsShort = (LinearLayout) view.findViewById(R.id.lay_tdsShort);
-        if(OznerPreference.isLoginPhone(getContext())){
+        if (OznerPreference.isLoginPhone(getContext())) {
             lay_tdsShort.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             lay_tdsShort.setVisibility(View.GONE);
         }
         waterProcess = (WaterDetailProgress) view.findViewById(R.id.waterProcess);
@@ -544,10 +544,10 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
                     ;
                     pre = 1;
                 }
-                if (pre >= 1) {
-                    asyncTask = new UiUpdateAsyncTask();
-                    asyncTask.execute();
-                    Log.e("CSIR", "TDS-WATER-TAP " + this.tap.Sensor().TDSFix);
+//                if (pre >= 1) {
+                asyncTask = new UiUpdateAsyncTask();
+                asyncTask.execute();
+                Log.e("CSIR", "TDS-WATER-TAP " + this.tap.Sensor().TDSFix);
 //                    Calendar calTap = Calendar.getInstance();
 //                    calTap.set(Calendar.DAY_OF_MONTH, 1);
 //                    Date timeTap = new Date(calTap.getTime().getTime() / 86400000 * 86400000);
@@ -566,7 +566,7 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
 //                        UpdateTdsAsyncTask tdsAsyncTask = new UpdateTdsAsyncTask();
 //                        tdsAsyncTask.execute("taptds");
 //                    }
-                }
+//                }
             }
         }
     }

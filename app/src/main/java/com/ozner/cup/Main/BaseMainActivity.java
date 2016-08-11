@@ -77,8 +77,8 @@ public abstract class BaseMainActivity extends AppCompatActivity implements Foot
         InitBaiduPush();
         MobclickAgent.setDebugMode(true);
         //是否登陆
-        OznerUpdateManager oznerUpdateManager = new OznerUpdateManager(BaseMainActivity.this, false);
-        oznerUpdateManager.checkUpdate();
+//        OznerUpdateManager oznerUpdateManager = new OznerUpdateManager(BaseMainActivity.this, false);
+//        oznerUpdateManager.checkUpdate();
         LocalInitData();
         new OznerUpdateManager(BaseMainActivity.this, false).checkUpdate();
     }

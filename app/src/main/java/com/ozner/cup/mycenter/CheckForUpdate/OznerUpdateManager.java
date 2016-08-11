@@ -161,7 +161,7 @@ public class OznerUpdateManager {
             }
         });
 
-        if (0 == isMustUpdate) {
+//        if (0 == isMustUpdate) {
             // 稍后更新
             builder.setNegativeButton(R.string.soft_update_later, new DialogInterface.OnClickListener() {
                 @Override
@@ -172,12 +172,12 @@ public class OznerUpdateManager {
                     dialog.dismiss();
                 }
             });
-        }
+//        }
         Dialog noticeDialog = builder.create();
-        if (1 == isMustUpdate) {
+//        if (1 == isMustUpdate) {
             noticeDialog.setCanceledOnTouchOutside(false);
             noticeDialog.setCancelable(false);
-        }
+//        }
         try {
             if (mContext != null) {
                 noticeDialog.show();
