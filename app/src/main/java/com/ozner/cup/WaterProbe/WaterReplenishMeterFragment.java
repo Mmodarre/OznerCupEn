@@ -27,8 +27,7 @@ import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.SetupWaterReplenMeterActivity;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.HttpHelper.OznerDataHttp;
-import com.ozner.cup.MainActivity;
-import com.ozner.cup.MainEnActivity;
+import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.OznerDeviceManager;
@@ -394,7 +393,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     }
 
     private void initView(View view) {
-        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -489,7 +488,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         tv_query_notice.setText(getResources().getString(R.string.query_notice_face));
         state = 1;
 //        varValue.setText(varFaceValue + "%(" + queryFace + "次)");
-        varValue.setText(String.format(getString(R.string.avg_times),varFaceValue,queryFace));
+        varValue.setText(String.format(getString(R.string.avg_times), varFaceValue, queryFace));
         String faceLastValue = sh.getString(Mac + "face", null);
         if (faceLastValue != null) {
             lastValue.setText(faceLastValue + "%");
@@ -508,7 +507,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         tv_query_notice.setText(getResources().getString(R.string.query_notice_hand));
         state = 2;
 //        varValue.setText(varHandsValue + "%(" + queryHands + "次)");
-        varValue.setText(String.format(getString(R.string.avg_times),varHandsValue,queryHands));
+        varValue.setText(String.format(getString(R.string.avg_times), varHandsValue, queryHands));
         String handsLastValue = sh.getString(Mac + "hands", null);
         if (null != handsLastValue) {
             lastValue.setText(handsLastValue + "%");
@@ -525,7 +524,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         tv_query_notice.setText(getResources().getString(R.string.query_notice_eyes));
         state = 3;
 //        varValue.setText(varEyesValue + "%(" + queryEyes + "次)");
-        varValue.setText(String.format(getString(R.string.avg_times),varEyesValue,queryEyes));
+        varValue.setText(String.format(getString(R.string.avg_times), varEyesValue, queryEyes));
         String eyesLastValue = sh.getString(Mac + "eyes", null);
         if (eyesLastValue != null) {
             lastValue.setText(eyesLastValue + "%");
@@ -542,7 +541,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         tv_query_notice.setText(getResources().getString(R.string.query_notice_bozi));
         state = 4;
 //        varValue.setText(varNeckValue + "%(" + queryNeck + "次)");
-        varValue.setText(String.format(getString(R.string.avg_times),varNeckValue,queryNeck));
+        varValue.setText(String.format(getString(R.string.avg_times), varNeckValue, queryNeck));
         String neckLastValue = sh.getString(Mac + "neck", null);
         if (neckLastValue != null) {
             lastValue.setText(neckLastValue + "%");
@@ -571,11 +570,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                 startActivityForResult(intent, 0x1111);
                 break;
             case R.id.rlay_menu:
-                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
-                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                } else {
-                    ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                }
+                ((BaseMainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 break;
             case R.id.laly_water_replenish_skin:
                 SkinQueryNullFragment skinQueryNullFragment = new SkinQueryNullFragment();

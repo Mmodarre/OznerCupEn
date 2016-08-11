@@ -30,6 +30,7 @@ import com.ozner.cup.CupRecord;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.SetupWaterTDSPenActivity;
 import com.ozner.cup.HttpHelper.NetJsonObject;
+import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.cup.MainActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.UIView.ChartAdapter;
@@ -493,7 +494,7 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
                 ShowSettingPage();
                 break;
             case R.id.rlay_menu:
-                ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
+                ((BaseMainActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 break;
         }
     }
