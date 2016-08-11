@@ -23,6 +23,7 @@ public class PageState {
     public static final String Time2 = "Time2";//               2
     public static final String Time3 = "Time3";//               3
     public static final String sortPosi = "sortPosi";//侧边栏里的位置
+    public static final String TapType = "TapType";//区分探头、TDS pen
 
     public static final int ZHINNEGSHUIBEI = 1;//智能水杯
     public static final int SHUITANTOU = 2;//水探头

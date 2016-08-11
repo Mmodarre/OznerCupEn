@@ -231,7 +231,7 @@
     <string name="Filter_Service_down_20">更换滤芯提醒</string>
 
     <string name="water_probe">水探头</string>
-    <string name="water_tdspen">TDS笔</string>
+    <string name="water_tdspen">水质检测笔</string>
 
     <string name="water_purifier">净水器</string>
     <string name="smart_glass">智能杯</string>

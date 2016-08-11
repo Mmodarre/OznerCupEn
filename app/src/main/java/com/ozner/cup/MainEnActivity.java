@@ -570,20 +570,24 @@ public class MainEnActivity extends BaseMainActivity {
                             this.MAC = mac;
                             return;
                         case TapType:
-                            WaterProbeFragment waterProbeFragment = new WaterProbeFragment();
-                            waterProbeFragment.setArguments(params);
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.framen_main_con, waterProbeFragment, TapType)
-                                    .commitAllowingStateLoss();
-                            this.MAC = mac;
-                            return;
                         case TdsPen:
-                            WaterTDSPenFragment waterTDSPenFragment = new WaterTDSPenFragment();
-                            waterTDSPenFragment.setArguments(params);
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.framen_main_con, waterTDSPenFragment, TdsPen)
-                                    .commitAllowingStateLoss();
-                            this.MAC = mac;
+                            String tapPen = deviceData.getAppValue(PageState.TapType).toString();
+                            if (tapPen == "pen"||"pen".equals(tapPen)){
+                                WaterTDSPenFragment waterTDSPenFragment = new WaterTDSPenFragment();
+                                waterTDSPenFragment.setArguments(params);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.framen_main_con, waterTDSPenFragment, TdsPen)
+                                        .commitAllowingStateLoss();
+                                this.MAC = mac;
+                            }else {
+                                WaterProbeFragment waterProbeFragment = new WaterProbeFragment();
+                                waterProbeFragment.setArguments(params);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.framen_main_con, waterProbeFragment, TapType)
+                                        .commitAllowingStateLoss();
+                                this.MAC = mac;
+                            }
+                            Log.e("123456",tapPen);
                             return;
                         case WaterType:
                             WaterPurifierFragment waterPurifierFragment = new WaterPurifierFragment();

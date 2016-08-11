@@ -522,7 +522,7 @@ public class MatchProbeActivity extends AppCompatActivity {
                 }else {
                     device.Setting().name(name);
                 }
-
+                device.setAppdata(PageState.TapType,"tap");
                 device.setAppdata(PageState.DEVICE_ADDRES, address);
                 device.updateSettings();
                 //添加网络缓存任务

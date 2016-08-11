@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.ozner.bluetooth.BluetoothIO;
 import com.ozner.bluetooth.BluetoothScan;
 import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.PageState;
 import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.NotSupportDeviceException;
@@ -50,8 +51,8 @@ public class MatchTdsPenActivity extends AppCompatActivity {
     Toolbar toolbar = null;
     ArrayList<BaseDeviceIO> list = new ArrayList<BaseDeviceIO>();
     Monitor mMonitor = new Monitor();
-    LinearLayout ll_searched_device, ll_probe_info,device_place1,device_place2;
-    RelativeLayout ll_restart_matching;
+    LinearLayout ll_searched_device, ll_probe_info,device_place2;
+    RelativeLayout ll_restart_matching,device_place1;
     TextView tv_state, matchprobe_notice, matchcup_tv_bluetooth, toolbarText;
     ListAdapter adapter;
     RecyclerView deviceList;
@@ -178,7 +179,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
         iv_water_probe = (ImageView) findViewById(R.id.iv_water_probe);
         deviceList = (RecyclerView) findViewById(R.id.my_recycler_view);
         iv_matching_probe = (ImageView) findViewById(R.id.iv_matching_probe);
-        device_place1 = (LinearLayout) findViewById(R.id.device_place1);
+        device_place1 = (RelativeLayout) findViewById(R.id.device_place1);
         device_place1.setVisibility(View.GONE);
         device_place2 = (LinearLayout) findViewById(R.id.device_place2);
         device_place2.setVisibility(View.GONE);
@@ -395,7 +396,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
                 if (deviceIOs != null) {
                     for (BaseDeviceIO device : deviceIOs) {
                         //只添加 tdspen
-                        if (TapManager.IsTDSPen(device.getType())) {
+                        if (TapManager.IsTap(device.getType())) {
                             if (device instanceof BluetoothIO) {
                                 BluetoothIO bluetoothIO = (BluetoothIO) device;
                                 //检查水探头处于start模式
@@ -517,7 +518,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
             //通过找到的蓝牙对象控制对象获取设备对象
             OznerDevice device = OznerDeviceManager.Instance().getDevice(deviceIO);
             //device有可能为空
-            if (device != null && TapManager.IsTDSPen(device.Type())) {
+            if (device != null && TapManager.IsTap(device.Type())) {
                 OznerDeviceManager.Instance().save(device);
                 //保存设备
                 if (name.isEmpty()){
@@ -526,6 +527,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
                     device.Setting().name(name);
                 }
 
+                device.setAppdata(PageState.TapType,"pen");
 //                device.setAppdata(PageState.DEVICE_ADDRES, address);
                 device.updateSettings();
                 //添加网络缓存任务

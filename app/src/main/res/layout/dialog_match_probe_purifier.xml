@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:id="@+id/ll_purifier_name"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
@@ -34,10 +34,12 @@
             android:layout_marginRight="10dp"
             android:background="@color/font_gray" />
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/device_place1"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:orientation="horizontal">
 
             <EditText
@@ -46,6 +48,7 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:gravity="center"
+                android:layout_alignParentStart="true"
                 android:textAlignment="center"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
@@ -60,16 +63,16 @@
                 android:layout_gravity="center_vertical|left"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:layout_alignParentEnd="true"
                 android:src="@drawable/place_selector" />
 
-        </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/font_gray" />
+        </RelativeLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@color/font_gray" />
 
         <LinearLayout
             android:id="@+id/device_place2"
