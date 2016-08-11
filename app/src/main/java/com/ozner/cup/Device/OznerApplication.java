@@ -125,7 +125,7 @@ public class OznerApplication extends OznerBaseApplication {
     /**
      * 系统语言是否是中文
      *
-     * @return true:中文版；false:英文版
+     * @return true:中文版；false:英文版,默认是英文
      */
     public boolean isLanguageCN() {
         try {
@@ -136,7 +136,7 @@ public class OznerApplication extends OznerBaseApplication {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            return true;
+            return false;
         }
     }
 
