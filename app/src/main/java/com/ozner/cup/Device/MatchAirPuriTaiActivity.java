@@ -51,8 +51,8 @@ import java.util.ArrayList;
 public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<BaseDeviceIO> list = new ArrayList<BaseDeviceIO>();
-    LinearLayout ll_edit_devicename_place, ll_searched_device,device_place1,device_place2;
-    RelativeLayout rl_restart_matching;
+    LinearLayout ll_edit_devicename_place, ll_searched_device,device_place2;
+    RelativeLayout rl_restart_matching,device_place1;
     RecyclerView deviceList;
     ImageView image = null, indeximage,iv_show_device_place2,iv_air_tai;
     TextView toolbarText, tv_state, tv_matchair_notice, tv_matchair_bluetooth;
@@ -165,7 +165,7 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
         tv_state = (TextView) findViewById(R.id.tv_state);
         tv_matchair_notice = (TextView) findViewById(R.id.tv_matchair_notice);
         tv_matchair_bluetooth = (TextView) findViewById(R.id.tv_matchair_bluetooth);
-        device_place1 = (LinearLayout)findViewById(R.id.device_place1);
+        device_place1 = (RelativeLayout) findViewById(R.id.device_place1);
         device_place2 = (LinearLayout)findViewById(R.id.device_place2);
         iv_show_device_place2 = (ImageView)findViewById(R.id.iv_show_device_place2);
         device_place1.setOnClickListener(this);

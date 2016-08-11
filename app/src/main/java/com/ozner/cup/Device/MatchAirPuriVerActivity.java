@@ -53,8 +53,8 @@ import com.ozner.cup.R;
  */
 public class MatchAirPuriVerActivity extends AppCompatActivity implements View.OnClickListener {
     Toolbar toolbar;
-    LinearLayout connection_to_wifi, ll_setpurifier_name, ll_searched_device, device_place1, device_place2, ll_conn_notice;
-    RelativeLayout rl_restart_matching, rlay_air_matching;
+    LinearLayout connection_to_wifi, ll_setpurifier_name, ll_searched_device, device_place2, ll_conn_notice;
+    RelativeLayout rl_restart_matching, device_place1, rlay_air_matching;
     TextView toolbar_text, match_airpurifier_notice, match_airpurifier_wifi, tv_selectedWifi, et_password, tv_matchingTips, tv_state;
     ImageView image = null, iv_air_purifier_ver, iv_remember_password, image1, image2, image3, image4, image5, indeximage;
     EditText et_air_name, et_air_position;
@@ -162,7 +162,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
         image5 = (ImageView) findViewById(R.id.image5);
         anim5 = (AnimationDrawable) image5.getDrawable();
 
-        device_place1 = (LinearLayout) findViewById(R.id.device_place1);
+        device_place1 = (RelativeLayout) findViewById(R.id.device_place1);
         device_place2 = (LinearLayout) findViewById(R.id.device_place2);
         ll_conn_notice = (LinearLayout) findViewById(R.id.ll_conn_notice);
         ll_conn_notice.setVisibility(View.VISIBLE);
