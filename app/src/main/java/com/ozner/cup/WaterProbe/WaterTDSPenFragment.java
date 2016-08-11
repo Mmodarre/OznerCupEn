@@ -25,13 +25,13 @@ import android.widget.TextView;
 import com.ozner.cup.Command.DeviceData;
 import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.CupRecord;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.SetupWaterTDSPenActivity;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.Main.BaseMainActivity;
-import com.ozner.cup.MainActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.UIView.ChartAdapter;
 import com.ozner.cup.UIView.TapTDSChartView;
@@ -151,6 +151,11 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
         tv_name = (TextView) view.findViewById(R.id.tv_name);
         tdsChartView = (TapTDSChartView) view.findViewById(R.id.tdsChartView);
         lay_tdsShort = (LinearLayout) view.findViewById(R.id.lay_tdsShort);
+        if(OznerPreference.isLoginPhone(getContext())){
+            lay_tdsShort.setVisibility(View.VISIBLE);
+        }else{
+            lay_tdsShort.setVisibility(View.GONE);
+        }
         waterProcess = (WaterDetailProgress) view.findViewById(R.id.waterProcess);
         tv_tdsValue = (TextView) view.findViewById(R.id.tv_tdsValue);
         tv_tdsShort = (TextView) view.findViewById(R.id.tv_tdsShort);
