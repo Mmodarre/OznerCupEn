@@ -79,11 +79,14 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what) {
-                case 1:
-                    NetWeather weather = (NetWeather) msg.obj;
+            if (VerticalAirPurifierFragment.this.isAdded() &&
+                    !VerticalAirPurifierFragment.this.isRemoving() &&
+                    !VerticalAirPurifierFragment.this.isDetached()) {
+                switch (msg.what) {
+                    case 1:
+                        NetWeather weather = (NetWeather) msg.obj;
 
-                    if (weather != null) {
+                        if (weather != null) {
 //                        if (iv_data_loading != null) {
 //                            if (iv_data_loading.getAnimation() != null) {
 //                                try {
@@ -94,35 +97,35 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
 //                            }
 //                        }
 //                        rlay_top1.setVisibility(View.GONE);
-                        airWeather = weather;
-                        if (weather.pm25 != null) {
-                            tv_air_pmvalue.setText(weather.pm25);
-                            OznerApplication.setControlNumFace(tv_air_pmvalue);
-                        }
-                        if (weather.city != null) {
-                            if (VerticalAirPurifierFragment.this.isAdded()
-                                    && !VerticalAirPurifierFragment.this.isDetached()
-                                    && !VerticalAirPurifierFragment.this.isRemoving()) {
+                            airWeather = weather;
+                            if (weather.pm25 != null) {
+                                tv_air_pmvalue.setText(weather.pm25);
+                                OznerApplication.setControlNumFace(tv_air_pmvalue);
+                            }
+                            if (weather.city != null) {
+                                if (VerticalAirPurifierFragment.this.isAdded()
+                                        && !VerticalAirPurifierFragment.this.isDetached()
+                                        && !VerticalAirPurifierFragment.this.isRemoving()) {
 
-                                if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                                    tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
-                                } else {
-                                    tv_air_address.setText(weather.city);
+                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                        tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
+                                    } else {
+                                        tv_air_address.setText(weather.city);
+                                    }
                                 }
                             }
-                        }
-                        if (weather.qlty != null) {
-                            if ("优".equals(weather.qlty)) {
-                                tv_air_quality.setText(getResources().getString(R.string.excellent));
-                            } else if ("良".equals(weather.qlty)) {
-                                tv_air_quality.setText(getResources().getString(R.string.good));
-                            } else if ("差".equals(weather.qlty)) {
-                                tv_air_quality.setText(getResources().getString(R.string.bads));
-                            } else {
-                                tv_air_quality.setText(weather.qlty);
+                            if (weather.qlty != null) {
+                                if ("优".equals(weather.qlty)) {
+                                    tv_air_quality.setText(getResources().getString(R.string.excellent));
+                                } else if ("良".equals(weather.qlty)) {
+                                    tv_air_quality.setText(getResources().getString(R.string.good));
+                                } else if ("差".equals(weather.qlty)) {
+                                    tv_air_quality.setText(getResources().getString(R.string.bads));
+                                } else {
+                                    tv_air_quality.setText(weather.qlty);
+                                }
                             }
-                        }
-                    } else {
+                        } else {
 //                        if (iv_data_loading != null) {
 //                            if (iv_data_loading.getAnimation() != null) {
 //                                try {
@@ -134,12 +137,13 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
 //                        }
 //                        rlay_top1.setVisibility(View.GONE);
 //                        rlay_top2.setVisibility(View.VISIBLE);
-                        tv_air_pmvalue.setText("0");
-                        OznerApplication.setControlNumFace(tv_air_pmvalue);
-                        tv_air_address.setText(getString(R.string.air_dataLoding));
-                        tv_air_quality.setText(getString(R.string.air_dataLoding));
-                    }
-                    break;
+                            tv_air_pmvalue.setText("0");
+                            OznerApplication.setControlNumFace(tv_air_pmvalue);
+                            tv_air_address.setText(getString(R.string.air_dataLoding));
+                            tv_air_quality.setText(getString(R.string.air_dataLoding));
+                        }
+                        break;
+                }
             }
         }
     };
