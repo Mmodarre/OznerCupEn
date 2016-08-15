@@ -45,7 +45,7 @@ public class ChatCommand {
     public static final String appid = "hzapi";
     public static final String appsecret = "8af0134asdffe12";
     public static final int UploadTimeOut = 6 * 10000; // 超时时间
-    //        public static final String CHAT_HOST = "http://192.168.172.21";
+//            public static final String CHAT_HOST = "http://192.168.172.21";
     public static final String CHAT_HOST = "http://dkf.ozner.net";
     public static final String CHAT_ACCESS_TOKEN_URL = "/api/token.ashx?appid=%s&appsecret=%s&sign=%s";//获取token
     public static final String CHAT_LOGIN_URL = "/api/customerlogin.ashx?access_token=%s&sign=%s";//咨询登录
