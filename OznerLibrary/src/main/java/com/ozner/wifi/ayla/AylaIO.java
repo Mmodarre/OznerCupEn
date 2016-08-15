@@ -7,24 +7,17 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.aylanetworks.aaml.AylaAppNotification;
 import com.aylanetworks.aaml.AylaDatapoint;
 import com.aylanetworks.aaml.AylaDevice;
-import com.aylanetworks.aaml.AylaDeviceGateway;
-import com.aylanetworks.aaml.AylaDeviceNotification;
 import com.aylanetworks.aaml.AylaNetworks;
 import com.aylanetworks.aaml.AylaProperty;
-import com.aylanetworks.aaml.AylaPropertyTrigger;
 import com.aylanetworks.aaml.AylaSystemUtils;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.DeviceNotReadyException;
 import com.ozner.device.OperateCallback;
-import com.ozner.device.OznerDeviceManager;
 import com.ozner.util.dbg;
 import com.ozner.wifi.ThreadHandler;
-import com.ozner.wifi.mxchip.MXChipIO;
 
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -43,6 +36,14 @@ public class AylaIO extends BaseDeviceIO {
             super.handleMessage(msg);
         }
     };
+
+    public String DSN()
+        {
+                return aylaDevice.dsn;
+            }
+
+
+
 
     public AylaIO(Context context, final AylaDevice device) {
         super(context, device.model);

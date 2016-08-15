@@ -29,11 +29,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ozner.WaterPurifier.WaterPurifier;
-import com.ozner.cup.CupRecord;
 import com.ozner.cup.Command.CenterUrlContants;
 import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
+import com.ozner.cup.CupRecord;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.SetupWaterPurifierActivity;
 import com.ozner.cup.HttpHelper.NetJsonObject;
@@ -46,6 +46,7 @@ import com.ozner.cup.UIView.NetHelper;
 import com.ozner.cup.mycenter.WebActivity;
 import com.ozner.device.OperateCallback;
 import com.ozner.device.OznerDeviceManager;
+import com.ozner.wifi.ayla.AylaIO;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -103,6 +104,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private boolean isFirst = true;
     private boolean hasType = false;
     private boolean isZero = false;
+    private String dsn="";
 
     public WaterPurifierFragment() {
         // Required empty public constructor
@@ -118,6 +120,15 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
         } catch (Exception ex) {
             ex.printStackTrace();
             waterPurifier = null;
+
+            if(waterPurifier.IO() instanceof AylaIO){
+                try {
+                    dsn= ((AylaIO) waterPurifier.IO()).DSN();
+                }catch (Exception e){
+                    e.printStackTrace();
+                    dsn="";
+                }
+            }
         }
         View view = inflater.inflate(R.layout.purifier_detail, container, false);
         initView(view);
@@ -129,7 +140,6 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
         }
         OznerApplication.changeTextFont((ViewGroup) view);
 //        isFirst = true;
-
         if (isFirst) {
             if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
                 new GetLvxinTimeAsyncTask().execute();
@@ -472,6 +482,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                     params.add(new BasicNameValuePair("type", type));
                     params.add(new BasicNameValuePair("tds", String.valueOf(after)));
                     params.add(new BasicNameValuePair("beforetds", String.valueOf(pre)));
+                    params.add(new BasicNameValuePair("dsn", dsn));
                     NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, url, params);
                     Log.e("tag", "上传净水器tds：" + netJsonObject.value);
                 }
