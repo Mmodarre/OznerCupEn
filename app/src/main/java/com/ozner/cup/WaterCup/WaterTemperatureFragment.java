@@ -139,7 +139,13 @@ public class WaterTemperatureFragment extends Fragment {
                         if(50<=cupRecords[j].Temperature_MAX&&80>=cupRecords[j].Temperature_MAX) {
                             dataDay[cupRecords[j].start.getHours()] = cupRecords[j].Temperature_MAX+20;
                         }else{
-                            dataDay[cupRecords[j].start.getHours() - 1] = cupRecords[j].Temperature_MAX;
+                            try{
+                                dataDay[cupRecords[j].start.getHours() - 1] = cupRecords[j].Temperature_MAX;
+                            }catch(Exception ex){
+                                ex.printStackTrace();
+                                dataDay[cupRecords[j].start.getHours()] = cupRecords[j].Temperature_MAX;
+                            }
+
                         }
                     }
                 }
