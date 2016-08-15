@@ -418,9 +418,15 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Mac = getArguments().getString("MAC");
-        OznerDevice oznerDevice = OznerDeviceManager.Instance().getDevice(Mac);
-        tap = (Tap) oznerDevice;
+        try {
+            Mac = getArguments().getString("MAC");
+            OznerDevice oznerDevice = OznerDeviceManager.Instance().getDevice(Mac);
+            tap = (Tap) oznerDevice;
+        }catch (Exception ex){
+             ex.printStackTrace();;
+             tap=null;
+        }
+
 
 //         int i= 7/0;
     }
