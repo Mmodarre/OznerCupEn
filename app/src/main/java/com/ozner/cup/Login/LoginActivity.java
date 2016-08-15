@@ -180,7 +180,6 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
 
-
     //                RequestParams params = new RequestParams();
 //                params.put("phone", "13526885317");
 //                //
@@ -469,32 +468,34 @@ public class LoginActivity extends BaseLoginActivity {
             //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
             @Override
             protected void onPostExecute(NetJsonObject result) {
-                if (dialog != null)
-                    dialog.dismiss();
-                if (result != null && result.state > 0) {
-                    tv_wrong.setText("");
-                } else {
-
-
-                    tv_wrong.setText(getResources().getString(R.string.login_code_sendwrong));
-                    StopChangeVoiceButton();
-                    switch (result.state) {
-                        case 0:
-                            tv_wrong.setText(getResources().getString(R.string.innet_wrong));
-                            break;
-                        case -10002:
-                            tv_wrong.setText(getResources().getString(R.string.login_wrong_Code_Outtime));
-                            break;
-                        case -10003:
-                            tv_wrong.setText(getResources().getString(R.string.login_wrong_Code_error));
-                            break;
-                        case -10004:
-                            tv_wrong.setText(getResources().getString(R.string.server_Exception));
-                            break;
-                        default:
-                            tv_wrong.setText(getResources().getString(R.string.login_wrong_login_error));
-                            break;
+                try {
+                    if (dialog != null)
+                        dialog.dismiss();
+                    if (result != null && result.state > 0) {
+                        tv_wrong.setText("");
+                    } else {
+                        tv_wrong.setText(getResources().getString(R.string.login_code_sendwrong));
+                        StopChangeVoiceButton();
+                        switch (result.state) {
+                            case 0:
+                                tv_wrong.setText(getResources().getString(R.string.innet_wrong));
+                                break;
+                            case -10002:
+                                tv_wrong.setText(getResources().getString(R.string.login_wrong_Code_Outtime));
+                                break;
+                            case -10003:
+                                tv_wrong.setText(getResources().getString(R.string.login_wrong_Code_error));
+                                break;
+                            case -10004:
+                                tv_wrong.setText(getResources().getString(R.string.server_Exception));
+                                break;
+                            default:
+                                tv_wrong.setText(getResources().getString(R.string.login_wrong_login_error));
+                                break;
+                        }
                     }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
 

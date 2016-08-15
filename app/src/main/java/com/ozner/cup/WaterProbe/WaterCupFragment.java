@@ -66,8 +66,8 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
 
     private DeviceData deviceData;
     private boolean isCupGuideFirst;
-    LinearLayout llay_waterVolum, llay_waterTem, lay_tdsShort ;
-    RelativeLayout rlay_tdsdetail, rlay_menu, rlay_top1,layout_cup_detail;
+    LinearLayout llay_waterVolum, llay_waterTem, lay_tdsShort;
+    RelativeLayout rlay_tdsdetail, rlay_menu, rlay_top1, layout_cup_detail;
     ImageView iv_battery, iv_cupSet, iv_menu, iv_waterValum, iv_waterTemp;
     ImageView iv_tdsLevelImg, iv_data_loading;
     TextView tv_tdsLevelText, tv_tdsValue, tv_tdsShort;
@@ -115,11 +115,11 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                     ranking = rank;
                     break;
                 case 2:
-                    if(msg.arg2>0) {
-                        String url= (String) msg.obj;
+                    if (msg.arg2 > 0) {
+                        String url = (String) msg.obj;
                         downloadFile(url);
-                    }else{
-                        Log.e("error","nullPath");
+                    } else {
+                        Log.e("error", "nullPath");
                     }
                     break;
             }
@@ -145,7 +145,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
             Log.e("ffState", Mac + "==========mac");
             device = OznerDeviceManager.Instance().getDevice(Mac);
             getFirmwarNum(device);
-        }catch (Exception e){
+        } catch (Exception e) {
         }
     }
 
@@ -153,26 +153,23 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
         if (device instanceof Cup) {
             cup = (Cup) device;
             BluetoothIO io = (BluetoothIO) cup.IO();
-            if (io!=null) {
+            if (io != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                firmwarNum=sdf.format(new Date(io.getFirmware()));
+                firmwarNum = sdf.format(new Date(io.getFirmware()));
             }
             cuptype = cup.Type();
-            Log.e("ffState",cuptype+ "==========");
-            if(cup!=null&&(cup.connectStatus() == BaseDeviceIO.ConnectStatus.Connected)){
+            Log.e("ffState", cuptype + "==========");
+            if (cup != null && (cup.connectStatus() == BaseDeviceIO.ConnectStatus.Connected)) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                if(!sdf.format(new Date()).equals(cup.getAppValue("checkUpdate"))){
-                    if(firmwarNum!=null) {
-                        Log.e("ffState",firmwarNum+ "==========");
+                if (!sdf.format(new Date()).equals(cup.getAppValue("checkUpdate"))) {
+                    if (firmwarNum != null) {
+                        Log.e("ffState", firmwarNum + "==========");
                         uploadFirmwarUrl(cuptype, firmwarNum);//更新固件的方法
                     }
                 }
             }
         }
     }
-
-
-
 
 
     @Override
@@ -182,9 +179,10 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
         initView(view);
         return view;
     }
+
     private void initView(View view) {
         layout_cup_detail = (RelativeLayout) view.findViewById(R.id.layout_cup_detail);
-        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -242,7 +240,6 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
         iv_data_loading.setAnimation(animation);
 
 
-
         if (!isCupGuideFirst) {
             layout_cup_detail.setOnClickListener(this);
             iv_cupSet.setOnClickListener(this);
@@ -250,9 +247,9 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
         }
         OznerApplication.changeTextFont((ViewGroup) view);
         initTypeFace();
-        if(((OznerApplication)getActivity().getApplication()).isLoginPhone()){
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             lay_tdsShort.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             lay_tdsShort.setVisibility(View.GONE);
         }
     }
@@ -270,26 +267,27 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
 
         InitData();
         try {
-            int battery=(int)(POWER*100+0.5);
-            if(battery==100){
-                tv_batteryText.setText(battery+ "%");
+            int battery = (int) (POWER * 100 + 0.5);
+            if (battery == 100) {
+                tv_batteryText.setText(battery + "%");
                 iv_battery.setImageResource(R.drawable.battery100);
-            }else if(battery<100&&battery>=50){
-                tv_batteryText.setText(battery+ "%");
+            } else if (battery < 100 && battery >= 50) {
+                tv_batteryText.setText(battery + "%");
                 iv_battery.setImageResource(R.drawable.battery70);
-            }else if(battery<50&&battery>0){
-                tv_batteryText.setText(battery+ "%");
+            } else if (battery < 50 && battery > 0) {
+                tv_batteryText.setText(battery + "%");
                 iv_battery.setImageResource(R.drawable.battery30);
-            }else if(battery==0){
-                tv_batteryText.setText(battery+ "%");
+            } else if (battery == 0) {
+                tv_batteryText.setText(battery + "%");
                 iv_battery.setImageResource(R.drawable.battery0);
-            }else{
+            } else {
                 tv_batteryText.setText(getString(R.string.text_null));
                 iv_battery.setImageResource(R.drawable.battery0);
             }
@@ -305,7 +303,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                     tv_waterTemText.setText(getResources().getString(R.string.good_temperature));
                     iv_waterTemp.setImageResource(R.drawable.temp_low);
                     tv_waterTempTip.setText(getResources().getString(R.string.cupDetail_waterDrinkNo));
-                } else if (TemperatureFix > CupRecord.Temperature_Low_Value&& TemperatureFix <= CupRecord.Temperature_High_Value) {
+                } else if (TemperatureFix > CupRecord.Temperature_Low_Value && TemperatureFix <= CupRecord.Temperature_High_Value) {
                     tv_waterTemText.setText(getResources().getString(R.string.normal_temperature));
                     iv_waterTemp.setImageResource(R.drawable.temp_mid);
                     tv_waterTempTip.setText(getResources().getString(R.string.cupDetail_waterDrinkOk));
@@ -326,14 +324,14 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
 
         if (WaterCupFragment.this != null && WaterCupFragment.this.isAdded()) {
             try {
-                if(TDSFix>5000){
+                if (TDSFix > 5000) {
                     setTDSTextFace();
                     tv_tdsValue.setText(getResources().getString(R.string.null_text));
                     tv_tdsLevelText.setText(getResources().getString(R.string.text_null));
                     lay_tdsShort.setVisibility(View.GONE);
                     iv_tdsLevelImg.setVisibility(View.GONE);
                     rlay_tdsdetail.setEnabled(false);
-                }else{
+                } else {
                     RefreshBindDataView();
                     tv_name.setText(device.getName());
                 }
@@ -349,8 +347,9 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
         }
 
     }
+
     private String cuptype;
-    private int TDSFix=0;
+    private int TDSFix = 0;
     private int TemperatureFix;
     private CupRecordList cupRecordLists;
     private CupRecord cupRecord;
@@ -360,16 +359,17 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
     * */
     public void InitData() {
         TDSFix = cup.Sensor().TDSFix;
-        Log.e("TDS",TDSFix+"");
+        Log.e("TDS", TDSFix + "");
         cupRecordLists = cup.Volume();
         TemperatureFix = cup.Sensor().TemperatureFix;
-        POWER=cup.Sensor().getPower();
+        POWER = cup.Sensor().getPower();
         Log.e("power", cup.Sensor().getPower() + "==========");
         if (cupRecordLists != null) {
             Date time = new Date(new Date().getTime() / 86400000 * 86400000);
             cupRecord = cupRecordLists.getRecordByDate(time);
         }
     }
+
     private void RefreshBindVolume() {
 
         if (cupRecord != null) {
@@ -392,14 +392,16 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
         tv_tdsValue.getPaint().setFakeBoldText(false);
         tv_tdsValue.setTextSize(45);
     }
+
     private void setTDSnumFace() {
         tv_tdsValue.setTypeface(OznerApplication.numFace);
         tv_tdsValue.getPaint().setFakeBoldText(false);
         tv_tdsValue.setTextSize(60);
     }
+
     public void RefreshBindDataView() {
         tv_name.setText(device.getName());
-        if(TDSFix==0){
+        if (TDSFix == 0) {
             lay_tdsShort.setVisibility(View.GONE);
         }
         if (cup.getAppValue(PageState.DRINK_GOAL) != null) {
@@ -413,7 +415,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
             iv_tdsLevelImg.setVisibility(View.GONE);
             rlay_tdsdetail.setEnabled(false);
         } else {
-            if(TDSFix==0){
+            if (TDSFix == 0) {
                 lay_tdsShort.setVisibility(View.GONE);
             }
             rlay_tdsdetail.setOnClickListener(this);
@@ -466,7 +468,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
             } catch (Exception ex) {
 //                lay_tdsShort.setVisibility(View.INVISIBLE);
             }
-            if(TDSFix!=0) {
+            if (TDSFix != 0) {
 
 //                if(OznerPreference.isLoginPhone(getContext())){
 //                    lay_tdsShort.setVisibility(View.VISIBLE);
@@ -509,7 +511,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                         }
                     }
                 }
-            }else{
+            } else {
                 setTDSTextFace();
                 tv_tdsValue.setText(getResources().getString(R.string.text_null));
                 rlay_tdsdetail.setEnabled(false);
@@ -528,7 +530,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                     tv_waterTemText.setText(getResources().getString(R.string.good_temperature));
                     iv_waterTemp.setImageResource(R.drawable.temp_low);
                     tv_waterTempTip.setText(getResources().getString(R.string.cupDetail_waterDrinkNo));
-                } else if (TemperatureFix > CupRecord.Temperature_Low_Value&& TemperatureFix <= CupRecord.Temperature_High_Value) {
+                } else if (TemperatureFix > CupRecord.Temperature_Low_Value && TemperatureFix <= CupRecord.Temperature_High_Value) {
                     tv_waterTemText.setText(getResources().getString(R.string.normal_temperature));
                     iv_waterTemp.setImageResource(R.drawable.temp_mid);
                     tv_waterTempTip.setText(getResources().getString(R.string.cupDetail_waterDrinkOk));
@@ -559,6 +561,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
     @Override
     public void onClick(View v) {
         Bundle bundle = new Bundle();
@@ -610,18 +613,23 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
 //            beginGuide();
         }
     }
+
     private void beginGuide() {
         Intent intent = new Intent(getContext(), TeachGuideForCupActivity.class);
         startActivity(intent);
     }
+
     public void ShowContent(int i, String mac) {
     }
+
     public void ChangeRawRecord() {
     }
+
     private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
         @Override
         protected void onPreExecute() {
         }
+
         //doInBackground方法内部执行后台任务,不可在此方法内修改UI
         @Override
         protected String doInBackground(String... params) {
@@ -629,46 +637,48 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
 
             return null;
         }
+
         //onProgressUpdate方法用于更新进度信息
         @Override
         protected void onProgressUpdate(Integer... progresses) {
         }
+
         //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
         @Override
         protected void onPostExecute(String result) {
-            try {
-                //
-                int power=(int) (POWER*100+0.5);
-                if(power==100){
-                    tv_batteryText.setText(power+ "%");
-                    iv_battery.setImageResource(R.drawable.battery100);
-                }else if(power<100&&power>=50){
-                    tv_batteryText.setText(power+ "%");
-                    iv_battery.setImageResource(R.drawable.battery70);
-                }else if(power<50&&power>0){
-                    tv_batteryText.setText(power+ "%");
-                    iv_battery.setImageResource(R.drawable.battery30);
-                }else if(power==0){
-                    tv_batteryText.setText(power+ "%");
-                    iv_battery.setImageResource(R.drawable.battery0);
-                }else{
+            if (WaterCupFragment.this != null && WaterCupFragment.this.isAdded()) {
+                try {
+                    //
+                    int power = (int) (POWER * 100 + 0.5);
+                    if (power == 100) {
+                        tv_batteryText.setText(power + "%");
+                        iv_battery.setImageResource(R.drawable.battery100);
+                    } else if (power < 100 && power >= 50) {
+                        tv_batteryText.setText(power + "%");
+                        iv_battery.setImageResource(R.drawable.battery70);
+                    } else if (power < 50 && power > 0) {
+                        tv_batteryText.setText(power + "%");
+                        iv_battery.setImageResource(R.drawable.battery30);
+                    } else if (power == 0) {
+                        tv_batteryText.setText(power + "%");
+                        iv_battery.setImageResource(R.drawable.battery0);
+                    } else {
+                        tv_batteryText.setText(getString(R.string.text_null));
+                        iv_battery.setImageResource(R.drawable.battery0);
+                    }
+                } catch (Exception ex) {
                     tv_batteryText.setText(getString(R.string.text_null));
                     iv_battery.setImageResource(R.drawable.battery0);
                 }
-            } catch (Exception ex) {
-                tv_batteryText.setText(getString(R.string.text_null));
-                iv_battery.setImageResource(R.drawable.battery0);
-            }
-            if (WaterCupFragment.this != null && WaterCupFragment.this.isAdded()) {
                 try {
-                    if(TDSFix>5000){
+                    if (TDSFix > 5000) {
                         setTDSTextFace();
                         tv_tdsValue.setText(getResources().getString(R.string.null_text));
                         tv_tdsLevelText.setText(getResources().getString(R.string.text_null));
                         lay_tdsShort.setVisibility(View.GONE);
                         iv_tdsLevelImg.setVisibility(View.GONE);
                         rlay_tdsdetail.setEnabled(false);
-                    }else{
+                    } else {
                         RefreshBindDataView();
                     }
 
@@ -683,6 +693,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                 changeState();
             }
         }
+
         //onCancelled方法用于在取消执行中的任务时更改UI
         @Override
         protected void onCancelled() {
@@ -694,21 +705,21 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                NetJsonObject netJsonObject=OznerCommand.GetFirmwareUrl(getContext(),cuptype,firmwarNum);
-                Log.e("ffState1","error===="+netJsonObject.value);
-                Message message=new Message();
-                if(netJsonObject.state>0){
+                NetJsonObject netJsonObject = OznerCommand.GetFirmwareUrl(getContext(), cuptype, firmwarNum);
+                Log.e("ffState1", "error====" + netJsonObject.value);
+                Message message = new Message();
+                if (netJsonObject.state > 0) {
                     try {
-                        String path=netJsonObject.getJSONObject().getString("url");
-                        Log.e("ffState1","error===="+path);
-                        message.obj=path;
-                        message.what=2;
-                        message.arg2=netJsonObject.state;
+                        String path = netJsonObject.getJSONObject().getString("url");
+                        Log.e("ffState1", "error====" + path);
+                        message.obj = path;
+                        message.what = 2;
+                        message.arg2 = netJsonObject.state;
                         tdshandler.sendMessage(message);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }else{
+                } else {
 //                    Log.e("ffState","state");
 //                    message.obj="http://app.ozner.net:888/Download/CupMay202015094626.bin";
 //                    message.what=2;
@@ -720,29 +731,30 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
     }
 
     private void downloadFile(final String httpurl) {
-        String sdpath = Environment.getExternalStorageDirectory() +File.separator;
-        mSavePath = sdpath + "Ozner"+File.separator+"cup.bin";
-        Log.e("path",mSavePath);
-        Log.e("path",httpurl);
-        final HttpUtils httpUtils=new HttpUtils();
+        String sdpath = Environment.getExternalStorageDirectory() + File.separator;
+        mSavePath = sdpath + "Ozner" + File.separator + "cup.bin";
+        Log.e("path", mSavePath);
+        Log.e("path", httpurl);
+        final HttpUtils httpUtils = new HttpUtils();
         httpUtils.download(httpurl, mSavePath, true, true, new RequestCallBack<File>() {
             @Override
             public void onSuccess(ResponseInfo<File> responseInfo) {
                 Log.e("path", "onSuccess====" + responseInfo.result.getPath());
                 Intent intent = new Intent(getContext(), FirmwareUpgrade.class);
-                intent.putExtra("MAC",Mac);
-                if(responseInfo.result.getPath()!=null) {
+                intent.putExtra("MAC", Mac);
+                if (responseInfo.result.getPath() != null) {
                     intent.putExtra("path", responseInfo.result.getPath());
-                }else {
+                } else {
                     intent.putExtra("path", "null");
                 }
                 getActivity().startActivity(intent);
             }
+
             @Override
             public void onFailure(HttpException e, String s) {
-                Log.e("path","onFailure====="+e);
+                Log.e("path", "onFailure=====" + e);
                 File file = new File(mSavePath);
-                if(file.isFile()){
+                if (file.isFile()) {
                     file.delete();
                 }
                 file.exists();
@@ -772,11 +784,11 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                     if (iv_data_loading.getAnimation() != null)
                         iv_data_loading.getAnimation().start();
                     rlay_top1.setVisibility(View.VISIBLE);
-                    int powerConn= Math.round(POWER);
-                    if(powerConn==100){
+                    int powerConn = Math.round(POWER);
+                    if (powerConn == 100) {
                         tv_batteryText.setText(getString(R.string.text_null));
                         iv_battery.setImageResource(R.drawable.battery0);
-                    }else{
+                    } else {
                         tv_batteryText.setText(getString(R.string.text_null));
                         iv_battery.setImageResource(R.drawable.battery0);
                     }
@@ -791,11 +803,11 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                     if (iv_data_loading.getAnimation() != null)
                         iv_data_loading.getAnimation().cancel();
                     tv_data_loading.setText(getResources().getString(R.string.loding_fair));
-                    int powerDis= Math.round(POWER);
-                    if(powerDis==100){
+                    int powerDis = Math.round(POWER);
+                    if (powerDis == 100) {
                         tv_batteryText.setText(getString(R.string.text_null));
                         iv_battery.setImageResource(R.drawable.battery0);
-                    }else{
+                    } else {
                         tv_batteryText.setText(getString(R.string.text_null));
                         iv_battery.setImageResource(R.drawable.battery0);
                     }
@@ -820,11 +832,11 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
             if (iv_data_loading.getAnimation() != null)
                 iv_data_loading.getAnimation().start();
             rlay_top1.setVisibility(View.VISIBLE);
-            int powerConn= Math.round(POWER);
-            if(powerConn==100){
+            int powerConn = Math.round(POWER);
+            if (powerConn == 100) {
                 tv_batteryText.setText(getString(R.string.text_null));
                 iv_battery.setImageResource(R.drawable.battery0);
-            }else{
+            } else {
                 tv_batteryText.setText(getString(R.string.text_null));
                 iv_battery.setImageResource(R.drawable.battery0);
             }
@@ -840,11 +852,11 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
                 iv_data_loading.getAnimation().cancel();
             tv_data_loading.setText(getResources().getString(R.string.loding_fair));
 
-            int powerDis= Math.round(POWER);
-            if(powerDis==100){
+            int powerDis = Math.round(POWER);
+            if (powerDis == 100) {
                 tv_batteryText.setText(getString(R.string.text_null));
                 iv_battery.setImageResource(R.drawable.battery0);
-            }else{
+            } else {
                 tv_batteryText.setText(getString(R.string.text_null));
                 iv_battery.setImageResource(R.drawable.battery0);
             }
