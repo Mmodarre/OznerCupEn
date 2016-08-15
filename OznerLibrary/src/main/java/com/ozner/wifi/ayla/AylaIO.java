@@ -7,16 +7,24 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.aylanetworks.aaml.AylaAppNotification;
 import com.aylanetworks.aaml.AylaDatapoint;
 import com.aylanetworks.aaml.AylaDevice;
+import com.aylanetworks.aaml.AylaDeviceGateway;
+import com.aylanetworks.aaml.AylaDeviceNotification;
 import com.aylanetworks.aaml.AylaNetworks;
 import com.aylanetworks.aaml.AylaProperty;
+import com.aylanetworks.aaml.AylaPropertyTrigger;
 import com.aylanetworks.aaml.AylaSystemUtils;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.DeviceNotReadyException;
 import com.ozner.device.OperateCallback;
+import com.ozner.device.OznerDeviceManager;
+import com.ozner.util.dbg;
 import com.ozner.wifi.ThreadHandler;
+import com.ozner.wifi.mxchip.MXChipIO;
 
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -25,7 +33,7 @@ import java.util.HashMap;
  */
 public class AylaIO extends BaseDeviceIO {
     AylaDevice aylaDevice;
-    ConnectStatus connectStatus= ConnectStatus.Disconnect;
+    ConnectStatus connectStatus=ConnectStatus.Disconnect;
     String address;
     HashMap<String,AylaProperty> properties=new HashMap<>();
     private final ThreadHandler notifyHandler=new ThreadHandler()
@@ -38,6 +46,7 @@ public class AylaIO extends BaseDeviceIO {
 
     public AylaIO(Context context, final AylaDevice device) {
         super(context, device.model);
+        //device.registrationType=AylaNetworks.AML_REGISTRATION_TYPE_AP_MODE;
         String mac = device.mac.toUpperCase();
         address = mac.substring(0, 2) + ":" +
                 mac.substring(2, 4) + ":" +
@@ -45,7 +54,7 @@ public class AylaIO extends BaseDeviceIO {
                 mac.substring(6, 8) + ":" +
                 mac.substring(8, 10) + ":" +
                 mac.substring(10, 12);
-
+        dbg.d("create alyaIO:"+address);
         aylaDevice=device;
         device.getProperties(new ThreadHandler() {
             @Override
@@ -68,8 +77,11 @@ public class AylaIO extends BaseDeviceIO {
                     doInit();
 
                     doReady();
+                }else
+                {
+                    dbg.e(msg.toString());
+                    super.handleMessage(msg);
                 }
-                super.handleMessage(msg);
             }
         });
 
@@ -78,18 +90,18 @@ public class AylaIO extends BaseDeviceIO {
 
     @Override
     protected void doConnected() {
-        connectStatus= ConnectStatus.Connected;
+        connectStatus=ConnectStatus.Connected;
         super.doConnected();
     }
 
     @Override
     protected void doDisconnected() {
-        connectStatus= ConnectStatus.Disconnect;
+        connectStatus=ConnectStatus.Disconnect;
         super.doDisconnected();
     }
     @Override
     protected void doConnecting() {
-        connectStatus= ConnectStatus.Connecting;
+        connectStatus=ConnectStatus.Connecting;
         super.doConnecting();
     }
 
