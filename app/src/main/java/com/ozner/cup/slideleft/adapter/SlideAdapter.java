@@ -92,6 +92,10 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
         holder.left_item_state = (ImageView) v.findViewById(R.id.left_item_state);
         holder.title_text = (TextView) v.findViewById(R.id.title_text);
         DeviceData slilde = getItem(position);
+        String abcd = null;
+        try {
+            abcd = slilde.getOznerDevice().getAppValue(PageState.TapType).toString();
+        }catch (Exception e){}
 //        if(slilde.getMac().equals(NewMac)) {
 //            CustomToast.makeText((MainActivity) getContext(), holder.icon, 3000);
 //            //已经展示，删除
@@ -112,10 +116,33 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
                 holder.left_item_state.setImageResource(R.mipmap.icon_bluetooth);
                 //智能水探头
             } else if (TapManager.IsTap(type)) {
-                if (slilde.getMac().equals(Mac))
-                    holder.icon.setImageResource(R.drawable.tan_tou_on);
-                else
-                    holder.icon.setImageResource(R.drawable.tan_tou);
+                if ("pen".equals(abcd)) {
+                    if (slilde.getMac().equals(Mac)) {
+                        holder.icon.setImageResource(R.drawable.tdspen_on);
+                    } else {
+                        holder.icon.setImageResource(R.drawable.tds_pen);
+                    }
+                }else {
+                    if (slilde.getMac().equals(Mac)) {
+                        holder.icon.setImageResource(R.drawable.tan_tou_on);
+                    } else {
+                        holder.icon.setImageResource(R.drawable.tan_tou);
+                    }
+                }
+
+//                if (slilde.getMac().equals(Mac))
+//                    if ("pen".equals(abcd)){
+//                        holder.icon.setImageResource(R.drawable.tdspen_on);
+//                    }else {
+//                        holder.icon.setImageResource(R.drawable.tan_tou_on);
+//                    }
+//                else {
+//                    if ("pen".equals(abcd)){
+//                        holder.icon.setImageResource(R.drawable.tds_pen);
+//                    }else {
+//                        holder.icon.setImageResource(R.drawable.tan_tou);
+//                    }
+//                }
                 holder.left_item_state.setImageResource(R.mipmap.icon_bluetooth);
                 //智能净水器
             } else if (WaterPurifierManager.IsWaterPurifier(type)) {

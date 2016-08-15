@@ -60,7 +60,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
     EditText et_glass_name, et_device_position;
     private boolean isSuccesShow = false;
     private int deviceNum = 0;
-    ImageView image = null, indeximage, iv_water_probe, iv_matching_probe;
+    ImageView image = null, iv_water_probe;
     TimerCount timerCount;
     Animation animinput, animfadeout, animfadein;
     private String Mac;
@@ -177,8 +177,8 @@ public class MatchTdsPenActivity extends AppCompatActivity {
         ll_searched_device = (LinearLayout) findViewById(R.id.ll_searched_device);
         ll_searched_device.setVisibility(View.GONE);
         iv_water_probe = (ImageView) findViewById(R.id.iv_water_probe);
+        iv_water_probe.setImageResource(R.drawable.tdspen6);
         deviceList = (RecyclerView) findViewById(R.id.my_recycler_view);
-        iv_matching_probe = (ImageView) findViewById(R.id.iv_matching_probe);
         device_place1 = (RelativeLayout) findViewById(R.id.device_place1);
         device_place1.setVisibility(View.GONE);
         device_place2 = (LinearLayout) findViewById(R.id.device_place2);
@@ -296,7 +296,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
         iv_water_probe.setVisibility(View.GONE);
         matchprobe_notice.setVisibility(View.GONE);
         matchcup_tv_bluetooth.setVisibility(View.GONE);
-        iv_matching_probe.setImageDrawable(getResources().getDrawable(R.drawable.searched_tap));
+        image.setImageDrawable(getResources().getDrawable(R.drawable.tdspen4));
         ViewGroup.LayoutParams s = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 2f);
         ll_searched_device.setLayoutParams(s);
         ll_searched_device.setVisibility(View.VISIBLE);
@@ -444,11 +444,13 @@ public class MatchTdsPenActivity extends AppCompatActivity {
             BaseDeviceIO device = (BaseDeviceIO) list.get(position);
             if (device != null) {
                 if(Mac!=null&&device.getAddress().equals(Mac)) {
-                    convertView.Cup_iv_device_item_image.setImageResource(R.drawable.water_probe_selected);
+                    convertView.Cup_iv_device_item_image.setImageResource(R.drawable.tdspen4);
+                    convertView.Cup_iv_device_item_image.setAlpha(1.0f);
                     convertView.item_selected.setChecked(true);
                 }
                 else {
-                    convertView.Cup_iv_device_item_image.setImageResource(R.drawable.water_probe_small);
+                    convertView.Cup_iv_device_item_image.setImageResource(R.drawable.tdspen4);
+                    convertView.Cup_iv_device_item_image.setAlpha(0.6f);
                     convertView.item_selected.setChecked(false);
                 }
                 convertView.Cup_tv_device_item_name.setText(getString(R.string.water_tdspen));
