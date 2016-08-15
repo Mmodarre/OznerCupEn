@@ -157,6 +157,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
     private String chatUserId;
     private String sendImgMsg = null;
     private boolean isFirstLoad = true;
+    private final int timeLength = String.valueOf(new Date().getTime()).length();
 
 
     @Override
@@ -948,7 +949,13 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                                         if (historyResult.historyMsgs.get(curIndex).oper == 1) {//发送
                                             chatMessage.setIsSendSuc(1);//发送成功
                                         }
-                                        chatMessage.setTime(historyResult.historyMsgs.get(curIndex).timeetamp);
+                                        if (String.valueOf(historyResult.historyMsgs.get(curIndex).timeetamp).length() < timeLength) {
+                                            chatMessage.setTime(historyResult.historyMsgs.get(curIndex).timeetamp * 1000);
+//                                            Log.e(TAG, "handleMessage: msgTime_less:" + historyResult.historyMsgs.get(curIndex).timeetamp);
+                                        } else {
+                                            chatMessage.setTime(historyResult.historyMsgs.get(curIndex).timeetamp);
+//                                            Log.e(TAG, "handleMessage: msgTime_more:" + historyResult.historyMsgs.get(curIndex).timeetamp);
+                                        }
                                         if (chatMessageHelper != null) {
                                             chatMessageHelper.InsertMessage(getContext(), chatMessage);
                                         }
