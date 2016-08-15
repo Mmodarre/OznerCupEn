@@ -264,6 +264,7 @@
     <string name="problem_notice_glass">Check the battery,Bluetooth status or shake the cup  and then try to match</string>
     <string name="problem_notice_purifier">You can check the status of the WiFi link and then pairing</string>
     <string name="problem_notice_probe">Check the battery,Bluetooth status and then try to match</string>
+    <string name="problem_notice_probe2">Check the battery,Bluetooth status and then try to match</string>
     <string name="problem_notice_air_tai">Check the status of the filter element and Bluetooth and then try pairing</string>
     <string name="problem_notice_water_replenish_meter">You can check the water meter Bluetooth enabled before pairing</string>
     <string name="searched_device">Device searched</string>

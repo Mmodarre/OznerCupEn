@@ -262,6 +262,7 @@
     <string name="problem_notice_glass">检查水杯电量、蓝牙开启状态或将水杯摇晃后再尝试配对</string>
     <string name="problem_notice_purifier">您可以检查WiFi链接状态后再进行配对</string>
     <string name="problem_notice_probe">您可以检查水探头电量、蓝牙开启状态后再进行配对</string>
+    <string name="problem_notice_probe2">您可以检查水质检测笔电量、蓝牙开启状态后再进行配对</string>
     <string name="problem_notice_air_tai">检查滤芯状态和蓝牙开启状态后再尝试配对</string>
     <string name="problem_notice_water_replenish_meter">您可以检查补水仪蓝牙开启状态后再进行配对</string>
     <string name="searched_device">已搜索到设备</string>

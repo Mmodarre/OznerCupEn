@@ -53,7 +53,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
     Monitor mMonitor = new Monitor();
     LinearLayout ll_searched_device, ll_probe_info,device_place2;
     RelativeLayout ll_restart_matching,device_place1;
-    TextView tv_state, matchprobe_notice, matchcup_tv_bluetooth, toolbarText;
+    TextView tv_state, matchprobe_notice, matchcup_tv_bluetooth, toolbarText,tv_match_glass_notice2;
     ListAdapter adapter;
     RecyclerView deviceList;
     Button btn_restart_match, finish_add_device;
@@ -170,6 +170,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
         ll_restart_matching = (RelativeLayout) findViewById(R.id.ll_restart_matching);
         ll_restart_matching.setVisibility(View.INVISIBLE);
         tv_state = (TextView) findViewById(R.id.tv_state);
+        tv_match_glass_notice2 = (TextView) findViewById(R.id.tv_match_glass_notice2);
         matchprobe_notice = (TextView) findViewById(R.id.matchprobe_notice);
         matchcup_tv_bluetooth = (TextView) findViewById(R.id.matchcup_tv_bluetooth);
         btn_restart_match = (Button) findViewById(R.id.btn_restart_match);
@@ -316,6 +317,7 @@ public class MatchTdsPenActivity extends AppCompatActivity {
         matchprobe_notice.setText(getString(R.string.failed_searching));
         matchcup_tv_bluetooth.setText(getString(R.string.restart_match));
         image.setImageResource(R.drawable.match_device_failed);
+        tv_match_glass_notice2.setText(getResources().getString(R.string.problem_notice_probe2));
         iv_water_probe.setVisibility(View.GONE);
         stopRotate();
     }
