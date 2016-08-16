@@ -65,11 +65,11 @@ public class SetupWaterTDSPenActivity extends AppCompatActivity implements View.
         toolbar_save.setOnClickListener(this);
         findViewById(R.id.ll_about_water_probe).setOnClickListener(this);
 
-//        if(OznerPreference.isLoginPhone(SetupWaterTDSPenActivity.this)){
-//            findViewById(R.id.ll_about_water_probe).setVisibility(View.VISIBLE);
-//        }else{
+        if(OznerPreference.isLoginPhone(SetupWaterTDSPenActivity.this)){
+            findViewById(R.id.ll_about_water_probe).setVisibility(View.VISIBLE);
+        }else{
             findViewById(R.id.ll_about_water_probe).setVisibility(View.GONE);
-//        }
+        }
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
         initView();
     }
@@ -117,6 +117,7 @@ public class SetupWaterTDSPenActivity extends AppCompatActivity implements View.
             case R.id.ll_about_water_probe:
                 intent.setClass(this, AboutDeviceActivity.class);
                 intent.putExtra("MAC", Mac);
+                intent.putExtra("Flag", "tdspen");
                 startActivityForResult(intent, 3);
                 break;
             case R.id.tv_delDeviceBtn:

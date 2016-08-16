@@ -40,6 +40,8 @@ public class AboutDeviceActivity extends AppCompatActivity {
     String urlWaterPurifier = "http://cup.ozner.net/app/gyysj/gyysj.html";
     String urlAirVer = "file:///android_asset/hz_l.html";
     String urlAirTai = "file:///android_asset/hz_t.html";
+    String urlTdsPen="file:///android_asset/hz_tdspen.html";
+    String flag="";
     ProgressBar mprogressBar;
 
     @Override
@@ -47,6 +49,7 @@ public class AboutDeviceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Mac = getIntent().getStringExtra("MAC");
         device = OznerDeviceManager.Instance().getDevice(Mac);
+        flag=getIntent().getStringExtra("Flag");
         setContentView(R.layout.activity_about_device);
         try {
             url = getIntent().getStringExtra("URL");
@@ -74,8 +77,14 @@ public class AboutDeviceActivity extends AppCompatActivity {
             toolbar_text.setText(getString(R.string.about_smart_glass));
             webView.loadUrl(urlCup);
         } else if (device instanceof Tap) {
-            toolbar_text.setText(getString(R.string.about_water_probe));
-            webView.loadUrl(urlTap);
+            if("tdspen".equals(flag)){
+                toolbar_text.setText(getString(R.string.about_water_tdspen));
+                webView.loadUrl(urlTdsPen);
+            }else{
+                toolbar_text.setText(getString(R.string.about_water_probe));
+                webView.loadUrl(urlTap);
+            }
+
         } else if (device instanceof WaterPurifier) {
             toolbar_text.setText(getString(R.string.about_water_purifier));
             if (url == null) {
@@ -92,6 +101,7 @@ public class AboutDeviceActivity extends AppCompatActivity {
         } else if (device instanceof WaterReplenishmentMeter) {
             toolbar_text.setText(getString(R.string.water_replen_meter));
             webView.loadUrl(urlWRM);
+
         }
 
         mwebSettings.setJavaScriptEnabled(true);
