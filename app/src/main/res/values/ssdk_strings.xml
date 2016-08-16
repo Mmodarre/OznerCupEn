@@ -72,4 +72,5 @@
 	<string name="ssdk_share_to_mingdao">Share To Mingdao</string>
 	<string name="ssdk_share_to_qzone_default">Shared from %s</string>
 	<string name="ssdk_use_login_button">use login button instead</string>
+
 </resources>
