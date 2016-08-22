@@ -157,15 +157,16 @@ public abstract class OznerDevice extends XObject {
         }
 
         this.deviceIO = deviceIO;
-
-
         if (deviceIO != null) {
             deviceIO.open();
         }
 
-        if (deviceIO.isReady()) {
-            deviceIO.reCallDoReadly();
+        if(deviceIO!=null){
+            if (deviceIO.isReady()) {
+                deviceIO.reCallDoReadly();
+            }
         }
+
 
 
         return true;
