@@ -109,7 +109,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     public WaterPurifierFragment() {
         // Required empty public constructor
     }
-
+    //金泉
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
