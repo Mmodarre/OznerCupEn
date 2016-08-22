@@ -1,9 +1,12 @@
 package com.ozner.yiquan.mycenter;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,16 +16,36 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.ozner.yiquan.BaiduPush.OznerBroadcastAction;
+import com.ozner.yiquan.Command.ImageHelper;
+import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.PageState;
 import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Device.OznerApplication;
+import com.ozner.yiquan.HttpHelper.NetJsonObject;
+import com.ozner.yiquan.HttpHelper.NetUserHeadImg;
+import com.ozner.yiquan.HttpHelper.OznerDataHttp;
 import com.ozner.yiquan.R;
+import com.ozner.yiquan.mycenter.CenterBean.CenterVipUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 public class MyCenterActivity extends AppCompatActivity implements View.OnClickListener {
     private String userid;
     ImageView userImage;
     TextView userName;
+    private final int USER_HEAD_INFO = 1;//
+    MyCenterHandle uihandle = new MyCenterHandle();
+    MyLoadImgListener imageLoadListener = new MyLoadImgListener();
 
     BroadcastReceiver monitor = new BroadcastReceiver() {
         @Override
@@ -68,6 +91,100 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
         registerReceiver(monitor, filter);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initHeadImg();
+    }
+
+    class MyLoadImgListener extends SimpleImageLoadingListener {
+        @Override
+        public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+            ((ImageView) view).setImageBitmap(ImageHelper.toRoundBitmap(MyCenterActivity.this, loadedImage));
+            super.onLoadingComplete(imageUri, view, loadedImage);
+        }
+    }
+
+    //初始化个人信息
+    private void initHeadImg() {
+        final String url = OznerPreference.ServerAddress(this) + "/OznerServer/GetUserNickImage";
+        loadUserHeadImg(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NetUserHeadImg netUserHeadImg = centerInitUserHeadImg(MyCenterActivity.this, url);
+                Message message = new Message();
+                message.what = USER_HEAD_INFO;
+                message.obj = netUserHeadImg;
+                uihandle.sendMessage(message);
+            }
+        }).start();
+    }
+
+    private void loadUserHeadImg(final Activity activity) {
+        NetUserHeadImg netUserHeadImg = new NetUserHeadImg();
+        netUserHeadImg.fromPreference(activity);
+        if (netUserHeadImg != null) {
+            Message message = new Message();
+            message.what = USER_HEAD_INFO;
+            message.obj = netUserHeadImg;
+            uihandle.sendMessage(message);
+        }
+    }
+
+    public static NetUserHeadImg centerInitUserHeadImg(final Activity activity, final String inituserHeadUrl) {
+        NetUserHeadImg netUserHeadImg = new NetUserHeadImg();
+        String Mobile = UserDataPreference.GetUserData(activity, UserDataPreference.Mobile, null);
+        if (Mobile != null) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(activity)));
+            params.add(new BasicNameValuePair("jsonmobile", Mobile));
+            NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, inituserHeadUrl, params);
+            if (netJsonObject.state > 0) {
+//                UserDataPreference.SetUserData(activity, inituserHeadUrl, netJsonObject.value);
+                try {
+                    JSONArray jarry = netJsonObject.getJSONObject().getJSONArray("data");
+                    if (jarry.length() > 0) {
+                        JSONObject jo = (JSONObject) jarry.get(0);
+                        netUserHeadImg.fromJSONobject(jo);
+                        UserDataPreference.SaveUserData(activity, jo);
+                    } else {
+                        netUserHeadImg.fromPreference(activity);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    netUserHeadImg.fromPreference(activity);
+                }
+            }
+        }
+        netUserHeadImg.fromPreference(activity);
+        return netUserHeadImg;
+    }
+
+
+    class MyCenterHandle extends android.os.Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case USER_HEAD_INFO:
+                    ImageHelper imageHelper = new ImageHelper(MyCenterActivity.this);
+                    imageHelper.setImageLoadingListener(imageLoadListener);
+                    NetUserHeadImg netUserHeadImg = (NetUserHeadImg) msg.obj;
+                    if (netUserHeadImg != null) {
+                        if (netUserHeadImg.headimg != null && netUserHeadImg.headimg.length() > 0) {
+                            imageHelper.loadImage(userImage, netUserHeadImg.headimg);
+                        } else {
+                            //imageHelper.loadImage(iv_person_photo, "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=10284cd567380cd7e64baaeb9174810c/63d9f2d3572c11df09ba0c46612762d0f703c268.jpg");
+                            userImage.setImageResource(R.mipmap.icon_default_headimage);
+                        }
+                    } else {
+                    }
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -77,7 +194,7 @@ public class MyCenterActivity extends AppCompatActivity implements View.OnClickL
 //                intent.setClass();
                 break;
             case R.id.center_my_device:
-                intent.setClass(this, MyDeviceActivity.class);
+                intent.setClass(this, MyFriendsActivity.class);
                 startActivityForResult(intent, 0x2134);
                 break;
             case R.id.private_message_layout:

@@ -1,9 +1,12 @@
 package com.ozner.yiquan.slideleft;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -19,14 +22,19 @@ import android.widget.Toast;
 
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.ozner.yiquan.Command.DeviceData;
 import com.ozner.yiquan.Command.FootFragmentListener;
+import com.ozner.yiquan.Command.ImageHelper;
 import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.PageState;
 import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Device.AddDeviceActivity;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.HttpHelper.NetDeviceList;
+import com.ozner.yiquan.HttpHelper.NetJsonObject;
+import com.ozner.yiquan.HttpHelper.NetUserHeadImg;
+import com.ozner.yiquan.HttpHelper.OznerDataHttp;
 import com.ozner.yiquan.Main.BaseMainActivity;
 import com.ozner.yiquan.MainActivity;
 import com.ozner.yiquan.MainEnActivity;
@@ -38,9 +46,14 @@ import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 /**
  * Created by gongxibo on 2015/11/26.
@@ -68,6 +81,10 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
     public TextView show_text, txt_showadd, user_name;
     public LinearLayout llay_left_bg, user_info;
     public ImageView iv_left_buble, user_image;
+    private final int USER_HEAD_INFO = 1;//
+    MyCenterHandle uihandle = new MyCenterHandle();
+    MyLoadImgListener imageLoadListener = new MyLoadImgListener();
+
     /**
      * 添加新设备
      */
@@ -102,11 +119,11 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), MyCenterActivity.class));
-                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
-                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                } else {
+//                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+//                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
+//                } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                }
+//                }
             }
         });
         if (!((OznerApplication) getActivity().getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {
@@ -119,6 +136,11 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
         return rootview;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initHeadImg();
+    }
 
     private void ShowNoDeviceView(View view) {
 //        view.setBackgroundResource(R.drawable.left_backgroud);
@@ -190,6 +212,94 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+
+    //初始化个人信息
+    private void initHeadImg() {
+        final String url = OznerPreference.ServerAddress(getContext()) + "/OznerServer/GetUserNickImage";
+        loadUserHeadImg(getActivity());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NetUserHeadImg netUserHeadImg = centerInitUserHeadImg(getActivity(), url);
+                Message message = new Message();
+                message.what = USER_HEAD_INFO;
+                message.obj = netUserHeadImg;
+                uihandle.sendMessage(message);
+            }
+        }).start();
+    }
+
+    private void loadUserHeadImg(final Activity activity) {
+        NetUserHeadImg netUserHeadImg = new NetUserHeadImg();
+        netUserHeadImg.fromPreference(activity);
+        if (netUserHeadImg != null) {
+            Message message = new Message();
+            message.what = USER_HEAD_INFO;
+            message.obj = netUserHeadImg;
+            uihandle.sendMessage(message);
+        }
+    }
+
+    public static NetUserHeadImg centerInitUserHeadImg(final Activity activity, final String inituserHeadUrl) {
+        NetUserHeadImg netUserHeadImg = new NetUserHeadImg();
+        String Mobile = UserDataPreference.GetUserData(activity, UserDataPreference.Mobile, null);
+        if (Mobile != null) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(activity)));
+            params.add(new BasicNameValuePair("jsonmobile", Mobile));
+            NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, inituserHeadUrl, params);
+            if (netJsonObject.state > 0) {
+//                UserDataPreference.SetUserData(activity, inituserHeadUrl, netJsonObject.value);
+                try {
+                    JSONArray jarry = netJsonObject.getJSONObject().getJSONArray("data");
+                    if (jarry.length() > 0) {
+                        JSONObject jo = (JSONObject) jarry.get(0);
+                        netUserHeadImg.fromJSONobject(jo);
+                        UserDataPreference.SaveUserData(activity, jo);
+                    } else {
+                        netUserHeadImg.fromPreference(activity);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    netUserHeadImg.fromPreference(activity);
+                }
+            }
+        }
+        netUserHeadImg.fromPreference(activity);
+        return netUserHeadImg;
+    }
+
+    class MyLoadImgListener extends SimpleImageLoadingListener {
+        @Override
+        public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+            ((ImageView) view).setImageBitmap(ImageHelper.toRoundBitmap(getContext(), loadedImage));
+            super.onLoadingComplete(imageUri, view, loadedImage);
+        }
+    }
+
+    class MyCenterHandle extends android.os.Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case USER_HEAD_INFO:
+                    ImageHelper imageHelper = new ImageHelper(getContext());
+                    imageHelper.setImageLoadingListener(imageLoadListener);
+                    NetUserHeadImg netUserHeadImg = (NetUserHeadImg) msg.obj;
+                    if (netUserHeadImg != null) {
+                        if (netUserHeadImg.headimg != null && netUserHeadImg.headimg.length() > 0) {
+                            imageHelper.loadImage(user_image, netUserHeadImg.headimg);
+                        } else {
+                            //imageHelper.loadImage(iv_person_photo, "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=10284cd567380cd7e64baaeb9174810c/63d9f2d3572c11df09ba0c46612762d0f703c268.jpg");
+                            user_image.setImageResource(R.mipmap.icon_default_headimage);
+                        }
+                    } else {
+                    }
+                    break;
+            }
+            super.handleMessage(msg);
         }
     }
 
@@ -270,11 +380,11 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
         addDvice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
-                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                } else {
+//                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+//                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
+//                } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                }
+//                }
                 if (OznerPreference.IsLogin(getActivity())) {
                     Intent intent = new Intent(getActivity(), AddDeviceActivity.class);
                     getActivity().startActivity(intent);

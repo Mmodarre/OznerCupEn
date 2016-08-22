@@ -59,8 +59,8 @@
 
         <TextView
             style="@style/TextGongffView"
-            android:drawableLeft="@drawable/center_myorder"
-            android:text="@string/my_device" />
+            android:drawableLeft="@mipmap/icon_my_friend"
+            android:text="@string/my_friend" />
 
         <ImageView
             style="@style/ArrowView" />

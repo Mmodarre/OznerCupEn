@@ -150,9 +150,9 @@ public class WelcomeActivity extends Activity {
 //                                        NetDeviceList netDeviceList=OznerDataHttp.RefreshDeviceList(getBaseContext());
                                             Log.e("lingchen", "welcomActivity_isPhone: " + ((OznerApplication) getApplication()).isLoginPhone());
 //                                            if (((OznerApplication) getApplication()).isLoginPhone())
-                                                ShowMainPage(null);
+//                                                ShowMainPage(null);
 //                                            else {
-//                                                ShowMainENPage();
+                                                ShowMainENPage();
 //                                            }
                                             stopService(new Intent(WelcomeActivity.this, LoginService.class));
                                         } catch (Exception ex) {
@@ -167,9 +167,9 @@ public class WelcomeActivity extends Activity {
                                             }
                                         });
 //                                        if (((OznerApplication) getApplication()).isLoginPhone())
-                                            ShowMainPage(null);
+//                                            ShowMainPage(null);
 //                                        else {
-//                                            ShowMainENPage();
+                                            ShowMainENPage();
 //                                        }
                                     } else {
                                         showNexLoginPage();

@@ -27,7 +27,7 @@ import com.ozner.yiquan.HttpHelper.NetDeviceList;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;
 import com.ozner.yiquan.HttpHelper.NetUserInfo;
 import com.ozner.yiquan.HttpHelper.OznerDataHttp;
-import com.ozner.yiquan.MainActivity;
+import com.ozner.yiquan.MainEnActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.mycenter.WebActivity;
 import com.ozner.device.OznerDevice;
@@ -220,7 +220,7 @@ public class LoginActivity extends BaseLoginActivity {
                 //跳过
                 case R.id.login_btn_skip: {
                     OznerPreference.setIsLogin(getBaseContext(), false);
-                    Intent mainactivity = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent mainactivity = new Intent(getApplicationContext(), MainEnActivity.class);
                     startActivity(mainactivity);
                     LoginActivity.this.finish();
                 }
@@ -588,7 +588,7 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
     private void ShowMainPage(NetDeviceList devicejson) {
-        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent mainIntent = new Intent(LoginActivity.this, MainEnActivity.class);
         startActivity(mainIntent);
         this.finish();
     }
