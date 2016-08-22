@@ -325,7 +325,7 @@
                             android:textAllCaps="false"/>
                     </LinearLayout>
 
-                    <com.ozner.cup.WaterProbe.PurifierExp.UIZPurifierExpView
+                    <com.ozner.yiquan.WaterProbe.PurifierExp.UIZPurifierExpView
                         android:id="@+id/uiz_purifierExp"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"

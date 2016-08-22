@@ -307,7 +307,7 @@
                             android:src="@drawable/zuo1"
                             android:visibility="invisible" />
 
-                        <com.ozner.cup.UIView.UIXWaterTemperatureProgress
+                        <com.ozner.yiquan.UIView.UIXWaterTemperatureProgress
                             android:id="@+id/temperature_progressView"
                             android:layout_width="205dp"
                             android:layout_height="205dp"
@@ -336,7 +336,7 @@
                         android:layout_marginTop="10dp"
                         android:visibility="gone">
 
-                        <com.ozner.cup.UIView.UIXTempChartView
+                        <com.ozner.yiquan.UIView.UIXTempChartView
                             android:id="@+id/temperature_chartView"
                             android:layout_width="match_parent"
                             android:layout_height="140dp" />

@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp">
 
-                <com.ozner.cup.UIView.FilterProgressView
+                <com.ozner.yiquan.UIView.FilterProgressView
                     android:id="@+id/filter_progress"
                     android:layout_width="match_parent"
                     android:layout_height="100dp" />

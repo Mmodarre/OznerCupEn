@@ -400,7 +400,7 @@
                         android:text="@string/dengdai_color"
                         android:textColor="@color/toolbar_text_color" />
 
-                    <com.ozner.cup.Device.ColorPickerView
+                    <com.ozner.yiquan.Device.ColorPickerView
                         android:id="@+id/cup_setting_colorpickerview"
                         android:layout_width="217dp"
                         android:layout_height="217dp"
@@ -430,7 +430,7 @@
                         android:textColor="@color/toolbar_text_color"
                         android:textSize="16dp" />
 
-                    <com.ozner.cup.Device.SlidButton
+                    <com.ozner.yiquan.Device.SlidButton
                         android:id="@+id/switch0"
                         android:layout_width="60dp"
                         android:layout_height="35dp"
@@ -462,7 +462,7 @@
                         android:textColor="@color/toolbar_text_color"
                         android:textSize="16dp" />
 
-                    <com.ozner.cup.Device.SlidButton
+                    <com.ozner.yiquan.Device.SlidButton
                         android:id="@+id/switch1"
                         android:layout_width="60dp"
                         android:layout_height="35dp"

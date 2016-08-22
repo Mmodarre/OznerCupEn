@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/MyCenter_bg"
     android:orientation="vertical"
-    tools:context="com.ozner.cup.mycenter.AboutActivity">
+    tools:context="com.ozner.yiquan.mycenter.AboutActivity">
 
     <!--<RelativeLayout-->
     <!--android:layout_width="match_parent"-->

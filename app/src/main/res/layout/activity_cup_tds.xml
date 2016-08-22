@@ -339,7 +339,7 @@
                             android:src="@drawable/zuo1"
                             android:visibility="invisible" />
 
-                        <com.ozner.cup.UIView.UIXWaterDetailProgress
+                        <com.ozner.yiquan.UIView.UIXWaterDetailProgress
                             android:id="@+id/progressView"
                             android:layout_width="180dp"
                             android:layout_height="180dp"
@@ -366,7 +366,7 @@
                         android:layout_marginTop="10dp"
                         android:visibility="gone">
 
-                        <com.ozner.cup.UIView.TDSChartView
+                        <com.ozner.yiquan.UIView.TDSChartView
                             android:id="@+id/chartView"
                             android:layout_width="match_parent"
                             android:layout_height="140dp" />

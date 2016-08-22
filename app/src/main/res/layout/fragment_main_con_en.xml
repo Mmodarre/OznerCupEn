@@ -3,7 +3,7 @@
     android:id="@+id/framen_main_con_en"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ozner.cup.Main.MainConFragment">
+    tools:context="com.ozner.yiquan.Main.MainConFragment">
 
     <!--<include-->
     <!--layout="@layout/app_bar_main"-->
@@ -43,7 +43,7 @@
                 android:layout_height="50dp"
                 android:visibility="gone"
                 >
-                <com.ozner.cup.control.CProessbarView
+                <com.ozner.yiquan.control.CProessbarView
                     android:id="@+id/my_cproessbarview"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"

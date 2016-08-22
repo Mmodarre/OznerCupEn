@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.ozner.cup">
+          package="com.ozner.yiquan">
 
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
@@ -44,7 +44,7 @@
     <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.ozner.cup"/>
 
     <permission
-        android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.ozner.cup"
+        android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.ozner.yiquan"
         android:protectionLevel="normal"/>
 
     <application
@@ -261,7 +261,7 @@
         <!-- 适配Android N系统必需的ContentProvider声明，写权限包含应用包名 -->
         <provider
             android:name="com.baidu.android.pushservice.PushInfoProvider"
-            android:authorities="com.ozner.cup.bdpush"
+            android:authorities="com.ozner.yiquan.bdpush"
             android:exported="true"
             android:writePermission="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.ozner.cup"/>
 

@@ -177,7 +177,7 @@
                         android:layout_height="175dp"
                         android:layout_centerVertical="true">
 
-                        <com.ozner.cup.WaterProbe.WaterDetailProgress
+                        <com.ozner.yiquan.WaterProbe.WaterDetailProgress
                             android:id="@+id/waterProcess"
                             android:layout_width="300dp"
                             android:layout_height="160dp"
@@ -221,7 +221,7 @@
                 android:layout_above="@+id/legend"
                 android:layout_below="@+id/text">
 
-                <com.ozner.cup.UIView.TapTDSChartView
+                <com.ozner.yiquan.UIView.TapTDSChartView
                     android:id="@+id/tdsChartView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

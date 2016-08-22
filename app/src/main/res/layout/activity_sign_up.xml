@@ -5,7 +5,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
-                tools:context="com.ozner.cup.Login.SignUpActivity">
+                tools:context="com.ozner.yiquan.Login.SignUpActivity">
 
     <ImageButton
         android:layout_width="wrap_content"

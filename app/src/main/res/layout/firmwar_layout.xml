@@ -47,7 +47,7 @@
             <!--android:progress="0"-->
             <!--android:indeterminateDrawable="@drawable/progressbar_firmwar_on"-->
             <!--/>-->
-        <com.ozner.cup.UIView.RoundProgressBar
+        <com.ozner.yiquan.UIView.RoundProgressBar
             android:id="@+id/firmwar_pb"
             android:layout_width="200dp"
             android:layout_height="200dp"
