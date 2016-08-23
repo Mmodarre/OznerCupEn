@@ -554,7 +554,7 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
 
         @Override
         protected void onPostExecute(List<ClassifiedRankInfo2> classifiedRankInfo2s) {
-            if (ranklist2.size() > 0) {
+            if (ranklist2.size() > 0 && rankAdapter != null) {
                 tv_ranklistnone.setVisibility(View.GONE);
                 rankListView.setVisibility(View.VISIBLE);
                 rankAdapter.reloadData(ranklist2);
