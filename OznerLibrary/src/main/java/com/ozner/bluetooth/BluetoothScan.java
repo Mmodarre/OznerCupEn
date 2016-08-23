@@ -111,7 +111,9 @@ public class BluetoothScan extends XObject implements LeScanCallback, Runnable {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         } finally {
-            adapter.stopLeScan(this);
+            if (adapter != null) {
+                adapter.stopLeScan(this);
+            }
         }
     }
 
