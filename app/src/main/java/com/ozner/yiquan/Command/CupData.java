@@ -1,7 +1,7 @@
 package com.ozner.yiquan.Command;
 
-import com.ozner.yiquan.Cup;
-import com.ozner.yiquan.CupRecord;
+import com.ozner.cup.Cup;
+import com.ozner.cup.CupRecord;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 

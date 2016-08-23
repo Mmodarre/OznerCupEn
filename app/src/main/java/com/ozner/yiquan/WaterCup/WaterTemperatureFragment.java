@@ -16,9 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ozner.yiquan.Command.OznerPreference;
-import com.ozner.yiquan.Cup;
-import com.ozner.yiquan.CupRecord;
-import com.ozner.yiquan.CupRecordList;
+import com.ozner.cup.Cup;
+import com.ozner.cup.CupRecord;
+import com.ozner.cup.CupRecordList;
 import com.ozner.yiquan.Main.BaseMainActivity;
 import com.ozner.device.OznerDeviceManager;
 

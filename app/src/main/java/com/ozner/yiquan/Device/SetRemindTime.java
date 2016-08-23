@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.ozner.yiquan.Cup;
-import com.ozner.yiquan.CupSetting;
+import com.ozner.cup.Cup;
+import com.ozner.cup.CupSetting;
 import com.ozner.device.OznerDeviceManager;
 
 import com.ozner.yiquan.R;

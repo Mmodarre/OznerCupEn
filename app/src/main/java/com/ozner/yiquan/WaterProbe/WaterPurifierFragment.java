@@ -33,7 +33,7 @@ import com.ozner.yiquan.Command.CenterUrlContants;
 import com.ozner.yiquan.Command.FootFragmentListener;
 import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.UserDataPreference;
-import com.ozner.yiquan.CupRecord;
+import com.ozner.cup.CupRecord;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.Device.SetupWaterPurifierActivity;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;

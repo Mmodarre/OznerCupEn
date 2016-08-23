@@ -22,7 +22,7 @@ import com.ozner.AirPurifier.AirPurifier_Bluetooth;
 import com.ozner.AirPurifier.AirPurifier_MXChip;
 import com.ozner.WaterPurifier.WaterPurifier;
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
-import com.ozner.yiquan.Cup;
+import com.ozner.cup.Cup;
 import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.device.BaseDeviceIO;

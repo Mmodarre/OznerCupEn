@@ -19,7 +19,7 @@ import com.ozner.WaterPurifier.WaterPurifier;
 import com.ozner.yiquan.CChat.CChatFragment;
 import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.PageState;
-import com.ozner.yiquan.CupRecord;
+import com.ozner.cup.CupRecord;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.Device.OznerMallFragment;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;

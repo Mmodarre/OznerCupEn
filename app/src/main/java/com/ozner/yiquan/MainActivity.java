@@ -22,6 +22,8 @@ import com.loopj.android.http.RequestParams;
 import com.ozner.AirPurifier.AirPurifier;
 import com.ozner.AirPurifier.AirPurifier_MXChip;
 import com.ozner.WaterPurifier.WaterPurifier;
+import com.ozner.cup.Cup;
+import com.ozner.cup.CupSetting;
 import com.ozner.yiquan.ACSqlLite.CCacheWorking;
 import com.ozner.yiquan.AirPurifier.DeskAirPurifierFragment;
 import com.ozner.yiquan.AirPurifier.VerticalAirPurifierFragment;

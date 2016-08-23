@@ -23,8 +23,8 @@ import android.widget.TextView;
 
 import com.ozner.yiquan.Command.PageState;
 import com.ozner.yiquan.Command.UserDataPreference;
-import com.ozner.yiquan.Cup;
-import com.ozner.yiquan.CupSetting;
+import com.ozner.cup.Cup;
+import com.ozner.cup.CupSetting;
 import com.ozner.yiquan.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.OznerDeviceManager;

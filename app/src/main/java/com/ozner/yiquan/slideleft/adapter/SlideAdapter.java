@@ -17,7 +17,7 @@ import com.ozner.WaterPurifier.WaterPurifierManager;
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeterMgr;
 import com.ozner.yiquan.Command.DeviceData;
 import com.ozner.yiquan.Command.PageState;
-import com.ozner.yiquan.CupManager;
+import com.ozner.cup.CupManager;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.MainActivity;
 import com.ozner.yiquan.MainEnActivity;

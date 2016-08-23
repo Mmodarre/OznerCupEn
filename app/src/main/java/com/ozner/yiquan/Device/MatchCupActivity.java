@@ -32,8 +32,8 @@ import android.widget.Toast;
 
 import com.ozner.bluetooth.BluetoothIO;
 import com.ozner.bluetooth.BluetoothScan;
-import com.ozner.yiquan.Cup;
-import com.ozner.yiquan.CupManager;
+import com.ozner.cup.Cup;
+import com.ozner.cup.CupManager;
 import com.ozner.yiquan.Command.OznerCommand;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.NotSupportDeviceException;

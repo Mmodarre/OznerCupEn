@@ -28,7 +28,7 @@ import com.ozner.yiquan.Command.OznerCommand;
 import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.PageState;
 import com.ozner.yiquan.Command.UserDataPreference;
-import com.ozner.yiquan.CupRecord;
+import com.ozner.cup.CupRecord;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.Device.SetupWaterProbeActivity;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;

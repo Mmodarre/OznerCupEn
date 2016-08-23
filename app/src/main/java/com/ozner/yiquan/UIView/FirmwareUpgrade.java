@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ozner.yiquan.Cup;
+import com.ozner.cup.Cup;
 import com.ozner.yiquan.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.FirmwareTools;
