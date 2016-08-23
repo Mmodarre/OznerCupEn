@@ -93,7 +93,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(webIntent);
                 break;
             case R.id.rlay_mark:
-                String str = "market://details?id=net.ozner.oznerproject";
+                String str = "market://details?id=" + getPackageName();
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(str));
