@@ -229,6 +229,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
                 String redPacUrl = CenterUrlContants.formatRedPacUrl(mobile, usertoken, "zh", "zh");
                 Log.e("tag", "领红包:" + redPacUrl);
                 inviteIntent.putExtra(WebActivity.URL, redPacUrl);
+                inviteIntent.putExtra("IsRedBag",true);
                 inviteIntent.putExtra(WebActivity.TITLE, getString(R.string.Center_getRedbag));
                 startActivity(inviteIntent);
                 break;
