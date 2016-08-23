@@ -126,11 +126,6 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <service android:name="com.ozner.application.OznerBLEService"/>
-        <!-- <service android:name=".Alarm.AlarmService"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="com.ozner.cup.alarm.ALARM_ALERT" /> -->
-        <!-- </intent-filter> -->
-        <!-- </service> -->
         <service android:name=".Guide.LoginService"/>
 
         <activity
@@ -139,9 +134,6 @@
         <activity
             android:name=".Device.SetupWaterProbeActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <!-- <activity -->
-        <!-- android:name=".Alarm.NoticeActivity" -->
-        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity
             android:name=".Device.SetupWaterTDSPenActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
