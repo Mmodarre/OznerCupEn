@@ -155,13 +155,13 @@ public class OznerUpdateManager {
         builder.setPositiveButton(R.string.soft_update_updatebtn, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+                dialog.cancel();
                 // 显示下载对话框
                 showDownloadDialog();
             }
         });
 
-//        if (0 == isMustUpdate) {
+        if (0 == isMustUpdate) {
             // 稍后更新
             builder.setNegativeButton(R.string.soft_update_later, new DialogInterface.OnClickListener() {
                 @Override
@@ -169,15 +169,15 @@ public class OznerUpdateManager {
                     if (checkListener != null) {
                         checkListener.CheckVersionState(true);
                     }
-                    dialog.dismiss();
+                    dialog.cancel();
                 }
             });
-//        }
+        }
         Dialog noticeDialog = builder.create();
-//        if (1 == isMustUpdate) {
+        if (1 == isMustUpdate) {
             noticeDialog.setCanceledOnTouchOutside(false);
             noticeDialog.setCancelable(false);
-//        }
+        }
         try {
             if (mContext != null) {
                 noticeDialog.show();
