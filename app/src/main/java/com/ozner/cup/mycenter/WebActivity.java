@@ -20,8 +20,10 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ozner.cup.Command.CenterUrlContants;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.R;
+import com.ozner.cup.UIView.ShareView;
 
 /*
 * Created by xinde on 2015/12/11
@@ -84,11 +86,11 @@ public class WebActivity extends AppCompatActivity implements View.OnClickListen
         toolbar_save.setText("分享");
         toolbar_text.setText(title);
         toolbar_text.setTextColor(ContextCompat.getColor(WebActivity.this, R.color.white));
-//        if ("领红包".equals(title)) {
-//            toolbar_save.setVisibility(View.VISIBLE);
-//            toolbar_save.setOnClickListener(this);
-//            toolbar_save.setTextColor(ContextCompat.getColor(WebActivity.this, R.color.white));
-//        }
+        if ("领红包".equals(title)) {
+            toolbar_save.setVisibility(View.VISIBLE);
+            toolbar_save.setOnClickListener(this);
+            toolbar_save.setTextColor(ContextCompat.getColor(WebActivity.this, R.color.white));
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        toolbar_share=(ImageButton)findViewById(R.id.toolbar_share);//分享键
 //        toolbar_share.setOnClickListener(this);
@@ -206,6 +208,7 @@ public class WebActivity extends AppCompatActivity implements View.OnClickListen
     };
 
     private void shareWeChat() {
+        ShareView.showShareToDialogHb(WebActivity.this, sharetype, CenterUrlContants.getShareHBUrl);
     }
 
     @Override
