@@ -2,8 +2,8 @@
   <library name="Android_AylaLibrary_Public-release-unspecified">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerCupEn/Android_AylaLibrary_Public-release/unspecified/jars/libs/gson-2.2.4.jar!/" />
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerCupEn/Android_AylaLibrary_Public-release/unspecified/res" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerCupEn/Android_AylaLibrary_Public-release/unspecified/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerCupEn/Android_AylaLibrary_Public-release/unspecified/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
