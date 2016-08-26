@@ -237,15 +237,6 @@ public class ShareView implements PlatformActionListener,Handler.Callback {
         shareDialog.show();
 
     }
-
-
-
-
-
-
-
-
-
     @Override
     public void onCancel(Platform platform, int action) {
         // 取消

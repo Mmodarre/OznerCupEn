@@ -13,7 +13,8 @@ public class CenterUrlContants {
     private static String myOrderUrl = "http://www.oznerwater.com/lktnew/wapnew/Orders/OrderList.aspx";
     //领红包
     public static String getRedPacUrl = "http://www.oznerwater.com/lktnew/wapnew/Member/GrapRedPackages.aspx";
-    public static String getShareHBUrl="http://www.oznerwater.com/lktnew/wap/lottery/LotteryOauth.aspx";
+    public static String getShareHBUrl="http://www.oznerwater.com/lktnew/wap/wxoauth.aspx?gourl=http://www.oznerwater.com/lktnew/wap/Member/InvitedMemberBrand.aspx";
+
     //我的券
     private static String myTicketUrl = "http://www.oznerwater.com/lktnew/wapnew/Member/AwardList.aspx";
     //分享礼卡

@@ -86,7 +86,7 @@ public class WebActivity extends AppCompatActivity implements View.OnClickListen
         toolbar_save.setText("分享");
         toolbar_text.setText(title);
         toolbar_text.setTextColor(ContextCompat.getColor(WebActivity.this, R.color.white));
-        if ("领红包".equals(title)) {
+        if (isRedBag) {
             toolbar_save.setVisibility(View.VISIBLE);
             toolbar_save.setOnClickListener(this);
             toolbar_save.setTextColor(ContextCompat.getColor(WebActivity.this, R.color.white));
