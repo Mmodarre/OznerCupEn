@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.ozner.cup.Command.DeviceData;
 import com.ozner.cup.Command.FootFragmentListener;
+import com.ozner.cup.Command.ImageHelper;
 import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
@@ -48,6 +49,7 @@ import com.ozner.tap.TapSensor;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -152,7 +154,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     }
 
     public void InitView(View view) {
-        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -189,6 +191,18 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
         tv_tapHealthPre = (TextView) view.findViewById(R.id.tv_tapHealthPre);
         tv_tapGenericPre = (TextView) view.findViewById(R.id.tv_tapGenericPre);
         tv_tapBadPre = (TextView) view.findViewById(R.id.tv_tapBadPre);
+
+        initImageViewBitmap(view);
+    }
+
+    private void initImageViewBitmap(View initView) {
+        WeakReference<Context> refContext = new WeakReference<Context>(getContext());
+        if (refContext != null) {
+            ((LinearLayout) initView.findViewById(R.id.llay_tapBg)).setBackground(ImageHelper.loadResDrawable(refContext.get(), R.drawable.cupdetail_bg));
+            iv_battery.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.battery30));
+            iv_filterState.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.filter_state0));
+            iv_probe_setting.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.setting));
+        }
     }
 
     private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
@@ -349,7 +363,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     UserDataPreference.SetUserData(getContext(), SaveStr + Mac, modifytime);
                     if (useday <= INIT_WARRANTY) {
                         return String.valueOf((int) (((float) (INIT_WARRANTY - useday)) / INIT_WARRANTY * 100));
-                    }else {
+                    } else {
                         return "0";
                     }
                 } catch (JSONException e) {
@@ -422,9 +436,10 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             Mac = getArguments().getString("MAC");
             OznerDevice oznerDevice = OznerDeviceManager.Instance().getDevice(Mac);
             tap = (Tap) oznerDevice;
-        }catch (Exception ex){
-             ex.printStackTrace();;
-             tap=null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ;
+            tap = null;
         }
 
 
@@ -633,9 +648,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             iv_tdsLevelImg.setVisibility(View.GONE);
             lay_tdsShort.setVisibility(View.GONE);
         } else {
-            if(OznerPreference.isLoginPhone(getContext())){
+            if (OznerPreference.isLoginPhone(getContext())) {
                 lay_tdsShort.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 lay_tdsShort.setVisibility(View.GONE);
             }
 
@@ -665,9 +680,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             //数字跑马灯效果
 
             if (value != 0) {
-                if(OznerPreference.isLoginPhone(getContext())){
+                if (OznerPreference.isLoginPhone(getContext())) {
                     lay_tdsShort.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     lay_tdsShort.setVisibility(View.GONE);
                 }
                 OznerApplication.setControlNumFace(tv_tdsValue);
@@ -698,9 +713,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     tv_tdsValue.setTextSize(60);
                     if (tdsNew != 0) {
                         tv_tdsValue.setText(String.valueOf(tdsNew));
-                        if(OznerPreference.isLoginPhone(getContext())){
+                        if (OznerPreference.isLoginPhone(getContext())) {
                             lay_tdsShort.setVisibility(View.VISIBLE);
-                        }else{
+                        } else {
                             lay_tdsShort.setVisibility(View.GONE);
                         }
                     } else {
@@ -755,9 +770,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                 ShowSettingPage();
                 break;
             case R.id.rlay_menu:
-                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                }else {
+                } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }
                 break;
@@ -805,16 +820,16 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     pre = 1;
                 }
 //                if (pre >= 1) {
-                    asyncTask = new UiUpdateAsyncTask();
-                    asyncTask.execute();
-                    Log.e("CSIR", "TDS-WATER-TAP " + this.tap.Sensor().TDSFix);
-                    Calendar calTap = Calendar.getInstance();
-                    calTap.set(Calendar.DAY_OF_MONTH, 1);
-                    Date timeTap = new Date(calTap.getTime().getTime() / 86400000 * 86400000);
-                    records = tap.TapRecordList().getNoSyncItemDay(timeTap);
-                    if (records != null) {
-                        for (int j = 0; j < records.length; j++) {
-                            tapTds = records[j].TDS;
+                asyncTask = new UiUpdateAsyncTask();
+                asyncTask.execute();
+                Log.e("CSIR", "TDS-WATER-TAP " + this.tap.Sensor().TDSFix);
+                Calendar calTap = Calendar.getInstance();
+                calTap.set(Calendar.DAY_OF_MONTH, 1);
+                Date timeTap = new Date(calTap.getTime().getTime() / 86400000 * 86400000);
+                records = tap.TapRecordList().getNoSyncItemDay(timeTap);
+                if (records != null) {
+                    for (int j = 0; j < records.length; j++) {
+                        tapTds = records[j].TDS;
 //                if(0<tapRecords[j].TDS&&tapRecords[j].TDS<=CupRecord.TDS_Good_Value){
 //                    good_count++;
 //                }else if(CupRecord.TDS_Good_Value<tapRecords[j].TDS&&tapRecords[j].TDS<=CupRecord.TDS_Bad_Value){
@@ -822,10 +837,10 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
 //                }else if(tapRecords[j].TDS>CupRecord.TDS_Bad_Value){
 //                    bad_count++;
 //                }
-                        }
-                        UpdateTdsAsyncTask tdsAsyncTask = new UpdateTdsAsyncTask();
-                        tdsAsyncTask.execute("taptds");
                     }
+                    UpdateTdsAsyncTask tdsAsyncTask = new UpdateTdsAsyncTask();
+                    tdsAsyncTask.execute("taptds");
+                }
 //                }
             }
         }
@@ -842,7 +857,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                 switch (state) {
                     //正在链接中
                     case BaseDeviceIO.ACTION_DEVICE_CONNECTING:
-                        iv_data_loading.setImageResource(R.drawable.air_loding);
+//                        iv_data_loading.setImageResource(R.drawable.air_loding);
+                        iv_data_loading.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.air_loding));
                         tv_data_loading.setText(getResources().getString(R.string.loding_now));
                         if (iv_data_loading.getAnimation() != null)
                             iv_data_loading.getAnimation().start();
@@ -860,7 +876,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     case BaseDeviceIO.ACTION_DEVICE_DISCONNECTED:
                         Log.e("tag3", "ACTION_DEVICE_DISCONNECTED");
                         if (WaterProbeFragment.this != null && WaterProbeFragment.this.isAdded()) {
-                            iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+//                            iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+                            iv_data_loading.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.air_loding_fair));
                             tv_data_loading.setText(getResources().getString(R.string.loding_fair));
                         }
                         break;
@@ -881,7 +898,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     public void changeState() {
         BaseDeviceIO.ConnectStatus stateIo = tap.connectStatus();
         if (stateIo == BaseDeviceIO.ConnectStatus.Connecting) {
-            iv_data_loading.setImageResource(R.drawable.air_loding);
+//            iv_data_loading.setImageResource(R.drawable.air_loding);
+            iv_data_loading.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.air_loding));
             tv_data_loading.setText(getResources().getString(R.string.loding_now));
             if (iv_data_loading.getAnimation() != null)
                 iv_data_loading.getAnimation().start();
@@ -899,7 +917,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
         if (stateIo == BaseDeviceIO.ConnectStatus.Disconnect) {
             if (WaterProbeFragment.this.isAdded()) {
                 if (iv_data_loading.getAnimation() != null) {
-                    iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+//                    iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+                    iv_data_loading.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.air_loding_fair));
                     iv_data_loading.getAnimation().cancel();
                     tv_data_loading.setText(getResources().getString(R.string.loding_fair));
                 }
