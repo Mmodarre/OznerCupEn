@@ -68,9 +68,6 @@ public class MatchTdsPenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(OznerApplication.ACTION_ServiceInit);
-        filter.addAction(BluetoothScan.ACTION_SCANNER_FOUND);
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //更改状态栏颜色
