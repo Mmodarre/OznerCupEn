@@ -9,6 +9,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -18,6 +20,8 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import com.ozner.cup.R;
+
+import java.io.InputStream;
 
 /**
  * Created by xinde on 2015/12/17.
@@ -105,5 +109,28 @@ public class ImageHelper {
         } else {
             return BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_default_headimage);
         }
+    }
+
+    /**
+     * 2.  * 以最省内存的方式读取本地资源的图片
+     * 3.  * @param context
+     * 4.  * @param resId
+     * 5.  * @return
+     * 6.
+     */
+    public static Bitmap loadResBitmap(Context context, int resId) {
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inPreferredConfig = Bitmap.Config.RGB_565;
+        opt.inPurgeable = true;
+        opt.inInputShareable = true;
+        //获取资源图片
+        InputStream is = context.getResources().openRawResource(resId);
+        return BitmapFactory.decodeStream(is, null, opt);
+    }
+
+    //从资源文件获取drawable对象
+    public static Drawable loadResDrawable(Context context, int resId) {
+        InputStream is = context.getResources().openRawResource(resId);
+        return BitmapDrawable.createFromStream(is, "");
     }
 }
