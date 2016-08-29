@@ -73,7 +73,7 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
     private static final int RANK_LOADED = 5;
     private static final int NEW_MESSAGE = 6;
     MyFriendHandler mhandler;
-    String userid = "", mMobile = "";
+    String userid, mMobile;
     List<NetUserVfMessage> vfMsglist;
     CenterFriendInfo friendinfo;
     List<ClassifiedRankInfo2> ranklist2;
@@ -92,7 +92,7 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
     Button btn_leMsgSend;
     EditText et_leaveMsg;
     int curGroupPos = -1;
-    String curFriendUserid = "";
+    String curFriendUserid;
     Display ds;
     DisplayMetrics metrics;
     private MyFriendRecevie friendRecevie;
@@ -753,8 +753,29 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
     @Override
     protected void onDestroy() {
         unregisterReceiver(friendRecevie);
-
+        releaseObject();
         super.onDestroy();
+    }
+
+    /**
+     * 释放资源
+     */
+    private void releaseObject() {
+        vfMsglist.clear();
+        vfMsglist = null;
+        mhandler = null;
+        friendinfo = null;
+        ranklist2.clear();
+        ranklist2 = null;
+        friendAdapter = null;
+        friendList.clear();
+        friendList = null;
+        childMsgMap.clear();
+        childMsgMap = null;
+        friendRecevie = null;
+        metrics = null;
+        ds = null;
+        System.gc();
     }
 
 

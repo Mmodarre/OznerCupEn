@@ -36,7 +36,7 @@ import java.util.List;
 public class MyFriendListAdapter extends BaseExpandableListAdapter {
     private List<CenterFriendItem> friendInfoList;
     private List<LeaveMessage> leMsgList;
-    private String mUserid, mMobile, mNickname;
+    private String mUserid, mMobile;
 
     //    private Map<Integer, ArrayList<FriendInfo.FriendMessage>> childMsgMap = new HashMap<>();
     private LayoutInflater mInflater;
@@ -50,7 +50,6 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
 //        UserDataPreference.Init(mContext);
         mUserid = UserDataPreference.GetUserData(context, UserDataPreference.UserId, "");
         mMobile = UserDataPreference.GetUserData(context, UserDataPreference.Mobile, "");
-        mNickname = UserDataPreference.GetUserData(context, UserDataPreference.NickName, "");
 //        Log.e("tag", "mUserid:" + mUserid);
         this.mContext = context;
         friendInfoList = new ArrayList<CenterFriendItem>();
@@ -70,7 +69,6 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
     }
 
     public void reloadGroupData(ArrayList<CenterFriendItem> infoList) {
-//        this.friendInfoList.clear();
         this.friendInfoList = infoList;
         Log.e("FriendAdatper", "friendInfoList_size:" + friendInfoList.size());
         this.notifyDataSetInvalidated();
@@ -148,6 +146,8 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             groupViewHolder = new GroupViewHolder();
             convertView = mInflater.inflate(R.layout.friend_list_item, null);
+            ((ImageView) convertView.findViewById(R.id.iv_headImg)).setImageBitmap(ImageHelper.loadResBitmap(mContext,R.mipmap.icon_default_headimage));
+            ((ImageView) convertView.findViewById(R.id.iv_message)).setImageBitmap(ImageHelper.loadResBitmap(mContext,R.drawable.message));
             OznerApplication.changeTextFont((ViewGroup) convertView);
             groupViewHolder.iv_headImg = (ImageView) convertView.findViewById(R.id.iv_headImg);
             groupViewHolder.tv_newMsgNum = (TextView) convertView.findViewById(R.id.tv_newMsgNum);

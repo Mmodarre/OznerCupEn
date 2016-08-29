@@ -145,6 +145,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             filter.cancel(false);
             filter = null;
         }
+        System.gc();
         super.onDestroyView();
     }
 
