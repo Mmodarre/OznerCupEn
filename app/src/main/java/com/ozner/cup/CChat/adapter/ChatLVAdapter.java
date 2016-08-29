@@ -245,6 +245,8 @@ public class ChatLVAdapter extends RecyclerView.Adapter<ChatViewHolder> {
     public ChatViewHolder onCreateViewHolder(ViewGroup viewGroup, int arg1) {
         // TODO Auto-generated method stub
         View itemLayout = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.chat_lv_item, null);
+        ((ImageView) itemLayout.findViewById(R.id.chatfrom_icon)).setImageBitmap(ImageHelper.loadResBitmap(mContext,R.drawable.ozner));
+        ((ImageView) itemLayout.findViewById(R.id.chatto_icon)).setImageBitmap(ImageHelper.loadResBitmap(mContext,R.drawable.customer));
         return new ChatViewHolder(itemLayout);
     }
 

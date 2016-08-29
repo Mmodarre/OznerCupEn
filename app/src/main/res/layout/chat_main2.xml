@@ -49,7 +49,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
-                android:src="@mipmap/chat_call"/>
+                />
+            <!--android:src="@mipmap/chat_call"-->
         </RelativeLayout>
 
         <!--<RelativeLayout-->
@@ -99,8 +100,8 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentLeft="true"
                         android:padding="10dp"
-                        android:src="@drawable/msgbox_voice"
                         android:visibility="gone"/>
+                    <!--android:src="@drawable/msgbox_voice"-->
 
                     <RelativeLayout
                         android:id="@+id/rlay_input"
@@ -139,8 +140,9 @@
 
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/chat_face"
+
                             android:visibility="visible"/>
+                        <!--android:src="@drawable/chat_face"-->
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -186,7 +188,8 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/circle_add"/>
+                        />
+                    <!--android:src="@drawable/circle_add"-->
                 </RelativeLayout>
 
             </RelativeLayout>
