@@ -71,6 +71,7 @@
                     android:layout_marginTop="15dp"
                     android:background="@color/white"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     android:padding="15dp">
 
                     <TextView
@@ -93,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@color/white"
+                    android:visibility="gone"
                     android:orientation="vertical"
                     android:padding="15dp">
 

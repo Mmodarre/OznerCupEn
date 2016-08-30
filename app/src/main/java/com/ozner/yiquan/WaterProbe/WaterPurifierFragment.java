@@ -670,13 +670,14 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private void told() {
         new AlertDialog.Builder(getContext())
                 .setMessage(getString(R.string.filter_need_change))
-                .setPositiveButton(getString(R.string.buy_air_lvxin), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        buyFilter();
-                        dialog.dismiss();
-                    }
-                }).setNegativeButton(getString(R.string.airOutside_know), new DialogInterface.OnClickListener() {
+//                .setPositiveButton(getString(R.string.buy_air_lvxin), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        buyFilter();
+//                        dialog.dismiss();
+//                    }
+//                })
+                .setNegativeButton(getString(R.string.airOutside_know), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -929,19 +930,19 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                 break;
         }
     }
-
-    private void buyFilter() {
-        String mobile = UserDataPreference.GetUserData(getActivity().getApplicationContext(), UserDataPreference.Mobile, null);
-        String usertoken = OznerPreference.UserToken(getActivity().getApplicationContext());
-        Intent buyFilterIntent = new Intent(getActivity(), WebActivity.class);
-        String shopUrl = CenterUrlContants.formatTapShopUrl(mobile, usertoken, "zh", "zh");
-        if (buylinkurl != null && buylinkurl != "") {
-            shopUrl = CenterUrlContants.formatUrl(buylinkurl, mobile, usertoken, "zh", "zh");
-        }
-        buyFilterIntent.putExtra("URL", shopUrl);
-        Log.e("123456", shopUrl);
-        startActivity(buyFilterIntent);
-    }
+//    依泉系列去除商城相关一切
+//    private void buyFilter() {
+//        String mobile = UserDataPreference.GetUserData(getActivity().getApplicationContext(), UserDataPreference.Mobile, null);
+//        String usertoken = OznerPreference.UserToken(getActivity().getApplicationContext());
+//        Intent buyFilterIntent = new Intent(getActivity(), WebActivity.class);
+//        String shopUrl = CenterUrlContants.formatTapShopUrl(mobile, usertoken, "zh", "zh");
+//        if (buylinkurl != null && buylinkurl != "") {
+//            shopUrl = CenterUrlContants.formatUrl(buylinkurl, mobile, usertoken, "zh", "zh");
+//        }
+//        buyFilterIntent.putExtra("URL", shopUrl);
+//        Log.e("123456", shopUrl);
+//        startActivity(buyFilterIntent);
+//    }
 
     @Override
     public void onFailure(Throwable var1) {

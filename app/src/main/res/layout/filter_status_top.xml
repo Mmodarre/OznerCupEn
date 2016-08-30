@@ -159,6 +159,7 @@
                     android:layout_marginLeft="29dp"
                     android:background="@drawable/filter_status_btn_stroke"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:minHeight="45dp"
                     android:minWidth="152dp"
                     android:orientation="horizontal"
