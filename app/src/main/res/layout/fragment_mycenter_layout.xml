@@ -41,12 +41,10 @@
                         android:layout_centerInParent="true"
                         android:background="@drawable/personal_user_header_backgroud"
                         android:scaleType="fitXY"
-<<<<<<< HEAD
-                        android:src="@mipmap/icon_default_headimage"/>
-=======
+
                         />
                     <!--android:src="@mipmap/icon_default_headimage"-->
->>>>>>> master
+
                 </RelativeLayout>
 
                 <TextView
@@ -184,12 +182,9 @@
                     android:layout_height="16dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-<<<<<<< HEAD
-                    android:src="@drawable/center_myorder"/>
-=======
+
                      />
                 <!--android:src="@drawable/center_myorder"-->
->>>>>>> master
 
                 <TextView
                     style="@style/TextGongffView"
@@ -220,12 +215,10 @@
                     android:layout_height="16dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-<<<<<<< HEAD
-                    android:src="@drawable/center_redbag"/>
-=======
+
                      />
                 <!--android:src="@drawable/center_redbag"-->
->>>>>>> master
+
 
 
                 <TextView
@@ -258,12 +251,9 @@
                     android:layout_height="16dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-<<<<<<< HEAD
-                    android:src="@drawable/center_myticket"/>
-=======
                     />
                 <!--android:src="@drawable/center_myticket"-->
->>>>>>> master
+
 
                 <TextView
                     style="@style/TextGongffView"

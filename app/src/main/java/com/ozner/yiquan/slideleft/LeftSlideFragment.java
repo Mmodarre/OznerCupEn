@@ -22,26 +22,9 @@ import android.widget.Toast;
 
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/slideleft/LeftSlideFragment.java
+
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-=======
-import com.ozner.cup.Command.DeviceData;
-import com.ozner.cup.Command.FootFragmentListener;
-import com.ozner.cup.Command.ImageHelper;
-import com.ozner.cup.Command.OznerPreference;
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.Command.UserDataPreference;
-import com.ozner.cup.Device.AddDeviceActivity;
-import com.ozner.cup.Device.OznerApplication;
-import com.ozner.cup.HttpHelper.NetDeviceList;
-import com.ozner.cup.Main.BaseMainActivity;
-import com.ozner.cup.MainActivity;
-import com.ozner.cup.MainEnActivity;
-import com.ozner.cup.R;
-import com.ozner.cup.mycenter.MyCenterActivity;
-import com.ozner.cup.slideleft.adapter.SlideAdapter;
-import com.ozner.cup.slideleft.bean.SlideBean;
->>>>>>> master:app/src/main/java/com/ozner/cup/slideleft/LeftSlideFragment.java
+
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.yiquan.Command.DeviceData;
@@ -156,13 +139,12 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
         return rootview;
     }
 
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/slideleft/LeftSlideFragment.java
     @Override
     public void onResume() {
         super.onResume();
         initHeadImg();
     }
-=======
+
     private void initImageViewBitmap(View initView) {
         WeakReference<Context> refContext = new WeakReference<Context>(getContext());
         if (refContext != null) {
@@ -172,8 +154,6 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
             ((ImageView) initView.findViewById(R.id.add_device)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(),R.drawable.add));
         }
     }
-
->>>>>>> master:app/src/main/java/com/ozner/cup/slideleft/LeftSlideFragment.java
 
     private void ShowNoDeviceView(View view) {
 //        view.setBackgroundResource(R.drawable.left_backgroud);

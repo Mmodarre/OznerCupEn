@@ -1,4 +1,4 @@
-package com.ozner.cup.UIView;
+package com.ozner.yiquan.UIView;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -19,11 +19,11 @@ import android.widget.TextView;
 
 import com.mob.tools.utils.UIHandler;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import com.ozner.cup.Command.ImageHelper;
-import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.CupRecord;
-import com.ozner.cup.HttpHelper.NetUserHeadImg;
-import com.ozner.cup.R;
+import com.ozner.yiquan.Command.ImageHelper;
+import com.ozner.yiquan.Command.OznerCommand;
+import com.ozner.yiquan.HttpHelper.NetUserHeadImg;
+import com.ozner.yiquan.R;
 
 import java.util.HashMap;
 

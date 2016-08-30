@@ -9,13 +9,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.widget.GridLayoutManager;
@@ -51,43 +51,26 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.alibaba.fastjson.JSON;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/CChat/CChatFragment.java
 import com.ozner.yiquan.BuildConfig;
-import com.ozner.yiquan.CChat.bean.ChatMessage;
+import com.ozner.yiquan.CChat.adapter.ChatLVAdapter;
 import com.ozner.yiquan.CChat.adapter.FaceGVAdapter;
 import com.ozner.yiquan.CChat.adapter.FaceVPAdapter;
 import com.ozner.yiquan.CChat.bean.ChatInfo;
+import com.ozner.yiquan.CChat.bean.ChatMessage;
 import com.ozner.yiquan.CChat.view.MyEditText;
 import com.ozner.yiquan.Command.ChatCommand;
 import com.ozner.yiquan.Command.FootFragmentListener;
+import com.ozner.yiquan.Command.ImageHelper;
 import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Device.OznerApplication;
-import com.ozner.yiquan.mycenter.LoadingDialog;
-=======
-import com.ozner.cup.BuildConfig;
-import com.ozner.cup.CChat.bean.ChatMessage;
-import com.ozner.cup.CChat.adapter.FaceGVAdapter;
-import com.ozner.cup.CChat.adapter.FaceVPAdapter;
-import com.ozner.cup.CChat.bean.ChatInfo;
-import com.ozner.cup.CChat.view.MyEditText;
-import com.ozner.cup.Command.ChatCommand;
-import com.ozner.cup.Command.FootFragmentListener;
-import com.ozner.cup.Command.ImageHelper;
-import com.ozner.cup.Command.OznerPreference;
-import com.ozner.cup.Command.UserDataPreference;
-import com.ozner.cup.Device.OznerApplication;
-import com.ozner.cup.mycenter.LoadingDialog;
->>>>>>> master:app/src/main/java/com/ozner/cup/CChat/CChatFragment.java
-import com.xuzhiyong.ui.PictureChooseActivity;
-
-import com.ozner.yiquan.CChat.adapter.ChatLVAdapter;
 import com.ozner.yiquan.R;
+import com.ozner.yiquan.mycenter.LoadingDialog;
+import com.xuzhiyong.ui.PictureChooseActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -761,20 +761,20 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
      * 释放资源
      */
     private void releaseObject() {
-        vfMsglist.clear();
-        vfMsglist = null;
-        mhandler = null;
-        friendinfo = null;
-        ranklist2.clear();
-        ranklist2 = null;
-        friendAdapter = null;
-        friendList.clear();
-        friendList = null;
-        childMsgMap.clear();
-        childMsgMap = null;
-        friendRecevie = null;
-        metrics = null;
-        ds = null;
+//        vfMsglist.clear();
+//        vfMsglist = null;
+//        mhandler = null;
+//        friendinfo = null;
+//        ranklist2.clear();
+//        ranklist2 = null;
+//        friendAdapter = null;
+//        friendList.clear();
+//        friendList = null;
+//        childMsgMap.clear();
+//        childMsgMap = null;
+//        friendRecevie = null;
+//        metrics = null;
+//        ds = null;
         System.gc();
     }
 

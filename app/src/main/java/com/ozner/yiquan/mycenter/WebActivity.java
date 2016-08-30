@@ -20,15 +20,11 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/mycenter/WebActivity.java
+import com.ozner.yiquan.Command.CenterUrlContants;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.R;
-=======
-import com.ozner.cup.Command.CenterUrlContants;
-import com.ozner.cup.Device.OznerApplication;
-import com.ozner.cup.R;
-import com.ozner.cup.UIView.ShareView;
->>>>>>> master:app/src/main/java/com/ozner/cup/mycenter/WebActivity.java
+import com.ozner.yiquan.UIView.ShareView;
+
 
 /*
 * Created by xinde on 2015/12/11

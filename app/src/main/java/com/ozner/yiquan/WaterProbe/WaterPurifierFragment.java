@@ -29,11 +29,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ozner.WaterPurifier.WaterPurifier;
-import com.ozner.yiquan.Command.CenterUrlContants;
+import com.ozner.cup.CupRecord;
+import com.ozner.device.OperateCallback;
+import com.ozner.device.OznerDeviceManager;
+import com.ozner.wifi.ayla.AylaIO;
 import com.ozner.yiquan.Command.FootFragmentListener;
 import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.UserDataPreference;
-import com.ozner.cup.CupRecord;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.Device.SetupWaterPurifierActivity;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;
@@ -43,10 +45,6 @@ import com.ozner.yiquan.MainActivity;
 import com.ozner.yiquan.MainEnActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.UIView.NetHelper;
-import com.ozner.yiquan.mycenter.WebActivity;
-import com.ozner.device.OperateCallback;
-import com.ozner.device.OznerDeviceManager;
-import com.ozner.wifi.ayla.AylaIO;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -109,10 +107,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     public WaterPurifierFragment() {
         // Required empty public constructor
     }
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/WaterProbe/WaterPurifierFragment.java
-=======
 
->>>>>>> master:app/src/main/java/com/ozner/cup/WaterProbe/WaterPurifierFragment.java
     //金泉
 
     @Override

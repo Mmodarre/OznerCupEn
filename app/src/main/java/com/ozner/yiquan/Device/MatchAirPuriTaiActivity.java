@@ -114,10 +114,7 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
         @Override
         protected void onPostExecute(String result) {
             IntentFilter filter = new IntentFilter();
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/Device/MatchAirPuriTaiActivity.java
-=======
 //            filter.addAction(OznerApplication.ACTION_ServiceInit);
->>>>>>> master:app/src/main/java/com/ozner/cup/Device/MatchAirPuriTaiActivity.java
             filter.addAction(BluetoothScan.ACTION_SCANNER_FOUND);
             adapter.Reload();
             getBaseContext().registerReceiver(mMonitor, filter);//启动蓝牙搜索

@@ -21,22 +21,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/WaterProbe/WaterProbeFragment.java
-import com.ozner.yiquan.Command.DeviceData;
+import com.ozner.cup.CupRecord;
+import com.ozner.device.BaseDeviceIO;
+import com.ozner.device.OznerDevice;
+import com.ozner.device.OznerDeviceManager;
+import com.ozner.tap.Tap;
+import com.ozner.tap.TapRecord;
+import com.ozner.tap.TapSensor;
 import com.ozner.yiquan.Command.FootFragmentListener;
+import com.ozner.yiquan.Command.ImageHelper;
 import com.ozner.yiquan.Command.OznerCommand;
 import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.PageState;
 import com.ozner.yiquan.Command.UserDataPreference;
-=======
-import com.ozner.cup.Command.FootFragmentListener;
-import com.ozner.cup.Command.ImageHelper;
-import com.ozner.cup.Command.OznerCommand;
-import com.ozner.cup.Command.OznerPreference;
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.Command.UserDataPreference;
->>>>>>> master:app/src/main/java/com/ozner/cup/WaterProbe/WaterProbeFragment.java
-import com.ozner.cup.CupRecord;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.Device.SetupWaterProbeActivity;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;
@@ -46,12 +43,6 @@ import com.ozner.yiquan.MainEnActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.UIView.ChartAdapter;
 import com.ozner.yiquan.UIView.TapTDSChartView;
-import com.ozner.device.BaseDeviceIO;
-import com.ozner.device.OznerDevice;
-import com.ozner.device.OznerDeviceManager;
-import com.ozner.tap.Tap;
-import com.ozner.tap.TapRecord;
-import com.ozner.tap.TapSensor;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,6 +57,7 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
+
 
 /**
  * A simple {@link Fragment} subclass.
