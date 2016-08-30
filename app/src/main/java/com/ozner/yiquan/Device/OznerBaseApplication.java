@@ -37,7 +37,6 @@ public abstract class OznerBaseApplication extends Application {
 
     @Override
     public void onCreate() {
-
 //        ShareSDK.initSDK(getApplicationContext());
 //        CrashReport.initCrashReport(getApplicationContext(), "900033413", false);
         mServiceConnection = new ServiceConnection() {
