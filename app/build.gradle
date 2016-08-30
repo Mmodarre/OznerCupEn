@@ -5,10 +5,10 @@ android {
     buildToolsVersion '23.0.1'
 
     defaultConfig {
-        applicationId "com.ozner.cup"
+        applicationId "com.ozner.yiquan"
         minSdkVersion 18
         targetSdkVersion 22
-        versionCode 297
+        versionCode 1297
         versionName "2.9.7"
         ndk {
             //设置支持的SO库架构

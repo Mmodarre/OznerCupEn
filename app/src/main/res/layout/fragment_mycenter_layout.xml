@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/foot_heght">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginBottom="@dimen/foot_heght">
 
 
     <ScrollView
@@ -40,7 +40,7 @@
                         android:layout_centerInParent="true"
                         android:background="@drawable/personal_user_header_backgroud"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/icon_default_headimage" />
+                        android:src="@mipmap/icon_default_headimage"/>
                 </RelativeLayout>
 
                 <TextView
@@ -51,7 +51,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="11dp"
                     android:text="@string/Center_click_to_login"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"/>
 
                 <TextView
                     android:id="@+id/tv_gradeNmae"
@@ -62,16 +62,17 @@
                     android:layout_marginTop="3dp"
                     android:text=""
                     android:textSize="14dp"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"/>
             </RelativeLayout>
 
 
-            <View style="@style/HaLineView" />
+            <View style="@style/HaLineView"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -103,7 +104,7 @@
                                 android:gravity="center"
                                 android:text="@string/my_device"
                                 android:textColor="@color/MyCenter_FirstText"
-                                android:textSize="14dp" />
+                                android:textSize="14dp"/>
 
                             <TextView
                                 android:id="@+id/tv_mydeviceNum"
@@ -112,14 +113,14 @@
                                 android:layout_marginTop="10dp"
                                 android:text="0"
                                 android:textColor="@color/cupDetail_textcolor"
-                                android:textSize="28dp" />
+                                android:textSize="28dp"/>
                         </LinearLayout>
                     </LinearLayout>
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/divi_color" />
+                        android:background="@color/divi_color"/>
 
                     <LinearLayout
                         android:id="@+id/person_center_fans"
@@ -144,7 +145,7 @@
                                 android:gravity="center"
                                 android:text="@string/my_burse"
                                 android:textColor="@color/MyCenter_FirstText"
-                                android:textSize="14dp" />
+                                android:textSize="14dp"/>
 
 
                             <TextView
@@ -154,19 +155,22 @@
                                 android:layout_marginTop="10dp"
                                 android:text="0"
                                 android:textColor="@color/cupDetail_textcolor"
-                                android:textSize="28dp" />
+                                android:textSize="28dp"/>
 
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
-            <View style="@style/HaLineView" />
+            <View
+                style="@style/HaLineView"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:id="@+id/rlay_center_shared"
                 android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_height="48dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_center_share"
@@ -174,15 +178,15 @@
                     android:layout_height="16dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:src="@drawable/center_myorder" />
+                    android:src="@drawable/center_myorder"/>
 
                 <TextView
                     style="@style/TextGongffView"
                     android:layout_marginLeft="12dp"
                     android:layout_toRightOf="@+id/iv_center_share"
-                    android:text="@string/Center_MyOrder" />
+                    android:text="@string/Center_MyOrder"/>
 
-                <ImageView style="@style/ArrowView" />
+                <ImageView style="@style/ArrowView"/>
 
             </RelativeLayout>
 
@@ -190,12 +194,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="40dp"
-                android:background="@color/divi_color" />
+                android:background="@color/divi_color"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:id="@+id/rlay_invite_vip"
                 android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_height="48dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_myredbag"
@@ -203,16 +209,16 @@
                     android:layout_height="16dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:src="@drawable/center_redbag" />
+                    android:src="@drawable/center_redbag"/>
 
 
                 <TextView
                     style="@style/TextGongffView"
                     android:layout_marginLeft="12dp"
                     android:layout_toRightOf="@id/iv_myredbag"
-                    android:text="@string/Center_GetMoney" />
+                    android:text="@string/Center_GetMoney"/>
 
-                <ImageView style="@style/ArrowView" />
+                <ImageView style="@style/ArrowView"/>
 
             </RelativeLayout>
 
@@ -221,12 +227,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="40dp"
-                android:background="@color/divi_color" />
+                android:background="@color/divi_color"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:id="@+id/rlay_win_prize"
                 android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_height="48dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_myticket"
@@ -234,15 +242,15 @@
                     android:layout_height="16dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:src="@drawable/center_myticket" />
+                    android:src="@drawable/center_myticket"/>
 
                 <TextView
                     style="@style/TextGongffView"
                     android:layout_marginLeft="12dp"
                     android:layout_toRightOf="@+id/iv_myticket"
-                    android:text="@string/Center_MyTicket" />
+                    android:text="@string/Center_MyTicket"/>
 
-                <ImageView style="@style/ArrowView" />
+                <ImageView style="@style/ArrowView"/>
 
             </RelativeLayout>
 
@@ -250,7 +258,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="40dp"
-                android:background="@color/divi_color" />
+                android:background="@color/divi_color"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:id="@+id/person_center_modify_password"
@@ -260,7 +269,7 @@
                 <TextView
                     style="@style/TextGongffView"
                     android:drawableLeft="@mipmap/icon_my_friend"
-                    android:text="@string/my_friend" />
+                    android:text="@string/my_friend"/>
 
                 <!--<TextView-->
                 <!--android:id="@+id/tv_newFriendNum"-->
@@ -285,11 +294,11 @@
                     android:gravity="center"
                     android:text=""
                     android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <ImageView
                     android:id="@+id/iv_newFriends"
-                    style="@style/ArrowView" />
+                    style="@style/ArrowView"/>
 
             </RelativeLayout>
 
@@ -297,19 +306,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="40dp"
-                android:background="@color/divi_color" />
+                android:background="@color/divi_color"/>
 
             <RelativeLayout
                 android:id="@+id/person_center_binding_setting"
                 android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_height="48dp"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/TextGongffView"
                     android:drawableLeft="@mipmap/icon_view_report"
-                    android:text="@string/view_report" />
+                    android:text="@string/view_report"/>
 
-                <ImageView style="@style/ArrowView" />
+                <ImageView style="@style/ArrowView"/>
 
             </RelativeLayout>
 
@@ -317,7 +327,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="40dp"
-                android:background="@color/divi_color" />
+                android:background="@color/divi_color"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:id="@+id/private_message_layout"
@@ -327,11 +338,11 @@
                 <TextView
                     style="@style/TextGongffView"
                     android:drawableLeft="@mipmap/icon_feedback_comment"
-                    android:text="@string/feedback_commend" />
+                    android:text="@string/feedback_commend"/>
 
                 <ImageView
                     android:id="@+id/message_line_view"
-                    style="@style/ArrowView" />
+                    style="@style/ArrowView"/>
 
             </RelativeLayout>
 
@@ -340,7 +351,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="40dp"
-                android:background="@color/divi_color" />
+                android:background="@color/divi_color"/>
 
             <RelativeLayout
                 android:id="@+id/setting_layout"
@@ -351,12 +362,12 @@
                 <TextView
                     style="@style/TextGongffView"
                     android:drawableLeft="@mipmap/icon_setting"
-                    android:text="@string/my_setting" />
+                    android:text="@string/my_setting"/>
 
-                <ImageView style="@style/ArrowView" />
+                <ImageView style="@style/ArrowView"/>
             </RelativeLayout>
 
-            <View style="@style/HaLineView" />
+            <View style="@style/HaLineView"/>
 
         </LinearLayout>
     </ScrollView>

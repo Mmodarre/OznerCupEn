@@ -80,7 +80,7 @@ public class FootNavFragment extends BaseFragment implements FootFragmentListene
         llshop = (LinearLayout) view.findViewById(R.id.foot_view_shop);
         llmsg = (LinearLayout) view.findViewById(R.id.foot_view_message);
         llmyself = (LinearLayout) view.findViewById(R.id.foot_view_my);
-
+//
         ivsb = (ImageView) view.findViewById(R.id.foot_iv_sb);
         ivshop = (ImageView) view.findViewById(R.id.foot_iv_shop);
         ivmsg = (ImageView) view.findViewById(R.id.foot_iv_msg);

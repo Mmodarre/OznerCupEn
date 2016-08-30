@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ozner.device.OznerDevice;
+import com.ozner.device.OznerDeviceManager;
 import com.ozner.yiquan.ACSqlLite.CSqlCommand;
 import com.ozner.yiquan.BaiduPush.OznerBroadcastAction;
 import com.ozner.yiquan.Command.Contants;
@@ -27,11 +29,10 @@ import com.ozner.yiquan.HttpHelper.NetDeviceList;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;
 import com.ozner.yiquan.HttpHelper.NetUserInfo;
 import com.ozner.yiquan.HttpHelper.OznerDataHttp;
+import com.ozner.yiquan.MainActivity;
 import com.ozner.yiquan.MainEnActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.mycenter.WebActivity;
-import com.ozner.device.OznerDevice;
-import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -588,7 +589,7 @@ public class LoginActivity extends BaseLoginActivity {
     }
 
     private void ShowMainPage(NetDeviceList devicejson) {
-        Intent mainIntent = new Intent(LoginActivity.this, MainEnActivity.class);
+        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(mainIntent);
         this.finish();
     }

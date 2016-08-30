@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.ozner.device.OznerDevice;
+import com.ozner.device.OznerDeviceManager;
 import com.ozner.yiquan.Command.DeviceData;
 import com.ozner.yiquan.Command.FootFragmentListener;
 import com.ozner.yiquan.Command.ImageHelper;
@@ -37,13 +39,10 @@ import com.ozner.yiquan.HttpHelper.NetUserHeadImg;
 import com.ozner.yiquan.HttpHelper.OznerDataHttp;
 import com.ozner.yiquan.Main.BaseMainActivity;
 import com.ozner.yiquan.MainActivity;
-import com.ozner.yiquan.MainEnActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.mycenter.MyCenterActivity;
 import com.ozner.yiquan.slideleft.adapter.SlideAdapter;
 import com.ozner.yiquan.slideleft.bean.SlideBean;
-import com.ozner.device.OznerDevice;
-import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -120,9 +119,9 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), MyCenterActivity.class));
 //                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
-//                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
+                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
 //                } else {
-                    ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
+//                    ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
 //                }
             }
         });
@@ -381,9 +380,9 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
             @Override
             public void onClick(View view) {
 //                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
-//                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
+                    ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
 //                } else {
-                    ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
+//                    ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
 //                }
                 if (OznerPreference.IsLogin(getActivity())) {
                     Intent intent = new Intent(getActivity(), AddDeviceActivity.class);

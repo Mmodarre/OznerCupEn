@@ -15,7 +15,6 @@ import com.ozner.application.OznerBLEService.OznerBLEBinder;
 import com.ozner.yiquan.BaiduPush.OznerBroadcastAction;
 import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Guide.LoginService;
-import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * Created by mengdongya on 2015/11/26.
@@ -40,7 +39,7 @@ public abstract class OznerBaseApplication extends Application {
     public void onCreate() {
 
 //        ShareSDK.initSDK(getApplicationContext());
-        CrashReport.initCrashReport(getApplicationContext(), "900033413", false);
+//        CrashReport.initCrashReport(getApplicationContext(), "900033413", false);
         mServiceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {

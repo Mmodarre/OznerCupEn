@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Android_AylaLibrary_Public-release/Android_AylaLibrary_Public-release.iml" filepath="$PROJECT_DIR$/Android_AylaLibrary_Public-release/Android_AylaLibrary_Public-release.iml" />
       <module fileurl="file://$PROJECT_DIR$/OznerCupEn.iml" filepath="$PROJECT_DIR$/OznerCupEn.iml" />
       <module fileurl="file://$PROJECT_DIR$/OznerLibrary/OznerLibrary.iml" filepath="$PROJECT_DIR$/OznerLibrary/OznerLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OznerUriage.iml" filepath="$PROJECT_DIR$/OznerUriage.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dragsortlistview/dragsortlistview.iml" filepath="$PROJECT_DIR$/dragsortlistview/dragsortlistview.iml" />
       <module fileurl="file://$PROJECT_DIR$/photo_choose-release/photo_choose-release.iml" filepath="$PROJECT_DIR$/photo_choose-release/photo_choose-release.iml" />
