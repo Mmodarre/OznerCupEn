@@ -21,7 +21,6 @@ import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.Device.SlidButton;
 import com.ozner.yiquan.Login.LoginActivity;
-import com.ozner.yiquan.Login.LoginEnActivity;
 import com.ozner.yiquan.R;
 
 /*
@@ -116,14 +115,14 @@ public class CenterSetupActivity extends AppCompatActivity implements View.OnCli
                             OznerPreference.SetValue(CenterSetupActivity.this, UserDataPreference.UserId, "");
                             OznerPreference.setUserToken(CenterSetupActivity.this, "");
                             ((OznerApplication) getApplication()).setIsPhone();
-                            if (((OznerApplication) getApplication()).isLanguageCN()) {
+//                            if (((OznerApplication) getApplication()).isLanguageCN()) {
                                 Intent loginIntent = new Intent(CenterSetupActivity.this, LoginActivity.class);
                                 startActivity(loginIntent);
-                            } else {
-                                Intent loginIntent = new Intent(CenterSetupActivity.this, LoginEnActivity.class);
-//                loginIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                startActivity(loginIntent);
-                            }
+//                            } else {
+//                                Intent loginIntent = new Intent(CenterSetupActivity.this, LoginEnActivity.class);
+////                loginIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                                startActivity(loginIntent);
+//                            }
                             Intent logoutBroadIntent = new Intent(OznerBroadcastAction.Logout);
                             logoutBroadIntent.putExtra("Address", "logout");
                             sendBroadcast(logoutBroadIntent);
