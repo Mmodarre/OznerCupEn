@@ -69,11 +69,6 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(OznerApplication.ACTION_ServiceInit);
-        filter.addAction(BluetoothScan.ACTION_SCANNER_FOUND);
-        //      filter.addAction(BaseBluetoothDeviceManager.ACTION_OZNER_BLUETOOTH_BIND_MODE);
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //更改状态栏颜色
@@ -119,7 +114,6 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
         @Override
         protected void onPostExecute(String result) {
             IntentFilter filter = new IntentFilter();
-            filter.addAction(OznerApplication.ACTION_ServiceInit);
             filter.addAction(BluetoothScan.ACTION_SCANNER_FOUND);
             adapter.Reload();
             getBaseContext().registerReceiver(mMonitor, filter);//启动蓝牙搜索
