@@ -109,6 +109,10 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     public WaterPurifierFragment() {
         // Required empty public constructor
     }
+<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/WaterProbe/WaterPurifierFragment.java
+=======
+
+>>>>>>> master:app/src/main/java/com/ozner/cup/WaterProbe/WaterPurifierFragment.java
     //金泉
 
     @Override

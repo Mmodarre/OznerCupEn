@@ -80,7 +80,6 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
         deviceList.setAdapter(adapter);
         new UiUpdateAsyncTask().execute();
 
-
         animinput = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
         animfadeout = AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);
         animfadein = AnimationUtils.loadAnimation(this, R.anim.abc_fade_in);
@@ -215,9 +214,7 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
         isSuccesShow = false;
         if (mMonitor == null) {
             IntentFilter filter = new IntentFilter();
-//            filter.addAction(OznerApplication.ACTION_ServiceInit);
             filter.addAction(BluetoothScan.ACTION_SCANNER_FOUND);
-//            filter.addAction(BaseBluetoothDeviceManager.ACTION_OZNER_BLUETOOTH_BIND_MODE);
             mMonitor = new Monitor();
             this.registerReceiver(mMonitor, filter);
         }

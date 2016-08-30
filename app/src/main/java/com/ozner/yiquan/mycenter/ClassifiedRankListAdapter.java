@@ -46,7 +46,6 @@ public class ClassifiedRankListAdapter extends BaseAdapter implements View.OnCli
     ImageHelper imageHelper;
     MyLoadImgListener imageLoadListener;
     RankViewHolder rankViewHolder;
-    // private List<ClassifiedRankInfo> dataList = new ArrayList<ClassifiedRankInfo>();
     private List<ClassifiedRankInfo2> dataList;
     private onDeleteItemLinster deleteLisenter;
     private final String[] monthsStr = {"Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."};

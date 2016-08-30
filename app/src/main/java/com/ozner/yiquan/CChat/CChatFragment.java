@@ -56,6 +56,7 @@ import com.alibaba.fastjson.JSON;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/CChat/CChatFragment.java
 import com.ozner.yiquan.BuildConfig;
 import com.ozner.yiquan.CChat.bean.ChatMessage;
 import com.ozner.yiquan.CChat.adapter.FaceGVAdapter;
@@ -68,6 +69,21 @@ import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.mycenter.LoadingDialog;
+=======
+import com.ozner.cup.BuildConfig;
+import com.ozner.cup.CChat.bean.ChatMessage;
+import com.ozner.cup.CChat.adapter.FaceGVAdapter;
+import com.ozner.cup.CChat.adapter.FaceVPAdapter;
+import com.ozner.cup.CChat.bean.ChatInfo;
+import com.ozner.cup.CChat.view.MyEditText;
+import com.ozner.cup.Command.ChatCommand;
+import com.ozner.cup.Command.FootFragmentListener;
+import com.ozner.cup.Command.ImageHelper;
+import com.ozner.cup.Command.OznerPreference;
+import com.ozner.cup.Command.UserDataPreference;
+import com.ozner.cup.Device.OznerApplication;
+import com.ozner.cup.mycenter.LoadingDialog;
+>>>>>>> master:app/src/main/java/com/ozner/cup/CChat/CChatFragment.java
 import com.xuzhiyong.ui.PictureChooseActivity;
 
 import com.ozner.yiquan.CChat.adapter.ChatLVAdapter;
@@ -98,19 +114,8 @@ import cz.msebera.android.httpclient.Header;
  */
 public class CChatFragment extends Fragment implements OnClickListener, FootFragmentListener {
     private static final String TAG = "CChatFragment";
-    private final int NORESULT = 0;//没有获取到网络数据
-    private final int USER_HEAD_INFO = 1;//
-    private final int ADVISE_REQUEST = 2;
-    private String deviceId = "";
-    private String mMobile = "";
-    private String mUserid = "";
-    private String mCustomId = "";
-    private String mKf_id = "";
-    private String newSign = "";
-    private String token = "";
+    private String deviceId, mMobile, mCustomId, newSign, token;
     LoadingDialog loadingDialog;
-    private int retry = 0;
-    private boolean isChatLogin = true;
     static final int RequestPictureChoose = 0x100;
     static final int RequestCamera = 0x101;
     private ViewPager mViewPager;
@@ -123,7 +128,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
     InputMethodManager inputManager;
     private LinearLayout fram_rootView;
     //    private TextView tv_list_title;
-    private RelativeLayout rlay_input, rlay_record, rlay_chat_main, rlay_back;
+    private RelativeLayout rlay_input, rlay_record;
     private LinearLayout llay_face_container, llay_picSelect, llay_picture, llay_camera;
     LinearLayout chat_face_container;
     private ImageView image_face, iv_selectPic, iv_voice;//表情图标
@@ -152,11 +157,9 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
     String recMac = "";
     private ProgressDialog waitDialog;
     private boolean isSending = false;
-    private int testCount = 0;
     private ChatMessageHelper chatMessageHelper = null;
     private String chatUserId;
     private String sendImgMsg = null;
-    private boolean isFirstLoad = true;
     private final int timeLength = String.valueOf(new Date().getTime()).length();
 
 
@@ -170,15 +173,6 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                     + " must implement OnFragmentInteractionListener");
         }
         Log.e(TAG, "CChatFragment_onAttach");
-
-//        Log.e(TAG, "userid:" + OznerPreference.GetValue(context, UserDataPreference.UserId, null));
-//        chatUserId = OznerPreference.GetValue(getContext(), UserDataPreference.UserId, null);
-//        if (chatUserId != null) {
-//            chatUserId = chatUserId.replace("-", "");
-//            chatMessageHelper = chatMessageHelper.getInstance(chatUserId);
-//            chatMessageHelper.InitTable(getContext());
-//            msgList = chatMessageHelper.getMessageList(getContext());
-//        }
     }
 
 
@@ -205,7 +199,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
         inputManager = ((InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE));
 
         loadingDialog = LoadingDialog.createLoading(getContext());
-        mUserid = UserDataPreference.GetUserData(getContext(), UserDataPreference.UserId, null);
+
         mMobile = UserDataPreference.GetUserData(getContext(), UserDataPreference.Mobile, null);
         deviceId = UserDataPreference.GetUserData(getContext(), UserDataPreference.BaiduDeviceId, null);
         Log.e(TAG, "onActivityCreated: deviceId=" + deviceId);
@@ -251,6 +245,11 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
         // Inflate the layout for this fragment
         try {
             View view = inflater.inflate(R.layout.chat_main2, container, false);
+            ((ImageView) view.findViewById(R.id.iv_call)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.mipmap.chat_call));
+            ((ImageView) view.findViewById(R.id.image_face)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.chat_face));
+            ((ImageView) view.findViewById(R.id.iv_selectPic)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.circle_add));
+            ((ImageView) view.findViewById(R.id.iv_voice)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.msgbox_voice));
+
             initStaticFaces();
             return view;
         } catch (Exception ex) {
@@ -268,10 +267,10 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
     private void initViews(View view) {
         OznerApplication.changeTextFont((ViewGroup) view);
         fram_rootView = (LinearLayout) view.findViewById(R.id.rootview);
-        rlay_chat_main = (RelativeLayout) view.findViewById(R.id.chat_main);
+//        rlay_chat_main = (RelativeLayout) view.findViewById(R.id.chat_main);
         mListView = (RecyclerView) view.findViewById(R.id.message_chat_listview);
 //        tv_header = (TextView) view.findViewById(R.id.tv_header);
-        rlay_back = (RelativeLayout) view.findViewById(R.id.rlay_back);
+//        rlay_back = (RelativeLayout) view.findViewById(R.id.rlay_back);
         iv_call = (ImageView) view.findViewById(R.id.iv_call);
         //表情图标
         image_face = (ImageView) view.findViewById(R.id.image_face);
@@ -302,7 +301,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
 
         iv_call.setOnClickListener(this);
         input.setOnClickListener(this);
-        rlay_back.setOnClickListener(this);
+//        rlay_back.setOnClickListener(this);
         iv_voice.setOnClickListener(this);
         iv_selectPic.setOnClickListener(this);
         llay_camera.setOnClickListener(this);
@@ -861,9 +860,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                             Log.e(TAG, "chatLogin:" + chatLoginInfo != null ? JSON.toJSONString(chatLoginInfo) : "null");
                         }
                         if (chatLoginInfo.state == 0) {
-                            isChatLogin = true;
                             Log.e(TAG, "chatLoginInfo:" + chatLoginInfo.kfName + "," + chatLoginInfo.kfid);
-                            mKf_id = String.valueOf(chatLoginInfo.kfid);
                         } else {
                             if (chatLoginInfo.msg != null) {
                                 Toast.makeText(getContext(), chatLoginInfo.msg, Toast.LENGTH_SHORT).show();
@@ -1151,8 +1148,6 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
         historyPars.customer_id = customid;
         historyPars.pagesize = String.valueOf(pagesize);
         historyPars.page = String.valueOf(page);
-//        historyPars.kf_id = mKf_id;
-
         chatGetHistoryMsg(historyPars, ac_token, sign);
     }
 

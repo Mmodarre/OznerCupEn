@@ -209,4 +209,10 @@ public class GuideActivity extends Activity {
         }
         icons[0].setEnabled(false);//初始化时默认选中第一个pager页显示 白色指示图标
     }
+
+    @Override
+    protected void onStop() {
+        System.gc();
+        super.onStop();
+    }
 }

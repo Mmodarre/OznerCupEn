@@ -114,6 +114,10 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
         @Override
         protected void onPostExecute(String result) {
             IntentFilter filter = new IntentFilter();
+<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/Device/MatchAirPuriTaiActivity.java
+=======
+//            filter.addAction(OznerApplication.ACTION_ServiceInit);
+>>>>>>> master:app/src/main/java/com/ozner/cup/Device/MatchAirPuriTaiActivity.java
             filter.addAction(BluetoothScan.ACTION_SCANNER_FOUND);
             adapter.Reload();
             getBaseContext().registerReceiver(mMonitor, filter);//启动蓝牙搜索
@@ -221,13 +225,10 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
     }
 
     private void searchingDevice() {
-
         isSuccesShow = false;
         if (mMonitor == null) {
             IntentFilter filter = new IntentFilter();
-//            filter.addAction(OznerApplication.ACTION_ServiceInit);
             filter.addAction(BluetoothScan.ACTION_SCANNER_FOUND);
-//            filter.addAction(BaseBluetoothDeviceManager.ACTION_OZNER_BLUETOOTH_BIND_MODE);
             mMonitor = new Monitor();
             this.registerReceiver(mMonitor, filter);
         }

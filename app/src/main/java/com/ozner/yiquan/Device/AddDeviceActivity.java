@@ -22,6 +22,7 @@ import com.ozner.yiquan.R;
  * Modify by C-sir@hotmail.com
  */
 public class AddDeviceActivity extends AppCompatActivity {
+<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/Device/AddDeviceActivity.java
         private int deviceImages[] = {R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi };
 //    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi,R.drawable.water_replenishment_meter };
         private int deviceNames[] = { R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
@@ -30,6 +31,23 @@ public class AddDeviceActivity extends AppCompatActivity {
 //    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth, R.drawable.bluetooth};
         private int connectionName[] = {R.string.bluetooth_connection,R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
 //    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection,R.string.bluetooth_connection};
+=======
+//        private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi };
+//    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi,R.drawable.water_replenishment_meter };
+    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi};
+
+//        private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
+//    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi,R.string.water_replen_meter};
+    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
+
+//        private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
+//    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth, R.drawable.bluetooth};
+    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
+
+//        private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
+//    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection,R.string.bluetooth_connection};
+    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
+>>>>>>> master:app/src/main/java/com/ozner/cup/Device/AddDeviceActivity.java
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +118,11 @@ public class AddDeviceActivity extends AppCompatActivity {
     private class DeviceAdapter extends BaseAdapter {
         @Override
         public int getCount() {
+<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/Device/AddDeviceActivity.java
             return 5;
+=======
+            return 6;
+>>>>>>> master:app/src/main/java/com/ozner/cup/Device/AddDeviceActivity.java
         }
 
         @Override

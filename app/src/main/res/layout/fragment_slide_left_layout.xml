@@ -35,7 +35,8 @@
             android:id="@+id/add_device"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/add" />
+             />
+        <!--android:src="@drawable/add"-->
 
         <TextView
             android:id="@+id/txt_showadd"
@@ -55,7 +56,8 @@
         android:layout_above="@+id/llay_playceholder"
         android:layout_marginBottom="40dp"
         android:layout_marginLeft="80dp"
-        android:src="@drawable/left_buble" />
+         />
+    <!--android:src="@drawable/left_buble"-->
 
 
     <LinearLayout
@@ -80,7 +82,10 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/personal_user_header_backgroud"
                 android:scaleType="fitXY"
-                android:src="@mipmap/icon_default_headimage" />
+               />
+            <!--
+            android:src="@mipmap/icon_default_headimage"
+            -->
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -135,10 +140,14 @@
                 android:textSize="9dp" />
 
             <ImageView
+                android:id="@+id/iv_left_center"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/left_center" />
+                />
+            <!--
+             android:src="@drawable/left_center"
+            -->
         </LinearLayout>
 
         <com.mobeta.android.dslv.DragSortListView xmlns:dslv="http://schemas.android.com/apk/res-auto"
