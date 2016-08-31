@@ -93,6 +93,22 @@ public class MainActivity extends BaseMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e("tag", "Main_onCreate");
+//// 进行闹铃注册
+//        Intent intent = new Intent(MainActivity.this,AlarmReceiver.class);
+//       intent.putExtra("msg","你该打酱油了");
+//
+//        PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+//
+//// 过10s 执行这个闹铃
+//        Calendar calendar = Calendar.getInstance();
+////        calendar.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+////        calendar.setTimeInMillis(System.currentTimeMillis());
+//        calendar.add(Calendar.SECOND, 5);
+//
+//        AlarmManager manager = (AlarmManager)getSystemService(ALARM_SERVICE);
+//      //  manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+//        manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 5 * 1000,sender);
+
 //        ShareSDK.initSDK(MainActivity.this);
         setContentView(R.layout.activity_main);
 
