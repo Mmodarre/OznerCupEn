@@ -2,7 +2,6 @@ package com.ozner.yiquan.WaterProbe;
 
 
 import android.animation.ValueAnimator;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -22,13 +21,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ozner.yiquan.Command.DeviceData;
+import com.ozner.cup.CupRecord;
+import com.ozner.device.BaseDeviceIO;
+import com.ozner.device.OznerDevice;
+import com.ozner.device.OznerDeviceManager;
+import com.ozner.tap.Tap;
+import com.ozner.tap.TapRecord;
+import com.ozner.tap.TapSensor;
 import com.ozner.yiquan.Command.FootFragmentListener;
+import com.ozner.yiquan.Command.ImageHelper;
 import com.ozner.yiquan.Command.OznerCommand;
 import com.ozner.yiquan.Command.OznerPreference;
 import com.ozner.yiquan.Command.PageState;
 import com.ozner.yiquan.Command.UserDataPreference;
-import com.ozner.cup.CupRecord;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.Device.SetupWaterProbeActivity;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;
@@ -38,16 +43,11 @@ import com.ozner.yiquan.MainEnActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.UIView.ChartAdapter;
 import com.ozner.yiquan.UIView.TapTDSChartView;
-import com.ozner.device.BaseDeviceIO;
-import com.ozner.device.OznerDevice;
-import com.ozner.device.OznerDeviceManager;
-import com.ozner.tap.Tap;
-import com.ozner.tap.TapRecord;
-import com.ozner.tap.TapSensor;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,23 +58,21 @@ import java.util.List;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WaterProbeFragment extends Fragment implements View.OnClickListener, FootFragmentListener {
-    private static final String TapFilterUseDay = "tapfilteruseday";
     private static final String SaveStr = "FilterStatus";
     TapTDSChartView tdsChartView = null;
     RelativeLayout rlay_filterStatus, rlay_menu, rlay_top1;
     private static int INIT_WARRANTY = 30;// 默认有效期
     SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    DeviceData deviceData;
     private RotateAnimation animation;
     String Mac;
     int tdsOld = 0, tdsNew = 0;
     int ranking;
     private LinearLayout lay_tdsShort;
-    ProgressDialog dialog;
     WaterDetailProgress waterProcess;
     private TextView tv_name, tv_tdsValue, tv_batteryTem, tv_filterStatus, tv_tdsShort, tv_tdsLevelText, tv_data_loading;
     private TextView tv_tapHealthPre, tv_tapGenericPre, tv_tapBadPre, tv_filiteText;
@@ -82,7 +80,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     int[] data = new int[31];
     ImageView iv_probe_setting, iv_data_loading, iv_tdsLevelImg, iv_filterState, iv_battery;
     UpdateFilterAsyncTask filter = null;
-    UiUpdateAsyncTask asyncTask = null;
+    //    UiUpdateAsyncTask asyncTask = null;
     ChartAdapter adapter = new ChartAdapter() {
 
         @Override
@@ -138,21 +136,22 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onDestroyView() {
-        if (asyncTask != null) {
-            Log.e("TAG", "C-" + "Task rmove .");
-            asyncTask.cancel(false);
-            asyncTask = null;
-        }
+//        if (asyncTask != null) {
+//            Log.e("TAG", "C-" + "Task rmove .");
+//            asyncTask.cancel(false);
+//            asyncTask = null;
+//        }
         if (filter != null) {
             Log.e("TAG", "C-" + "Task rmove .");
             filter.cancel(false);
             filter = null;
         }
+        System.gc();
         super.onDestroyView();
     }
 
     public void InitView(View view) {
-        if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
@@ -189,8 +188,21 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
         tv_tapHealthPre = (TextView) view.findViewById(R.id.tv_tapHealthPre);
         tv_tapGenericPre = (TextView) view.findViewById(R.id.tv_tapGenericPre);
         tv_tapBadPre = (TextView) view.findViewById(R.id.tv_tapBadPre);
+
+        initImageViewBitmap(view);
     }
 
+    private void initImageViewBitmap(View initView) {
+        WeakReference<Context> refContext = new WeakReference<Context>(getContext());
+        if (refContext != null) {
+            ((LinearLayout) initView.findViewById(R.id.llay_tapBg)).setBackground(ImageHelper.loadResDrawable(refContext.get(), R.drawable.cupdetail_bg));
+            iv_battery.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.battery30));
+            iv_filterState.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.filter_state0));
+            iv_probe_setting.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.setting));
+        }
+    }
+
+    /*
     private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
         @Override
         protected void onPreExecute() {
@@ -227,7 +239,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
 
         }
     }
+*/
 
+    /*
     //上传tds值获取月数据
     private class UpdateTdsAsyncTask extends AsyncTask<String, Integer, String> {
         @Override
@@ -257,6 +271,35 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
 
         }
     }
+*/
+
+
+    /**
+     * 显示滤芯状态
+     *
+     * @param pre 滤芯剩余百分比 pre%
+     */
+    private void displayFilterStatus(String pre) {
+        tv_filterStatus.setText(pre + "%");
+        tv_filiteText.setText(getString(R.string.filter_status));
+        //滤芯状态图片的更改
+        int filterPre = Integer.parseInt(pre);
+        if (filterPre > 100) filterPre = 100;
+        if (filterPre < 0) filterPre = 0;
+        if (filterPre == 0) {
+            iv_filterState.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.filter_state0));
+            tv_filiteText.setText(getString(R.string.filter_need_change));
+        } else if (filterPre > 0 && filterPre <= 30) {
+            tv_filiteText.setText(getString(R.string.filter_need_change));
+            iv_filterState.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.filter_state1));
+        } else if (filterPre > 30 && filterPre <= 60) {
+            iv_filterState.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.filter_state2));
+        } else if (filterPre > 60 && filterPre <= 100) {
+            iv_filterState.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.filter_state3));
+        } else {
+            iv_filterState.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.filter_state3));
+        }
+    }
 
     private class UpdateFilterAsyncTask extends AsyncTask<String, Integer, String> {
         private Boolean shouldtoupdate;
@@ -273,19 +316,20 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     long useday = (today.getTime() - startTime.getTime()) / (24 * 3600 * 1000);
                     if (useday <= INIT_WARRANTY) {
                         String pre = String.valueOf((int) (((float) (INIT_WARRANTY - useday)) / INIT_WARRANTY * 100));
-                        tv_filterStatus.setText(pre + "%");
-                        tv_filiteText.setText(getString(R.string.filter_status));
-//                        滤芯状态图片的更改
-                        if (Integer.parseInt(pre) > 0 && Integer.parseInt(pre) <= 30) {
-                            tv_filiteText.setText(getString(R.string.filter_need_change));
-                            iv_filterState.setImageResource(R.drawable.filter_state1);
-                        } else if (Integer.parseInt(pre) > 30 && Integer.parseInt(pre) <= 60) {
-                            iv_filterState.setImageResource(R.drawable.filter_state2);
-                        } else if (Integer.parseInt(pre) > 60 && Integer.parseInt(pre) <= 100) {
-                            iv_filterState.setImageResource(R.drawable.filter_state3);
-                        } else {
-                            iv_filterState.setImageResource(R.drawable.filter_state0);
-                        }
+                        displayFilterStatus(pre);
+//                        tv_filterStatus.setText(pre + "%");
+//                        tv_filiteText.setText(getString(R.string.filter_status));
+////                        滤芯状态图片的更改
+//                        if (Integer.parseInt(pre) >= 0 && Integer.parseInt(pre) <= 30) {
+//                            tv_filiteText.setText(getString(R.string.filter_need_change));
+//                            iv_filterState.setImageResource(R.drawable.filter_state1);
+//                        } else if (Integer.parseInt(pre) > 30 && Integer.parseInt(pre) <= 60) {
+//                            iv_filterState.setImageResource(R.drawable.filter_state2);
+//                        } else if (Integer.parseInt(pre) > 60 && Integer.parseInt(pre) <= 100) {
+//                            iv_filterState.setImageResource(R.drawable.filter_state3);
+//                        } else {
+//                            iv_filterState.setImageResource(R.drawable.filter_state0);
+//                        }
                     } else {
                         tv_filterStatus.setText("0%");
                         tv_filiteText.setText(getString(R.string.filter_need_change));
@@ -349,7 +393,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     UserDataPreference.SetUserData(getContext(), SaveStr + Mac, modifytime);
                     if (useday <= INIT_WARRANTY) {
                         return String.valueOf((int) (((float) (INIT_WARRANTY - useday)) / INIT_WARRANTY * 100));
-                    }else {
+                    } else {
                         return "0";
                     }
                 } catch (JSONException e) {
@@ -379,21 +423,21 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
 
                 tap.setAppdata(PageState.FilterUsePre, result);
                 tap.setAppdata(PageState.FilterUpdateTime, System.currentTimeMillis());
-                if (Integer.parseInt(result) >= 0)
-                    tv_filterStatus.setText(result + "%");
-                tv_filiteText.setText(getString(R.string.filter_status));
-                //滤芯状态的更改
-                if (Integer.parseInt(result) > 0 && Integer.parseInt(result) <= 30) {
-                    tv_filiteText.setText(getString(R.string.filter_need_change));
-                    iv_filterState.setImageResource(R.drawable.filter_state1);
-                } else if (Integer.parseInt(result) > 30 && Integer.parseInt(result) <= 60) {
-                    iv_filterState.setImageResource(R.drawable.filter_state2);
-                } else if (Integer.parseInt(result) > 60 && Integer.parseInt(result) <= 100) {
-                    iv_filterState.setImageResource(R.drawable.filter_state3);
-                } else {
-
-                    iv_filterState.setImageResource(R.drawable.filter_state0);
-                }
+                displayFilterStatus(result);
+//                if (Integer.parseInt(result) >= 0)
+//                    tv_filterStatus.setText(result + "%");
+//                tv_filiteText.setText(getString(R.string.filter_status));
+//                //滤芯状态的更改
+//                if (Integer.parseInt(result) >= 0 && Integer.parseInt(result) <= 30) {
+//                    tv_filiteText.setText(getString(R.string.filter_need_change));
+//                    iv_filterState.setImageResource(R.drawable.filter_state1);
+//                } else if (Integer.parseInt(result) > 30 && Integer.parseInt(result) <= 60) {
+//                    iv_filterState.setImageResource(R.drawable.filter_state2);
+//                } else if (Integer.parseInt(result) > 60 && Integer.parseInt(result) <= 100) {
+//                    iv_filterState.setImageResource(R.drawable.filter_state3);
+//                } else {
+//                    iv_filterState.setImageResource(R.drawable.filter_state0);
+//                }
                 if (bad >= 0 && bad <= 100 && nor >= 0 && nor <= 100 && good >= 0 && good <= 100) {
                     tv_tapBadPre.setText(getResources().getString(R.string.tap_legend_bad) + "(" + bad + "%)");
                     tv_tapGenericPre.setText(getResources().getString(R.string.tap_legend_normal) + "(" + nor + "%)");
@@ -422,9 +466,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             Mac = getArguments().getString("MAC");
             OznerDevice oznerDevice = OznerDeviceManager.Instance().getDevice(Mac);
             tap = (Tap) oznerDevice;
-        }catch (Exception ex){
-             ex.printStackTrace();;
-             tap=null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            tap = null;
         }
 
 
@@ -434,15 +478,18 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     @Override
     public void onResume() {
         super.onResume();
-        if (asyncTask == null) {
-            asyncTask = new UiUpdateAsyncTask();
-            asyncTask.execute("s");
-        } else {
-            asyncTask.cancel(false);
-            asyncTask = null;
-            asyncTask = new UiUpdateAsyncTask();
-            asyncTask.execute();
-        }
+//        if (asyncTask == null) {
+//            asyncTask = new UiUpdateAsyncTask();
+//            asyncTask.execute("s");
+//        } else {
+//            asyncTask.cancel(false);
+//            asyncTask = null;
+//            asyncTask = new UiUpdateAsyncTask();
+//            asyncTask.execute();
+//        }
+
+        refreshUIData();
+
 //        if (tap.getAppValue(PageState.FilterUpdateTime) != null) {
 //            long filterUpdateTime = (long) tap.getAppValue(PageState.FilterUpdateTime);
 //            Calendar calSave = Calendar.getInstance();
@@ -477,6 +524,26 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     private TapRecord[] records;
     private int count = 1, bad_count = 0, nor_count = 0, good_count = 0;
     private int bad = 0, nor = 0, good = 0;
+
+    /**
+     * 刷新水探头UI数据
+     */
+    private void refreshUIData() {
+        try {
+            InitData();
+            changeState();
+            if (WaterProbeFragment.this.isAdded() && !WaterProbeFragment.this.isDetached() && !WaterProbeFragment.this.isRemoving()) {
+                RefreshBindDataView();
+                if (adapter != null) {
+                    tdsChartView.setAdapter(adapter);
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.e("WaterProbe", "reloadUIData_Ex: " + ex.getMessage());
+        }
+    }
+
 
     /*
      * 初始化数据
@@ -581,7 +648,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
         }
     }
 
-
+    //region 这里好像没什么用，先注释掉
+    /*
     public void UploadTds() {
         try {
             new Thread(new Runnable() {
@@ -589,27 +657,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                 public void run() {
                     try {
                         NetJsonObject netJsonObject = OznerCommand.TapTDSSensor(getActivity(), Mac, tap.Type(), String.valueOf(tapTds));
-                        Log.e("tagtds", netJsonObject.state + "");
-                        if (netJsonObject.state > 0) {
-                            Log.e("statetds", netJsonObject.state + "");
-//                            try {
-//                                int rank = netJsonObject.getJSONObject().getInt("rank");
-//                                int total = netJsonObject.getJSONObject().getInt("total");
-//                                ranking = (total - rank) * 100 / total;
-//                                Message message = new Message();
-//                                message.arg1 = ranking;
-//                                message.what = 1;
-//                                try {
-//                                    Thread.sleep(2000);
-//                                    rhandler.sendMessage(message);
-//                                } catch (InterruptedException e) {
-//                                    e.printStackTrace();
-//                                }
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-                        }
+                        Log.e("tagtds", netJsonObject.value + "");
+
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -617,9 +666,10 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
 
             }).start();
         } catch (Exception ex) {
-//                tdsOld = 0;
         }
     }
+    */
+    //endregion
 
     public void RefreshBindDataView() {
         tv_name.setText(name);
@@ -633,9 +683,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             iv_tdsLevelImg.setVisibility(View.GONE);
             lay_tdsShort.setVisibility(View.GONE);
         } else {
-            if(OznerPreference.isLoginPhone(getContext())){
+            if (OznerPreference.isLoginPhone(getContext())) {
                 lay_tdsShort.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 lay_tdsShort.setVisibility(View.GONE);
             }
 
@@ -665,9 +715,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             //数字跑马灯效果
 
             if (value != 0) {
-                if(OznerPreference.isLoginPhone(getContext())){
+                if (OznerPreference.isLoginPhone(getContext())) {
                     lay_tdsShort.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     lay_tdsShort.setVisibility(View.GONE);
                 }
                 OznerApplication.setControlNumFace(tv_tdsValue);
@@ -698,9 +748,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     tv_tdsValue.setTextSize(60);
                     if (tdsNew != 0) {
                         tv_tdsValue.setText(String.valueOf(tdsNew));
-                        if(OznerPreference.isLoginPhone(getContext())){
+                        if (OznerPreference.isLoginPhone(getContext())) {
                             lay_tdsShort.setVisibility(View.VISIBLE);
-                        }else{
+                        } else {
                             lay_tdsShort.setVisibility(View.GONE);
                         }
                     } else {
@@ -721,8 +771,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             }
         }
         try {
+
             int power = Math.round(tap.Sensor().getPower() * 100);
-            Log.e("power", power + "");
+            Log.e("power", "power: " + power + " ,battery:" + tap.Sensor().BatteryFix);
             if (power == 100) {
                 iv_battery.setImageResource(R.drawable.battery100);
                 tv_batteryTem.setText(String.valueOf(power) + "%");
@@ -755,9 +806,9 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                 ShowSettingPage();
                 break;
             case R.id.rlay_menu:
-                if (((OznerApplication)getActivity().getApplication()).isLoginPhone()) {
+                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
-                }else {
+                } else {
                     ((MainEnActivity) getActivity()).myOverlayDrawer.toggleMenu();
                 }
                 break;
@@ -796,37 +847,23 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     public void CupSensorChange(String address) {
         if (WaterProbeFragment.this.isAdded()) {
             if (this.Mac != null && this.Mac.equals(address)) {
-                int pre = 1;
-                try {
-                    pre = Integer.parseInt((String) tap.getAppValue(PageState.FilterUsePre));
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    ;
-                    pre = 1;
-                }
-//                if (pre >= 1) {
-                    asyncTask = new UiUpdateAsyncTask();
-                    asyncTask.execute();
-                    Log.e("CSIR", "TDS-WATER-TAP " + this.tap.Sensor().TDSFix);
-                    Calendar calTap = Calendar.getInstance();
-                    calTap.set(Calendar.DAY_OF_MONTH, 1);
-                    Date timeTap = new Date(calTap.getTime().getTime() / 86400000 * 86400000);
-                    records = tap.TapRecordList().getNoSyncItemDay(timeTap);
-                    if (records != null) {
-                        for (int j = 0; j < records.length; j++) {
-                            tapTds = records[j].TDS;
-//                if(0<tapRecords[j].TDS&&tapRecords[j].TDS<=CupRecord.TDS_Good_Value){
-//                    good_count++;
-//                }else if(CupRecord.TDS_Good_Value<tapRecords[j].TDS&&tapRecords[j].TDS<=CupRecord.TDS_Bad_Value){
-//                    nor_count++;
-//                }else if(tapRecords[j].TDS>CupRecord.TDS_Bad_Value){
-//                    bad_count++;
-//                }
-                        }
-                        UpdateTdsAsyncTask tdsAsyncTask = new UpdateTdsAsyncTask();
-                        tdsAsyncTask.execute("taptds");
+                refreshUIData();
+
+                //region 这里好像没什么用，先注释掉
+                /*
+                Log.e("CSIR", "TDS-WATER-TAP " + this.tap.Sensor().TDSFix);
+                Calendar calTap = Calendar.getInstance();
+                calTap.set(Calendar.DAY_OF_MONTH, 1);
+                Date timeTap = new Date(calTap.getTime().getTime() / 86400000 * 86400000);
+                records = tap.TapRecordList().getNoSyncItemDay(timeTap);
+                if (records != null) {
+                    for (int j = 0; j < records.length; j++) {
+                        tapTds = records[j].TDS;
                     }
-//                }
+                    UploadTds();
+                }
+                */
+                //endregion
             }
         }
     }
@@ -842,7 +879,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                 switch (state) {
                     //正在链接中
                     case BaseDeviceIO.ACTION_DEVICE_CONNECTING:
-                        iv_data_loading.setImageResource(R.drawable.air_loding);
+//                        iv_data_loading.setImageResource(R.drawable.air_loding);
+                        iv_data_loading.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.air_loding));
                         tv_data_loading.setText(getResources().getString(R.string.loding_now));
                         if (iv_data_loading.getAnimation() != null)
                             iv_data_loading.getAnimation().start();
@@ -860,12 +898,14 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     case BaseDeviceIO.ACTION_DEVICE_DISCONNECTED:
                         Log.e("tag3", "ACTION_DEVICE_DISCONNECTED");
                         if (WaterProbeFragment.this != null && WaterProbeFragment.this.isAdded()) {
-                            iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+//                            iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+                            iv_data_loading.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.air_loding_fair));
                             tv_data_loading.setText(getResources().getString(R.string.loding_fair));
                         }
                         break;
                 }
-                changeState();
+//                changeState();
+                refreshUIData();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -881,7 +921,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     public void changeState() {
         BaseDeviceIO.ConnectStatus stateIo = tap.connectStatus();
         if (stateIo == BaseDeviceIO.ConnectStatus.Connecting) {
-            iv_data_loading.setImageResource(R.drawable.air_loding);
+//            iv_data_loading.setImageResource(R.drawable.air_loding);
+            iv_data_loading.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.air_loding));
             tv_data_loading.setText(getResources().getString(R.string.loding_now));
             if (iv_data_loading.getAnimation() != null)
                 iv_data_loading.getAnimation().start();
@@ -899,7 +940,8 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
         if (stateIo == BaseDeviceIO.ConnectStatus.Disconnect) {
             if (WaterProbeFragment.this.isAdded()) {
                 if (iv_data_loading.getAnimation() != null) {
-                    iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+//                    iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+                    iv_data_loading.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.air_loding_fair));
                     iv_data_loading.getAnimation().cancel();
                     tv_data_loading.setText(getResources().getString(R.string.loding_fair));
                 }

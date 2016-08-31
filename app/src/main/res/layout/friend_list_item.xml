@@ -15,7 +15,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
-            android:src="@mipmap/icon_default_headimage" />
+            />
+        <!--android:src="@mipmap/icon_default_headimage"-->
 
         <TextView
             android:id="@+id/tv_newMsgNum"
@@ -47,7 +48,8 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="20dp"
-        android:src="@drawable/message" />
+         />
+    <!--android:src="@drawable/message"-->
 
     <TextView
         android:id="@+id/tv_message_text"

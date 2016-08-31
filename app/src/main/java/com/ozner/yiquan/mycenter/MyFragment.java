@@ -1,8 +1,6 @@
 package com.ozner.yiquan.mycenter;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -58,27 +56,31 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
  */
 public class MyFragment extends BaseFragment implements View.OnClickListener, FootFragmentListener {
     private static final String TAG = "MyFragment";
-    private final int NORESULT = 0;//没有获取到网络数据
     private final int USER_HEAD_INFO = 1;//
     private final int ADVISE_REQUEST = 2;
     private final int VERFIY_MSG = 3;//验证信息
-    LoadingDialog loadingDialog;
     RelativeLayout rlay_center_shared, rlay_invite_vip, rlay_win_prize, rlay_myFriend, rlay_viewReport;
     RelativeLayout setting_layout, rlay_advise;
     LinearLayout llay_myDevice, llay_myMoney;
     ImageView iv_person_photo;
     TextView tv_name, tv_myScore, tv_mydeviceNum, tv_gradeNmae, tv_newFriendNum;
     MyCenterHandle uihandle = new MyCenterHandle();
+    ImageHelper imageHelper ;
     int deviceNum = 0;
     MyLoadImgListener imageLoadListener = new MyLoadImgListener();
     String userid, mobile, usertoken;
     byte centerNotify = 0;
-//    Typeface mtypeface;
-
 
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void onDestroyView() {
+        Log.e(TAG, "onDestroyView: ");
+        System.gc();
+        super.onDestroyView();
     }
 
     @Nullable
@@ -86,7 +88,12 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(getLayoutId(), container, false);
+        ((ImageView) rootView.findViewById(R.id.iv_person_photo)).setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.mipmap.icon_default_headimage));
+        ((ImageView) rootView.findViewById(R.id.iv_center_share)).setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.center_myorder));
+        ((ImageView) rootView.findViewById(R.id.iv_myredbag)).setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.center_redbag));
+        ((ImageView) rootView.findViewById(R.id.iv_myticket)).setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.center_myticket));
 
+        ((RelativeLayout) rootView.findViewById(R.id.rlay_person_photo_bg)).setBackground(ImageHelper.loadResDrawable(getContext(), R.drawable.center_person_bg));
         return rootView;
     }
 
@@ -136,7 +143,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
         mobile = UserDataPreference.GetUserData(getContext(), UserDataPreference.Mobile, null);
         usertoken = OznerPreference.UserToken(getActivity());
         Log.i("tag", "usertoken:" + usertoken);
-        loadingDialog = LoadingDialog.createLoading(getContext());
+        imageHelper = new ImageHelper(getContext());
+        imageHelper.setImageLoadingListener(imageLoadListener);
     }
 
     private void initCenterState() {
@@ -182,16 +190,14 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
         }).start();
     }
 
-
-    class MyCenterBroRecv extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-        }
-    }
-
     private void initMyDevice() {
-        deviceNum = OznerDeviceManager.Instance().getDevices().length;
-        tv_mydeviceNum.setText(String.valueOf(deviceNum));
+        try {
+            deviceNum = OznerDeviceManager.Instance().getDevices().length;
+            tv_mydeviceNum.setText(String.valueOf(deviceNum));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.e(TAG, "initMyDevice_Ex: "+ex.getMessage());
+        }
     }
 
     private void initVerifyMsg() {
@@ -229,6 +235,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
                 String redPacUrl = CenterUrlContants.formatRedPacUrl(mobile, usertoken, "zh", "zh");
                 Log.e("tag", "领红包:" + redPacUrl);
                 inviteIntent.putExtra(WebActivity.URL, redPacUrl);
+                inviteIntent.putExtra("IsRedBag", true);
                 inviteIntent.putExtra(WebActivity.TITLE, getString(R.string.Center_getRedbag));
                 startActivity(inviteIntent);
                 break;
@@ -279,29 +286,20 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
             if (MyFragment.this.isAdded()) {
                 switch (msg.what) {
                     case USER_HEAD_INFO:
-                        ImageHelper imageHelper = new ImageHelper(getContext());
-                        imageHelper.setImageLoadingListener(imageLoadListener);
                         NetUserHeadImg netUserHeadImg = (NetUserHeadImg) msg.obj;
                         if (netUserHeadImg != null) {
 
-//                            Log.i("tag", "nickname:" + netUserHeadImg.nickname + ",  " + netUserHeadImg.mobile);
-//                            Log.i("tag", "headImg:" + netUserHeadImg.headimg);
                             tv_name.setText((netUserHeadImg.nickname != null && netUserHeadImg.nickname.length() > 0) ? netUserHeadImg.nickname : netUserHeadImg.mobile);
                             tv_myScore.setText(String.valueOf(netUserHeadImg.Score));
                             if (netUserHeadImg.headimg != null && netUserHeadImg.headimg.length() > 0) {
                                 imageHelper.loadImage(iv_person_photo, netUserHeadImg.headimg);
                             } else {
                                 //imageHelper.loadImage(iv_person_photo, "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=10284cd567380cd7e64baaeb9174810c/63d9f2d3572c11df09ba0c46612762d0f703c268.jpg");
-                                iv_person_photo.setImageResource(R.mipmap.icon_default_headimage);
+//                                iv_person_photo.setImageResource(R.mipmap.icon_default_headimage);
+                                iv_person_photo.setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.mipmap.icon_default_headimage));
                             }
                             if (netUserHeadImg.gradename != null && netUserHeadImg.gradename != "") {
                                 String gradename = netUserHeadImg.gradename;
-//                                if (gradename.contains("会员")) {
-//                                    gradename = gradename.replace("会员", "代理会员");
-//                                } else {
-//                                    gradename += "代理会员";
-//                                }
-
                                 if (gradename.contains("会员")) {
                                     int index = gradename.indexOf("会员");
                                     gradename = gradename.substring(0, index);
@@ -316,22 +314,13 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
                                     }
                                 }
                                 gradename += getString(R.string.act_member);
-
                                 tv_gradeNmae.setText(gradename);
                                 tv_gradeNmae.setVisibility(View.VISIBLE);
                             }
-                        } else {
-//                            Log.e("tag", "MyFragment:data is null");
-//                            Toast.makeText(getContext(), "data is null", Toast.LENGTH_SHORT).show();
                         }
                         break;
-
-                    case NORESULT:
-//                        Toast.makeText(getContext(), "result is null,state:" + msg.obj, Toast.LENGTH_SHORT).show();
-                        break;
                     case VERFIY_MSG:
-                        List<NetUserVfMessage> vfMsglist = new ArrayList<>();
-                        vfMsglist = (List<NetUserVfMessage>) msg.obj;
+                        List<NetUserVfMessage> vfMsglist  = (List<NetUserVfMessage>) msg.obj;
                         int waitNum = 0;
                         for (NetUserVfMessage vfmsg : vfMsglist) {
                             if (vfmsg.Status != 2) {
@@ -393,7 +382,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
             params.add(new BasicNameValuePair("jsonmobile", Mobile));
             NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, inituserHeadUrl, params);
             if (netJsonObject.state > 0) {
-//                UserDataPreference.SetUserData(activity, inituserHeadUrl, netJsonObject.value);
                 try {
                     JSONArray jarry = netJsonObject.getJSONObject().getJSONArray("data");
                     if (jarry.length() > 0) {
@@ -449,10 +437,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
 
     @Override
     public void RecvChatData(String data) {
-//        if (data.equals(PushOperationAction.NewFriendVF)) {
-//            Log.e("tag", "Center:" + data);
-//
-//        }
         switch (data) {
             case OznerBroadcastAction.NewMessage:
             case OznerBroadcastAction.NewRank:

@@ -472,6 +472,7 @@ public class LoginActivity extends BaseLoginActivity {
                 try {
                     if (dialog != null)
                         dialog.dismiss();
+                    Log.e("Login", "getPhoneCode_res: "+result.value);
                     if (result != null && result.state > 0) {
                         tv_wrong.setText("");
                     } else {

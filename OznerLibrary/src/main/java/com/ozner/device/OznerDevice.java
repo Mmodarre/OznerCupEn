@@ -157,8 +157,6 @@ public abstract class OznerDevice extends XObject {
         }
 
         this.deviceIO = deviceIO;
-
-
         if (deviceIO != null) {
             deviceIO.open();
         }
@@ -168,6 +166,7 @@ public abstract class OznerDevice extends XObject {
                 deviceIO.reCallDoReadly();
             }
         }
+
 
 
         return true;

@@ -35,6 +35,8 @@ import com.ozner.wifi.ThreadHandler;
 
 import org.json.JSONObject;
 
+import cn.sharesdk.framework.ShareSDK;
+
 /**
  * Created by taoran on 2015/11/16.欢迎页
  * Modify by C-sir@hotmail.com
@@ -56,6 +58,7 @@ public class WelcomeActivity extends Activity {
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome);
 
+        ShareSDK.initSDK(WelcomeActivity.this);
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //更改状态栏颜色

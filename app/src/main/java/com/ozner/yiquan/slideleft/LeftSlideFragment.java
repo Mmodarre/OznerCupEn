@@ -22,7 +22,9 @@ import android.widget.Toast;
 
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
+
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.yiquan.Command.DeviceData;
@@ -48,6 +50,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,6 +135,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
             user_info.setVisibility(View.GONE);
             rootview.findViewById(R.id.llay_holder).setVisibility(View.VISIBLE);
         }
+        initImageViewBitmap(rootview);
         return rootview;
     }
 
@@ -141,14 +145,24 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
         initHeadImg();
     }
 
+    private void initImageViewBitmap(View initView) {
+        WeakReference<Context> refContext = new WeakReference<Context>(getContext());
+        if (refContext != null) {
+            ((ImageView) initView.findViewById(R.id.iv_left_center)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_center));
+            user_image.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.mipmap.icon_default_headimage));
+            iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_buble));
+            ((ImageView) initView.findViewById(R.id.add_device)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(),R.drawable.add));
+        }
+    }
+
     private void ShowNoDeviceView(View view) {
 //        view.setBackgroundResource(R.drawable.left_backgroud);
         view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.main_bgcolor));
         iv_left_buble.setVisibility(View.VISIBLE);
         if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-            iv_left_buble.setImageResource(R.drawable.left_buble_cn);
+            iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.left_buble_cn));
         } else {
-            iv_left_buble.setImageResource(R.drawable.left_buble);
+            iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.left_buble));
         }
         llay_left_bg.setVisibility(View.VISIBLE);
         show_text.setVisibility(View.INVISIBLE);
