@@ -88,6 +88,7 @@ public class MainActivity extends BaseMainActivity {
     * @MainConFragment  mainConFragment 设备DEBUG页面
     * @MyFragment myFragment 个人中心页面
     * */
+    //fffffffffffffffffffffffffffffffff
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
