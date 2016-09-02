@@ -251,6 +251,7 @@ public class WelcomeActivity extends Activity {
 
 
     private void welcomFinish(){
+        Log.e(TAG, "welcomFinish: ");
 //        new ThreadHandler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
