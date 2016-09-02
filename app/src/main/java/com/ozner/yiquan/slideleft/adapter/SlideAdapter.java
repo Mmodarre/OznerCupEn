@@ -128,6 +128,7 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
                     } else {
                         holder.icon.setImageResource(R.drawable.tan_tou);
                     }
+                    slilde.getOznerDevice().setAppdata(PageState.TapType,"tap");
                 }
 
 //                if (slilde.getMac().equals(Mac))

@@ -8,23 +8,23 @@
     <!--<include layout="@layout/cup_detail_toobar" />-->
 
     <LinearLayout
-        android:layout_alignParentBottom="true"
         android:id="@+id/llay_placeholder"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/llay_cupHolder"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/foot_heght"></LinearLayout>
+            android:layout_height="@dimen/foot_heght"
+            android:orientation="vertical"></LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_above="@+id/llay_placeholder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/llay_placeholder"
         android:orientation="vertical">
 
         <LinearLayout
@@ -67,27 +67,6 @@
                         android:textSize="13dp" />
 
                 </RelativeLayout>
-
-
-                <!--<RelativeLayout-->
-                <!--android:id="@+id/rlay_top"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_marginBottom="10dp">-->
-
-                <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content" />-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/tv_loading"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="" />-->
-
-                <!--</RelativeLayout>-->
 
                 <RelativeLayout
                     android:id="@+id/rlay_top_bottom"
@@ -277,19 +256,19 @@
                                                 android:textSize="13dp" />
 
                                             <TextView
-                                                android:textSize="14dp"
                                                 android:id="@+id/tv_waterTarget"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="2000"
-                                                android:textColor="@color/cupDetail_textcolor" />
+                                                android:textColor="@color/cupDetail_textcolor"
+                                                android:textSize="14dp" />
 
                                             <TextView
-                                                android:textSize="14dp"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="@string/cupDetail_waterUtil"
-                                                android:textColor="@color/cupDetail_textcolor" />
+                                                android:textColor="@color/cupDetail_textcolor"
+                                                android:textSize="14dp" />
                                         </LinearLayout>
                                     </LinearLayout>
                                 </RelativeLayout>
