@@ -73,8 +73,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
 
     @Override
     public void onDetach() {
-        Log.e(TAG, "onDetach: ");
-        //你好
         super.onDetach();
     }
 
