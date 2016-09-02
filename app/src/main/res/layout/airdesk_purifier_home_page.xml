@@ -88,7 +88,7 @@
 
                 <pl.droidsonroids.gif.GifImageView
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="80dp"
@@ -102,9 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/mabiao"
-
-                    />
+                    android:src="@drawable/mabiao" />
 
                 <ImageView
                     android:id="@+id/iv_xuanzhuan_x3"

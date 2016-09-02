@@ -815,7 +815,6 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
         }
     }
 
-
     private void ShowSettingPage() {
         Intent setting = new Intent(getContext(), SetupWaterProbeActivity.class);
         setting.putExtra(PageState.MAC, this.Mac);

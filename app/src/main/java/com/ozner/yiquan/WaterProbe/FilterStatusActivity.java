@@ -169,7 +169,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                     } else {
                         llay_scan.setVisibility(View.VISIBLE);
                     }
-                    llay_moreService.setVisibility(View.VISIBLE);
+//                    llay_moreService.setVisibility(View.VISIBLE);
                 } else {
                     deviceType = RankType.TapType;
                     llay_moreService.setVisibility(View.GONE);

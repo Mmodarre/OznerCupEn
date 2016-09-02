@@ -301,6 +301,7 @@
                     android:layout_width="333dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_tds_health"
+                    android:gravity="center_horizontal"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp">
 
@@ -345,6 +346,7 @@
                         android:layout_marginLeft="29dp"
                         android:background="@drawable/btn_bg_blue_choose"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:orientation="horizontal">
 
                         <ImageView
