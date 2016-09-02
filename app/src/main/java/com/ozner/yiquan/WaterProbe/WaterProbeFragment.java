@@ -721,7 +721,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     lay_tdsShort.setVisibility(View.GONE);
                 }
                 OznerApplication.setControlNumFace(tv_tdsValue);
-                tv_tdsValue.setTextSize(60);
+                tv_tdsValue.setTextSize(50);
                 if (tdsOld != value) {
                     final ValueAnimator animator = ValueAnimator.ofInt(tdsOld, value);
                     Upload();
@@ -745,7 +745,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
                     }
                 } else {
                     OznerApplication.setControlNumFace(tv_tdsValue);
-                    tv_tdsValue.setTextSize(60);
+                    tv_tdsValue.setTextSize(50);
                     if (tdsNew != 0) {
                         tv_tdsValue.setText(String.valueOf(tdsNew));
                         if (OznerPreference.isLoginPhone(getContext())) {
