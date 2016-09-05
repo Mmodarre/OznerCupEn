@@ -56,8 +56,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import pl.droidsonroids.gif.GifImageView;
-
 /**
  * Created by taoran on 2015/12/23.\
  * modify by mengdongya
@@ -173,9 +171,8 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         ivMabio.get().setMaxHeight(height);
         ivMabio.get().setMinimumHeight(height);
 
-
         ((ImageView) rootView.findViewById(R.id.iv_xuanzhuan_x3)).setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mengban1));
-        ((GifImageView) rootView.findViewById(R.id.gif)).setImageResource(R.drawable.lizi);
+//        ((GifImageView) rootView.findViewById(R.id.gif)).setImageResource(R.drawable.lizi);
     }
 
     @Override

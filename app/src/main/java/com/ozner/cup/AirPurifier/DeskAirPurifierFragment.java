@@ -32,6 +32,7 @@ import android.widget.TextView;
 import com.ozner.AirPurifier.AirPurifierManager;
 import com.ozner.AirPurifier.AirPurifier_Bluetooth;
 import com.ozner.cup.Command.FootFragmentListener;
+import com.ozner.cup.Command.ImageHelper;
 import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
@@ -47,8 +48,7 @@ import com.ozner.device.OperateCallback;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.lang.ref.WeakReference;
 
 
 /**
@@ -66,6 +66,20 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
     private NetWeather airWeather;
     private TextView airName, tv_air_address, tv_air_pmvalue, tv_air_quality;
     private int fengsu = 0, filterTime;
+    private TextView tv_airOutside_pm, tv_airOutside_aqi, tv_airOutside_temp, tv_airOutside_humidity, tv_airOutside_data, tv_airOutside_city;
+    //旋转动画
+    private ImageView iv_xuanzhuan_x3;// iv_xuanzhuan_x1, iv_xuanzhuan_x2;
+    private RelativeLayout rlay_top1, rlay_filterStatus;//rote_RelativeLayout, rlay_filter;
+    private LinearLayout lay_air_pm, linearLayout_bg, air_center_layout;
+    private CProessbarView cProessbarView;
+    private TextView tv_tdsValue, tv_air_temValue, tv_air_shidu_Value, tv_filterStatus, tv_tds, tv_data_loading, tv_flz;
+    private int pm25, temp, shidu;// lvXin;
+    ValueAnimator animator;
+    private boolean isOpenOn = false, isFirst = false, isConnected = false;
+    private boolean isSetPRM = true;
+    //    Calendar calendar = Calendar.getInstance();
+//    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//    private boolean isHandSlide = false;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -109,6 +123,13 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                             tv_air_quality.setText(getResources().getString(R.string.text_null));
                         }
                         break;
+//                    case 2:
+//                        try {
+//                            refreshProgressBar();
+//                        } catch (Exception ex) {
+//                            ex.printStackTrace();
+//                        }
+//                        break;
                 }
             } catch (Exception e) {
                 lay_air_pm.setEnabled(false);
@@ -116,24 +137,6 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         }
 
     };
-
-    private TextView tv_airOutside_pm, tv_airOutside_aqi, tv_airOutside_temp, tv_airOutside_humidity, tv_airOutside_data, tv_airOutside_city;
-
-
-    //旋转动画
-    private ImageView iv_xuanzhuan_x3;// iv_xuanzhuan_x1, iv_xuanzhuan_x2;
-    private RelativeLayout rote_RelativeLayout, rlay_filter, rlay_top1, rlay_filterStatus;
-
-    private LinearLayout lay_air_pm, linearLayout_bg, air_center_layout;
-
-    private CProessbarView cProessbarView;
-    private TextView tv_tdsValue, tv_air_temValue, tv_air_shidu_Value, tv_filterStatus, tv_tds, tv_data_loading, tv_flz;
-    private int pm25, temp, shidu, lvXin;
-    ValueAnimator animator;
-    private boolean isOpenOn = false, isFirst = false, isConnected = false;
-    Calendar calendar = Calendar.getInstance();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    private boolean isHandSlide = false;
 
 
     public DeskAirPurifierFragment() {
@@ -165,22 +168,8 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
         }
-        return view;
-    }
 
-    private void getData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Message message = new Message();
-                NetWeather weather = OznerCommand.GetWeather(getActivity());
-                if (weather != null) {
-                    message.obj = weather;
-                    message.what = 1;
-                }
-                handler.sendMessage(message);
-            }
-        }).start();
+        return view;
     }
 
 
@@ -208,8 +197,8 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         tv_filterStatus = (TextView) view.findViewById(R.id.tv_filterStatus);
         tv_tds = (TextView) view.findViewById(R.id.tv_tds);
         tv_data_loading = (TextView) view.findViewById(R.id.tv_data_loading);
-        rote_RelativeLayout = (RelativeLayout) view.findViewById(R.id.rote_RelativeLayout);
-        rlay_filter = (RelativeLayout) view.findViewById(R.id.rlay_filter);
+//        rote_RelativeLayout = (RelativeLayout) view.findViewById(R.id.rote_RelativeLayout);
+//        rlay_filter = (RelativeLayout) view.findViewById(R.id.rlay_filter);
         rlay_filterStatus = (RelativeLayout) view.findViewById(R.id.rlay_filterStatus);
         rlay_filterStatus.setOnClickListener(this);
         air_center_layout = (LinearLayout) view.findViewById(R.id.air_center_layout);
@@ -241,88 +230,139 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         tv_flz = (TextView) view.findViewById(R.id.tv_flz);
         tv_flz.setTextColor(getResources().getColor(R.color.white));
         tv_flz.setVisibility(View.INVISIBLE);
-//        if(airPurifier.status().Power()){
-//            tv_flz.setVisibility(View.VISIBLE);
-//        }else{
-////            tv_flz.setVisibility(View.INVISIBLE);
-//        }
 
+        initViewBitmap(view);
     }
 
+
+    /**
+     * 初始化背景图片
+     *
+     * @param rootView
+     */
+    private void initViewBitmap(View rootView) {
+        WeakReference<ImageView> ivMabio = new WeakReference<ImageView>(((ImageView) rootView.findViewById(R.id.iv_mabiao)));
+        ivMabio.get().setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mabiao));
+        DisplayMetrics dm = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = (int) (dm.densityDpi * 4);
+        int height = (int) (dm.densityDpi * 2);
+
+        ivMabio.get().setAdjustViewBounds(true);
+        ivMabio.get().setMaxWidth(width);
+        ivMabio.get().setMinimumWidth(width);
+        ivMabio.get().setMaxHeight(height);
+        ivMabio.get().setMinimumHeight(height);
+
+        ((ImageView) rootView.findViewById(R.id.iv_xuanzhuan_x3)).setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mengban1));
+    }
+
+    /**
+     * 从网络获取天气情况
+     */
+    private void getData() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Message message = new Message();
+                NetWeather weather = OznerCommand.GetWeather(getActivity());
+                if (weather != null) {
+                    message.obj = weather;
+                    message.what = 1;
+                }
+                handler.sendMessage(message);
+            }
+        }).start();
+    }
+
+
+    /**
+     * 刷新界面数据
+     */
+    private void refreshUIData() {
+        initData();
+        setData();
+    }
 
     //滑动条
     @Override
     public void ValueChange(final int persent) {
         //修改数据
+        isSetPRM = false;
         if (persent <= 1) {
-            airPurifier.status().setPower(false, new OperateCallback<Void>() {
-                @Override
-                public void onSuccess(Void var1) {
+            if (airPurifier.status().Power()) {
+                airPurifier.status().setPower(false, new OperateCallback<Void>() {
+                    @Override
+                    public void onSuccess(Void var1) {
 //                    tv_flz.setVisibility(View.INVISIBLE);
-                    cProessbarView.updateValue(0);
-                    isFirst = true;
-                }
+                        Log.e("lingchen", "第一次setPower_onSuccess: false");
+//                        isSetPRM = false;
+                        cProessbarView.updateValue(0);
+                        isFirst = true;
+                    }
 
-                @Override
-                public void onFailure(Throwable var1) {
+                    @Override
+                    public void onFailure(Throwable var1) {
+                        Log.e("lingchen", "第一次setPower_onFailure: false");
+                        airPurifier.status().setPower(false, new OperateCallback<Void>() {
+                            @Override
+                            public void onSuccess(Void var1) {
+//                                isSetPRM = false;
+                                Log.e("lingchen", "第二次setPower_onSuccess: false");
+                            }
 
-                    airPurifier.status().setPower(false, new OperateCallback<Void>() {
-                        @Override
-                        public void onSuccess(Void var1) {
-                        }
-
-                        @Override
-                        public void onFailure(Throwable var1) {
-                        }
-                    });
-                }
-            });
+                            @Override
+                            public void onFailure(Throwable var1) {
+                            }
+                        });
+                    }
+                });
+            }
         } else {
-//            if(!airPurifier.status().Power()){
-
-            airPurifier.status().setPower(true, new OperateCallback<Void>() {
-                @Override
-                public void onSuccess(Void var1) {
+            if (!airPurifier.status().Power()) {
+                airPurifier.status().setPower(true, new OperateCallback<Void>() {
+                    @Override
+                    public void onSuccess(Void var1) {
+                        Log.e("lingchen", "第一次setPower_onSuccess: true");
 //                    tv_flz.setVisibility(View.VISIBLE);
-                }
+                    }
 
-                @Override
-                public void onFailure(Throwable var1) {
-                    airPurifier.status().setPower(true, new OperateCallback<Void>() {
-                        @Override
-                        public void onSuccess(Void var1) {
+                    @Override
+                    public void onFailure(Throwable var1) {
+                        Log.e("lingchen", "第一次setPower_onFailure: true");
+                        airPurifier.status().setPower(true, new OperateCallback<Void>() {
+                            @Override
+                            public void onSuccess(Void var1) {
+                                Log.e("lingchen", "第二次setPower_onSuccess: true");
 //                            tv_flz.setVisibility(View.INVISIBLE);
-                        }
+                            }
 
-                        @Override
-                        public void onFailure(Throwable var1) {
+                            @Override
+                            public void onFailure(Throwable var1) {
 
-                        }
-                    });
-                }
-            });
-//            }
-
+                            }
+                        });
+                    }
+                });
+            }
         }
 
+        //设置风速
         if (airPurifier.status().Power()) {
-
-
-            final Message message = new Message();
             airPurifier.status().setRPM((byte) persent, new OperateCallback<Void>() {
                 @Override
                 public void onSuccess(Void var1) {
+                    Log.e("lingchen", "设置风速_onSuccess: ");
+                    isSetPRM = true;
+//                    handler.sendEmptyMessage(2);
                 }
 
                 @Override
                 public void onFailure(Throwable var1) {
+                    Log.e("lingchen", "设置风速_onFailure: ");
                 }
             });
-        } else {
-//            tv_flz.setVisibility(View.INVISIBLE);
-
         }
-
     }
 
     private void setSize() {
@@ -362,6 +402,7 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         shidu = airPurifier.sensor().Humidity();
         temDanwei = UserDataPreference.GetUserData(getContext(), UserDataPreference.TempUnit, "0");
         fengsu = airPurifier.status().RPM();//获得机器传过来的风速
+        Log.e("lingchen", "initData: name:" + name + " ,风速:" + fengsu + " ,pm2.5:" + pm25 + " ,温度：" + temp + " ,isOpen:" + isOpenOn);
         Log.e("taoran_fengsu", "initData风速:" + airPurifier.status().RPM() + isOpenOn);
         filterTime = airPurifier.sensor().FilterStatus().workTime;
         if (filterTime > 60000) {
@@ -371,23 +412,29 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         Log.e("trFil", GetFilterTime.getFilter(airPurifier.sensor().FilterStatus().workTime) + "==========");
     }
 
-    private void setDate() {
-        Log.e("taoran_fengsu", "setData风速:" + fengsu);
-        Log.e("lingchen", "setData_isFirst:" + isFirst);
+//    /**
+//     * 刷新风速滑动条的值
+//     */
+//    private void refreshProgressBar() {
+//        if (airPurifier != null && airPurifier.status().Power()) {
+//            cProessbarView.updateValue(airPurifier.status().RPM());
+//        }
+//    }
+
+    private void setData() {
+        Log.e("lingchen", "isSetPRM:" + isSetPRM + " ,airPurifier:" + (airPurifier != null) + " ,isPowerOn:" + isOpenOn);
         Log.e("lingchen", "setData_isFirst:" + isFirst);
 
         if (isAdded()) {
-            if (airPurifier != null && airPurifier.status().Power()) {
-                //更新滑动按钮
-                if (isFirst) {
+            if (airPurifier != null && isOpenOn) {
+                if (isSetPRM) {
+                    Log.e("lingchen", "风速：" + fengsu);
                     cProessbarView.updateValue(fengsu);
                 }
             } else {
                 isFirst = true;
                 cProessbarView.updateValue(0);
             }
-
-
             if (!isOpenOn) {
                 showClosed();
             }
@@ -397,7 +444,6 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                     tv_tdsValue.setText(getResources().getString(R.string.null_text));
                     tv_tds.setText("-");
                 } else {
-//            tv_tdsValue.setText("" + pm25);
                     if (pm25 < 75) {
                         tv_tds.setText(getString(R.string.excellent));
                         linearLayout_bg.setBackgroundResource(R.color.air_background);
@@ -457,12 +503,7 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                 } else {
                     tv_air_shidu_Value.setText(shidu + "%");
                 }
-//            tv_flz.setVisibility(View.VISIBLE);
             }
-//        else{
-//            tv_flz.setVisibility(View.GONE);
-//        }
-
             tv_tdsValue.setAlpha(1.0f);
 
             if (-1 == filterTime) {
@@ -473,29 +514,11 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                 tv_filterStatus.setText(GetFilterTime.getFilter(filterTime) + "%");
             }
 
-
-//            try {
-//                Date date = new Date();
-//                Date lastTime = airPurifier.sensor().FilterStatus().lastTime;
-//                sdf.format(date);
-//                sdf.format(lastTime);
-//                calendar.setTime(lastTime);
-//                long a = calendar.getTimeInMillis();
-//                calendar.setTime(date);
-//                long b = calendar.getTimeInMillis();
-//                long data = (b - a) / (1000 * 24 * 3600);
-//                lvXin = (int) (91 - data) * 100 / 91;
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-
-//            if (lvXin < 0 | lvXin > 100) {
-//                OznerApplication.setControlNumFace(tv_filterStatus);
-//                tv_filterStatus.setText("0%");
-//            } else {
-//                tv_filterStatus.setText(lvXin + "%");
-//                OznerApplication.setControlNumFace(tv_filterStatus);
-//            }
+            if (isOpenOn) {
+                tv_flz.setVisibility(View.VISIBLE);
+            } else {
+                tv_flz.setVisibility(View.INVISIBLE);
+            }
         }
     }
 
@@ -591,12 +614,6 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                     airDialog.show();
                 } else {
                     lay_air_pm.setEnabled(false);
-//                    tv_airOutside_pm.setText(0 + "μg/m3");
-//                    tv_airOutside_aqi.setText("0");
-//                    tv_airOutside_temp.setText(0 + "℃");
-//                    tv_airOutside_humidity.setText(0 + "%");
-//                    tv_airOutside_data.setText(getResources().getString(R.string.text_null));
-//                    tv_airOutside_city.setText(getResources().getString(R.string.text_null));
                 }
                 break;
         }
@@ -619,8 +636,11 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
     @Override
     public void onResume() {
         super.onResume();
-        UiUpdateAsyncTask uiUpdateAsyncTask = new UiUpdateAsyncTask();
-        uiUpdateAsyncTask.execute("airtai");
+        Log.e("lingchen", "DestAirPurifier_onResume");
+        isSetPRM = true;
+//        UiUpdateAsyncTask uiUpdateAsyncTask = new UiUpdateAsyncTask();
+//        uiUpdateAsyncTask.execute("airtai");
+        refreshUIData();
         changeState();
     }
 
@@ -645,12 +665,12 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
         @Override
         protected void onPostExecute(String result) {
-            setDate();
-            if (isOpenOn) {
-                tv_flz.setVisibility(View.VISIBLE);
-            } else {
-                tv_flz.setVisibility(View.INVISIBLE);
-            }
+            setData();
+//            if (isOpenOn) {
+//                tv_flz.setVisibility(View.VISIBLE);
+//            } else {
+//                tv_flz.setVisibility(View.INVISIBLE);
+//            }
         }
 
         //onCancelled方法用于在取消执行中的任务时更改UI
@@ -690,9 +710,10 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         if (this.Mac.equals(address)) {
             Log.e("lingchen", "CupSensorChange:" + address);
             //此处应该执行更新数据异步操作
-            new UiUpdateAsyncTask().execute();
+            refreshUIData();
+//            new UiUpdateAsyncTask().execute();
 //            initData();
-//            setDate();
+//            setData();
         }
     }
 
