@@ -365,7 +365,7 @@ public class MainActivity extends BaseMainActivity {
     protected void onStop() {
         super.onStop();
 //        myHandler.postDelayed(new Runnable() {
-//            @Override
+//            @Override0
 //            public void run() {
 //                Log.e("tag", "运行模式：" + OznerCommand.isAppRunBackound(getBaseContext(), getPackageName()));
 //            }
