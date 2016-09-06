@@ -396,7 +396,7 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
     private void setTDSnumFace() {
         tv_tdsValue.setTypeface(OznerApplication.numFace);
         tv_tdsValue.getPaint().setFakeBoldText(false);
-        tv_tdsValue.setTextSize(50);
+        tv_tdsValue.setTextSize(50);   //修改位置
     }
 
     public void RefreshBindDataView() {

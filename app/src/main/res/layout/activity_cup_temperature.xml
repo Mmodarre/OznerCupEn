@@ -5,7 +5,6 @@
     android:background="@color/white">
 
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -80,28 +79,27 @@
                     <RelativeLayout
                         android:id="@+id/temperature_value_layout1"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
                         android:layout_marginLeft="25.5dp"
-                        >
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1">
+
                         <TextView
                             android:id="@+id/tv_temperature_valuetext"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18dp"
-                            android:textColor="@color/colorTds"
                             android:text="@string/temperature_text"
-                            />
+                            android:textColor="@color/colorTds"
+                            android:textSize="18dp" />
 
                         <TextView
                             android:id="@+id/tv_temperature_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="适中"
-                            android:textSize="30dp"
-                            android:textColor="@color/colorTds"
                             android:layout_marginTop="25dp"
+                            android:text="适中"
+                            android:textColor="@color/colorTds"
+                            android:textSize="30dp"
 
                             />
                     </RelativeLayout>
@@ -109,39 +107,37 @@
                     <RelativeLayout
                         android:id="@+id/temperature_friend_layout"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
                         android:layout_marginLeft="20dp"
-                        android:visibility="gone"
-                        >
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:visibility="gone">
 
                         <TextView
                             android:id="@+id/tv_temperature_friend_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18dp"
-                            android:textColor="@color/colorTds"
                             android:text="@string/friend_ranking"
-                            />
+                            android:textColor="@color/colorTds"
+                            android:textSize="18dp" />
+
                         <TextView
                             android:id="@+id/tv_temperature_friendtext"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5"
-                            android:textSize="43dp"
-                            android:textColor="@color/colorTds"
                             android:layout_marginTop="20dp"
-                            />
+                            android:text="5"
+                            android:textColor="@color/colorTds"
+                            android:textSize="43dp" />
+
                         <ImageView
                             android:id="@+id/iv_temperature_friend_value"
                             android:layout_width="15.5dp"
                             android:layout_height="15.5dp"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="45dp"
                             android:layout_toRightOf="@+id/tv_temperature_friendtext"
-                            android:layout_marginLeft="10dp"
-                            android:background="@drawable/friend"
-                            />
+                            android:background="@drawable/friend" />
 
                     </RelativeLayout>
 
@@ -150,21 +146,20 @@
                         android:id="@+id/temperature_consult_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="45dp"
-                        android:layout_marginTop="35dp"
-                        android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
-                        android:gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="35dp"
                         android:background="@drawable/btn_bg_blue_s_choose"
-                        >
+                        android:gravity="center">
 
                         <ImageView
                             android:id="@+id/iv_temperature_consult_msg"
                             android:layout_width="30dp"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/tds_msg"
-                            android:layout_gravity="center"
                             android:layout_centerVertical="true"
+                            android:layout_gravity="center"
                             android:layout_marginLeft="7dp"
+                            android:src="@drawable/tds_msg"
 
 
                             />
@@ -173,14 +168,14 @@
                             android:id="@+id/tv_temperature_consult_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/consult_test"
-                            android:textColor="@color/colorTds"
-                            android:layout_toRightOf="@+id/iv_temperature_consult_msg"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="7dp"
-                            android:textSize="17dp"
+                            android:layout_toRightOf="@+id/iv_temperature_consult_msg"
                             android:gravity="center"
-                            android:layout_centerVertical="true"
+                            android:text="@string/consult_test"
+                            android:textColor="@color/colorTds"
+                            android:textSize="17dp"
 
                             />
                     </LinearLayout>
@@ -296,8 +291,7 @@
                         android:layout_marginTop="25dp"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:visibility="visible"
-                        >
+                        android:visibility="visible">
 
                         <ImageView
                             android:id="@+id/iv_temperature_left"
@@ -397,8 +391,8 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.5"
                                 android:layout_gravity="center"
+                                android:layout_weight="1.5"
                                 android:gravity="center"
                                 android:orientation="horizontal">
 
@@ -443,8 +437,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_gravity="center"
-                                android:gravity="center"
-                                android:layout_weight="1">
+                                android:layout_weight="1"
+                                android:gravity="center">
 
                                 <ImageView
                                     android:id="@+id/iv_temperature_tapBadImg"
@@ -494,22 +488,21 @@
             <!--Temperature-->
 
             <ImageView
-                android:visibility="gone"
                 android:id="@+id/iv_temperature_line1"
                 android:layout_width="match_parent"
                 android:layout_height="9.5dp"
                 android:layout_below="@+id/temperature_distribution_layout"
-                android:background="@color/colorLine" />
+                android:background="@color/colorLine"
+                android:visibility="gone" />
 
 
             <RelativeLayout
-                android:visibility="gone"
                 android:id="@+id/temperature_health_layout"
                 android:layout_width="match_parent"
                 android:layout_height="108.5dp"
                 android:layout_below="@+id/iv_temperature_line1"
                 android:background="@color/ozner_text_login"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_temperature_health"
@@ -528,8 +521,7 @@
                     android:layout_below="@+id/tv_temperature_health"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="12dp"
-
-                    >
+                    android:gravity="center_horizontal">
 
                     <LinearLayout
                         android:id="@+id/temperature_health_know_layout"
@@ -572,6 +564,7 @@
                         android:layout_marginLeft="29dp"
                         android:background="@drawable/btn_bg_blue_choose"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -602,12 +595,12 @@
 
 
             <ImageView
-                android:visibility="gone"
                 android:id="@+id/iv_temperature_line2"
                 android:layout_width="match_parent"
                 android:layout_height="9.5dp"
                 android:layout_below="@+id/temperature_health_layout"
-                android:background="@color/colorLine" />
+                android:background="@color/colorLine"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/iv_height"

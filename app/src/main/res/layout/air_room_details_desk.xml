@@ -222,6 +222,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_tds_health"
                     android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
                     android:layout_marginTop="20dp">
 
                     <LinearLayout
@@ -266,6 +267,7 @@
                         android:layout_height="45dp"
                         android:layout_marginBottom="15dp"
                         android:layout_marginLeft="29dp"
+                        android:visibility="gone"
                         android:background="@drawable/btn_bg_blue_choose"
                         android:gravity="center"
                         android:orientation="horizontal">

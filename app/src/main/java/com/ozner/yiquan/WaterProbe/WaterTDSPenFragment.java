@@ -64,14 +64,12 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
     int tdsOld = 0, tdsNew = 0;
     int ranking;
     private LinearLayout lay_tdsShort;
-    ProgressDialog dialog;
     WaterDetailProgress waterProcess;
     private TextView tv_name, tv_tdsValue, tv_batteryTem, tv_filterStatus, tv_tdsShort, tv_tdsLevelText, tv_data_loading;
     private TextView tv_tapHealthPre, tv_tapGenericPre, tv_tapBadPre, tv_filiteText;
     private Tap tap;
     int[] data = new int[31];
     ImageView iv_probe_setting, iv_data_loading, iv_tdsLevelImg, iv_filterState, iv_battery;
-    //    UpdateFilterAsyncTask filter = null;
     UiUpdateAsyncTask asyncTask = null;
     ChartAdapter adapter = new ChartAdapter() {
 
@@ -305,7 +303,6 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
     }
 
     public void Upload() {
-
         try {
             new Thread(new Runnable() {
                 @Override
@@ -341,46 +338,6 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
 //                tdsOld = 0;
         }
     }
-
-
-//    public void UploadTds() {
-//        try {
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-//                        NetJsonObject netJsonObject = OznerCommand.TapTDSSensor(getActivity(), Mac, tap.Type(), String.valueOf(tapTds));
-//                        Log.e("tagtds", netJsonObject.state + "");
-//                        if (netJsonObject.state > 0) {
-//                            Log.e("statetds", netJsonObject.state + "");
-////                            try {
-////                                int rank = netJsonObject.getJSONObject().getInt("rank");
-////                                int total = netJsonObject.getJSONObject().getInt("total");
-////                                ranking = (total - rank) * 100 / total;
-////                                Message message = new Message();
-////                                message.arg1 = ranking;
-////                                message.what = 1;
-////                                try {
-////                                    Thread.sleep(2000);
-////                                    rhandler.sendMessage(message);
-////                                } catch (InterruptedException e) {
-////                                    e.printStackTrace();
-////                                }
-////
-////                            } catch (JSONException e) {
-////                                e.printStackTrace();
-////                            }
-//                        }
-//                    } catch (Exception ex) {
-//                        ex.printStackTrace();
-//                    }
-//                }
-//
-//            }).start();
-//        } catch (Exception ex) {
-////                tdsOld = 0;
-//        }
-//    }
 
     public void RefreshBindDataView() {
         tv_name.setText(name);
@@ -548,25 +505,6 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
                 asyncTask = new UiUpdateAsyncTask();
                 asyncTask.execute();
                 Log.e("CSIR", "TDS-WATER-TAP " + this.tap.Sensor().TDSFix);
-//                    Calendar calTap = Calendar.getInstance();
-//                    calTap.set(Calendar.DAY_OF_MONTH, 1);
-//                    Date timeTap = new Date(calTap.getTime().getTime() / 86400000 * 86400000);
-//                    records = tap.TapRecordList().getNoSyncItemDay(timeTap);
-//                    if (records != null) {
-//                        for (int j = 0; j < records.length; j++) {
-//                            tapTds = records[j].TDS;
-////                if(0<tapRecords[j].TDS&&tapRecords[j].TDS<=CupRecord.TDS_Good_Value){
-////                    good_count++;
-////                }else if(CupRecord.TDS_Good_Value<tapRecords[j].TDS&&tapRecords[j].TDS<=CupRecord.TDS_Bad_Value){
-////                    nor_count++;
-////                }else if(tapRecords[j].TDS>CupRecord.TDS_Bad_Value){
-////                    bad_count++;
-////                }
-//                        }
-//                        UpdateTdsAsyncTask tdsAsyncTask = new UpdateTdsAsyncTask();
-//                        tdsAsyncTask.execute("taptds");
-//                    }
-//                }
             }
         }
     }
