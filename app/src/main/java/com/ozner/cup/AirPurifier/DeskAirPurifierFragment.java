@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -255,6 +254,18 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         ivMabio.get().setMinimumHeight(height);
 
         ((ImageView) rootView.findViewById(R.id.iv_xuanzhuan_x3)).setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mengban1));
+        ((ImageView) rootView.findViewById(R.id.iv_purifierSetBtn)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.setting));
+        ((ImageView) rootView.findViewById(R.id.iv_filterState)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.air_filter));
+        ((ImageView) rootView.findViewById(R.id.iv_deskair_low)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.deskair_low));
+        ((ImageView) rootView.findViewById(R.id.iv_deskair_high)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.deskair_high));
+        ((ImageView) rootView.findViewById(R.id.iv_data_loading)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.air_loding));
+        ((ImageView) rootView.findViewById(R.id.iv_data_loading_fair)).setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.drawable.air_loding_fair));
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        System.gc();
     }
 
     /**
@@ -645,39 +656,39 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
     }
 
 
-    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-        }
-
-        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
-        @Override
-        protected String doInBackground(String... params) {
-            initData();
-            return null;
-        }
-
-        //onProgressUpdate方法用于更新进度信息
-        @Override
-        protected void onProgressUpdate(Integer... progresses) {
-        }
-
-        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
-        @Override
-        protected void onPostExecute(String result) {
-            setData();
-//            if (isOpenOn) {
-//                tv_flz.setVisibility(View.VISIBLE);
-//            } else {
-//                tv_flz.setVisibility(View.INVISIBLE);
-//            }
-        }
-
-        //onCancelled方法用于在取消执行中的任务时更改UI
-        @Override
-        protected void onCancelled() {
-        }
-    }
+//    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
+//        @Override
+//        protected void onPreExecute() {
+//        }
+//
+//        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
+//        @Override
+//        protected String doInBackground(String... params) {
+//            initData();
+//            return null;
+//        }
+//
+//        //onProgressUpdate方法用于更新进度信息
+//        @Override
+//        protected void onProgressUpdate(Integer... progresses) {
+//        }
+//
+//        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
+//        @Override
+//        protected void onPostExecute(String result) {
+//            setData();
+////            if (isOpenOn) {
+////                tv_flz.setVisibility(View.VISIBLE);
+////            } else {
+////                tv_flz.setVisibility(View.INVISIBLE);
+////            }
+//        }
+//
+//        //onCancelled方法用于在取消执行中的任务时更改UI
+//        @Override
+//        protected void onCancelled() {
+//        }
+//    }
 
     private FootFragmentListener mFootFragmentListener;
 
