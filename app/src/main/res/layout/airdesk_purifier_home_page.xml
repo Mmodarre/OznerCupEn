@@ -39,7 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
-                    android:src="@drawable/air_loding" />
+                     />
+                <!--android:src="@drawable/air_loding"-->
 
                 <TextView
                     android:id="@+id/tv_data_loading"
@@ -66,7 +67,8 @@
                     android:id="@+id/iv_data_loading_fair"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/air_loding_fair" />
+                    />
+                <!--android:src="@drawable/air_loding_fair"-->
 
                 <TextView
                     android:id="@+id/tv_data_loading_fair"
@@ -98,11 +100,16 @@
                     android:src="@drawable/lizi" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/iv_mabiao"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="50dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/mabiao" />
+
+                    />
+                <!--android:src="@drawable/mabiao"-->
+
 
                 <ImageView
                     android:id="@+id/iv_xuanzhuan_x3"
@@ -111,7 +118,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/mengban1" />
+                    />
+                <!--android:src="@drawable/mengban1"-->
 
                 <!--<ImageView-->
                 <!--android:id="@+id/iv_xuanzhuan_x1"-->
@@ -167,12 +175,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/iv_air_temp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:alpha="0.6"
+                        android:minHeight="50dp"
                         android:gravity="center"
-                        android:src="@drawable/air_temp" />
+                        android:src="@drawable/air_temp"
+                         />
+                    <!---->
 
                     <TextView
                         android:id="@+id/tv_air_temValue"
@@ -200,12 +212,15 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/iv_air_humidity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:alpha="0.6"
                         android:gravity="center"
-                        android:src="@drawable/air_pm" />
+                        android:src="@drawable/air_pm"
+                         />
+                    <!---->
 
                     <TextView
                         android:id="@+id/tv_air_shidu_Value"
@@ -249,7 +264,8 @@
                         android:layout_height="35dp"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentLeft="true"
-                        android:src="@drawable/air_filter" />
+                       />
+                    <!--android:src="@drawable/air_filter"-->
 
                     <TextView
                         android:id="@+id/tv_filiteText"
@@ -284,7 +300,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="15dp"
                     android:layout_marginRight="20dp"
-                    android:src="@drawable/setting" />
+                     />
+                <!--android:src="@drawable/setting"-->
             </RelativeLayout>
 
         </LinearLayout>
@@ -385,7 +402,8 @@
                 android:id="@+id/iv_deskair_low"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:src="@drawable/deskair_low" />
+               />
+            <!--android:src="@drawable/deskair_low"-->
 
             <TextView
                 android:id="@+id/tv_deskair_low"
@@ -418,7 +436,8 @@
                 android:id="@+id/iv_deskair_high"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:src="@drawable/deskair_high" />
+                 />
+            <!--android:src="@drawable/deskair_high"-->
 
             <TextView
                 android:id="@+id/tv_deskair_high"

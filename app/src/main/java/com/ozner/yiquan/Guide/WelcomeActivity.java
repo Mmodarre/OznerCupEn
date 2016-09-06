@@ -31,7 +31,6 @@ import com.ozner.yiquan.MainEnActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.mycenter.CheckForUpdate.LogUtilsLC;
 import com.ozner.device.OznerDeviceManager;
-import com.ozner.wifi.ThreadHandler;
 
 import org.json.JSONObject;
 
@@ -238,23 +237,25 @@ public class WelcomeActivity extends Activity {
         Intent mainIntent = new Intent(WelcomeActivity.this, MainActivity.class);
 //        mainIntent.putExtra("devicelist", (Serializable) devicejson);
         WelcomeActivity.this.startActivity(mainIntent);
-        welcomFinish();
+//        welcomFinish();
+        finish();
     }
 
     private void ShowMainENPage() {
         Intent mainIntent = new Intent(WelcomeActivity.this, MainEnActivity.class);
 //        mainIntent.putExtra("devicelist", (Serializable) devicejson);
         WelcomeActivity.this.startActivity(mainIntent);
-        welcomFinish();
+//        welcomFinish();
+        finish();
     }
 
 
     private void welcomFinish(){
-        new ThreadHandler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//        new ThreadHandler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
                 WelcomeActivity.this.finish();
-            }
-        },1000);
+//            }
+//        },1000);
     }
 }
