@@ -230,7 +230,7 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         tv_flz.setTextColor(getResources().getColor(R.color.white));
         tv_flz.setVisibility(View.INVISIBLE);
 
-        initViewBitmap(view);
+//        initViewBitmap(view);
     }
 
 
