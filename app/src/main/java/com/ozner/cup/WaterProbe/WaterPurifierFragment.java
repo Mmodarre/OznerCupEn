@@ -104,7 +104,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private boolean isFirst = true;
     private boolean hasType = false;
     private boolean isZero = false;
-    private String dsn="";
+    private String dsn = "";
 
     public WaterPurifierFragment() {
         // Required empty public constructor
@@ -122,12 +122,12 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             ex.printStackTrace();
             waterPurifier = null;
 
-            if(waterPurifier.IO() instanceof AylaIO){
+            if (waterPurifier.IO() instanceof AylaIO) {
                 try {
-                    dsn= ((AylaIO) waterPurifier.IO()).DSN();
-                }catch (Exception e){
+                    dsn = ((AylaIO) waterPurifier.IO()).DSN();
+                } catch (Exception e) {
                     e.printStackTrace();
-                    dsn="";
+                    dsn = "";
                 }
             }
         }
@@ -619,12 +619,12 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private void initHotCool() {
         if ("true".equals(cool)) {
             isCoolOn = waterPurifier.status().Cool();
-            Log.e("trcool","sssssssssssssss");
+            Log.e("trcool", "sssssssssssssss");
 
         }
         if ("true".equals(hot)) {
             isHotOn = waterPurifier.status().Hot();
-            Log.e("trcool","dddddddddddddddddddd");
+            Log.e("trcool", "dddddddddddddddddddd");
 
         }
     }
@@ -856,16 +856,16 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                         if (isPowerOn) {
                             switchCool(!isCoolOn);
                             waterPurifier.status().setCool(!waterPurifier.status().Cool(), this);
-                            Log.e("TR",waterPurifier.status().Cool()+"dddddddddd");
+                            Log.e("TR", waterPurifier.status().Cool() + "dddddddddd");
                         } else {
                             Toast.makeText(getContext(), getString(R.string.please_open_power), Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         if (!"".equals(tips)) {
 //                            if ("不支持此功能".equals(tips)){
-                            if (tips.contains("不支持此功能")){
+                            if (tips.contains("不支持此功能")) {
                                 Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -886,9 +886,9 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                     } else {
                         if (!"".equals(tips)) {
 //                            if ("不支持此功能".equals(tips)){
-                            if (tips.contains("不支持此功能")){
-                                Toast.makeText(getActivity(),getString(R.string.not_support), Toast.LENGTH_SHORT).show();
-                            }else {
+                            if (tips.contains("不支持此功能")) {
+                                Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
+                            } else {
                                 Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -951,7 +951,8 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             @Override
             public void run() {
 //                InitData();
-                Toast.makeText(getContext(), getString(R.string.send_status_fail), Toast.LENGTH_SHORT);
+                if (isWaterPuriferAdd())
+                    Toast.makeText(getContext(), getString(R.string.send_status_fail), Toast.LENGTH_SHORT);
             }
         });
     }
@@ -963,10 +964,16 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             @Override
             public void run() {
 //                InitData();
-                Toast.makeText(getContext(), getString(R.string.send_status_success), Toast.LENGTH_SHORT);
+                if (isWaterPuriferAdd())
+                    Toast.makeText(getContext(), getString(R.string.send_status_success), Toast.LENGTH_SHORT);
             }
         });
     }
+
+    private boolean isWaterPuriferAdd() {
+        return !WaterPurifierFragment.this.isRemoving() && !WaterPurifierFragment.this.isDetached() && WaterPurifierFragment.this.isAdded();
+    }
+
 
     public void switchPower(boolean isOn) {
         if (!isOn && isCoolOn) {
