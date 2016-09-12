@@ -102,7 +102,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private boolean isFirst = true;
     private boolean hasType = false;
     private boolean isZero = false;
-    private String dsn = "";
+    private String dsn="";
 
     public WaterPurifierFragment() {
         // Required empty public constructor
