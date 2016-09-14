@@ -196,9 +196,10 @@ public class AirFilterActivity extends AppCompatActivity implements View.OnClick
                 startActivity(buyFilterIntent);
                 break;
             case R.id.air_zx_layout:
-                intent.putExtra(PageState.FilterStatusChat + "", device.Address());
-                setResult(PageState.FilterStatusChat, intent);
-                this.finish();
+//                intent.putExtra(PageState.FilterStatusChat + "", device.Address());
+//                setResult(PageState.FilterStatusChat, intent);
+//                this.finish();
+                OznerApplication.callSeviceChat(AirFilterActivity.this);
                 break;
             case R.id.air_filtercz_layout:
                 if (airPurifier_bluetooth.connectStatus() == BaseDeviceIO.ConnectStatus.Connected) {

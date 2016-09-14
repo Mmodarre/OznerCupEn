@@ -128,13 +128,13 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
 //                }
             }
         });
-        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {
+//        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {
             user_info.setVisibility(View.VISIBLE);
             rootview.findViewById(R.id.llay_holder).setVisibility(View.GONE);
-        } else {
-            user_info.setVisibility(View.GONE);
-            rootview.findViewById(R.id.llay_holder).setVisibility(View.VISIBLE);
-        }
+//        } else {
+//            user_info.setVisibility(View.GONE);
+//            rootview.findViewById(R.id.llay_holder).setVisibility(View.VISIBLE);
+//        }
         initImageViewBitmap(rootview);
         return rootview;
     }
@@ -148,7 +148,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
     private void initImageViewBitmap(View initView) {
         WeakReference<Context> refContext = new WeakReference<Context>(getContext());
         if (refContext != null) {
-            ((ImageView) initView.findViewById(R.id.iv_left_center)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_center));
+            ((ImageView) initView.findViewById(R.id.iv_left_center)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_draw));
             user_image.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.mipmap.icon_default_headimage));
             iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_buble));
             ((ImageView) initView.findViewById(R.id.add_device)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(),R.drawable.add));

@@ -151,11 +151,11 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     }
 
     public void InitView(View view) {
-        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
-        } else {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
-        }
+//        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+//            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
+//        } else {
+//            view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
+//        }
         tv_name = (TextView) view.findViewById(R.id.tv_name);
         tdsChartView = (TapTDSChartView) view.findViewById(R.id.tdsChartView);
         rlay_filterStatus = (RelativeLayout) view.findViewById(R.id.rlay_filterStatus);

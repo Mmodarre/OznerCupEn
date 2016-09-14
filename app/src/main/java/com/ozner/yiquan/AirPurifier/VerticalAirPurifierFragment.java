@@ -144,9 +144,9 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         View view = inflater.inflate(R.layout.air_purifier_home_page, container, false);
 
         OznerApplication.changeTextFont((ViewGroup) view);
-        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+//        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
-        }
+//        }
         initViewBitmap(view);
         return view;
     }

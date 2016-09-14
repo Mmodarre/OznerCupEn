@@ -61,9 +61,9 @@ public class WelcomeActivity extends Activity {
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.guideColor));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.white));
             //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.guideColor));
+            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         }
         PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, getString(R.string.Baidu_Push_ApiKey));
         PushSettings.enableDebugMode(getApplicationContext(), true);

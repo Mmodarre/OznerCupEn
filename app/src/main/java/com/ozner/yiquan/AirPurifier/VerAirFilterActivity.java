@@ -228,9 +228,10 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
                 startActivity(buyFilterIntent);
                 break;
             case R.id.air_zx_layout:
-                intent.putExtra(PageState.FilterStatusChat + "", device.Address());
-                setResult(PageState.FilterStatusChat, intent);
-                this.finish();
+//                intent.putExtra(PageState.FilterStatusChat + "", device.Address());
+//                setResult(PageState.FilterStatusChat, intent);
+//                this.finish();
+                OznerApplication.callSeviceChat(VerAirFilterActivity.this);
                 break;
         }
 

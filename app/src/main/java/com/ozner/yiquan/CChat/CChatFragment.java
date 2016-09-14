@@ -368,20 +368,21 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
 
         switch (arg0.getId()) {
             case R.id.iv_call:
-                if (isSimCardReady()) {
-                    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:4008202667"));
-                    startActivity(callIntent);
-                } else {
-                    AlertDialog tipDialog = new AlertDialog.Builder(getContext()).setMessage(getString(R.string.Chat_SimCardTips))
-                            .setPositiveButton(getString(R.string.ensure), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            }).create();
-                    tipDialog.setCanceledOnTouchOutside(false);
-                    tipDialog.show();
-                }
+                OznerApplication.callSeviceChat(getContext());
+//                if (isSimCardReady()) {
+//                    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:4008202667"));
+//                    startActivity(callIntent);
+//                } else {
+//                    AlertDialog tipDialog = new AlertDialog.Builder(getContext()).setMessage(getString(R.string.Chat_SimCardTips))
+//                            .setPositiveButton(getString(R.string.ensure), new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.dismiss();
+//                                }
+//                            }).create();
+//                    tipDialog.setCanceledOnTouchOutside(false);
+//                    tipDialog.show();
+//                }
                 break;
             case R.id.rlay_back:
 //                if (getFragmentManager().popBackStackImmediate()) {

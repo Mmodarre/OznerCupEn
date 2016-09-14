@@ -162,11 +162,11 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     }
 
     private void initView(View view) {
-        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
-        } else {
+//        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
+//            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
+//        } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
-        }
+//        }
         rlay_menu = (RelativeLayout) view.findViewById(R.id.rlay_menu);
         rlay_purifier_tdsdata = (RelativeLayout) view.findViewById(R.id.rlay_purifier_tdsdata);
         iv_purifierSetBtn = (ImageView) view.findViewById(R.id.iv_purifierSetBtn);

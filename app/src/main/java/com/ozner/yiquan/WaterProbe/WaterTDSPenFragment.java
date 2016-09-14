@@ -140,11 +140,11 @@ public class WaterTDSPenFragment extends Fragment implements View.OnClickListene
     }
 
     public void InitView(View view) {
-        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
-        } else {
+//        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
+//            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
+//        } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
-        }
+//        }
 
         tv_name = (TextView) view.findViewById(R.id.tv_name);
         tdsChartView = (TapTDSChartView) view.findViewById(R.id.tdsChartView);
