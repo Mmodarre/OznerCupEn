@@ -88,6 +88,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(getLayoutId(), container, false);
+        ((RelativeLayout)rootView.findViewById(R.id.rlay_menu)).setOnClickListener(this);
         ((ImageView) rootView.findViewById(R.id.iv_person_photo)).setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.mipmap.icon_default_headimage));
         ((ImageView) rootView.findViewById(R.id.iv_center_share)).setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.center_myorder));
         ((ImageView) rootView.findViewById(R.id.iv_myredbag)).setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.center_redbag));
@@ -216,6 +217,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.rlay_menu:
+                ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
+                break;
             case R.id.iv_person_photo:
                 if (userid == null || userid == "") {
                     Intent loginIntent = new Intent(getContext(), LoginActivity.class);
