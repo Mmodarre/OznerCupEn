@@ -964,7 +964,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             public void run() {
 //                InitData();
                 if(isWaterPuriferAdd())
-                Toast.makeText(getContext(), getString(R.string.send_status_success), Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(), getString(R.string.send_status_success), Toast.LENGTH_SHORT);
             }
         });
     }
@@ -972,6 +972,11 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
     private boolean isWaterPuriferAdd() {
         return !WaterPurifierFragment.this.isRemoving() && !WaterPurifierFragment.this.isDetached() && WaterPurifierFragment.this.isAdded();
     }
+
+    private boolean isWaterPuriferAdd() {
+        return !WaterPurifierFragment.this.isRemoving() && !WaterPurifierFragment.this.isDetached() && WaterPurifierFragment.this.isAdded();
+    }
+
 
     public void switchPower(boolean isOn) {
         if (!isOn && isCoolOn) {
