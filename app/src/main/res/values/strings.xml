@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OZNER IFAMILY</string>
+    <string name="app_name">JOYRO</string>
     <string name="Advise_InputAdvise">Please enter the suggestions</string>
     <string name="my_device">My Device</string>
     <string name="my_burse">My private coffer</string>
@@ -29,8 +29,8 @@
     <string name="server_Exception">Service Exception Error</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_other_device">Other devices in your account login, please sign in again.</string>
-    <string name="login_p_tishi">Agreed to OZNER IFAMILY Clauses.</string>
-    <string name="loging_ty_xiexi">Please agree "OZNER IFAMILY Disclaimer"</string>
+    <string name="login_p_tishi">Agreed to JOYRO Clauses.</string>
+    <string name="loging_ty_xiexi">Please agree "JOYRO Disclaimer"</string>
     <string name="login_btn_skip">Skip</string>
     <string name="login_btn_getphone">Obtain captcha</string>
     <string name="login_et_phone">Phone number</string>
@@ -161,7 +161,7 @@
     <string name="Center_CurrentVersion">Current</string>
     <string name="Center_Mark">Rate IFamily</string>
     <string name="Center_Default_Version">v 1.0</string>
-    <string name="Center_FreeItem">OZNER IFAMILY Exception Clauses</string>
+    <string name="Center_FreeItem">JOYRO Exception Clauses</string>
     <string name="Center_SaveSuccess">Saved successfully</string>
     <string name="Center_InSurePhone">Please input valid mobile phone number</string>
     <string name="Center_InSureFriendMobile">Please enter your friends\' phone numbers</string>
@@ -628,7 +628,7 @@
     <string name="keep_use_replenish">Stick with the essence of water, can effectively improve the skin condition.</string>
     <string name="water_replenish_use_instru">Water meter for use</string>
 
-    <string name="Chat_not_focus_ozner">No attention OZNER IFAMILY official accounts</string>
+    <string name="Chat_not_focus_ozner">No attention JOYRO official accounts</string>
     <string name="Chat_Phone_Err">User\'s phone number is incorrect</string>
     <string name="Chat_Login_err">Login failed</string>
     <string name="Chat_pic_upload_Err">Image upload failed</string>
