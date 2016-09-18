@@ -46,12 +46,12 @@
             <RelativeLayout>
 
                 <ImageView
-
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/login_icon_v2"/>
+                    android:src="@mipmap/yiquan"/>
             </RelativeLayout>
 
         </TableRow>
