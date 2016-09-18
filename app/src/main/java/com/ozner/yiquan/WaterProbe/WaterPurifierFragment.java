@@ -973,10 +973,6 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
         return !WaterPurifierFragment.this.isRemoving() && !WaterPurifierFragment.this.isDetached() && WaterPurifierFragment.this.isAdded();
     }
 
-    private boolean isWaterPuriferAdd() {
-        return !WaterPurifierFragment.this.isRemoving() && !WaterPurifierFragment.this.isDetached() && WaterPurifierFragment.this.isAdded();
-    }
-
 
     public void switchPower(boolean isOn) {
         if (!isOn && isCoolOn) {
