@@ -8,13 +8,9 @@ android {
         applicationId "com.ozner.yiquan"
         minSdkVersion 18
         targetSdkVersion 22
-<<<<<<< HEAD
-        versionCode 1297
-        versionName "2.9.7"
-=======
         versionCode 298
         versionName "2.9.8"
->>>>>>> master
+
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
