@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="photo_choose-release-unspecified">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerUriage831/photo_choose-release/unspecified/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerUriage831/photo_choose-release/unspecified/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

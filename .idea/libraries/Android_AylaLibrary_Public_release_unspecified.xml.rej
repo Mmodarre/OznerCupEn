@@ -1,0 +1,14 @@
+diff a/.idea/libraries/Android_AylaLibrary_Public_release_unspecified.xml b/.idea/libraries/Android_AylaLibrary_Public_release_unspecified.xml	(rejected hunks)
+@@ -1,11 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Android_AylaLibrary_Public-release-unspecified">
+-    <CLASSES>
+-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerUriage831/Android_AylaLibrary_Public-release/unspecified/res" />
+-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerUriage831/Android_AylaLibrary_Public-release/unspecified/jars/libs/gson-2.2.4.jar!/" />
+-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/OznerUriage831/Android_AylaLibrary_Public-release/unspecified/jars/classes.jar!/" />
+-    </CLASSES>
+-    <JAVADOC />
+-    <SOURCES />
+-  </library>
+-</component>
+\ No newline at end of file
