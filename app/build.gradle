@@ -34,14 +34,22 @@ android {
 //    sourceSets {
 //        main.jniLibs.srcDirs = ['libs']
 //    }
+<<<<<<< HEAD
 //    signingConfigs {
+=======
+    signingConfigs {
+>>>>>>> ozner_uriage
 //        debug {
 //            keyAlias 'ozner'
 //            keyPassword '123456789'
 //            storeFile file('D:/ozner/oznerCup/ozner_new.keystore')
 //            storePassword '1234567890'
 //        }
+<<<<<<< HEAD
 //    }
+=======
+    }
+>>>>>>> ozner_uriage
 }
 
 dependencies {

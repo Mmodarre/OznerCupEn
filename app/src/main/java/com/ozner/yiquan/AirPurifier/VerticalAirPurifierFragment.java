@@ -126,6 +126,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
     @Override
     public void onDestroy() {
         super.onDestroy();
+        System.gc();
     }
 
     @Override
@@ -144,9 +145,9 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         View view = inflater.inflate(R.layout.air_purifier_home_page, container, false);
 
         OznerApplication.changeTextFont((ViewGroup) view);
-        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+//        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
-        }
+//        }
         initViewBitmap(view);
         return view;
     }
@@ -1218,52 +1219,6 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         isModeOn = isOn;
     }
 
-    //region
-/*
-    OperateCallback<Void> callback = new OperateCallback<Void>() {
-        @Override
-        public void onSuccess(Void var1) {
-            if (power != airPurifier.airStatus().Power())
-                switchOpen(airPurifier.airStatus().Power());
-            if (dialog != null) {
-                try {
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-
-                try {
-                    dialog.setMessage(getString(R.string.set_success));
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                dialog.dismiss();
-            }
-        }
-
-        @Override
-        public void onFailure(Throwable var1) {
-            switchOpen(airPurifier.airStatus().Power());
-            if (dialog != null) {
-                try {
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-
-                try {
-                    dialog.setMessage(getString(R.string.set_fail));
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                dialog.dismiss();
-            }
-        }
-    };
- */
-    //endregion
     private void switchOpen(boolean isOn) {
         iv_open.setSelected(isOn);
         rlay_open.setSelected(isOn);

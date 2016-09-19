@@ -29,13 +29,17 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.ozner.bluetooth.BluetoothIO;
-import com.ozner.yiquan.Command.DeviceData;
-import com.ozner.yiquan.Command.FootFragmentListener;
-import com.ozner.yiquan.Command.OznerCommand;
-import com.ozner.yiquan.Command.PageState;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupRecord;
 import com.ozner.cup.CupRecordList;
+import com.ozner.device.BaseDeviceIO;
+import com.ozner.device.OznerDevice;
+import com.ozner.device.OznerDeviceManager;
+import com.ozner.yiquan.Command.DeviceData;
+import com.ozner.yiquan.Command.FootFragmentListener;
+import com.ozner.yiquan.Command.OznerCommand;
+import com.ozner.yiquan.Command.OznerPreference;
+import com.ozner.yiquan.Command.PageState;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.Device.SetupGlassActivity;
 import com.ozner.yiquan.HttpHelper.NetJsonObject;
@@ -46,9 +50,6 @@ import com.ozner.yiquan.UIView.FirmwareUpgrade;
 import com.ozner.yiquan.WaterCup.TDSFragment;
 import com.ozner.yiquan.WaterCup.WaterQuantityFragment;
 import com.ozner.yiquan.WaterCup.WaterTemperatureFragment;
-import com.ozner.device.BaseDeviceIO;
-import com.ozner.device.OznerDevice;
-import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONException;
 
@@ -470,11 +471,11 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
             }
             if (TDSFix != 0) {
 
-//                if(OznerPreference.isLoginPhone(getContext())){
+                if(OznerPreference.isLoginPhone(getContext())){
                     lay_tdsShort.setVisibility(View.VISIBLE);
-//                }else{
-//                    lay_tdsShort.setVisibility(View.GONE);
-//                }
+                }else{
+                    lay_tdsShort.setVisibility(View.GONE);
+                }
                 rlay_tdsdetail.setEnabled(true);
                 if (tdsOld != TDSFix) {
                     final ValueAnimator animator = ValueAnimator.ofInt(tdsOld, TDSFix);

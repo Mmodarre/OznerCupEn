@@ -43,6 +43,7 @@ import com.ozner.yiquan.Main.BaseMainActivity;
 import com.ozner.yiquan.MainActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.mycenter.MyCenterActivity;
+import com.ozner.yiquan.mycenter.MyFragment;
 import com.ozner.yiquan.slideleft.adapter.SlideAdapter;
 import com.ozner.yiquan.slideleft.bean.SlideBean;
 
@@ -120,7 +121,8 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
         user_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), MyCenterActivity.class));
+                getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new MyFragment()).commitAllowingStateLoss();
+//                startActivity(new Intent(getContext(), MyCenterActivity.class));
 //                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
                     ((MainActivity) getActivity()).myOverlayDrawer.toggleMenu();
 //                } else {
@@ -128,13 +130,13 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
 //                }
             }
         });
-        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {
+//        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone() && userid != null && userid.length() > 0) {
             user_info.setVisibility(View.VISIBLE);
             rootview.findViewById(R.id.llay_holder).setVisibility(View.GONE);
-        } else {
-            user_info.setVisibility(View.GONE);
-            rootview.findViewById(R.id.llay_holder).setVisibility(View.VISIBLE);
-        }
+//        } else {
+//            user_info.setVisibility(View.GONE);
+//            rootview.findViewById(R.id.llay_holder).setVisibility(View.VISIBLE);
+//        }
         initImageViewBitmap(rootview);
         return rootview;
     }
@@ -148,7 +150,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
     private void initImageViewBitmap(View initView) {
         WeakReference<Context> refContext = new WeakReference<Context>(getContext());
         if (refContext != null) {
-            ((ImageView) initView.findViewById(R.id.iv_left_center)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_center));
+            ((ImageView) initView.findViewById(R.id.iv_left_center)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_draw));
             user_image.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.mipmap.icon_default_headimage));
             iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_buble));
             ((ImageView) initView.findViewById(R.id.add_device)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(),R.drawable.add));
@@ -301,6 +303,8 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
                     ImageHelper imageHelper = new ImageHelper(getContext());
                     imageHelper.setImageLoadingListener(imageLoadListener);
                     NetUserHeadImg netUserHeadImg = (NetUserHeadImg) msg.obj;
+                    user_name.setText((netUserHeadImg.nickname != null && netUserHeadImg.nickname.length() > 0) ? netUserHeadImg.nickname : netUserHeadImg.mobile);
+
                     if (netUserHeadImg != null) {
                         if (netUserHeadImg.headimg != null && netUserHeadImg.headimg.length() > 0) {
                             imageHelper.loadImage(user_image, netUserHeadImg.headimg);

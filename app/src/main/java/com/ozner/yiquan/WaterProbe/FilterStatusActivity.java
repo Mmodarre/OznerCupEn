@@ -4,10 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -164,11 +166,11 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                 device = OznerDeviceManager.Instance().getDevice(MAC);
                 if (device != null && device instanceof WaterPurifier) {
                     deviceType = RankType.WaterType;
-                    if ("0".equals(isShowewm)) {
+//                    if ("0".equals(isShowewm)) {
                         llay_scan.setVisibility(View.GONE);
-                    } else {
-                        llay_scan.setVisibility(View.VISIBLE);
-                    }
+//                    } else {
+//                        llay_scan.setVisibility(View.VISIBLE);
+//                    }
 //                    llay_moreService.setVisibility(View.VISIBLE);
                 } else {
                     deviceType = RankType.TapType;
@@ -232,10 +234,11 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                 startActivityForResult(scanIntent, SCANNIN_GREQUEST_CODE);
                 break;
             case R.id.tds_health_know_layout://咨询
-                Intent intent = new Intent();
-                intent.putExtra(PageState.CENTER_DEVICE_ADDRESS, MAC);
-                setResult(PageState.FilterStatusChat, intent);
-                FilterStatusActivity.this.finish();
+//                Intent intent = new Intent();
+//                intent.putExtra(PageState.CENTER_DEVICE_ADDRESS, MAC);
+//                setResult(PageState.FilterStatusChat, intent);
+//                FilterStatusActivity.this.finish();
+               OznerApplication.callSeviceChat(FilterStatusActivity.this);
                 break;
             case R.id.tds_health_buy_layout://购买滤芯
                 String mobile = UserDataPreference.GetUserData(getBaseContext(), UserDataPreference.Mobile, null);
@@ -261,6 +264,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                 break;
         }
     }
+
 
     @Override
     public void onBackPressed() {

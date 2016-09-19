@@ -164,9 +164,9 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
         if (networkInfo != null) {
             getData();
         }
-        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+//        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
-        }
+//        }
 
         return view;
     }

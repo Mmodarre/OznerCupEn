@@ -19,8 +19,8 @@
     <string name="server_Exception">服务异常错误</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_other_device">您的账号在其他设备登录，请重新登录.</string>
-    <string name="login_p_tishi">我已阅读并同意《浩泽净水家免责条款》</string>
-    <string name="loging_ty_xiexi">请先同意《浩泽净水家免责条款》</string>
+    <string name="login_p_tishi">我已阅读并同意《君融科技免责条款》</string>
+    <string name="loging_ty_xiexi">请先同意《君融科技免责条款》</string>
     <string name="login_btn_skip">跳过</string>
     <string name="login_btn_getphone">获取验证码</string>
     <string name="login_et_phone">请输入手机号</string>
@@ -140,7 +140,7 @@
     <string name="TDS">TDS</string>
     <string name="Center_Allow_PushMsg">允许推送消息</string>
     <string name="Center_Unit">计量单位</string>
-    <string name="Center_About_Ozner">关于浩泽净水家</string>
+    <string name="Center_About_Ozner">关于君融科技</string>
     <string name="Center_Logout">退出登录</string>
     <string name="Center_Temp">温度</string>
     <string name="Center_Volumn">水量</string>
@@ -154,12 +154,12 @@
     <string name="Center_DL_Unit">(DL)</string>
     <string name="Center_OZ">盎司</string>
     <string name="Center_OZ_Unit">(OZ)</string>
-    <string name="Center_About">关于浩泽净水家</string>
+    <string name="Center_About">关于君融科技</string>
     <string name="Center_CheckVersion">检查更新版本</string>
     <string name="Center_CurrentVersion">当前版本</string>
     <string name="Center_Mark">评个分吧</string>
     <string name="Center_Default_Version">v 1.0</string>
-    <string name="Center_FreeItem">《浩泽净水家免费条款》</string>
+    <string name="Center_FreeItem">《君融科技免费条款》</string>
     <string name="Center_SaveSuccess">保存成功</string>
     <string name="Center_InSurePhone">请输入有效的手机号</string>
     <string name="Center_InSureFriendMobile">请输入好友手机号</string>
