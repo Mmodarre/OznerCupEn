@@ -6,7 +6,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.fusesource.hawtbuf/hawtbuf/1.10/f796bc15a11ccfcd08c7057451a19e7c3c673d10/hawtbuf-1.10-sources.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/gradle/gradle-2.10/caches/modules-2/files-2.1/org.fusesource.hawtbuf/hawtbuf/1.10/f796bc15a11ccfcd08c7057451a19e7c3c673d10/hawtbuf-1.10-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

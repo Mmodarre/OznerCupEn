@@ -950,15 +950,10 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             @Override
             public void run() {
 //                InitData();
-<<<<<<< HEAD
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/WaterProbe/WaterPurifierFragment.java
-                if(isWaterPuriferAdd())
-=======
+
+
                 if (isWaterPuriferAdd())
->>>>>>> master:app/src/main/java/com/ozner/cup/WaterProbe/WaterPurifierFragment.java
-=======
-                if (isWaterPuriferAdd())
->>>>>>> ozner_uriage
+
                     Toast.makeText(getContext(), getString(R.string.send_status_fail), Toast.LENGTH_SHORT);
             }
         });
@@ -971,15 +966,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             @Override
             public void run() {
 //                InitData();
-<<<<<<< HEAD
-<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/WaterProbe/WaterPurifierFragment.java
-                if(isWaterPuriferAdd())
-=======
                 if (isWaterPuriferAdd())
->>>>>>> master:app/src/main/java/com/ozner/cup/WaterProbe/WaterPurifierFragment.java
-=======
-                if (isWaterPuriferAdd())
->>>>>>> ozner_uriage
                     Toast.makeText(getContext(), getString(R.string.send_status_success), Toast.LENGTH_SHORT);
             }
         });
