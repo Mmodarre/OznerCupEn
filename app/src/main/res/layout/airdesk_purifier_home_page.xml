@@ -104,10 +104,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/mabiao"
-<<<<<<< HEAD
-=======
 
->>>>>>> master
                     />
                 <!--android:src="@drawable/mabiao"-->
 
