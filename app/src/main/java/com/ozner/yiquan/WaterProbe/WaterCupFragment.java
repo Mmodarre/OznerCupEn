@@ -29,6 +29,14 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.ozner.bluetooth.BluetoothIO;
+<<<<<<< HEAD:app/src/main/java/com/ozner/yiquan/WaterProbe/WaterCupFragment.java
+=======
+import com.ozner.cup.Command.DeviceData;
+import com.ozner.cup.Command.FootFragmentListener;
+import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.OznerPreference;
+import com.ozner.cup.Command.PageState;
+>>>>>>> master:app/src/main/java/com/ozner/cup/WaterProbe/WaterCupFragment.java
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupRecord;
 import com.ozner.cup.CupRecordList;
