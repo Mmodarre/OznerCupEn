@@ -1050,7 +1050,6 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 //        }else{
 //            Log.e("trnet","ffff");
 //        }
-
     }
 
     @Override
