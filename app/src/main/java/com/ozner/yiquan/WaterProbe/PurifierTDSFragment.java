@@ -334,7 +334,7 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
                 long timetick = Long.parseLong(timeStr.replace("/Date(", "").replace(")/", ""));
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(new Date(timetick));
-                if (1 == cal.get(Calendar.DAY_OF_WEEK)) {
+                if (Calendar.SUNDAY == cal.get(Calendar.DAY_OF_WEEK)) { //Calendar.SUNDAY 原来是1
                     net_week_predata[6] = pretds;
                     net_week_afterdata[6] = aftertds;
                 } else {
@@ -428,9 +428,10 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
                 getActivity().startActivity(intent);
                 break;
             case R.id.laly_consult:
-                getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new CChatFragment()).commitAllowingStateLoss();
-                ((MainActivity) (getActivity())).pagenow = PageState.ZIXUNYEMIAN;
-                ((MainActivity) (getActivity())).footNavFragment.ShowContent(PageState.ZIXUNYEMIAN, "");
+                OznerApplication.callSeviceChat(getContext());
+//                getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new CChatFragment()).commitAllowingStateLoss();
+//                ((MainActivity) (getActivity())).pagenow = PageState.ZIXUNYEMIAN;
+//                ((MainActivity) (getActivity())).footNavFragment.ShowContent(PageState.ZIXUNYEMIAN, "");
                 break;
             case R.id.wateryield_health_buy_layout:
                 getFragmentManager().popBackStack();
