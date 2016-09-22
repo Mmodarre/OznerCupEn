@@ -20,6 +20,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.ozner.WaterPurifier.WaterPurifier;
+import com.ozner.tap.Tap;
 import com.ozner.yiquan.Command.CenterUrlContants;
 import com.ozner.yiquan.Command.CustomToast;
 import com.ozner.yiquan.Command.NetErrDecode;
@@ -173,6 +174,9 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
 //                    }
 //                    llay_moreService.setVisibility(View.VISIBLE);
                 } else {
+                    if(device != null && device instanceof Tap){
+                        llay_scan.setVisibility(View.VISIBLE);
+                    }
                     deviceType = RankType.TapType;
                     llay_moreService.setVisibility(View.GONE);
                 }
