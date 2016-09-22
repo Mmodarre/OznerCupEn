@@ -950,7 +950,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             @Override
             public void run() {
 //                InitData();
-                if(isWaterPuriferAdd())
+                if (isWaterPuriferAdd())
                     Toast.makeText(getContext(), getString(R.string.send_status_fail), Toast.LENGTH_SHORT);
             }
         });
@@ -963,7 +963,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             @Override
             public void run() {
 //                InitData();
-                if(isWaterPuriferAdd())
+                if (isWaterPuriferAdd())
                     Toast.makeText(getContext(), getString(R.string.send_status_success), Toast.LENGTH_SHORT);
             }
         });

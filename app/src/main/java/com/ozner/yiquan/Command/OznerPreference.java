@@ -82,14 +82,14 @@ public class OznerPreference {
             String server = ozner.getString(ServerAddress, null);
             if (server == null) {
                 SharedPreferences.Editor etozner = InitEditor(mycontext);
-                etozner.putString(ServerAddress, "http://app.ozner.net:888/");
-//                etozner.putString(ServerAddress, "http://app.joyro.com.cn:8282/");
-                return "http://app.ozner.net:888/";
-//                return "http://app.joyro.com.cn:8282/";
+//                etozner.putString(ServerAddress, "http://app.ozner.net:888/");
+                etozner.putString(ServerAddress, "http://app.joyro.com.cn:8282/");
+//                return "http://app.ozner.net:888/";
+                return "http://app.joyro.com.cn:8282/";
             } else
                 return server;
         }
-        return "http://app.ozner.net:888/";
-//        return "http://app.joyro.com.cn:8282/";
+//        return "http://app.ozner.net:888/";
+        return "http://app.joyro.com.cn:8282/";
     }
 }
