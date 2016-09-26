@@ -247,7 +247,6 @@ public class WaterPurifier_Ayla extends WaterPurifier {
             }
         }
 
-
         @Override
         public void onIOSend(byte[] bytes) {
 
