@@ -754,4 +754,5 @@
     <string name="act_member">Acting Member</string>
     <string name="center_i">I</string>
     <string name="submiting">Submiting...</string>
+    <string name="default_label">闹钟</string>
 </resources>

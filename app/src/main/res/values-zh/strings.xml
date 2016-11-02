@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">浩泽依泉</string>
+    <string name="app_name">君融科技</string>
     <string name="my_device">我的设备</string>
     <string name="my_burse">我的小金库</string>
     <string name="share_card">分享礼卡</string>
@@ -117,8 +117,8 @@
     <string name="Center_Add_Friend">添加好友</string>
     <string name="Center_Immediately_Add">立即添加</string>
     <string name="Center_Device_Friend">设备好友</string>
-    <string name="Center_No_Friend_0">与好友一起开始体验</string>
-    <string name="Center_No_Friend_1">浩泽智能化生活服务</string>
+    <string name="Center_No_Friend_0">立即邀请好友，</string>
+    <string name="Center_No_Friend_1">一起开启智能生活体验吧！</string>
     <string name="Center_verify_tips">您需要发送验证申请，等待对方通过</string>
     <string name="Center_Send">发送</string>
     <string name="Center_Cancel">取消</string>
@@ -159,7 +159,7 @@
     <string name="Center_CurrentVersion">当前版本</string>
     <string name="Center_Mark">评个分吧</string>
     <string name="Center_Default_Version">v 1.0</string>
-    <string name="Center_FreeItem">《君融科技免费条款》</string>
+    <string name="Center_FreeItem">《君融科技免责条款》</string>
     <string name="Center_SaveSuccess">保存成功</string>
     <string name="Center_InSurePhone">请输入有效的手机号</string>
     <string name="Center_InSureFriendMobile">请输入好友手机号</string>
@@ -322,7 +322,8 @@
     <string name="about_smart_glass">关于智能杯</string>
     <string name="about_water_probe">关于水探头</string>
     <string name="about_water_tdspen">关于水质检测笔</string>
-    <string name="about_water_purifier">关于净水器</string>
+    <string name="about_water_purifier">关于台式净水器</string>
+    <string name="about_water_purifier_ver">关于立式净水器</string>
     <string name="water_purifier_mac">水机编号</string>
     <string name="air_purifier_use_instru">空气净化器使用说明</string>
     <string name="air_purifier_use_show">空气净化器使用演示</string>
@@ -354,7 +355,7 @@
     <!-- taoran -->
     <string name="main_text">首页</string>
     <string name="main_add">请添加设备</string>
-    <string name="main_openOzner">开启浩泽智能生活</string>
+    <string name="main_openOzner">开启您的智能生活</string>
     <string name="main_addDetail">添加设备</string>
 
     <string name="tds_test">水质纯净值TDS</string>
@@ -645,8 +646,8 @@
     <string name="tds_up">200以上</string>
     <string name="start_time">开始时间</string>
     <string name="stop_time">结束时间</string>
-    <string name="ozner_smart_service">浩泽智能化生活服务</string>
-    <string name="start_smart_service">立即添加设备，开始体验浩泽智能化生活服务。</string>
+    <string name="ozner_smart_service">依泉净品智慧生活体验</string>
+    <string name="start_smart_service">立即添加设备，开启您的智慧生活吧。</string>
     <string name="username">邮箱</string>
     <string name="password">密码</string>
     <string name="reset">重置</string>
@@ -738,4 +739,5 @@
     <string name="act_member">代理会员</string>
     <string name="center_i">我</string>
     <string name="submiting">正在提交...</string>
+    <string name="default_label">闹钟</string>
 </resources>
