@@ -89,10 +89,12 @@ public class AboutDeviceActivity extends AppCompatActivity {
             }
 
         } else if (device instanceof WaterPurifier) {
-            toolbar_text.setText(getString(R.string.about_water_purifier));
+
             if (isdesk) {
+                toolbar_text.setText(getString(R.string.about_water_purifier));
                 webView.loadUrl(urlWPDesktop);
             } else {
+                toolbar_text.setText(getString(R.string.about_water_purifier_ver));
                 webView.loadUrl(urlWPVertical);
             }
         } else if (device instanceof AirPurifier_MXChip) {
