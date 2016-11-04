@@ -134,7 +134,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 
         if (waterPurifier != null) {
             Log.e("1234", "净水器类型:" + MAC);
-//            String type = waterPurifier.info().Type;
+//           String type = waterPurifier.info().Model;
 //            new GetMachineTypeAsyncTask().execute();
         }
         OznerApplication.changeTextFont((ViewGroup) view);

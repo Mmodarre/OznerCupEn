@@ -17,17 +17,7 @@
             <option value="$PROJECT_DIR$/xzy_ui_lib" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Android_AylaLibrary_Public-release" />
-            <option value="$PROJECT_DIR$/OznerLibrary" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/dragsortlistview" />
-            <option value="$PROJECT_DIR$/photo_choose-release" />
-            <option value="$PROJECT_DIR$/xzy_ui_lib" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
