@@ -24,7 +24,8 @@ public class Contants {
     public static String aboutPurifierUrl = "http://cup.ozner.net/app/gyysj/gyysj.html";
     // 免责条款
 //    public static String URL_BASE_EXCEPTIONS = "http://cup.ozner.net/app/cn/";
-    public static String URL_BASE_EXCEPTIONS = "http://cup.ozner.net/app/cn/mzsm.html";
+//    public static String URL_BASE_EXCEPTIONS = "http://cup.ozner.net/app/cn/mzsm.html";
+    public static String URL_BASE_EXCEPTIONS = "http://app.joyro.com.cn:8282/jrAPPterm.html";
 
     //水质检测
     public static String Water_Analysis = "http://erweima.ozner.net:85/index.aspx?tel=%s";

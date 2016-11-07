@@ -64,14 +64,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Center_No_Friend_0"
                 android:textColor="@color/MyCenter_NoTextColor"
-                android:textSize="24dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Center_No_Friend_1"
                 android:textColor="@color/MyCenter_NoTextColor"
-                android:textSize="24dp" />
+                android:textSize="20dp" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

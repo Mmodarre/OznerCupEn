@@ -34,7 +34,7 @@ public class SetupWaterPurifierActivity extends AppCompatActivity implements Vie
         super.onCreate(savedInstanceState);
         Mac = getIntent().getStringExtra("MAC");
         mWaterPurifier = (WaterPurifier) OznerDeviceManager.Instance().getDevice(Mac);
-        url = getIntent().getStringExtra("smlinkurl");
+//        url = getIntent().getStringExtra("smlinkurl");
         setContentView(R.layout.activity_setup_waterpurifier);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,6 +68,7 @@ public class SetupWaterPurifierActivity extends AppCompatActivity implements Vie
         water_purifier_mac.setText(Mac);
         ll_about_water_purifier = (RelativeLayout) findViewById(R.id.ll_about_water_purifier);
         ll_about_water_purifier.setOnClickListener(this);
+        findViewById(R.id.ll_about_water_purifier_ver).setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
         if (((OznerApplication)getApplication()).isLanguageCN()){
             ll_about_water_purifier.setVisibility(View.VISIBLE);
@@ -106,7 +107,13 @@ public class SetupWaterPurifierActivity extends AppCompatActivity implements Vie
             case R.id.ll_about_water_purifier:
                 intent.setClass(this, AboutDeviceActivity.class);
                 intent.putExtra("MAC", Mac);
-                intent.putExtra("URL",url);
+                intent.putExtra("Desk",true);
+                startActivityForResult(intent, 2);
+                break;
+            case R.id.ll_about_water_purifier_ver:
+                intent.setClass(this, AboutDeviceActivity.class);
+                intent.putExtra("MAC", Mac);
+                intent.putExtra("Desk",false);
                 startActivityForResult(intent, 2);
                 break;
             case R.id.tv_delDeviceBtn:

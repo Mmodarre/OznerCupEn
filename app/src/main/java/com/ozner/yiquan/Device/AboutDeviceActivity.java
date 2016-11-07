@@ -30,16 +30,18 @@ import com.ozner.yiquan.R;
 public class AboutDeviceActivity extends AppCompatActivity {
     TextView toolbar_text;
     Toolbar toolbar;
-    String Mac, url;
+    String Mac;
+    boolean isdesk = false;//url用来标识柜式/台式净水器，尚未给出区分方式
     OznerDevice device;
     WebView webView;
     WebSettings mwebSettings;
-    String urlCup = "http://cup.ozner.net/app/gyznb/gyznb.html";//http://cup.ozner.net/app/us/gyznb_us.html英文版
-    String urlTap = "http://cup.ozner.net/app/gystt/gystt.html";
-    String urlWRM = "http://app.ozner.net:888//Public/Index";
-    String urlWaterPurifier = "http://cup.ozner.net/app/gyysj/gyysj.html";
-    String urlAirVer = "file:///android_asset/hz_l.html";
-    String urlAirTai = "file:///android_asset/hz_t.html";
+//    String urlCup = "http://cup.ozner.net/app/gyznb/gyznb.html";//http://cup.ozner.net/app/us/gyznb_us.html英文版
+    String urlTap = "http://app.joyro.com.cn:8282/SmartWaterTester.html";//水探头
+    String urlWRM = "http://app.joyro.com.cn:8282/BeautyInstrument.html";//补水仪
+    String urlWPDesktop = "http://app.joyro.com.cn:8282/DesktopWaterPurifier.html";//台式净水器
+    String urlWPVertical = "http://app.joyro.com.cn:8282/VerticalWaterPurifier.html";//柜式净水器
+    String urlAirVer = "http://app.joyro.com.cn:8282/AirPurifier.html";//立式空净
+//    String urlAirTai = "http://app.joyro.com.cn:8282/DesktopWaterPurifier.html";
     String urlTdsPen="file:///android_asset/hz_tdspen.html";
     String flag="";
     ProgressBar mprogressBar;
@@ -52,7 +54,7 @@ public class AboutDeviceActivity extends AppCompatActivity {
         flag=getIntent().getStringExtra("Flag");
         setContentView(R.layout.activity_about_device);
         try {
-            url = getIntent().getStringExtra("URL");
+            isdesk = getIntent().getBooleanExtra("Desk",false);
         } catch (NullPointerException e) {
         }
 
@@ -73,10 +75,11 @@ public class AboutDeviceActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        if (device instanceof Cup) {
-            toolbar_text.setText(getString(R.string.about_smart_glass));
-            webView.loadUrl(urlCup);
-        } else if (device instanceof Tap) {
+//        if (device instanceof Cup) {
+//            toolbar_text.setText(getString(R.string.about_smart_glass));
+//            webView.loadUrl(urlCup);
+//        } else
+        if (device instanceof Tap) {
             if("tdspen".equals(flag)){
                 toolbar_text.setText(getString(R.string.about_water_tdspen));
                 webView.loadUrl(urlTdsPen);
@@ -86,15 +89,14 @@ public class AboutDeviceActivity extends AppCompatActivity {
             }
 
         } else if (device instanceof WaterPurifier) {
-            toolbar_text.setText(getString(R.string.about_water_purifier));
-            if (url == null) {
-                webView.loadUrl(urlWaterPurifier);
+
+            if (isdesk) {
+                toolbar_text.setText(getString(R.string.about_water_purifier));
+                webView.loadUrl(urlWPDesktop);
             } else {
-                webView.loadUrl(url);
+                toolbar_text.setText(getString(R.string.about_water_purifier_ver));
+                webView.loadUrl(urlWPVertical);
             }
-        } else if (device instanceof AirPurifier_Bluetooth) {
-            toolbar_text.setText(getString(R.string.my_air_purifier_tai));
-            webView.loadUrl(urlAirTai);
         } else if (device instanceof AirPurifier_MXChip) {
             toolbar_text.setText(getString(R.string.my_air_purifier_ver));
             webView.loadUrl(urlAirVer);

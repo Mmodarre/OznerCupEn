@@ -204,7 +204,7 @@
                     <!--正在加载好友-->
                     <RelativeLayout
                         android:id="@+id/rlay_loadingFriend"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:visibility="gone">
