@@ -25,13 +25,9 @@ import com.ozner.yiquan.R;
 public class AddDeviceActivity extends AppCompatActivity {
     //        private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi };
 //    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi,R.drawable.water_replenishment_meter };
-<<<<<<< HEAD
-    private int deviceImages[] = {R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier, R.drawable.air_purifier_vertical, R.drawable.air_purifier_taishi};
 
     //        private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
 //    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi,R.string.water_replen_meter};
-    private int deviceNames[] = {R.string.water_probe, R.string.water_tdspen, R.string.water_purifier, R.string.air_purifier_ver, R.string.air_purifier_taishi};
-=======
 
     //依泉需要的设备
     private int deviceImages[] = {R.drawable.water_probe, R.drawable.water_purifier, R.drawable.air_purifier_vertical, R.drawable.water_replenishment_meter};
@@ -39,7 +35,6 @@ public class AddDeviceActivity extends AppCompatActivity {
     //        private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
 //    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi,R.string.water_replen_meter};
     private int deviceNames[] = {R.string.water_probe, R.string.water_purifier, R.string.air_purifier_ver, R.string.water_replen_meter};
->>>>>>> ozner_uriage
 
     //        private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
 //    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth, R.drawable.bluetooth};
