@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.ozner.device.OznerDeviceManager;
 import com.ozner.yiquan.BaiduPush.OznerBroadcastAction;
 import com.ozner.yiquan.Command.CenterUrlContants;
 import com.ozner.yiquan.Command.Contants;
@@ -37,9 +38,7 @@ import com.ozner.yiquan.Login.LoginActivity;
 import com.ozner.yiquan.MainActivity;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.mycenter.CenterBean.CenterNotification;
-import com.ozner.yiquan.mycenter.CenterBean.CenterVipUtil;
 import com.ozner.yiquan.slideleft.BaseFragment;
-import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -302,25 +301,25 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
 //                                iv_person_photo.setImageResource(R.mipmap.icon_default_headimage);
                                 iv_person_photo.setImageBitmap(ImageHelper.loadResBitmap(getContext(),R.mipmap.icon_default_headimage));
                             }
-                            if (netUserHeadImg.gradename != null && netUserHeadImg.gradename != "") {
-                                String gradename = netUserHeadImg.gradename;
-                                if (gradename.contains("会员")) {
-                                    int index = gradename.indexOf("会员");
-                                    gradename = gradename.substring(0, index);
-                                }
-                                if (MyFragment.this.isAdded() &&
-                                        !MyFragment.this.isRemoving() &&
-                                        !MyFragment.this.isDetached()) {
-                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                                        if (CenterVipUtil.hasValue(gradename)) {
-                                            gradename = CenterVipUtil.getEnValue(gradename);
-                                        }
-                                    }
-                                }
-                                gradename += getString(R.string.act_member);
-                                tv_gradeNmae.setText(gradename);
-                                tv_gradeNmae.setVisibility(View.VISIBLE);
-                            }
+//                            if (netUserHeadImg.gradename != null && netUserHeadImg.gradename != "") {
+//                                String gradename = netUserHeadImg.gradename;
+//                                if (gradename.contains("会员")) {
+//                                    int index = gradename.indexOf("会员");
+//                                    gradename = gradename.substring(0, index);
+//                                }
+//                                if (MyFragment.this.isAdded() &&
+//                                        !MyFragment.this.isRemoving() &&
+//                                        !MyFragment.this.isDetached()) {
+//                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+//                                        if (CenterVipUtil.hasValue(gradename)) {
+//                                            gradename = CenterVipUtil.getEnValue(gradename);
+//                                        }
+//                                    }
+//                                }
+//                                gradename += getString(R.string.act_member);
+//                                tv_gradeNmae.setText(gradename);
+//                                tv_gradeNmae.setVisibility(View.VISIBLE);
+//                            }
                         }
                         break;
                     case VERFIY_MSG:
