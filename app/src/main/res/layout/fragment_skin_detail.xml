@@ -410,6 +410,7 @@
                     android:layout_marginLeft="29dp"
                     android:background="@drawable/btn_bg_blue_choose"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:padding="10dp"
                     android:orientation="horizontal">
 

@@ -260,11 +260,11 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
             }
         });
 
-        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
-        } else {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
-        }
+//        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
+//            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
+//        } else {
+        view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
+//        }
 
         toolbar_text = (TextView) view.findViewById(R.id.cup_toolbar_text);
         toolbar_text.setText(getResources().getString(R.string.water_repl_meter_detail));
@@ -374,9 +374,10 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new WaterReplenishIntroduceFragment()).addToBackStack("wainstru").commitAllowingStateLoss();
                 break;
             case R.id.skin_zixun:
-                getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new CChatFragment()).commitAllowingStateLoss();
-                ((MainActivity) (getActivity())).pagenow = PageState.ZIXUNYEMIAN;
-                ((MainActivity) (getActivity())).footNavFragment.ShowContent(PageState.ZIXUNYEMIAN, "");
+//                getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new CChatFragment()).commitAllowingStateLoss();
+//                ((MainActivity) (getActivity())).pagenow = PageState.ZIXUNYEMIAN;
+//                ((MainActivity) (getActivity())).footNavFragment.ShowContent(PageState.ZIXUNYEMIAN, "");
+                OznerApplication.callSeviceChat(getContext());
                 break;
             case R.id.skin_buy_jinghua:
                 break;
