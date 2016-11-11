@@ -6,7 +6,6 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$APPLICATION_HOME_DIR$/gradle/gradle-2.10/caches/modules-2/files-2.1/uk.co.chrisjenx/calligraphy/2.1.0/46376a5cf700222d21540b16ae9e103d265a9fbb/calligraphy-2.1.0-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/uk.co.chrisjenx/calligraphy/2.1.0/46376a5cf700222d21540b16ae9e103d265a9fbb/calligraphy-2.1.0-sources.jar!/" />
     </SOURCES>
   </library>
