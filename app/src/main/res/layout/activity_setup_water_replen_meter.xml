@@ -142,6 +142,7 @@
         android:layout_gravity="center"
         android:background="@color/white"
         android:gravity="center_vertical"
+        android:visibility="gone"
         android:paddingLeft="20dp">
 
         <TextView
@@ -164,6 +165,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:visibility="gone"
         android:background="@color/colorLine"
         android:paddingLeft="20dp">
 

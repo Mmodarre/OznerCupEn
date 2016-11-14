@@ -79,6 +79,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
             editor = sh.edit();
         } catch (NullPointerException e) {
         }
+        Log.e("mdy",Mac);
         View view = inflater.inflate(R.layout.water_replenish_meter_detail, container, false);
         initView(view);
         init();
@@ -496,6 +497,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         String faceLastValue = sh.getString(Mac + "face", null);
         if (faceLastValue != null) {
             lastValue.setText(faceLastValue + "%");
+        }else {
+            lastValue.setText(getString(R.string.text_null));
         }
 
 
@@ -514,6 +517,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         String handsLastValue = sh.getString(Mac + "hands", null);
         if (null != handsLastValue) {
             lastValue.setText(handsLastValue + "%");
+        }else {
+            lastValue.setText(getString(R.string.text_null));
         }
     }
 
@@ -530,6 +535,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         String eyesLastValue = sh.getString(Mac + "eyes", null);
         if (eyesLastValue != null) {
             lastValue.setText(eyesLastValue + "%");
+        }else {
+            lastValue.setText(getString(R.string.text_null));
         }
     }
 
@@ -546,6 +553,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         String neckLastValue = sh.getString(Mac + "neck", null);
         if (neckLastValue != null) {
             lastValue.setText(neckLastValue + "%");
+        }else {
+            lastValue.setText(getString(R.string.text_null));
         }
     }
 
@@ -691,10 +700,11 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                 List<NameValuePair> pars = new ArrayList<>();
                 pars.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(getContext())));
                 pars.add(new BasicNameValuePair("mac", Mac));
-                String filterUrl = OznerPreference.ServerAddress(getContext()) + "OznerServer/GetBuShuiFenBu";
-//                Log.e("123456", filterUrl);
+                pars.add(new BasicNameValuePair("myaction", PageState.EyesSkinValue));
+                String filterUrl = OznerPreference.ServerAddress(getContext()) + "/OznerServer/GetBuShuiFenBu";
+                Log.e("123456", filterUrl);
                 NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(getContext(), filterUrl, pars);
-                Log.e("123456", "GetBuShuiFenBu" + netJsonObject.value);
+                Log.e("123456", "GetBuShuiFenBu===" + netJsonObject.value);
                 return netJsonObject;
             }
             return null;

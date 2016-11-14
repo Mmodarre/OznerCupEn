@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,9 +18,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
+import com.ozner.yiquan.Alarm.Alarm;
 import com.ozner.yiquan.Alarm.AlarmReceiver;
 //import com.ozner.cup.Alarm.AlarmService;
 //import com.ozner.cup.Alarm.NoticeActivity;
+import com.ozner.yiquan.Alarm.Alarms;
 import com.ozner.yiquan.Command.PageState;
 import com.ozner.yiquan.R;
 import com.ozner.device.OznerDeviceManager;
@@ -44,6 +47,9 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
     long time1, time2, time3;
     SharedPreferences sh;
     SharedPreferences.Editor editor;
+    Alarm alarm1 = new Alarm();
+    Alarm alarm2 = new Alarm();
+    Alarm alarm3 = new Alarm();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +98,25 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
         findViewById(R.id.rl_detection_time2).setOnClickListener(this);
         findViewById(R.id.rl_detection_time3).setOnClickListener(this);
         initData();
+
+        //        alarm1.id = 0;
+        alarm1.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
+        alarm1.vibrate = true;
+        alarm1.label = "补水时间到了，亲，该补水了！！！";
+        alarm1.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
+                RingtoneManager.TYPE_RINGTONE);
+//        alarm2.id = 1;
+        alarm2.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
+        alarm2.vibrate = true;
+        alarm2.label = "补水时间到了，亲，该补水了！！！";
+        alarm2.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
+                RingtoneManager.TYPE_RINGTONE);
+//        alarm3.id = 2;
+        alarm3.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
+        alarm3.vibrate = true;
+        alarm3.label = "补水时间到了，亲，该补水了！！！";
+        alarm3.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
+                RingtoneManager.TYPE_RINGTONE);
     }
 
     private void initData() {
@@ -168,6 +193,8 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
                         @Override
                         public void onTimeChanged(TimePicker view, int hourOfDay,
                                                   int minute) {
+                            alarm1.hour = hourOfDay;
+                            alarm1.minutes = minute;
                         }
                     });
 
@@ -201,6 +228,8 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
                         @Override
                         public void onTimeChanged(TimePicker view, int hourOfDay,
                                                   int minute) {
+                            alarm2.hour = hourOfDay;
+                            alarm2.minutes = minute;
                         }
                     });
 
@@ -235,6 +264,8 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
                         @Override
                         public void onTimeChanged(TimePicker view, int hourOfDay,
                                                   int minute) {
+                            alarm3.hour = hourOfDay;
+                            alarm3.minutes = minute;
                         }
                     });
 
@@ -263,85 +294,46 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
     private void submit() {
         if (checkBox1.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time1, firstTime.getTime());
-            editor.putLong(PageState.Time1,firstTime.getTime());
-//            setAlerm(firstTime);
+            editor.putLong(PageState.Time1, firstTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time1, 0);
-            editor.putLong(PageState.Time1,0);
+            editor.putLong(PageState.Time1, 0);
         }
         if (checkBox2.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time2, secondTime.getTime());
-            editor.putLong(PageState.Time2,secondTime.getTime());
-//            setAlerm(secondTime);
+            editor.putLong(PageState.Time2, secondTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time2, 0);
-            editor.putLong(PageState.Time2,0);
+            editor.putLong(PageState.Time2, 0);
         }
         if (checkBox3.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time3, thirdTime.getTime());
-            editor.putLong(PageState.Time3,thirdTime.getTime());
-//            setAlerm(thirdTime);
+            editor.putLong(PageState.Time3, thirdTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time3, 0);
-            editor.putLong(PageState.Time3,0);
+            editor.putLong(PageState.Time3, 0);
         }
         editor.commit();
-//       final Intent intent = new Intent(this,AlarmService.class);
-//        intent.setAction("com.ozner.cup.alarm.ALARM_ALERT");
-//        if (checkBox1.isSelected() || checkBox2.isSelected() || checkBox3.isSelected()) {
-//            if (isServiceWork(this,"com.ozner.cup.Alarm.AlarmService")) {
-//                startService(intent);
-//            }
-////            Log.e("123456","打开服务");
-//        } else {
-//            if (isServiceWork(this,"com.ozner.cup.Alarm.AlarmService")) {
-//                stopService(intent);
-//            }
-//        }
-        if(checkBox1.isSelected()||checkBox2.isSelected()||checkBox3.isSelected()){
-            Intent intent = new Intent(this,AlarmReceiver.class);
-            intent.putExtra("MAC",Mac);
-            this.sendBroadcast(intent);
+        alarm1.enabled = checkBox1.isSelected();
+        alarm2.enabled = checkBox2.isSelected();
+        alarm3.enabled = checkBox3.isSelected();
+        int a = 0;
+        try {
+            a = Alarms.getAlarmsCursor(getContentResolver()).getCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (a == 0) {
+            Alarms.addAlarm(this, alarm1);
+            Alarms.addAlarm(this, alarm2);
+            Alarms.addAlarm(this, alarm3);
+        } else if (a >= 3) {
+            Alarms.setAlarm(this, alarm1);
+            Alarms.setAlarm(this, alarm2);
+            Alarms.setAlarm(this, alarm3);
         }
         waterReplenishmentMeter.updateSettings();
         SetupReplenTimeActivity.this.finish();
-    }
-
-    private void setAlerm(Date time) {
-//        Intent intent = new Intent(getBaseContext(),NoticeActivity.class);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(),0,intent,0);
-        Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(time.getTime());
-        c.set(Calendar.HOUR, time.getHours());
-        c.set(Calendar.MINUTE, time.getMinutes());
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,c.getTimeInMillis(),24*3600*1000,pendingIntent);
-        Log.e("123456",time.getHours()+":"+time.getMinutes());
-    }
-
-    /**
-     * 判断某个服务是否正在运行的方法
-     *
-     * @param mContext
-     * @param serviceName 是包名+服务的类名（例如：net.loonggg.testbackstage.TestService）
-     * @return true代表正在运行，false代表服务没有正在运行
-     */
-    public boolean isServiceWork(Context mContext, String serviceName) {
-        boolean isWork = false;
-        ActivityManager myAM = (ActivityManager) mContext
-                .getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningServiceInfo> myList = myAM.getRunningServices(40);
-        if (myList.size() <= 0) {
-            return false;
-        }
-        for (int i = 0; i < myList.size(); i++) {
-            String mName = myList.get(i).service.getClassName().toString();
-            if (mName.equals(serviceName)) {
-                isWork = true;
-                break;
-            }
-        }
-        return isWork;
     }
 
 }
