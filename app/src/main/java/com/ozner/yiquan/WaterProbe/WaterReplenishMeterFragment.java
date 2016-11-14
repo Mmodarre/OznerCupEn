@@ -700,11 +700,10 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                 List<NameValuePair> pars = new ArrayList<>();
                 pars.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(getContext())));
                 pars.add(new BasicNameValuePair("mac", Mac));
-                pars.add(new BasicNameValuePair("myaction", PageState.EyesSkinValue));
-                String filterUrl = OznerPreference.ServerAddress(getContext()) + "/OznerServer/GetBuShuiFenBu";
-                Log.e("123456", filterUrl);
+                String filterUrl = OznerPreference.ServerAddress(getContext()) + "OznerServer/GetBuShuiFenBu";
+//                Log.e("123456", filterUrl);
                 NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(getContext(), filterUrl, pars);
-                Log.e("123456", "GetBuShuiFenBu===" + netJsonObject.value);
+//                Log.e("123456", "GetBuShuiFenBu===" + netJsonObject.value);
                 return netJsonObject;
             }
             return null;
