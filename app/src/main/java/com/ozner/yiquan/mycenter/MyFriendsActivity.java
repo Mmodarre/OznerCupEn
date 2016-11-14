@@ -476,7 +476,7 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
                         mhandler.sendEmptyMessage(FRIEND_LOAD_FAIL);
                     }
                 } catch (Exception ex) {
-                    
+
                 }
             }
         }).start();
