@@ -28,20 +28,20 @@ public class Alarms {
     // is a public action used in the manifest for receiving Alarm broadcasts
     // from the alarm manager.
     //
-    public static final String ALARM_ALERT_ACTION = "com.ozner.cup.Alarm.ALARM_ALERT";
+    public static final String ALARM_ALERT_ACTION = "com.ozner.yiquan.Alarm.ALARM_ALERT";
 
     // A public action sent by AlarmKlaxon when the alarm has stopped sounding
     // for any reason (e.g. because it has been dismissed from AlarmAlertFullScreen,
     // or killed due to an incoming phone call, etc).
-    public static final String ALARM_DONE_ACTION = "com.ozner.cup.Alarm.ALARM_DONE";
+    public static final String ALARM_DONE_ACTION = "com.ozner.yiquan.Alarm.ALARM_DONE";
 
     // AlarmAlertFullScreen listens for this broadcast intent, so that other applications
     // can snooze the alarm (after ALARM_ALERT_ACTION and before ALARM_DONE_ACTION).
-    public static final String ALARM_SNOOZE_ACTION = "com.ozner.cup.Alarm.ALARM_SNOOZE";
+    public static final String ALARM_SNOOZE_ACTION = "com.ozner.yiquan.Alarm.ALARM_SNOOZE";
 
     // AlarmAlertFullScreen listens for this broadcast intent, so that other applications
     // can dismiss the alarm (after ALARM_ALERT_ACTION and before ALARM_DONE_ACTION).
-    public static final String ALARM_DISMISS_ACTION = "com.ozner.cup.Alarm.ALARM_DISMISS";
+    public static final String ALARM_DISMISS_ACTION = "com.ozner.yiquan.Alarm.ALARM_DISMISS";
 
     // This is a private action used by the AlarmKlaxon to update the UI to
     // show the alarm has been killed.
