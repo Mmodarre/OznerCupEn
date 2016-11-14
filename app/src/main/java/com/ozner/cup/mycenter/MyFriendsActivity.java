@@ -463,17 +463,21 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(activity)));
-                NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, loadFriendUrl, params);
-                if (netJsonObject.state >= 0) {
-                    UserDataPreference.SetUserData(activity, loadFriendUrl, netJsonObject.value);
-                    Message message = new Message();
-                    message.what = FRIEND_LOADED;
-                    message.obj = (Serializable) netJsonObject.value;
-                    mhandler.sendMessage(message);
-                } else {
-                    mhandler.sendEmptyMessage(FRIEND_LOAD_FAIL);
+                try {
+                    List<NameValuePair> params = new ArrayList<NameValuePair>();
+                    params.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(activity)));
+                    NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, loadFriendUrl, params);
+                    if (netJsonObject.state >= 0) {
+                        UserDataPreference.SetUserData(activity, loadFriendUrl, netJsonObject.value);
+                        Message message = new Message();
+                        message.what = FRIEND_LOADED;
+                        message.obj = (Serializable) netJsonObject.value;
+                        mhandler.sendMessage(message);
+                    } else {
+                        mhandler.sendEmptyMessage(FRIEND_LOAD_FAIL);
+                    }
+                } catch (Exception ex) {
+
                 }
             }
         }).start();
