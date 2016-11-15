@@ -152,13 +152,9 @@ public class AlarmAlertFullScreen extends Activity {
             dismiss(false);
             return;
         }
-        final String snooze =
-                PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(SettingsActivity.KEY_ALARM_SNOOZE, DEFAULT_SNOOZE);
-        int snoozeMinutes = Integer.parseInt(snooze);
-
+        //暂停十分钟再响
         final long snoozeTime = System.currentTimeMillis()
-                + (1000 * 60 * snoozeMinutes);
+                + (1000 * 60 * 10);
         Alarms.saveSnoozeAlert(AlarmAlertFullScreen.this, mAlarm.id,
                 snoozeTime);
 
@@ -180,29 +176,21 @@ public class AlarmAlertFullScreen extends Activity {
         Notification n = new Notification.Builder(this)
                 .setTicker(label)
                 .setAutoCancel(true)
-                .setContentText(label)
+                .setContentText(getString(R.string.alarm_notify_snooze_text,Alarms.formatTime(this, c)))
                 .setSmallIcon(R.drawable.stat_notify_alarm)
                 .setContentIntent(broadcast)
                 .setContentTitle("")
                 .setDefaults(Notification.DEFAULT_ALL).build();
-//        Notification n = new Notification(R.drawable.stat_notify_alarm,
-//                label, 0);
-//        n.setLatestEventInfo(this, label,
-//                getString(R.string.alarm_notify_snooze_text,
-//                    Alarms.formatTime(this, c)), broadcast);
-//        n.flags |= Notification.FLAG_AUTO_CANCEL
-//                | Notification.FLAG_ONGOING_EVENT;
         nm.notify(mAlarm.id, n);
 
         String displayTime = getString(R.string.alarm_alert_snooze_set,
-                snoozeMinutes);
-        // Intentionally log the snooze time for debugging.
-        Log.v("mdy", " AlarmAlertFullScreen"+displayTime);
+                10);
+        Log.e("mdy", " AlarmAlertFullScreen"+displayTime);
 
         // Display the snooze minutes in a toast.
         Toast.makeText(AlarmAlertFullScreen.this, displayTime,
                 Toast.LENGTH_LONG).show();
-        stopService(new Intent(Alarms.ALARM_ALERT_ACTION));
+        stopService(new Intent(this,AlarmKlaxon.class));
         finish();
     }
 
@@ -218,7 +206,7 @@ public class AlarmAlertFullScreen extends Activity {
             // Cancel the notification and stop playing the alarm
             NotificationManager nm = getNotificationManager();
             nm.cancel(mAlarm.id);
-            stopService(new Intent(Alarms.ALARM_ALERT_ACTION));
+            stopService(new Intent(this,AlarmKlaxon.class));
         }
         finish();
     }
@@ -231,7 +219,7 @@ public class AlarmAlertFullScreen extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
-        Log.v("mdy", "AlarmAlert.OnNewIntent()");
+        Log.e("mdy", "AlarmAlert.OnNewIntent()");
 
         mAlarm = intent.getParcelableExtra(Alarms.ALARM_INTENT_EXTRA);
 
@@ -251,7 +239,7 @@ public class AlarmAlertFullScreen extends Activity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.v("mdy", "AlarmAlert.onDestroy()");
+        Log.e("mdy", "AlarmAlert.onDestroy()");
         // No longer care about the alarm being killed.
         unregisterReceiver(mReceiver);
     }

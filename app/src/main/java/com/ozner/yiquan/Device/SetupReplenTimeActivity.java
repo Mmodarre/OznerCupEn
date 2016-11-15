@@ -46,10 +46,10 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
     private ImageView checkBox1, checkBox2, checkBox3;
     long time1, time2, time3;
     SharedPreferences sh;
-    SharedPreferences.Editor editor;
     Alarm alarm1 = new Alarm();
     Alarm alarm2 = new Alarm();
     Alarm alarm3 = new Alarm();
+    public static final String PREFERENCES = "AlarmClock";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +60,7 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
         } catch (Exception e) {
         }
         setContentView(R.layout.activity_setup_replen_time);
-        sh = this.getSharedPreferences("SkinValues", Context.MODE_PRIVATE);
-        editor = sh.edit();
+        sh = this.getSharedPreferences(SetupReplenTimeActivity.PREFERENCES, Context.MODE_PRIVATE);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,25 +97,6 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
         findViewById(R.id.rl_detection_time2).setOnClickListener(this);
         findViewById(R.id.rl_detection_time3).setOnClickListener(this);
         initData();
-
-        //        alarm1.id = 0;
-        alarm1.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
-        alarm1.vibrate = true;
-        alarm1.label = "补水时间到了，亲，该补水了！！！";
-        alarm1.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
-                RingtoneManager.TYPE_RINGTONE);
-//        alarm2.id = 1;
-        alarm2.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
-        alarm2.vibrate = true;
-        alarm2.label = "补水时间到了，亲，该补水了！！！";
-        alarm2.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
-                RingtoneManager.TYPE_RINGTONE);
-//        alarm3.id = 2;
-        alarm3.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
-        alarm3.vibrate = true;
-        alarm3.label = "补水时间到了，亲，该补水了！！！";
-        alarm3.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
-                RingtoneManager.TYPE_RINGTONE);
     }
 
     private void initData() {
@@ -294,36 +274,51 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
     private void submit() {
         if (checkBox1.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time1, firstTime.getTime());
-            editor.putLong(PageState.Time1, firstTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time1, 0);
-            editor.putLong(PageState.Time1, 0);
         }
         if (checkBox2.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time2, secondTime.getTime());
-            editor.putLong(PageState.Time2, secondTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time2, 0);
-            editor.putLong(PageState.Time2, 0);
         }
         if (checkBox3.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time3, thirdTime.getTime());
-            editor.putLong(PageState.Time3, thirdTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time3, 0);
-            editor.putLong(PageState.Time3, 0);
         }
-        editor.commit();
+
+        alarm1.id = 3;
         alarm1.enabled = checkBox1.isSelected();
+        alarm1.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
+        alarm1.vibrate = true;
+        alarm1.label = "补水时间到了，亲！！！";
+        alarm1.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
+                RingtoneManager.TYPE_ALARM);
+
+        alarm2.id = 4;
         alarm2.enabled = checkBox2.isSelected();
+        alarm2.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
+        alarm2.vibrate = true;
+        alarm2.label = "补水时间到了，亲！！！";
+        alarm2.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
+                RingtoneManager.TYPE_ALARM);
+
+        alarm3.id = 5;
         alarm3.enabled = checkBox3.isSelected();
+        alarm3.daysOfWeek = new Alarm.DaysOfWeek(0x7f);
+        alarm3.vibrate = true;
+        alarm3.label = "补水时间到了，亲！！！";
+        alarm3.alert = RingtoneManager.getActualDefaultRingtoneUri(this,
+                RingtoneManager.TYPE_ALARM);
+
         int a = 0;
         try {
             a = Alarms.getAlarmsCursor(getContentResolver()).getCount();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (a == 0) {
+        if (a < 3) {
             Alarms.addAlarm(this, alarm1);
             Alarms.addAlarm(this, alarm2);
             Alarms.addAlarm(this, alarm3);

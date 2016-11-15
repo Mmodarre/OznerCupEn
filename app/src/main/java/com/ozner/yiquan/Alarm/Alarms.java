@@ -16,6 +16,8 @@ import android.provider.Settings;
 import android.text.format.DateFormat;
 import android.util.Log;
 
+import com.ozner.yiquan.Device.SetupReplenTimeActivity;
+
 import java.util.Calendar;
 
 /**
@@ -29,6 +31,7 @@ public class Alarms {
     // from the alarm manager.
     //
     public static final String ALARM_ALERT_ACTION = "com.ozner.yiquan.Alarm.ALARM_ALERT";
+    public static final String ALARM_ALERT_ACTION_BCR = "com.ozner.yiquan.Alarm.ALARM_ALERT";
 
     // A public action sent by AlarmKlaxon when the alarm has stopped sounding
     // for any reason (e.g. because it has been dismissed from AlarmAlertFullScreen,
@@ -59,7 +62,7 @@ public class Alarms {
     public static final String CANCEL_SNOOZE = "cancel_snooze";
 
     // This string is used when passing an Alarm object through an intent.
-    public static final String ALARM_INTENT_EXTRA = "intent.extra.alarm";
+    public static final String ALARM_INTENT_EXTRA = "intent.extra.alarm.noti";
 
     // This extra is the raw Alarm object data. It is used in the
     // AlarmManagerService to avoid a ClassNotFoundException when filling in
@@ -160,7 +163,7 @@ public class Alarms {
         // If this alarm fires before the next snooze, clear the snooze to
         // enable this alarm.
         SharedPreferences prefs =
-                context.getSharedPreferences("SkinValues", 0);
+                context.getSharedPreferences(SetupReplenTimeActivity.PREFERENCES, 0);
         long snoozeTime = prefs.getLong(PREF_SNOOZE_TIME, 0);
         if (alarmTime < snoozeTime) {
             clearSnoozePreference(context, prefs);
@@ -348,7 +351,7 @@ public class Alarms {
             Log.v("mdy", "** setAlert id " + alarm.id + " atTime " + atTimeInMillis);
         }
 
-        Intent intent = new Intent(ALARM_ALERT_ACTION);
+        Intent intent = new Intent(ALARM_ALERT_ACTION_BCR);
 
         // XXX: This is a slight hack to avoid an exception in the remote
         // AlarmManagerService process. The AlarmManager adds extra data to
@@ -386,7 +389,7 @@ public class Alarms {
         AlarmManager am = (AlarmManager)
                 context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent sender = PendingIntent.getBroadcast(
-                context, 0, new Intent(ALARM_ALERT_ACTION),
+                context, 0, new Intent(ALARM_ALERT_ACTION_BCR),
                 PendingIntent.FLAG_CANCEL_CURRENT);
         am.cancel(sender);
         setStatusBarIcon(context, false);
@@ -396,7 +399,7 @@ public class Alarms {
     static void saveSnoozeAlert(final Context context, final int id,
                                 final long time) {
         SharedPreferences prefs = context.getSharedPreferences(
-        		"SkinValues", 0);
+        		SetupReplenTimeActivity.PREFERENCES, 0);
         if (id == -1) {
             clearSnoozePreference(context, prefs);
         } else {
@@ -414,7 +417,7 @@ public class Alarms {
      */
     static void disableSnoozeAlert(final Context context, final int id) {
         SharedPreferences prefs = context.getSharedPreferences(
-        		"SkinValues", 0);
+        		SetupReplenTimeActivity.PREFERENCES, 0);
         int snoozeId = prefs.getInt(PREF_SNOOZE_ID, -1);
         if (snoozeId == -1) {
             // No snooze set, do nothing.
@@ -449,7 +452,7 @@ public class Alarms {
      */
     private static boolean enableSnoozeAlert(final Context context) {
         SharedPreferences prefs = context.getSharedPreferences(
-        		"SkinValues", 0);
+        		SetupReplenTimeActivity.PREFERENCES, 0);
 
         int id = prefs.getInt(PREF_SNOOZE_ID, -1);
         if (id == -1) {

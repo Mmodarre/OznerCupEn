@@ -66,7 +66,7 @@ public class AlarmKlaxon extends Service {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case KILLER:
-                    Log.v("mdy", "*********** Alarm killer triggered ***********");
+                    Log.e("mdy", "*********** Alarm killer triggered ***********");
                     sendKillBroadcast((Alarm) msg.obj);
                     stopSelf();
                     break;
@@ -120,7 +120,6 @@ public class AlarmKlaxon extends Service {
 
     @Override
     public void onCreate() {
-        Log.e("mdy","AlarmKlaxon");
         mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         // Listen for incoming calls to kill the alarm.
@@ -148,6 +147,7 @@ public class AlarmKlaxon extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // No intent, tell the system not to restart us.
+        Log.e("mdy","onStartCommand");
         if (intent == null) {
             stopSelf();
             return START_NOT_STICKY;
@@ -157,7 +157,7 @@ public class AlarmKlaxon extends Service {
                 Alarms.ALARM_INTENT_EXTRA);
 
         if (alarm == null) {
-            Log.v("mdy", "AlarmKlaxon failed to parse the alarm from the intent");
+            Log.e("mdy", "AlarmKlaxon failed to parse the alarm from the intent");
             stopSelf();
             return START_NOT_STICKY;
         }
@@ -165,13 +165,11 @@ public class AlarmKlaxon extends Service {
         if (mCurrentAlarm != null) {
             sendKillBroadcast(mCurrentAlarm);
         }
-
         play(alarm);
         mCurrentAlarm = alarm;
         // Record the initial call state here so that the new alarm has the
         // newest state.
         mInitialCallState = mTelephonyManager.getCallState();
-
         return START_STICKY;
     }
 
@@ -198,7 +196,7 @@ public class AlarmKlaxon extends Service {
                 AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
         stop();
 
-        Log.v("mdy", "AlarmKlaxon.play() " + alarm.id + " alert " + alarm.alert);
+        Log.e("mdy", "AlarmKlaxon.play() " + alarm.id + " alert " + alarm.alert);
 
         if (!alarm.silent) {
             Uri alert = alarm.alert;
@@ -207,7 +205,7 @@ public class AlarmKlaxon extends Service {
             if (alert == null) {
                 alert = RingtoneManager.getDefaultUri(
                         RingtoneManager.TYPE_ALARM);
-                Log.v("mdy", "Using default alarm: " + alert.toString());
+                Log.e("mdy", "Using default alarm: " + alert.toString());
             }
 
             // TODO: Reuse mMediaPlayer instead of creating a new one and/or use
@@ -215,7 +213,7 @@ public class AlarmKlaxon extends Service {
             mMediaPlayer = new MediaPlayer();
             mMediaPlayer.setOnErrorListener(new OnErrorListener() {
                 public boolean onError(MediaPlayer mp, int what, int extra) {
-                    Log.v("mdy", "Error occurred while playing audio.");
+                    Log.e("mdy", "Error occurred while playing audio.");
                     mp.stop();
                     mp.release();
                     mMediaPlayer = null;
@@ -228,7 +226,7 @@ public class AlarmKlaxon extends Service {
                 // resource at a low volume to not disrupt the call.
                 if (mTelephonyManager.getCallState()
                         != TelephonyManager.CALL_STATE_IDLE) {
-                    Log.v("mdy", "Using the in-call alarm");
+                    Log.e("mdy", "Using the in-call alarm");
                     mMediaPlayer.setVolume(IN_CALL_VOLUME, IN_CALL_VOLUME);
                     setDataSourceFromResource(getResources(), mMediaPlayer,
                             R.raw.in_call_alarm);
@@ -237,7 +235,7 @@ public class AlarmKlaxon extends Service {
                 }
                 startAlarm(mMediaPlayer);
             } catch (Exception ex) {
-                Log.v("mdy", "Using the fallback ringtone");
+                Log.e("mdy", "Using the fallback ringtone");
                 // The alert may be on the sd card which could be busy right
                 // now. Use the fallback ringtone.
                 try {
@@ -248,17 +246,17 @@ public class AlarmKlaxon extends Service {
                     startAlarm(mMediaPlayer);
                 } catch (Exception ex2) {
                     // At this point we just don't play anything.
-                    Log.v("mdy", "Failed to play fallback ringtone"+ex2);
+                    Log.e("mdy", "Failed to play fallback ringtone"+ex2);
                 }
             }
         }
-
+        Log.e("mdy", "vibrate"+alarm.vibrate);
         /* Start the vibrator after everything is ok with the media player */
-        if (alarm.vibrate) {
+//        if (alarm.vibrate) {
             mVibrator.vibrate(sVibratePattern, 0);
-        } else {
-            mVibrator.cancel();
-        }
+//        } else {
+//            mVibrator.cancel();
+//        }
 
         enableKiller(alarm);
         mPlaying = true;
@@ -295,7 +293,7 @@ public class AlarmKlaxon extends Service {
      * repeating
      */
     public void stop() {
-        Log.v("mdy", "AlarmKlaxon.stop()");
+        Log.e("mdy", "AlarmKlaxon.stop()");
         if (mPlaying) {
             mPlaying = false;
 

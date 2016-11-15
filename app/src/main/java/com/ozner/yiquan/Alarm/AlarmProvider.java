@@ -54,15 +54,15 @@ public class AlarmProvider extends ContentProvider {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE alarms (" +
-                       "_id INTEGER PRIMARY KEY," +
-                       "hour INTEGER, " +
-                       "minutes INTEGER, " +
-                       "daysofweek INTEGER, " +
-                       "alarmtime INTEGER, " +
-                       "enabled INTEGER, " +
-                       "vibrate INTEGER, " +
-                       "message TEXT, " +
-                       "alert TEXT);");
+                    "_id INTEGER PRIMARY KEY," +
+                    "hour INTEGER, " +
+                    "minutes INTEGER, " +
+                    "daysofweek INTEGER, " +
+                    "alarmtime INTEGER, " +
+                    "enabled INTEGER, " +
+                    "vibrate INTEGER, " +
+                    "message TEXT, " +
+                    "alert TEXT);");
 
             // insert default alarms
             String insertMe = "INSERT INTO alarms " +
@@ -76,8 +76,8 @@ public class AlarmProvider extends ContentProvider {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int currentVersion) {
             if (true) Log.v("mdy",
                     "Upgrading alarms database from version " +
-                    oldVersion + " to " + currentVersion +
-                    ", which will destroy all old data");
+                            oldVersion + " to " + currentVersion +
+                            ", which will destroy all old data");
             db.execSQL("DROP TABLE IF EXISTS alarms");
             onCreate(db);
         }
@@ -88,7 +88,7 @@ public class AlarmProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        Log.e("mdy","AlarmProvider");
+        Log.e("mdy", "AlarmProvider");
         mOpenHelper = new DatabaseHelper(getContext());
         return true;
     }
@@ -115,12 +115,16 @@ public class AlarmProvider extends ContentProvider {
 
         SQLiteDatabase db = mOpenHelper.getReadableDatabase();
         Cursor ret = qb.query(db, projectionIn, selection, selectionArgs,
-                              null, null, sort);
+                null, null, sort);
 
         if (ret == null) {
             if (true) Log.v("mdy", "Alarms.query: failed");
         } else {
-            ret.setNotificationUri(getContext().getContentResolver(), url);
+            try {
+                ret.setNotificationUri(getContext().getContentResolver(), url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return ret;

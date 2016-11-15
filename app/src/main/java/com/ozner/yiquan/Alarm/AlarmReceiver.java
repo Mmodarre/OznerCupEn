@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.util.Log;
 
+import com.ozner.yiquan.Device.SetupReplenTimeActivity;
 import com.ozner.yiquan.MainActivity;
 import com.ozner.yiquan.R;
 
@@ -44,21 +45,22 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e("mdy", "AlarmReceiver");
         if (Alarms.ALARM_KILLED.equals(intent.getAction())) {
             // The alarm has been killed, update the notification
+            Log.e("mdy", "Alarms.ALARM_KILLED_AlarmReceiver");
             updateNotification(context, (Alarm)
                             intent.getParcelableExtra(Alarms.ALARM_INTENT_EXTRA),
                     intent.getIntExtra(Alarms.ALARM_KILLED_TIMEOUT, -1));
             return;
         } else if (Alarms.CANCEL_SNOOZE.equals(intent.getAction())) {
-            Alarms.saveSnoozeAlert(context, -1, -1);
+            Log.e("mdy", "Alarms.CANCEL_SNOOZE_AlarmReceiver");
+            Alarms.saveSnoozeAlert(context, intent.getIntExtra(Alarms.ALARM_ID,-1), -1);
             return;
         } else if (!Alarms.ALARM_ALERT_ACTION.equals(intent.getAction())) {
             // Unknown intent, bail.
             return;
         }
-
+        Log.e("mdy", "AlarmReceiver");
         Alarm alarm = null;
         // Grab the alarm from the intent. Since the remote AlarmManagerService
         // fills in the Intent to add some extra data, it must unparcel the
@@ -78,7 +80,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             Alarms.setNextAlert(context);
             return;
         }
-
+        Log.e("mdy", "AlarmReceiver2");
         // Disable the snooze alert if this alarm is the snooze.
         Alarms.disableSnoozeAlert(context, alarm.id);
         // Disable this alarm if it does not repeat.
@@ -103,7 +105,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         // Maintain a cpu wake lock until the AlarmAlert and AlarmKlaxon can
         // pick it up.
         AlarmAlertWakeLock.acquireCpuWakeLock(context);
-
+        Log.e("mdy", "AlarmReceiver3");
         /* Close dialogs and window shade */
         Intent closeDialogs = new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         context.sendBroadcast(closeDialogs);
@@ -116,12 +118,24 @@ public class AlarmReceiver extends BroadcastReceiver {
             // Use the full screen activity for security.
             c = AlarmAlertFullScreen.class;
         }
-
+        Log.e("mdy", "startService");
         // Play the alarm alert and vibrate the device.
-        Intent playAlarm = new Intent(Alarms.ALARM_ALERT_ACTION);
+        Intent playAlarm = new Intent(context, AlarmKlaxon.class);
+//        playAlarm.setAction(Alarms.ALARM_ALERT_ACTION);
         playAlarm.putExtra(Alarms.ALARM_INTENT_EXTRA, alarm);
-        context.startService(playAlarm);
-
+        if (context == null) {
+            try {
+                context = SetupReplenTimeActivity.class.newInstance().getBaseContext();
+                context.startService(playAlarm);
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        } else {
+            context.startService(playAlarm);
+        }
+        Log.e("mdy", "startService2");
         // Trigger a notification that, when clicked, will show the alarm alert
         // dialog. No need to check for fullscreen since this will always be
         // launched from a user action.
@@ -129,22 +143,16 @@ public class AlarmReceiver extends BroadcastReceiver {
         notify.putExtra(Alarms.ALARM_INTENT_EXTRA, alarm);
         PendingIntent pendingNotify = PendingIntent.getActivity(context,
                 alarm.id, notify, 0);
-
+        Log.e("mdy", "Strart_____AlarmAlert");
         // Use the alarm's label or the default label as the ticker text and
         // main text of the notification.
         String label = alarm.getLabelOrDefault(context);
         Notification notification = new Notification.Builder(context)
-                .setAutoCancel(true).setTicker("补水时间到了，亲").setSmallIcon(R.drawable.stat_notify_alarm)
-                .setContentText(label).setWhen(alarm.time).setDefaults(Notification.DEFAULT_ALL).setContentIntent(pendingNotify).build();
-
-//        Notification n = new Notification(R.drawable.stat_notify_alarm,
-//                label, alarm.time);
-//        n.setLatestEventInfo(context, label,
-//                context.getString(R.string.alarm_notify_text),
-//                pendingNotify);
-//        n.flags |= Notification.FLAG_SHOW_LIGHTS
-//                | Notification.FLAG_ONGOING_EVENT;
-//        n.defaults |= Notification.DEFAULT_LIGHTS;
+                .setAutoCancel(true).setTicker("补水时间到了，亲")
+                .setSmallIcon(R.drawable.stat_notify_alarm)
+                .setContentText(label).setWhen(alarm.time)
+                .setDefaults(Notification.DEFAULT_LIGHTS)
+                .setContentIntent(pendingNotify).build();
 
         // NEW: Embed the full-screen UI here. The notification manager will
         // take care of displaying it if it's OK to do so.
@@ -177,7 +185,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
 
         // Launch SetAlarm when clicked.
-        Intent viewAlarm = new Intent(context, MainActivity.class);
+        Intent viewAlarm = new Intent(context, SetupReplenTimeActivity.class);
         viewAlarm.putExtra(Alarms.ALARM_ID, alarm.id);
         PendingIntent intent =
                 PendingIntent.getActivity(context, alarm.id, viewAlarm, 0);
