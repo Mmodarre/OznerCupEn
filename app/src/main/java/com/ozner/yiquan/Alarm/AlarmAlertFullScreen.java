@@ -54,7 +54,6 @@ public class AlarmAlertFullScreen extends Activity {
     protected static final String SCREEN_OFF = "screen_off";
 
     protected Alarm mAlarm;
-    private int mVolumeBehavior;
 
     // Receives the ALARM_KILLED action from the AlarmKlaxon,
     // and also ALARM_SNOOZE_ACTION / ALARM_DISMISS_ACTION from other applications
@@ -78,18 +77,10 @@ public class AlarmAlertFullScreen extends Activity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        Log.e("mdy","AlarmAlertFullScreen");
+        Log.e("mdy", "AlarmAlertFullScreen");
         mAlarm = getIntent().getParcelableExtra(Alarms.ALARM_INTENT_EXTRA);
         //sign changed by reason
         mAlarm = Alarms.getAlarm(getContentResolver(), mAlarm.id);
-
-        // Get the volume/camera button behavior setting
-        final String vol =
-                PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(SettingsActivity.KEY_VOLUME_BEHAVIOR,
-                        DEFAULT_VOLUME_BEHAVIOR);
-        mVolumeBehavior = Integer.parseInt(vol);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         final Window win = getWindow();
@@ -176,7 +167,7 @@ public class AlarmAlertFullScreen extends Activity {
         Notification n = new Notification.Builder(this)
                 .setTicker(label)
                 .setAutoCancel(true)
-                .setContentText(getString(R.string.alarm_notify_snooze_text,Alarms.formatTime(this, c)))
+                .setContentText(getString(R.string.alarm_notify_snooze_text, Alarms.formatTime(this, c)))
                 .setSmallIcon(R.drawable.stat_notify_alarm)
                 .setContentIntent(broadcast)
                 .setContentTitle("")
@@ -185,12 +176,12 @@ public class AlarmAlertFullScreen extends Activity {
 
         String displayTime = getString(R.string.alarm_alert_snooze_set,
                 10);
-        Log.e("mdy", " AlarmAlertFullScreen"+displayTime);
+        Log.e("mdy", " AlarmAlertFullScreen" + displayTime);
 
         // Display the snooze minutes in a toast.
         Toast.makeText(AlarmAlertFullScreen.this, displayTime,
                 Toast.LENGTH_LONG).show();
-        stopService(new Intent(this,AlarmKlaxon.class));
+        stopService(new Intent(this, AlarmKlaxon.class));
         finish();
     }
 
@@ -206,7 +197,7 @@ public class AlarmAlertFullScreen extends Activity {
             // Cancel the notification and stop playing the alarm
             NotificationManager nm = getNotificationManager();
             nm.cancel(mAlarm.id);
-            stopService(new Intent(this,AlarmKlaxon.class));
+            stopService(new Intent(this, AlarmKlaxon.class));
         }
         finish();
     }
@@ -255,18 +246,7 @@ public class AlarmAlertFullScreen extends Activity {
             case KeyEvent.KEYCODE_CAMERA:
             case KeyEvent.KEYCODE_FOCUS:
                 if (up) {
-                    switch (mVolumeBehavior) {
-                        case 1:
-                            snooze();
-                            break;
-
-                        case 2:
-                            dismiss(false);
-                            break;
-
-                        default:
-                            break;
-                    }
+                    dismiss(false);
                 }
                 return true;
             default:
