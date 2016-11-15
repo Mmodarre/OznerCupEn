@@ -187,6 +187,8 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
         tv_men = (TextView) findViewById(R.id.tv_men);
         tv_women.setOnClickListener(this);
         tv_men.setOnClickListener(this);
+//        tv_men.setSelected(false);
+        tv_men.setTextColor(getResources().getColor(R.color.colorTds));
         iv_water_replen_meter = (ImageView) findViewById(R.id.iv_smart_water_replenish_meter);
         match_replen_tv_downside = (TextView) findViewById(R.id.match_replen_tv_downside);
         match_replen_tv_bluetooth = (TextView) findViewById(R.id.match_replen_tv_bluetooth);

@@ -79,7 +79,6 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
             editor = sh.edit();
         } catch (NullPointerException e) {
         }
-        Log.e("mdy",Mac);
         View view = inflater.inflate(R.layout.water_replenish_meter_detail, container, false);
         initView(view);
         init();
@@ -112,7 +111,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         battery = waterReplenishmentMeter.status().battery();
     }
 
-    private void setDate() {
+    private void setData() {
         tv_name.setText(name);
 
         if (queryFace != 0) {
@@ -466,7 +465,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
 //                tv_data_loading.setVisibility(View.GONE);
 //                new UiUpdateAsyncTask().execute();
                 initData();
-                setDate();
+                setData();
                 return false;
             }
         });
@@ -564,7 +563,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         init();
         new GetTimesAsyncTask().execute();
         new GetWaterRMAsyncTask().execute();
-        new UiUpdateAsyncTask().execute();
+        initData();
+        setData();
         rely_water_replenish_skin.setVisibility(View.GONE);
     }
 
@@ -650,7 +650,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     @Override
     public void CupSensorChange(String address) {
         if (this.Mac.equals(address)) {
-            new UiUpdateAsyncTask().execute();
+            initData();
+            setData();
         }
     }
 
@@ -859,7 +860,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         @Override
         protected void onPostExecute(String result) {
             if (WaterReplenishMeterFragment.this != null && WaterReplenishMeterFragment.this.isAdded()) {
-                setDate();
+                setData();
             }
         }
 
