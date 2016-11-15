@@ -337,6 +337,7 @@ public class TDSFragment extends Fragment {
     private void initView(View view) {
         //时间tab的选择  taoran
         time_day = (TextView) view.findViewById(R.id.tv_time_day);
+        time_day.setSelected(true);
         time_week = (TextView) view.findViewById(R.id.tv_time_week);
         time_month = (TextView) view.findViewById(R.id.tv_time_month);
         tv_tdstext = (TextView) view.findViewById(R.id.tv_tdstext);
@@ -527,7 +528,7 @@ public class TDSFragment extends Fragment {
     }
 
     private void changeDay() {
-        time_day.setSelected(false);
+        time_day.setSelected(true);
         time_week.setSelected(false);
         time_month.setSelected(false);
         progressView.set_bad_progress(hot);
@@ -561,7 +562,7 @@ public class TDSFragment extends Fragment {
     }
 
     private void changeWeek() {
-        time_day.setSelected(true);
+        time_day.setSelected(false);
         time_week.setSelected(true);
         time_month.setSelected(false);
         progressView.set_bad_progress(w_hot);
@@ -590,7 +591,7 @@ public class TDSFragment extends Fragment {
     }
 
     private void changeMonth() {
-        time_day.setSelected(true);
+        time_day.setSelected(false);
         time_week.setSelected(false);
         time_month.setSelected(true);
         progressView.set_bad_progress(m_hot);

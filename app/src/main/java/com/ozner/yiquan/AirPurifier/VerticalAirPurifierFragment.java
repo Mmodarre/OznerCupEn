@@ -93,11 +93,9 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
     //旋转动画
     private ImageView iv_xuanzhuan_x3;
     private RelativeLayout rlay_filter;
-
+    private int workTime, maxWorktime;
     private int isNet;
     boolean isFirst = false;
-    Calendar calendar;
-    SimpleDateFormat sdf;
 
     //add by xinde
     RelativeLayout rlay_hideContainer, rlay_btn_mode;
@@ -119,7 +117,6 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         animator = null;
         myHandler = null;
         airWeather = null;
-        calendar = null;
         System.gc();
     }
 
@@ -146,7 +143,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
 
         OznerApplication.changeTextFont((ViewGroup) view);
 //        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
-            view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
+        view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
 //        }
         initViewBitmap(view);
         return view;
@@ -181,8 +178,6 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         super.onActivityCreated(savedInstanceState);
         initView(getView());//初始化布局
         myHandler = new MyHandler();
-        calendar = Calendar.getInstance();
-        sdf = new SimpleDateFormat("yyyy-MM-dd");
         ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null) {
@@ -570,29 +565,15 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         }
         switchOpen(isPowerOn);
 
-        if (airPurifier != null && calendar != null) {
-            try {
-                Date date = new Date();
-                Date lastTime = airPurifier.sensor().FilterStatus().lastTime;
-                sdf.format(date);
-                sdf.format(lastTime);
-                calendar.setTime(lastTime);
-                long a = calendar.getTimeInMillis();
-                calendar.setTime(date);
-                long b = calendar.getTimeInMillis();
-                long data = (b - a) / (1000 * 24 * 3600);
-                lvXin = (int) (365 - data) * 100 / 365;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        workTime = airPurifier.sensor().FilterStatus().workTime;
+        maxWorktime = airPurifier.sensor().FilterStatus().maxWorkTime;
+        if (maxWorktime == 0) {
+            maxWorktime = 129600;
         }
-        if (lvXin < 0 | lvXin > 100) {
-            OznerApplication.setControlNumFace(tv_filterStatus);
-            tv_filterStatus.setText("0%");
-        } else {
-            tv_filterStatus.setText(lvXin + "%");
-            OznerApplication.setControlNumFace(tv_filterStatus);
-        }
+        int lvxin = Math.round(100 - workTime * 100 / maxWorktime);
+        tv_filterStatus.setText(lvxin + "%");
+        OznerApplication.setControlNumFace(tv_filterStatus);
+
     }
 
     @Override

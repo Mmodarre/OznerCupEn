@@ -26,6 +26,7 @@ import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Device.OznerApplication;
 import com.ozner.yiquan.R;
 import com.ozner.yiquan.UIView.FilterProgressView;
+import com.ozner.yiquan.UIView.IndicatorProgressBar;
 import com.ozner.yiquan.mycenter.WebActivity;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
@@ -35,7 +36,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class VerAirFilterActivity extends AppCompatActivity implements View.OnClickListener {
-    private FilterProgressView progressBar;
+    private IndicatorProgressBar progressBar;
     private TextView tv_filter;
     private ImageView iv_airpm_introduce, iv_airvoc_introduce;
     private String Mac;
@@ -44,13 +45,13 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
     private AirPurifier_MXChip airPurifier_mxChip;
     private TextView toolbarText, tv_pm_value, tv_voc_value, tv_air_cleans_value;
     private LinearLayout airVoc, air_zx_layout, air_health_buy_layout;
-    private RelativeLayout tds_distribution_layout,tds_health_layout;
-    private Date currentDate, proDate, stopDate;
+    private RelativeLayout tds_distribution_layout, tds_health_layout;
     private int lvXin;
     int pm25 = 0, voc = 0;
     int totalClean = 0, screenWide = 0, margin = 0;
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private int workTime, maxWorktime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +90,7 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
         });
         toolbarText = (TextView) findViewById(R.id.cup_toolbar_text);
         toolbarText.setText(getString(R.string.room_air_detail));
-        progressBar = (FilterProgressView) findViewById(R.id.pb);
+        progressBar = (IndicatorProgressBar) findViewById(R.id.pb);
         tv_pm_value = (TextView) findViewById(R.id.tv_pm_value);
         tv_voc_value = (TextView) findViewById(R.id.tv_voc_value);
         tv_air_cleans_value = (TextView) findViewById(R.id.tv_air_cleans_value);
@@ -97,10 +98,9 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
         airVoc = (LinearLayout) findViewById(R.id.air_value_layout1);
         tds_distribution_layout = (RelativeLayout) findViewById(R.id.tds_distribution_layout);
         tds_health_layout = (RelativeLayout) findViewById(R.id.tds_health_layout);
-        if (!((OznerApplication)(getApplication())).isLoginPhone()){
+        if (!((OznerApplication) (getApplication())).isLoginPhone()) {
             tds_health_layout.setVisibility(View.GONE);
         }
-        currentDate = new Date();
 
         iv_airpm_introduce = (ImageView) findViewById(R.id.iv_airpm_introduce);
         iv_airvoc_introduce = (ImageView) findViewById(R.id.iv_airvoc_introduce);
@@ -111,34 +111,15 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
         air_zx_layout.setOnClickListener(this);
         air_health_buy_layout = (LinearLayout) findViewById(R.id.air_health_buy_layout);
         air_health_buy_layout.setOnClickListener(this);
-
-        getFilterMsg();
-    }
-
-    private void getFilterMsg() {
-        proDate = airPurifier_mxChip.sensor().FilterStatus().lastTime;
-        stopDate = airPurifier_mxChip.sensor().FilterStatus().stopTime;
-        sdf.format(proDate);
-        sdf.format(stopDate);
-        sdf.format(currentDate);
-        calendar.setTime(proDate);
-        long a = calendar.getTimeInMillis();
-        calendar.setTime(currentDate);
-        long b = calendar.getTimeInMillis();
-        calendar.setTime(stopDate);
-        long c = calendar.getTimeInMillis();
-        long Times = (c - a) / (1000 * 24 * 3600);
-        long data = (b - a) / (1000 * 24 * 3600);
-        try {
-            lvXin = Math.round((Times - data) * 100 / Times);
-            if (lvXin < 0 || lvXin > 100) {
-                lvXin = 0;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        workTime = airPurifier_mxChip.sensor().FilterStatus().workTime;
+        maxWorktime = airPurifier_mxChip.sensor().FilterStatus().maxWorkTime;
+        if (maxWorktime == 0) {
+            maxWorktime = 129600;
         }
-        progressBar.initTime(proDate, stopDate);
-        progressBar.update(currentDate);
+        int lvxin = Math.round(100 - workTime * 100 / maxWorktime);
+        tv_filter.setText(lvxin+"");
+        progressBar.setMaxProgress(100);
+        progressBar.setProgress(workTime * 100 / maxWorktime);
         progressBar.setThumb(R.drawable.filter_status_thumb);
     }
 
@@ -164,11 +145,6 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
             tv_pm_value.setTextSize(53.0f);
         }
         OznerApplication.setControlNumFace(tv_filter);
-        if (lvXin < 0 || lvXin > 100) {
-            tv_filter.setText("0");
-        } else {
-            tv_filter.setText(lvXin + "");
-        }
 
         OznerApplication.setControlNumFace(tv_air_cleans_value);
         if (totalClean == 65535 || totalClean <= 0) {

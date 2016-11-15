@@ -375,7 +375,7 @@ public class WaterQuantityFragment extends Fragment {
         tv1.setOnClickListener(myListener);
         tv2.setOnClickListener(myListener);
         tv3.setOnClickListener(myListener);
-
+        tv1.setSelected(true);
         toolbar = (Toolbar) view.findViewById(R.id.cup_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -438,7 +438,7 @@ public class WaterQuantityFragment extends Fragment {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.tv_wateryield_time_day:
-                    tv1.setSelected(false);
+                    tv1.setSelected(true);
                     tv2.setSelected(false);
                     tv3.setSelected(false);
                     volumeChartView.setVisibility(View.VISIBLE);
@@ -452,7 +452,7 @@ public class WaterQuantityFragment extends Fragment {
                     }
                     break;
                 case R.id.tv_wateryield_time_week:
-                    tv1.setSelected(true);
+                    tv1.setSelected(false);
                     tv2.setSelected(true);
                     tv3.setSelected(false);
                     volumeChartView.setVisibility(View.GONE);
@@ -466,7 +466,7 @@ public class WaterQuantityFragment extends Fragment {
                     }
                     break;
                 case R.id.tv_wateryield_time_month:
-                    tv1.setSelected(true);
+                    tv1.setSelected(false);
                     tv2.setSelected(false);
                     tv3.setSelected(true);
                     volumeChartView.setVisibility(View.GONE);

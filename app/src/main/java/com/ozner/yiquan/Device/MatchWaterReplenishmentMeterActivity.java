@@ -132,11 +132,11 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
             case R.id.tv_women:
                 tv_women.setSelected(true);
                 tv_women.setTextColor(getResources().getColor(R.color.white));
-                tv_men.setSelected(true);
+                tv_men.setSelected(false);
                 tv_men.setTextColor(getResources().getColor(R.color.colorTds));
                 break;
             case R.id.tv_men:
-                tv_men.setSelected(false);
+                tv_men.setSelected(true);
                 tv_men.setTextColor(getResources().getColor(R.color.white));
                 tv_women.setSelected(false);
                 tv_women.setTextColor(getResources().getColor(R.color.colorTds));
@@ -302,7 +302,7 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
         image.setImageResource(R.drawable.match_device_successed);
         image.startAnimation(animfadein);
         tv_women.setSelected(true);
-        tv_men.setSelected(true);
+        tv_men.setSelected(false);
         tv_women.setTextColor(getResources().getColor(R.color.white));
         tv_men.setTextColor(getResources().getColor(R.color.colorTds));
     }
