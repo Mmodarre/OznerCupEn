@@ -231,12 +231,13 @@
     <string name="Filter_Service_down_11">零配件更换服务</string>
     <string name="Filter_Service_down_20">更换滤芯提醒</string>
 
-    <string name="water_probe">水探头</string>
+    <string name="water_probe">智能水探头</string>
     <string name="water_tdspen">水质检测笔</string>
 
-    <string name="water_purifier">净水器</string>
+    <string name="water_purifier">免安装净水器(台式/立式)</string>
     <string name="smart_glass">智能杯</string>
-    <string name="air_purifier_ver">空气净化器\n(立式)</string>
+    <!--<string name="air_purifier_ver">空气净化器\n(立式)</string>-->
+    <string name="air_purifier_ver">智能空气净化器</string>
     <string name="air_purifier_taishi">空气净化器\n(台式)</string>
     <string name="water_replen_meter">智能补水仪</string>
     <string name="air_puri_ver">立式\n空气净化器</string>
