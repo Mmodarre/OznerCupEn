@@ -269,9 +269,9 @@
     <string name="searched_device">已搜索到设备</string>
     <string name="failed_searching">未成功</string>
     <string name="edit_glass_name">输入智能杯名称</string>
-    <string name="edit_probe_name">输入水探头名称</string>
+    <string name="edit_probe_name">输入智能水探头名称</string>
     <string name="water_tdspen_hit">输入水质检测笔名称</string>
-    <string name="edit_purifier_name">输入净水器名称</string>
+    <string name="edit_purifier_name">输入免安装净水器名称</string>
     <string name="edit_airpurifier_name">输入净化器名称</string>
     <string name="edit_water_replenish_meter_name">输入补水仪名称</string>
     <string name="my_glass">我的杯子</string>
@@ -321,7 +321,7 @@
     <string name="attention">注意：电量低于10%时，光圈双闪。</string>
     <string name="attention_tap">滤芯不足10天会显示提醒</string>
     <string name="about_smart_glass">关于智能杯</string>
-    <string name="about_water_probe">关于水探头</string>
+    <string name="about_water_probe">关于智能水探头</string>
     <string name="about_water_tdspen">关于水质检测笔</string>
     <string name="about_water_purifier">关于台式净水器</string>
     <string name="about_water_purifier_ver">关于立式净水器</string>

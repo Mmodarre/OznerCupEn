@@ -82,16 +82,16 @@ public class SetupAirPurifierActivity extends AppCompatActivity implements View.
         findViewById(R.id.ll_common_problem).setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
 
-        if (((OznerApplication)getApplication()).isLanguageCN()){
-            ll_airpurifier_instru.setVisibility(View.VISIBLE);
-        }else{
-            ll_airpurifier_instru.setVisibility(View.GONE);
-        }
-        if(OznerPreference.isLoginPhone(SetupAirPurifierActivity.this)){
-            findViewById(R.id.ll_common_problem).setVisibility(View.VISIBLE);
-        }else{
-            findViewById(R.id.ll_common_problem).setVisibility(View.GONE);
-        }
+//        if (((OznerApplication)getApplication()).isLanguageCN()){
+//            ll_airpurifier_instru.setVisibility(View.VISIBLE);
+//        }else{
+//            ll_airpurifier_instru.setVisibility(View.GONE);
+//        }
+//        if(OznerPreference.isLoginPhone(SetupAirPurifierActivity.this)){
+//            findViewById(R.id.ll_common_problem).setVisibility(View.VISIBLE);
+//        }else{
+//            findViewById(R.id.ll_common_problem).setVisibility(View.GONE);
+//        }
     }
 
     @Override
