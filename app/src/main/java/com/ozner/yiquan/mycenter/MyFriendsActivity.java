@@ -7,14 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +31,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-
 import com.ozner.yiquan.BaiduPush.OznerBroadcastAction;
 import com.ozner.yiquan.Command.OznerCommand;
 import com.ozner.yiquan.Command.OznerPreference;
@@ -463,17 +462,21 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(activity)));
-                NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, loadFriendUrl, params);
-                if (netJsonObject.state >= 0) {
-                    UserDataPreference.SetUserData(activity, loadFriendUrl, netJsonObject.value);
-                    Message message = new Message();
-                    message.what = FRIEND_LOADED;
-                    message.obj = (Serializable) netJsonObject.value;
-                    mhandler.sendMessage(message);
-                } else {
-                    mhandler.sendEmptyMessage(FRIEND_LOAD_FAIL);
+                try {
+                    List<NameValuePair> params = new ArrayList<NameValuePair>();
+                    params.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(activity)));
+                    NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, loadFriendUrl, params);
+                    if (netJsonObject.state >= 0) {
+                        UserDataPreference.SetUserData(activity, loadFriendUrl, netJsonObject.value);
+                        Message message = new Message();
+                        message.what = FRIEND_LOADED;
+                        message.obj = (Serializable) netJsonObject.value;
+                        mhandler.sendMessage(message);
+                    } else {
+                        mhandler.sendEmptyMessage(FRIEND_LOAD_FAIL);
+                    }
+                } catch (Exception ex) {
+
                 }
             }
         }).start();

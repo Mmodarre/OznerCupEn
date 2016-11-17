@@ -369,7 +369,7 @@ public class WaterTemperatureFragment extends Fragment {
         time_day.setOnClickListener(myListener);
         time_week.setOnClickListener(myListener);
         time_month.setOnClickListener(myListener);
-
+        time_day.setSelected(true);
         toolbar = (Toolbar) view.findViewById(R.id.cup_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -532,7 +532,7 @@ public class WaterTemperatureFragment extends Fragment {
 
 
     private void changeDay() {
-        time_day.setSelected(false);
+        time_day.setSelected(true);
         time_week.setSelected(false);
         time_month.setSelected(false);
 
@@ -569,7 +569,7 @@ public class WaterTemperatureFragment extends Fragment {
     }
 
     private void changeWeek() {
-        time_day.setSelected(true);
+        time_day.setSelected(false);
         time_week.setSelected(true);
         time_month.setSelected(false);
         time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
@@ -601,7 +601,7 @@ public class WaterTemperatureFragment extends Fragment {
     }
 
     private void changeMonth() {
-        time_day.setSelected(true);
+        time_day.setSelected(false);
         time_week.setSelected(false);
         time_month.setSelected(true);
         if(adapterMonth!=null) {

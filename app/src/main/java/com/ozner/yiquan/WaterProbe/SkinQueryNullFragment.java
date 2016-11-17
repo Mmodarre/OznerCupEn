@@ -66,13 +66,13 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
             }
         });
 
-        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.skin_buy_layout).setVisibility(View.VISIBLE);
-        } else {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
-            view.findViewById(R.id.skin_buy_layout).setVisibility(View.GONE);
-        }
+//        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+//            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
+//            view.findViewById(R.id.skin_buy_layout).setVisibility(View.VISIBLE);
+//        } else {
+        view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
+        view.findViewById(R.id.skin_buy_layout).setVisibility(View.GONE);
+//        }
         toolbar_text = (TextView) view.findViewById(R.id.toolbar_text);
         toolbar_text.setText(getString(R.string.skin_query_null));
         toolbar.setBackgroundColor(getResources().getColor(R.color.water_replen_face));

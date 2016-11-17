@@ -248,7 +248,7 @@
 
                 </LinearLayout>
 
-                <com.ozner.yiquan.UIView.FilterProgressView
+                <com.ozner.yiquan.UIView.IndicatorProgressBar
                     android:id="@+id/pb"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"

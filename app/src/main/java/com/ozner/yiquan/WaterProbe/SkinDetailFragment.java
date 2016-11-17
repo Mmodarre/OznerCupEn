@@ -70,6 +70,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     int faceTodayValue, handTodayValue, neckTodayValue, eyesTodayValue = 0;
     WaterReplenishmentMeter waterReplenishmentMeter;
     Date dateTime = new Date();
+    boolean isWeek = true;
 
 
     @Nullable
@@ -260,11 +261,11 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
             }
         });
 
-        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
-        } else {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
-        }
+//        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
+//            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
+//        } else {
+        view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
+//        }
 
         toolbar_text = (TextView) view.findViewById(R.id.cup_toolbar_text);
         toolbar_text.setText(getResources().getString(R.string.water_repl_meter_detail));
@@ -273,6 +274,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         iv_eyes = (ImageView) view.findViewById(R.id.iv_eyes);
         iv_bozi = (ImageView) view.findViewById(R.id.iv_bozi);
         tv_week = (TextView) view.findViewById(R.id.tv_week);
+        tv_week.setSelected(true);
         tv_month = (TextView) view.findViewById(R.id.tv_month);
         tv_skin_water = (TextView) view.findViewById(R.id.tv_skin_water);  //皮肤湿度，大号字体的那个
         tv_skin_state = (TextView) view.findViewById(R.id.tv_skin_state); //今日肌肤状态
@@ -313,7 +315,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 new GetWaterRMAsyncTask().execute();
                 state = 1;
                 setData();
-                switchWeek(!tv_month.isSelected());
+                switchWeek(isWeek);
                 break;
             case R.id.ll_eyes:
                 iv_face.setSelected(false);
@@ -325,7 +327,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 new GetWaterRMAsyncTask().execute();
                 state = 3;
                 setData();
-                switchWeek(!tv_month.isSelected());
+                switchWeek(isWeek);
                 break;
             case R.id.ll_hands:
                 iv_face.setSelected(false);
@@ -337,7 +339,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 new GetWaterRMAsyncTask().execute();
                 state = 2;
                 setData();
-                switchWeek(!tv_month.isSelected());
+                switchWeek(isWeek);
                 break;
             case R.id.ll_bozi:
                 iv_face.setSelected(false);
@@ -349,22 +351,24 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 new GetWaterRMAsyncTask().execute();
                 state = 4;
                 setData();
-                switchWeek(!tv_month.isSelected());
+                switchWeek(isWeek);
                 break;
             case R.id.tv_week:
-                tv_week.setSelected(false);
+                tv_week.setSelected(true);
                 tv_week.setTextColor(getResources().getColor(R.color.white));
                 tv_month.setSelected(false);
                 tv_month.setTextColor(getResources().getColor(R.color.colorTds));
-                switchWeek(true);
+                isWeek = true;
+                switchWeek(isWeek);
 //                uiwrmView.setWeekData(listOilyW, listWaterW);
                 break;
             case R.id.tv_month:
                 tv_month.setSelected(true);
                 tv_month.setTextColor(getResources().getColor(R.color.white));
-                tv_week.setSelected(true);
+                tv_week.setSelected(false);
                 tv_week.setTextColor(getResources().getColor(R.color.colorTds));
-                switchWeek(false);
+                isWeek = false;
+                switchWeek(isWeek);
 //                uiwrmView.setMonthData(listOilyM, listWaterM);
                 break;
             case R.id.show_oily_instru:
@@ -374,9 +378,10 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new WaterReplenishIntroduceFragment()).addToBackStack("wainstru").commitAllowingStateLoss();
                 break;
             case R.id.skin_zixun:
-                getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new CChatFragment()).commitAllowingStateLoss();
-                ((MainActivity) (getActivity())).pagenow = PageState.ZIXUNYEMIAN;
-                ((MainActivity) (getActivity())).footNavFragment.ShowContent(PageState.ZIXUNYEMIAN, "");
+//                getFragmentManager().beginTransaction().replace(R.id.framen_main_con, new CChatFragment()).commitAllowingStateLoss();
+//                ((MainActivity) (getActivity())).pagenow = PageState.ZIXUNYEMIAN;
+//                ((MainActivity) (getActivity())).footNavFragment.ShowContent(PageState.ZIXUNYEMIAN, "");
+                OznerApplication.callSeviceChat(getContext());
                 break;
             case R.id.skin_buy_jinghua:
                 break;
