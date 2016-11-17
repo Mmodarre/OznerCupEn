@@ -41,32 +41,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <!--<RelativeLayout-->
-                <!--android:id="@+id/rlay_top1"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_marginBottom="10dp"-->
-                <!--android:visibility="visible">-->
+                <RelativeLayout
+                android:id="@+id/rlay_top1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:visibility="invisible">
 
-                <!--<ImageView-->
-                <!--android:id="@+id/iv_data_loading"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:src="@drawable/air_loding" />-->
+                <ImageView
+                android:id="@+id/iv_data_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/air_loding" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/tv_data_loading"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="3dp"-->
-                <!--android:layout_toRightOf="@+id/iv_data_loading"-->
-                <!--android:text="@string/air_dataLoding"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:textSize="13dp" />-->
+                <TextView
+                android:id="@+id/tv_data_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@+id/iv_data_loading"
+                android:text="@string/air_dataLoding"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
 
-                <!--</RelativeLayout>-->
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/rlay_tob_bottom"
@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:orientation="horizontal"
-                        android:visibility="invisible">
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/iv_data_loading_fair"
@@ -207,7 +207,7 @@
                         android:text="@string/detail_nonet"
                         android:textColor="@color/tdsHealth"
                         android:textSize="35dp"
-                        android:visibility="invisible" />
+                        android:visibility="gone" />
 
                     <!--<TextView-->
                     <!--android:id="@+id/tv_detail_nonet"-->
@@ -223,6 +223,11 @@
                 </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
+
+
+
+
+
         <!--开关部分-->
         <RelativeLayout
             android:layout_width="match_parent"

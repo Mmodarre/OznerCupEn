@@ -36,6 +36,7 @@ public abstract class BaseMainActivity extends AppCompatActivity implements Foot
     public final String TapType = "SC001";
     public final String TdsPen = "SCP001";//TDS-笔
     public final String WaterType = "MXCHIP_HAOZE_Water";
+    public final String ROPurifierType="Ozner RO";//RO水机
     public final String AirPurifierTypeVer = "FOG_HAOZE_AIR";
     public final String AirPurifierTypeTai = "FLT001";
     public final String WaterReplenishMeter = "BSY001";

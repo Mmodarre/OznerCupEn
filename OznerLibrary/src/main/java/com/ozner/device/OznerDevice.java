@@ -1,12 +1,19 @@
 package com.ozner.device;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 
 import com.ozner.XObject;
 import com.ozner.util.Helper;
+import com.ozner.util.dbg;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Hashtable;
 
 /**
  * @author zhiyongxu
@@ -18,7 +25,92 @@ public abstract class OznerDevice extends XObject {
     private BaseDeviceIO deviceIO;
     private DeviceSetting setting;
     private String Type;
-    private String appdata;
+
+    final static deviceTimerLoop glb_timerLoop = new deviceTimerLoop();
+
+    static class deviceTimerLoop {
+        //一个全局循环来完成设备的定时循环操作
+        private Thread timeThread = null;
+        Hashtable<OznerDevice, Date> devices = new Hashtable<>();
+
+        public void addDevice(OznerDevice device) {
+            synchronized (devices) {
+                devices.put(device, new Date(0));
+            }
+        }
+
+        public void removeDevice(OznerDevice device) {
+            synchronized (devices) {
+                devices.remove(device);
+            }
+        }
+
+
+        private Runnable timerRunnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while (true) {
+                        Thread.sleep(1000);
+                        if (XObject.getRunningMode() != RunningMode.Foreground) continue;
+                        ArrayList<OznerDevice> list = null;
+                        synchronized (devices) {
+                            list = new ArrayList<>(devices.keySet());
+                        }
+                        for (OznerDevice device : list) {
+                            Date lastTime = devices.get(device);
+                            Date now = new Date();
+                            long time = now.getTime() - lastTime.getTime();
+                            //判断当前时间－上次运行时间是否大于设备要求的运行周期
+                            if (time >= device.getTimerDelay()) {
+                                try {
+                                    device.doTimer();
+                                } catch (Exception e) {
+                                    dbg.e("doTime:%s", e.toString());
+                                }
+                                synchronized (devices) {
+                                    //更新下设备运行时间，给下次检查使用
+                                    //判断下设备是否还在列表里面
+                                    if (devices.containsKey(device))
+                                        devices.put(device, new Date());
+                                }
+                            }
+                        }
+
+                    }
+                } catch (InterruptedException e) {
+                    return;
+                }
+            }
+        };
+
+        public deviceTimerLoop() {
+            timeThread = new Thread(timerRunnable);
+            timeThread.start();
+        }
+    }
+
+    BroadcastReceiver statusBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (BaseDeviceIO.ACTION_DEVICE_CONNECTED.equals(action)) {
+                String addr = intent.getStringExtra(BaseDeviceIO.Extra_Address);
+                if (address.equals(addr)) {
+                    glb_timerLoop.addDevice(OznerDevice.this);
+                }
+                return;
+            }
+
+            if (BaseDeviceIO.ACTION_DEVICE_DISCONNECTED.equals(action)) {
+                String addr = intent.getStringExtra(BaseDeviceIO.Extra_Address);
+                if (address.equals(addr)) {
+                    glb_timerLoop.removeDevice(OznerDevice.this);
+                }
+                return;
+            }
+        }
+    };
 
     public OznerDevice(Context context, String Address, String Type, String Setting) {
         super(context);
@@ -28,6 +120,27 @@ public abstract class OznerDevice extends XObject {
         if (Helper.StringIsNullOrEmpty(setting.name())) {
             setting.name(getDefaultName());
         }
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction(BaseDeviceIO.ACTION_DEVICE_CONNECTED);
+        intentFilter.addAction(BaseDeviceIO.ACTION_DEVICE_DISCONNECTED);
+
+        context.registerReceiver(statusBroadcastReceiver,intentFilter);
+    }
+
+    /**
+     * 获取设备定时查询操作的循环周期
+     *
+     * @return 返回查询操作的循环周期, 默认Integer.MAX_VALUE
+     */
+    public int getTimerDelay() {
+        return Integer.MAX_VALUE;
+    }
+
+    /**
+     * 定时查询操作
+     */
+    protected void doTimer() {
+
     }
 
     /**
@@ -115,7 +228,6 @@ public abstract class OznerDevice extends XObject {
      * 通知设备设置变更
      */
     public void updateSettings() {
-        OznerDeviceManager.Instance().setDeviceSetting(this.address, this.setting.toString());
     }
 
 
@@ -157,21 +269,19 @@ public abstract class OznerDevice extends XObject {
         }
 
         this.deviceIO = deviceIO;
+
+
         if (deviceIO != null) {
             deviceIO.open();
-        }
-
-        if(deviceIO!=null){
             if (deviceIO.isReady()) {
                 deviceIO.reCallDoReadly();
             }
+        } else {
+            glb_timerLoop.removeDevice(this);
         }
-
-
 
         return true;
     }
-
     /**
      * 获取设备数据
      */
@@ -225,5 +335,12 @@ public abstract class OznerDevice extends XObject {
         }
         OznerDeviceManager.Instance().setDeviceAppData(this.address, jsonObject.toString());
     }
+
+
+
+
+
+
+
 
 }

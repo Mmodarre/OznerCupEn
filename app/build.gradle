@@ -34,12 +34,12 @@ android {
 //        main.jniLibs.srcDirs = ['libs']
 //    }
     signingConfigs {
-        debug {
-            keyAlias 'ozner'
-            keyPassword '123456789'
-            storeFile file('D:/ozner/oznerCup/ozner_new.keystore')
-            storePassword '1234567890'
-        }
+//        debug {
+//            keyAlias 'ozner'
+//            keyPassword '123456789'
+//            storeFile file('D:/ozner/oznerCup/ozner_new.keystore')
+//            storePassword '1234567890'
+//        }
     }
 }
 

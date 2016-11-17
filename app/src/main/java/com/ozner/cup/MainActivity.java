@@ -47,6 +47,7 @@ import com.ozner.cup.Login.LoginActivity;
 import com.ozner.cup.Login.LoginEnActivity;
 import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.cup.Main.MainConFragment;
+import com.ozner.cup.WaterProbe.ROWaterPurifierFragment;
 import com.ozner.cup.WaterProbe.WaterCupFragment;
 import com.ozner.cup.WaterProbe.WaterProbeFragment;
 import com.ozner.cup.WaterProbe.WaterPurifierFragment;
@@ -620,6 +621,14 @@ public class MainActivity extends BaseMainActivity {
                             waterPurifierFragment.setArguments(params);
                             getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.framen_main_con, waterPurifierFragment, WaterType)
+                                    .commitAllowingStateLoss();
+                            this.MAC = mac;
+                            //Ro水机
+                        case ROPurifierType:
+                            ROWaterPurifierFragment roWaterPurifierFragment = new ROWaterPurifierFragment();
+                            roWaterPurifierFragment.setArguments(params);
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.framen_main_con, roWaterPurifierFragment, ROPurifierType)
                                     .commitAllowingStateLoss();
                             this.MAC = mac;
                             return;

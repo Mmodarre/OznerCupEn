@@ -26,8 +26,8 @@ public class TapManager extends BaseDeviceManager {
     public static boolean IsTap(String Type) {
         return Type.equals("SC001") || IsTDSPen(Type);
     }
-
-    public static boolean IsTDSPen(String Type) {
+    public static boolean IsTDSPen(String Type)
+    {
         return Type.equals("SCP001");
     }
 
@@ -38,17 +38,19 @@ public class TapManager extends BaseDeviceManager {
 
     @Override
     protected OznerDevice createDevice(String address, String type, String settings) {
-        if (isMyDevice(type)) {
+        if (isMyDevice(type))
+        {
             return new Tap(context(), address, type, settings);
-        } else
+        }else
             return null;
     }
-
     @Override
-    public boolean checkIsBindMode(BaseDeviceIO io) {
-        if (isMyDevice(io.getType())) {
-            return Tap.isBindMode((BluetoothIO) io);
-        } else
+    public boolean checkIsBindMode(BaseDeviceIO io)
+    {
+        if (isMyDevice(io.getType()))
+        {
+            return Tap.isBindMode((BluetoothIO)io);
+        }else
             return false;
     }
     //    @Override

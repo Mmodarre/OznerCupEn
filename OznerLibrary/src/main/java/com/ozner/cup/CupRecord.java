@@ -8,10 +8,11 @@ import java.util.Date;
  *         饮水记录
  */
 public class CupRecord {
-    public static final int TDS_Good_Value = 50;
-    public static final int TDS_Bad_Value = 200;
-    public static final int Temperature_Low_Value = 25;
-    public static final int Temperature_High_Value = 50;
+
+    public static final int TDS_Good_Value=50;
+    public static final int TDS_Bad_Value=200;
+    public static final int Temperature_Low_Value=25;
+    public static final int Temperature_High_Value=50;
 
     /**
      * 数据周期起始时间
@@ -78,16 +79,18 @@ public class CupRecord {
      */
     public int Count = 0;
 
-    protected void calcRecord(DBRecord record) {
-        if (start == null)
-            start = record.time;
-        end = record.time;
-        Volume += record.volume;
-        TDS = record.tds;
-        Temperature = record.temperature;
-        TDS_High = Math.max(TDS_High, record.tds);
-        Temperature_MAX = Math.max(Temperature_MAX, record.temperature);
+    protected void calcRecord(DBRecord record)
+    {
+        if (start==null)
+            start=record.time;
+        end=record.time;
+        Volume+=record.volume;
+        TDS=record.tds;
+        Temperature=record.temperature;
+        TDS_High=Math.max(TDS_High,record.tds);
+        Temperature_MAX=Math.max(Temperature_MAX,record.temperature);
         Count++;
+
         if (record.tds < TDS_Good_Value)
             TDS_Good++;
         else if (record.tds > TDS_Bad_Value)
@@ -107,21 +110,22 @@ public class CupRecord {
 
     @Override
     public String toString() {
-        if (start.equals(end)) {
+        if (start.equals(end))
+        {
             return String.format("time:%s\nvol:%d tds:%d temp:%d count:%d\n" +
                             "温度高:%d 温度中:%d 温度低:%d\n" +
                             "TDS好:%d TDS中:%d TDS差:%d",
                     new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(start),
-                    Volume, TDS, Temperature, Count,
+                    Volume,TDS,Temperature,Count,
                     Temperature_High, Temperature_Mid, Temperature_Low,
                     TDS_Good, TDS_Mid, TDS_Bad);
-        } else
+        }else
             return String.format("start:%s\nend:%s\nvol:%d tds:%d temp:%d count:%d\n" +
                             "温度高:%d 温度中:%d 温度低:%d\n" +
                             "TDS好:%d TDS中:%d TDS差:%d",
                     new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(start),
                     new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(end),
-                    Volume, TDS, Temperature, Count,
+                    Volume,TDS,Temperature,Count,
                     Temperature_High, Temperature_Mid, Temperature_Low,
                     TDS_Good, TDS_Mid, TDS_Bad);
     }

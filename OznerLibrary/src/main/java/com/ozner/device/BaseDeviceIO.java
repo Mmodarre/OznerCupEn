@@ -205,6 +205,7 @@ public abstract class BaseDeviceIO extends XObject {
         Intent intent = new Intent(ACTION_DEVICE_CONNECTED);
         intent.putExtra(Extra_Address, getAddress());
         context().sendBroadcast(intent);
+
     }
 
     /**

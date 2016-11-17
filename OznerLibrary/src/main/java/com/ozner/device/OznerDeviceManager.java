@@ -39,7 +39,6 @@ public class OznerDeviceManager extends XObject {
     SQLiteDB sqLiteDB;
     String owner = "";
     String token = "";
-
     IOManagerList ioManagerList;
 
     public OznerDeviceManager(Context context) throws InstantiationException {
@@ -48,12 +47,19 @@ public class OznerDeviceManager extends XObject {
             throw new InstantiationException();
         }
         instance = this;
-        mManagers = new DeviceManagerList(context);
         sqLiteDB = new SQLiteDB(context);
         //导入老表
         importOldDB();
         ioManagerList = new IOManagerList(context);
+
         ioManagerList.setIoManagerCallback(ioManagerCallbackImp);
+        mManagers = new DeviceManagerList(context);
+
+
+    }
+    public void stop()
+    {
+        ioManagerList().Stop();
     }
 
     public static OznerDeviceManager Instance() {
@@ -142,7 +148,7 @@ public class OznerDeviceManager extends XObject {
      *
      * @param owner 用户ID
      */
-    public void setOwner(String owner,String token) {
+    public void setOwner(String owner, String token) {
         if (owner != null)
             owner = owner.trim();
         if (Helper.StringIsNullOrEmpty(owner)) return;
@@ -154,6 +160,8 @@ public class OznerDeviceManager extends XObject {
         synchronized (this) {
             devices.clear();
         }
+
+
         if (Helper.StringIsNullOrEmpty(owner))
             ioManagerList().Stop();
 
@@ -165,6 +173,7 @@ public class OznerDeviceManager extends XObject {
         sqLiteDB.execSQLNonQuery(Sql, new String[]{});
         dbg.i("Set Owner:%s", owner);
         context().sendBroadcast(new Intent(ACTION_OZNER_MANAGER_OWNER_CHANGE));
+
     }
 
     protected void CloseAll() {
@@ -228,7 +237,6 @@ public class OznerDeviceManager extends XObject {
         Intent intent = new Intent(ACTION_OZNER_MANAGER_DEVICE_REMOVE);
         intent.putExtra("Address", address);
         context().sendBroadcast(intent);
-
         if (device.IO()!=null)
         {
             ioManagerList.removeDevice(device.IO());
@@ -237,6 +245,7 @@ public class OznerDeviceManager extends XObject {
 //        if (device.IO() != null) {
 //            device.IO().close();
 //        }
+
         try {
             device.Bind(null);
         } catch (DeviceNotReadyException e) {
@@ -388,6 +397,7 @@ public class OznerDeviceManager extends XObject {
         device.updateSettings(); //刷新设置变更
     }
 
+
     /*
     * 网络数据同步到本地
     * */
@@ -399,6 +409,9 @@ public class OznerDeviceManager extends XObject {
                 new String[]{mac,type,
                         setting,appdata});
     }
+
+
+
 //    private ArrayList<BaseDeviceManager> getManagers() {
 //        ArrayList<BaseDeviceManager> list = new ArrayList<>();
 //        synchronized (this) {
@@ -407,56 +420,8 @@ public class OznerDeviceManager extends XObject {
 //        return list;
 //    }
 
-    /**
-     * 获取设备绑定app自定义字段
-     *
-     * */
-    public String getDeviceAppData(String mac)
-    {
-        try {
-            if (!sqLiteDB.checkColumnExists(SQLiteDB.ColCUModel,getOwnerTableName()))
-                sqLiteDB.addColumn(SQLiteDB.ColCUModel,getOwnerTableName());
-            String sql = String.format("select %s from %s where Address='%s'", SQLiteDB.ColCUModel, getOwnerTableName(), mac);
-            List<String[]> list = sqLiteDB.ExecSQL(sql, new String[]{});
-            if (list != null && list.size() > 0) {
-                return list.get(0)[0];
-            }
-            return null;
-        }catch (Exception ex)
-        {
-            ex.printStackTrace();
-            return null;
-        }
-    }
-    /**
-    * 更新设备绑定app自定义字段
-    * **/
-    public void setDeviceAppData(String mac,String data) {
-        try {
-            if (!sqLiteDB.checkColumnExists(SQLiteDB.ColCUModel,getOwnerTableName()))
-                sqLiteDB.addColumn(SQLiteDB.ColCUModel,getOwnerTableName());
-            String sql = String.format("update %s set %s=? where Address=?",getOwnerTableName(), SQLiteDB.ColCUModel);
-            sqLiteDB.execSQLNonQuery(sql,new String[]{data,mac});
-        }catch (Exception ex)
-        {
-            ex.printStackTrace();
-        }
-    }
-    /*
-    * 更新设备设置字段
-    * */
-    public void setDeviceSetting(String mac,String data) {
-        try {
-            if (!sqLiteDB.checkColumnExists("JSON",getOwnerTableName()))
-                sqLiteDB.addColumn("JSON",getOwnerTableName());
-            String sql = String.format("update %s set %s=? where Address=?",getOwnerTableName(), "JSON");
-            sqLiteDB.execSQLNonQuery(sql,new String[]{data,mac});
-        }catch (Exception ex)
-        {
-            ex.printStackTrace();
-        }
-    }
-        class IOManagerCallbackImp implements IOManager.IOManagerCallback {
+
+    class IOManagerCallbackImp implements IOManager.IOManagerCallback {
         @Override
         public void onDeviceAvailable(IOManager manager, BaseDeviceIO io) {
             if (io != null) {
@@ -485,10 +450,6 @@ public class OznerDeviceManager extends XObject {
                 }
             }
         }
-
-        public DeviceManagerList getmManagers() {
-            return mManagers;
-        }
     }
 //    /**
 //     * 注册一个设备管理器
@@ -509,6 +470,57 @@ public class OznerDeviceManager extends XObject {
 //                mManagers.remove(manager);
 //        }
 //    }
+
+
+
+
+    /**
+     * 获取设备绑定app自定义字段
+     *
+     * */
+    public String getDeviceAppData(String mac)
+    {
+        try {
+            if (!sqLiteDB.checkColumnExists(SQLiteDB.ColCUModel,getOwnerTableName()))
+                sqLiteDB.addColumn(SQLiteDB.ColCUModel,getOwnerTableName());
+            String sql = String.format("select %s from %s where Address='%s'", SQLiteDB.ColCUModel, getOwnerTableName(), mac);
+            List<String[]> list = sqLiteDB.ExecSQL(sql, new String[]{});
+            if (list != null && list.size() > 0) {
+                return list.get(0)[0];
+            }
+            return null;
+        }catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    /**
+     * 更新设备绑定app自定义字段
+     * **/
+    public void setDeviceAppData(String mac,String data) {
+        try {
+            if (!sqLiteDB.checkColumnExists(SQLiteDB.ColCUModel,getOwnerTableName()))
+                sqLiteDB.addColumn(SQLiteDB.ColCUModel,getOwnerTableName());
+            String sql = String.format("update %s set %s=? where Address=?",getOwnerTableName(), SQLiteDB.ColCUModel);
+            sqLiteDB.execSQLNonQuery(sql,new String[]{data,mac});
+        }catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

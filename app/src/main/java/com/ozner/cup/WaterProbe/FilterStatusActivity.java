@@ -1,16 +1,22 @@
 package com.ozner.cup.WaterProbe;
 
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -46,6 +52,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
@@ -64,9 +72,9 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
     private String waterPuriferUrl = "", isShowewm = "";
     private String usertoken = "";
     FilterProgressView filter_progress;
-    TextView tv_remainPre, tv_remainTime;
+    TextView tv_remainPre, tv_remainTime,tv_ro_filterRest,tv_ro_filter;
     RelativeLayout rlay_back;
-    LinearLayout llay_QRCodeScan, llay_Chat, llay_buyFilter, llay_moreService, llay_scan;
+    LinearLayout llay_QRCodeScan, llay_Chat, llay_buyFilter, llay_moreService, llay_scan,laly_ro,laly_water;
     SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 //    private int totalYearDays = 0;
 
@@ -89,6 +97,13 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
     private String musertoken = "";
     private String mUserid = "";
 
+    private String buyRourl = "www.baidu.com";//购买滤芯
+    //文字呼吸灯
+    private int index = 0;
+    private boolean isOpen = true;
+    private Timer timer;
+    
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +133,33 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         llay_QRCodeScan.setOnClickListener(this);
         llay_Chat.setOnClickListener(this);
         llay_buyFilter.setOnClickListener(this);
+
+        //RO水机的界面
+        laly_ro=(LinearLayout) findViewById(R.id.laly_ro);
+        laly_water=(LinearLayout) findViewById(R.id.laly_water);
+        device = OznerDeviceManager.Instance().getDevice(MAC);
+        if (RankType.ROWaterType.equals(device.Type())){
+            laly_ro.setVisibility(View.VISIBLE);
+            laly_water.setVisibility(View.GONE);
+            llay_scan.setVisibility(View.GONE);
+            llay_moreService.setVisibility(View.VISIBLE);
+        }else{
+            laly_ro.setVisibility(View.GONE);
+            laly_water.setVisibility(View.VISIBLE);
+        }
+//
+
+        tv_ro_filterRest=(TextView)findViewById(R.id.tv_ro_filterRest);
+        tv_ro_filterRest.setOnClickListener(this);
+        tv_ro_filter=(TextView) findViewById(R.id.tv_ro_filter);
+        //文字呼吸灯
+//        if(){
+            timer();
+//        }
+
+
+
+
         if (!((OznerApplication) getApplication()).isLoginPhone()) {
             findViewById(R.id.ll_en_no).setVisibility(View.GONE);
         } else {
@@ -128,6 +170,52 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         OznerApplication.setControlNumFace(tv_remainPre);
         init();
     }
+    public Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    tv_ro_filter.clearAnimation();
+                    tv_ro_filter.setAnimation(getLoad());
+                    break;
+                case 2:
+                    tv_ro_filter.clearAnimation();
+                    tv_ro_filter.setAnimation(getOut());
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    private Animation getLoad() {
+        return AnimationUtils.loadAnimation(FilterStatusActivity.this,
+                R.anim.push_in);
+    }
+
+    private Animation getOut() {
+        return AnimationUtils.loadAnimation(FilterStatusActivity.this,
+                R.anim.push_out);
+    }
+    private void timer() {
+        timer = new Timer(true);
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (isOpen) {
+                    if (index == 2) {
+                        index = 0;
+                    }
+                    index++;
+                    Message message = new Message();
+                    message.what = index;
+                    handler.sendMessage(message);
+                }
+            }
+        };
+        timer.schedule(task, 0, 1000); // 延时0ms后执行，1000ms执行一次
+    }
+
+
+
 
     public class ProjectItemClickListener implements AdapterView.OnItemClickListener {
 
@@ -170,7 +258,13 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                         llay_scan.setVisibility(View.VISIBLE);
                     }
                     llay_moreService.setVisibility(View.VISIBLE);
-                } else {
+                }
+// else if(device != null && device instanceof WaterPurifier_RO_BLE){
+//                    deviceType = RankType.ROWaterType;
+//                    llay_scan.setVisibility(View.GONE);
+//                    llay_moreService.setVisibility(View.VISIBLE);
+//                }
+                else {
                     deviceType = RankType.TapType;
                     llay_moreService.setVisibility(View.GONE);
                 }
@@ -259,9 +353,35 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                 buyFilterIntent.putExtra(WebActivity.URL, shopUrl);
                 startActivity(buyFilterIntent);
                 break;
+            case R.id.tv_ro_filterRest://ro水机滤芯复位
+                new AlertDialog.Builder(FilterStatusActivity.this)
+                        .setMessage(getString(R.string.rofilter_need_change))
+                        .setPositiveButton(getString(R.string.buy_air_lvxin), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                buyFilter();
+                                dialog.dismiss();
+                            }
+                        }).setNegativeButton(getString(R.string.airOutside_know), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                }).show();
         }
     }
-
+    private void buyFilter() {
+        String mobile = UserDataPreference.GetUserData(getApplicationContext(), UserDataPreference.Mobile, null);
+        String usertoken = OznerPreference.UserToken(getApplicationContext());
+        Intent buyFilterIntent = new Intent(FilterStatusActivity.this, WebActivity.class);
+        String shopUrl = CenterUrlContants.formatTapShopUrl(mobile, usertoken, "zh", "zh");
+        if (buyRourl != null && buyRourl != "") {
+            shopUrl = CenterUrlContants.formatUrl(buyRourl, mobile, usertoken, "zh", "zh");
+        }
+        buyFilterIntent.putExtra("URL", shopUrl);
+        Log.e("123456", shopUrl);
+        startActivity(buyFilterIntent);
+    }
     @Override
     public void onBackPressed() {
 
@@ -272,12 +392,14 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
     private void initFilterStatus(String deType) {
         if (deType.equals(RankType.WaterType)) {
             initWaterPurifierFilterLocal();
-        } else {
+        } else if(deType.equals(RankType.TapType)) {
             filter_progress.setVisibility(View.VISIBLE);
             initFilterFromLocal();
             tapFilterTask = new UpdateFilterAsyncTask(FilterStatusActivity.this, usertoken);
             tapFilterTask.execute(MAC);
 //            new UpdateFilterAsyncTask(FilterStatusActivity.this, usertoken).execute(MAC);
+        }else{
+
         }
     }
 
@@ -634,5 +756,13 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
 
         uiz_onzerService.setAdapter(serviceAdapter);
     }
-
+    @Override
+    protected void onDestroy() {
+        isOpen = false;
+        if (timer != null) {
+            timer.cancel();// 退出计时器
+        }
+        timer = null;
+        super.onDestroy();
+    }
 }

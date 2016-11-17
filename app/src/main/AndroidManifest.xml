@@ -114,6 +114,16 @@
             android:name=".Device.MatchPurifierActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan"/>
+
+        <activity
+            android:name=".Device.MatchROPurifierActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"/>
+
+
+
+
+
         <activity
             android:name=".Device.SetupWaterReplenMeterActivity"
             android:theme="@style/AppTheme.NoActionBar"

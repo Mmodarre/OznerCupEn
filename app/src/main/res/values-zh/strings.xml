@@ -738,4 +738,17 @@
     <string name="act_member">代理会员</string>
     <string name="center_i">我</string>
     <string name="submiting">正在提交...</string>
+
+
+
+    <!--增加RO水机-->
+    <string name="ro_purifier">RO水机</string>
+    <string name="match_ro_notice">请将Ro水机开机</string>
+    <string name="open_ro">请确保RO水机是开机状态</string>
+    <string name="problem_notice_ro">检查RO水机开启状态后再尝试配对</string>
+    <string name="my_ro">RO水机</string>
+    <string name="edit_ro_name">输入RO水机名称</string>
+    <string name="rest_ro_fit">复位</string>
+    <string name="ro_fit">清洗前置滤芯</string>
+    <string name="rofilter_need_change">为了您和家人的健康，请及时更换滤芯</string>
 </resources>
