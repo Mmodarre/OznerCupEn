@@ -98,17 +98,22 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
     private String mUserid = "";
 
     private String buyRourl = "www.baidu.com";//购买滤芯
-    //文字呼吸灯
+    //RO文字呼吸灯
     private int index = 0;
     private boolean isOpen = true;
     private Timer timer;
-    
+    private TextView tv_rolxa,tv_rolxb,tv_rolxc;
+    private String fit_a,fit_b,fit_c;
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.filter_status);
         MAC = getIntent().getStringExtra("MAC");
+        //RO水机滤芯状态
+        fit_a=getIntent().getStringExtra("Fit_a");
+        fit_b=getIntent().getStringExtra("Fit_b");
+        fit_c=getIntent().getStringExtra("Fit_c");
         waterPuriferUrl = getIntent().getStringExtra("buylinkurl");
         Log.e("filter", "waterPufifierUrl:" + waterPuriferUrl);
         isShowewm = getIntent().getStringExtra("isShowewm");
@@ -147,16 +152,36 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
             laly_ro.setVisibility(View.GONE);
             laly_water.setVisibility(View.VISIBLE);
         }
-//
-
         tv_ro_filterRest=(TextView)findViewById(R.id.tv_ro_filterRest);
         tv_ro_filterRest.setOnClickListener(this);
         tv_ro_filter=(TextView) findViewById(R.id.tv_ro_filter);
+        tv_rolxa=(TextView)findViewById(R.id.tv_rolxa);
+        tv_rolxb=(TextView)findViewById(R.id.tv_rolxb);
+        tv_rolxc=(TextView)findViewById(R.id.tv_rolxc);
+        Log.e("trfitt",fit_a+"&&&"+fit_b);
+        if(fit_a!=null&&Integer.parseInt(fit_a)!=0){
+            tv_rolxa.setText(fit_a+"%");
+        }else{
+            tv_rolxa.setText(getString(R.string.text_null));
+        }
+        if(fit_b!=null&&Integer.parseInt(fit_b)!=0){
+            tv_rolxb.setText(fit_b+"%");
+        }else{
+            tv_rolxb.setText(getString(R.string.text_null));
+        }
+        if(fit_c!=null&&Integer.parseInt(fit_c)!=0){
+            tv_rolxc.setText(fit_c+"%");
+        }else{
+            tv_rolxc.setText(getString(R.string.text_null));
+        }
         //文字呼吸灯
-//        if(){
-            timer();
-//        }
-
+        try {
+            if ((Integer.parseInt(fit_a) < 30) || Integer.parseInt(fit_b)<30||Integer.parseInt(fit_c)<30) {
+                timer();
+            }
+        }catch(Exception e){
+            e.getStackTrace();
+        }
 
 
 

@@ -953,7 +953,9 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
             case R.id.rlay_filterStatus:
                 Intent filterStatusIntent = new Intent(getContext(), FilterStatusActivity.class);
                 filterStatusIntent.putExtra("MAC", MAC);
-
+                filterStatusIntent.putExtra("Fit_a", filter_A_Time+"");
+                filterStatusIntent.putExtra("Fit_b", filter_B_Time+"");
+                filterStatusIntent.putExtra("Fit_c", filter_C_Time+"");
 //                if (buylinkurl != null) {
 //                    filterStatusIntent.putExtra("buylinkurl", buylinkurl);
 //                    filterStatusIntent.putExtra("isShowewm", isShowewm);
@@ -961,7 +963,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
 //                    filterStatusIntent.putExtra("buylinkurl", "");
 //                    filterStatusIntent.putExtra("isShowewm", "");
 //                }
-                startActivityForResult(filterStatusIntent, 526);
+                startActivityForResult(filterStatusIntent, 527);
                 break;
         }
     }
