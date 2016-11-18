@@ -149,8 +149,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         String label = alarm.getLabelOrDefault(context);
         Notification notification = new Notification.Builder(context)
                 .setAutoCancel(true).setTicker("补水时间到了，亲")
-                .setSmallIcon(R.drawable.stat_notify_alarm)
-                .setContentText(label).setWhen(alarm.time)
+                .setSmallIcon(R.mipmap.ozner)
+                .setContentText("补水时间到了，亲").setWhen(alarm.time)
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setContentIntent(pendingNotify).build();
 
@@ -194,10 +194,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         // silenced.
         String label = alarm.getLabelOrDefault(context);
         Notification builder = new Notification.Builder(context)
-                .setSmallIcon(R.drawable.stat_notify_alarm)
+                .setSmallIcon(R.mipmap.ozner)
                 .setTicker("补水时间到了，亲")
                 .setContentTitle("")//设置标题
-                .setContentText(label)//消息内容
+                .setContentText("补水时间到了，亲")//消息内容
                 .setWhen(alarm.time) //发送时间
                 .setDefaults(Notification.DEFAULT_ALL) //设置默认的提示音，振动方式，灯光
                 .setAutoCancel(true)//打开程序后图标消失

@@ -110,7 +110,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     }
 
     private void setData() {
-        switchWeek(true);
+        switchWeek(isWeek);
         int n = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         int m = faceOilyW[n];
         if (m <= 12) {
@@ -315,7 +315,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 new GetWaterRMAsyncTask().execute();
                 state = 1;
                 setData();
-                switchWeek(isWeek);
+//                switchWeek(isWeek);
                 break;
             case R.id.ll_eyes:
                 iv_face.setSelected(false);
@@ -327,7 +327,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 new GetWaterRMAsyncTask().execute();
                 state = 3;
                 setData();
-                switchWeek(isWeek);
+//                switchWeek(isWeek);
                 break;
             case R.id.ll_hands:
                 iv_face.setSelected(false);
@@ -339,7 +339,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 new GetWaterRMAsyncTask().execute();
                 state = 2;
                 setData();
-                switchWeek(isWeek);
+//                switchWeek(isWeek);
                 break;
             case R.id.ll_bozi:
                 iv_face.setSelected(false);
@@ -351,7 +351,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 new GetWaterRMAsyncTask().execute();
                 state = 4;
                 setData();
-                switchWeek(isWeek);
+//                switchWeek(isWeek);
                 break;
             case R.id.tv_week:
                 tv_week.setSelected(true);
