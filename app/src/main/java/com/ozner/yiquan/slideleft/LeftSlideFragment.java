@@ -22,9 +22,7 @@ import android.widget.Toast;
 
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
-
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.yiquan.Command.DeviceData;
@@ -42,7 +40,6 @@ import com.ozner.yiquan.HttpHelper.OznerDataHttp;
 import com.ozner.yiquan.Main.BaseMainActivity;
 import com.ozner.yiquan.MainActivity;
 import com.ozner.yiquan.R;
-import com.ozner.yiquan.mycenter.MyCenterActivity;
 import com.ozner.yiquan.mycenter.MyFragment;
 import com.ozner.yiquan.slideleft.adapter.SlideAdapter;
 import com.ozner.yiquan.slideleft.bean.SlideBean;
@@ -152,7 +149,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
         if (refContext != null) {
             ((ImageView) initView.findViewById(R.id.iv_left_center)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_draw));
             user_image.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.mipmap.icon_default_headimage));
-            iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_buble));
+            iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_buble_cn));
             ((ImageView) initView.findViewById(R.id.add_device)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(),R.drawable.add));
         }
     }
@@ -161,11 +158,11 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
 //        view.setBackgroundResource(R.drawable.left_backgroud);
         view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.main_bgcolor));
         iv_left_buble.setVisibility(View.VISIBLE);
-        if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+//        if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
             iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.left_buble_cn));
-        } else {
-            iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.left_buble));
-        }
+//        } else {
+//            iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.left_buble));
+//        }
         llay_left_bg.setVisibility(View.VISIBLE);
         show_text.setVisibility(View.INVISIBLE);
         txt_showadd.setVisibility(View.INVISIBLE);
