@@ -1012,11 +1012,11 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
                         tv_airOutside_data.setText(getString(R.string.text_null));
                     }
                     if (airWeather.city != null) {
-                        if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                            tv_airOutside_city.setText(ChinaCities.getCityEnString(airWeather.city));
-                        } else {
-                            tv_airOutside_city.setText(airWeather.city);
-                        }
+//                        if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+//                            tv_airOutside_city.setText(ChinaCities.getCityEnString(airWeather.city));
+//                        } else {
+                        tv_airOutside_city.setText(airWeather.city);
+//                        }
 //                        tv_airOutside_city.setText(airWeather.city);
                     }
                 } else {
@@ -1081,11 +1081,11 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
                                         && !VerticalAirPurifierFragment.this.isDetached()
                                         && !VerticalAirPurifierFragment.this.isRemoving()) {
 
-                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                                        tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
-                                    } else {
-                                        tv_air_address.setText(weather.city);
-                                    }
+//                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+//                                        tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
+//                                    } else {
+                                    tv_air_address.setText(weather.city);
+//                                    }
                                 }
                             }
                             if (weather.qlty != null) {

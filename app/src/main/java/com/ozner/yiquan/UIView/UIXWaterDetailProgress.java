@@ -290,7 +290,7 @@ public class UIXWaterDetailProgress extends UIXBaseView {
             goodPaint.setAlpha(_ani_good_alpha);
         }
 
-        if(((OznerApplication)activity.getApplication()).isLanguageCN()){
+//        if(((OznerApplication)activity.getApplication()).isLanguageCN()){
             String text = String.format(getResources().getString(com.ozner.ui.library.R.string.bad_water)+" %d%%", _bad_progress);
             canvas.drawText(text, this.getWidth() / 2 - space, offset, badPaint);
             offset += _space + _lineWidth;
@@ -301,18 +301,18 @@ public class UIXWaterDetailProgress extends UIXBaseView {
             offset += _space + _lineWidth;
             text = String.format(getResources().getString(com.ozner.ui.library.R.string.good_water)+" %d%%", _good_progress);
             canvas.drawText(text, this.getWidth() / 2 - space, offset, goodPaint);
-        }else {
-            String text = String.format("Bad" + " %d%%", _bad_progress);
-            canvas.drawText(text, this.getWidth() / 2 - space, offset, badPaint);
-            offset += _space + _lineWidth;
-
-            text = String.format("So-so" + " %d%%", _normal_progress);
-            canvas.drawText(text, this.getWidth() / 2 - space, offset, normalPaint);
-
-            offset += _space + _lineWidth;
-            text = String.format("Healthy" + " %d%%", _good_progress);
-            canvas.drawText(text, this.getWidth() / 2 - space, offset, goodPaint);
-        }
+//        }else {
+//            String text = String.format("Bad" + " %d%%", _bad_progress);
+//            canvas.drawText(text, this.getWidth() / 2 - space, offset, badPaint);
+//            offset += _space + _lineWidth;
+//
+//            text = String.format("So-so" + " %d%%", _normal_progress);
+//            canvas.drawText(text, this.getWidth() / 2 - space, offset, normalPaint);
+//
+//            offset += _space + _lineWidth;
+//            text = String.format("Healthy" + " %d%%", _good_progress);
+//            canvas.drawText(text, this.getWidth() / 2 - space, offset, goodPaint);
+//        }
     }
 
     @Override

@@ -84,11 +84,6 @@ public class SetupWaterProbeActivity extends AppCompatActivity implements View.O
         ll_about_water_probe.setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
         tv_probe_name.setOnClickListener(this);
-        if (((OznerApplication)getApplication()).isLanguageCN()){
-            ll_about_water_probe.setVisibility(View.VISIBLE);
-        }else{
-            ll_about_water_probe.setVisibility(View.GONE);
-        }
 
         initView();
     }

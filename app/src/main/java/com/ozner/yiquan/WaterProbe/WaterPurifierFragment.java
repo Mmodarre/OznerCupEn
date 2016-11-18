@@ -140,9 +140,9 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
         OznerApplication.changeTextFont((ViewGroup) view);
 //        isFirst = true;
         if (isFirst) {
-            if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                new GetLvxinTimeAsyncTask().execute();
-            }
+//            if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+            new GetLvxinTimeAsyncTask().execute();
+//            }
             isFirst = false;
         }
         return view;
@@ -165,7 +165,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 //        if (((OznerApplication) (getActivity().getApplication())).isLoginPhone()) {
 //            view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
 //        } else {
-            view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
+        view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
 //        }
         rlay_menu = (RelativeLayout) view.findViewById(R.id.rlay_menu);
         rlay_purifier_tdsdata = (RelativeLayout) view.findViewById(R.id.rlay_purifier_tdsdata);

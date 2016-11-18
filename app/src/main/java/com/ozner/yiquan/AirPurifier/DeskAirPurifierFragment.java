@@ -98,11 +98,11 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
                                 if (DeskAirPurifierFragment.this.isAdded()
                                         && !DeskAirPurifierFragment.this.isRemoving()
                                         && !DeskAirPurifierFragment.this.isDetached())
-                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                                        tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
-                                    } else {
+//                                    if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+//                                        tv_air_address.setText(ChinaCities.getCityEnString(weather.city));
+//                                    } else {
                                         tv_air_address.setText(weather.city);
-                                    }
+//                                    }
                             }
                             if (weather.qlty != null) {
                                 if ("优".equals(weather.qlty)) {
@@ -606,12 +606,7 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
 
                     tv_airOutside_city = (TextView) airDialog.findViewById(R.id.tv_airOutside_city);
                     if (airWeather.city != null) {
-                        if (!((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
-                            tv_airOutside_city.setText(ChinaCities.getCityEnString(airWeather.city));
-                        } else {
-                            tv_airOutside_city.setText(airWeather.city);
-                        }
-//                        tv_airOutside_city.setText(airWeather.city);
+                        tv_airOutside_city.setText(airWeather.city);
                     } else {
                         tv_airOutside_city.setText(getResources().getString(R.string.text_null));
                     }
