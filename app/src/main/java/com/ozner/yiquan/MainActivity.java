@@ -1170,12 +1170,7 @@ public class MainActivity extends BaseMainActivity {
                                 && localUserid.equals(loginUserid)
                                 && !loginToken.equals(OznerPreference.UserToken(MainActivity.this))) {
                             Intent loginIntent = new Intent(getBaseContext(), LoginActivity.class);
-                            if (((OznerApplication) getApplication()).isLanguageCN()) {
-                                intent.setClass(getBaseContext(), LoginActivity.class);
-                            } else {
-                                intent.setClass(getBaseContext(), LoginEnActivity.class);
-                            }
-//                            (getBaseContext(), LoginActivity.class);
+                            intent.setClass(getBaseContext(), LoginActivity.class);
                             loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             loginIntent.putExtra(PushBroadcastKey.IsOtherLogin, true);
                             startActivity(loginIntent);

@@ -70,11 +70,6 @@ public class SetupWaterPurifierActivity extends AppCompatActivity implements Vie
         ll_about_water_purifier.setOnClickListener(this);
         findViewById(R.id.ll_about_water_purifier_ver).setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
-        if (((OznerApplication)getApplication()).isLanguageCN()){
-            ll_about_water_purifier.setVisibility(View.VISIBLE);
-        }else{
-            ll_about_water_purifier.setVisibility(View.GONE);
-        }
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         initview();
     }

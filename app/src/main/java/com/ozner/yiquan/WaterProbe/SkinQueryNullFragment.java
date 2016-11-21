@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,11 +49,13 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
         try {
             Mac = getArguments().getString("MAC");
             waterReplenishmentMeter = (WaterReplenishmentMeter) OznerDeviceManager.Instance().getDevice(Mac);
+
         } catch (Exception e) {
         }
         View view = inflater.inflate(R.layout.fragment_skin_query, container, false);
+        sex = (int)waterReplenishmentMeter.getAppValue(PageState.Sex);//sex=0代表女  1代表男
+        Log.e("TRSEX1",sex+"==========sex");
         initView(view);
-//        sex = (int)waterReplenishmentMeter.getAppValue(PageState.Sex);//sex=0代表女  1代表男
         OznerApplication.changeTextFont((ViewGroup) view);
         return view;
     }
@@ -104,6 +107,13 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
         skin_middle.setOnClickListener(this);
 //        skin_mix.setOnClickListener(this);
 //        skin_sensibility.setOnClickListener(this);
+        if(sex==0){
+            iv_skin_class.setImageResource(R.drawable.wu);
+            iv_current_select_skin.setImageResource(R.drawable.ganzao);
+        }else{
+            iv_skin_class.setImageResource(R.drawable.nan_zhongxing_03);
+            iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_031);
+        }
     }
 
 
@@ -117,7 +127,11 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
 //                skin_mix.setSelected(false);
 //                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_dry_notice));
-                iv_current_select_skin.setImageResource(R.drawable.ganzao);
+              if(sex==0) {
+                  iv_current_select_skin.setImageResource(R.drawable.ganzao);
+              }else{
+                  iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_031);
+              }
                 break;
             case R.id.skin_oily:
                 skin_dry.setSelected(false);
@@ -126,7 +140,11 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
 //                skin_mix.setSelected(false);
 //                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_oily_notice));
-                iv_current_select_skin.setImageResource(R.drawable.youxing_03);
+                if(sex==0){
+                    iv_current_select_skin.setImageResource(R.drawable.youxing_03);
+                }else{
+                    iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_032);
+                }
                 break;
             case R.id.skin_middle:
                 skin_dry.setSelected(false);
@@ -135,7 +153,11 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
 //                skin_mix.setSelected(false);
 //                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_mid_notice));
-                iv_current_select_skin.setImageResource(R.drawable.zhongxing_03);
+                if(sex==0) {
+                    iv_current_select_skin.setImageResource(R.drawable.zhongxing_03);
+                }else{
+                    iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_033);
+                }
                 break;
 //            case R.id.skin_mix:
 //                skin_dry.setSelected(false);
@@ -249,17 +271,29 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
                             skin_oily.setSelected(true);
                             tv_skin_notice.setText(getString(R.string.skin_oily_notice));
                             skin_show_remind.setText(getString(R.string.skin_dry_notice));
-                            iv_skin_class.setImageResource(R.drawable.ganzao);
+                            if(sex==0) {
+                                iv_skin_class.setImageResource(R.drawable.ganzao);
+                            }else{
+                                iv_skin_class.setImageResource(R.drawable.nan_zhongxing_031);
+                            }
                         } else if (oil > 12 && oil <= 20) {
                             skin_show.setText(getString(R.string.skin_mid));
                             skin_middle.setVisibility(View.GONE);
                             skin_show_remind.setText(getString(R.string.skin_mid_notice));
-                            iv_skin_class.setImageResource(R.drawable.zhongxing_03);
+                            if(sex==0) {
+                                iv_skin_class.setImageResource(R.drawable.zhongxing_03);
+                            }else{
+                                iv_skin_class.setImageResource(R.drawable.nan_zhongxing_033);
+                            }
                         } else if (oil > 20) {
                             skin_show.setText(getString(R.string.skin_oily));
                             skin_oily.setVisibility(View.GONE);
                             skin_show_remind.setText(getString(R.string.skin_oily_notice));
-                            iv_skin_class.setImageResource(R.drawable.youxing_03);
+                            if(sex==0) {
+                                iv_skin_class.setImageResource(R.drawable.youxing_03);
+                            }else{
+                                iv_skin_class.setImageResource(R.drawable.nan_zhongxing_032);
+                            }
                         }
                         notice_skin.setText(getString(R.string.query_times_unenough));
                     } else {
