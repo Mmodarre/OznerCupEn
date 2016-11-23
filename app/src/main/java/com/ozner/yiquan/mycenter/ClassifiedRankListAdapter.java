@@ -184,11 +184,11 @@ public class ClassifiedRankListAdapter extends BaseAdapter implements View.OnCli
 //        firstText.append(calendar.get(Calendar.MONTH) + 1);
 //        firstText.append("月排行榜冠军");
         String month = "";
-        if (((OznerApplication) ((Activity) mContext).getApplication()).isLanguageCN()) {
-            month = String.valueOf(calendar.get(Calendar.MONTH) + 1);
-        } else {
-            month = monthsStr[calendar.get(Calendar.MONTH)];
-        }
+//        if (((OznerApplication) ((Activity) mContext).getApplication()).isLanguageCN()) {
+        month = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+//        } else {
+//            month = monthsStr[calendar.get(Calendar.MONTH)];
+//        }
 
 //        rankViewHolder.tv_firstText.setText(firstText);
 //        String strFormat =

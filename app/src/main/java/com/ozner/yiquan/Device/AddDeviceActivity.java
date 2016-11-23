@@ -143,9 +143,9 @@ public class AddDeviceActivity extends AppCompatActivity {
             holder.deviceName.setText(deviceNames[position]);
             holder.connnettionIcon.setImageResource(connectionIcon[position]);
             holder.connectionText.setText(connectionName[position]);
-            if (!((OznerApplication) getApplication()).isLanguageCN()) {
-                holder.connectionText.setText("");
-            }
+//            if (!((OznerApplication) getApplication()).isLanguageCN()) {
+//                holder.connectionText.setText("");
+//            }
 
             return convertView;
         }

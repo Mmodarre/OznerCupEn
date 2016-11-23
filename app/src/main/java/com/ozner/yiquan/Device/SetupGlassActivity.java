@@ -284,11 +284,6 @@ public class SetupGlassActivity extends AppCompatActivity implements View.OnClic
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
         ll_about_smart_glass = (LinearLayout) findViewById(R.id.ll_about_smart_glass);
         ll_about_smart_glass.setOnClickListener(this);
-        if (((OznerApplication)getApplication()).isLanguageCN()){
-            ll_about_smart_glass.setVisibility(View.VISIBLE);
-        }else{
-            ll_about_smart_glass.setVisibility(View.GONE);
-        }
         takewater_time.setOnClickListener(this);
         takewater_timeInterval.setOnClickListener(this);
         toolbar_save.setOnClickListener(this);

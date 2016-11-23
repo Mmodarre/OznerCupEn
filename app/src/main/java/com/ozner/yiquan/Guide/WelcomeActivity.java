@@ -97,15 +97,15 @@ public class WelcomeActivity extends Activity {
                 @Override
                 public void run() {
                     if (isFirst) {
-                        if (((OznerApplication) getApplication()).isLanguageCN()) {
+//                        if (((OznerApplication) getApplication()).isLanguageCN()) {
                             editor.putBoolean("isFirst", false);
                             editor.commit();
                             ShowGuidePage();
-                        } else {
-                            editor.putBoolean("isFirst", false);
-                            editor.commit();
-                            showNexLoginPage();
-                        }
+//                        } else {
+//                            editor.putBoolean("isFirst", false);
+//                            editor.commit();
+//                            showNexLoginPage();
+//                        }
                     } else {
                         Thread t = new Thread(new Runnable() {
                             public void run() {
