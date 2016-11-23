@@ -44,10 +44,10 @@ public class WaterPurifierManager extends BaseDeviceManager {
         {
             return true;
         }
-
-
+        if (Model.trim().equals("16a21bd6")) {
+                   return true;
+              }
         return false;
-
     }
 
     @Override

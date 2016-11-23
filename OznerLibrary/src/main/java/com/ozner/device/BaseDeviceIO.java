@@ -147,6 +147,9 @@ public abstract class BaseDeviceIO extends XObject {
             }
         }
     }
+    /**
+          * 重新调用Ready事件
+          */
     public void reCallDoReadly()
     {
         doReady();

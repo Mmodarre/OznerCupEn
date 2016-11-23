@@ -20,8 +20,10 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.ozner.AirPurifier.AirPurifier;
+import com.ozner.AirPurifier.AirPurifierManager;
 import com.ozner.AirPurifier.AirPurifier_MXChip;
 import com.ozner.WaterPurifier.WaterPurifier;
+import com.ozner.WaterPurifier.WaterPurifierManager;
 import com.ozner.cup.ACSqlLite.CCacheWorking;
 import com.ozner.cup.AirPurifier.DeskAirPurifierFragment;
 import com.ozner.cup.AirPurifier.VerticalAirPurifierFragment;
@@ -582,6 +584,7 @@ public class MainActivity extends BaseMainActivity {
                     params.putString("MAC", mac);
                     String type = deviceData.Type();
                     Log.e("type", type);
+
                     switch (type) {
                         //智能水杯
                         case CupType:
@@ -617,12 +620,14 @@ public class MainActivity extends BaseMainActivity {
                             Log.e("123456", tapPen);
                             return;
                         case WaterType:
+
                             WaterPurifierFragment waterPurifierFragment = new WaterPurifierFragment();
                             waterPurifierFragment.setArguments(params);
                             getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.framen_main_con, waterPurifierFragment, WaterType)
                                     .commitAllowingStateLoss();
                             this.MAC = mac;
+                            Log.e("1234", WaterType+"=============水机");
                             //Ro水机
                         case ROPurifierType:
                             ROWaterPurifierFragment roWaterPurifierFragment = new ROWaterPurifierFragment();
@@ -631,6 +636,7 @@ public class MainActivity extends BaseMainActivity {
                                     .replace(R.id.framen_main_con, roWaterPurifierFragment, ROPurifierType)
                                     .commitAllowingStateLoss();
                             this.MAC = mac;
+                            Log.e("1234", ROPurifierType+"=============Ro水机");
                             return;
                         case WaterAylaType:
                             WaterPurifierFragment waterPurifierAylaFragment = new WaterPurifierFragment();
@@ -665,15 +671,32 @@ public class MainActivity extends BaseMainActivity {
                             this.MAC = mac;
                             return;
                         default:
-                            break;
+
+                            if(WaterPurifierManager.IsWaterPurifier(type)){
+                                WaterPurifierFragment waterPurifierFragments = new WaterPurifierFragment();
+                                waterPurifierFragments.setArguments(params);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.framen_main_con, waterPurifierFragments, type)
+                                        .commitAllowingStateLoss();
+                                this.MAC = mac;
+                            }
+//                            Log.e("1234tr", type+"=============水机1");
+                            if(AirPurifierManager.IsWifiAirPurifier(type)){
+                                VerticalAirPurifierFragment verticalAirPurifierFragments = new VerticalAirPurifierFragment();
+                                verticalAirPurifierFragments.setArguments(params);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.framen_main_con, verticalAirPurifierFragments, type)
+                                        .commitAllowingStateLoss();
+                                this.MAC = mac;
+                            }
+                            return;
 
                     }
-                    break;
+//                    break;
                 }
 
             }
         }
-
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.framen_main_con, new MainConFragment())
                 .commitAllowingStateLoss();

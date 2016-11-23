@@ -134,7 +134,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
         initView(view);
 
         if (waterPurifier != null) {
-            Log.e("1234", "净水器类型:" + MAC);
+            Log.e("1234", "净水器类型:" + waterPurifier.info().Type);
 //            String type = waterPurifier.info().Type;
 //            new GetMachineTypeAsyncTask().execute();
         }
