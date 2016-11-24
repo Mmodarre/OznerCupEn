@@ -44,11 +44,12 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
     WaterReplenishmentMeter waterReplenishmentMeter;
     private ImageView checkBox1, checkBox2, checkBox3;
     long time1, time2, time3;
-    public static final String PREFERENCES = "AlarmClock";
+    public static final String PREFERENCES = "AlarmClocks";
     SharedPreferences sh;
     Alarm alarm1 = new Alarm();
     Alarm alarm2 = new Alarm();
     Alarm alarm3 = new Alarm();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +95,12 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
         findViewById(R.id.rl_detection_time2).setOnClickListener(this);
         findViewById(R.id.rl_detection_time3).setOnClickListener(this);
         initData();
+        alarm1.hour = 8;
+        alarm1.minutes = 30;
+        alarm2.hour = 14;
+        alarm2.minutes = 30;
+        alarm3.hour = 20;
+        alarm3.minutes = 0;
     }
 
     private void initData() {

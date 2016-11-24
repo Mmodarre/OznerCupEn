@@ -48,7 +48,7 @@ public class Alarms {
 
     // This is a private action used by the AlarmKlaxon to update the UI to
     // show the alarm has been killed.
-    public static final String ALARM_KILLED = "alarm_killed";
+    public static final String ALARM_KILLED = "com.ozner.cup.Alarm.alarm_killed";
 
     // Extra in the ALARM_KILLED intent to indicate to the user how long the
     // alarm played before being killed.
@@ -59,7 +59,7 @@ public class Alarms {
 
     // This intent is sent from the notification when the user cancels the
     // snooze alert.
-    public static final String CANCEL_SNOOZE = "cancel_snooze";
+    public static final String CANCEL_SNOOZE = "com.ozner.cup.Alarm.cancel_snooze";
 
     // This string is used when passing an Alarm object through an intent.
     public static final String ALARM_INTENT_EXTRA = "intent.extra.alarm.noti";

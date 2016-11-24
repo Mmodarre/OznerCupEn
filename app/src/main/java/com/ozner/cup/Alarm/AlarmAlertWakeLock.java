@@ -19,6 +19,8 @@ package com.ozner.cup.Alarm;
 import android.content.Context;
 import android.os.PowerManager;
 
+import com.ozner.cup.Device.SetupReplenTimeActivity;
+
 /**
  * Hold a wakelock that can be acquired in the AlarmReceiver and
  * released in the AlarmAlert activity
@@ -38,7 +40,7 @@ class AlarmAlertWakeLock {
         sCpuWakeLock = pm.newWakeLock(
                 PowerManager.PARTIAL_WAKE_LOCK |
                 PowerManager.ACQUIRE_CAUSES_WAKEUP |
-                PowerManager.ON_AFTER_RELEASE, "AlarmClock");
+                PowerManager.ON_AFTER_RELEASE, SetupReplenTimeActivity.PREFERENCES);
         sCpuWakeLock.acquire();
     }
 

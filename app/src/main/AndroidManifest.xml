@@ -387,8 +387,8 @@
         <receiver android:name=".Alarm.AlarmReceiver">
             <intent-filter>
                 <action android:name="com.ozner.cup.Alarm.ALARM_ALERT" />
-                <action android:name="alarm_killed" />
-                <action android:name="cancel_snooze" />
+                <action android:name="com.ozner.cup.Alarm.alarm_killed" />
+                <action android:name="com.ozner.cup.Alarm.cancel_snooze" />
             </intent-filter>
         </receiver>
 

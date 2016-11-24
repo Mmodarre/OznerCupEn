@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">OZNER IFAMILY</string>
     <string name="Advise_InputAdvise">Please enter the suggestions</string>
     <string name="my_device">My Device</string>
@@ -754,5 +754,10 @@
     <string name="act_member">Acting Member</string>
     <string name="center_i">I</string>
     <string name="submiting">Submiting...</string>
-    <string name="alarm_alert_snooze_text">"暂停再响"</string>
+    <string name="default_label">"Alarm"</string>
+    <string name="alarm_notify_snooze_label">"<xliff:g id="LABEL">%s</xliff:g>（已暂停）"</string>
+    <string name="alarm_alert_dismiss_text">"Cancel"</string>
+    <string name="alarm_alert_snooze_text">"Pause re-ring"</string>
+    <string name="alarm_notify_snooze_text">"The alarm has been set to remind you <xliff:g id="TIME">%s</xliff:g>more times from now. Check to cancel."</string>
+    <string name="alarm_alert_snooze_set">"Pause <xliff:g id="MINUTES">%d</xliff:g> minites."</string>
 </resources>
