@@ -36,7 +36,6 @@ import android.widget.Toast;
 
 import com.ozner.AirPurifier.AirPurifier_MXChip;
 import com.ozner.cup.Command.FootFragmentListener;
-import com.ozner.cup.Command.ImageHelper;
 import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Command.UserDataPreference;
@@ -51,7 +50,6 @@ import com.ozner.device.OperateCallback;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 
-import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -158,20 +156,20 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
      * @param rootView
      */
     private void initViewBitmap(View rootView) {
-        WeakReference<ImageView> ivMabio = new WeakReference<ImageView>(((ImageView) rootView.findViewById(R.id.iv_mabiao)));
-        ivMabio.get().setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mabiao));
-        DisplayMetrics dm = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = (int) (dm.densityDpi * 4);
-        int height = (int) (dm.densityDpi * 2);
-
-        ivMabio.get().setAdjustViewBounds(true);
-        ivMabio.get().setMaxWidth(width);
-        ivMabio.get().setMinimumWidth(width);
-        ivMabio.get().setMaxHeight(height);
-        ivMabio.get().setMinimumHeight(height);
-
-        ((ImageView) rootView.findViewById(R.id.iv_xuanzhuan_x3)).setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mengban1));
+//        WeakReference<ImageView> ivMabio = new WeakReference<ImageView>(((ImageView) rootView.findViewById(R.id.iv_mabiao)));
+//        ivMabio.get().setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mabiao));
+//        DisplayMetrics dm = new DisplayMetrics();
+//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+//        int width = (int) (dm.densityDpi * 4);
+//        int height = (int) (dm.densityDpi * 2);
+//
+//        ivMabio.get().setAdjustViewBounds(true);
+//        ivMabio.get().setMaxWidth(width);
+//        ivMabio.get().setMinimumWidth(width);
+//        ivMabio.get().setMaxHeight(height);
+//        ivMabio.get().setMinimumHeight(height);
+//
+//        ((ImageView) rootView.findViewById(R.id.iv_xuanzhuan_x3)).setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mengban1));
 //        ((GifImageView) rootView.findViewById(R.id.gif)).setImageResource(R.drawable.lizi);
     }
 
