@@ -620,11 +620,12 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             Log.e("trcool", "sssssssssssssss");
 
         }
-        if ("true".equals(hot)) {
-            isHotOn = waterPurifier.status().Hot();
-            Log.e("trcool", "dddddddddddddddddddd");
-
-        }
+//        if ("true".equals(hot)) {
+//            isHotOn = waterPurifier.status().Hot();
+//            Log.e("trcool", "dddddddddddddddddddd");
+//        }
+        //君融水机类型获取不到的暂时解决方法
+        isHotOn=waterPurifier.status().Hot();
     }
 
     //    cc
@@ -870,7 +871,9 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                         }
                     }
                 } else {
-                    Toast.makeText(getActivity(), getString(R.string.get_waterpurifiertype_fail), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), getString(R.string.get_waterpurifiertype_fail), Toast.LENGTH_SHORT).show();
+                    //君融水机没有制冷功能的暂时解决方法
+                    Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.rlay_hotswitch:
@@ -893,7 +896,14 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
                         }
                     }
                 } else {
-                    Toast.makeText(getActivity(), getString(R.string.get_waterpurifiertype_fail), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), getString(R.string.get_waterpurifiertype_fail), Toast.LENGTH_SHORT).show();
+                    //君融水机没有制冷功能的暂时解决方法
+                    if (isPowerOn) {
+                        switchHot(!isHotOn);
+                        waterPurifier.status().setHot(!waterPurifier.status().Hot(), this);
+                    } else {
+                        Toast.makeText(getContext(), getString(R.string.please_open_power), Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.iv_purifierSetBtn:
