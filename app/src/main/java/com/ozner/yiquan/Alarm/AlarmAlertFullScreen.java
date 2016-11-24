@@ -168,7 +168,7 @@ public class AlarmAlertFullScreen extends Activity {
                 .setTicker(label)
                 .setAutoCancel(true)
                 .setContentText(getString(R.string.alarm_notify_snooze_text, Alarms.formatTime(this, c)))
-                .setSmallIcon(R.drawable.stat_notify_alarm)
+                .setSmallIcon(R.mipmap.ozner)
                 .setContentIntent(broadcast)
                 .setContentTitle("")
                 .setDefaults(Notification.DEFAULT_ALL).build();
