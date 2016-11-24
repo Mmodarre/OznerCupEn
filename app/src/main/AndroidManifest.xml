@@ -270,10 +270,9 @@
             android:launchMode="singleInstance"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
-        <!-- 百度推送配置 -->
+        <!--百度推送配置-->
 
-
-        <!-- 适配Android N系统必需的ContentProvider声明，写权限包含应用包名 -->
+        <!-- 适配Android N系统必需的ContentProvider声明，写权限包含应用包名-->
         <provider
             android:name="com.baidu.android.pushservice.PushInfoProvider"
             android:authorities="com.ozner.cup.bdpush"
@@ -337,15 +336,6 @@
             android:exported="true"/>
         <!-- push结束 -->
 
-
-        <!-- <receiver -->
-        <!-- android:name=".Alarm.AlarmReceiver" -->
-        <!-- android:process=":remote"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="ELITOR_CLOCK" /> -->
-        <!-- </intent-filter> -->
-        <!-- </receiver> -->
-
         <service android:name="com.aylanetworks.aaml.AylaExecuteRequest"/>
 
         <meta-data
@@ -379,7 +369,52 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Login.ResetPwdActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <provider
+            android:name=".Alarm.AlarmProvider"
+            android:authorities="com.ozner.cup.Alarm"
+            android:exported="false" />
+        <activity
+            android:name=".Alarm.AlarmAlertFullScreen"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Wallpaper.NoTitleBar" />
+
+        <receiver android:name=".Alarm.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.ozner.cup.Alarm.ALARM_ALERT" />
+                <action android:name="alarm_killed" />
+                <action android:name="cancel_snooze" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".Alarm.AlarmAlert"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:theme="@style/alarm_alert" />
+        <service android:name=".Alarm.AlarmKlaxon">
+            <intent-filter>
+                <action android:name="com.ozner.cup.Alarm.ALARM_ALERT" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".Alarm.AlarmInitReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+
     </application>
 
 </manifest>
