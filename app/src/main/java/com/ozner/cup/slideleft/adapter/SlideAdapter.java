@@ -27,6 +27,8 @@ import com.ozner.tap.TapManager;
 import java.util.ArrayList;
 import java.util.List;
 
+//import static u.aly.av.R;
+
 /**
  * Created by admin on 2015/11/26.
  */
@@ -38,7 +40,7 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
     public List<View> myViewGroup = new ArrayList<View>();
     public View lastview;
     public final String[] constate = new String[]{getContext().getString(R.string.loding_now), getContext().getString(R.string.loding_success), getContext().getString(R.string.loding_null)};
-
+    public final String ROPurifierType="Ozner RO";//RO水机
 
     public SlideAdapter(Context context, List<DeviceData> deviceDatas) {
         super(context, R.layout.list_item_handle_left, R.id.title_text, deviceDatas);
@@ -150,7 +152,12 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
                     holder.icon.setImageResource(R.drawable.shuiji_on);
                 else
                     holder.icon.setImageResource(R.drawable.shuiji);
-                holder.left_item_state.setImageResource(R.drawable.wifiblue);
+                if(ROPurifierType.equals(type)){
+                    holder.left_item_state.setImageResource(R.mipmap.icon_bluetooth);
+                }else{
+                    holder.left_item_state.setImageResource(R.drawable.wifiblue);
+                }
+
                 //智能空净
             } else if (AirPurifierManager.IsBluetoothAirPurifier(type)) {
 

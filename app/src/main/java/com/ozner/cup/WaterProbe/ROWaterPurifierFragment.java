@@ -233,18 +233,20 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
 
     public void InitData() {
         isOffLine = waterPurifier.isOffline();
-        if (waterPurifier.sensor().TDS1() > 0 && waterPurifier.sensor().TDS2() > 0) {
+        if (waterPurifier.waterInfo.TDS1> 0 && waterPurifier.waterInfo.TDS2 > 0) {
+
             isZero = false;
-            tds1 = waterPurifier.sensor().TDS1();
-            tds2 = waterPurifier.sensor().TDS2();
+            tds1 = waterPurifier.waterInfo.TDS1;
+            tds2 = waterPurifier.waterInfo.TDS2;
+            Log.e("trfitt",tds1+"===========tds1\n"+tds2+"============tds2");
             if (tds1 < tds2) {
                 tdsMid = tds1;
                 tds1 = tds2;
                 tds2 = tdsMid;
             }
         } else {
-            tds1 = waterPurifier.sensor().TDS1();
-            tds2 = waterPurifier.sensor().TDS2();
+            tds1 = waterPurifier.waterInfo.TDS1;
+            tds2 = waterPurifier.waterInfo.TDS2;
             isZero = true;
         }
         isPowerOn = waterPurifier.status().Power();

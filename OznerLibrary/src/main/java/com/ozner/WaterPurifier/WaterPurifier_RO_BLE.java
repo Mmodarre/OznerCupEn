@@ -32,8 +32,8 @@ public class WaterPurifier_RO_BLE extends WaterPurifier {
     private static final byte param_request_water_info=2;
     private static final byte param_request_filter_info=3;
     private static final byte param_request_filter_history_info=4;
-    private SettingInfo settingInfo=new SettingInfo();
-    private WaterInfo waterInfo=new WaterInfo();
+    public SettingInfo settingInfo=new SettingInfo();
+    public WaterInfo waterInfo=new WaterInfo();
     public FilterInfo filterInfo=new FilterInfo();
 
     public class SettingInfo
