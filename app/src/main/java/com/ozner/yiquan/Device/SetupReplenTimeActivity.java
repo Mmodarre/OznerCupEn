@@ -97,6 +97,7 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
         findViewById(R.id.rl_detection_time2).setOnClickListener(this);
         findViewById(R.id.rl_detection_time3).setOnClickListener(this);
         initData();
+
     }
 
     private void initData() {
@@ -276,16 +277,22 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
             waterReplenishmentMeter.setAppdata(PageState.Time1, firstTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time1, 0);
+            alarm1.hour = 8;
+            alarm1.minutes = 30;
         }
         if (checkBox2.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time2, secondTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time2, 0);
+            alarm2.hour = 14;
+            alarm2.minutes = 30;
         }
         if (checkBox3.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time3, thirdTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time3, 0);
+            alarm3.hour = 20;
+            alarm3.minutes = 0;
         }
 
         alarm1.id = 3;

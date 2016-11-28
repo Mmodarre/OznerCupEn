@@ -94,13 +94,13 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // Intentionally verbose: always log the alarm time to provide useful
         // information in bug reports.
-        long now = System.currentTimeMillis();
-
-        // Always verbose to track down time change problems.
-        if (now > alarm.time + STALE_WINDOW) {
-            Log.v("mdy", "Ignoring stale alarm");
-            return;
-        }
+//        long now = System.currentTimeMillis();
+//
+//        // Always verbose to track down time change problems.
+//        if (now > alarm.time + STALE_WINDOW) {
+//            Log.v("mdy", "Ignoring stale alarm");
+//            return;
+//        }
 
         // Maintain a cpu wake lock until the AlarmAlert and AlarmKlaxon can
         // pick it up.
