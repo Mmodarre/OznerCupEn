@@ -44,7 +44,7 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
     private AirPurifier_MXChip airPurifier_mxChip;
     private TextView toolbarText, tv_pm_value, tv_voc_value, tv_air_cleans_value;
     private LinearLayout airVoc, air_zx_layout, air_health_buy_layout;
-    private RelativeLayout tds_distribution_layout,tds_health_layout;
+    private RelativeLayout tds_distribution_layout, tds_health_layout;
     private Date currentDate, proDate, stopDate;
     private int lvXin;
     int pm25 = 0, voc = 0;
@@ -61,8 +61,6 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
             airPurifier_mxChip = (AirPurifier_MXChip) device;
         }
 
-        UiUpdateAsyncTask uiUpdateAsyncTask = new UiUpdateAsyncTask();
-        uiUpdateAsyncTask.execute("airverasd");
         setContentView(R.layout.air_room_details);
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
@@ -76,7 +74,10 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         margin = OznerCommand.dip2px(this, 30);
         screenWide = dm.widthPixels - margin * 2;
+
+        initData();
         initView();
+        setData();
     }
 
     private void initView() {
@@ -97,7 +98,7 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
         airVoc = (LinearLayout) findViewById(R.id.air_value_layout1);
         tds_distribution_layout = (RelativeLayout) findViewById(R.id.tds_distribution_layout);
         tds_health_layout = (RelativeLayout) findViewById(R.id.tds_health_layout);
-        if (!((OznerApplication)(getApplication())).isLoginPhone()){
+        if (!((OznerApplication) (getApplication())).isLoginPhone()) {
             tds_health_layout.setVisibility(View.GONE);
         }
         currentDate = new Date();
@@ -153,7 +154,7 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    private void setDate() {
+    private void setData() {
         if (pm25 == 65535) {
             tv_pm_value.setText(getString(R.string.loding_null));
         } else if (pm25 <= 0 || pm25 > 1000) {
@@ -236,39 +237,11 @@ public class VerAirFilterActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-        }
-
-        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
-        @Override
-        protected String doInBackground(String... params) {
-            initData();
-            return null;
-        }
-
-        //onProgressUpdate方法用于更新进度信息
-        @Override
-        protected void onProgressUpdate(Integer... progresses) {
-        }
-
-        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
-        @Override
-        protected void onPostExecute(String result) {
-            setDate();
-        }
-
-        //onCancelled方法用于在取消执行中的任务时更改UI
-        @Override
-        protected void onCancelled() {
-        }
-    }
-
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        new UiUpdateAsyncTask().execute();
+        initData();
+        setData();
     }
 
     @Override

@@ -26,7 +26,7 @@
                 <include
                     layout="@layout/air_main_toobar"
                     android:layout_width="match_parent"
-                    android:layout_height="43dp"/>
+                    android:layout_height="43dp" />
 
                 <RelativeLayout
                     android:id="@+id/rote_RelativeLayout"
@@ -48,7 +48,7 @@
                             android:id="@+id/iv_data_loading_fair"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/air_loding_fair"/>
+                            android:src="@drawable/air_loding_fair" />
 
                         <TextView
                             android:id="@+id/tv_phone_nonet"
@@ -59,7 +59,7 @@
                             android:text="@string/phone_nonet"
                             android:textColor="@color/white"
                             android:textSize="13dp"
-                            android:visibility="invisible"/>
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/tv_data_loading_fair"
@@ -69,7 +69,7 @@
                             android:layout_toRightOf="@+id/iv_data_loading_fair"
                             android:text="@string/detail_nonet"
                             android:textColor="@color/white"
-                            android:textSize="13dp"/>
+                            android:textSize="13dp" />
 
                     </RelativeLayout>
 
@@ -89,20 +89,16 @@
                             android:layout_marginTop="-80dp"
                             android:background="@drawable/lizi"
                             android:scaleType="fitXY"
-                            android:src="@drawable/lizi"
-                            />
-
+                            android:src="@drawable/lizi" />
 
                         <ImageView
-                            android:id="@+id/iv_mabiao"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:minHeight="50dp"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
+                            android:src="@drawable/mabiao"
 
                             />
-                        <!-- android:src="@drawable/mabiao" -->
 
                         <ImageView
                             android:id="@+id/iv_xuanzhuan_x3"
@@ -111,8 +107,23 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitCenter"
-                            />
-                        <!--android:src="@drawable/mengban1"-->
+                            android:src="@drawable/mengban1" />
+
+                        <!--<ImageView-->
+                        <!--android:id="@+id/iv_xuanzhuan_x1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--android:layout_centerHorizontal="true"-->
+                        <!--android:src="@drawable/cu" />-->
+
+                        <!--<ImageView-->
+                        <!--android:id="@+id/iv_xuanzhuan_x2"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--android:layout_centerHorizontal="true"-->
+                        <!--android:src="@drawable/xi" />-->
 
                         <include
                             android:id="@+id/air_center_layout"
@@ -121,7 +132,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center" />
 
                     </RelativeLayout>
                     <!--结束-->
@@ -155,7 +166,7 @@
                                 android:alpha="0.6"
                                 android:gravity="center"
                                 android:text="@string/airRoom_voc"
-                                android:textColor="@color/white"/>
+                                android:textColor="@color/white" />
 
                             <TextView
                                 android:id="@+id/tv_air_vocValue"
@@ -166,14 +177,14 @@
                                 android:gravity="center"
                                 android:text="@string/text_null"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"/>
+                                android:textSize="20dp" />
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="0.2dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="17.5dp"
-                            android:background="@color/white"/>
+                            android:background="@color/white" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -188,7 +199,7 @@
                                 android:layout_gravity="center"
                                 android:alpha="0.6"
                                 android:gravity="center"
-                                android:src="@drawable/air_temp"/>
+                                android:src="@drawable/air_temp" />
 
                             <TextView
                                 android:id="@+id/tv_air_temValue"
@@ -199,7 +210,7 @@
                                 android:gravity="center"
                                 android:text="@string/text_null"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"/>
+                                android:textSize="20dp" />
 
 
                         </LinearLayout>
@@ -208,7 +219,7 @@
                             android:layout_width="0.2dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="17.5dp"
-                            android:background="@color/white"/>
+                            android:background="@color/white" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -223,7 +234,7 @@
                                 android:layout_gravity="center"
                                 android:alpha="0.6"
                                 android:gravity="center"
-                                android:src="@drawable/air_pm"/>
+                                android:src="@drawable/air_pm" />
 
                             <TextView
                                 android:id="@+id/tv_air_shidu_Value"
@@ -234,7 +245,7 @@
                                 android:gravity="center"
                                 android:text="@string/text_null"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"/>
+                                android:textSize="20dp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -253,7 +264,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <!--滤芯状态-->
                     <RelativeLayout
@@ -276,7 +287,7 @@
                                 android:layout_height="33dp"
                                 android:layout_alignParentBottom="true"
                                 android:layout_alignParentLeft="true"
-                                android:src="@drawable/air_filter"/>
+                                android:src="@drawable/air_filter" />
 
                             <TextView
                                 android:id="@+id/tv_filiteText"
@@ -287,7 +298,7 @@
                                 android:layout_toRightOf="@+id/iv_filterState"
                                 android:text="@string/filter_status"
                                 android:textColor="@color/white"
-                                android:textSize="15dp"/>
+                                android:textSize="15dp" />
 
                             <TextView
                                 android:id="@+id/tv_filterStatus"
@@ -298,7 +309,7 @@
                                 android:layout_toRightOf="@+id/iv_filterState"
                                 android:text="@string/text_null"
                                 android:textColor="@color/white"
-                                android:textSize="15dp"/>
+                                android:textSize="15dp" />
 
                         </RelativeLayout>
 
@@ -311,7 +322,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginBottom="10dp"
                             android:layout_marginRight="20dp"
-                            android:src="@drawable/setting"/>
+                            android:src="@drawable/setting" />
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -320,7 +331,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.1dp"
                     android:alpha="0.9"
-                    android:background="@color/white"/>
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:id="@+id/lay_air_outside"
@@ -338,7 +349,7 @@
                         android:gravity="center"
                         android:text="@string/text_null"
                         android:textColor="@color/white"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/tv_air_outdoor"
@@ -350,7 +361,7 @@
                         android:gravity="center"
                         android:text="@string/outdoor_air"
                         android:textColor="@color/white"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/tv_air_quality"
@@ -361,7 +372,7 @@
                         android:gravity="center"
                         android:text="@string/text_null"
                         android:textColor="@color/white"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/tv_air_pm"
@@ -373,7 +384,7 @@
                         android:gravity="center_vertical|end"
                         android:text="PM2.5"
                         android:textColor="@color/white"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/tv_air_pmvalue"
@@ -385,7 +396,7 @@
                         android:paddingRight="20dp"
                         android:text="@string/text_null"
                         android:textColor="@color/white"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -403,7 +414,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_marginRight="20dp" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -429,7 +440,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/air_modeday_selector"/>
+                    android:background="@drawable/air_modeday_selector" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -446,7 +457,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/air_mode_selector"/>
+                    android:background="@drawable/air_mode_selector" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -463,7 +474,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/air_modenight_selector"/>
+                    android:background="@drawable/air_modenight_selector" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -481,7 +492,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/air_mode_selector"/>
+                    android:background="@drawable/air_mode_selector" />
             </RelativeLayout>
 
         </RelativeLayout>
@@ -490,7 +501,7 @@
     <View
         android:id="@+id/chin_stand"
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="@dimen/foot_heght"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"/>
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
