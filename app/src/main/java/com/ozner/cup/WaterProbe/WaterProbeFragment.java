@@ -194,7 +194,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
     private void initImageViewBitmap(View initView) {
         WeakReference<Context> refContext = new WeakReference<Context>(getContext());
         if (refContext != null) {
-            ((LinearLayout) initView.findViewById(R.id.llay_tapBg)).setBackground(ImageHelper.loadResDrawable(refContext.get(), R.drawable.cupdetail_bg));
+            ((LinearLayout) initView.findViewById(R.id.llay_tapBg)).setBackground(ImageHelper.loadResDrawable(refContext.get(), R.drawable.main_background));
             iv_battery.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.battery30));
             iv_filterState.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.filter_state0));
             iv_probe_setting.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.setting));

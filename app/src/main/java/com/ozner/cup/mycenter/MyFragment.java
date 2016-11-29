@@ -6,13 +6,11 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -99,13 +97,13 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Fo
 
     private void initView(View view) {
         OznerApplication.changeTextFont((ViewGroup) view);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getActivity().getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(getContext(), R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(getContext(), R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getActivity().getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+//            //更改底部导航栏颜色(限有底部的手机)
+////            window.setNavigationBarColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+//        }
 
         llay_myDevice = (LinearLayout) view.findViewById(R.id.llay_myDevice);
         llay_myMoney = (LinearLayout) view.findViewById(R.id.llay_myMoney);

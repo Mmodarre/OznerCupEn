@@ -5,16 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,7 +22,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-
 import com.ozner.cup.BaiduPush.PushOperationAction;
 import com.ozner.cup.Command.CustomToast;
 import com.ozner.cup.Command.ImageHelper;
@@ -69,13 +66,13 @@ public class DealVerifyActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deal_verify);
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//        }
         progressDialog = new ProgressDialog(DealVerifyActivity.this);
         progressDialog.setMessage(getString(R.string.Center_sending_req));
 

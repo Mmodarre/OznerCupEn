@@ -1397,6 +1397,15 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
 
     @Override
     public void onResume() {
+        try {
+            toolBar.setBackgroundResource(R.color.air_background);
+            if(airPurifier!=null){
+            airName.setText(airPurifier.getName());}else {
+                airName.setText(R.string.my_air_purifier_ver);
+            }
+        } catch (Exception ex) {
+
+        }
         super.onResume();
         UiUpdateAsyncTask uiUpdateAsyncTask = new UiUpdateAsyncTask();
         uiUpdateAsyncTask.execute("airver");

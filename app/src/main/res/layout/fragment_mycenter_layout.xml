@@ -22,7 +22,7 @@
                 android:id="@+id/person_infor_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/MyCenter_FirstTitleBg"
+                android:background="@color/colorAccent"
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp">
 
@@ -52,6 +52,7 @@
                     android:layout_below="@id/rlay_person_photo_bg"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="11dp"
+                    android:textColor="@color/white"
                     android:text="@string/Center_click_to_login"
                     android:textSize="18dp" />
 
@@ -61,6 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_name"
                     android:layout_centerHorizontal="true"
+                    android:textColor="@color/white"
                     android:layout_marginTop="3dp"
                     android:text=""
                     android:textSize="14dp"
@@ -113,7 +115,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:text="0"
-                                android:textColor="@color/cupDetail_textcolor"
+                                android:textColor="@color/text_color_normal"
                                 android:textSize="28dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -155,7 +157,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:text="0"
-                                android:textColor="@color/cupDetail_textcolor"
+                                android:textColor="@color/text_color_normal"
                                 android:textSize="28dp" />
 
                         </LinearLayout>

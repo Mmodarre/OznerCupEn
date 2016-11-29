@@ -76,13 +76,13 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = super.getView(position, convertView, parent);
-        String Mac,NewMac = null;
-        if (((OznerApplication)((Activity)mContext).getApplication()).isLoginPhone()) {
-             Mac = ((MainActivity) getContext()).MAC;
-             NewMac = ((MainActivity) getContext()).NewAddMAC;
-        }else{
-             Mac = ((MainEnActivity) getContext()).MAC;
-             NewMac = ((MainEnActivity) getContext()).NewAddMAC;
+        String Mac, NewMac = null;
+        if (((OznerApplication) ((Activity) mContext).getApplication()).isLoginPhone()) {
+            Mac = ((MainActivity) getContext()).MAC;
+            NewMac = ((MainActivity) getContext()).NewAddMAC;
+        } else {
+            Mac = ((MainEnActivity) getContext()).MAC;
+            NewMac = ((MainEnActivity) getContext()).NewAddMAC;
         }
         SilideViewHolder holder = new SilideViewHolder();
         holder.ll_bg = (LinearLayout) v.findViewById(R.id.sliding_item_bg);
@@ -95,16 +95,17 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
         String abcd = null;
         try {
             abcd = slilde.getOznerDevice().getAppValue(PageState.TapType).toString();
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
 //        if(slilde.getMac().equals(NewMac)) {
 //            CustomToast.makeText((MainActivity) getContext(), holder.icon, 3000);
 //            //已经展示，删除
 //            ((MainActivity)getContext()).NewAddMAC="";
 //        }
         if (slilde.getMac().equals(Mac))
-            v.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
+            v.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.left_slide_selected));
         else
-            v.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.draglist_bkg));
+            v.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
         String type = slilde.getDeviceType();
         {
             //智能水杯
@@ -122,7 +123,7 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
                     } else {
                         holder.icon.setImageResource(R.drawable.tds_pen);
                     }
-                }else {
+                } else {
                     if (slilde.getMac().equals(Mac)) {
                         holder.icon.setImageResource(R.drawable.tan_tou_on);
                     } else {
@@ -178,9 +179,9 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
             try {
                 if (slilde.getOznerDevice() instanceof AirPurifier_MXChip) {
                     holder.desc_con.setText(((AirPurifier_MXChip) slilde.getOznerDevice()).isOffline() ? getContext().getString(R.string.loding_null) : getContext().getString(R.string.loding_success));
-                } else if(slilde.getOznerDevice() instanceof WaterPurifier){
+                } else if (slilde.getOznerDevice() instanceof WaterPurifier) {
                     holder.desc_con.setText(((WaterPurifier) slilde.getOznerDevice()).isOffline() ? getContext().getString(R.string.loding_null) : getContext().getString(R.string.loding_success));
-                }else {
+                } else {
                     holder.desc_con.setText(constate[slilde.getOznerDevice().connectStatus().ordinal()]);
                 }
             } catch (Exception ex) {

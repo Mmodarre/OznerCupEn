@@ -14,12 +14,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.ozner.cup.Command.PageState;
+import com.ozner.cup.R;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.tap.Tap;
 import com.ozner.tap.TapSetting;
-
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -74,19 +73,18 @@ public class SetupWaterProbeActivity extends AppCompatActivity implements View.O
         toolbar_save = (TextView) findViewById(R.id.toolbar_save);
         first = (RadioButton) findViewById(R.id.tv_time1);
         second = (RadioButton) findViewById(R.id.tv_time2);
-
         toolbar_save.setVisibility(View.VISIBLE);
 
         toolbar_save.setOnClickListener(this);
         findViewById(R.id.ll_detection_time1).setOnClickListener(this);
         findViewById(R.id.ll_detection_time2).setOnClickListener(this);
-        ll_about_water_probe= (LinearLayout) findViewById(R.id.ll_about_water_probe);
+        ll_about_water_probe = (LinearLayout) findViewById(R.id.ll_about_water_probe);
         ll_about_water_probe.setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);
         tv_probe_name.setOnClickListener(this);
-        if (((OznerApplication)getApplication()).isLanguageCN()){
+        if (((OznerApplication) getApplication()).isLanguageCN()) {
             ll_about_water_probe.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             ll_about_water_probe.setVisibility(View.GONE);
         }
 

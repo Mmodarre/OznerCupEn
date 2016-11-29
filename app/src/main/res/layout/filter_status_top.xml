@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/left_replace_filter" />
+                android:text="@string/left_replace_filter"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                     android:layout_width="20dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/filter_satus" />
+                    android:background="@drawable/filter_satus"/>
 
                 <TextView
                     android:id="@+id/tv_remainTime"
@@ -41,16 +41,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="0"
-                    android:textColor="@color/checked"
-                    android:textSize="45dp" />
+                    android:textColor="@color/text_color_normal"
+                    android:textSize="45dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="@string/days"
-                    android:textColor="@color/checked"
-                    android:textSize="18dp" />
+                    android:textColor="@color/text_color_normal"
+                    android:textSize="18dp"/>
 
                 <LinearLayout
                     android:layout_width="1dp"
@@ -58,23 +58,23 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/cupDetail_line_gray" />
+                    android:background="@color/cupDetail_line_gray"/>
 
                 <TextView
                     android:id="@+id/tv_remainPre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textColor="@color/checked"
-                    android:textSize="45dp" />
+                    android:textColor="@color/text_color_normal"
+                    android:textSize="45dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="%"
-                    android:textColor="@color/checked"
-                    android:textSize="18dp" />
+                    android:textColor="@color/text_color_normal"
+                    android:textSize="18dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -85,14 +85,14 @@
                 <com.ozner.cup.UIView.FilterProgressView
                     android:id="@+id/filter_progress"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp"/>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/cupDetail_line_gray" />
+            android:background="@color/cupDetail_line_gray"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="@string/warmly_notice"
-                android:textSize="12dp" />
+                android:textSize="12dp"/>
 
             <LinearLayout
                 android:id="@+id/ll_en_no"
@@ -136,7 +136,7 @@
                         android:layout_width="30dp"
                         android:layout_height="25.5dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/tds_msg" />
+                        android:src="@drawable/tds_msg"/>
 
                     <TextView
                         android:id="@+id/tv_health_know"
@@ -147,8 +147,8 @@
                         android:layout_toRightOf="@+id/iv_health_know"
                         android:gravity="center"
                         android:text="@string/consult_test"
-                        android:textColor="@color/colorTds"
-                        android:textSize="18dp" />
+                        android:textColor="@color/text_color_normal"
+                        android:textSize="18dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -183,7 +183,7 @@
                         android:layout_toRightOf="@+id/iv_health_buy"
                         android:gravity="center"
                         android:text="@string/buy_air_lvxin"
-                        android:textColor="@color/colorTds"
+                        android:textColor="@color/text_color_normal"
                         android:textSize="18dp"
 
                         />

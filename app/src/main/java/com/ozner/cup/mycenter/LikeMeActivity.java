@@ -5,14 +5,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -60,13 +58,13 @@ public class LikeMeActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_like_me);
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//        }
 
         toolbar_text = (TextView) findViewById(R.id.toolbar_text);
         toolbar_text.setText(getString(R.string.Center_LikeMe));

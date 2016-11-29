@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -15,7 +14,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -68,13 +66,13 @@ public class AddFriendActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_friend);
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//        }
         toolbar_text = (TextView) findViewById(R.id.toolbar_text);
         toolbar_text.setText(getString(R.string.Center_Add_Friend));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -417,75 +415,5 @@ public class AddFriendActivity extends AppCompatActivity implements View.OnClick
             super.onLoadingComplete(imageUri, view, loadedImage);
         }
     }
-
-//    private SearchFriendInfo netSearchMyFriend(final Activity activity, String mobile) {
-//        SearchFriendInfo searchFriendInfo = new SearchFriendInfo();
-//        if (mobile != null && mobile != "") {
-//            List<NameValuePair> params = new ArrayList<NameValuePair>();
-//            params.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(activity)));
-//            params.add(new BasicNameValuePair("jsonmobile", mobile));
-//            NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, "/OznerServer/searchFriend", params);
-//            try {
-//                JSONObject jsonObject = new JSONObject(netJsonObject.value);
-//                if (jsonObject != null) {
-//                    JSONObject statusObj = jsonObject.getJSONObject("friend");
-//                    if (statusObj != null) {
-//                        searchFriendInfo.status = 0;
-//                    } else {
-//                        searchFriendInfo.status = statusObj.getInt("status");
-//                    }
-//                    JSONObject friendObj = jsonObject.getJSONObject("userinfo");
-//                    searchFriendInfo.headImg = friendObj.getString("ImgPath");
-//                    searchFriendInfo.nickname = friendObj.getString("Nickname");
-//                    searchFriendInfo.mobile = friendObj.getString("Mobile");
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//                return null;
-//            }
-//        }
-//        return searchFriendInfo;
-//    }
-//
-//    private NetUserHeadImg netSearchFriend(final Activity activity, String mobile) {
-//        NetUserHeadImg netUserHeadImg = new NetUserHeadImg();
-//
-//
-//        if (mobile != null && mobile != "") {
-//            List<NameValuePair> params = new ArrayList<NameValuePair>();
-//            params.add(new BasicNameValuePair("usertoken", OznerPreference.UserToken(activity)));
-//            params.add(new BasicNameValuePair("jsonmobile", mobile));
-//            NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, "/OznerServer/searchFriend", params);
-//
-//
-//            if (netJsonObject.state > 0) {
-//                try {
-//                    JSONArray jarry = netJsonObject.getJSONObject().getJSONArray("data");
-//                    if (jarry.length() > 0) {
-//                        JSONObject jo = (JSONObject) jarry.get(0);
-//                        netUserHeadImg.fromJSONobject(jo);
-//                    } else {
-//                        netUserHeadImg = null;
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                    netUserHeadImg = null;
-//                }
-//            } else {
-//                netUserHeadImg = null;
-//            }
-//        } else {
-//            netUserHeadImg = null;
-//        }
-//        return netUserHeadImg;
-//    }
-//
-//    class SearchFriendInfo {
-//        public String mobile;
-//        public String nickname;
-//        public String headImg;
-//        public int status;
-//    }
-
 
 }

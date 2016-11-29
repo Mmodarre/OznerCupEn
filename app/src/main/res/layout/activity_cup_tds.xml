@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tds_layout_top"
-                android:background="@color/tdsBackground">
+                android:background="@color/colorAccent">
 
                 <LinearLayout
                     android:id="@+id/tds_layout_center"
@@ -102,7 +102,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="18dp"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/white"
                             android:text="@string/tdsValue_test"
                             />
                         <ImageView
@@ -123,7 +123,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/tdsValue"
                             android:textSize="18dp"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/white"
                             android:layout_marginTop="36dp"
                             />
                         <TextView
@@ -132,7 +132,7 @@
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textSize="39dp"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/white"
                             android:layout_marginTop="20dp"
                             android:layout_toRightOf="@+id/tv_tdstext"
                             android:layout_marginLeft="5dp"
@@ -152,7 +152,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="18dp"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/white"
                             android:text="@string/friend_ranking"
                             />
                         <TextView
@@ -161,7 +161,7 @@
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textSize="39dp"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/white"
                             android:layout_marginTop="20dp"
                             />
                         <ImageView
@@ -185,7 +185,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
-                        android:background="@drawable/btn_bg_blue_s_choose"
+                        android:background="@drawable/btn_bg_adverse"
                         >
 
                         <ImageView
@@ -205,7 +205,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/consult_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/colorAccent"
                             android:layout_toRightOf="@+id/iv_consult_msg"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="7dp"
@@ -243,7 +243,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="3dp"
                         android:text="@string/face_test"
-                        android:textColor="@color/colorTds"
+                        android:textColor="@color/white"
                         android:textSize="13dp" />
 
                 </LinearLayout>
@@ -296,7 +296,7 @@
                             android:background="@drawable/chart_time_first_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_day"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_selector"
                             android:textSize="12dp" />
 
                         <TextView
@@ -306,7 +306,7 @@
                             android:background="@drawable/chart_time_second_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_week"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_selector"
                             android:textSize="12dp"
 
                             />
@@ -318,7 +318,7 @@
                             android:background="@drawable/chart_time_third_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_month"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_selector"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -371,7 +371,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="140dp" />
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/chartView"
@@ -380,10 +380,10 @@
                             android:orientation="horizontal">
 
                             <LinearLayout
+                                android:layout_alignParentLeft="true"
                                 android:id="@+id/tab1"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.5"
                                 android:gravity="center"
                                 android:orientation="horizontal">
 
@@ -423,10 +423,10 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
-                                android:layout_weight="1.5"
                                 android:gravity="center"
                                 android:orientation="horizontal">
 
@@ -467,10 +467,10 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
-                                android:layout_weight="1"
                                 android:gravity="center">
 
                                 <ImageView
@@ -511,7 +511,7 @@
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                        </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -583,7 +583,7 @@
                             android:layout_toRightOf="@+id/iv_health_know"
                             android:gravity="center"
                             android:text="@string/water_know_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />
@@ -617,7 +617,7 @@
                             android:layout_toRightOf="@+id/iv_health_buy"
                             android:gravity="center"
                             android:text="@string/buy_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />

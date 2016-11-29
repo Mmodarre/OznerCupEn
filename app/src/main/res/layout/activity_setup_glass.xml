@@ -9,18 +9,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
-
-    <ImageView
+    <LinearLayout
+        android:id="@+id/llay_top_spec_line"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1px"
+        android:orientation="horizontal"
         android:layout_below="@+id/toolbar_setup_activity"
-        android:background="@color/colorLine" />
+        android:background="@color/cupDetail_line_gray" />
+
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_below="@+id/toolbar_setup_activity"-->
+        <!--android:background="@color/cupDetail_line_gray" />-->
 
     <ScrollView
         android:id="@+id/scrollview_setup_glass"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar_setup_activity"
+        android:layout_below="@id/llay_top_spec_line"
         android:scrollbars="none">
 
         <LinearLayout
@@ -523,6 +530,7 @@
                             android:background="@drawable/cup_remind_way_temp"
                             android:button="@null"
                             android:gravity="center"
+                            android:textColor="@color/text_selector"
                             android:text="@string/takewater_c" />
 
                         <RadioButton
@@ -530,6 +538,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
+                            android:textColor="@color/text_selector"
                             android:background="@drawable/cup_remind_way_tds"
                             android:button="@null"
                             android:gravity="center"

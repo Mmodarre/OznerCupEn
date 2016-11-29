@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -32,16 +31,15 @@ import android.widget.Toast;
 
 import com.ozner.bluetooth.BluetoothIO;
 import com.ozner.bluetooth.BluetoothScan;
+import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupManager;
-import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.NotSupportDeviceException;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
-
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.R;
 
 import java.util.ArrayList;
 
@@ -71,13 +69,13 @@ public class MatchCupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.add_device));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.add_device));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//            //更改底部导航栏颜色(限有底部的手机)
+////            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//        }
         setContentView(R.layout.activity_match_cup);
 
         //   deviceListLayout.setVisibility(View.VISIBLE);
@@ -138,11 +136,12 @@ public class MatchCupActivity extends AppCompatActivity {
     private void initView() {
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackgroundResource(R.color.add_device);
+        toolbar.setBackgroundResource(R.color.colorAccent);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         toolbarText = (TextView) findViewById(R.id.toolbar_text);
+        toolbarText.setTextColor(ContextCompat.getColor(this, R.color.white));
         toolbarText.setText(getString(R.string.match_device));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

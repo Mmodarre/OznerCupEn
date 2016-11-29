@@ -184,28 +184,29 @@
                 android:background="@color/white"
                 android:visibility="gone" />
 
-            <LinearLayout
-                android:id="@+id/llay_loadWait"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingLeft="15dp">
 
-                <ProgressBar
-                    android:id="@+id/pb_waiting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_waitText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Center_Loading" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llay_loadWait"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp"
+            android:paddingLeft="15dp">
 
+            <ProgressBar
+                android:id="@+id/pb_waiting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp" />
 
+            <TextView
+                android:id="@+id/tv_waitText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Center_Loading" />
         </LinearLayout>
 
     </LinearLayout>

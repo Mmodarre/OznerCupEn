@@ -8,13 +8,11 @@ import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -67,13 +65,13 @@ public class SetupGlassActivity extends AppCompatActivity implements View.OnClic
         mCup = (Cup) OznerDeviceManager.Instance().getDevice(Mac);
         cupSetting = mCup.Setting();
         setContentView(R.layout.activity_setup_glass);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
+//        }
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         if (Mac != null) {
             UiUpdateAsyncTask uiUpdate = new UiUpdateAsyncTask();

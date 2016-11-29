@@ -135,7 +135,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
 
     private void ShowNoDeviceView(View view) {
 //        view.setBackgroundResource(R.drawable.left_backgroud);
-        view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.main_bgcolor));
+        view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.left_slide_bg));
         iv_left_buble.setVisibility(View.VISIBLE);
         if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
             iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(getContext(), R.drawable.left_buble_cn));
@@ -149,7 +149,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
 
     private void ShowDeviceView(View view) {
 //        view.setBackgroundResource(0);
-        view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.draglist_bkg));
+        view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.left_slide_bg));
         iv_left_buble.setVisibility(View.GONE);
         llay_left_bg.setVisibility(View.GONE);
         show_text.setVisibility(View.VISIBLE);

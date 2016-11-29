@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -442,6 +441,7 @@ public class TDSFragment extends Fragment {
         }else{
             tds_health_layout.setVisibility(View.GONE);
         }
+        changeDay();
     }
 
     MyListener myListener = new MyListener();
@@ -527,7 +527,7 @@ public class TDSFragment extends Fragment {
     }
 
     private void changeDay() {
-        time_day.setSelected(false);
+        time_day.setSelected(true);
         time_week.setSelected(false);
         time_month.setSelected(false);
         progressView.set_bad_progress(hot);
@@ -555,13 +555,13 @@ public class TDSFragment extends Fragment {
 
         flagRight = 1;
         flagLeft = 1;
-        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
-        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+//        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
     }
 
     private void changeWeek() {
-        time_day.setSelected(true);
+        time_day.setSelected(false);
         time_week.setSelected(true);
         time_month.setSelected(false);
         progressView.set_bad_progress(w_hot);
@@ -584,13 +584,13 @@ public class TDSFragment extends Fragment {
         iv_tds_right.setVisibility(View.VISIBLE);
         flagRight = 2;
         flagLeft = 2;
-        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
-        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+//        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
     }
 
     private void changeMonth() {
-        time_day.setSelected(true);
+        time_day.setSelected(false);
         time_week.setSelected(false);
         time_month.setSelected(true);
         progressView.set_bad_progress(m_hot);
@@ -616,8 +616,8 @@ public class TDSFragment extends Fragment {
         iv_tds_right.setVisibility(View.INVISIBLE);
         flagRight = 3;
         flagLeft = 3;
-        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
-        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+//        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/llay_placeholder"
@@ -28,10 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:background="@drawable/cupdetail_bg"
+            android:background="@drawable/main_background"
             android:orientation="vertical">
 
-            <include layout="@layout/cup_detail_toobar" />
+            <include layout="@layout/cup_detail_toobar"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                         android:id="@+id/iv_data_loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/air_loding" />
+                        android:src="@drawable/air_loding"/>
 
                     <TextView
                         android:id="@+id/tv_data_loading"
@@ -61,7 +61,7 @@
                         android:layout_toRightOf="@+id/iv_data_loading"
                         android:text="@string/air_dataLoding"
                         android:textColor="@color/white"
-                        android:textSize="13dp" />
+                        android:textSize="13dp"/>
 
                 </RelativeLayout>
 
@@ -84,7 +84,7 @@
                             android:layout_width="45dp"
                             android:layout_height="19.5dp"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/battery30" />
+                            android:src="@drawable/battery30"/>
 
                         <TextView
                             android:id="@+id/tv_batteryTem"
@@ -94,7 +94,7 @@
                             android:layout_toRightOf="@id/iv_battery"
                             android:text="@string/text_null"
                             android:textColor="@color/white"
-                            android:textSize="19.5dp" />
+                            android:textSize="19.5dp"/>
                     </RelativeLayout>
 
                     <!--<RelativeLayout-->
@@ -145,7 +145,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginBottom="10dp"
                         android:layout_marginRight="20dp"
-                        android:src="@drawable/setting" />
+                        android:src="@drawable/setting"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -164,7 +164,7 @@
                             android:id="@+id/waterProcess"
                             android:layout_width="300dp"
                             android:layout_height="160dp"
-                            android:layout_centerInParent="true" />
+                            android:layout_centerInParent="true"/>
 
 
                         <LinearLayout
@@ -174,7 +174,7 @@
                             android:layout_centerHorizontal="true"
                             android:orientation="vertical">
 
-                            <include layout="@layout/cup_detail_tds" />
+                            <include layout="@layout/cup_detail_tds"/>
                         </LinearLayout>
                     </RelativeLayout>
                 </RelativeLayout>

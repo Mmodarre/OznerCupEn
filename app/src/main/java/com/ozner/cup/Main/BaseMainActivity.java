@@ -4,9 +4,7 @@ import android.app.NotificationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.baidu.android.pushservice.PushConstants;
@@ -30,7 +28,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public abstract class BaseMainActivity extends AppCompatActivity implements FootFragmentListener{
+public abstract class BaseMainActivity extends AppCompatActivity implements FootFragmentListener {
     public int pagenow;
     public final String CupType = "CP001";
     public final String TapType = "SC001";
@@ -67,13 +65,13 @@ public abstract class BaseMainActivity extends AppCompatActivity implements Foot
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.tool_bar_bg));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.tool_bar_bg));
+//        }
         InitBaiduPush();
         MobclickAgent.setDebugMode(true);
         //是否登陆
@@ -82,12 +80,14 @@ public abstract class BaseMainActivity extends AppCompatActivity implements Foot
         LocalInitData();
         new OznerUpdateManager(BaseMainActivity.this, false).checkUpdate();
     }
+
     public void InitBaiduPush() {
         PushManager.startWork(getApplicationContext(),
                 PushConstants.LOGIN_TYPE_API_KEY,
                 getString(R.string.Baidu_Push_ApiKey));
 
     }
+
     /*
    * 初始化本地数据
    * */

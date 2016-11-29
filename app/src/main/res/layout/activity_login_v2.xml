@@ -30,7 +30,7 @@
                     android:gravity="right"
                     android:padding="10dp"
                     android:text="@string/login_btn_skip"
-                    android:textColor="@color/fz_blue"
+                    android:textColor="@color/text_color_normal"
                     android:textSize="17dp"
 
                     />
@@ -99,7 +99,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0.5dp"
                         android:layout_marginTop="9.5dp"
-                        android:background="@color/theme_blue"/>
+                        android:background="@color/colorAccent"/>
                 </LinearLayout>
             </LinearLayout>
         </TableRow>
@@ -146,7 +146,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0.5dp"
                         android:layout_marginTop="9.5dp"
-                        android:background="@color/theme_blue"
+                        android:background="@color/colorAccent"
                         android:clickable="true"
                         android:orientation="horizontal"/>
                 </LinearLayout>
@@ -166,7 +166,7 @@
                     android:paddingRight="10dp"
                     android:paddingTop="5dp"
                     android:text="@string/login_btn_getphone"
-                    android:textColor="@color/theme_blue"
+                    android:textColor="@color/text_color_normal"
                     android:textSize="14dp"/>
 
             </LinearLayout>
@@ -215,6 +215,7 @@
         <TableRow android:gravity="center">
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -289,6 +290,7 @@
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:text="@string/login_btn_voi"
+                    android:textColor="@color/text_color_normal"
                     android:textSize="17dp"/>
             </LinearLayout>
         </TableRow>

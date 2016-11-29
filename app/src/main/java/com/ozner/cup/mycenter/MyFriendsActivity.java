@@ -7,18 +7,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -30,11 +29,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-
 import com.ozner.cup.BaiduPush.OznerBroadcastAction;
 import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.Command.OznerPreference;
@@ -102,13 +99,13 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_friends);
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//        }
         mhandler = new MyFriendHandler();
         friendList = new ArrayList<>();
         childMsgMap = new HashMap<>();
@@ -365,11 +362,15 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<NetUserVfMessage> vfInfoList = OznerCommand.GetUserVerifMessage(MyFriendsActivity.this);
-                Message message = new Message();
-                message.what = VERFIY_MSG;
-                message.obj = vfInfoList;
-                mhandler.sendMessage(message);
+                try {
+                    List<NetUserVfMessage> vfInfoList = OznerCommand.GetUserVerifMessage(MyFriendsActivity.this);
+                    Message message = new Message();
+                    message.what = VERFIY_MSG;
+                    message.obj = vfInfoList;
+                    mhandler.sendMessage(message);
+                } catch (Exception ex) {
+
+                }
             }
         }).start();
     }

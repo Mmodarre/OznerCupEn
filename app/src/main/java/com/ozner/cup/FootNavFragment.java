@@ -218,21 +218,21 @@ public class FootNavFragment extends BaseFragment implements FootFragmentListene
         switch (i) {
             case PageState.WODESHEBEI:
                 ivsb.setImageResource(R.drawable.tab_sb_on);
-                tvsb.setTextColor(ContextCompat.getColor(getContext(), R.color.checked));
+                tvsb.setTextColor(ContextCompat.getColor(getContext(), R.color.theme_color));
                 break;
             case PageState.SHANGCHEGYEMIAN:
                 ivshop.setImageResource(R.drawable.tab_shop_on);
-                tvshop.setTextColor(ContextCompat.getColor(getContext(), R.color.checked));
+                tvshop.setTextColor(ContextCompat.getColor(getContext(), R.color.theme_color));
                 break;
             case PageState.ZIXUNYEMIAN:
                 UserDataPreference.SetUserData(getContext(), UserDataPreference.NewChatmsgCount, "0");
                 SetMessageCount(0);
                 ivmsg.setImageResource(R.drawable.tab_msg_on);
-                tvmsg.setTextColor(ContextCompat.getColor(getContext(), R.color.checked));
+                tvmsg.setTextColor(ContextCompat.getColor(getContext(), R.color.theme_color));
                 break;
             case PageState.MYPAGE:
                 ivmyself.setImageResource(R.drawable.tab_my_on);
-                tvmyself.setTextColor(ContextCompat.getColor(getContext(), R.color.checked));
+                tvmyself.setTextColor(ContextCompat.getColor(getContext(), R.color.theme_color));
                 break;
         }
         tab_index = i;

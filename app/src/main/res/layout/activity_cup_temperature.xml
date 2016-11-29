@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/temperature_layout_top"
-                android:background="@color/tdsBackground">
+                android:background="@color/colorAccent">
 
                 <LinearLayout
                     android:id="@+id/temperature_layout_center"
@@ -90,7 +90,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="18dp"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/white"
                             android:text="@string/temperature_text"
                             />
 
@@ -100,7 +100,7 @@
                             android:layout_height="wrap_content"
                             android:text="适中"
                             android:textSize="30dp"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/white"
                             android:layout_marginTop="25dp"
 
                             />
@@ -154,7 +154,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
                         android:gravity="center"
-                        android:background="@drawable/btn_bg_blue_s_choose"
+                        android:background="@drawable/btn_bg_adverse"
                         >
 
                         <ImageView
@@ -174,7 +174,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/consult_test"
-                            android:textColor="@color/colorTds"
+
+                            android:textColor="@color/text_color_normal"
                             android:layout_toRightOf="@+id/iv_temperature_consult_msg"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="7dp"
@@ -212,7 +213,7 @@
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
                         android:text="@string/face_test"
-                        android:textColor="@color/colorTds"
+                        android:textColor="@color/white"
                         android:textSize="11dp" />
 
                 </LinearLayout>
@@ -264,7 +265,7 @@
                             android:background="@drawable/chart_time_first_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_day"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_selector"
                             android:textSize="12dp" />
 
                         <TextView
@@ -274,7 +275,7 @@
                             android:background="@drawable/chart_time_second_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_week"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_selector"
                             android:textSize="12dp" />
 
                         <TextView
@@ -284,7 +285,7 @@
                             android:background="@drawable/chart_time_third_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_month"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_selector"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -508,8 +509,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="108.5dp"
                 android:layout_below="@+id/iv_temperature_line1"
-                android:background="@color/ozner_text_login"
-                >
+                android:background="@color/ozner_text_login">
 
                 <TextView
                     android:id="@+id/tv_temperature_health"
@@ -558,7 +558,7 @@
                             android:layout_toRightOf="@+id/iv_temperature_health_know"
                             android:gravity="center"
                             android:text="@string/water_know_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />
@@ -592,7 +592,7 @@
                             android:layout_toRightOf="@+id/iv_temperature_health_buy"
                             android:gravity="center"
                             android:text="@string/buy_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />

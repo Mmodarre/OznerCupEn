@@ -61,9 +61,9 @@ public class WelcomeActivity extends Activity {
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.guideColor));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.tool_bar_bg));
             //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.guideColor));
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.colorAccent));
         }
         PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, getString(R.string.Baidu_Push_ApiKey));
         PushSettings.enableDebugMode(getApplicationContext(), true);
@@ -88,25 +88,20 @@ public class WelcomeActivity extends Activity {
         editor = sharedPreferences.edit();
         isFirst = sharedPreferences.getBoolean("isFirst", true);
         try {
-//            if(((OznerApplication) getApplication()).isLanguageCN()){
-//               isFirst=false;
-//                editor.putBoolean("isFirst", false);
-//                editor.commit();
-//            }
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (isFirst) {
-                        if (((OznerApplication) getApplication()).isLanguageCN()) {
-                            editor.putBoolean("isFirst", false);
-                            editor.commit();
-                            ShowGuidePage();
-                        } else {
-                            editor.putBoolean("isFirst", false);
-                            editor.commit();
-                            showNexLoginPage();
-                        }
-                    } else {
+//                    if (isFirst) {
+//                        if (((OznerApplication) getApplication()).isLanguageCN()) {
+//                            editor.putBoolean("isFirst", false);
+//                            editor.commit();
+//                            ShowGuidePage();
+//                        } else {
+//                            editor.putBoolean("isFirst", false);
+//                            editor.commit();
+//                            showNexLoginPage();
+//                        }
+//                    } else {
                         Thread t = new Thread(new Runnable() {
                             public void run() {
                                 NetUserInfo netUserInfo = OznerDataHttp.RefreshUserInfo(getBaseContext());
@@ -182,7 +177,7 @@ public class WelcomeActivity extends Activity {
                             }
                         });
                         t.start();
-                    }
+//                    }
 
                 }
 

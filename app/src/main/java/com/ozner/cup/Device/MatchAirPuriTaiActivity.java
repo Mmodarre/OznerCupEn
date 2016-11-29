@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -34,13 +33,12 @@ import com.ozner.AirPurifier.AirPurifierManager;
 import com.ozner.AirPurifier.AirPurifier_Bluetooth;
 import com.ozner.bluetooth.BluetoothScan;
 import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.PageState;
+import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.NotSupportDeviceException;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
-
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.R;
 
 import java.util.ArrayList;
 
@@ -51,31 +49,31 @@ import java.util.ArrayList;
 public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<BaseDeviceIO> list = new ArrayList<BaseDeviceIO>();
-    LinearLayout ll_edit_devicename_place, ll_searched_device,device_place2;
-    RelativeLayout rl_restart_matching,device_place1;
+    LinearLayout ll_edit_devicename_place, ll_searched_device, device_place2;
+    RelativeLayout rl_restart_matching, device_place1;
     RecyclerView deviceList;
-    ImageView image = null, indeximage,iv_show_device_place2,iv_air_tai;
+    ImageView image = null, indeximage, iv_show_device_place2, iv_air_tai;
     TextView toolbarText, tv_state, tv_matchair_notice, tv_matchair_bluetooth;
     Button restartSearch, finish_add_device;
-    EditText et_device_name,et_device_position;
+    EditText et_device_name, et_device_position;
     ListAdapter adapter;
     Monitor mMonitor = new Monitor();
     TimerCount timerCount;
     private boolean isSuccesShow = false;
     private int deviceNum = 0;
     private String Mac;
-    Animation animinput,animfadeout,animfadein;
+    Animation animinput, animfadeout, animfadein;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.add_device));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.add_device));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//        }
         setContentView(R.layout.activity_match_airtai);
 
         //   ll_searched_device.setVisibility(View.VISIBLE);
@@ -85,13 +83,14 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
         deviceList.setAdapter(adapter);
         new UiUpdateAsyncTask().execute();
 
-        animinput= AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
-        animfadeout=AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);
-        animfadein=AnimationUtils.loadAnimation(this,R.anim.abc_fade_in);
+        animinput = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
+        animfadeout = AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);
+        animfadein = AnimationUtils.loadAnimation(this, R.anim.abc_fade_in);
         animinput.setInterpolator(new DecelerateInterpolator(2.0f));
         animfadeout.setInterpolator(new DecelerateInterpolator(2.0f));
         animfadein.setInterpolator(new DecelerateInterpolator(2.0f));
     }
+
     private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
         @Override
         protected void onPreExecute() {
@@ -100,16 +99,20 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
         //doInBackground方法内部执行后台任务,不可在此方法内修改UI
         @Override
         protected String doInBackground(String... params) {
-            try{
+            try {
                 Thread.sleep(2000);
-            }catch (Exception ex){ex.printStackTrace();}
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
             return null;
         }
+
         //onProgressUpdate方法用于更新进度信息
         @Override
         protected void onProgressUpdate(Integer... progresses) {
 
         }
+
         //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
         @Override
         protected void onPostExecute(String result) {
@@ -119,20 +122,23 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
             adapter.Reload();
             getBaseContext().registerReceiver(mMonitor, filter);//启动蓝牙搜索
         }
+
         //onCancelled方法用于在取消执行中的任务时更改UI
         @Override
         protected void onCancelled() {
 
         }
     }
+
     private void initView() {
-        OznerApplication.changeTextFont((ViewGroup)getWindow().getDecorView());
+        OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackgroundResource(R.color.add_device);
+        toolbar.setBackgroundResource(R.color.colorAccent);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         toolbarText = (TextView) findViewById(R.id.toolbar_text);
+        toolbarText.setTextColor(ContextCompat.getColor(this, R.color.white));
         toolbarText.setText(getString(R.string.match_device));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,12 +167,12 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
         tv_matchair_notice = (TextView) findViewById(R.id.tv_matchair_notice);
         tv_matchair_bluetooth = (TextView) findViewById(R.id.tv_matchair_bluetooth);
         device_place1 = (RelativeLayout) findViewById(R.id.device_place1);
-        device_place2 = (LinearLayout)findViewById(R.id.device_place2);
-        iv_show_device_place2 = (ImageView)findViewById(R.id.iv_show_device_place2);
+        device_place2 = (LinearLayout) findViewById(R.id.device_place2);
+        iv_show_device_place2 = (ImageView) findViewById(R.id.iv_show_device_place2);
         device_place1.setOnClickListener(this);
         device_place2.setOnClickListener(this);
         restartSearch.setOnClickListener(this);
-        GridLayoutManager mLayoutManager = new GridLayoutManager(this,1);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         mLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
         deviceList.setLayoutManager(mLayoutManager);
 
@@ -191,7 +197,7 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_restart_match:
                 restartSearch.setVisibility(View.INVISIBLE);
                 findViewById(R.id.ll_iv_tv).setVisibility(View.INVISIBLE);
@@ -204,10 +210,10 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
                 searchingDevice();
                 break;
             case R.id.device_place1:
-                if (device_place2.getVisibility() == View.VISIBLE){
+                if (device_place2.getVisibility() == View.VISIBLE) {
                     device_place2.setVisibility(View.INVISIBLE);
                     iv_show_device_place2.setSelected(false);
-                }else {
+                } else {
                     device_place2.setVisibility(View.VISIBLE);
                     et_device_position.setText(getString(R.string.living_room));
                     iv_show_device_place2.setSelected(true);
@@ -265,7 +271,7 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
     ///搜索成功显示界面
     private void ShowSerachSuccess() {
         isSuccesShow = true;
-        if (image.getAnimation()!=null&&!image.getAnimation().hasEnded()&&image !=null) {
+        if (image.getAnimation() != null && !image.getAnimation().hasEnded() && image != null) {
             image.getAnimation().cancel();
         }
         image.setImageResource(R.drawable.air_purifier_tai);
@@ -382,7 +388,7 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
                 if (deviceIOs != null) {
                     for (BaseDeviceIO device : deviceIOs) {
                         //只添加 台式空净   是不是配对模式
-                        if (AirPurifierManager.IsBluetoothAirPurifier(device.getType())&& OznerDeviceManager.Instance().checkisBindMode(device)) {
+                        if (AirPurifierManager.IsBluetoothAirPurifier(device.getType()) && OznerDeviceManager.Instance().checkisBindMode(device)) {
                             list.add(device);
                         }
                     }
@@ -407,27 +413,30 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
 
 
         }
+
         public void ChangeWidth(int size) {
-            if(size>=3)
-                size=3;
-            LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(OznerCommand.dip2px(getBaseContext(), size * 120), ViewGroup.LayoutParams.MATCH_PARENT);
+            if (size >= 3)
+                size = 3;
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(OznerCommand.dip2px(getBaseContext(), size * 120), ViewGroup.LayoutParams.MATCH_PARENT);
             deviceList.setLayoutParams(layoutParams);
         }
+
         @Override
         public long getItemId(int position) {
             // TODO Auto-generated method stub
             return 0;
         }
+
         @Override
         public void onBindViewHolder(ViewHolder convertView, final int position) {
             // TODO Auto-generated method stub
             BaseDeviceIO device = (BaseDeviceIO) list.get(position);
 
             if (device != null) {
-                if(Mac!=null&&device.getAddress().equals(Mac)) {
+                if (Mac != null && device.getAddress().equals(Mac)) {
                     convertView.Cup_iv_device_item_image.setImageResource(R.drawable.air_purifier_selected);
                     convertView.item_selected.setChecked(true);
-                }else {
+                } else {
                     convertView.Cup_iv_device_item_image.setImageResource(R.drawable.air_purifier_tai_small);
                     convertView.item_selected.setChecked(false);
                 }
@@ -477,27 +486,28 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
         RadioButton item_selected; //被选择设备下标图片
         TextView Cup_tv_device_item_name;   //名字
         View RootView;
+
         public ViewHolder(View v) {
             super(v);
-            this.RootView=v;
-            this.Cup_iv_device_item_image= (ImageView) v.findViewById(R.id.iv_device_item_image);
-            this.Cup_tv_device_item_name= (TextView) v.findViewById(R.id.tv_device_item_name);
-            this.item_selected= (RadioButton) v.findViewById(R.id.item_selected);
+            this.RootView = v;
+            this.Cup_iv_device_item_image = (ImageView) v.findViewById(R.id.iv_device_item_image);
+            this.Cup_tv_device_item_name = (TextView) v.findViewById(R.id.tv_device_item_name);
+            this.item_selected = (RadioButton) v.findViewById(R.id.item_selected);
         }
     }
 
     //GridView Item 点击事件
     class MyOnClickListener implements View.OnClickListener {
-        private String  device;
+        private String device;
+
         public MyOnClickListener(String address) {
-            device=address;
+            device = address;
         }
 
         @Override
         public void onClick(View v) {
-            if(device!=Mac)
-            {
-                Mac=device;
+            if (device != Mac) {
+                Mac = device;
                 adapter.notifyDataSetChanged();
                 MatchSuccessShow();
             }
@@ -514,9 +524,9 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
 
             if (device != null && device instanceof AirPurifier_Bluetooth) {
                 //保存设备
-                if (name.isEmpty()){
+                if (name.isEmpty()) {
                     device.Setting().name(getString(R.string.my_air_purifier_tai));
-                }else {
+                } else {
                     device.Setting().name(name);
                 }
 
@@ -524,15 +534,15 @@ public class MatchAirPuriTaiActivity extends AppCompatActivity implements View.O
                 device.setAppdata(PageState.DEVICE_ADDRES, addr);
                 device.updateSettings();
                 //添加网络缓存任务
-                OznerCommand.CNetCacheBindDeviceTask(getBaseContext(),device);
-            }else{
-                Toast.makeText(getBaseContext(),getResources().getString(R.string.device_null),Toast.LENGTH_SHORT).show();
+                OznerCommand.CNetCacheBindDeviceTask(getBaseContext(), device);
+            } else {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.device_null), Toast.LENGTH_SHORT).show();
             }
         } catch (NotSupportDeviceException e) {
             e.printStackTrace();
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
-            Toast.makeText(getApplicationContext(),ex.getMessage(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
         this.finish();
         return;

@@ -9,7 +9,7 @@
         android:id="@+id/cup_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/tdsBackground"
+        android:background="@color/colorAccent"
         app:navigationIcon="@drawable/back">
 
         <LinearLayout
@@ -29,7 +29,7 @@
                 android:singleLine="true"
                 android:ellipsize="middle"
                 android:text="@string/tds_test"
-                android:textColor="@color/toolbar_text_color"
+                android:textColor="@color/white"
                 android:textSize="18dp" />
 
 

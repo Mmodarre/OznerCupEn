@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -32,16 +31,15 @@ import android.widget.Toast;
 
 import com.ozner.bluetooth.BluetoothIO;
 import com.ozner.bluetooth.BluetoothScan;
+import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.PageState;
+import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.NotSupportDeviceException;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.tap.Tap;
 import com.ozner.tap.TapManager;
-
-import com.ozner.cup.Command.OznerCommand;
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.R;
 
 import java.util.ArrayList;
 
@@ -69,26 +67,27 @@ public class MatchProbeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.add_device));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.add_device));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//            //更改底部导航栏颜色(限有底部的手机)
+////            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//        }
         setContentView(R.layout.activity_match_probe);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackgroundResource(R.color.add_device);
+        toolbar.setBackgroundResource(R.color.colorAccent);
         toolbarText = (TextView) findViewById(R.id.toolbar_text);
+        toolbarText.setTextColor(ContextCompat.getColor(this, R.color.white));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        animinput= AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
-        animfadeout=AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);
-        animfadein=AnimationUtils.loadAnimation(this,R.anim.abc_fade_in);
+        animinput = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
+        animfadeout = AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);
+        animfadein = AnimationUtils.loadAnimation(this, R.anim.abc_fade_in);
         animinput.setInterpolator(new DecelerateInterpolator(2.0f));
         animfadeout.setInterpolator(new DecelerateInterpolator(2.0f));
         animfadein.setInterpolator(new DecelerateInterpolator(2.0f));
@@ -161,7 +160,7 @@ public class MatchProbeActivity extends AppCompatActivity {
     }
 
     private void InitView() {
-        OznerApplication.changeTextFont((ViewGroup)getWindow().getDecorView());
+        OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         image = (ImageView) findViewById(R.id.iv_matching_probe);
         ll_probe_info = (LinearLayout) findViewById(R.id.ll_probe_info);
         ll_probe_info.setVisibility(View.GONE);
@@ -431,16 +430,16 @@ public class MatchProbeActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             return list.size();
         }
+
         @Override
         public void onBindViewHolder(ViewHolder convertView, final int position) {
             // TODO Auto-generated method stub
             BaseDeviceIO device = (BaseDeviceIO) list.get(position);
             if (device != null) {
-                if(Mac!=null&&device.getAddress().equals(Mac)) {
+                if (Mac != null && device.getAddress().equals(Mac)) {
                     convertView.Cup_iv_device_item_image.setImageResource(R.drawable.water_probe_selected);
                     convertView.item_selected.setChecked(true);
-                }
-                else {
+                } else {
                     convertView.Cup_iv_device_item_image.setImageResource(R.drawable.water_probe_small);
                     convertView.item_selected.setChecked(false);
                 }
@@ -466,7 +465,8 @@ public class MatchProbeActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onClick(View v) {}
+        public void onClick(View v) {
+        }
     }
     //把图片加给选择的item
 
@@ -481,22 +481,22 @@ public class MatchProbeActivity extends AppCompatActivity {
             this.RootView = v;
             this.Cup_iv_device_item_image = (ImageView) v.findViewById(R.id.iv_device_item_image);
             this.Cup_tv_device_item_name = (TextView) v.findViewById(R.id.tv_device_item_name);
-            this.item_selected = (RadioButton)v.findViewById(R.id.item_selected);
+            this.item_selected = (RadioButton) v.findViewById(R.id.item_selected);
         }
     }
 
     //GridView Item 点击事件
     class MyOnClickListener implements View.OnClickListener {
-        private String  device;
+        private String device;
+
         public MyOnClickListener(String address) {
-            device=address;
+            device = address;
         }
 
         @Override
         public void onClick(View v) {
-            if(device!=Mac)
-            {
-                Mac=device;
+            if (device != Mac) {
+                Mac = device;
                 adapter.notifyDataSetChanged();
                 MatchSuccessShow();
             }
@@ -514,18 +514,18 @@ public class MatchProbeActivity extends AppCompatActivity {
             if (device != null && TapManager.IsTap(device.Type())) {
                 OznerDeviceManager.Instance().save(device);
                 //保存设备
-                if (name.isEmpty()){
+                if (name.isEmpty()) {
                     device.Setting().name(getString(R.string.water_probe));
-                }else {
+                } else {
                     device.Setting().name(name);
                 }
-                device.setAppdata(PageState.TapType,"tap");
+                device.setAppdata(PageState.TapType, "tap");
                 device.setAppdata(PageState.DEVICE_ADDRES, address);
                 device.updateSettings();
                 //添加网络缓存任务
                 OznerCommand.CNetCacheBindDeviceTask(getBaseContext(), device);
-            }else {
-                Toast.makeText(getBaseContext(),getResources().getString(R.string.device_null),Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.device_null), Toast.LENGTH_SHORT).show();
             }
         } catch (NotSupportDeviceException e) {
             e.printStackTrace();

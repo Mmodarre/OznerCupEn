@@ -272,6 +272,9 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onResume() {
         super.onResume();
+        if (device != null) {
+            tv_name.setText(device.getName());
+        }
 
         InitData();
         try {
@@ -471,9 +474,9 @@ public class WaterCupFragment extends Fragment implements View.OnClickListener, 
             }
             if (TDSFix != 0) {
 
-                if(OznerPreference.isLoginPhone(getContext())){
+                if (OznerPreference.isLoginPhone(getContext())) {
                     lay_tdsShort.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     lay_tdsShort.setVisibility(View.GONE);
                 }
                 rlay_tdsdetail.setEnabled(true);

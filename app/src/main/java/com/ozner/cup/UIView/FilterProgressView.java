@@ -9,11 +9,15 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
+import com.ozner.cup.R;
+
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,9 +48,11 @@ public class FilterProgressView extends View {
     private SimpleDateFormat yearFormat;
     private SimpleDateFormat monthDayFormat;
     private Bitmap thumb = null;
+    private WeakReference<Context> mContext;
 
     public FilterProgressView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = new WeakReference<Context>(context);
         init();
     }
 
@@ -117,6 +123,11 @@ public class FilterProgressView extends View {
     }
 
     private void init() {
+        try {
+            textColor = ContextCompat.getColor(mContext.get(), R.color.colorAccent);
+        } catch (Exception ex) {
+            Log.e(TAG, "init_ex: " + ex.getMessage());
+        }
         textPaint = new Paint();
         textPaint.setAntiAlias(true);
         textPaint.setColor(textColor);

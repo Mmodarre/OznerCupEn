@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tds_layout_top"
-                android:background="@color/tdsBackground"
+                android:background="@color/colorAccent"
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp">
 
@@ -45,7 +44,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="@string/airRoom_pm"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/white"
                             android:textSize="18dp" />
 
                         <ImageView
@@ -66,7 +65,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/text_null"
-                        android:textColor="@color/colorTds"
+                        android:textColor="@color/white"
                         android:textSize="43dp" />
 
                     <TextView
@@ -74,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="@string/airRoom_pmtext"
-                        android:textColor="@color/colorTds"
+                        android:textColor="@color/white"
                         android:textSize="10dp" />
                 </LinearLayout>
 
@@ -128,7 +127,7 @@
                             android:layout_marginRight="7dp"
                             android:gravity="center"
                             android:text="@string/filter_cz"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"></TextView>
 
                     </LinearLayout>
@@ -155,14 +154,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:text="@string/text_null"
-                        android:textColor="@color/air_text"
+                        android:textColor="@color/text_color_normal"
                         android:textSize="43dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="%"
-                        android:textColor="@color/air_text"
+                        android:textColor="@color/text_color_normal"
                         android:textSize="16dp" />
 
                 </LinearLayout>
@@ -255,7 +254,7 @@
                             android:layout_toRightOf="@+id/iv_consult_msg"
                             android:gravity="center"
                             android:text="@string/consult_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"></TextView>
 
                     </LinearLayout>
@@ -286,7 +285,7 @@
                             android:layout_toRightOf="@+id/iv_health_buy"
                             android:gravity="center"
                             android:text="@string/buy_air_lvxin"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp" />
                     </LinearLayout>
                 </LinearLayout>

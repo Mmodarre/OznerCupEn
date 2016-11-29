@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/add_device"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorAccent"
+              android:orientation="vertical">
 
     <include
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"/>
 
 
     <!--净水器配网_上部-->
@@ -32,7 +32,7 @@
                 android:id="@+id/iv_matchStatus"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:src="@drawable/match_purifier_wifi" />
+                android:src="@drawable/match_purifier_wifi"/>
 
             <LinearLayout
                 android:id="@+id/llay_matchTipsText"
@@ -49,20 +49,20 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/connection_wlan"
                     android:textColor="@color/white"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"/>
 
                 <TextView
                     android:id="@+id/tv_matchTips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="2dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center_horizontal"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/Purifier_SelectWifi"
                     android:textColor="@color/white"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -102,7 +102,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"/>
                 </RelativeLayout>
 
                 <ImageView
@@ -115,13 +115,13 @@
                     android:layout_height="40dp"
                     android:paddingLeft="10dp">
 
-                        <ImageView
-                            android:id="@+id/iv_passwordImg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentRight="true"
-                            android:padding="10dp"
-                            android:src="@drawable/mima" />
+                    <ImageView
+                        android:id="@+id/iv_passwordImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:padding="10dp"
+                        android:src="@drawable/mima"/>
 
                     <TextView
                         android:id="@+id/tv_passwordWrong"
@@ -132,7 +132,7 @@
                         android:layout_toLeftOf="@+id/iv_passwordImg"
                         android:text="@string/password_wrong"
                         android:textColor="@color/white"
-                        android:visibility="gone" />
+                        android:visibility="gone"/>
 
                     <EditText
                         android:id="@+id/et_password"
@@ -140,7 +140,7 @@
                         android:layout_height="match_parent"
                         android:layout_toLeftOf="@+id/tv_passwordWrong"
                         android:background="@drawable/border_none"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"/>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -155,14 +155,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/remember_password_selector" />
+                    android:src="@drawable/remember_password_selector"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
-                    android:text="@string/Purifier_NextRemainPass" />
+                    android:text="@string/Purifier_NextRemainPass"
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
 
@@ -176,10 +177,10 @@
                     android:layout_height="40dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="25dp"
-                    android:background="@drawable/center_advise_btn_bg"
+                    android:background="@drawable/btn_bg_adverse"
                     android:text="@string/next"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
+                    android:textColor="@color/text_color_normal"
+                    android:textSize="16dp"/>
             </RelativeLayout>
         </LinearLayout>
 
@@ -198,7 +199,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="20dp"
                 android:text="@string/Purifier_CheckToReMatch"
-                android:textColor="@color/MyCenter_RankValue" />
+                android:textColor="@color/white"/>
 
             <LinearLayout
                 android:id="@+id/llay_normalQue"
@@ -212,15 +213,15 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/kindly_notice_icon" />
+                    android:src="@drawable/kindly_notice_icon"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="@string/common_problem"
-                    android:textSize="18dp"
-                    android:textColor="@color/cupDetail_textcolor" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp"/>
             </LinearLayout>
 
             <Button
@@ -229,10 +230,10 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/llay_normalQue"
                 android:layout_marginBottom="25dp"
-                android:background="@drawable/center_advise_btn_bg"
+                android:background="@drawable/btn_bg_adverse"
                 android:text="@string/restart_match"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
+                android:textColor="@color/text_color_normal"
+                android:textSize="16dp"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -261,7 +262,7 @@
                     android:id="@+id/iv_router"
                     android:layout_width="53dp"
                     android:layout_height="46dp"
-                    android:src="@drawable/luyouqi" />
+                    android:src="@drawable/luyouqi"/>
 
                 <LinearLayout
                     android:layout_width="115dp"
@@ -274,33 +275,37 @@
                     <ImageView
                         android:id="@+id/image1"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@anim/connection_wifi5"
-                        android:layout_height="wrap_content" />
+                        android:src="@anim/connection_wifi5"/>
+
                     <ImageView
                         android:id="@+id/image2"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@anim/connection_wifi4"
-                        android:layout_height="wrap_content" />
+                        android:src="@anim/connection_wifi4"/>
+
                     <ImageView
                         android:id="@+id/image3"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@anim/connection_wifi3"
-                        android:layout_height="wrap_content" />
+                        android:src="@anim/connection_wifi3"/>
+
                     <ImageView
                         android:id="@+id/image4"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@anim/connection_wifi2"
-                        android:layout_height="wrap_content" />
+                        android:src="@anim/connection_wifi2"/>
+
                     <ImageView
                         android:id="@+id/image5"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@anim/connection_wifi"
-                        android:layout_height="wrap_content" />
+                        android:src="@anim/connection_wifi"/>
 
                 </LinearLayout>
 
@@ -309,7 +314,7 @@
                     android:layout_width="46dp"
                     android:layout_height="27dp"
                     android:layout_gravity="bottom"
-                    android:src="@drawable/yun" />
+                    android:src="@drawable/yun"/>
             </LinearLayout>
 
             <TextView
@@ -320,7 +325,7 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/Purifier_RouterConnecting"
                 android:textColor="@color/white"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
         </LinearLayout>
     </RelativeLayout>
 
@@ -341,7 +346,7 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/searched_device"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/tv_control2"
@@ -354,8 +359,8 @@
             android:id="@+id/ll_device_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:layout_gravity="center_horizontal|bottom">
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_weight="2">
 
             <ImageView
                 android:id="@+id/iv_selected_device_left"
@@ -365,22 +370,23 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="30dp"
                 android:background="@drawable/left"
-                android:visibility="invisible" />
+                android:visibility="invisible"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal|bottom">
+                android:gravity="center_horizontal|bottom"
+                android:orientation="horizontal">
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/my_recycler_view"
-                    android:scrollbars="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
                     android:layout_gravity="center_horizontal|bottom"
+                    android:paddingTop="10dp"
+                    android:scrollbars="horizontal"
                     />
             </LinearLayout>
 
@@ -392,7 +398,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="30dp"
                 android:background="@drawable/right"
-                android:visibility="invisible" />
+                android:visibility="invisible"/>
 
 
         </RelativeLayout>
@@ -429,7 +435,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:hint="@string/edit_purifier_name"
-                android:textAlignment="center" />
+                android:textAlignment="center"/>
 
 
             <EditText
@@ -437,7 +443,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textAlignment="center" />
+                android:textAlignment="center"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -452,7 +458,7 @@
                     android:background="@drawable/center_advise_btn_bg"
                     android:text="@string/finished"
                     android:textColor="@color/white"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"/>
             </RelativeLayout>
 
         </LinearLayout>

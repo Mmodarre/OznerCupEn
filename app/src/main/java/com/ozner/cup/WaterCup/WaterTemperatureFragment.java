@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,23 +14,22 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ozner.cup.CChat.CChatFragment;
 import com.ozner.cup.Command.OznerPreference;
+import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupRecord;
 import com.ozner.cup.CupRecordList;
-import com.ozner.cup.Main.BaseMainActivity;
-import com.ozner.device.OznerDeviceManager;
-
-import com.ozner.cup.CChat.CChatFragment;
-import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.OznerMallFragment;
+import com.ozner.cup.Main.BaseMainActivity;
 import com.ozner.cup.MainActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.UIView.ChartAdapter;
 import com.ozner.cup.UIView.UIXTempChartView;
 import com.ozner.cup.UIView.UIXWaterTemperatureProgress;
 import com.ozner.cup.UIView.ViewReturn;
+import com.ozner.device.OznerDeviceManager;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -532,7 +530,7 @@ public class WaterTemperatureFragment extends Fragment {
 
 
     private void changeDay() {
-        time_day.setSelected(false);
+        time_day.setSelected(true);
         time_week.setSelected(false);
         time_month.setSelected(false);
 
@@ -553,9 +551,9 @@ public class WaterTemperatureFragment extends Fragment {
         tv_temperature_tapGenericPre.setText(nor + "%");
         tv_temperature_tapBadPre.setText(hot + "%");
 
-        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
-        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+//        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
         //日水温
 //        ViewReturn.setCountHot1(hot);
 //        ViewReturn.setCountBad1(bad);
@@ -569,12 +567,12 @@ public class WaterTemperatureFragment extends Fragment {
     }
 
     private void changeWeek() {
-        time_day.setSelected(true);
+        time_day.setSelected(false);
         time_week.setSelected(true);
         time_month.setSelected(false);
-        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
-        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+//        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
         if(adapterWeek!=null) {
             tdsChartView.setAdapter(adapterWeek);
         }else{
@@ -601,7 +599,7 @@ public class WaterTemperatureFragment extends Fragment {
     }
 
     private void changeMonth() {
-        time_day.setSelected(true);
+        time_day.setSelected(false);
         time_week.setSelected(false);
         time_month.setSelected(true);
         if(adapterMonth!=null) {
@@ -630,8 +628,8 @@ public class WaterTemperatureFragment extends Fragment {
         iv_temperature_right.setVisibility(View.INVISIBLE);
         flagRight = 3;
         flagLeft = 3;
-        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
-        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_month.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+//        time_day.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
+//        time_week.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTds));
     }
 }

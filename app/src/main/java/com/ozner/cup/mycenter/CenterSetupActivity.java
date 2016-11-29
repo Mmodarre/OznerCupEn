@@ -5,12 +5,10 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,22 +39,22 @@ public class CenterSetupActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_center_setup);
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//        }
 //        UserDataPreference.Init(CenterSetupActivity.this);
         toolbar_text = (TextView) findViewById(R.id.toolbar_text);
         toolbar_text.setText(getString(R.string.Center_Setup));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar, null));
-        } else {
-            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 23) {
+//            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar, null));
+//        } else {
+//            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar));
+//        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

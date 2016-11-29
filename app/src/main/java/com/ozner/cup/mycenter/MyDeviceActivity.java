@@ -2,14 +2,12 @@ package com.ozner.cup.mycenter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
@@ -22,16 +20,15 @@ import com.ozner.AirPurifier.AirPurifier_Bluetooth;
 import com.ozner.AirPurifier.AirPurifier_MXChip;
 import com.ozner.WaterPurifier.WaterPurifier;
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
-import com.ozner.cup.Cup;
+import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Command.UserDataPreference;
+import com.ozner.cup.Cup;
 import com.ozner.cup.Device.OznerApplication;
+import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.tap.Tap;
-
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.R;
 
 public class MyDeviceActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     GridView gv_myDevice;
@@ -47,13 +44,13 @@ public class MyDeviceActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_device);
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//        }
 
         myDeviceAdatper = new DeviceAdapter(MyDeviceActivity.this);
 //        rlay_back = (RelativeLayout) findViewById(R.id.rlay_back);
@@ -67,11 +64,11 @@ public class MyDeviceActivity extends AppCompatActivity implements View.OnClickL
         toolbar_text = (TextView) findViewById(R.id.toolbar_text);
         toolbar_text.setText(getString(R.string.Center_HadDevice));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar, null));
-        } else {
-            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 23) {
+//            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar, null));
+//        } else {
+//            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar));
+//        }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -33,7 +33,7 @@
             android:layout_toRightOf="@+id/iv_health_buy"
             android:gravity="center"
             android:text="@string/scancode"
-            android:textColor="@color/colorTds"
+            android:textColor="@color/text_color_normal"
             android:textSize="18dp" />
     </LinearLayout>
 

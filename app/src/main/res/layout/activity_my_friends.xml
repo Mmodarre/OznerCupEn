@@ -188,6 +188,7 @@
 
 
                             <Button
+                                android:textColor="@color/white"
                                 android:id="@+id/btn_leaveMsgSend"
                                 android:layout_width="50dp"
                                 android:layout_height="30dp"

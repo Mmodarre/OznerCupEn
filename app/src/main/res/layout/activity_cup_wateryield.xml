@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,14 +15,14 @@
 
             <include
                 android:id="@+id/wateryield_layout_top"
-                layout="@layout/cup_toolbar" />
+                layout="@layout/cup_toolbar"/>
 
             <RelativeLayout
                 android:id="@+id/wateryield_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/wateryield_layout_top"
-                android:background="@color/tdsBackground">
+                android:background="@color/colorAccent">
 
                 <LinearLayout
                     android:id="@+id/wateryield_layout_center"
@@ -46,8 +45,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/wateryield_finish"
-                            android:textColor="@color/colorTds"
-                            android:textSize="12dp" />
+                            android:textColor="@color/white"
+                            android:textSize="18dp"/>
 
                         <TextView
                             android:id="@+id/tv_wateryield_value"
@@ -55,8 +54,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:text="65%"
-                            android:textColor="@color/colorTds"
-                            android:textSize="43dp" />
+                            android:textColor="@color/white"
+                            android:textSize="43dp"/>
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -72,8 +71,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/friend_ranking"
-                            android:textColor="@color/colorTds"
-                            android:textSize="18dp" />
+                            android:textColor="@color/white"
+                            android:textSize="18dp"/>
 
                         <TextView
                             android:id="@+id/tv_wateryield_friendtext"
@@ -81,8 +80,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:text="0"
-                            android:textColor="@color/colorTds"
-                            android:textSize="43dp" />
+                            android:textColor="@color/white"
+                            android:textSize="43dp"/>
 
                         <ImageView
                             android:id="@+id/iv_wateryield_friend_value"
@@ -91,7 +90,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="45dp"
                             android:layout_toRightOf="@+id/tv_wateryield_friendtext"
-                            android:background="@drawable/friend" />
+                            android:background="@drawable/friend"/>
 
                     </RelativeLayout>
 
@@ -102,7 +101,7 @@
                         android:layout_height="45dp"
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="35dp"
-                        android:background="@drawable/btn_bg_blue_s_choose"
+                        android:background="@drawable/btn_bg_adverse"
                         android:gravity="center">
 
                         <ImageView
@@ -112,7 +111,7 @@
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginLeft="7dp"
-                            android:src="@drawable/tds_msg" />
+                            android:src="@drawable/tds_msg"/>
 
                         <TextView
                             android:id="@+id/tv_wateryield_consult_msg"
@@ -124,7 +123,7 @@
                             android:layout_toRightOf="@+id/iv_wateryield_consult_msg"
                             android:gravity="center"
                             android:text="@string/consult_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />
@@ -147,7 +146,7 @@
                         android:id="@+id/iv_wateryield_face"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_wateryield_facetest"
@@ -157,8 +156,8 @@
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
                         android:text="@string/face_test"
-                        android:textColor="@color/colorTds"
-                        android:textSize="11dp" />
+                        android:textColor="@color/white"
+                        android:textSize="11dp"/>
                 </LinearLayout>
             </RelativeLayout>
 
@@ -177,7 +176,7 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/wateryield_drinkdistri"
                     android:textColor="@color/colorTdsText"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"/>
 
                 <RelativeLayout
                     android:id="@+id/wateryield_waterdetail_layout"
@@ -204,7 +203,8 @@
                             android:background="@drawable/chart_time_first_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_day"
-                            android:textSize="12dp" />
+                            android:textColor="@color/text_selector"
+                            android:textSize="12dp"/>
 
 
                         <TextView
@@ -214,6 +214,7 @@
                             android:background="@drawable/chart_time_second_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_week"
+                            android:textColor="@color/text_selector"
                             android:textSize="12dp"
 
                             />
@@ -226,7 +227,8 @@
                             android:background="@drawable/chart_time_third_tab_bg"
                             android:gravity="center"
                             android:text="@string/tds_month"
-                            android:textSize="12dp" />
+                            android:textColor="@color/text_selector"
+                            android:textSize="12dp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -244,7 +246,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp" />
+                            android:layout_marginRight="10dp"/>
 
                         <com.ozner.cup.UIView.UIXVolumeChartViewWeek
                             android:id="@+id/volumeViewWeek"
@@ -253,7 +255,7 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:visibility="gone" />
+                            android:visibility="gone"/>
 
 
                     </LinearLayout>
@@ -268,7 +270,7 @@
                 android:layout_height="9.5dp"
                 android:layout_below="@+id/wateryield_distribution_layout"
                 android:background="@color/colorLine"
-                android:visibility="gone" />
+                android:visibility="gone"/>
 
 
             <RelativeLayout
@@ -287,7 +289,7 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/tdshealth_test"
                     android:textColor="@color/colorTdsText"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"/>
 
 
                 <LinearLayout
@@ -326,7 +328,7 @@
                             android:layout_toRightOf="@+id/iv_wateryield_health_know"
                             android:gravity="center"
                             android:text="@string/water_know_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />
@@ -360,7 +362,7 @@
                             android:layout_toRightOf="@+id/iv_wateryield_health_buy"
                             android:gravity="center"
                             android:text="@string/buy_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />
@@ -375,7 +377,7 @@
                 android:layout_height="9.5dp"
                 android:layout_below="@+id/wateryield_health_layout"
                 android:background="@color/colorLine"
-                android:visibility="gone" />
+                android:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/iv_height"
@@ -383,7 +385,7 @@
                 android:layout_height="@dimen/footen_heght"
                 android:layout_below="@+id/tds_health_layout"
                 android:background="@color/colorLine"
-                android:visibility="visible" />
+                android:visibility="visible"/>
 
         </LinearLayout>
 

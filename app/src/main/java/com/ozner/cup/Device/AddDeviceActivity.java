@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -22,39 +21,40 @@ import com.ozner.cup.R;
  * Modify by C-sir@hotmail.com
  */
 public class AddDeviceActivity extends AppCompatActivity {
-//        private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi };
+    //        private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi };
 //    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi,R.drawable.water_replenishment_meter };
-    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier,R.drawable.air_purifier_vertical,R.drawable.air_purifier_taishi};
+    private int deviceImages[] = {R.drawable.smart_glass, R.drawable.water_probe, R.drawable.tdspen, R.drawable.water_purifier, R.drawable.air_purifier_vertical, R.drawable.air_purifier_taishi};
 
-//        private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
+    //        private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
 //    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi,R.string.water_replen_meter};
-    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier,R.string.air_purifier_ver,R.string.air_purifier_taishi};
+    private int deviceNames[] = {R.string.smart_glass, R.string.water_probe, R.string.water_tdspen, R.string.water_purifier, R.string.air_purifier_ver, R.string.air_purifier_taishi};
 
-//        private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
+    //        private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
 //    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth, R.drawable.bluetooth};
-    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
+    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
 
-//        private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
+    //        private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
 //    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection,R.string.bluetooth_connection};
-    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
+    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection, R.string.bluetooth_connection};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.add_device));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.add_device));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//        }
         setContentView(R.layout.activity_add_device);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackgroundResource(R.color.add_device);
+        toolbar.setBackgroundResource(R.color.colorAccent);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((TextView) findViewById(R.id.toolbar_text)).setText(getString(R.string.select_device));
+        ((TextView) findViewById(R.id.toolbar_text)).setTextColor(ContextCompat.getColor(this, R.color.white));
         findViewById(R.id.toolbar_save).setVisibility(View.INVISIBLE);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +91,7 @@ public class AddDeviceActivity extends AppCompatActivity {
                     intent.setClass(AddDeviceActivity.this, MatchAirPuriVerActivity.class);
                     break;
                 case 5:
-                    intent.setClass(AddDeviceActivity.this,MatchAirPuriTaiActivity.class);
+                    intent.setClass(AddDeviceActivity.this, MatchAirPuriTaiActivity.class);
                     break;
                 case 6:
                     intent.setClass(AddDeviceActivity.this, MatchWaterReplenishmentMeterActivity.class);
@@ -135,8 +135,8 @@ public class AddDeviceActivity extends AppCompatActivity {
             holder.deviceName.setText(deviceNames[position]);
             holder.connnettionIcon.setImageResource(connectionIcon[position]);
             holder.connectionText.setText(connectionName[position]);
-            if (!((OznerApplication)getApplication()).isLanguageCN()){
-               holder.connectionText.setText("");
+            if (!((OznerApplication) getApplication()).isLanguageCN()) {
+                holder.connectionText.setText("");
             }
 
             return convertView;

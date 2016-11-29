@@ -6,7 +6,7 @@
         <shape >
             <stroke
                 android:width="0.1dp"
-                android:color="@color/colorTds" />
+                android:color="@color/colorAccent" />
         </shape>
 
 
@@ -14,7 +14,7 @@
     <item
         android:state_selected="true">
         <shape>
-            <solid android:color="@color/colorTds" />
+            <solid android:color="@color/colorAccent" />
         </shape>
     </item>
 

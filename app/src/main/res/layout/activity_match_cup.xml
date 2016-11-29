@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/add_device"
+    android:background="@color/colorAccent"
     android:orientation="vertical">
 
     <include
@@ -280,11 +280,11 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="80dp"
-            android:background="@drawable/center_advise_btn_bg"
+            android:background="@drawable/btn_bg_adverse"
             android:gravity="center"
             android:text="@string/restart_match"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/text_color_normal"
             android:textSize="18dp"
             android:visibility="gone" />
 
@@ -309,7 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:text="@string/kindly_reminder"
-                android:textColor="@color/kindly_notice"
+                android:textColor="@color/white"
                 android:textSize="18dp" />
         </LinearLayout>
 
@@ -321,7 +321,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:text="@string/clear_up_water"
-            android:textColor="@color/font_gray"
+            android:textColor="@color/white"
             android:textSize="11.5dp" />
     </RelativeLayout>
 </LinearLayout>

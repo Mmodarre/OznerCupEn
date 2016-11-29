@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="08"
-                android:textColor="@color/theme_blue"
+                android:textColor="@color/text_color_normal"
                 android:textSize="32dp" />
 
             <ImageButton
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="："
-            android:textColor="@color/theme_blue" />
+            android:textColor="@color/text_color_normal" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00"
-                android:textColor="@color/theme_blue"
+                android:textColor="@color/text_color_normal"
                 android:textSize="32dp" />
 
             <ImageButton
@@ -109,7 +109,7 @@
             android:layout_marginLeft="60dp"
             android:layout_toRightOf="@+id/maohao"
             android:text="AM"
-            android:textColor="@color/theme_blue"
+            android:textColor="@color/text_color_normal"
             android:textSize="16dp" />
 
     </RelativeLayout>
@@ -154,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="22"
-                android:textColor="@color/theme_blue"
+                android:textColor="@color/text_color_normal"
                 android:textSize="32dp" />
 
             <ImageButton
@@ -173,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="："
-            android:textColor="@color/theme_blue" />
+            android:textColor="@color/text_color_normal" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -195,7 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00"
-                android:textColor="@color/theme_blue"
+                android:textColor="@color/text_color_normal"
                 android:textSize="32dp" />
 
             <ImageButton
@@ -217,7 +217,7 @@
             android:layout_marginLeft="60dp"
             android:layout_toRightOf="@+id/maohao1"
             android:text="PM"
-            android:textColor="@color/theme_blue"
+            android:textColor="@color/text_color_normal"
             android:textSize="16dp" />
 
     </RelativeLayout>

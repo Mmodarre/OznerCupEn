@@ -291,7 +291,7 @@
                         android:background="@drawable/chart_time_first_tab_bg"
                         android:gravity="center"
                         android:text="@string/tds_week"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_selector"
                         android:textSize="14dp" />
 
                     <TextView
@@ -302,7 +302,7 @@
                         android:background="@drawable/chart_time_third_tab_bg"
                         android:gravity="center"
                         android:text="@string/tds_month"
-                        android:textColor="@color/colorTds"
+                        android:textColor="@color/text_selector"
                         android:textSize="14dp" />
                 </LinearLayout>
 
@@ -399,7 +399,7 @@
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:text="@string/consult_test"
-                        android:textColor="@color/colorTds"
+                        android:textColor="@color/text_color_normal"
                         android:textSize="17dp" />
                 </LinearLayout>
 
@@ -426,7 +426,7 @@
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:text="@string/buy_jinghua_water"
-                        android:textColor="@color/colorTds"
+                        android:textColor="@color/text_color_normal"
                         android:textSize="17dp"
                         />
                 </LinearLayout>

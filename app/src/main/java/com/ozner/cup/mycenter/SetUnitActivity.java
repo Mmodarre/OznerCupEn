@@ -1,22 +1,20 @@
 package com.ozner.cup.mycenter;
 
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ozner.cup.Command.MeasurementUnit;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.R;
-import com.ozner.cup.Command.MeasurementUnit;
 
 public class SetUnitActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout rlay_centigrade, rlay_fahrenheit;
@@ -32,13 +30,13 @@ public class SetUnitActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_unit);
         OznerApplication.changeTextFont((ViewGroup)getWindow().getDecorView());
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.fz_blue));
+//        }
         UserDataPreference.Init(SetUnitActivity.this);
 
         toolbar_text = (TextView) findViewById(R.id.toolbar_text);
@@ -47,11 +45,11 @@ public class SetUnitActivity extends AppCompatActivity implements View.OnClickLi
         toolbar_save.setVisibility(View.VISIBLE);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar, null));
-        } else {
-            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 23) {
+//            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar, null));
+//        } else {
+//            toolbar.setBackgroundColor(getResources().getColor(R.color.MyCenter_ToolBar));
+//        }
         toolbar.setBackgroundColor(0xfff9f9f9);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);

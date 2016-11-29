@@ -93,7 +93,7 @@
 
                 <TextView
                     android:gravity="center"
-                    android:textColor="@color/fz_blue"
+                    android:textColor="@color/text_selector"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:onClick="resetPwd"
@@ -145,7 +145,7 @@
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
             android:text="@string/sign_up"
-            android:textColor="@color/fz_blue"
+            android:textColor="@color/text_color_normal"
             android:textSize="14dp" />
 
         <TextView

@@ -22,7 +22,6 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -40,12 +39,11 @@ import android.widget.Toast;
 import com.ozner.AirPurifier.AirPurifierManager;
 import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.Command.PageState;
+import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.wifi.WifiPair;
-
-import com.ozner.cup.R;
 
 /**
  * Created by mengdongya on 2015/12/22.
@@ -82,13 +80,13 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.add_device));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.add_device));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//        }
         wifiPreferences = this.getSharedPreferences("WifiPassword", Context.MODE_PRIVATE);
         setContentView(R.layout.activity_match_airli);
 
@@ -100,7 +98,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
         this.registerReceiver(monitor, filter);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackgroundResource(R.color.add_device);
+        toolbar.setBackgroundResource(R.color.colorAccent);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +106,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
             }
         });
         toolbar_text = (TextView) findViewById(R.id.toolbar_text);
+        toolbar_text.setTextColor(ContextCompat.getColor(this, R.color.white));
 
         animinput = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
         animfadeout = AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);
@@ -117,7 +116,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
         animfadein.setInterpolator(new DecelerateInterpolator(2.0f));
         initView();
         try {
-            wifiPair = new WifiPair(this,wifiPairImp);
+            wifiPair = new WifiPair(this, wifiPairImp);
         } catch (WifiPair.NullSSIDException e) {
             e.printStackTrace();
         }
@@ -237,7 +236,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
                 ex.printStackTrace();
             }
         } else {
-            Toast.makeText(getBaseContext(),getResources().getString(R.string.notice_match_wifi), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.notice_match_wifi), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -304,7 +303,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
 
 
     class WifiPairImp implements WifiPair.WifiPairCallback {
-//
+        //
         @Override
         public void onStartPairAyla() {
             Message msg = new Message();

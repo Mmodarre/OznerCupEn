@@ -146,8 +146,8 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             groupViewHolder = new GroupViewHolder();
             convertView = mInflater.inflate(R.layout.friend_list_item, null);
-            ((ImageView) convertView.findViewById(R.id.iv_headImg)).setImageBitmap(ImageHelper.loadResBitmap(mContext,R.mipmap.icon_default_headimage));
-            ((ImageView) convertView.findViewById(R.id.iv_message)).setImageBitmap(ImageHelper.loadResBitmap(mContext,R.drawable.message));
+            ((ImageView) convertView.findViewById(R.id.iv_headImg)).setImageBitmap(ImageHelper.loadResBitmap(mContext, R.mipmap.icon_default_headimage));
+            ((ImageView) convertView.findViewById(R.id.iv_message)).setImageBitmap(ImageHelper.loadResBitmap(mContext, R.drawable.message));
             OznerApplication.changeTextFont((ViewGroup) convertView);
             groupViewHolder.iv_headImg = (ImageView) convertView.findViewById(R.id.iv_headImg);
             groupViewHolder.tv_newMsgNum = (TextView) convertView.findViewById(R.id.tv_newMsgNum);
@@ -230,7 +230,7 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
         span_Desc.append(from);
         if (from != "") {
 //            span_Desc.setSpan(new ForegroundColorSpan(0xff3c89f2), 0, from.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-            span_Desc.setSpan(new ForegroundColorSpan(ContextCompat.getColor(mContext, R.color.checked)), 0, from.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            span_Desc.setSpan(new ForegroundColorSpan(ContextCompat.getColor(mContext, R.color.text_color_normal)), 0, from.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
         }
         if ("" != from && "" != to) {
             span_Desc.append(mContext.getString(R.string.repeat));
@@ -239,7 +239,7 @@ public class MyFriendListAdapter extends BaseExpandableListAdapter {
         if (to != "") {
             span_Desc.append(":");
             int toStart = span_Desc.toString().indexOf(to);
-            span_Desc.setSpan(new ForegroundColorSpan(ContextCompat.getColor(mContext, R.color.checked)), toStart, toStart + to.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            span_Desc.setSpan(new ForegroundColorSpan(ContextCompat.getColor(mContext, R.color.text_color_normal)), toStart, toStart + to.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
         }
         int start = span_Desc.toString().indexOf(mContext.getString(R.string.repeat));
 //        int offset = 2;

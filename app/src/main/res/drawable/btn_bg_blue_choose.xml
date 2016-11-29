@@ -4,7 +4,7 @@
     <solid android:color="@color/tdsBuybg" />
     <stroke
         android:width="0.2dp"
-        android:color="@color/colorTds" />
+        android:color="@color/colorAccent" />
     <corners
         android:radius="20dp"
         />

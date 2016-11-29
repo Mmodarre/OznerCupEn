@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/add_device"
+    android:background="@color/colorAccent"
     android:orientation="vertical">
 
     <LinearLayout
@@ -118,6 +118,7 @@
             android:src="@drawable/remember_password_selector" />
 
         <TextView
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
@@ -135,11 +136,11 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="40dp"
-            android:background="@drawable/center_advise_btn_bg"
+            android:background="@drawable/btn_bg_adverse"
             android:layout_alignParentBottom="true"
             android:gravity="center"
             android:text="@string/next"
-            android:textColor="@color/white" />
+            android:textColor="@color/text_color_normal" />
     </RelativeLayout>
 
 </LinearLayout>

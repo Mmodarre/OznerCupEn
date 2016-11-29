@@ -21,7 +21,6 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -36,18 +35,18 @@ import android.widget.Toast;
 
 import com.ozner.WaterPurifier.WaterPurifier;
 import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.PageState;
+import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.wifi.WifiPair;
-//import com.ozner.wifi.ayla.AylaIOManager;
 import com.ozner.wifi.mxchip.MXChipIO;
-
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//import com.ozner.wifi.ayla.AylaIOManager;
 
 /**
  * Created by mengdongya on 2015/11/23.
@@ -87,13 +86,13 @@ public class MatchPurifierActivity extends AppCompatActivity implements SpinnerP
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.add_device));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.add_device));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccent));
+//            //更改底部导航栏颜色(限有底部的手机)
+////            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.add_device));
+//        }
         wifiPreferences = this.getSharedPreferences("WifiPassword", Context.MODE_PRIVATE);
         editor = wifiPreferences.edit();
         setContentView(R.layout.activity_match_purifier2);
@@ -189,7 +188,7 @@ public class MatchPurifierActivity extends AppCompatActivity implements SpinnerP
     private void initView() {
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackgroundResource(R.color.add_device);
+        toolbar.setBackgroundResource(R.color.colorAccent);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,6 +196,7 @@ public class MatchPurifierActivity extends AppCompatActivity implements SpinnerP
             }
         });
         toolbar_text = (TextView) findViewById(R.id.toolbar_text);//标题
+        toolbar_text.setTextColor(ContextCompat.getColor(this, R.color.white));
         deviceList = (RecyclerView) findViewById(R.id.my_recycler_view);//
         GridLayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         mLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);

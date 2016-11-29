@@ -93,7 +93,7 @@
                 <Button
                     android:id="@+id/btn_Submit"
                     android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/center_advise_btn_bg"
                     android:text="@string/Center_Submit"

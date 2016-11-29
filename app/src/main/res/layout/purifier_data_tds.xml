@@ -31,7 +31,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/tdsBackground">
+                android:background="@color/colorAccent">
 
                 <include
                     android:id="@+id/purifier_data_toorbar"
@@ -64,7 +64,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/tdsValue_test"
-                                android:textColor="@color/colorTds"
+                                android:textColor="@color/white"
                                 android:textSize="18dp"/>
 
                             <ImageView
@@ -95,7 +95,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/text_null"
-                                    android:textColor="@color/Purifier_before"
+                                    android:textColor="@color/white"
                                     android:textSize="23dp"/>
 
                                 <TextView
@@ -105,7 +105,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginBottom="2dp"
                                     android:text="@string/pre_purifier"
-                                    android:textColor="@color/Purifier_before"
+                                    android:textColor="@color/white"
                                     android:textSize="13dp"/>
                             </RelativeLayout>
 
@@ -120,7 +120,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginRight="5dp"
                                     android:text="/"
-                                    android:textColor="@color/cupDetail_textcolor"
+                                    android:textColor="@color/white"
                                     android:textSize="27dp"/>
                             </RelativeLayout>
 
@@ -135,7 +135,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/text_null"
-                                    android:textColor="@color/Purifier_after"
+                                    android:textColor="@color/white"
                                     android:textSize="23dp"/>
 
                                 <TextView
@@ -144,7 +144,7 @@
                                     android:layout_below="@+id/tv_afterValue"
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/after_purifier"
-                                    android:textColor="@color/Purifier_after"
+                                    android:textColor="@color/white"
                                     android:textSize="13dp"/>
                             </RelativeLayout>
                         </LinearLayout>
@@ -168,7 +168,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:text="@string/friend_ranking"
-                                android:textColor="@color/colorTds"
+                                android:textColor="@color/white"
                                 android:textSize="18dp"/>
 
                             <LinearLayout
@@ -185,7 +185,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="0"
-                                    android:textColor="@color/Purifier_after"
+                                    android:textColor="@color/white"
                                     android:textSize="45dp"/>
 
                                 <ImageView
@@ -212,7 +212,7 @@
                                 android:id="@+id/laly_consult"
                                 android:layout_width="90dp"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/btn_bg_blue_s_choose"
+                                android:background="@drawable/btn_bg_adverse"
                                 android:gravity="center"
                                 android:orientation="horizontal">
 
@@ -236,7 +236,7 @@
                                     android:layout_toRightOf="@+id/iv_wateryield_consult_msg"
                                     android:gravity="center"
                                     android:text="@string/consult_test"
-                                    android:textColor="@color/colorTds"
+                                    android:textColor="@color/text_color_normal"
                                     android:textSize="18dp"/>
                             </LinearLayout>
                         </LinearLayout>
@@ -267,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="@string/waterTds_faceLow"
-                        android:textColor="@color/colorTds"/>
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
@@ -313,9 +313,11 @@
                             android:layout_weight="1"
                             android:background="@drawable/purifier_data_exp_week_btn"
                             android:text="@string/tds_week"
+                            android:textColor="@color/text_selector"
                             android:textAllCaps="false"/>
 
                         <Button
+                            android:textColor="@color/text_selector"
                             android:id="@+id/btn_month"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
@@ -463,7 +465,7 @@
                             android:layout_toRightOf="@+id/iv_wateryield_health_know"
                             android:gravity="center"
                             android:text="@string/water_know_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />
@@ -496,7 +498,7 @@
                             android:layout_toRightOf="@+id/iv_wateryield_health_buy"
                             android:gravity="center"
                             android:text="@string/buy_test"
-                            android:textColor="@color/colorTds"
+                            android:textColor="@color/text_color_normal"
                             android:textSize="17dp"
 
                             />

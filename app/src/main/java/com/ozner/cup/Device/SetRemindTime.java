@@ -3,12 +3,10 @@ package com.ozner.cup.Device;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -16,9 +14,8 @@ import android.widget.Toast;
 
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupSetting;
-import com.ozner.device.OznerDeviceManager;
-
 import com.ozner.cup.R;
+import com.ozner.device.OznerDeviceManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,13 +41,13 @@ public class SetRemindTime extends AppCompatActivity implements View.OnClickList
         mCupSetting = mCup.Setting();
         setContentView(R.layout.set_remind_time);
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-            //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.fz_blue));
-            //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(getApplicationContext(), R.color.fz_blue));
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= 21) {
+//            Window window = getWindow();
+//            //更改状态栏颜色
+//            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.fz_blue));
+//            //更改底部导航栏颜色(限有底部的手机)
+//            window.setNavigationBarColor(ContextCompat.getColor(getApplicationContext(), R.color.fz_blue));
+//        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

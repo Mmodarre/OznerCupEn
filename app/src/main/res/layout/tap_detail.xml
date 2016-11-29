@@ -44,6 +44,7 @@
 
                 <RelativeLayout
                     android:id="@+id/rlay_top1"
+                    android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -182,12 +183,6 @@
                         android:layout_height="175dp"
                         android:layout_centerVertical="true">
 
-                        <com.ozner.cup.WaterProbe.WaterDetailProgress
-                            android:id="@+id/waterProcess"
-                            android:layout_width="300dp"
-                            android:layout_height="160dp"
-                            android:layout_centerInParent="true" />
-
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -198,6 +193,13 @@
 
                             <include layout="@layout/cup_detail_tds" />
                         </LinearLayout>
+
+                        <com.ozner.cup.WaterProbe.WaterDetailProgress
+                            android:id="@+id/waterProcess"
+                            android:layout_width="300dp"
+                            android:layout_height="160dp"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"/>
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>

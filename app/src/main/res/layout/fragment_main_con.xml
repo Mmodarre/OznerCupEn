@@ -28,14 +28,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="352dp"
                 android:layout_weight="1.5"
-                android:background="@drawable/main_background">
+                android:background="@drawable/welcome_bg">
 
                 <ImageView
-                    android:layout_width="77dp"
-                    android:layout_height="107dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/logo" />
+                    android:src="@drawable/welcom_logo" />
 
             </RelativeLayout>
 
@@ -90,7 +90,7 @@
                     android:background="@drawable/btn_bg_blue_s_choose"
                     android:gravity="center"
                     android:text="@string/main_addDetail"
-                    android:textColor="@color/main_addDetail"
+                    android:textColor="@color/text_color_normal"
                     android:textSize="16dp" />
             </RelativeLayout>
         </LinearLayout>

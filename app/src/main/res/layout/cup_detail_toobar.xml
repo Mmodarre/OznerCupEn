@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:layout_alignParentTop="true"
->
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_alignParentTop="true"
+                android:background="@android:color/transparent">
 
     <RelativeLayout
         android:id="@+id/rlay_menu"
@@ -18,7 +18,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/sliderimg" />
+            android:src="@drawable/sliderimg"/>
     </RelativeLayout>
 
 
@@ -32,18 +32,19 @@
         android:paddingLeft="6dp"
         android:paddingTop="3dp"
         android:text="+1"
-        android:textColor="@color/cupDetail_textcolor"
-        android:visibility="gone" />
+        android:textColor="@color/text_color_normal"
+        android:visibility="gone"/>
 
     <TextView
-        android:text=""
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
+        android:ellipsize="middle"
         android:maxEms="10"
         android:singleLine="true"
-        android:ellipsize="middle"
-        android:textSize="18dp" />
+        android:textColor="@color/white"
+        android:text=""
+        android:textSize="18dp"/>
 </RelativeLayout>
