@@ -149,7 +149,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
         }
-        initViewBitmap(view);
+//        initViewBitmap(view);
         return view;
     }
 
@@ -394,17 +394,6 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         iv_xuanzhuan_x3.setAnimation(animation);
     }
 
-    private void refreshUIData() {
-        if (VerticalAirPurifierFragment.this.isAdded()) {
-            initData();
-            refreshNetStatus();
-            setDate();
-
-        } else {
-            Log.e("verAir", "refreshUIData: ");
-        }
-    }
-
     /*
         * 初始化数据
         * */
@@ -471,9 +460,10 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
 
         switchLock(isLockOn);
 
-        if (isNet == 0 || isOffLine) {
+        if (isNet == 0) {
+            tv_tdsValue.setText(getString(R.string.phone_nonet));
+        } else if (isOffLine) {
             tv_tdsValue.setText(getString(R.string.detail_nonet));
-
         } else if (65535 == pm25 || pm25 <= 0) {
             tv_tdsValue.setText(getString(R.string.null_text));
             OznerApplication.setControlTextFace(tv_tdsValue);
@@ -1221,52 +1211,6 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         isModeOn = isOn;
     }
 
-    //region
-/*
-    OperateCallback<Void> callback = new OperateCallback<Void>() {
-        @Override
-        public void onSuccess(Void var1) {
-            if (power != airPurifier.airStatus().Power())
-                switchOpen(airPurifier.airStatus().Power());
-            if (dialog != null) {
-                try {
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-
-                try {
-                    dialog.setMessage(getString(R.string.set_success));
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                dialog.dismiss();
-            }
-        }
-
-        @Override
-        public void onFailure(Throwable var1) {
-            switchOpen(airPurifier.airStatus().Power());
-            if (dialog != null) {
-                try {
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-
-                try {
-                    dialog.setMessage(getString(R.string.set_fail));
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                dialog.dismiss();
-            }
-        }
-    };
- */
-    //endregion
     private void switchOpen(boolean isOn) {
         iv_open.setSelected(isOn);
         rlay_open.setSelected(isOn);
@@ -1380,33 +1324,12 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         }
     }
 
-    /**
-     * 刷新网络状态
-     */
-    private void refreshNetStatus() {
-        isNet = NetHelper.checkNetwork(getContext());
-        if (isNet != 0 && !isOffLine) {
-            rlay_top2.setVisibility(View.INVISIBLE);
-//                    offline_notice.setVisibility(View.INVISIBLE);
-        } else if (isNet == 0) {
-            tv_phone_nonet.setVisibility(View.VISIBLE);
-            tv_device_nonet.setVisibility(View.INVISIBLE);
-            rlay_top2.setVisibility(View.VISIBLE);
-//                    offline_notice.setVisibility(View.INVISIBLE);
-            showOffLine();
-        } else if (isOffLine) {
-            rlay_top2.setVisibility(View.INVISIBLE);
-            showOffLine();
-        }
-    }
 
     @Override
     public void onResume() {
         super.onResume();
         UiUpdateAsyncTask uiUpdateAsyncTask = new UiUpdateAsyncTask();
         uiUpdateAsyncTask.execute("airver");
-
-//        refreshUIData();
 //        ((MainActivity)getActivity()).isShouldResume=false;
     }
 
@@ -1439,7 +1362,6 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         if (this.Mac.equals(address)) {
             //此处应该执行更新数据异步操作
             new UiUpdateAsyncTask().execute();
-//            refreshUIData();
         }
     }
 
