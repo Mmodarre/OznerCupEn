@@ -100,9 +100,9 @@
                             android:minHeight="50dp"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-
+                            android:src="@drawable/mabiao"
                             />
-                        <!-- android:src="@drawable/mabiao" -->
+
 
                         <ImageView
                             android:id="@+id/iv_xuanzhuan_x3"
@@ -111,8 +111,8 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="fitCenter"
-                            />
-                        <!--android:src="@drawable/mengban1"-->
+                            android:src="@drawable/mengban1" />
+
 
                         <include
                             android:id="@+id/air_center_layout"
