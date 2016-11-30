@@ -48,7 +48,7 @@ public abstract class OznerBaseApplication extends Application {
 //        CrashReport.initCrashReport(getApplicationContext(), "900033413", false);
 
         //利用leakcanary工具检测内存泄漏
-        LeakCanary.install(this);
+//        LeakCanary.install(this);
 
 
         mServiceConnection = new ServiceConnection() {
