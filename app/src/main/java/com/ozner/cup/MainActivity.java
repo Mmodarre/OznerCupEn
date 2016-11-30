@@ -1071,6 +1071,7 @@ public class MainActivity extends BaseMainActivity {
                         String type = intent.getStringExtra("Type");
 //                        new ChangeDeviceThread(sendoraddress, type).start();
                         break;
+
                     case WaterPurifier.ACTION_WATER_PURIFIER_STATUS_CHANGE:
                         myFootFragmentListener.ContentChange(sendoraddress, null);
                         break;

@@ -76,7 +76,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
     ImageView iv_hot, iv_cool, iv_power, iv_data_loading, iv_tdsLevelImg;
     int tds1, tds2, tdsMid;
     private RotateAnimation animation;
-    private LinearLayout laly_phone_nonet;
+    private LinearLayout laly_phone_nonet,laly_buttons;
     TextView tv_hot, tv_cool, tv_power, tv_name, tv_afterValue, tv_preValue, tv_tdsLevelText, tv_filterStatus, tv_data_loading, tv_spec, tv_filiteText, tv_purifier_type;
     WaterPurifier_RO_BLE waterPurifier;
     PurifierDetailProgress waterProcess;
@@ -88,7 +88,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
     PurifierTDSFragment purifierTDSFragment;
     private static final String WaterPurifierStr = "WaterPurifierFilter";//净水器滤芯
     private static int WATER_WARRANTY = 365;// 默认有效期
-    private int tdsPre = 0;//保存上传时净花前的值
+    private int tdsPre = 0;//保存上传时净化前的值
     private int tdsAfter = 0;//保存上传时净化后的值
 
     private String cool = "";//制冷
@@ -203,6 +203,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
         tv_tdsLevelText = (TextView) view.findViewById(R.id.tv_tdsLevelText);
         tv_filterStatus = (TextView) view.findViewById(R.id.tv_filterStatus);
         rlay_top1 = (RelativeLayout) view.findViewById(R.id.rlay_top1);
+//        rlay_top1.setVisibility(View.VISIBLE);
         tv_data_loading = (TextView) view.findViewById(R.id.tv_data_loading);
         iv_data_loading = (ImageView) view.findViewById(R.id.iv_data_loading);
         animation = new RotateAnimation(0f, -360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
@@ -214,7 +215,6 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
         iv_data_loading.setAnimation(animation);
         iv_tdsLevelImg = (ImageView) view.findViewById(R.id.iv_tdsLevelImg);
 //        tv_purifier_type=(TextView)view.findViewById(R.id.tv_purifier_type);
-
 //        tv_phone_nonet = (TextView) view.findViewById(R.id.tv_phone_nonet);
 //        tv_detail_nonet = (TextView) view.findViewById(R.id.tv_detail_nonet);
         purifier_nonet = (TextView) view.findViewById(R.id.purifier_nonet);
@@ -229,12 +229,14 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+
+        laly_buttons=(LinearLayout)view.findViewById(R.id.laly_buttons);
+        laly_buttons.setVisibility(View.INVISIBLE);
+   }
 
     public void InitData() {
-        isOffLine = waterPurifier.isOffline();
+//        isOffLine = waterPurifier.isOffline();
         if (waterPurifier.waterInfo.TDS1_RAW> 0 && waterPurifier.waterInfo.TDS2_RAW > 0) {
-
             isZero = false;
             tds1 = waterPurifier.waterInfo.TDS1_RAW;
             tds2 = waterPurifier.waterInfo.TDS2_RAW;
@@ -461,17 +463,17 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                     rlay_purifier_tds.setClickable(true);
 
                     //上传净水器净化前后的TDS值
-                    if (waterPurifier.sensor().TDS1() > 0 && waterPurifier.sensor().TDS2() > 0) {
-                        if (waterPurifier.sensor().TDS1() > waterPurifier.sensor().TDS2()) {
-                            if (waterPurifier.sensor().TDS1() != tdsPre || waterPurifier.sensor().TDS2() != tdsAfter) {
-                                tdsPre = waterPurifier.sensor().TDS1();
-                                tdsAfter = waterPurifier.sensor().TDS2();
+                    if (waterPurifier.waterInfo.TDS1_RAW> 0 && waterPurifier.waterInfo.TDS2_RAW > 0) {
+                        if (waterPurifier.waterInfo.TDS1_RAW> waterPurifier.waterInfo.TDS2_RAW) {
+                            if (waterPurifier.waterInfo.TDS1_RAW != tdsPre || waterPurifier.waterInfo.TDS2_RAW != tdsAfter) {
+                                tdsPre = waterPurifier.waterInfo.TDS1_RAW;
+                                tdsAfter = waterPurifier.waterInfo.TDS2_RAW;
                                 uploadTds(MAC, waterPurifier.Type(), tdsPre, tdsAfter);
                             }
                         } else {
-                            if (waterPurifier.sensor().TDS2() != tdsPre || waterPurifier.sensor().TDS1() != tdsAfter) {
-                                tdsPre = waterPurifier.sensor().TDS2();
-                                tdsAfter = waterPurifier.sensor().TDS1();
+                            if (waterPurifier.waterInfo.TDS2_RAW != tdsPre || waterPurifier.waterInfo.TDS1_RAW != tdsAfter) {
+                                tdsPre = waterPurifier.waterInfo.TDS2_RAW;
+                                tdsAfter = waterPurifier.waterInfo.TDS1_RAW;
                                 uploadTds(MAC, waterPurifier.Type(), tdsPre, tdsAfter);
                             }
                         }
@@ -1081,34 +1083,35 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
     @Override
     public void ContentChange(String mac, String state) {
 //        if(isNet!=0){
-        if (this.MAC.equals(mac) && ROWaterPurifierFragment.this.isAdded() && !ROWaterPurifierFragment.this.isDetached() && !ROWaterPurifierFragment.this.isRemoving()) {
+//        if (this.MAC.equals(mac) && ROWaterPurifierFragment.this.isAdded() && !ROWaterPurifierFragment.this.isDetached() && !ROWaterPurifierFragment.this.isRemoving()) {
             new UiUpdateAsyncTask().execute();
-            switch (state) {
-                //正在链接中
-                case BaseDeviceIO.ACTION_DEVICE_CONNECTING:
-                    iv_data_loading.setImageResource(R.drawable.air_loding);
-                    tv_data_loading.setText(getResources().getString(R.string.loding_now));
-                    if (iv_data_loading.getAnimation() != null)
-                        iv_data_loading.getAnimation().start();
+//            switch (state) {
+//                //正在链接中
+//                case BaseDeviceIO.ACTION_DEVICE_CONNECTING:
+//                    Log.e("trnet","ffff1");
+//                    iv_data_loading.setImageResource(R.drawable.air_loding);
+//                    tv_data_loading.setText(getResources().getString(R.string.loding_now));
+//                    if (iv_data_loading.getAnimation() != null)
+//                        iv_data_loading.getAnimation().start();
 //                    rlay_top1.setVisibility(View.VISIBLE);
-                    rlay_top1.setVisibility(View.GONE);
-                case BaseDeviceIO.ACTION_DEVICE_CONNECTED:
-                    if (iv_data_loading.getAnimation() != null)
-                        iv_data_loading.getAnimation().cancel();
-                    rlay_top1.setVisibility(View.GONE);
-                    break;
-                //已经断开连接
-                case BaseDeviceIO.ACTION_DEVICE_DISCONNECTED:
-                    iv_data_loading.setImageResource(R.drawable.air_loding_fair);
-                    if (iv_data_loading.getAnimation() != null)
-                        iv_data_loading.getAnimation().cancel();
-                    tv_data_loading.setText(getResources().getString(R.string.loding_fair));
-                    rlay_top1.setVisibility(View.GONE);
-                    break;
-            }
+////                    rlay_top1.setVisibility(View.GONE);
+//                case BaseDeviceIO.ACTION_DEVICE_CONNECTED:
+//                    if (iv_data_loading.getAnimation() != null)
+//                        iv_data_loading.getAnimation().cancel();
+//                    rlay_top1.setVisibility(View.GONE);
+//                    break;
+//                //已经断开连接
+//                case BaseDeviceIO.ACTION_DEVICE_DISCONNECTED:
+//                    iv_data_loading.setImageResource(R.drawable.air_loding_fair);
+//                    if (iv_data_loading.getAnimation() != null)
+//                        iv_data_loading.getAnimation().cancel();
+//                    tv_data_loading.setText(getResources().getString(R.string.loding_fair));
+//                    rlay_top1.setVisibility(View.VISIBLE);
+//                    break;
+//            }
             changeState();
 
-        }
+//        }
 //        }else{
 //            Log.e("trnet","ffff");
 //        }
@@ -1123,24 +1126,28 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
     public void changeState() {
         BaseDeviceIO.ConnectStatus stateIo = waterPurifier.connectStatus();
         if (stateIo == BaseDeviceIO.ConnectStatus.Connecting) {
+//            Log.e("trnet","ffff1");
+            rlay_top1.setVisibility(View.VISIBLE);
             iv_data_loading.setImageResource(R.drawable.air_loding);
             tv_data_loading.setText(getResources().getString(R.string.loding_now));
             if (iv_data_loading.getAnimation() != null)
-                iv_data_loading.getAnimation().start();
-//            rlay_top1.setVisibility(View.VISIBLE);
-            rlay_top1.setVisibility(View.GONE);
+            {iv_data_loading.getAnimation().start();}
+
         }
         if (stateIo == BaseDeviceIO.ConnectStatus.Connected) {
-            if (iv_data_loading.getAnimation() != null)
-                iv_data_loading.getAnimation().cancel();
             rlay_top1.setVisibility(View.GONE);
+            if (iv_data_loading.getAnimation() != null)
+            {iv_data_loading.getAnimation().cancel();}
+
         }
         if (stateIo == BaseDeviceIO.ConnectStatus.Disconnect) {
+            rlay_top1.setVisibility(View.VISIBLE);
+            tv_data_loading.setText(getResources().getString(R.string.loding_fair));
             iv_data_loading.setImageResource(R.drawable.air_loding_fair);
             if (iv_data_loading.getAnimation() != null)
-                iv_data_loading.getAnimation().cancel();
-            tv_data_loading.setText(getResources().getString(R.string.loding_fair));
-            rlay_top1.setVisibility(View.GONE);
+            { iv_data_loading.getAnimation().cancel();}
+
+
         }
 
     }

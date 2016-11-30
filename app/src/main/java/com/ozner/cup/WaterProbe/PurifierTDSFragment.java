@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ozner.WaterPurifier.WaterPurifier;
+import com.ozner.WaterPurifier.WaterPurifier_RO_BLE;
 import com.ozner.cup.CChat.CChatFragment;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
@@ -59,16 +60,17 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
     //获取tds数值
     private String mac;
     private WaterPurifier waterPurifier;
+    private WaterPurifier_RO_BLE roWaterPurifier;
     private TextView tv_preValue, tv_afterValue, tv_friend_shortValueText, tv_tdsTips, tv_spec;
     private LinearLayout laly_consult, wateryield_health_know_layout, wateryield_health_buy_layout;
     private ImageView iv_purifierTips, iv_tdsface;
-
+    public final String ROPurifierType="Ozner RO";//RO水机
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mac = getArguments().getString("MAC");
         waterPurifier = (WaterPurifier) OznerDeviceManager.Instance().getDevice(mac);
-
+        roWaterPurifier=(WaterPurifier_RO_BLE) OznerDeviceManager.Instance().getDevice(mac);
     }
 
     @Override
@@ -147,6 +149,33 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
         });
         OznerApplication.setControlNumFace(tv_spec);
         OznerApplication.setControlNumFace(tv_friend_shortValueText);
+        //增加RO水机的判断
+        if(ROPurifierType.equals(roWaterPurifier.Type())) {
+
+            if (roWaterPurifier != null && roWaterPurifier.waterInfo.TDS1_RAW != 65535 && roWaterPurifier.waterInfo.TDS2_RAW != 65535) {
+                if (roWaterPurifier.waterInfo.TDS1_RAW != 0 || roWaterPurifier.waterInfo.TDS2_RAW != 0) {
+                    if (roWaterPurifier.waterInfo.TDS1_RAW > roWaterPurifier.waterInfo.TDS2_RAW) {
+                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS1_RAW+ "");
+                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS2_RAW != 0 ? roWaterPurifier.waterInfo.TDS2_RAW : 1) + "");
+                        setTdsTips(roWaterPurifier.waterInfo.TDS2_RAW);
+                    } else {
+                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS2_RAW + "");
+                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS1_RAW!= 0 ? roWaterPurifier.waterInfo.TDS1_RAW : 1) + "");
+                        setTdsTips(roWaterPurifier.waterInfo.TDS1_RAW);
+                    }
+                    setNumFace();
+                } else {
+                    setTextFace();
+                }
+            } else {
+                tv_preValue.setText(getString(R.string.text_null));
+                tv_afterValue.setText(getString(R.string.text_null));
+//            OznerApplication.setControlTextFace(tv_preValue);
+//            OznerApplication.setControlTextFace(tv_afterValue);
+                setTextFace();
+            }
+
+        }else{
         if (waterPurifier != null && waterPurifier.sensor().TDS1() != 65535 && waterPurifier.sensor().TDS2() != 65535) {
             if (waterPurifier.sensor().TDS1() != 0 || waterPurifier.sensor().TDS2() != 0) {
                 if (waterPurifier.sensor().TDS1() > waterPurifier.sensor().TDS2()) {
@@ -170,7 +199,7 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
             setTextFace();
         }
 
-
+        }
         btn_week.setOnClickListener(this);
         btn_month.setOnClickListener(this);
 //        rlay_share.setOnClickListener(this);

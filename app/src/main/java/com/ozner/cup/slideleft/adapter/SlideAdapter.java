@@ -14,6 +14,7 @@ import com.ozner.AirPurifier.AirPurifierManager;
 import com.ozner.AirPurifier.AirPurifier_MXChip;
 import com.ozner.WaterPurifier.WaterPurifier;
 import com.ozner.WaterPurifier.WaterPurifierManager;
+import com.ozner.WaterPurifier.WaterPurifier_RO_BLE;
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeterMgr;
 import com.ozner.cup.Command.DeviceData;
 import com.ozner.cup.Command.PageState;
@@ -27,7 +28,7 @@ import com.ozner.tap.TapManager;
 import java.util.ArrayList;
 import java.util.List;
 
-//import static u.aly.av.R;
+
 
 /**
  * Created by admin on 2015/11/26.
@@ -185,9 +186,13 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
             try {
                 if (slilde.getOznerDevice() instanceof AirPurifier_MXChip) {
                     holder.desc_con.setText(((AirPurifier_MXChip) slilde.getOznerDevice()).isOffline() ? getContext().getString(R.string.loding_null) : getContext().getString(R.string.loding_success));
-                } else if(slilde.getOznerDevice() instanceof WaterPurifier){
-                    holder.desc_con.setText(((WaterPurifier) slilde.getOznerDevice()).isOffline() ? getContext().getString(R.string.loding_null) : getContext().getString(R.string.loding_success));
-                }else {
+                } else if(slilde.getOznerDevice() instanceof WaterPurifier) {
+                    if (slilde.getOznerDevice() instanceof WaterPurifier_RO_BLE) {
+                        holder.desc_con.setText(constate[slilde.getOznerDevice().connectStatus().ordinal()]);
+                    }else{
+                        holder.desc_con.setText(((WaterPurifier) slilde.getOznerDevice()).isOffline() ? getContext().getString(R.string.loding_null) : getContext().getString(R.string.loding_success));
+                    }
+                }else{
                     holder.desc_con.setText(constate[slilde.getOznerDevice().connectStatus().ordinal()]);
                 }
             } catch (Exception ex) {

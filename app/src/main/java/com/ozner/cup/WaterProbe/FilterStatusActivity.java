@@ -24,6 +24,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.ozner.WaterPurifier.WaterPurifier;
+import com.ozner.WaterPurifier.WaterPurifier_RO_BLE;
 import com.ozner.cup.Command.CenterUrlContants;
 import com.ozner.cup.Command.CustomToast;
 import com.ozner.cup.Command.NetErrDecode;
@@ -104,12 +105,23 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
     private Timer timer;
     private TextView tv_rolxa,tv_rolxb,tv_rolxc;
     private String fit_a,fit_b,fit_c;
+
+    private WaterPurifier_RO_BLE roWaterPurifier;
+
+
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.filter_status);
         MAC = getIntent().getStringExtra("MAC");
+        try {
+            roWaterPurifier = (WaterPurifier_RO_BLE) OznerDeviceManager.Instance().getDevice(MAC);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            roWaterPurifier = null;
+        }
+
         //RO水机滤芯状态
         fit_a=getIntent().getStringExtra("Fit_a");
         fit_b=getIntent().getStringExtra("Fit_b");
@@ -153,6 +165,13 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
             laly_water.setVisibility(View.VISIBLE);
         }
         tv_ro_filterRest=(TextView)findViewById(R.id.tv_ro_filterRest);
+        if(roWaterPurifier.isEnableFilterReset()){
+            tv_ro_filterRest.setVisibility(View.VISIBLE);
+            roWaterPurifier.resetFilter();
+
+        }else{
+            tv_ro_filterRest.setVisibility(View.INVISIBLE);
+        }
         tv_ro_filterRest.setOnClickListener(this);
         tv_ro_filter=(TextView) findViewById(R.id.tv_ro_filter);
         tv_rolxa=(TextView)findViewById(R.id.tv_rolxa);
