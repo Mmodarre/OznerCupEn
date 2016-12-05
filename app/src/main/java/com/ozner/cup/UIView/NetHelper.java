@@ -35,7 +35,7 @@ public class NetHelper {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return TYPE;
+            return NO_NETWORK;
         }
     }
 }
