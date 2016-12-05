@@ -230,7 +230,6 @@ public class MatchPurifierActivity extends AppCompatActivity implements SpinnerP
         anim4 = (AnimationDrawable) image4.getDrawable();
         image5 = (ImageView) findViewById(R.id.image5);
         anim5 = (AnimationDrawable) image5.getDrawable();
-        et_purifierPos = (EditText) findViewById(R.id.et_purifierPos);
         btn_ReMatch = (Button) findViewById(R.id.btn_ReMatch);//重新配对按钮
         btn_next = (Button) findViewById(R.id.btn_next);//下一步
         et_password = (EditText) findViewById(R.id.et_password);
@@ -252,7 +251,6 @@ public class MatchPurifierActivity extends AppCompatActivity implements SpinnerP
             @Override
             public void onClick(View v) {
                 if (Mac != null && Mac.length() > 0) {
-
                     SaveDevice(Mac);
                     return;
                 }
