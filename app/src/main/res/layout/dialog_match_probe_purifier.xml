@@ -46,13 +46,13 @@
                 android:id="@+id/et_device_position"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
                 android:background="@null"
                 android:gravity="center"
-                android:layout_alignParentStart="true"
-                android:textAlignment="center"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
                 android:text="@string/office"
+                android:textAlignment="center"
                 android:textColor="@color/font_gray"
                 android:textSize="16dp" />
 
@@ -60,10 +60,10 @@
                 android:id="@+id/iv_show_device_place2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
                 android:layout_gravity="center_vertical|left"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:layout_alignParentEnd="true"
                 android:src="@drawable/place_selector" />
 
             <ImageView
