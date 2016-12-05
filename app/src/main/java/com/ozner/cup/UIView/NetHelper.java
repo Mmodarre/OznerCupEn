@@ -12,7 +12,6 @@ public class NetHelper {
     public static final int NO_NETWORK = 0;//没有网络
     public static final int TYPE_WIFI = 1;//WIFI
     public static final int TYPE_MOBILE = 2;//手机网络
-    public static final int TYPE = 3;//手机网络
 
     /**
      * 判断当前网络状态
