@@ -33,6 +33,7 @@ import com.ozner.AirPurifier.AirPurifier_Bluetooth;
 import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.ImageHelper;
 import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.Device.SetupAirPurifierActivity;
@@ -276,7 +277,7 @@ public class DeskAirPurifierFragment extends Fragment implements View.OnClickLis
             @Override
             public void run() {
                 Message message = new Message();
-                NetWeather weather = OznerCommand.GetWeather(getActivity());
+                NetWeather weather = OznerCommand.GetWeather(getActivity(), OznerPreference.GetValue(getContext(),OznerPreference.BDLocation,null));
                 if (weather != null) {
                     message.obj = weather;
                     message.what = 1;

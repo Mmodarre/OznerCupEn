@@ -30,6 +30,7 @@ import com.ozner.cup.BaiduPush.PushBroadcastKey;
 import com.ozner.cup.CChat.CChatFragment;
 import com.ozner.cup.CChat.ChatMessageHelper;
 import com.ozner.cup.CChat.bean.ChatMessage;
+import com.ozner.cup.Command.BDLocationHelper;
 import com.ozner.cup.Command.DeviceData;
 import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.ImageLoaderInit;
@@ -81,6 +82,7 @@ import cz.msebera.android.httpclient.Header;
 * */
 public class MainActivity extends BaseMainActivity {
     Monitor mMonitor = new Monitor();
+    private BDLocationHelper bdLocationHelper;
     /*
     * 缓存页面数据  隐藏不销毁
     * @MainConFragment  mainConFragment 设备DEBUG页面
@@ -90,6 +92,8 @@ public class MainActivity extends BaseMainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bdLocationHelper = new BDLocationHelper(getApplicationContext());
+        bdLocationHelper.startLocation();
         Log.e("tag", "Main_onCreate");
 //// 进行闹铃注册
 //        Intent intent = new Intent(MainActivity.this,AlarmReceiver.class);
@@ -997,6 +1001,11 @@ public class MainActivity extends BaseMainActivity {
 
     @Override
     protected void onDestroy() {
+        try {
+            bdLocationHelper.stopLocation();
+        } catch (Exception ex) {
+
+        }
         this.unregisterReceiver(mMonitor);
         super.onDestroy();
     }

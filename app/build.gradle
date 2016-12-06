@@ -18,6 +18,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
@@ -33,6 +34,12 @@ android {
 //    sourceSets {
 //        main.jniLibs.srcDirs = ['libs']
 //    }
+
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
     signingConfigs {
         debug {
             keyAlias 'ozner'
@@ -45,7 +52,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.umeng.analytics:analytics:latest.integration'
+    //    compile 'com.umeng.analytics:analytics:latest.integration' //友盟
     compile 'net.simonvt.menudrawer:menudrawer:3.0.+@aar'
     compile 'com.tencent.bugly:crashreport:latest.release'
     //其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.8
@@ -64,6 +71,7 @@ dependencies {
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
-    compile 'uk.co.chrisjenx:calligraphy:2.1.0'
+    //    compile 'uk.co.chrisjenx:calligraphy:2.1.0'//自定义字库
     compile files('libs/pushservice-5.1.0.48.jar')
+    compile files('libs/BaiduLBS_Android.jar')
 }
