@@ -62,6 +62,8 @@ import java.util.List;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
+import static com.ozner.cup.Device.OznerApplication.setControlTextFace;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -315,12 +317,6 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
             //iv_filterState.setImageResource(R.drawable.filter_state1);
             tv_filiteText.setText(R.string.filter_status);
         }
-
-
-
-
-
-
         if (isPowerOn) {
 //            iv_tdsLevelImg.setVisibility(View.VISIBLE);
             int tds1New = tds1;
@@ -338,8 +334,8 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
             if (tds1 != 65535) {
                 OznerApplication.setControlNumFace(tv_preValue);
                 if (isZero) {
-                    OznerApplication.setControlTextFace(tv_preValue);
-                    OznerApplication.setControlTextFace(tv_afterValue);
+                    setControlTextFace(tv_preValue);
+                    setControlTextFace(tv_afterValue);
                     tv_preValue.setText(getResources().getString(R.string.text_null));
                     tv_afterValue.setText(getString(R.string.text_null));
                     rlay_purifier_tds.setClickable(false);
@@ -357,7 +353,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
 //                }
 //            tv_preValue.setTextSize(45);
             } else {
-                OznerApplication.setControlTextFace(tv_preValue);
+                setControlTextFace(tv_preValue);
                 tv_preValue.setText(getResources().getString(R.string.text_null));
 //            tv_preValue.setTextSize(30);
             }
@@ -365,8 +361,8 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
             if (tds2 != 65535) {
                 OznerApplication.setControlNumFace(tv_afterValue);
                 if (isZero) {
-                    OznerApplication.setControlTextFace(tv_preValue);
-                    OznerApplication.setControlTextFace(tv_afterValue);
+                    setControlTextFace(tv_preValue);
+                    setControlTextFace(tv_afterValue);
                     tv_preValue.setText(getResources().getString(R.string.text_null));
                     tv_afterValue.setText(getString(R.string.text_null));
                     rlay_purifier_tds.setClickable(false);
@@ -384,15 +380,15 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
 //                }
 //            tv_afterValue.setTextSize(45);
             } else {
-                OznerApplication.setControlTextFace(tv_afterValue);
+                setControlTextFace(tv_afterValue);
                 tv_afterValue.setText(getResources().getString(R.string.text_null));
 //            tv_afterValue.setTextSize(30);
             }
             if (tds1 != 65535 && tds2 != 65535) {
                 if (isZero) {
-                    OznerApplication.setControlTextFace(tv_preValue);
+                    setControlTextFace(tv_preValue);
                     OznerApplication.setControlTextFace(tv_afterValue);
-                    tv_preValue.setText(getResources().getString(R.string.text_null));
+                     tv_preValue.setText(getResources().getString(R.string.text_null));
                     tv_afterValue.setText(getString(R.string.text_null));
                     rlay_purifier_tds.setClickable(false);
                 } else {
@@ -410,7 +406,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                                 Integer integer = (Integer) animator.getAnimatedValue();
                                 tv_preValue.setText("" + integer);
                                 OznerApplication.setControlNumFace(tv_preValue);
-//                        tv_preValue.setTextSize(45);
+//                              tv_preValue.setTextSize(45);
                             }
                         });
                         animator.start();
@@ -503,9 +499,9 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                 rlay_purifier_tds.setClickable(false);
             }
         } else {
-            OznerApplication.setControlTextFace(tv_preValue);
+            setControlTextFace(tv_preValue);
             tv_preValue.setText(getResources().getString(R.string.text_null));
-            OznerApplication.setControlTextFace(tv_afterValue);
+            setControlTextFace(tv_afterValue);
             tv_afterValue.setText(getResources().getString(R.string.text_null));
             tv_tdsLevelText.setText(getResources().getString(R.string.text_null));
             iv_tdsLevelImg.setVisibility(View.GONE);
