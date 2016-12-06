@@ -532,11 +532,13 @@ public class OznerCommand {
     /*
     * 获取天气
     * */
-    public static NetWeather GetWeather(final Activity activity) {
+    public static NetWeather GetWeather(final Activity activity, String city) {
 
         String url = OznerPreference.ServerAddress(activity) + "/OznerServer/GetWeather";
         List<NameValuePair> params = new LinkedList<NameValuePair>();
-        params.add(new BasicNameValuePair(OznerPreference.UserToken, OznerPreference.UserToken(activity)));
+        if (city != null && !city.isEmpty()) {
+            params.add(new BasicNameValuePair("city", city));
+        }
         NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(activity, url, params);
         NetWeather weather = new NetWeather();
         try {

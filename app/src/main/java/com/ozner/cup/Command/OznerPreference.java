@@ -12,6 +12,7 @@ public class OznerPreference {
     public final static String UserToken = "usertoken";
     public final static String ServerAddress = "serveraddress";
     public final static String IsLoginPhone = "isLoginPhone";
+    public final static String BDLocation = "bdlocation";
 
     private static SharedPreferences Init(Context context) {
         if (context != null)
@@ -26,7 +27,7 @@ public class OznerPreference {
             return null;
     }
 
-    public static boolean isLoginPhone(Context context){
+    public static boolean isLoginPhone(Context context) {
         SharedPreferences ozner = Init(context);
         Boolean isloginphone = ozner.getBoolean(IsLoginPhone, true);
         return isloginphone;

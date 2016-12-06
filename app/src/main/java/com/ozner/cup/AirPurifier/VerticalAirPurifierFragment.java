@@ -37,6 +37,7 @@ import android.widget.Toast;
 import com.ozner.AirPurifier.AirPurifier_MXChip;
 import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
@@ -194,7 +195,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
                 Message message = new Message();
                 NetWeather weather = null;
                 try {
-                    weather = OznerCommand.GetWeather(getActivity());
+                    weather = OznerCommand.GetWeather(getActivity(), OznerPreference.GetValue(getContext(),OznerPreference.BDLocation,null));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     weather = null;

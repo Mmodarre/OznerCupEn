@@ -21,7 +21,6 @@ import com.ozner.cup.R;
 import com.ozner.cup.mycenter.CheckForUpdate.OznerUpdateManager;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
-import com.umeng.analytics.MobclickAgent;
 
 import net.simonvt.menudrawer.OverlayDrawer;
 
@@ -77,7 +76,7 @@ public abstract class BaseMainActivity extends AppCompatActivity implements Foot
             window.setNavigationBarColor(ContextCompat.getColor(this, R.color.main_bgcolor));
         }
         InitBaiduPush();
-        MobclickAgent.setDebugMode(true);
+//        MobclickAgent.setDebugMode(true);
         //是否登陆
 //        OznerUpdateManager oznerUpdateManager = new OznerUpdateManager(BaseMainActivity.this, false);
 //        oznerUpdateManager.checkUpdate();
