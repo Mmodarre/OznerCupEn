@@ -1034,7 +1034,7 @@ public class MainActivity extends BaseMainActivity {
             if (sendoraddress != null && sendoraddress.length() > 0) {
                 switch (intent.getAction()) {
                     case BaseMainActivity.ACTION_NetChenge:
-                        myFootFragmentListener.CupSensorChange(sendoraddress);
+                        myFootFragmentListener.ContentChange(sendoraddress,null);
                         break;
                     case BaseDeviceIO.ACTION_DEVICE_CONNECTED:
                     case BaseDeviceIO.ACTION_DEVICE_CONNECTING:
