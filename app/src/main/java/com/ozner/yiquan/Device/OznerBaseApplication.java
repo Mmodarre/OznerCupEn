@@ -16,7 +16,7 @@ import com.ozner.yiquan.BaiduPush.OznerBroadcastAction;
 import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Guide.LoginService;
 
-import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by mengdongya on 2015/11/26.
