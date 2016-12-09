@@ -163,14 +163,17 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         }else{
             laly_ro.setVisibility(View.GONE);
             laly_water.setVisibility(View.VISIBLE);
+
         }
         tv_ro_filterRest=(TextView)findViewById(R.id.tv_ro_filterRest);
-        if(roWaterPurifier.isEnableFilterReset()){
-            tv_ro_filterRest.setVisibility(View.VISIBLE);
-            roWaterPurifier.resetFilter();
-
-        }else{
-            tv_ro_filterRest.setVisibility(View.INVISIBLE);
+        //判断ro水机是否为空
+        if(roWaterPurifier!=null) {
+            if (roWaterPurifier.isEnableFilterReset()) {
+                tv_ro_filterRest.setVisibility(View.VISIBLE);
+                roWaterPurifier.resetFilter();
+            } else {
+                tv_ro_filterRest.setVisibility(View.INVISIBLE);
+            }
         }
         tv_ro_filterRest.setOnClickListener(this);
         tv_ro_filter=(TextView) findViewById(R.id.tv_ro_filter);
@@ -193,6 +196,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         }else{
             tv_rolxc.setText(getString(R.string.text_null));
         }
+
         //文字呼吸灯
         try {
             if ((Integer.parseInt(fit_a) < 30) || Integer.parseInt(fit_b)<30||Integer.parseInt(fit_c)<30) {
