@@ -95,6 +95,7 @@ public class DeviceSetting {
     @Override
     public String toString() {
         JSONObject jsonObject = new JSONObject(mValues);
+
         return jsonObject.toString();
     }
 }

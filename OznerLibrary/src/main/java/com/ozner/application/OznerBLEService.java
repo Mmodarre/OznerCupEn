@@ -87,28 +87,20 @@ public class OznerBLEService extends Service implements ActivityLifecycleCallbac
 
     @Override
     public void onDestroy() {
+        mManager.stop();
         super.onDestroy();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        try {
-            this.getApplication().registerActivityLifecycleCallbacks(this);
-            BluetoothManager bluetoothManager = (BluetoothManager) this
-                    .getSystemService(Context.BLUETOOTH_SERVICE);
-            if (bluetoothManager != null) {
-                BluetoothAdapter adapter = bluetoothManager.getAdapter();
-                if (adapter != null) {
-                    if (adapter.getState() == BluetoothAdapter.STATE_OFF) {
-                        adapter.enable();
-                    }
-                }
-            }
-            XObject.setRunningMode(getApplicationContext(), XObject.RunningMode.Foreground);
-        }catch (Exception ex)
-        {
-            ex.printStackTrace();
+        this.getApplication().registerActivityLifecycleCallbacks(this);
+        BluetoothManager bluetoothManager = (BluetoothManager) this
+                .getSystemService(Context.BLUETOOTH_SERVICE);
+        BluetoothAdapter adapter = bluetoothManager.getAdapter();
+        if (adapter.getState() == BluetoothAdapter.STATE_OFF) {
+            adapter.enable();
         }
+        XObject.setRunningMode(getApplicationContext(), XObject.RunningMode.Foreground);
         //BluetoothWorkThread work=new BluetoothWorkThread(getApplicationContext());
         return binder;
     }

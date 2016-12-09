@@ -1,31 +1,29 @@
 package com.ozner.wifi;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.aylanetworks.aaml.AylaDevice;
 import com.aylanetworks.aaml.AylaHostScanResults;
+import com.aylanetworks.aaml.AylaLanMode;
 import com.aylanetworks.aaml.AylaNetworks;
 import com.aylanetworks.aaml.AylaSetup;
 import com.aylanetworks.aaml.AylaSystemUtils;
+import com.aylanetworks.aaml.AylaUser;
 import com.mxchip.jmdns.JmdnsAPI;
 import com.mxchip.jmdns.JmdnsListener;
 import com.ozner.device.BaseDeviceIO;
-import com.ozner.device.NotSupportDeviceException;
-import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.util.Helper;
 import com.ozner.util.HttpUtil;
 import com.ozner.util.dbg;
 import com.ozner.wifi.ayla.AylaIO;
+import com.ozner.wifi.ayla.AylaIOManager;
 import com.ozner.wifi.mxchip.MXChipIO;
 import com.ozner.wifi.mxchip.Pair.ConfigurationDevice;
 import com.ozner.wifi.mxchip.Pair.EasyLinkSender;
@@ -36,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -165,7 +164,10 @@ public class WifiPair {
         stop();
     }
 
-
+    public static boolean isAylaSSID(String ssid)
+    {
+        return ssid.matches(AylaIOManager.gblAmlDeviceSsidRegex);
+    }
     class MXChipPairImp implements FTC_Listener, Runnable, JmdnsListener {
         /**
          * 默认1分钟配网超时
@@ -270,6 +272,14 @@ public class WifiPair {
                                     tmp.substring(6, 8) + ":" +
                                     tmp.substring(8, 10) + ":" +
                                     tmp.substring(10, 12);
+
+                            String type=device.activeDeviceID.substring(0,p);
+                            if (Helper.StringIsNullOrEmpty(type))
+                            {
+                                doPairFailure(new UnknownException());
+                                return;
+                            }
+                            device.Type=type;
                             MXChipIO io = OznerDeviceManager.Instance().ioManagerList().mxChipIOManager().
                                     createMXChipDevice(mac, device.Type);
                             if (io != null) {
@@ -293,9 +303,36 @@ public class WifiPair {
                 }
                 callback.onActivateDevice();
 
-                String deviceId = ActiveDevice();
+                String deviceId = "";
+                errorCount=0;
+                while(errorCount<3) {
+                    try {
+                        deviceId = ActiveDevice();
+                    } catch (FileNotFoundException fe) {
+                        Thread.sleep(1000);
+                        errorCount++;
+                        continue;
+                    }
+                    break;
+                }
+
                 if (Helper.StringIsNullOrEmpty(deviceId)) {
                     doPairFailure(new UnknownException());
+                    return;
+                }
+                int p=deviceId.indexOf('/');
+                if (p<0)
+                {
+                    doPairFailure(new UnknownException());
+                }else
+                {
+                    String type=deviceId.substring(0,p);
+                    if (Helper.StringIsNullOrEmpty(type))
+                    {
+                        doPairFailure(new UnknownException());
+                        return;
+                    }
+                    device.Type=type;
                 }
                 //Authorize();
 //                if (Helper.StringIsNullOrEmpty(deviceId)) {
@@ -341,11 +378,12 @@ public class WifiPair {
 
     class AylaPairImp implements Runnable
     {
-        private void doRegister(AylaDevice device)
+        private void doRegister(final AylaDevice device)
         {
             //callback.onActivateDevice();
             device.registrationType=AylaNetworks.AML_REGISTRATION_TYPE_AP_MODE;
             dbg.d("start registerNewDevice");
+            AylaLanMode.enable(null,null);
             device.registerNewDevice(new Handler()
             {
                 @Override
@@ -357,9 +395,25 @@ public class WifiPair {
                         AylaDevice device = AylaSystemUtils.gson.fromJson(jsonResults,  AylaDevice.class);
                         AylaIO io= OznerDeviceManager.Instance().ioManagerList().aylaIOManager().createAylaIO(device);
                         doComplete(io);
+
+                        aylaFinally();
+
                     }else
                     {
-                        doPairFailure(new AylaOtherUserException(msg.toString()));
+                        if (errorCount<5)
+                        {
+                            errorCount++;
+                            dbg.d("register error",msg.toString());
+                            doRegister(device);
+                            aylaFinally();
+
+                        }
+                        else {
+                            String error = "registerNewDevice:"+msg.toString();
+                            doPairFailure(new AylaOtherUserException(error));
+                            aylaFinally();
+
+                        }
                     }
                     super.handleMessage(msg);
                 }
@@ -405,31 +459,31 @@ public class WifiPair {
                             set();
                             e.printStackTrace();
                         }
-
+                        errorCount=0;
                         doRegister(device);
-
                     }else
                     {
-                        if (errorCount<3)
+                        if (errorCount<5)
                         {
                             errorCount++;
                             confirmNewDeviceToService();
                         }
                         else {
-                            String error = "";
-                            if (msg.obj == null) {
-                                error = String.format("Ayla Code:%d", msg.what);
-                            } else
-                                error = msg.obj.toString();
+                            String error = "confirmNewDeviceToServiceConnection:"+msg.toString();
                             doPairFailure(new AylaException(error));
+                            set();
+                            aylaFinally();
                         }
-                        set();
 
                     }
 
                     super.handleMessage(msg);
                 }
             });
+        }
+        private void aylaFinally()
+        {
+            //AylaSetup.exit();
         }
 
         private void connectNewDeviceToService()
@@ -438,8 +492,10 @@ public class WifiPair {
             callParams.put(AylaNetworks.AML_SETUP_LOCATION_LONGITUDE, 0.00d);
             callParams.put(AylaNetworks.AML_SETUP_LOCATION_LATITUDE, 0.00d);
             //AylaModule device = AylaSystemUtils.gson.fromJson(jsonResults, AylaModule.class);
+
             AylaSetup.lanSsid=ssid;
             AylaSetup.lanPassword=password;
+
             callback.onSendConfiguration();
             dbg.d("start connectNewDeviceToService");
             //配置AYLA 设备的WIFI信息
@@ -454,26 +510,24 @@ public class WifiPair {
                         confirmNewDeviceToService();
                     }else
                     {
-                        String error="";
-                        if (msg.obj==null)
-                        {
-                            error=String.format("Ayla Code:%d",msg.what);
-                        }else
-                            error=msg.obj.toString();
+                        String error="connectNewDeviceToService:"+msg.toString();
 
                         doPairFailure(new AylaException(error));
                         set();
-
+                        aylaFinally();
                     }
+
                     super.handleMessage(msg);
                 }
 
             }, callParams);
 
         }
-
+        boolean isConnectToNewDevice=false;
         //开始连接AYLA AP
         private void connectDevice(AylaHostScanResults result) {
+            AylaLanMode.disable();
+            isConnectToNewDevice=false;
 
             AylaSetup.newDevice.hostScanResults = result;
             //连接设备
@@ -482,15 +536,23 @@ public class WifiPair {
             {
                 @Override
                 public void handleMessage(Message msg) {
+                    dbg.e("----------------------------------------------------------------------");
                     dbg.d("recv connectToNewDevice:%s",msg.toString());
                     String jsonResults = (String) msg.obj;
-                    dbg.d("connectToNewDevice");
-
                     if (msg.what == AylaNetworks.AML_ERROR_OK) {
-                        connectNewDeviceToService();
+                        if (!isConnectToNewDevice) {
+                            isConnectToNewDevice = true;
+                            connectNewDeviceToService();
+
+                        }
                     }else
                     {
+
+                        String error="connectToNewDevice:"+msg.toString();
+
+                        doPairFailure(new AylaException(error));
                         set();
+                        aylaFinally();
                     }
                 }
             });
@@ -500,6 +562,11 @@ public class WifiPair {
 
         @Override
         public void run() {
+            if (AylaUser.getCurrent().getAccessToken()==null)
+            {
+                callback.onPairFailure(new AylaException("not login"));
+                return;
+            }
             callback.onStartPairAyla();
 
             AylaSetup.returnHostScanForNewDevices(new Handler()
@@ -513,13 +580,14 @@ public class WifiPair {
                         {
                             connectDevice(scanResults[0]);
 
-
                         }else
                         {
+                            aylaFinally();
                             runNext();
                         }
                     }else
                     {
+                        aylaFinally();
                         runNext();
                     }
 
@@ -531,6 +599,8 @@ public class WifiPair {
 
     public void pair(String ssid,String password) throws PairRunningException
     {
+        runPairCount=1;
+        errorCount=0;
         this.ssid=ssid;
         this.password=password;
         if (runHandler!=null)
@@ -549,13 +619,14 @@ public class WifiPair {
             doPairFailure(new TimeoutException());
             return;
         }
-        if ((runPairCount % 2)==0)
-        {
-            runHandler.post(new AylaPairImp());
-        }else
-        {
-            runHandler.post(new MXChipPairImp());
-        }
+//        if ((runPairCount % 3)==0)
+//        {
+//            runHandler.post(new MXChipPairImp());
+//        }else
+//        {
+//            runHandler.post(new AylaPairImp());
+//        }
+        runHandler.post(new MXChipPairImp());
         runPairCount++;
 
     }

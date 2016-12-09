@@ -36,7 +36,7 @@ public class AirPurifierManager extends BaseDeviceManager {
             {
                 if ((bluetoothIO.getScanResponseData()!=null) && (bluetoothIO.getScanResponseData().length>1))
                 {
-                                        return bluetoothIO.getScanResponseData()[0]!=0;
+                    return bluetoothIO.getScanResponseData()[0]!=0;
                 }
 
             }
@@ -69,7 +69,15 @@ public class AirPurifierManager extends BaseDeviceManager {
 
     public static boolean IsWifiAirPurifier(String Type) {
         if (Type == null) return false;
-        return Type.trim().equals("FOG_HAOZE_AIR");
+        if (Type.trim().equals("FOG_HAOZE_AIR"))
+        {
+            return true;
+        }else
+            if (Type.trim().equals("580c2783"))
+            {
+                return true;
+            }
+            return false;
     }
 
 

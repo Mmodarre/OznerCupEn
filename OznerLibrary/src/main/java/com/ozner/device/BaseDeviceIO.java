@@ -147,6 +147,9 @@ public abstract class BaseDeviceIO extends XObject {
             }
         }
     }
+    /**
+          * 重新调用Ready事件
+          */
     public void reCallDoReadly()
     {
         doReady();
@@ -205,6 +208,7 @@ public abstract class BaseDeviceIO extends XObject {
         Intent intent = new Intent(ACTION_DEVICE_CONNECTED);
         intent.putExtra(Extra_Address, getAddress());
         context().sendBroadcast(intent);
+
     }
 
     /**

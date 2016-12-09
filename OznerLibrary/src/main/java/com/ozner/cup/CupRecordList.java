@@ -166,24 +166,19 @@ public class CupRecordList {
      */
     public CupRecord getRecordByDate(Date time) {
         synchronized (this) {
-            try {
-                List<String[]> valuesList = db
-                        .ExecSQL(
-                                "select time,tds,volume,Temperature,updated from CupRecordTable where address=? and time>=?;",
-                                new String[]{Address, String.valueOf(time.getTime())});
-                if (valuesList.size() <= 0) {
-                    return null;
-                } else {
-                    CupRecord ret = new CupRecord();
-                    for (String[] val : valuesList) {
-                        DBRecord record = getRecord(val);
-                        ret.calcRecord(record);
-                    }
-                    return ret;
-                }
-            }catch (Exception ex)
-            {
+            List<String[]> valuesList = db
+                    .ExecSQL(
+                            "select time,tds,volume,Temperature,updated from CupRecordTable where address=? and time>=?;",
+                            new String[]{Address, String.valueOf(time.getTime())});
+            if (valuesList.size() <= 0) {
                 return null;
+            } else {
+                CupRecord ret=new CupRecord();
+                for (String[] val : valuesList) {
+                    DBRecord record=getRecord(val);
+                    ret.calcRecord(record);
+                }
+                return ret;
             }
         }
     }

@@ -22,7 +22,7 @@ public class MXChipIO extends BaseDeviceIO {
     String out = null;
     String in = null;
 
-    public MXChipIO(Context context, MQTTProxy proxy, String address, String Type) {
+    public MXChipIO(Context context, MQTTProxy proxy, String address,String Type) {
         super(context, Type);
         this.address = address;
         this.proxy = proxy;

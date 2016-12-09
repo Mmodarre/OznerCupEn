@@ -19,7 +19,6 @@ public class SQLiteDB extends SQLiteOpenHelper {
     public final static String DATABASE_NAME = "uup.db";
     private final static int DATABASE_VERSION = 1;
     public final static String ColCUModel="AppModel";
-
     /**
      * 创建数据库使用的，一旦这个方法被实际调用，数据库就产生了
      *
@@ -34,7 +33,7 @@ public class SQLiteDB extends SQLiteOpenHelper {
     /**
      * 执行一个SQL查询操作
      *
-     * @param SQL查询语句
+     * //@param SQL查询语句
      * @return list的数组列表
      */
     public List<String[]> ExecSQL(String sql, String[] param) {
@@ -80,7 +79,7 @@ public class SQLiteDB extends SQLiteOpenHelper {
     /**
      * 执行sql语句函数 包括创建表，插入表，更新表，删除表
      *
-     * @param SQL
+     * @param
      */
     public void execSQLNonQuery(String sql, Object[] param) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -130,8 +129,8 @@ public class SQLiteDB extends SQLiteOpenHelper {
     /**
      * 检查表中某列是否存在
      * Csir
-     * @param db
-     * @param tableName 表名
+     * @param
+     * @param
      * @param columnName 列名
      * @return
      */
@@ -167,5 +166,4 @@ public class SQLiteDB extends SQLiteOpenHelper {
             }
         }
     }
-
 }
