@@ -142,36 +142,10 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         View view = inflater.inflate(R.layout.air_purifier_home_page, container, false);
 
         OznerApplication.changeTextFont((ViewGroup) view);
-//        if (!((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
         view.findViewById(R.id.chin_stand).setVisibility(View.GONE);
-//        }
-        initViewBitmap(view);
         return view;
     }
 
-
-    /**
-     * 初始化背景图片
-     *
-     * @param rootView
-     */
-    private void initViewBitmap(View rootView) {
-        WeakReference<ImageView> ivMabio = new WeakReference<ImageView>(((ImageView) rootView.findViewById(R.id.iv_mabiao)));
-        ivMabio.get().setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mabiao));
-        DisplayMetrics dm = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = (int) (dm.densityDpi * 4);
-        int height = (int) (dm.densityDpi * 2);
-
-        ivMabio.get().setAdjustViewBounds(true);
-        ivMabio.get().setMaxWidth(width);
-        ivMabio.get().setMinimumWidth(width);
-        ivMabio.get().setMaxHeight(height);
-        ivMabio.get().setMinimumHeight(height);
-
-        ((ImageView) rootView.findViewById(R.id.iv_xuanzhuan_x3)).setImageDrawable(ImageHelper.loadResDrawable(getContext(), R.drawable.mengban1));
-//        ((GifImageView) rootView.findViewById(R.id.gif)).setImageResource(R.drawable.lizi);
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -214,44 +188,6 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
             }
         }).start();
     }
-
-    //region 空净控制页面,未使用，注释掉
- /*
-    private void initAirView(View airView1, View airView2) {
-        //滑动布局1的控件
-        rlay_open = (RelativeLayout) airView1.findViewById(R.id.rlay_openswitch);
-        rlay_mode = (RelativeLayout) airView1.findViewById(R.id.rlay_modeswitch);
-//        rlay_timing = (RelativeLayout) airView1.findViewById(R.id.rlay_timingswitch);
-        rlay_lock = (RelativeLayout) airView1.findViewById(R.id.rlay_lockswitch);
-        rlay_open.setOnClickListener(this);
-        rlay_mode.setOnClickListener(this);
-        rlay_timing.setOnClickListener(this);
-        rlay_lock.setOnClickListener(this);
-        iv_open = (ImageView) airView1.findViewById(R.id.iv_openswitch);
-        iv_mode = (ImageView) airView1.findViewById(R.id.iv_modeswitch);
-//        iv_timing = (ImageView) airView1.findViewById(R.id.iv_timingswitch);
-        iv_lock = (ImageView) airView1.findViewById(R.id.iv_lockswitch);
-        tv_open = (TextView) airView1.findViewById(R.id.tv_openswitch);
-        tv_mode = (TextView) airView1.findViewById(R.id.tv_modeswitch);
-//        tv_timing = (TextView) airView1.findViewById(R.id.tv_timingswitch);
-        tv_lock = (TextView) airView1.findViewById(R.id.tv_lockswitch);
-
-        //滑动布局2的控件
-        rlay_low = (RelativeLayout) airView2.findViewById(R.id.rlay_lowswitch);
-        rlay_middle = (RelativeLayout) airView2.findViewById(R.id.rlay_middleswitch);
-        rlay_high = (RelativeLayout) airView2.findViewById(R.id.rlay_highswitch);
-        rlay_low.setOnClickListener(this);
-        rlay_middle.setOnClickListener(this);
-        rlay_high.setOnClickListener(this);
-        iv_low = (ImageView) airView2.findViewById(R.id.iv_lowswitch);
-        iv_middle = (ImageView) airView2.findViewById(R.id.iv_middleswitch);
-        iv_high = (ImageView) airView2.findViewById(R.id.iv_highswitch);
-        tv_low = (TextView) airView2.findViewById(R.id.tv_lowswitch);
-        tv_middle = (TextView) airView2.findViewById(R.id.tv_middleswitch);
-        tv_high = (TextView) airView2.findViewById(R.id.tv_highswitch);
-    }
-*/
-//endregion
 
     //关机界面显示
     private void showClosed() {
@@ -387,17 +323,6 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         iv_xuanzhuan_x3.setAnimation(animation);
     }
 
-    private void refreshUIData() {
-        if (VerticalAirPurifierFragment.this.isAdded()) {
-            initData();
-            refreshNetStatus();
-            setDate();
-
-        } else {
-            Log.e("verAir", "refreshUIData: ");
-        }
-    }
-
     /*
         * 初始化数据
         * */
@@ -465,8 +390,9 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
         switchLock(isLockOn);
 
         if (isNet == 0 || isOffLine) {
+            tv_tdsValue.setText(getString(R.string.phone_nonet));
+        } else if(isOffLine){
             tv_tdsValue.setText(getString(R.string.detail_nonet));
-
         } else if (65535 == pm25 || pm25 <= 0) {
             tv_tdsValue.setText(getString(R.string.null_text));
             OznerApplication.setControlTextFace(tv_tdsValue);

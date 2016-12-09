@@ -59,15 +59,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/water_replenish_humHands"
-        android:textSize="16dp"
-        android:textColor="@color/tdsText1"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

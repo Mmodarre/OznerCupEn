@@ -16,6 +16,8 @@ import com.ozner.yiquan.BaiduPush.OznerBroadcastAction;
 import com.ozner.yiquan.Command.UserDataPreference;
 import com.ozner.yiquan.Guide.LoginService;
 
+//import com.squareup.leakcanary.LeakCanary;
+
 /**
  * Created by mengdongya on 2015/11/26.
  */
@@ -23,6 +25,9 @@ public abstract class OznerBaseApplication extends Application {
     OznerBLEBinder localService = null;
     ServiceConnection mServiceConnection = null;
     OznerBPOnBindBroRece bpOnBindBroRece = new OznerBPOnBindBroRece();
+
+    protected OznerBaseApplication() {
+    }
 //    static int taskCount = 0;
 //    final int MaxCount = 6;
 
@@ -35,10 +40,17 @@ public abstract class OznerBaseApplication extends Application {
      */
     protected abstract void onBindService();
 
+
+
     @Override
     public void onCreate() {
 //        ShareSDK.initSDK(getApplicationContext());
 //        CrashReport.initCrashReport(getApplicationContext(), "900033413", false);
+
+        //利用leakcanary工具检测内存泄漏
+//        LeakCanary.install(this);
+
+
         mServiceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {

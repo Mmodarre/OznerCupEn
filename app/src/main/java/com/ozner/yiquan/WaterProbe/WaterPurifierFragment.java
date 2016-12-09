@@ -134,7 +134,7 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 
         if (waterPurifier != null) {
             Log.e("1234", "净水器类型:" + MAC);
-//            String type = waterPurifier.info().Type;
+//           String type = waterPurifier.info().Model;
 //            new GetMachineTypeAsyncTask().execute();
         }
         OznerApplication.changeTextFont((ViewGroup) view);
@@ -960,7 +960,10 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
             @Override
             public void run() {
 //                InitData();
+
+
                 if (isWaterPuriferAdd())
+
                     Toast.makeText(getContext(), getString(R.string.send_status_fail), Toast.LENGTH_SHORT);
             }
         });
@@ -1057,7 +1060,6 @@ public class WaterPurifierFragment extends Fragment implements View.OnClickListe
 //        }else{
 //            Log.e("trnet","ffff");
 //        }
-
     }
 
     @Override

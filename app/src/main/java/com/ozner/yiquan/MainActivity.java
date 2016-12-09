@@ -20,10 +20,18 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.ozner.AirPurifier.AirPurifier;
+import com.ozner.AirPurifier.AirPurifierManager;
 import com.ozner.AirPurifier.AirPurifier_MXChip;
 import com.ozner.WaterPurifier.WaterPurifier;
+import com.ozner.WaterPurifier.WaterPurifierManager;
 import com.ozner.cup.Cup;
 import com.ozner.cup.CupSetting;
+import com.ozner.device.BaseDeviceIO;
+import com.ozner.device.OznerDevice;
+import com.ozner.device.OznerDeviceManager;
+import com.ozner.tap.Tap;
+import com.ozner.tap.TapManager;
+import com.ozner.tap.TapRecord;
 import com.ozner.yiquan.ACSqlLite.CCacheWorking;
 import com.ozner.yiquan.AirPurifier.DeskAirPurifierFragment;
 import com.ozner.yiquan.AirPurifier.VerticalAirPurifierFragment;
@@ -46,7 +54,6 @@ import com.ozner.yiquan.HttpHelper.NetDeviceList;
 import com.ozner.yiquan.HttpHelper.NetUserVfMessage;
 import com.ozner.yiquan.HttpHelper.OznerDataHttp;
 import com.ozner.yiquan.Login.LoginActivity;
-import com.ozner.yiquan.Login.LoginEnActivity;
 import com.ozner.yiquan.Main.BaseMainActivity;
 import com.ozner.yiquan.Main.MainConFragment;
 import com.ozner.yiquan.WaterProbe.WaterCupFragment;
@@ -57,12 +64,6 @@ import com.ozner.yiquan.WaterProbe.WaterTDSPenFragment;
 import com.ozner.yiquan.mycenter.CenterBean.CenterNotification;
 import com.ozner.yiquan.mycenter.MyFragment;
 import com.ozner.yiquan.slideleft.LeftSlideFragment;
-import com.ozner.device.BaseDeviceIO;
-import com.ozner.device.OznerDevice;
-import com.ozner.device.OznerDeviceManager;
-import com.ozner.tap.Tap;
-import com.ozner.tap.TapManager;
-import com.ozner.tap.TapRecord;
 
 import net.simonvt.menudrawer.MenuDrawer;
 import net.simonvt.menudrawer.OverlayDrawer;
@@ -88,6 +89,7 @@ public class MainActivity extends BaseMainActivity {
     * @MainConFragment  mainConFragment 设备DEBUG页面
     * @MyFragment myFragment 个人中心页面
     * */
+    //fffffffffffffffffffffffffffffffff
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -364,7 +366,7 @@ public class MainActivity extends BaseMainActivity {
     protected void onStop() {
         super.onStop();
 //        myHandler.postDelayed(new Runnable() {
-//            @Override
+//            @Override0
 //            public void run() {
 //                Log.e("tag", "运行模式：" + OznerCommand.isAppRunBackound(getBaseContext(), getPackageName()));
 //            }
@@ -521,6 +523,9 @@ public class MainActivity extends BaseMainActivity {
                     pagenow = index;
                     return;
                 default:
+
+
+
                     break;
             }
         }
@@ -658,10 +663,25 @@ public class MainActivity extends BaseMainActivity {
                             this.MAC = mac;
                             return;
                         default:
-                            break;
-
+                            if(WaterPurifierManager.IsWaterPurifier(type)){
+                                WaterPurifierFragment waterPurifierFragments = new WaterPurifierFragment();
+                                waterPurifierFragments.setArguments(params);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.framen_main_con, waterPurifierFragments, type)
+                                        .commitAllowingStateLoss();
+                                this.MAC = mac;
+                            }
+                            if(AirPurifierManager.IsWifiAirPurifier(type)){
+                                VerticalAirPurifierFragment verticalAirPurifierFragments = new VerticalAirPurifierFragment();
+                                verticalAirPurifierFragments.setArguments(params);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.framen_main_con, verticalAirPurifierFragments, type)
+                                        .commitAllowingStateLoss();
+                                this.MAC = mac;
+                            }
+                            return;
                     }
-                    break;
+//                    break;
                 }
 
             }

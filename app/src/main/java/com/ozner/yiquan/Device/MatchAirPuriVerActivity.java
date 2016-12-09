@@ -304,7 +304,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
 
 
     class WifiPairImp implements WifiPair.WifiPairCallback {
-//
+        //
         @Override
         public void onStartPairAyla() {
             Message msg = new Message();
@@ -683,7 +683,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
                 if (device != null && AirPurifierManager.IsWifiAirPurifier(device.Type())) {
                     //保存设备
                     if (name.isEmpty()) {
-                        device.Setting().name(getString(R.string.air_purifier_ver));
+                        device.Setting().name(getString(R.string.my_air_purifier_ver));
                     } else {
                         device.Setting().name(name);
                     }

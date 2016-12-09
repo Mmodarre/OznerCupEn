@@ -1,6 +1,13 @@
 package com.ozner.wifi.mxchip.Pair;
 
-
+/**
+ * CRC8相关计算
+ * <p/>
+ * encode: utf-8
+ *
+ * @author trb
+ * @date 2013-11-21
+ */
 public class CRC8 {
     static byte[] crc8_tab = {(byte) 0x00, (byte) 0x07, (byte) 0x0E,
             (byte) 0x09, (byte) 0x1C, (byte) 0x1B, (byte) 0x12, (byte) 0x15,
@@ -55,14 +62,37 @@ public class CRC8 {
             (byte) 0xE6, (byte) 0xE1, (byte) 0xE8, (byte) 0xEF, (byte) 0xFA,
             (byte) 0xFD, (byte) 0xF4, (byte) 0xF3};
 
+    /**
+     * 计算数组的CRC8校验值
+     *
+     * @param data 需要计算的数组
+     * @return CRC8校验值
+     */
     public static byte calcCrc8(byte[] data) {
         return calcCrc8(data, 0, data.length, (byte) 0);
     }
 
+    /**
+     * 计算CRC8校验值
+     *
+     * @param data   数据
+     * @param offset 起始位置
+     * @param len    长度
+     * @return 校验值
+     */
     public static byte calcCrc8(byte[] data, int offset, int len) {
         return calcCrc8(data, offset, len, (byte) 0);
     }
 
+    /**
+     * 计算CRC8校验值
+     *
+     * @param data   数据
+     * @param offset 起始位置
+     * @param len    长度
+     * @param preval 之前的校验值
+     * @return 校验值
+     */
     public static byte calcCrc8(byte[] data, int offset, int len, byte preval) {
         byte ret = preval;
         for (int i = offset; i < (offset + len); ++i) {
@@ -71,6 +101,7 @@ public class CRC8 {
         return ret;
     }
 
+    // 测试
     public static void main(String[] args) {
         byte crc = CRC8.calcCrc8(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
         System.out.println("" + Integer.toHexString(0x00ff & crc));
