@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.text.format.Time;
 
 import com.ozner.bluetooth.BluetoothIO;
-import com.ozner.device.AutoUpdateClass;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.OperateCallback;
 import com.ozner.oznerlibrary.R;
@@ -39,11 +38,11 @@ public class AirPurifier_Bluetooth extends AirPurifier {
     private static final byte type_a2dp = 4;
 
 
-    final AirPurifierIMP airPurifierIMP = new AirPurifierIMP(defaultAutoUpdatePeriod);
+    final AirPurifierIMP airPurifierIMP = new AirPurifierIMP();
     final Sensor sensor = new Sensor();
     final Status status = new Status();
     A2DP a2dp=null;
-
+    int requestCount=0;
     final FilterStatus filterStatus = new FilterStatus();
     /**
      * 返回传感器状态
@@ -75,6 +74,11 @@ public class AirPurifier_Bluetooth extends AirPurifier {
     }
 
     @Override
+    public int getTimerDelay() {
+        return defaultAutoUpdatePeriod;
+    }
+
+    @Override
     public String Model() {
         return "FLT001";
     }
@@ -97,7 +101,6 @@ public class AirPurifier_Bluetooth extends AirPurifier {
             oldIO.setOnTransmissionsCallback(null);
             oldIO.setCheckTransmissionsCompleteCallback(null);
         }
-        airPurifierIMP.stop();
         if (newIO != null) {
             newIO.setOnTransmissionsCallback(airPurifierIMP);
             newIO.setOnInitCallback(airPurifierIMP);
@@ -135,24 +138,6 @@ public class AirPurifier_Bluetooth extends AirPurifier {
 //        filterStatus.stopTime = calendar.getTime();
 //        filterStatus.maxWorkTime = 60 * 1000;
 
-//        Time time = new Time();
-//        time.setToNow();
-//
-//        byte[] data = new byte[16];
-//        data[0] = (byte) (time.year - 2000);
-//        data[1] = (byte) (time.month + 1);
-//        data[2] = (byte) time.monthDay;
-//        data[3] = (byte) time.hour;
-//        data[4] = (byte) time.minute;
-//        data[5] = (byte) time.second;
-//
-//        data[6] = (byte) (time.year - 2000+1);
-//        data[7] = (byte) (time.month + 1);
-//        data[8] = (byte) time.monthDay;
-//        data[9] = (byte) time.hour;
-//        data[10] = (byte) time.minute;
-//        data[11] = (byte) time.second;
-
         Date time = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(time);
@@ -160,7 +145,6 @@ public class AirPurifier_Bluetooth extends AirPurifier {
 
         byte[] data = new byte[16];
         data[0] = (byte) (calendar.get(Calendar.YEAR) - 2000);
-//        data[1] = (byte) (calendar.get(Calendar.MONTH) );
         data[1] = (byte) (calendar.get(Calendar.MONTH)+1);
         data[2] = (byte) calendar.get(Calendar.DAY_OF_MONTH);
         data[3] = (byte) calendar.get(Calendar.HOUR);
@@ -171,7 +155,6 @@ public class AirPurifier_Bluetooth extends AirPurifier {
         calendar.add(Calendar.MONTH,3);
 
         data[6] = (byte) (calendar.get(Calendar.YEAR) - 2000);
-//        data[7] = (byte) (calendar.get(Calendar.MONTH) );
         data[7] = (byte) (calendar.get(Calendar.MONTH) +1);
         data[8] = (byte) calendar.get(Calendar.DAY_OF_MONTH);
         data[9] = (byte) calendar.get(Calendar.HOUR);
@@ -278,8 +261,18 @@ public class AirPurifier_Bluetooth extends AirPurifier {
         }
     }
 
+    @Override
+    protected void doTimer() {
+        if (IO() == null) return;
+        if ((requestCount % 2) == 0) {
+            airPurifierIMP.requestStatus();
+        } else {
+            airPurifierIMP.requestSensor();
+        }
+        requestCount++;
+    }
 
-    private class AirPurifierIMP extends AutoUpdateClass implements
+    private class AirPurifierIMP implements
             BaseDeviceIO.StatusCallback,
             BaseDeviceIO.OnInitCallback,
             BaseDeviceIO.OnTransmissionsCallback,
@@ -287,20 +280,10 @@ public class AirPurifier_Bluetooth extends AirPurifier {
             A2DP.A2DPCallback
     {
 
-        public AirPurifierIMP(long period) {
-            super(period);
+        public AirPurifierIMP() {
+            super();
         }
 
-        @Override
-        protected void doTime() {
-            if (IO() == null) return;
-            if ((requestCount % 2) == 0) {
-                requestStatus();
-            } else {
-                requestSensor();
-            }
-            requestCount++;
-        }
 
         public void OpenA2DP(OperateCallback<Void> cb)
         {
@@ -337,11 +320,11 @@ public class AirPurifier_Bluetooth extends AirPurifier {
             return IO() != null && IO().send(makePacket(opCode, data), cb);
         }
 
-        private boolean requestStatus() {
+        public boolean requestStatus() {
             return send(opCode_Request, new byte[]{type_status}, null);
         }
 
-        private boolean requestSensor() {
+        public boolean requestSensor() {
             return send(opCode_Request, new byte[]{type_sensor}, null);
         }
 
@@ -453,16 +436,13 @@ public class AirPurifier_Bluetooth extends AirPurifier {
 
         @Override
         public void onDisconnected(BaseDeviceIO io) {
-            stop();
+
         }
+
 
         @Override
         public void onReady(BaseDeviceIO io) {
             requestSensor();
-            if (getRunningMode() == RunningMode.Foreground) {
-                start(100);
-            }
-
         }
 
         @Override

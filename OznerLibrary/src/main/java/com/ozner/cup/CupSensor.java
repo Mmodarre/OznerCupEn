@@ -1,7 +1,5 @@
 package com.ozner.cup;
 
-import android.util.Log;
-
 import com.ozner.util.ByteUtil;
 
 /**
@@ -43,7 +41,6 @@ public class CupSensor {
     public float getPower() {
         if (BatteryFix >= 3000) {
             float ret = (BatteryFix - 3000f) / (4200f - 3000f);
-            Log.e("retPower",BatteryFix+"====ret");
             if (ret > 100)
                 ret = 100;
             return ret;

@@ -8,12 +8,12 @@ import java.util.Date;
  * Created by zhiyongxu on 15/11/11.
  */
 public class FilterStatus {
-    public Date lastTime = new Date(0);
-    public Date stopTime = new Date(0);
-    public int workTime = -1;
+    public Date lastTime=new Date(0);
+    public Date stopTime=new Date(0);
+    public int workTime =-1;
     public int maxWorkTime = 0;
-
-    public byte[] toBytes() {
+    public byte[] toBytes()
+    {
         synchronized (this) {
             byte[] bytes = new byte[16];
             ByteUtil.putInt(bytes, (int) (lastTime.getTime() / 1000), 0);
@@ -23,8 +23,8 @@ public class FilterStatus {
             return bytes;
         }
     }
-
-    public byte[] toBluetoothBytes() {
+    public byte[] toBluetoothBytes()
+    {
         synchronized (this) {
             byte[] bytes = new byte[16];
             ByteUtil.putInt(bytes, (int) (lastTime.getTime() / 1000), 0);
@@ -34,8 +34,8 @@ public class FilterStatus {
             return bytes;
         }
     }
-
-    public void fromBytes(byte[] bytes) {
+    public void fromBytes(byte[] bytes)
+    {
         synchronized (this) {
             if ((bytes != null) && (bytes.length == 16)) {
                 lastTime = new Date(ByteUtil.getInt(bytes, 0) * 1000L);

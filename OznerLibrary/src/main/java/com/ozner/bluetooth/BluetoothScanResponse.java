@@ -5,7 +5,7 @@ import android.annotation.SuppressLint;
 import java.util.Arrays;
 import java.util.Date;
 
-public class BluetoothScanRep {
+public class BluetoothScanResponse {
     /**
      * 型号
      */
@@ -17,8 +17,19 @@ public class BluetoothScanRep {
      * 固件版本
      */
     public Date Firmware;
+
     /**
-     * 硬解平台
+     * 主板硬件平台
+     */
+    public String MainbroadPlatform;
+
+    /**
+     * 主板固件版本
+     */
+    public Date MainbroadFirmware;
+
+    /**
+     * 硬件平台
      */
     public String Platform;
     /**
@@ -35,7 +46,7 @@ public class BluetoothScanRep {
     public byte[] ScanResponseData;
     //public boolean Available;
 
-    public BluetoothScanRep() {
+    public BluetoothScanResponse() {
     }
 
 //	private String byteToStr(byte t)
@@ -46,13 +57,14 @@ public class BluetoothScanRep {
     @SuppressLint("NewApi")
     public void FromBytes(byte[] data) {
         //ServiceId=ByteUtil.getShort(data, 0);
-        Platform = new String(data, 2, 3);
-        Model = new String(data, 5, 6).trim();
-        Firmware = new Date(data[11] + 2000 - 1900, data[12] - 1, data[13], data[14],
-                data[15], data[16]);
-        ScanResponseType = data[17];
+        Platform = new String(data, 0, 3);
+        Model = new String(data, 3, 6).trim();
+        Firmware = new Date(data[9] + 2000 - 1900, data[10] - 1, data[11], data[12],
+                data[13], data[14]);
+
+        ScanResponseType = data[15];
         //CustomDataLength = data[18];
-        ScanResponseData = Arrays.copyOfRange(data, 19, data.length-1);
+        ScanResponseData = Arrays.copyOfRange(data, 17, data.length-1);
         //Available = data[27] != 0;
 
     }

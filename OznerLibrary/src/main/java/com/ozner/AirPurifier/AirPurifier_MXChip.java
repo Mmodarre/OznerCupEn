@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.ozner.device.AutoUpdateClass;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.DeviceSetting;
 import com.ozner.device.OperateCallback;
@@ -23,10 +22,11 @@ import java.util.HashSet;
  * Created by xzyxd on 2015/11/2.
  */
 public class AirPurifier_MXChip extends AirPurifier {
-    private static final int defaultAutoUpdatePeriod = 5000;
-    public static final byte CMD_SET_PROPERTY = (byte) 0x2;
-    public static final byte CMD_REQUEST_PROPERTY = (byte) 0x1;
-    public static final byte CMD_RECV_PROPERTY = (byte) 0x4;
+    private static final String Tag="AirPurifier";
+    private static final int defaultAutoUpdatePeriod=5000;
+    public static final byte CMD_SET_PROPERTY=(byte)0x2;
+    public static final byte CMD_REQUEST_PROPERTY=(byte)0x1;
+    public static final byte CMD_RECV_PROPERTY=(byte)0x4;
 
 
     public static final byte PROPERTY_POWER = 0x00;
@@ -39,12 +39,12 @@ public class AirPurifier_MXChip extends AirPurifier {
     public static final byte PROPERTY_VOC = 0x13;
     public static final byte PROPERTY_LIGHT_SENSOR = 0x14;
     public static final byte PROPERTY_HUMIDITY = 0x18;
-    public static final byte PROPERTY_TOTAL_CLEAN = 0x19;
-    public static final byte PROPERTY_WIFI = 0x1a;
+    public static final byte PROPERTY_TOTAL_CLEAN=0x19;
+    public static final byte PROPERTY_WIFI=0x1a;
 
     public static final byte PROPERTY_FILTER = 0x15;
     public static final byte PROPERTY_TIME = 0x16;
-    public static final byte PROPERTY_PERIOD = 0x17;
+    public static final byte PROPERTY_PERIOD=0x17;
     public static final byte PROPERTY_MODEL = 0x21;
 
     public static final byte PROPERTY_DEVICE_TYPE = 0x22;
@@ -54,21 +54,25 @@ public class AirPurifier_MXChip extends AirPurifier {
     public static final byte PROPERTY_VERSION = 0x26;
 
     public static final int ErrorValue = 0xffff;
-    private static final int Timeout = 2000;
+    private static final int Timeout=2000;
     private static String SecureCode = "580c2783";
-    final AirPurifierImp airPurifierImp = new AirPurifierImp(defaultAutoUpdatePeriod);
+    //private static String SecureCode = "16a21bd6";
+
+
+    final AirPurifierImp airPurifierImp = new AirPurifierImp();
     final HashMap<Byte, byte[]> property = new HashMap<>();
     final PowerTimer powerTimer = new PowerTimer();
     final FilterStatus filterStatus = new FilterStatus();
     boolean mIsOffline = true;
-    int reqeustCount = 0;
+    int reqeustCount=0;
     Sensor sensor = new Sensor();
     AirStatus airStatus = new AirStatus();
-
-    private String getValue(int value) {
-        if (value == 0xFFFF) {
+    private String getValue(int value)
+    {
+        if (value==0xFFFF)
+        {
             return "-";
-        } else
+        }else
             return String.valueOf(value);
     }
 
@@ -79,13 +83,18 @@ public class AirPurifier_MXChip extends AirPurifier {
         powerTimer.fromJSON(json);
     }
 
+    @Override
+    public int getTimerDelay() {
+        return defaultAutoUpdatePeriod;
+    }
+
     /**
      * 设备型号
      *
      * @return 型号
      */
     @Override
-    public String Model() {
+    public  String Model() {
         return Setting().get("Model", "").toString();
     }
 
@@ -159,9 +168,9 @@ public class AirPurifier_MXChip extends AirPurifier {
     public boolean isOffline() {
         return mIsOffline;
     }
-
-    private void setOffline(boolean isOffline) {
-        if (isOffline != mIsOffline) {
+    private void setOffline(boolean isOffline)
+    {
+        if (isOffline!=mIsOffline) {
             mIsOffline = isOffline;
             doUpdate();
         }
@@ -178,7 +187,7 @@ public class AirPurifier_MXChip extends AirPurifier {
             oldIO.setOnTransmissionsCallback(null);
             oldIO.unRegisterStatusCallback(airPurifierImp);
             oldIO.setOnInitCallback(null);
-            mIsOffline = true;
+            mIsOffline=true;
             doUpdate();
         }
         if (newIO != null) {
@@ -187,8 +196,8 @@ public class AirPurifier_MXChip extends AirPurifier {
             io.setOnTransmissionsCallback(airPurifierImp);
             io.registerStatusCallback(airPurifierImp);
             io.setOnInitCallback(airPurifierImp);
-        }else {
-            airPurifierImp.stop();
+        }else
+        {
             setOffline(true);
         }
     }
@@ -211,7 +220,10 @@ public class AirPurifier_MXChip extends AirPurifier {
         for (Byte id : propertys) {
             bytes[p] = id;
             p++;
+            Log.i(Tag,String.format("request property:%02x",id));
         }
+
+
         airPurifierImp.send(bytes, cb);
     }
 
@@ -226,20 +238,22 @@ public class AirPurifier_MXChip extends AirPurifier {
 
         bytes[0] = (byte) 0xfb;
         ByteUtil.putShort(bytes, (short) bytes.length, 1);
-        bytes[3] = CMD_SET_PROPERTY;
+        bytes[3] =  CMD_SET_PROPERTY;
         byte[] macs = Helper.HexString2Bytes(this.Address().replace(":", ""));
         System.arraycopy(macs, 0, bytes, 4, 6);
         bytes[12] = propertyId;
         System.arraycopy(value, 0, bytes, 13, value.length);
-        airPurifierImp.send(bytes, new OperateCallbackProxy<Void>(cb) {
+        airPurifierImp.send(bytes, new OperateCallbackProxy<Void>(cb)
+        {
             @Override
             public void onSuccess(Void var1) {
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                airPurifierImp.doTime();
+//                try {
+//                    Thread.sleep(200);
+//
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                airPurifierImp.doTime();
                 super.onSuccess(var1);
             }
         });
@@ -300,15 +314,17 @@ public class AirPurifier_MXChip extends AirPurifier {
 
     @Override
     public String toString() {
-        if (mIsOffline) {
+        if (mIsOffline)
+        {
             return "Offline";
-        } else {
-            return sensor().toString() + "\n" + airStatus().toString();
+        }else
+        {
+            return sensor().toString()+"\n"+airStatus().toString();
         }
     }
 
     public final static int FAN_SPEED_AUTO = 0;
-    //    public final static int FAN_SPEED_HIGH = 1;
+//    public final static int FAN_SPEED_HIGH = 1;
 //    public final static int FAN_SPEED_MID = 2;
 //    public final static int FAN_SPEED_LOW = 3;
     public final static int FAN_SPEED_SILENT = 4;
@@ -316,7 +332,6 @@ public class AirPurifier_MXChip extends AirPurifier {
 
     /**
      * 重置滤芯
-     *
      * @param cb
      */
     public void ResetFilter(OperateCallback<Void> cb) {
@@ -329,13 +344,21 @@ public class AirPurifier_MXChip extends AirPurifier {
         filterStatus.maxWorkTime = 129600; //60 * 1000;
         setProperty(PROPERTY_FILTER, filterStatus.toBytes(), cb);
     }
+    private void dbgBytes(String text,byte[] bytes)
+    {
+        String hex=text;
+        for (byte b : bytes)
+        {
+            hex+=String.format("%02x ",b);
+        }
+        Log.i(Tag,hex);
+    }
 
     public class AirStatus {
 
-        public int Version() {
+        public int Version(){
             return getIntValueByShort(PROPERTY_VERSION);
         }
-
         public boolean Power() {
             return getBoolValue(PROPERTY_POWER);
         }
@@ -378,18 +401,15 @@ public class AirPurifier_MXChip extends AirPurifier {
 
         /**
          * WIFI信号强度
-         *
          * @return 0-100%
          */
-        public int Wifi() {
-            return getIntValueByByte(PROPERTY_WIFI);
-        }
+        public int Wifi() {return  getIntValueByByte(PROPERTY_WIFI);}
 
 
         @Override
         public String toString() {
             return String.format("Power:%s Speed:%s Light:%s Lock:%s Wifi:%s%%",
-                    String.valueOf(Power()), getValue(speed()), getValue(Light()), String.valueOf(Lock()), getValue(Wifi()));
+                    String.valueOf(Power()),getValue(speed()),getValue(Light()),String.valueOf(Lock()),getValue(Wifi()));
         }
     }
 
@@ -403,7 +423,6 @@ public class AirPurifier_MXChip extends AirPurifier {
         public int Humidity() {
             return getIntValueByShort(PROPERTY_HUMIDITY);
         }
-
         /**
          * PM2.5
          *
@@ -443,13 +462,11 @@ public class AirPurifier_MXChip extends AirPurifier {
 
         /**
          * 总净化量
-         *
          * @return
          */
-        public int TotalClean() {
+        public int TotalClean(){
             return getIntValueByInt(PROPERTY_TOTAL_CLEAN);
         }
-
         /**
          * 滤芯状态,如果没收到返回NULL
          *
@@ -462,21 +479,23 @@ public class AirPurifier_MXChip extends AirPurifier {
         @Override
         public String toString() {
             return String.format("PM2.5:%s VOC:%s Light:%s\nTemperature:%s Humidity:%s%% TotalClean:%s",
-                    getValue(PM25()), getValue(VOC()), getValue(Light()),
-                    getValue(Temperature()), getValue(Humidity()), getValue(TotalClean()));
+                    getValue(PM25()),getValue(VOC()),getValue(Light()),
+                    getValue(Temperature()),getValue(Humidity()),getValue(TotalClean()));
         }
     }
 
-    class AirPurifierImp extends AutoUpdateClass implements
+    @Override
+    protected void doTimer() {
+        Log.i(Tag,"doTime");
+        airPurifierImp.doTime();
+    }
+
+    class AirPurifierImp implements
             BaseDeviceIO.OnTransmissionsCallback,
             BaseDeviceIO.StatusCallback,
             BaseDeviceIO.OnInitCallback {
 
-        private boolean Respone = false;
 
-        public AirPurifierImp(long period) {
-            super(period);
-        }
 
         @Override
         public void onConnected(BaseDeviceIO io) {
@@ -485,6 +504,10 @@ public class AirPurifier_MXChip extends AirPurifier {
 
         @Override
         public void onDisconnected(BaseDeviceIO io) {
+        }
+
+        @Override
+        public void onReady(BaseDeviceIO io) {
 
         }
 
@@ -494,6 +517,7 @@ public class AirPurifier_MXChip extends AirPurifier {
             setProperty(PROPERTY_TIME, time, null);
 
         }
+
 
 
 //        private void requestStatus() {
@@ -513,8 +537,8 @@ public class AirPurifier_MXChip extends AirPurifier {
         private void setAutoReflash(short period, HashSet<Byte> propertys, OperateCallback<Void> cb) {
             byte[] bytes = new byte[3 + propertys.size()];
             ByteUtil.putShort(bytes, period, 0);
-            bytes[2] = (byte) propertys.size();
-            int i = 3;
+            bytes[2]=(byte)propertys.size();
+            int i=3;
             for (Byte p : propertys) {
                 bytes[i] = p;
                 i++;
@@ -525,7 +549,7 @@ public class AirPurifier_MXChip extends AirPurifier {
         @Override
         public boolean onIOInit() {
             try {
-                mIsOffline = true;
+                mIsOffline=true;
                 try {
                     setNowTime();
                     waitObject(Timeout);
@@ -539,6 +563,7 @@ public class AirPurifier_MXChip extends AirPurifier {
                     list.add(PROPERTY_VERSION);
                     requestProperty(list, null);
                     waitObject(Timeout);
+                    Log.i(Tag,"OnInit Complete");
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -550,15 +575,10 @@ public class AirPurifier_MXChip extends AirPurifier {
             }
         }
 
-        @Override
-        public void onReady(BaseDeviceIO io) {
-            if (getRunningMode() == RunningMode.Foreground) {
-                start(1000);
-            }
-        }
 
-        @Override
-        protected void doTime() {
+
+        public void doTime() {
+            Log.i(Tag,"doTime Begin");
             HashSet<Byte> list = new HashSet<>();
             list.add(PROPERTY_FILTER);
             list.add(PROPERTY_PM25);
@@ -572,24 +592,30 @@ public class AirPurifier_MXChip extends AirPurifier {
             list.add(PROPERTY_LOCK);
             list.add(PROPERTY_WIFI);
             list.add(PROPERTY_TOTAL_CLEAN);
-
             requestProperty(list, null);
+            Log.i(Tag,"doTime End");
         }
 
         @Override
         public void onIOSend(byte[] bytes) {
+            dbgBytes("send:",bytes);
 
         }
 
-        private boolean send(byte[] data, OperateCallback<Void> cb) {
-            if (IO() != null) {
+        private boolean send(byte[] data,OperateCallback<Void> cb)
+        {
+            if (IO()!=null)
+            {
                 reqeustCount++;
-                if (reqeustCount >= 3) {
+                if (reqeustCount>=3)
+                {
                     setOffline(true);
                 }
+
+
                 //Respone=false;
                 return IO().send(data, cb);
-            } else
+            }else
                 return false;
         }
 
@@ -598,7 +624,9 @@ public class AirPurifier_MXChip extends AirPurifier {
             if ((bytes == null) || (bytes.length <= 0)) {
                 return;
             }
-            reqeustCount = 0;
+            dbgBytes("recv:",bytes);
+
+            reqeustCount=0;
             setOffline(false);
             try {
                 if (bytes[0] != (byte) 0xFA) return;
@@ -608,9 +636,12 @@ public class AirPurifier_MXChip extends AirPurifier {
                 switch (cmd) {
                     case CMD_RECV_PROPERTY:
                         int count = bytes[12];
+                        Log.i(Tag,String.format("recv property count:%d",count));
+
                         int p = 13;
                         HashMap<Byte, byte[]> set = new HashMap<>();
                         for (int i = 0; i < count; i++) {
+                            if (p>=bytes.length) break;
                             byte id = bytes[p];
                             p++;
 
@@ -623,7 +654,10 @@ public class AirPurifier_MXChip extends AirPurifier {
                             if (p + size > bytes.length) return;
 
                             System.arraycopy(bytes, p, data, 0, size);
+
+                            dbgBytes(String.format("property id:%02x size:%d ",id,(byte)size),data);
                             p += size;
+
                             set.put(id, data);
                         }
                         synchronized (property) {
@@ -653,7 +687,8 @@ public class AirPurifier_MXChip extends AirPurifier {
                                 case PROPERTY_FILTER: {
                                     filterStatus.fromBytes(set.get(id));
                                     //两个上次更换时间在2000年以前,直接重置
-                                    if (filterStatus.lastTime.getTime() <= 946684800) {
+                                    if (filterStatus.lastTime.getTime()<=946684800)
+                                    {
                                         AirPurifier_MXChip.this.ResetFilter(null);
                                     }
                                 }
@@ -687,18 +722,14 @@ public class AirPurifier_MXChip extends AirPurifier {
 
                             }
                         }
-                        Respone = true;
                         setObject();
                         break;
                 }
-            } catch (
-                    Exception e
-                    )
-
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
 
 
 //        class SendOperateCallbackProxy implements OperateCallback<Void> {
