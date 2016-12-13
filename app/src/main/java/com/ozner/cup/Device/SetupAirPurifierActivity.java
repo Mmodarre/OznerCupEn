@@ -34,7 +34,9 @@ public class SetupAirPurifierActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Mac = getIntent().getStringExtra("MAC");
-        airPurifier = (AirPurifier) OznerDeviceManager.Instance().getDevice(Mac);
+        try {
+            airPurifier = (AirPurifier) OznerDeviceManager.Instance().getDevice(Mac);
+        }catch (Exception e){e.printStackTrace();}
         setContentView(R.layout.activity_setup_air_purifier);
         OznerApplication.changeTextFont((ViewGroup) getWindow().getDecorView());
         toolbar = (Toolbar) findViewById(R.id.toolbar);
