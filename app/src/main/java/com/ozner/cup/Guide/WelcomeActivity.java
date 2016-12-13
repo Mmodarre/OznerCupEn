@@ -53,13 +53,12 @@ public class WelcomeActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome);
         try {
             ShareSDK.initSDK(WelcomeActivity.this);
         } catch (RuntimeException e) {
-            Log.e("welcome",e.getMessage());
+            Log.e("welcome", e.getMessage());
             e.printStackTrace();
         }
         if (android.os.Build.VERSION.SDK_INT >= 21) {
@@ -137,7 +136,11 @@ public class WelcomeActivity extends Activity {
                                                     public void handleMessage(Message msg) {
                                                         String token = OznerPreference.UserToken(getBaseContext());
                                                         LogUtilsLC.E(TAG, "setOwner: owner:" + msg.obj.toString() + " , token:" + token);
-                                                        OznerDeviceManager.Instance().setOwner(msg.obj.toString(), token);
+                                                        try {
+                                                            OznerDeviceManager.Instance().setOwner(msg.obj.toString(), token);
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
+                                                        }
                                                         try {
                                                             CSqlCommand.getInstance().SetTableName(getBaseContext(), "N" + msg.obj.toString().replace("-", ""));
                                                         } catch (Exception ex) {
@@ -194,7 +197,6 @@ public class WelcomeActivity extends Activity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     /**
