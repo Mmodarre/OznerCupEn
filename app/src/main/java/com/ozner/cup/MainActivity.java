@@ -601,7 +601,10 @@ public class MainActivity extends BaseMainActivity {
                             return;
                         case TapType:
                         case TdsPen:
-                            String tapPen = deviceData.getAppValue(PageState.TapType).toString();
+                            String tapPen = null;
+                            try {
+                                tapPen = deviceData.getAppValue(PageState.TapType).toString();
+                            }catch (NullPointerException ex){}
                             if (tapPen == "pen" || "pen".equals(tapPen)) {
                                 WaterTDSPenFragment waterTDSPenFragment = new WaterTDSPenFragment();
                                 waterTDSPenFragment.setArguments(params);
