@@ -75,11 +75,14 @@ public class OznerBLEService extends Service implements ActivityLifecycleCallbac
     public void onCreate() {
         super.onCreate();
         try {
-
             mManager = new OznerDeviceManager(getApplicationContext());
         } catch (InstantiationException e) {
             e.printStackTrace();
+<<<<<<< HEAD
         }catch (AssertionError ae) {
+=======
+        } catch (AssertionError ae) {
+>>>>>>> master
             ae.printStackTrace();
             Log.e("===========", ae.getMessage() + "=======" + "注册太多广播接收者");
         }
