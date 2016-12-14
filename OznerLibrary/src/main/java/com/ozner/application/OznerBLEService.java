@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.util.Log;
 
 import com.ozner.XObject;
 import com.ozner.device.OznerDeviceManager;
@@ -56,12 +57,9 @@ public class OznerBLEService extends Service implements ActivityLifecycleCallbac
 
                         return;
                     }
-
                 }
             }
         }
-
-
     }
 
     private void delayedCheck() {
@@ -81,6 +79,9 @@ public class OznerBLEService extends Service implements ActivityLifecycleCallbac
             mManager = new OznerDeviceManager(getApplicationContext());
         } catch (InstantiationException e) {
             e.printStackTrace();
+        }catch (AssertionError ae) {
+            ae.printStackTrace();
+            Log.e("===========", ae.getMessage() + "=======" + "注册太多广播接收者");
         }
         powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
     }

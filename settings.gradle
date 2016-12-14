@@ -1,1 +1,1 @@
-include ':app', ':OznerLibrary', ':xzy_ui_lib', 'dragsortlistview', ':photo_choose-release',':Android_AylaLibrary_Public-release'
+include ':app', ':OznerLibrary', ':xzy_ui_lib', 'dragsortlistview', ':photo_choose-release',':librarise/Android_AylaLibrary_Public',':aylaLibrary'
