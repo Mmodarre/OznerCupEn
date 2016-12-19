@@ -823,6 +823,7 @@ public class CChatFragment extends Fragment implements OnClickListener, FootFrag
                             token = chatToken.access_token;
                             String newstr = "access_token=" + token + "&appid=" + ChatCommand.appid + "&appsecret=" + ChatCommand.appsecret;
                             newSign = ChatCommand.Md5(newstr);
+                            Log.e(TAG, "获取qianm"+newSign);
                             if (mMobile != null && mMobile != "" && token != null && token != ""
                                     && newSign != null && newSign != "") {
                                 chatGetUserInfo(mMobile, token, newSign);
