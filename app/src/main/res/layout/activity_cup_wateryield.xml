@@ -238,7 +238,7 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <com.ozner.yiquan.UIView.UIXVolumeChartView
+                        <com.ozner.qianye.UIView.UIXVolumeChartView
                             android:id="@+id/volumeView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -246,7 +246,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp" />
 
-                        <com.ozner.yiquan.UIView.UIXVolumeChartViewWeek
+                        <com.ozner.qianye.UIView.UIXVolumeChartViewWeek
                             android:id="@+id/volumeViewWeek"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

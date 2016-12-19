@@ -123,7 +123,7 @@
                         android:layout_centerVertical="true">
 
 
-                        <com.ozner.yiquan.WaterProbe.WaterDetailProgress
+                        <com.ozner.qianye.WaterProbe.WaterDetailProgress
                             android:id="@+id/waterProcess"
                             android:layout_width="300dp"
                             android:layout_height="160dp"

@@ -175,7 +175,7 @@
                         android:layout_centerInParent="true"
                         android:visibility="visible">
 
-                        <com.ozner.yiquan.WaterProbe.PurifierDetailProgress
+                        <com.ozner.qianye.WaterProbe.PurifierDetailProgress
                             android:id="@+id/waterProcess"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

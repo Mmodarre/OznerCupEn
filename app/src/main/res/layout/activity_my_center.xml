@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ozner.yiquan.mycenter.MyCenterActivity">
+    tools:context="com.ozner.qianye.mycenter.MyCenterActivity">
 
     <RelativeLayout
         android:id="@+id/person_infor_edit"

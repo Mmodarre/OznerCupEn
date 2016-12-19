@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_marginBottom="@dimen/foot_heght"
-              tools:context="com.ozner.yiquan.CChat.CChatFragment">
+              tools:context="com.ozner.qianye.CChat.CChatFragment">
 
     <RelativeLayout
         android:id="@+id/chat_main"
@@ -118,7 +118,7 @@
                             android:layout_marginBottom="5dp"
                             android:background="@color/Chat_inputLine"/>
 
-                        <com.ozner.yiquan.CChat.view.MyEditText
+                        <com.ozner.qianye.CChat.view.MyEditText
                             android:id="@+id/input_sms"
                             android:layout_width="match_parent"
                             android:layout_height="35dp"

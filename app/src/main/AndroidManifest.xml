@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ozner.yiquan">
+    package="com.ozner.qianye">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -44,7 +44,7 @@
     <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.ozner.cup" />
 
     <permission
-        android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.ozner.yiquan"
+        android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.ozner.qianye"
         android:protectionLevel="normal" />
 
     <application
@@ -58,7 +58,7 @@
 
         <provider
             android:name=".Alarm.AlarmProvider"
-            android:authorities="com.ozner.yiquan.Alarm"
+            android:authorities="com.ozner.qianye.Alarm"
             android:exported="false" />
         <activity
             android:name=".Alarm.AlarmAlertFullScreen"
@@ -70,7 +70,7 @@
 
         <receiver android:name=".Alarm.AlarmReceiver">
             <intent-filter>
-                <action android:name="com.ozner.yiquan.Alarm.ALARM_ALERT" />
+                <action android:name="com.ozner.qianye.Alarm.ALARM_ALERT" />
                 <action android:name="alarm_killed" />
                 <action android:name="cancel_snooze" />
             </intent-filter>
@@ -85,7 +85,7 @@
             android:theme="@style/alarm_alert" />
         <service android:name=".Alarm.AlarmKlaxon">
             <intent-filter>
-                <action android:name="com.ozner.yiquan.Alarm.ALARM_ALERT" />
+                <action android:name="com.ozner.qianye.Alarm.ALARM_ALERT" />
             </intent-filter>
         </service>
 
@@ -238,7 +238,7 @@
 
             <meta-data
                 android:name="AuthorizeAdapter"
-                android:value="com.ozner.yiquan.Login.ShareSDKAdapter" />
+                android:value="com.ozner.qianye.Login.ShareSDKAdapter" />
         </activity>
 
 
@@ -309,7 +309,7 @@
         <!-- 适配Android N系统必需的ContentProvider声明，写权限包含应用包名 -->
         <provider
             android:name="com.baidu.android.pushservice.PushInfoProvider"
-            android:authorities="com.ozner.yiquan.bdpush"
+            android:authorities="com.ozner.qianye.bdpush"
             android:exported="true"
             android:writePermission="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.ozner.cup" />
 

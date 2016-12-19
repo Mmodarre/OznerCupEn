@@ -167,7 +167,7 @@
 
                 </LinearLayout>
 
-                <com.ozner.yiquan.UIView.IndicatorProgressBar
+                <com.ozner.qianye.UIView.IndicatorProgressBar
                     android:id="@+id/pb"
                     android:layout_width="match_parent"
                     android:layout_height="90dp"

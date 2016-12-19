@@ -30,13 +30,13 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="20dp"/>
 
-    <com.ozner.yiquan.Device.HorizontalListView
+    <com.ozner.qianye.Device.HorizontalListView
         android:id="@+id/hlv_device_list"
         android:layout_width="0dp"
         android:layout_weight="4"
         android:layout_height="100dp"
         >
-    </com.ozner.yiquan.Device.HorizontalListView>
+    </com.ozner.qianye.Device.HorizontalListView>
         <ImageView
             android:id="@+id/iv_turn_right"
             android:layout_width="wrap_content"

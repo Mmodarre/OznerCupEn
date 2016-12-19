@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:background="@color/normal_bg"
-    tools:context="com.ozner.yiquan.Login.LoginActivity">
+    tools:context="com.ozner.qianye.Login.LoginActivity">
 
 <RelativeLayout
     android:layout_width="fill_parent"

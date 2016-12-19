@@ -7,7 +7,7 @@
                 android:background="@color/normal_bg"
                 android:fitsSystemWindows="true"
                 android:orientation="vertical"
-                tools:context="com.ozner.yiquan.Login.LoginActivity">
+                tools:context="com.ozner.qianye.Login.LoginActivity">
 
     <TableLayout
         android:layout_width="fill_parent"

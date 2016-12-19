@@ -306,7 +306,7 @@
                         android:textSize="14dp" />
                 </LinearLayout>
 
-                <com.ozner.yiquan.WaterProbe.WaterReplenishMeter.UIWRMView
+                <com.ozner.qianye.WaterProbe.WaterReplenishMeter.UIWRMView
                     android:id="@+id/wrm_View"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

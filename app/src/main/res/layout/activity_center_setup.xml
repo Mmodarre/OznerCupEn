@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/MyCenter_bg"
     android:orientation="vertical"
-    tools:context="com.ozner.yiquan.mycenter.CenterSetupActivity">
+    tools:context="com.ozner.qianye.mycenter.CenterSetupActivity">
 
     <!--<RelativeLayout-->
     <!--android:layout_width="match_parent"-->
@@ -58,7 +58,7 @@
                 android:text="@string/Center_Allow_PushMsg"
                 android:textSize="16dp" />
 
-            <com.ozner.yiquan.Device.SlidButton
+            <com.ozner.qianye.Device.SlidButton
                 android:id="@+id/sb_switch"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"

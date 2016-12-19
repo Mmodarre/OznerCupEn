@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.ozner.yiquan.mycenter.MyCenterTabsFragment">
+    tools:context="com.ozner.qianye.mycenter.MyCenterTabsFragment">
 
     <RelativeLayout
         android:id="@+id/rlay_toolbar"

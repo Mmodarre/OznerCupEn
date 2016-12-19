@@ -404,7 +404,7 @@
                 android:text="@string/air_low" />
         </LinearLayout>
 
-        <com.ozner.yiquan.control.CProessbarView
+        <com.ozner.qianye.control.CProessbarView
             android:id="@+id/my_cproessbarview"
             android:layout_width="0dp"
             android:layout_height="50dp"
