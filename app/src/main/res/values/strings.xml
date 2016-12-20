@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">君融科技</string>
+    <string name="app_name">千野</string>
     <string name="my_device">我的设备</string>
     <string name="my_burse">我的小金库</string>
     <string name="share_card">分享礼卡</string>
@@ -19,8 +19,8 @@
     <string name="server_Exception">服务异常错误</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_other_device">您的账号在其他设备登录，请重新登录.</string>
-    <string name="login_p_tishi">我已阅读并同意《君融科技免责条款》</string>
-    <string name="loging_ty_xiexi">请先同意《君融科技免责条款》</string>
+    <string name="login_p_tishi">我已阅读并同意《千野免责条款》</string>
+    <string name="loging_ty_xiexi">请先同意《千野免责条款》</string>
     <string name="login_btn_skip">跳过</string>
     <string name="login_btn_getphone">获取验证码</string>
     <string name="login_et_phone">请输入手机号</string>
@@ -140,7 +140,7 @@
     <string name="TDS">TDS</string>
     <string name="Center_Allow_PushMsg">允许推送消息</string>
     <string name="Center_Unit">计量单位</string>
-    <string name="Center_About_Ozner">关于君融科技</string>
+    <string name="Center_About_Ozner">关于千野</string>
     <string name="Center_Logout">退出登录</string>
     <string name="Center_Temp">温度</string>
     <string name="Center_Volumn">水量</string>
@@ -154,12 +154,12 @@
     <string name="Center_DL_Unit">(DL)</string>
     <string name="Center_OZ">盎司</string>
     <string name="Center_OZ_Unit">(OZ)</string>
-    <string name="Center_About">关于君融科技</string>
+    <string name="Center_About">关于千野</string>
     <string name="Center_CheckVersion">检查更新版本</string>
     <string name="Center_CurrentVersion">当前版本</string>
     <string name="Center_Mark">评个分吧</string>
     <string name="Center_Default_Version">v 1.0</string>
-    <string name="Center_FreeItem">《君融科技免责条款》</string>
+    <string name="Center_FreeItem">《千野免责条款》</string>
     <string name="Center_SaveSuccess">保存成功</string>
     <string name="Center_InSurePhone">请输入有效的手机号</string>
     <string name="Center_InSureFriendMobile">请输入好友手机号</string>
@@ -647,7 +647,7 @@
     <string name="tds_up">200以上</string>
     <string name="start_time">开始时间</string>
     <string name="stop_time">结束时间</string>
-    <string name="ozner_smart_service">依泉净品智慧生活体验</string>
+    <string name="ozner_smart_service">千野智能化生活服务</string>
     <string name="start_smart_service">立即添加设备，开启您的智慧生活吧!</string>
     <string name="username">邮箱</string>
     <string name="password">密码</string>

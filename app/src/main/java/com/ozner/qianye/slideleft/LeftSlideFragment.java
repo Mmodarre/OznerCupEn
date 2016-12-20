@@ -147,7 +147,7 @@ public class LeftSlideFragment extends Fragment implements FootFragmentListener 
     private void initImageViewBitmap(View initView) {
         WeakReference<Context> refContext = new WeakReference<Context>(getContext());
         if (refContext != null) {
-            ((ImageView) initView.findViewById(R.id.iv_left_center)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_draw));
+            ((ImageView) initView.findViewById(R.id.iv_left_center)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_center));
             user_image.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.mipmap.icon_default_headimage));
             iv_left_buble.setImageBitmap(ImageHelper.loadResBitmap(refContext.get(), R.drawable.left_buble_cn));
             ((ImageView) initView.findViewById(R.id.add_device)).setImageBitmap(ImageHelper.loadResBitmap(refContext.get(),R.drawable.add));

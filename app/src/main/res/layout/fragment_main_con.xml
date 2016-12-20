@@ -34,7 +34,7 @@
                     android:layout_height="180dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/logo" />
+                    android:src="@drawable/main_center_logo" />
 
             </RelativeLayout>
 

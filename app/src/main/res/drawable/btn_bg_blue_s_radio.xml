@@ -3,6 +3,4 @@
 
     <solid android:color="@color/fz_blue_s" />
     <corners android:radius="20dp" />
-
-
 </shape>

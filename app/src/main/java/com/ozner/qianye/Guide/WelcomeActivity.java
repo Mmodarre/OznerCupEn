@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.baidu.android.pushservice.PushSettings;
+import com.ozner.device.OznerDeviceManager;
 import com.ozner.qianye.ACSqlLite.CSqlCommand;
 import com.ozner.qianye.BaiduPush.OznerBroadcastAction;
 import com.ozner.qianye.BuildConfig;
@@ -30,7 +31,6 @@ import com.ozner.qianye.MainActivity;
 import com.ozner.qianye.MainEnActivity;
 import com.ozner.qianye.R;
 import com.ozner.qianye.mycenter.CheckForUpdate.LogUtilsLC;
-import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONObject;
 
@@ -66,9 +66,9 @@ public class WelcomeActivity extends Activity {
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //更改状态栏颜色
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.white));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.guideColor));
             //更改底部导航栏颜色(限有底部的手机)
-            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
+            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.guideColor));
         }
         PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, getString(R.string.Baidu_Push_ApiKey));
         PushSettings.enableDebugMode(getApplicationContext(), true);

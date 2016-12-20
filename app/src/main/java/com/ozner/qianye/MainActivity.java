@@ -81,6 +81,7 @@ import cz.msebera.android.httpclient.Header;
 
 /*
 * Create By by C-sir@hotmail.com
+* Modify by taoran 2016/12/19 千野app
 * */
 public class MainActivity extends BaseMainActivity {
     Monitor mMonitor = new Monitor();
