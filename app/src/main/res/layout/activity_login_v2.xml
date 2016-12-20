@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/normal_bg"
-                android:fitsSystemWindows="true"
-                android:orientation="vertical"
-                tools:context="com.ozner.qianye.Login.LoginActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.ozner.cup.Login.LoginActivity">
 
     <TableLayout
         android:layout_width="fill_parent"
@@ -21,7 +21,6 @@
             <RelativeLayout>
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/login_btn_skip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -46,8 +45,8 @@
             <RelativeLayout>
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="110dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/login_icon_v2"/>

@@ -39,3 +39,4 @@ captures/
 # Keystore files
 *.jks
 ozner_new.keystore
+app/src/main/res/drawable-xhdpi/login_icon_2.png
