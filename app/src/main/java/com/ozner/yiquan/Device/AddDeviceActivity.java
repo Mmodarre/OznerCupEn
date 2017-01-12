@@ -38,11 +38,11 @@ public class AddDeviceActivity extends AppCompatActivity {
 
     //        private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
 //    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth,R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth, R.drawable.bluetooth};
-    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
+    private int connectionIcon[] = {R.drawable.bluetooth, R.drawable.wifi, R.drawable.wifi, R.drawable.bluetooth};
 
     //        private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection};
 //    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection,R.string.bluetooth_connection,R.string.bluetooth_connection};
-    private int connectionName[] = {R.string.bluetooth_connection, R.string.bluetooth_connection, R.string.wifi_connection, R.string.wifi_connection, R.string.bluetooth_connection};
+    private int connectionName[] = {R.string.bluetooth_connection,R.string.wifi_connection, R.string.wifi_connection, R.string.bluetooth_connection};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,17 +107,6 @@ public class AddDeviceActivity extends AppCompatActivity {
                 default:
                     break;
 
-
-
-
-
-
-
-
-
-
-
-
 ////                case 0:
 ////                    intent.setClass(AddDeviceActivity.this, MatchCupActivity.class);
 ////                    break;
@@ -141,18 +130,6 @@ public class AddDeviceActivity extends AppCompatActivity {
 //                    break;
 //                default:
 //                    break;
-
-
-
-
-
-
-
-
-
-
-
-
 
             }
             if (intent.resolveActivity(getPackageManager()) != null) {

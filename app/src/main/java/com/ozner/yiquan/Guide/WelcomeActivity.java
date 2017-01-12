@@ -57,7 +57,12 @@ public class WelcomeActivity extends Activity {
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome);
 
-        ShareSDK.initSDK(WelcomeActivity.this);
+        try {
+            ShareSDK.initSDK(WelcomeActivity.this);
+        } catch (RuntimeException e) {
+            Log.e("welcome",e.getMessage());
+            e.printStackTrace();
+        }
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //更改状态栏颜色
