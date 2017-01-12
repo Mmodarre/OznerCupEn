@@ -41,9 +41,9 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 /**
  * Created by mengdongya on 2016/3/8.
  */
-public class SkinDetailFragment extends Fragment implements View.OnClickListener, FootFragmentListener {
+public class SkinDetailFragment extends Fragment implements View.OnClickListener{
     ImageView iv_face, iv_hands, iv_eyes, iv_bozi;
-    TextView tv_week, tv_month, tv_skin_water, tv_skin_state, tv_times, tv_skin_lastdata, tv_skin_average, tv_query_parts, toolbar_text;
+    TextView tv_week, tv_month, tv_skin_water, tv_skin_state, tv_skin_lastdata, tv_skin_average, tv_query_parts, toolbar_text;
     Toolbar toolbar;
     UIWRMView uiwrmView;
     int[] faceWaterM = new int[31];
@@ -77,7 +77,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Mac = getArguments().getString("MAC");
-        state = Integer.parseInt(getArguments().getString("state"));
+        state = getArguments().getInt("state");
         waterReplenishmentMeter = (WaterReplenishmentMeter) OznerDeviceManager.Instance().getDevice(Mac);
         View view = inflater.inflate(R.layout.fragment_skin_detail, container, false);
         sh = getActivity().getSharedPreferences("SkinValues", Context.MODE_PRIVATE);
@@ -285,12 +285,6 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         uiwrmView = (UIWRMView) view.findViewById(R.id.wrm_View);
         switchWeek(true);
 //        uiwrmView.setWeekData(listOilyW, listWaterW);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
     }
 
     @Override
@@ -648,52 +642,6 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 }
             }
         }
-    }
-
-    private FootFragmentListener mFootFragmentListener;
-
-    @Override
-    public void onAttach(Context activity) {
-        super.onAttach(activity);
-        try {
-            mFootFragmentListener = (FootFragmentListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void ShowContent(int i, String mac) {
-
-    }
-
-    @Override
-    public void ChangeRawRecord() {
-
-    }
-
-    @Override
-    public void CupSensorChange(String address) {
-        if (this.Mac.equals(address)) {
-            //此处应该执行更新数据异步操作
-            new UiUpdateAsyncTask().execute();
-        }
-    }
-
-    @Override
-    public void DeviceDataChange() {
-
-    }
-
-    @Override
-    public void ContentChange(String mac, String state) {
-
-    }
-
-    @Override
-    public void RecvChatData(String data) {
-
     }
 
     private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {

@@ -58,10 +58,9 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     private boolean isOpen = false, isTesting = false, TAG = false;
     private RotateAnimation animation;
     private int sex = 0, state;   //state标志眼、颈、脸、手四个位置的被选中状态
-    private float oilValue = 0, waterValue = 0, lastestValue = 0;
+    private float oilValue = 0, waterValue = 0, lastestValue;
     private LinearLayout laly_water_replenish, laly_water_replenish_skin;
-    private int progress = 0;
-    int queryTimes = 0, queryHands, queryFace, queryEyes, queryNeck, times;
+    int queryHands, queryFace, queryEyes, queryNeck, times;
     float varHandsValue, varFaceValue, varEyesValue, varNeckValue;
     SharedPreferences sh;
     SharedPreferences.Editor editor;
@@ -195,6 +194,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     }
 
     private void initQuery() {
+        initAnim();
         tv_query_notice.setText(R.string.query_checking);
         firmwar_pb.setVisibility(View.VISIBLE);
         firmwar_pb.setAnimation(animation);
@@ -428,12 +428,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
 //        firmwar_pb = (WaterReplenishProgressBar) view.findViewById(R.id.firmwar_pb);
 //        firmwar_pb.setMax(100);
         firmwar_pb = (ImageView) view.findViewById(R.id.firmwar_pb_pic);
-        animation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        animation.setDuration(1000);
-        animation.setRepeatCount(10);
-        LinearInterpolator li = new LinearInterpolator();
-        animation.setInterpolator(li);
-        animation.setFillAfter(false);
+//        initAnim();
         laly_water_replenish_skin = (LinearLayout) view.findViewById(R.id.laly_water_replenish_skin);
         laly_water_replenish_skin.setOnClickListener(this);
         laly_water_replenish = (LinearLayout) view.findViewById(R.id.laly_water_replenish);
@@ -469,6 +464,15 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                 return false;
             }
         });
+    }
+
+    private void initAnim() {
+        animation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setDuration(1000);
+        animation.setRepeatCount(10);
+        LinearInterpolator li = new LinearInterpolator();
+        animation.setInterpolator(li);
+        animation.setFillAfter(false);
     }
 
     private void change() {
@@ -561,6 +565,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     public void onResume() {
         super.onResume();
         init();
+        initDeviceState();
         new GetTimesAsyncTask().execute();
         new GetWaterRMAsyncTask().execute();
         initData();
@@ -591,11 +596,11 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                 state = 0;
                 break;
             case R.id.rely_water_replenish_skin:
-                params.putString("state", state + "");
+                params.putInt("state", state);
                 SkinDetailFragment skinDetailFragment = new SkinDetailFragment();
                 skinDetailFragment.setArguments(params);
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.framen_main_con, skinDetailFragment).addToBackStack("replen")
+                        .replace(R.id.framen_main_con, skinDetailFragment).addToBackStack("replennm")
                         .commitAllowingStateLoss();
                 rely_water_replenish_skin.setVisibility(View.GONE);
                 state = 0;
@@ -836,37 +841,6 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                 } catch (Exception e) {
                 }
             }
-        }
-    }
-
-    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-        }
-
-        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
-        @Override
-        protected String doInBackground(String... params) {
-            initData();
-            return null;
-        }
-
-        //onProgressUpdate方法用于更新进度信息
-        @Override
-        protected void onProgressUpdate(Integer... progresses) {
-        }
-
-        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
-        @Override
-        protected void onPostExecute(String result) {
-            if (WaterReplenishMeterFragment.this != null && WaterReplenishMeterFragment.this.isAdded()) {
-                setData();
-            }
-        }
-
-        //onCancelled方法用于在取消执行中的任务时更改UI
-        @Override
-        protected void onCancelled() {
         }
     }
 
