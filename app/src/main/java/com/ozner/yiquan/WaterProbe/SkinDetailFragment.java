@@ -292,7 +292,8 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         super.onResume();
         new GetWaterRMAsyncTask().execute();
         new GetTimesAsyncTask().execute();
-        new UiUpdateAsyncTask().execute();
+        initData();
+        setData();
     }
 
     @Override
@@ -641,40 +642,6 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 } catch (Exception e) {
                 }
             }
-        }
-    }
-
-    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-        }
-
-        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
-        @Override
-        protected String doInBackground(String... params) {
-            initData();
-            //开启线程获取网络数据
-//        handler
-            return null;
-        }
-
-        //onProgressUpdate方法用于更新进度信息
-        @Override
-        protected void onProgressUpdate(Integer... progresses) {
-
-        }
-
-        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
-        @Override
-        protected void onPostExecute(String result) {
-            if (SkinDetailFragment.this != null && SkinDetailFragment.this.isAdded()) {
-                setData();
-            }
-        }
-
-        //onCancelled方法用于在取消执行中的任务时更改UI
-        @Override
-        protected void onCancelled() {
         }
     }
 }
