@@ -45,6 +45,8 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 /**
  * Created by mengdongya on 2016/3/3.
  * modify by taoran
+ * 肤质干燥与否是根据各部位检测水分值来判断的
+ * 肤质类型是根据脸部皮肤油分值所在的取值范围来判定的。
  */
 public class WaterReplenishMeterFragment extends Fragment implements View.OnClickListener, FootFragmentListener {
 
@@ -57,10 +59,9 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     private boolean isOpen = false, isTesting = false, TAG = false;
     private RotateAnimation animation;
     private int sex = 0, state;   //state标志眼、颈、脸、手四个位置的被选中状态
-    private float oilValue = 0, waterValue = 0, lastestValue = 0;
+    private float oilValue = 0, waterValue = 0, lastestValue;
     private LinearLayout laly_water_replenish, laly_water_replenish_skin;
-    private int progress = 0;
-    int queryTimes = 0, queryHands, queryFace, queryEyes, queryNeck, times;
+    int queryHands, queryFace, queryEyes, queryNeck, times;
     float varHandsValue, varFaceValue, varEyesValue, varNeckValue = 0;
     SharedPreferences sh;
     SharedPreferences.Editor editor;
@@ -81,6 +82,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         View view = inflater.inflate(R.layout.water_replenish_meter_detail, container, false);
         initView(view);
         init();
+        initDeviceState();
         OznerApplication.changeTextFont((ViewGroup) view);
         return view;
     }
@@ -392,6 +394,22 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
 
     }
 
+    private void initDeviceState() { //设备连接状态
+        connectStatus = waterReplenishmentMeter.connectStatus();
+        switch (connectStatus) {
+            case Connecting:
+                tv_data_loading.setText(getString(R.string.loding_now));
+                break;
+            case Connected:
+                tv_data_loading.setVisibility(View.GONE);
+                break;
+            case Disconnect:
+                tv_data_loading.setText(getString(R.string.loding_fair));
+                tv_data_loading.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
     private void initView(View view) {
         if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
@@ -552,9 +570,11 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     public void onResume() {
         super.onResume();
         init();
+        initDeviceState();
         new GetTimesAsyncTask().execute();
         new GetWaterRMAsyncTask().execute();
-        new UiUpdateAsyncTask().execute();
+        initData();
+        setDate();
         rely_water_replenish_skin.setVisibility(View.GONE);
     }
 
@@ -640,7 +660,8 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     @Override
     public void CupSensorChange(String address) {
         if (this.Mac.equals(address)) {
-            new UiUpdateAsyncTask().execute();
+            initData();
+            setDate();
         }
     }
 
@@ -651,23 +672,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     @Override
     public void ContentChange(String mac, String state) {
         if (WaterReplenishMeterFragment.this.isAdded() && this.Mac.equals(mac)) {
-            switch (state) {
-                //正在链接中
-                case BaseDeviceIO.ACTION_DEVICE_CONNECTING:
-                    tv_data_loading.setText(getString(R.string.loding_now));
-                    tv_data_loading.setVisibility(View.VISIBLE);
-                    break;
-                //已经连接
-                case BaseDeviceIO.ACTION_DEVICE_CONNECTED:
-                    tv_data_loading.setVisibility(View.GONE);
-                    break;
-                //已经断开连接
-                case BaseDeviceIO.ACTION_DEVICE_DISCONNECTED:
-                    tv_data_loading.setText(getString(R.string.loding_fair));
-                    tv_data_loading.setVisibility(View.VISIBLE);
-                    break;
-            }
-//            new UiUpdateAsyncTask().execute();
+            initDeviceState();
         }
     }
 
@@ -841,37 +846,6 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                 } catch (Exception e) {
                 }
             }
-        }
-    }
-
-    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-        }
-
-        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
-        @Override
-        protected String doInBackground(String... params) {
-            initData();
-            return null;
-        }
-
-        //onProgressUpdate方法用于更新进度信息
-        @Override
-        protected void onProgressUpdate(Integer... progresses) {
-        }
-
-        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
-        @Override
-        protected void onPostExecute(String result) {
-            if (WaterReplenishMeterFragment.this != null && WaterReplenishMeterFragment.this.isAdded()) {
-                setDate();
-            }
-        }
-
-        //onCancelled方法用于在取消执行中的任务时更改UI
-        @Override
-        protected void onCancelled() {
         }
     }
 
