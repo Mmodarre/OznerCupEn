@@ -46,6 +46,8 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 /**
  * Created by mengdongya on 2016/3/3.
  * modify by taoran
+ * 肤质干燥与否是根据各部位检测水分值来判断的
+ * 肤质类型是根据脸部皮肤油分值所在的取值范围来判定的。
  */
 public class WaterReplenishMeterFragment extends Fragment implements View.OnClickListener, FootFragmentListener {
 
