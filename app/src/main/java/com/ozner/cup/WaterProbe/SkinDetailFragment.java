@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
 import com.ozner.cup.CChat.CChatFragment;
 import com.ozner.cup.Command.CenterUrlContants;
-import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.Command.UserDataPreference;

@@ -60,10 +60,11 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     private boolean isOpen = false, isTesting = false, TAG = false;
     private RotateAnimation animation;
     private int sex = 0, state;   //state标志眼、颈、脸、手四个位置的被选中状态
-    private float oilValue = 0, waterValue = 0, lastestValue;
+    private float oilValue = 0, waterValue = 0, lastestValue = 0;
     private LinearLayout laly_water_replenish, laly_water_replenish_skin;
-    int queryHands, queryFace, queryEyes, queryNeck, times;
-    float varHandsValue, varFaceValue, varEyesValue, varNeckValue = 0;
+    private int progress = 0;
+    int queryTimes = 0, queryHands, queryFace, queryEyes, queryNeck, times;
+    float varHandsValue, varFaceValue, varEyesValue, varNeckValue;
     SharedPreferences sh;
     SharedPreferences.Editor editor;
     BaseDeviceIO.ConnectStatus connectStatus;
@@ -398,22 +399,6 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
             }
         }
 
-    }
-
-    private void initDeviceState() { //设备连接状态
-        connectStatus = waterReplenishmentMeter.connectStatus();
-        switch (connectStatus) {
-            case Connecting:
-                tv_data_loading.setText(getString(R.string.loding_now));
-                break;
-            case Connected:
-                tv_data_loading.setVisibility(View.GONE);
-                break;
-            case Disconnect:
-                tv_data_loading.setText(getString(R.string.loding_fair));
-                tv_data_loading.setVisibility(View.VISIBLE);
-                break;
-        }
     }
 
     private void initView(View view) {
@@ -860,5 +845,35 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
     }
 
-                setDate();
+    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
+        @Override
+        protected void onPreExecute() {
+        }
+
+        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
+        @Override
+        protected String doInBackground(String... params) {
+            initData();
+            return null;
+        }
+
+        //onProgressUpdate方法用于更新进度信息
+        @Override
+        protected void onProgressUpdate(Integer... progresses) {
+        }
+
+        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
+        @Override
+        protected void onPostExecute(String result) {
+            if (WaterReplenishMeterFragment.this != null && WaterReplenishMeterFragment.this.isAdded()) {
+                setData();
+            }
+        }
+
+        //onCancelled方法用于在取消执行中的任务时更改UI
+        @Override
+        protected void onCancelled() {
+        }
+    }
+
 }
