@@ -376,7 +376,9 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
                     for (BaseDeviceIO device : deviceIOs) {
                         if (WaterReplenishmentMeterMgr.IsWaterReplenishmentMeter(device.getType())) {
                             if (device instanceof BluetoothIO) {
-                                list.add(device);
+                                if (OznerDeviceManager.Instance().checkisBindMode(device)) {
+                                    list.add(device);
+                                 }
                             }
                         }
                     }

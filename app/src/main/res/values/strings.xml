@@ -20,6 +20,7 @@
     <string name="Center_ToLogOut">To log out?</string>
     <string name="Center_Verify_Msg">Validation message</string>
 
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -743,6 +744,7 @@
 
     <string name="Code_Login_Error">Login failed</string>
     <string name="Code_UserNotFound">Not found user</string>
+    <string name="Code_Has_regist">Account has been registered</string>
 
     <string name="PressToExit">Press again to exit</string>
     <string name="Center_obtainChamp">Get the champion in %s</string>

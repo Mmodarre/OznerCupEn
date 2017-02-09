@@ -79,11 +79,11 @@ public class SetupWaterReplenMeterActivity extends AppCompatActivity implements 
         rl_replenmeter_instru = (RelativeLayout) findViewById(R.id.rl_replenmeter_instru);
         rl_replenmeter_instru.setOnClickListener(this);
 
-        if (((OznerApplication)getApplication()).isLanguageCN()){
-            rl_replenmeter_instru.setVisibility(View.VISIBLE);
-        }else{
-            rl_replenmeter_instru.setVisibility(View.GONE);
-        }
+//        if (((OznerApplication)getApplication()).isLanguageCN()){
+//            rl_replenmeter_instru.setVisibility(View.VISIBLE);
+//        }else{
+//            rl_replenmeter_instru.setVisibility(View.GONE);
+//        }
 
 //        findViewById(R.id.rl_play_show).setOnClickListener(this);
         findViewById(R.id.tv_delDeviceBtn).setOnClickListener(this);

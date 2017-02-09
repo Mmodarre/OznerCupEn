@@ -1,25 +1,19 @@
 package com.ozner.cup.Device;
 
-import android.app.ActivityManager;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
-//import com.ozner.cup.Alarm.AlarmService;
-//import com.ozner.cup.Alarm.NoticeActivity;
 import com.ozner.cup.Alarm.Alarm;
 import com.ozner.cup.Alarm.Alarms;
 import com.ozner.cup.Command.PageState;
@@ -27,9 +21,10 @@ import com.ozner.cup.R;
 import com.ozner.device.OznerDeviceManager;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+
+//import com.ozner.cup.Alarm.AlarmService;
+//import com.ozner.cup.Alarm.NoticeActivity;
 
 /**
  * Created by mengdongya on 2016/3/1.
@@ -44,11 +39,11 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
     WaterReplenishmentMeter waterReplenishmentMeter;
     private ImageView checkBox1, checkBox2, checkBox3;
     long time1, time2, time3;
-    public static final String PREFERENCES = "AlarmClocks";
     SharedPreferences sh;
     Alarm alarm1 = new Alarm();
     Alarm alarm2 = new Alarm();
     Alarm alarm3 = new Alarm();
+    public static final String PREFERENCES = "AlarmClock";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +54,7 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
         } catch (Exception e) {
         }
         setContentView(R.layout.activity_setup_replen_time);
+        sh = this.getSharedPreferences(SetupReplenTimeActivity.PREFERENCES, Context.MODE_PRIVATE);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +77,7 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
         toolbar_save.setVisibility(View.VISIBLE);
         ((TextView) findViewById(R.id.toolbar_text)).setText(getString(R.string.water_replen_meter));
         toolbar_save.setOnClickListener(this);
-        sh = this.getSharedPreferences(SetupReplenTimeActivity.PREFERENCES, Context.MODE_PRIVATE);
+
         tv_time1_display = (TextView) findViewById(R.id.tv_time1_display);
         tv_time2_display = (TextView) findViewById(R.id.tv_time2_display);
         tv_time3_display = (TextView) findViewById(R.id.tv_time3_display);
@@ -95,12 +91,7 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
         findViewById(R.id.rl_detection_time2).setOnClickListener(this);
         findViewById(R.id.rl_detection_time3).setOnClickListener(this);
         initData();
-        alarm1.hour = 8;
-        alarm1.minutes = 30;
-        alarm2.hour = 14;
-        alarm2.minutes = 30;
-        alarm3.hour = 20;
-        alarm3.minutes = 0;
+
     }
 
     private void initData() {
@@ -280,16 +271,22 @@ public class SetupReplenTimeActivity extends AppCompatActivity implements View.O
             waterReplenishmentMeter.setAppdata(PageState.Time1, firstTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time1, 0);
+            alarm1.hour = 8;
+            alarm1.minutes = 30;
         }
         if (checkBox2.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time2, secondTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time2, 0);
+            alarm2.hour = 14;
+            alarm2.minutes = 30;
         }
         if (checkBox3.isSelected()) {
             waterReplenishmentMeter.setAppdata(PageState.Time3, thirdTime.getTime());
         } else {
             waterReplenishmentMeter.setAppdata(PageState.Time3, 0);
+            alarm3.hour = 20;
+            alarm3.minutes = 0;
         }
 
         alarm1.id = 3;

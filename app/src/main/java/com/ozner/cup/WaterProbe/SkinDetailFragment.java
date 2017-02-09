@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +17,18 @@ import android.widget.TextView;
 
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
 import com.ozner.cup.CChat.CChatFragment;
+import com.ozner.cup.Command.CenterUrlContants;
 import com.ozner.cup.Command.FootFragmentListener;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
+import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.HttpHelper.OznerDataHttp;
 import com.ozner.cup.MainActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.WaterProbe.WaterReplenishMeter.UIWRMView;
+import com.ozner.cup.mycenter.WebActivity;
 import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONArray;
@@ -66,6 +70,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     int queryFaceTimes, queryHandsTimes, queryEyesTimes, queryNeckTimes, todayValue = 0;
     SharedPreferences sh;
     String Mac;
+    String mobile, usertoken;
     int state = 0, faceTotalValue, handTotalValue, neckTotalValue, eyesTotalValue = 0;
     int faceTodayValue, handTodayValue, neckTodayValue, eyesTodayValue = 0;
     WaterReplenishmentMeter waterReplenishmentMeter;
@@ -86,6 +91,13 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         initClick(view);
         OznerApplication.changeTextFont((ViewGroup) view);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mobile = UserDataPreference.GetUserData(getContext(), UserDataPreference.Mobile, null);
+        usertoken = OznerPreference.UserToken(getActivity());
     }
 
     private void initClick(View view) {
@@ -111,6 +123,12 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     private void setData() {
         switchWeek(true);
         int n = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        //修正周序号越界
+        if (n == 1) {
+            n = 6;
+        } else {
+            n -= 2;
+        }
         int m = faceOilyW[n];
         if (m <= 12) {
             tv_skin_state.setText(getString(R.string.skin_dry));
@@ -379,6 +397,11 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 ((MainActivity) (getActivity())).footNavFragment.ShowContent(PageState.ZIXUNYEMIAN, "");
                 break;
             case R.id.skin_buy_jinghua:
+                Intent shopIntent = new Intent(getContext(), WebActivity.class);
+                String shopUrl = CenterUrlContants.formatBuyReplenWaterUrl(mobile, usertoken, "zh", "zh");
+                Log.e("tag", "购买精华液链接:" + shopUrl);
+                shopIntent.putExtra(WebActivity.URL, shopUrl);
+                startActivity(shopIntent);
                 break;
         }
     }

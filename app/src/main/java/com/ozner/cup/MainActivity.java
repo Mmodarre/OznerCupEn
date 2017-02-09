@@ -1020,6 +1020,7 @@ public class MainActivity extends BaseMainActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             //检查通知地址
+            Log.e("lingchen", "Main_onReceive: "+intent.getAction());
             String sendoraddress = intent.getStringExtra("Address");
             if (sendoraddress != null && sendoraddress.length() > 0) {
                 switch (intent.getAction()) {
