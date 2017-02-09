@@ -565,9 +565,11 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     public void onResume() {
         super.onResume();
         init();
+        Log.e("lingchen", "doInBackground: usertoken:"+OznerPreference.UserToken(getContext())+" ,mac:"+Mac);
         new GetTimesAsyncTask().execute();
         new GetWaterRMAsyncTask().execute();
         initData();
+        setData();
         rely_water_replenish_skin.setVisibility(View.GONE);
     }
 
@@ -655,6 +657,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         Log.e("lingchen", "CupSensorChange: "+address);
         if (this.Mac.equals(address)) {
             initData();
+            setData();
         }
     }
 
