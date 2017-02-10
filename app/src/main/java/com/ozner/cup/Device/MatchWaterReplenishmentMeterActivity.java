@@ -205,6 +205,8 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
                             return;
                         }
                     }
+                }else {
+                    Toast.makeText(getBaseContext(),getResources().getString(R.string.device_null), Toast.LENGTH_SHORT).show();
                 }
             }
         });

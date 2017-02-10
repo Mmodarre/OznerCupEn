@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
@@ -44,11 +45,12 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 /**
  * Created by mengdongya on 2016/3/8.
  */
-public class SkinDetailFragment extends Fragment implements View.OnClickListener{
+public class SkinDetailFragment extends Fragment implements View.OnClickListener {
     ImageView iv_face, iv_hands, iv_eyes, iv_bozi;
     TextView tv_week, tv_month, tv_skin_water, tv_skin_state, tv_skin_lastdata, tv_skin_average, tv_query_parts, toolbar_text;
     Toolbar toolbar;
     UIWRMView uiwrmView;
+    LinearLayout llay_bottom_btn;
     int[] faceWaterM = new int[31];
     int[] faceOilyM = new int[31];
     int[] faceWaterW = new int[7];
@@ -100,6 +102,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     }
 
     private void initClick(View view) {
+        llay_bottom_btn = (LinearLayout) view.findViewById(R.id.llay_bottom_btn);
         view.findViewById(R.id.ll_face).setOnClickListener(this);
         view.findViewById(R.id.ll_eyes).setOnClickListener(this);
         view.findViewById(R.id.ll_hands).setOnClickListener(this);
@@ -109,7 +112,14 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         view.findViewById(R.id.show_oily_instru).setOnClickListener(this);
         view.findViewById(R.id.show_water_instru).setOnClickListener(this);
         view.findViewById(R.id.skin_zixun).setOnClickListener(this);
-        view.findViewById(R.id.skin_buy_jinghua).setOnClickListener(this);
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+            llay_bottom_btn.setVisibility(View.VISIBLE);
+            view.findViewById(R.id.skin_buy_jinghua).setOnClickListener(this);
+            view.findViewById(R.id.skin_buy_jinghua).setVisibility(View.VISIBLE);
+        } else {
+            llay_bottom_btn.setVisibility(View.GONE);
+            view.findViewById(R.id.skin_buy_jinghua).setVisibility(View.GONE);
+        }
     }
 
     private void initData() {
