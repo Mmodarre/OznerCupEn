@@ -471,7 +471,7 @@ public class LoginActivity extends BaseLoginActivity {
                 try {
                     if (dialog != null)
                         dialog.dismiss();
-                    Log.e("Login", "getPhoneCode_res: "+result.value);
+                    Log.e("Login", "getPhoneCode_res: " + result.value);
                     if (result != null && result.state > 0) {
                         tv_wrong.setText("");
                     } else {
@@ -563,6 +563,7 @@ public class LoginActivity extends BaseLoginActivity {
         @Override
         protected void onPreExecute() {
             tv_voice.setClickable(false);
+            Log.e("tag", "onPreExecute: 获取语音验证码");
         }
 
         @Override
@@ -580,6 +581,7 @@ public class LoginActivity extends BaseLoginActivity {
 
         @Override
         protected void onPostExecute(NetJsonObject netJsonObject) {
+            tv_voice.setClickable(true);
             if (netJsonObject != null && netJsonObject.state > 0) {
                 tv_wrong.setText(getResources().getString(R.string.login_wrong_getvoice));
             } else {

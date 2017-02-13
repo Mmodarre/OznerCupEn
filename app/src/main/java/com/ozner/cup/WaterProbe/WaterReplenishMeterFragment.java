@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -45,6 +46,8 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 /**
  * Created by mengdongya on 2016/3/3.
  * modify by taoran
+ * 肤质干燥与否是根据各部位检测水分值来判断的
+ * 肤质类型是根据脸部皮肤油分值所在的取值范围来判定的。
  */
 public class WaterReplenishMeterFragment extends Fragment implements View.OnClickListener, FootFragmentListener {
 
@@ -61,12 +64,12 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     private LinearLayout laly_water_replenish, laly_water_replenish_skin;
     private int progress = 0;
     int queryTimes = 0, queryHands, queryFace, queryEyes, queryNeck, times;
-    float varHandsValue, varFaceValue, varEyesValue, varNeckValue = 0;
+    float varHandsValue, varFaceValue, varEyesValue, varNeckValue;
     SharedPreferences sh;
     SharedPreferences.Editor editor;
     BaseDeviceIO.ConnectStatus connectStatus;
     float battery;
-    private float faceTotalValue, handTotalValue, neckTotalValue, eyesTotalValue, skinVarValue = 0;
+    private float faceTotalValue, handTotalValue, neckTotalValue, eyesTotalValue, skinVarValue;
 
     @Nullable
     @Override
@@ -81,6 +84,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         View view = inflater.inflate(R.layout.water_replenish_meter_detail, container, false);
         initView(view);
         init();
+        initDeviceState();
         OznerApplication.changeTextFont((ViewGroup) view);
         return view;
     }
@@ -108,22 +112,11 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         waterValue = waterReplenishmentMeter.status().testValue().moisture;
         battery = waterReplenishmentMeter.status().battery();
         connectStatus = waterReplenishmentMeter.connectStatus();
+        Log.e("trstate", connectStatus + "=========补水仪状态");
     }
 
-    private void setDate() {
+    private void setData() {
         tv_name.setText(name);
-        switch (connectStatus) {
-            case Connecting:
-                tv_data_loading.setText(getString(R.string.loding_now));
-                break;
-            case Connected:
-                tv_data_loading.setVisibility(View.GONE);
-                break;
-            case Disconnect:
-                tv_data_loading.setText(getString(R.string.loding_fair));
-                tv_data_loading.setVisibility(View.VISIBLE);
-                break;
-        }
 
         if (queryFace != 0) {
             varFaceValue = faceTotalValue / queryFace;
@@ -189,6 +182,22 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
     }
 
+    private void initDeviceState() { //设备连接状态
+        connectStatus = waterReplenishmentMeter.connectStatus();
+        switch (connectStatus) {
+            case Connecting:
+                tv_data_loading.setText(getString(R.string.loding_now));
+                break;
+            case Connected:
+                tv_data_loading.setVisibility(View.GONE);
+                break;
+            case Disconnect:
+                tv_data_loading.setText(getString(R.string.loding_fair));
+                tv_data_loading.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
     private void initQuery() {
         tv_query_notice.setText(R.string.query_checking);
         firmwar_pb.setVisibility(View.VISIBLE);
@@ -231,7 +240,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                     if (waterValue > 0) {
                         new UpdateAsyncTask().execute(PageState.NeckSkinValue);
                         neckTotalValue += waterValue;
-                        queryNeck += 1;
+                        queryNeck ++;
                         lastestValue = waterValue;
                         waterValue = (int) (waterValue + 0.5);
                         editor.putString(Mac + "neck", waterValue + "");
@@ -280,7 +289,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                         new UpdateAsyncTask().execute(PageState.EyesSkinValue);
                         lastestValue = waterValue;
                         eyesTotalValue += waterValue;
-                        queryEyes += 1;
+                        queryEyes ++;
                         waterValue = (int) (waterValue + 0.5);
                         editor.putString(Mac + "eyes", waterValue + "");
                         editor.commit();
@@ -328,7 +337,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
                         new UpdateAsyncTask().execute(PageState.HandSkinValue);
                         lastestValue = waterValue;
                         handTotalValue += waterValue;
-                        queryHands += 1;
+                        queryHands ++;
                         waterValue = (int) (waterValue + 0.5);
                         editor.putString(Mac + "hands", waterValue + "");
                         editor.commit();
@@ -460,7 +469,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
 //                tv_data_loading.setVisibility(View.GONE);
 //                new UiUpdateAsyncTask().execute();
                 initData();
-                setDate();
+                setData();
                 return false;
             }
         });
@@ -487,11 +496,12 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
         tv_query_notice.setText(getResources().getString(R.string.query_notice_face));
         state = 1;
-//        varValue.setText(varFaceValue + "%(" + queryFace + "次)");
         varValue.setText(String.format(getString(R.string.avg_times), varFaceValue, queryFace));
         String faceLastValue = sh.getString(Mac + "face", null);
         if (faceLastValue != null) {
             lastValue.setText(faceLastValue + "%");
+        }else {
+            lastValue.setText(getString(R.string.text_null));
         }
 
 
@@ -506,11 +516,12 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
         tv_query_notice.setText(getResources().getString(R.string.query_notice_hand));
         state = 2;
-//        varValue.setText(varHandsValue + "%(" + queryHands + "次)");
         varValue.setText(String.format(getString(R.string.avg_times), varHandsValue, queryHands));
         String handsLastValue = sh.getString(Mac + "hands", null);
         if (null != handsLastValue) {
             lastValue.setText(handsLastValue + "%");
+        }else {
+            lastValue.setText(getString(R.string.text_null));
         }
     }
 
@@ -523,11 +534,12 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
         tv_query_notice.setText(getResources().getString(R.string.query_notice_eyes));
         state = 3;
-//        varValue.setText(varEyesValue + "%(" + queryEyes + "次)");
         varValue.setText(String.format(getString(R.string.avg_times), varEyesValue, queryEyes));
         String eyesLastValue = sh.getString(Mac + "eyes", null);
         if (eyesLastValue != null) {
             lastValue.setText(eyesLastValue + "%");
+        }else {
+            lastValue.setText(getString(R.string.text_null));
         }
     }
 
@@ -540,11 +552,12 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         }
         tv_query_notice.setText(getResources().getString(R.string.query_notice_bozi));
         state = 4;
-//        varValue.setText(varNeckValue + "%(" + queryNeck + "次)");
         varValue.setText(String.format(getString(R.string.avg_times), varNeckValue, queryNeck));
         String neckLastValue = sh.getString(Mac + "neck", null);
         if (neckLastValue != null) {
             lastValue.setText(neckLastValue + "%");
+        }else {
+            lastValue.setText(getString(R.string.text_null));
         }
     }
 
@@ -552,9 +565,11 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
     public void onResume() {
         super.onResume();
         init();
+        Log.e("lingchen", "doInBackground: usertoken:"+OznerPreference.UserToken(getContext())+" ,mac:"+Mac);
         new GetTimesAsyncTask().execute();
         new GetWaterRMAsyncTask().execute();
-        new UiUpdateAsyncTask().execute();
+        initData();
+        setData();
         rely_water_replenish_skin.setVisibility(View.GONE);
     }
 
@@ -639,8 +654,10 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
 
     @Override
     public void CupSensorChange(String address) {
+        Log.e("lingchen", "CupSensorChange: "+address);
         if (this.Mac.equals(address)) {
-            new UiUpdateAsyncTask().execute();
+            initData();
+            setData();
         }
     }
 
@@ -650,24 +667,9 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
 
     @Override
     public void ContentChange(String mac, String state) {
+        Log.e("lingchen", "ContentChange: "+state);
         if (WaterReplenishMeterFragment.this.isAdded() && this.Mac.equals(mac)) {
-            switch (state) {
-                //正在链接中
-                case BaseDeviceIO.ACTION_DEVICE_CONNECTING:
-                    tv_data_loading.setText(getString(R.string.loding_now));
-                    tv_data_loading.setVisibility(View.VISIBLE);
-                    break;
-                //已经连接
-                case BaseDeviceIO.ACTION_DEVICE_CONNECTED:
-                    tv_data_loading.setVisibility(View.GONE);
-                    break;
-                //已经断开连接
-                case BaseDeviceIO.ACTION_DEVICE_DISCONNECTED:
-                    tv_data_loading.setText(getString(R.string.loding_fair));
-                    tv_data_loading.setVisibility(View.VISIBLE);
-                    break;
-            }
-//            new UiUpdateAsyncTask().execute();
+            initDeviceState();
         }
     }
 
@@ -718,6 +720,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
 
         @Override
         protected void onPostExecute(NetJsonObject netJsonObject) {
+            Log.e("lingchen", "GetWaterRMAsyncTask: "+netJsonObject.value);
             faceTotalValue = 0;
             handTotalValue = 0;
             eyesTotalValue = 0;
@@ -813,6 +816,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
 
         @Override
         protected void onPostExecute(NetJsonObject netJsonObject) {
+            Log.e("lingchen", "GetTimesAsyncTask: "+netJsonObject.value);
             queryFace = 0;
             queryHands = 0;
             queryEyes = 0;
@@ -865,7 +869,7 @@ public class WaterReplenishMeterFragment extends Fragment implements View.OnClic
         @Override
         protected void onPostExecute(String result) {
             if (WaterReplenishMeterFragment.this != null && WaterReplenishMeterFragment.this.isAdded()) {
-                setDate();
+                setData();
             }
         }
 

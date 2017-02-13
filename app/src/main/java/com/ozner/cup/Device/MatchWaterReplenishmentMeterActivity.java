@@ -205,6 +205,8 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
                             return;
                         }
                     }
+                }else {
+                    Toast.makeText(getBaseContext(),getResources().getString(R.string.device_null), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -376,7 +378,9 @@ public class MatchWaterReplenishmentMeterActivity extends AppCompatActivity impl
                     for (BaseDeviceIO device : deviceIOs) {
                         if (WaterReplenishmentMeterMgr.IsWaterReplenishmentMeter(device.getType())) {
                             if (device instanceof BluetoothIO) {
-                                list.add(device);
+                                if (OznerDeviceManager.Instance().checkisBindMode(device)) {
+                                    list.add(device);
+                                 }
                             }
                         }
                     }

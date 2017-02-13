@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar"/>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="@color/colorLine" />
+        android:background="@color/colorLine"/>
 
     <RelativeLayout
         android:id="@+id/rl_set_name"
@@ -28,24 +28,24 @@
             android:gravity="center"
             android:text="@string/water_replen_meter"
             android:textColor="@color/toolbar_text_color"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
 
         <EditText
             android:id="@+id/et_device_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
+            android:background="@null"
             android:gravity="center_vertical"
             android:paddingRight="40dp"
-            android:background="@null"
             android:text="智能补水仪(办公室)"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
     </RelativeLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/colorLine" />
+        android:background="@color/colorLine"/>
 
     <RelativeLayout
         android:id="@+id/rl_set_sex"
@@ -63,7 +63,7 @@
             android:gravity="center"
             android:text="@string/gender"
             android:textColor="@color/toolbar_text_color"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/tv_sex"
@@ -75,7 +75,7 @@
             android:gravity="center_vertical"
             android:paddingRight="20dp"
             android:text="@string/women"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
     </RelativeLayout>
 
     <TextView
@@ -85,7 +85,7 @@
         android:paddingLeft="20dp"
         android:paddingTop="12dp"
         android:text="@string/replenish_remind"
-        android:textSize="14dp" />
+        android:textSize="14dp"/>
 
     <RelativeLayout
         android:id="@+id/rl_set_remind_time"
@@ -103,14 +103,14 @@
             android:gravity="center"
             android:text="@string/replenish_remind_time"
             android:textColor="@color/toolbar_text_color"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:paddingRight="20dp"
-            android:src="@drawable/next_right" />
+            android:src="@drawable/next_right"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -124,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:src="@drawable/attention" />
+            android:src="@drawable/attention"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -132,7 +132,7 @@
             android:layout_marginTop="12dp"
             android:layout_toRightOf="@+id/iv_notetips"
             android:text="@string/replenish_remind_reguest"
-            android:textSize="12dp" />
+            android:textSize="12dp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -142,7 +142,8 @@
         android:layout_gravity="center"
         android:background="@color/white"
         android:gravity="center_vertical"
-        android:paddingLeft="20dp">
+        android:paddingLeft="20dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -151,28 +152,29 @@
             android:gravity="center"
             android:text="@string/buy_jinghua_water"
             android:textColor="@color/toolbar_text_color"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:paddingRight="20dp"
-            android:src="@drawable/next_right" />
+            android:src="@drawable/next_right"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/colorLine"
-        android:paddingLeft="20dp">
+        android:paddingLeft="20dp"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/iv_goumai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:src="@drawable/attention" />
+            android:src="@drawable/attention"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -180,7 +182,7 @@
             android:layout_marginTop="12dp"
             android:layout_toRightOf="@+id/iv_goumai"
             android:text="@string/keep_use_replenish"
-            android:textSize="12dp" />
+            android:textSize="12dp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -191,63 +193,65 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:text="@string/water_replenish_use_instru"
-            android:textColor="@color/toolbar_text_color" />
+            android:textColor="@color/toolbar_text_color"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@drawable/next_right" />
+            android:src="@drawable/next_right"/>
     </RelativeLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/colorLine" />
+        android:background="@color/colorLine"/>
 
     <!--<RelativeLayout-->
-        <!--android:id="@+id/rl_play_show"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:background="@color/white"-->
-        <!--android:gravity="center"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:paddingLeft="20dp"-->
-        <!--android:paddingRight="20dp">-->
+    <!--android:id="@+id/rl_play_show"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:background="@color/white"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingLeft="20dp"-->
+    <!--android:paddingRight="20dp">-->
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentLeft="true"-->
-            <!--android:text="补水仪使用演示"-->
-            <!--android:textColor="@color/toolbar_text_color" />-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:text="补水仪使用演示"-->
+    <!--android:textColor="@color/toolbar_text_color" />-->
 
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:src="@drawable/next_right" />-->
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:src="@drawable/next_right" />-->
     <!--</RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/colorLine"
-        android:paddingLeft="20dp">
+        android:paddingLeft="20dp"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/iv_dianliang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:src="@drawable/attention" />
+            android:src="@drawable/attention"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -255,7 +259,7 @@
             android:layout_marginTop="12dp"
             android:layout_toRightOf="@+id/iv_dianliang"
             android:text="@string/replenish_remind_power"
-            android:textSize="12dp" />
+            android:textSize="12dp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -272,6 +276,6 @@
             android:background="@drawable/del_btn_stroke"
             android:gravity="center"
             android:text="@string/weather_delete_device"
-            android:textColor="@color/bad" />
+            android:textColor="@color/bad"/>
     </RelativeLayout>
 </LinearLayout>

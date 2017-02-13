@@ -552,7 +552,7 @@
     <string name="water_replenish_humEye">眼部\t35%-45%</string>
     <string name="water_replenish_humFace">脸部\t32%-42%</string>
     <string name="water_replenish_humNeck">颈部\t35%-45%</string>
-    <string name="water_replenish_humHands">手部\t32%-38%</string>
+    <string name="water_replenish_humHands">手部\t30%-38%</string>
     <string name="water_replenish_humtip">(仅供参考)</string>
     <string name="water_replenish_humSeason">不同季节各部分水分数值将有所不同。</string>
     <string name="water_replenish_humSeasonValue">夏季水分率正常值相差%1$s，冬季水分率正常值相差%2$s。</string>
@@ -727,9 +727,10 @@
     <string name="Code_Fiflter_CodeNotfound">二维码无效</string>
     <string name="Code_Fiflter_CodeUsed">二维码已经使用过了</string>
     <string name="Code_Fiflter_DeviceNotfound">设备未绑定</string>
-
     <string name="Code_Login_Error">登录失败</string>
     <string name="Code_UserNotFound">没有发现此用户</string>
+    <string name="Code_Has_regist">用户已经注册过了</string>
+
     <string name="PressToExit">再按一次退出程序</string>
     <string name="Center_obtainChamp">夺得%s月排行榜冠军</string>
     <string name="nin">您</string>

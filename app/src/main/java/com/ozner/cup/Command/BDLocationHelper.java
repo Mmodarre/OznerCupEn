@@ -80,6 +80,7 @@ public class BDLocationHelper {
                 }
                 Log.e(TAG, "onReceiveLocation: City:" + city);
                 OznerPreference.SetValue(mContext.get(), OznerPreference.BDLocation, city);
+//                OznerPreference.SetValue(mContext.get(), OznerPreference.BDLocation, "北京");
                 stopLocation();
             } else {
                 OznerPreference.SetValue(mContext.get(), OznerPreference.BDLocation, "");

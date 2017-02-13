@@ -8,23 +8,27 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
 import com.ozner.cup.CChat.CChatFragment;
-import com.ozner.cup.Command.FootFragmentListener;
+import com.ozner.cup.Command.CenterUrlContants;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
+import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.HttpHelper.OznerDataHttp;
 import com.ozner.cup.MainActivity;
 import com.ozner.cup.R;
 import com.ozner.cup.WaterProbe.WaterReplenishMeter.UIWRMView;
+import com.ozner.cup.mycenter.WebActivity;
 import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONArray;
@@ -41,11 +45,12 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 /**
  * Created by mengdongya on 2016/3/8.
  */
-public class SkinDetailFragment extends Fragment implements View.OnClickListener, FootFragmentListener {
+public class SkinDetailFragment extends Fragment implements View.OnClickListener {
     ImageView iv_face, iv_hands, iv_eyes, iv_bozi;
-    TextView tv_week, tv_month, tv_skin_water, tv_skin_state, tv_times, tv_skin_lastdata, tv_skin_average, tv_query_parts, toolbar_text;
+    TextView tv_week, tv_month, tv_skin_water, tv_skin_state, tv_skin_lastdata, tv_skin_average, tv_query_parts, toolbar_text;
     Toolbar toolbar;
     UIWRMView uiwrmView;
+    LinearLayout llay_bottom_btn;
     int[] faceWaterM = new int[31];
     int[] faceOilyM = new int[31];
     int[] faceWaterW = new int[7];
@@ -66,6 +71,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     int queryFaceTimes, queryHandsTimes, queryEyesTimes, queryNeckTimes, todayValue = 0;
     SharedPreferences sh;
     String Mac;
+    String mobile, usertoken;
     int state = 0, faceTotalValue, handTotalValue, neckTotalValue, eyesTotalValue = 0;
     int faceTodayValue, handTodayValue, neckTodayValue, eyesTodayValue = 0;
     WaterReplenishmentMeter waterReplenishmentMeter;
@@ -88,7 +94,15 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         return view;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mobile = UserDataPreference.GetUserData(getContext(), UserDataPreference.Mobile, null);
+        usertoken = OznerPreference.UserToken(getActivity());
+    }
+
     private void initClick(View view) {
+        llay_bottom_btn = (LinearLayout) view.findViewById(R.id.llay_bottom_btn);
         view.findViewById(R.id.ll_face).setOnClickListener(this);
         view.findViewById(R.id.ll_eyes).setOnClickListener(this);
         view.findViewById(R.id.ll_hands).setOnClickListener(this);
@@ -98,7 +112,14 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         view.findViewById(R.id.show_oily_instru).setOnClickListener(this);
         view.findViewById(R.id.show_water_instru).setOnClickListener(this);
         view.findViewById(R.id.skin_zixun).setOnClickListener(this);
-        view.findViewById(R.id.skin_buy_jinghua).setOnClickListener(this);
+        if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+            llay_bottom_btn.setVisibility(View.VISIBLE);
+            view.findViewById(R.id.skin_buy_jinghua).setOnClickListener(this);
+            view.findViewById(R.id.skin_buy_jinghua).setVisibility(View.VISIBLE);
+        } else {
+            llay_bottom_btn.setVisibility(View.GONE);
+            view.findViewById(R.id.skin_buy_jinghua).setVisibility(View.GONE);
+        }
     }
 
     private void initData() {
@@ -111,6 +132,12 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     private void setData() {
         switchWeek(true);
         int n = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        //修正周序号越界
+        if (n == 1) {
+            n = 6;
+        } else {
+            n -= 2;
+        }
         int m = faceOilyW[n];
         if (m <= 12) {
             tv_skin_state.setText(getString(R.string.skin_dry));
@@ -296,7 +323,8 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         super.onResume();
         new GetWaterRMAsyncTask().execute();
         new GetTimesAsyncTask().execute();
-        new UiUpdateAsyncTask().execute();
+        initData();
+        setData();
     }
 
     @Override
@@ -379,6 +407,11 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 ((MainActivity) (getActivity())).footNavFragment.ShowContent(PageState.ZIXUNYEMIAN, "");
                 break;
             case R.id.skin_buy_jinghua:
+                Intent shopIntent = new Intent(getContext(), WebActivity.class);
+                String shopUrl = CenterUrlContants.formatBuyReplenWaterUrl(mobile, usertoken, "zh", "zh");
+                Log.e("tag", "购买精华液链接:" + shopUrl);
+                shopIntent.putExtra(WebActivity.URL, shopUrl);
+                startActivity(shopIntent);
                 break;
         }
     }
@@ -645,83 +678,4 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    private FootFragmentListener mFootFragmentListener;
-
-    @Override
-    public void onAttach(Context activity) {
-        super.onAttach(activity);
-        try {
-            mFootFragmentListener = (FootFragmentListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void ShowContent(int i, String mac) {
-
-    }
-
-    @Override
-    public void ChangeRawRecord() {
-
-    }
-
-    @Override
-    public void CupSensorChange(String address) {
-        if (this.Mac.equals(address)) {
-            //此处应该执行更新数据异步操作
-            new UiUpdateAsyncTask().execute();
-        }
-    }
-
-    @Override
-    public void DeviceDataChange() {
-
-    }
-
-    @Override
-    public void ContentChange(String mac, String state) {
-
-    }
-
-    @Override
-    public void RecvChatData(String data) {
-
-    }
-
-    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-        }
-
-        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
-        @Override
-        protected String doInBackground(String... params) {
-            initData();
-            //开启线程获取网络数据
-//        handler
-            return null;
-        }
-
-        //onProgressUpdate方法用于更新进度信息
-        @Override
-        protected void onProgressUpdate(Integer... progresses) {
-
-        }
-
-        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
-        @Override
-        protected void onPostExecute(String result) {
-            if (SkinDetailFragment.this != null && SkinDetailFragment.this.isAdded()) {
-                setData();
-            }
-        }
-
-        //onCancelled方法用于在取消执行中的任务时更改UI
-        @Override
-        protected void onCancelled() {
-        }
-    }
 }

@@ -365,11 +365,15 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<NetUserVfMessage> vfInfoList = OznerCommand.GetUserVerifMessage(MyFriendsActivity.this);
-                Message message = new Message();
-                message.what = VERFIY_MSG;
-                message.obj = vfInfoList;
-                mhandler.sendMessage(message);
+                try {
+                    List<NetUserVfMessage> vfInfoList = OznerCommand.GetUserVerifMessage(MyFriendsActivity.this);
+                    Message message = new Message();
+                    message.what = VERFIY_MSG;
+                    message.obj = vfInfoList;
+                    mhandler.sendMessage(message);
+                } catch (Exception ex) {
+
+                }
             }
         }).start();
     }
@@ -541,8 +545,10 @@ public class MyFriendsActivity extends AppCompatActivity implements ExpandableLi
                         String rankNew = jsonObject.getString("data");
                         rankInfo2s = JSON.parseArray(rankNew, ClassifiedRankInfo2.class);
                         if (rankInfo2s.size() > 0) {
-                            ranklist2.clear();
-                            ranklist2.addAll(rankInfo2s);
+                            if (ranklist2 != null) {
+                                ranklist2.clear();
+                                ranklist2.addAll(rankInfo2s);
+                            }
 //                            Log.e("tag", "newRankList:" + JSON.toJSONString(ranklist2));
                             UserDataPreference.SetUserData(mContext, UserDataPreference.ClassifiedRankList, JSON.toJSONString(ranklist2));
                         }

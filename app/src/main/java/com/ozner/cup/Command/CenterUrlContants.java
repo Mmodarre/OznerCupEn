@@ -13,7 +13,7 @@ public class CenterUrlContants {
     private static String myOrderUrl = "http://www.oznerwater.com/lktnew/wapnew/Orders/OrderList.aspx";
     //领红包
     public static String getRedPacUrl = "http://www.oznerwater.com/lktnew/wapnew/Member/GrapRedPackages.aspx";
-    public static String getShareHBUrl="http://www.oznerwater.com/lktnew/wap/wxoauth.aspx?gourl=http://www.oznerwater.com/lktnew/wap/Member/InvitedMemberBrand.aspx";
+    public static String getShareHBUrl = "http://www.oznerwater.com/lktnew/wap/wxoauth.aspx?gourl=http://www.oznerwater.com/lktnew/wap/Member/InvitedMemberBrand.aspx";
 
     //我的券
     private static String myTicketUrl = "http://www.oznerwater.com/lktnew/wapnew/Member/AwardList.aspx";
@@ -42,6 +42,8 @@ public class CenterUrlContants {
     //台式净水器滤芯购买链接
 //    public static String deskPurifierUrl = "http://www.oznerwater.com/lktnew/wap/shopping/confirmOrderFromQrcode.aspx?gid=69";
     public static String deskPurifierUrl = "http://www.oznerwater.com/lktnew/wap/shopping/confirmOrderFromQrcode.aspx?gid=65";
+    //补水仪精华液购买链接
+    public static String buyReplenWaterUrl = "http://www.oznerwater.com/lktnew/wap/mall/goodsDetail.aspx?gid=203";
 
 //    /*
 //    *可单独使用链接
@@ -148,6 +150,21 @@ public class CenterUrlContants {
     //格式化台式净水器滤芯套餐url
     public static String formatDeskPurifierUrl(String mobile, String usertoken, String language, String area) {
         String result = getformatUrl(deskPurifierUrl);
+        return String.format(result, mobile, usertoken, language, area);
+    }
+
+    /**
+     * 格式化补水仪购买精华液链接
+     *
+     * @param mobile
+     * @param usertoken
+     * @param language
+     * @param area
+     *
+     * @return
+     */
+    public static String formatBuyReplenWaterUrl(String mobile, String usertoken, String language, String area) {
+        String result = getformatUrl(buyReplenWaterUrl);
         return String.format(result, mobile, usertoken, language, area);
     }
 

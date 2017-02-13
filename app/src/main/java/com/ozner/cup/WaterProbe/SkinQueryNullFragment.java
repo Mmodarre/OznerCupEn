@@ -1,10 +1,12 @@
 package com.ozner.cup.WaterProbe;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +14,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ozner.WaterReplenishmentMeter.WaterReplenishmentMeter;
+import com.ozner.cup.Command.CenterUrlContants;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.PageState;
+import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.Device.OznerApplication;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.HttpHelper.OznerDataHttp;
 import com.ozner.cup.R;
+import com.ozner.cup.mycenter.WebActivity;
 import com.ozner.device.OznerDeviceManager;
 
 import org.json.JSONArray;
@@ -41,6 +46,7 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
     int times = 0, sex, quertTimes = 0;
     ImageView iv_skin_class, iv_current_select_skin;
     private float skinVarValue;
+    String mobile, usertoken;
 
     @Nullable
     @Override
@@ -51,10 +57,19 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
         } catch (Exception e) {
         }
         View view = inflater.inflate(R.layout.fragment_skin_query, container, false);
+        sex = (int) waterReplenishmentMeter.getAppValue(PageState.Sex);//sex=0代表女  1代表男
+        Log.e("TRSEX1", sex + "==========sex");
         initView(view);
 //        sex = (int)waterReplenishmentMeter.getAppValue(PageState.Sex);//sex=0代表女  1代表男
         OznerApplication.changeTextFont((ViewGroup) view);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mobile = UserDataPreference.GetUserData(getContext(), UserDataPreference.Mobile, null);
+        usertoken = OznerPreference.UserToken(getActivity());
     }
 
     private void initView(View view) {
@@ -69,10 +84,12 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
         if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.VISIBLE);
             view.findViewById(R.id.skin_buy_layout).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.skin_buy_layout).setOnClickListener(this);
         } else {
             view.findViewById(R.id.llay_cupHolder).setVisibility(View.GONE);
             view.findViewById(R.id.skin_buy_layout).setVisibility(View.GONE);
         }
+//        view.findViewById(R.id.skin_buy_layout).setVisibility(View.GONE);
         toolbar_text = (TextView) view.findViewById(R.id.toolbar_text);
         toolbar_text.setText(getString(R.string.skin_query_null));
         toolbar.setBackgroundColor(getResources().getColor(R.color.water_replen_face));
@@ -104,6 +121,21 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
         skin_middle.setOnClickListener(this);
 //        skin_mix.setOnClickListener(this);
 //        skin_sensibility.setOnClickListener(this);
+        if (sex == 0) {
+            iv_skin_class.setImageResource(R.drawable.wu);
+            if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                iv_current_select_skin.setImageResource(R.drawable.ganzao);
+            } else {
+                iv_current_select_skin.setImageResource(R.drawable.ganzao_en);
+            }
+        } else {
+            iv_skin_class.setImageResource(R.drawable.nan_zhongxing_03);
+            if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_031);
+            } else {
+                iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_031_en);
+            }
+        }
     }
 
 
@@ -117,7 +149,21 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
 //                skin_mix.setSelected(false);
 //                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_dry_notice));
-                iv_current_select_skin.setImageResource(R.drawable.ganzao);
+                if (sex == 0) {
+                    if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                        iv_current_select_skin.setImageResource(R.drawable.ganzao);
+                    } else {
+                        iv_current_select_skin.setImageResource(R.drawable.ganzao_en);
+
+                    }
+                } else {
+                    if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                        iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_031);
+                    } else {
+                        iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_031_en);
+
+                    }
+                }
                 break;
             case R.id.skin_oily:
                 skin_dry.setSelected(false);
@@ -126,7 +172,21 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
 //                skin_mix.setSelected(false);
 //                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_oily_notice));
-                iv_current_select_skin.setImageResource(R.drawable.youxing_03);
+                if (sex == 0) {
+                    if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                        iv_current_select_skin.setImageResource(R.drawable.youxing_03);
+                    } else {
+                        iv_current_select_skin.setImageResource(R.drawable.youxing_03_en);
+
+                    }
+                } else {
+                    if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                        iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_032);
+                    } else {
+                        iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_032_en);
+
+                    }
+                }
                 break;
             case R.id.skin_middle:
                 skin_dry.setSelected(false);
@@ -135,7 +195,21 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
 //                skin_mix.setSelected(false);
 //                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_mid_notice));
-                iv_current_select_skin.setImageResource(R.drawable.zhongxing_03);
+                if (sex == 0) {
+                    if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                        iv_current_select_skin.setImageResource(R.drawable.zhongxing_03);
+                    } else {
+                        iv_current_select_skin.setImageResource(R.drawable.zhongxing_03_en);
+
+                    }
+                } else {
+                    if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                        iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_033);
+                    } else {
+                        iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_033_en);
+
+                    }
+                }
                 break;
 //            case R.id.skin_mix:
 //                skin_dry.setSelected(false);
@@ -156,6 +230,11 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
 //                iv_current_select_skin.setImageResource(R.drawable.mingganxing_03);
 //                break;
             case R.id.skin_buy_layout:
+                Intent shopIntent = new Intent(getContext(), WebActivity.class);
+                String shopUrl = CenterUrlContants.formatBuyReplenWaterUrl(mobile, usertoken, "zh", "zh");
+                Log.e("tag", "购买精华液链接:" + shopUrl);
+                shopIntent.putExtra(WebActivity.URL, shopUrl);
+                startActivity(shopIntent);
                 break;
             case R.id.iv_skin_class:
                 getFragmentManager().popBackStack();
@@ -249,17 +328,59 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
                             skin_oily.setSelected(true);
                             tv_skin_notice.setText(getString(R.string.skin_oily_notice));
                             skin_show_remind.setText(getString(R.string.skin_dry_notice));
-                            iv_skin_class.setImageResource(R.drawable.ganzao);
+                            if (sex == 0) {
+                                if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                    iv_skin_class.setImageResource(R.drawable.ganzao);
+                                } else {
+                                    iv_skin_class.setImageResource(R.drawable.ganzao_en);
+
+                                }
+                            } else {
+                                if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                    iv_skin_class.setImageResource(R.drawable.nan_zhongxing_031);
+                                } else {
+                                    iv_skin_class.setImageResource(R.drawable.nan_zhongxing_031_en);
+
+                                }
+                            }
                         } else if (oil > 12 && oil <= 20) {
                             skin_show.setText(getString(R.string.skin_mid));
                             skin_middle.setVisibility(View.GONE);
                             skin_show_remind.setText(getString(R.string.skin_mid_notice));
-                            iv_skin_class.setImageResource(R.drawable.zhongxing_03);
+                            if (sex == 0) {
+                                if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                    iv_skin_class.setImageResource(R.drawable.zhongxing_03);
+                                } else {
+                                    iv_skin_class.setImageResource(R.drawable.zhongxing_03_en);
+
+                                }
+                            } else {
+                                if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                    iv_skin_class.setImageResource(R.drawable.nan_zhongxing_033);
+                                } else {
+                                    iv_skin_class.setImageResource(R.drawable.nan_zhongxing_033_en);
+
+                                }
+                            }
                         } else if (oil > 20) {
                             skin_show.setText(getString(R.string.skin_oily));
                             skin_oily.setVisibility(View.GONE);
                             skin_show_remind.setText(getString(R.string.skin_oily_notice));
-                            iv_skin_class.setImageResource(R.drawable.youxing_03);
+                            if (sex == 0) {
+                                if (((OznerApplication) getActivity().getApplication()).isLanguageCN()) {
+                                    iv_skin_class.setImageResource(R.drawable.youxing_03);
+                                } else {
+                                    iv_skin_class.setImageResource(R.drawable.youxing_03_en);
+
+                                }
+                            } else {
+                                if (((OznerApplication) getActivity().getApplication()).isLoginPhone()) {
+                                    iv_skin_class.setImageResource(R.drawable.nan_zhongxing_032);
+                                } else {
+                                    iv_skin_class.setImageResource(R.drawable.nan_zhongxing_032_en);
+
+                                }
+                            }
                         }
                         notice_skin.setText(getString(R.string.query_times_unenough));
                     } else {
