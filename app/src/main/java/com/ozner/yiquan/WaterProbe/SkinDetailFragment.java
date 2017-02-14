@@ -41,9 +41,9 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 /**
  * Created by mengdongya on 2016/3/8.
  */
-public class SkinDetailFragment extends Fragment implements View.OnClickListener, FootFragmentListener {
+public class SkinDetailFragment extends Fragment implements View.OnClickListener{
     ImageView iv_face, iv_hands, iv_eyes, iv_bozi;
-    TextView tv_week, tv_month, tv_skin_water, tv_skin_state, tv_times, tv_skin_lastdata, tv_skin_average, tv_query_parts, toolbar_text;
+    TextView tv_week, tv_month, tv_skin_water, tv_skin_state, tv_skin_lastdata, tv_skin_average, tv_query_parts, toolbar_text;
     Toolbar toolbar;
     UIWRMView uiwrmView;
     int[] faceWaterM = new int[31];
@@ -77,7 +77,7 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Mac = getArguments().getString("MAC");
-        state = Integer.parseInt(getArguments().getString("state"));
+        state = getArguments().getInt("state");
         waterReplenishmentMeter = (WaterReplenishmentMeter) OznerDeviceManager.Instance().getDevice(Mac);
         View view = inflater.inflate(R.layout.fragment_skin_detail, container, false);
         sh = getActivity().getSharedPreferences("SkinValues", Context.MODE_PRIVATE);
@@ -288,17 +288,12 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         new GetWaterRMAsyncTask().execute();
         new GetTimesAsyncTask().execute();
-        new UiUpdateAsyncTask().execute();
+        initData();
+        setData();
     }
 
     @Override
@@ -647,86 +642,6 @@ public class SkinDetailFragment extends Fragment implements View.OnClickListener
                 } catch (Exception e) {
                 }
             }
-        }
-    }
-
-    private FootFragmentListener mFootFragmentListener;
-
-    @Override
-    public void onAttach(Context activity) {
-        super.onAttach(activity);
-        try {
-            mFootFragmentListener = (FootFragmentListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void ShowContent(int i, String mac) {
-
-    }
-
-    @Override
-    public void ChangeRawRecord() {
-
-    }
-
-    @Override
-    public void CupSensorChange(String address) {
-        if (this.Mac.equals(address)) {
-            //此处应该执行更新数据异步操作
-            new UiUpdateAsyncTask().execute();
-        }
-    }
-
-    @Override
-    public void DeviceDataChange() {
-
-    }
-
-    @Override
-    public void ContentChange(String mac, String state) {
-
-    }
-
-    @Override
-    public void RecvChatData(String data) {
-
-    }
-
-    private class UiUpdateAsyncTask extends AsyncTask<String, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-        }
-
-        //doInBackground方法内部执行后台任务,不可在此方法内修改UI
-        @Override
-        protected String doInBackground(String... params) {
-            initData();
-            //开启线程获取网络数据
-//        handler
-            return null;
-        }
-
-        //onProgressUpdate方法用于更新进度信息
-        @Override
-        protected void onProgressUpdate(Integer... progresses) {
-
-        }
-
-        //onPostExecute方法用于在执行完后台任务后更新UI,显示结果
-        @Override
-        protected void onPostExecute(String result) {
-            if (SkinDetailFragment.this != null && SkinDetailFragment.this.isAdded()) {
-                setData();
-            }
-        }
-
-        //onCancelled方法用于在取消执行中的任务时更改UI
-        @Override
-        protected void onCancelled() {
         }
     }
 }

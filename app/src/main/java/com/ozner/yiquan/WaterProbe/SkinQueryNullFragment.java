@@ -54,7 +54,6 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
         }
         View view = inflater.inflate(R.layout.fragment_skin_query, container, false);
         sex = (int)waterReplenishmentMeter.getAppValue(PageState.Sex);//sex=0代表女  1代表男
-        Log.e("TRSEX1",sex+"==========sex");
         initView(view);
         OznerApplication.changeTextFont((ViewGroup) view);
         return view;
@@ -82,21 +81,10 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
         skin_show = (TextView) view.findViewById(R.id.skin_show);//皮肤肤质
         notice_skin = (TextView) view.findViewById(R.id.notice_skin);//提示
         query_times = (TextView) view.findViewById(R.id.query_times);//检测次数
-//        try {
-//             quertTimes = (int)waterReplenishmentMeter.getAppValue(PageState.WRMQueryTimes);
-//            if (quertTimes != 0){
-//                notice_skin.setText(getString(R.string.query_times_unenough));
-//            }
-//            query_times.setText(quertTimes+"");
-//        }catch (Exception e){}
-
         skin_show_remind = (TextView) view.findViewById(R.id.skin_show_remind);//皮肤肤质保护说明
-//        query_time_quantum = (TextView) view.findViewById(R.id.query_time_quantum);//统计时间段
         skin_dry = (TextView) view.findViewById(R.id.skin_dry);//肤质
         skin_oily = (TextView) view.findViewById(R.id.skin_oily);//肤质
         skin_middle = (TextView) view.findViewById(R.id.skin_middle);//肤质
-//        skin_mix = (TextView) view.findViewById(R.id.skin_mix);//肤质
-//        skin_sensibility = (TextView) view.findViewById(R.id.skin_sensibility);//肤质
         tv_skin_notice = (TextView) view.findViewById(R.id.tv_skin_notice);//肤质
         skin_dry.setSelected(true);
         iv_current_select_skin = (ImageView) view.findViewById(R.id.iv_current_select_skin);
@@ -105,8 +93,6 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
         skin_dry.setOnClickListener(this);
         skin_oily.setOnClickListener(this);
         skin_middle.setOnClickListener(this);
-//        skin_mix.setOnClickListener(this);
-//        skin_sensibility.setOnClickListener(this);
         if(sex==0){
             iv_skin_class.setImageResource(R.drawable.wu);
             iv_current_select_skin.setImageResource(R.drawable.ganzao);
@@ -124,8 +110,6 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
                 skin_dry.setSelected(true);
                 skin_oily.setSelected(false);
                 skin_middle.setSelected(false);
-//                skin_mix.setSelected(false);
-//                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_dry_notice));
               if(sex==0) {
                   iv_current_select_skin.setImageResource(R.drawable.ganzao);
@@ -137,8 +121,6 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
                 skin_dry.setSelected(false);
                 skin_oily.setSelected(true);
                 skin_middle.setSelected(false);
-//                skin_mix.setSelected(false);
-//                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_oily_notice));
                 if(sex==0){
                     iv_current_select_skin.setImageResource(R.drawable.youxing_03);
@@ -150,8 +132,6 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
                 skin_dry.setSelected(false);
                 skin_oily.setSelected(false);
                 skin_middle.setSelected(true);
-//                skin_mix.setSelected(false);
-//                skin_sensibility.setSelected(false);
                 tv_skin_notice.setText(getString(R.string.skin_mid_notice));
                 if(sex==0) {
                     iv_current_select_skin.setImageResource(R.drawable.zhongxing_03);
@@ -159,24 +139,6 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
                     iv_current_select_skin.setImageResource(R.drawable.nan_zhongxing_033);
                 }
                 break;
-//            case R.id.skin_mix:
-//                skin_dry.setSelected(false);
-//                skin_oily.setSelected(false);
-//                skin_middle.setSelected(false);
-//                skin_mix.setSelected(true);
-//                skin_sensibility.setSelected(false);
-//                tv_skin_notice.setText(getString(R.string.skin_mix_notice));
-//                iv_current_select_skin.setImageResource(R.drawable.hunhexing_03);
-//                break;
-//            case R.id.skin_sensibility:
-//                skin_dry.setSelected(false);
-//                skin_oily.setSelected(false);
-//                skin_middle.setSelected(false);
-//                skin_mix.setSelected(false);
-//                skin_sensibility.setSelected(true);
-//                tv_skin_notice.setText(getString(R.string.skin_sensibility_notice));
-//                iv_current_select_skin.setImageResource(R.drawable.mingganxing_03);
-//                break;
             case R.id.skin_buy_layout:
                 break;
             case R.id.iv_skin_class:
@@ -260,9 +222,9 @@ public class SkinQueryNullFragment extends Fragment implements View.OnClickListe
                         JSONObject object1 = (JSONObject) jsonArray.get(i);
                         float oil = Float.parseFloat(object1.getString("ynumber"));
                         int time = Integer.parseInt(object1.getString("times"));
-                        skinVarValue += time * oil;
-                        times += time;
-                    }
+                        skinVarValue += time * oil;   //每天的油分平均值*每天的次数===总油分值
+                        times += time;  //每天检测次数累加====总次数
+                    }   //肤质：统计当月每天的(油分平均值*检测次数）总油分值除以总次数
                     if (times != 0) {
                         float oil = skinVarValue / times;
                         if (oil <= 12) {
