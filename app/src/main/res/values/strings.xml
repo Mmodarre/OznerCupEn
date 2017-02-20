@@ -575,7 +575,7 @@
     <string name="neck_skin_notice2">颈部水份已达标，别让颈纹泄露了你的年龄。</string>
     <string name="neck_skin_notice3">颈部现在很水润，但不要松懈哦！</string>
     <string name="phone_nonet">手机未连接网络</string>
-    <string name="detail_nonet">设备已断网</string>
+    <string name="detail_nonet">设备云已断开</string>
     <string name="not_connected">未连接</string>
 
     <string name="notice_replace_lvxin">滤芯到期提醒</string>
