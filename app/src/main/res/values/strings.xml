@@ -566,7 +566,7 @@
     <string name="neck_skin_notice3">Neck now very moist, but do not relax Oh!</string>
 
     <string name="phone_nonet">Phone is not connected to the network</string>
-    <string name="detail_nonet">Device disconnected</string>
+    <string name="detail_nonet">Device Cloud disconnected</string>
 
 
     <string name="notice_replace_lvxin">Filter Expiration Reminder</string>
