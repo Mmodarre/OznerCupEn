@@ -78,12 +78,10 @@ public abstract class IOManager extends XObject {
             return devices.get(address);
         }
     }
-
     public void removeDevice(BaseDeviceIO io)
     {
 
     }
-
     /**
      * 获取可用的设备列表
      */

@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.util.Log;
 
 import com.ozner.XObject;
 import com.ozner.device.OznerDeviceManager;
@@ -78,40 +77,30 @@ public class OznerBLEService extends Service implements ActivityLifecycleCallbac
     public void onCreate() {
         super.onCreate();
         try {
+
             mManager = new OznerDeviceManager(getApplicationContext());
         } catch (InstantiationException e) {
             e.printStackTrace();
-        } catch (AssertionError ae) {
-            ae.printStackTrace();
-            Log.e("===========", ae.getMessage() + "=======" + "注册太多广播接收者");
         }
         powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
     }
 
     @Override
     public void onDestroy() {
+        mManager.stop();
         super.onDestroy();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        try {
-            this.getApplication().registerActivityLifecycleCallbacks(this);
-            BluetoothManager bluetoothManager = (BluetoothManager) this
-                    .getSystemService(Context.BLUETOOTH_SERVICE);
-            if (bluetoothManager != null) {
-                BluetoothAdapter adapter = bluetoothManager.getAdapter();
-                if (adapter != null) {
-                    if (adapter.getState() == BluetoothAdapter.STATE_OFF) {
-                        adapter.enable();
-                    }
-                }
-            }
-            XObject.setRunningMode(getApplicationContext(), XObject.RunningMode.Foreground);
-        }catch (Exception ex)
-        {
-            ex.printStackTrace();
+        this.getApplication().registerActivityLifecycleCallbacks(this);
+        BluetoothManager bluetoothManager = (BluetoothManager) this
+                .getSystemService(Context.BLUETOOTH_SERVICE);
+        BluetoothAdapter adapter = bluetoothManager.getAdapter();
+        if (adapter.getState() == BluetoothAdapter.STATE_OFF) {
+            adapter.enable();
         }
+        XObject.setRunningMode(getApplicationContext(), XObject.RunningMode.Foreground);
         //BluetoothWorkThread work=new BluetoothWorkThread(getApplicationContext());
         return binder;
     }

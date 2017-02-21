@@ -138,9 +138,8 @@ public class MXChipIOManager extends IOManager {
                             String type = listenDeviceList.get(address);
                             if (OznerDeviceManager.Instance().hashDevice(address)) {
                                 MXChipIO io = createMXChipDevice(address,type);
-                                if (io!=null) {
+                                if (io!=null)
                                     doAvailable(io);
-                                }
                             }
                         }
                     }
@@ -194,6 +193,7 @@ public class MXChipIOManager extends IOManager {
                 MXChipIO io=new MXChipIO(context(),proxy,address,listenDeviceList.get(address));
                 doAvailable(io);
             }
+
         }
 
         @Override
@@ -206,7 +206,7 @@ public class MXChipIOManager extends IOManager {
             for (String address:list) {
                 MXChipIO io=new MXChipIO(context(),proxy,address,listenDeviceList.get(address));
                 if (io!=null)
-                    doUnavailable(io);
+                doUnavailable(io);
             }
         }
 

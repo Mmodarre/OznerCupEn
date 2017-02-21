@@ -168,7 +168,8 @@ public class CupFirmwareTools extends FirmwareTools {
                         onFirmwarePosition(i, Size);
                     }
                 }
-            } else {
+            }else
+            {
                 onFirmwareFail();
                 return false;
             }

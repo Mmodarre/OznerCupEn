@@ -71,7 +71,7 @@
     <string name="cupDetail_waterUtil">ml</string>
     <string name="purifierDetail_after">经过净化后的水质健康，适合您直饮</string>
     <string name="purifierDetail_none">您未使用净水器 暂无数据显示</string>
-    <string name="ozner_text">COPYRIGHT©2015 OZNER.ALL RIGHTS RESERVED</string>s
+    <string name="ozner_text">COPYRIGHT©2015 OZNER.ALL RIGHTS RESERVED</string>
     <string name="match_failed_csir">配对失败:</string>
     <string name="match_failed_happend">已经配对过了</string>
     <string name="network_command_error">网络执行操作失败</string>

@@ -178,8 +178,9 @@ public class TapFirmwareTools extends FirmwareTools {
                 if (checkSum[0] == opCode_GetFirmwareSumRet) {
                     long sum = ByteUtil.getUInt(checkSum, 1);
                     if (sum == Checksum) {
+
                         byte[] update = new byte[5];
-                        update[0] = (byte) 0xc3;
+                        update[0]=(byte)0xc3;
                         ByteUtil.putInt(update, Size, 1);
                         if (deviceIO.send(update)) {
                             onFirmwareComplete();

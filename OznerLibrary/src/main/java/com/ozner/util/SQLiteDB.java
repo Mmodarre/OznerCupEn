@@ -127,6 +127,7 @@ public class SQLiteDB extends SQLiteOpenHelper {
         }
     }
 
+
     /**
      * 检查表中某列是否存在
      * Csir
@@ -167,5 +168,4 @@ public class SQLiteDB extends SQLiteOpenHelper {
             }
         }
     }
-
 }

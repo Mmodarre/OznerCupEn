@@ -2,9 +2,16 @@ package com.ozner.WaterPurifier;
 
 import android.content.Context;
 
+import com.ozner.bluetooth.BluetoothIO;
+import com.ozner.bluetooth.BluetoothScanResponse;
+import com.ozner.bluetooth.IBluetoothScanResponseParser;
+import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.BaseDeviceManager;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
+
+import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Created by xzyxd on 2015/11/2.
@@ -12,8 +19,18 @@ import com.ozner.device.OznerDeviceManager;
 public class WaterPurifierManager extends BaseDeviceManager {
 
 
+    IBluetoothScanResponseParser bluetoothScanResponseParser = new IBluetoothScanResponseParser() {
+        @Override
+        public BluetoothScanResponse parseScanResponse(String name, byte[] Manufacturer_Specific, byte[] Service_Data) {
+            ///转到RO设备里面去处理BLE广播数据，返回NULL说明不是RO设备
+            return WaterPurifier_RO_BLE.parseScanResp(name,Service_Data);
+
+        }
+    };
+
     public WaterPurifierManager(Context context) {
         super(context);
+        OznerDeviceManager.Instance().ioManagerList().bluetoothIOMgr().registerScanResponseParser(bluetoothScanResponseParser);
     }
 
     public static boolean IsWaterPurifier(String Model) {
@@ -23,6 +40,14 @@ public class WaterPurifierManager extends BaseDeviceManager {
             return true;
         }
         if (Model.trim().equals("AY001MAB1"))
+        {
+            return true;
+        }
+        if (Model.trim().equals("Ozner RO"))
+        {
+            return true;
+        }
+        if (Model.trim().equals("16a21bd6"))
         {
             return true;
         }
@@ -38,7 +63,7 @@ public class WaterPurifierManager extends BaseDeviceManager {
 
     @Override
     protected OznerDevice createDevice(String address, String type, String settings) {
-        if (type.trim().equals("MXCHIP_HAOZE_Water"))
+        if (type.trim().equals("MXCHIP_HAOZE_Water") || (type.trim().equals("16a21bd6")))
         {
             WaterPurifier waterPurifier = new WaterPurifier_MXChip(context(), address, type, settings);
             OznerDeviceManager.Instance().ioManagerList().mxChipIOManager()
@@ -50,10 +75,28 @@ public class WaterPurifierManager extends BaseDeviceManager {
             WaterPurifier waterPurifier = new WaterPurifier_Ayla(context(), address, type, settings);
             return waterPurifier;
         }else
+        if (type.trim().equals("Ozner RO"))
+        {
+            WaterPurifier waterPurifier = new WaterPurifier_RO_BLE(context(), address, type, settings);
+            return waterPurifier;
+        }else
             return null;
     }
 
-//    @Override
+    @Override
+    public boolean checkIsBindMode(BaseDeviceIO io) {
+
+        if (io instanceof BluetoothIO)
+        {
+            if (io.getType().equals("Ozner RO")) {
+                //检查是否在配对模式
+                return WaterPurifier_RO_BLE.isBindMode((BluetoothIO) io);
+            }
+        }
+        return super.checkIsBindMode(io);
+    }
+
+    //    @Override
 //    public OznerDevice loadDevice(String address, String Type, String Settings) {
 //        if (IsWaterPurifier(Type)) {
 //            OznerDevice device = OznerDeviceManager.Instance().getDevice(address);
