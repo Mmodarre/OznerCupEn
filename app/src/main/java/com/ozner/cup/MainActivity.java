@@ -604,7 +604,8 @@ public class MainActivity extends BaseMainActivity {
                             String tapPen = null;
                             try {
                                 tapPen = deviceData.getAppValue(PageState.TapType).toString();
-                            }catch (NullPointerException ex){}
+                            } catch (NullPointerException ex) {
+                            }
                             if (tapPen == "pen" || "pen".equals(tapPen)) {
                                 WaterTDSPenFragment waterTDSPenFragment = new WaterTDSPenFragment();
                                 waterTDSPenFragment.setArguments(params);
@@ -622,6 +623,7 @@ public class MainActivity extends BaseMainActivity {
                             }
                             Log.e("123456", tapPen);
                             return;
+                        case WaterType2:
                         case WaterType:
                             WaterPurifierFragment waterPurifierFragment = new WaterPurifierFragment();
                             waterPurifierFragment.setArguments(params);
@@ -638,6 +640,7 @@ public class MainActivity extends BaseMainActivity {
                                     .commitAllowingStateLoss();
                             this.MAC = mac;
                             return;
+                        case AirPurifierTypeVer2:
                         case AirPurifierTypeVer:
                             VerticalAirPurifierFragment verticalAirPurifierFragment = new VerticalAirPurifierFragment();
                             verticalAirPurifierFragment.setArguments(params);
@@ -1020,12 +1023,12 @@ public class MainActivity extends BaseMainActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             //检查通知地址
-            Log.e("lingchen", "Main_onReceive: "+intent.getAction());
+            Log.e("lingchen", "Main_onReceive: " + intent.getAction());
             String sendoraddress = intent.getStringExtra("Address");
             if (sendoraddress != null && sendoraddress.length() > 0) {
                 switch (intent.getAction()) {
                     case BaseMainActivity.ACTION_NetChenge:
-                        myFootFragmentListener.ContentChange(sendoraddress,null);
+                        myFootFragmentListener.ContentChange(sendoraddress, null);
                         break;
                     case BaseDeviceIO.ACTION_DEVICE_CONNECTED:
                     case BaseDeviceIO.ACTION_DEVICE_CONNECTING:
