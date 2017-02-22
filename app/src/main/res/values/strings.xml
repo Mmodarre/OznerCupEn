@@ -750,6 +750,20 @@
     <string name="Center_obtainChamp">Get the champion in %s</string>
     <string name="nin">You </string>
 
+
+
+    <!--增加RO水机-->
+    <string name="ro_purifier">Water purifier</string>
+    <string name="match_ro_notice">Please open the water purifier</string>
+    <string name="open_ro">Confirm this water purifier is on</string>
+    <string name="problem_notice_ro">Try again after check machine switch status </string>
+    <string name="my_ro">Water purifier</string>
+    <string name="edit_ro_name">Enter the water purifier name</string>
+    <string name="rest_ro_fit">reset</string>
+    <string name="rofit">Filter Status</string>
+    <string name="ro_fit">Clean the front filter</string>
+    <string name="rofilter_need_change">Please replace the filter</string>
+
     <string name="Safety">Safety</string>
     <string name="general">general</string>
     <string name="title_activity_base_main">BaseMainActivity</string>
