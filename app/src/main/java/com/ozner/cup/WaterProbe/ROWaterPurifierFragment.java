@@ -237,34 +237,42 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
    }
 
     public void InitData() {
-//        isOffLine = waterPurifier.isOffline();
-        if (waterPurifier.waterInfo.TDS1_RAW> 0 && waterPurifier.waterInfo.TDS2_RAW > 0) {
+        isOffLine = waterPurifier.isOffline();
+
+        Log.e("trfitt",isOffLine+"===========");
+        if (waterPurifier.waterInfo.TDS1> 0 && waterPurifier.waterInfo.TDS2> 0) {
             isZero = false;
-            tds1 = waterPurifier.waterInfo.TDS1_RAW;
-            tds2 = waterPurifier.waterInfo.TDS2_RAW;
-            Log.e("trfitt",tds1+"===========tds1\n"+tds2+"============tds2");
+            tds1 = waterPurifier.waterInfo.TDS1;
+            tds2 = waterPurifier.waterInfo.TDS2;
+//            Log.e("trfitt",tds1+"===========tds1\n"+tds2+"============tds2");
             if (tds1 < tds2) {
                 tdsMid = tds1;
                 tds1 = tds2;
                 tds2 = tdsMid;
             }
         } else {
-            tds1 = waterPurifier.waterInfo.TDS1_RAW;
-            tds2 = waterPurifier.waterInfo.TDS2_RAW;
+            tds1 = waterPurifier.waterInfo.TDS1;
+            tds2 = waterPurifier.waterInfo.TDS2;
             isZero = true;
         }
         isPowerOn = waterPurifier.status().Power();
-
+        Log.e("trfitt",isPowerOn+"===========");
         //从设备获取滤芯状态
-        waterPurifier.resetFilter();
-//        if (isResetFilter) {
+//        waterPurifier.resetFilter();
+        if (!isOffLine) {
             filter_A_Time = waterPurifier.filterInfo.Filter_A_Percentage;
             filter_B_Time = waterPurifier.filterInfo.Filter_B_Percentage;
             filter_C_Time = waterPurifier.filterInfo.Filter_C_Percentage;
             filter_median1 = Math.min(filter_A_Time, filter_B_Time);
             filter_median2 = Math.min(filter_median1, filter_C_Time);
+//            rlay_filterStatus.setEnabled(true);
             Log.e("trfilterTime", "A------" + filter_A_Time + "\nB------" + filter_B_Time + "\nC------" + filter_C_Time + "\nMIN------" + filter_median2);
-//        }
+        }else{
+            filter_A_Time = -1;
+            filter_B_Time = -1;
+            filter_C_Time = -1;
+//            rlay_filterStatus.setEnabled(false);
+        }
     }
 
     //
@@ -313,9 +321,18 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
             }
             tv_filterStatus.setText(filter_median2+"%");
         }else{
-            tv_filterStatus.setText(R.string.text_null);
-            //iv_filterState.setImageResource(R.drawable.filter_state1);
-            tv_filiteText.setText(R.string.filter_status);
+            if(filter_median2==0&&isOffLine)
+            {
+                tv_filterStatus.setText(getResources().getString(R.string.text_null));
+                //iv_filterState.setImageResource(R.drawable.filter_state1);
+                tv_filiteText.setText(R.string.filter_status);
+                rlay_filterStatus.setEnabled(false);
+            }else{
+                tv_filterStatus.setText(filter_median2+"%");
+                //iv_filterState.setImageResource(R.drawable.filter_state1);
+                tv_filiteText.setText(R.string.filter_status);
+                rlay_filterStatus.setEnabled(true);
+            }
         }
         if (isPowerOn) {
 //            iv_tdsLevelImg.setVisibility(View.VISIBLE);
@@ -459,17 +476,17 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                     rlay_purifier_tds.setClickable(true);
 
                     //上传净水器净化前后的TDS值
-                    if (waterPurifier.waterInfo.TDS1_RAW> 0 && waterPurifier.waterInfo.TDS2_RAW > 0) {
-                        if (waterPurifier.waterInfo.TDS1_RAW> waterPurifier.waterInfo.TDS2_RAW) {
-                            if (waterPurifier.waterInfo.TDS1_RAW != tdsPre || waterPurifier.waterInfo.TDS2_RAW != tdsAfter) {
-                                tdsPre = waterPurifier.waterInfo.TDS1_RAW;
-                                tdsAfter = waterPurifier.waterInfo.TDS2_RAW;
+                    if (waterPurifier.waterInfo.TDS1> 0 && waterPurifier.waterInfo.TDS2 > 0) {
+                        if (waterPurifier.waterInfo.TDS1> waterPurifier.waterInfo.TDS2) {
+                            if (waterPurifier.waterInfo.TDS1 != tdsPre || waterPurifier.waterInfo.TDS2 != tdsAfter) {
+                                tdsPre = waterPurifier.waterInfo.TDS1;
+                                tdsAfter = waterPurifier.waterInfo.TDS2;
                                 uploadTds(MAC, waterPurifier.Type(), tdsPre, tdsAfter);
                             }
                         } else {
-                            if (waterPurifier.waterInfo.TDS2_RAW != tdsPre || waterPurifier.waterInfo.TDS1_RAW != tdsAfter) {
-                                tdsPre = waterPurifier.waterInfo.TDS2_RAW;
-                                tdsAfter = waterPurifier.waterInfo.TDS1_RAW;
+                            if (waterPurifier.waterInfo.TDS2 != tdsPre || waterPurifier.waterInfo.TDS1 != tdsAfter) {
+                                tdsPre = waterPurifier.waterInfo.TDS2;
+                                tdsAfter = waterPurifier.waterInfo.TDS1;
                                 uploadTds(MAC, waterPurifier.Type(), tdsPre, tdsAfter);
                             }
                         }
@@ -956,6 +973,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                 filterStatusIntent.putExtra("Fit_a", filter_A_Time+"");
                 filterStatusIntent.putExtra("Fit_b", filter_B_Time+"");
                 filterStatusIntent.putExtra("Fit_c", filter_C_Time+"");
+                filterStatusIntent.putExtra("isShowewm", 0+"");
 //                if (buylinkurl != null) {
 //                    filterStatusIntent.putExtra("buylinkurl", buylinkurl);
 //                    filterStatusIntent.putExtra("isShowewm", isShowewm);
@@ -1075,7 +1093,6 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
     public void DeviceDataChange() {
 
     }
-
     @Override
     public void ContentChange(String mac, String state) {
 //        if(isNet!=0){
@@ -1105,7 +1122,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
 //                    rlay_top1.setVisibility(View.VISIBLE);
 //                    break;
 //            }
-            changeState();
+//            changeState();
 
 //        }
 //        }else{

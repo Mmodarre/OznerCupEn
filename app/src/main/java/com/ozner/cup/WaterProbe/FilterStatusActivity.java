@@ -40,6 +40,7 @@ import com.ozner.cup.UIView.FilterProgressView;
 import com.ozner.cup.UIView.UIZGridView;
 import com.ozner.cup.mycenter.CenterBean.RankType;
 import com.ozner.cup.mycenter.WebActivity;
+import com.ozner.device.OperateCallback;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 
@@ -158,6 +159,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         if (RankType.ROWaterType.equals(device.Type())){
             laly_ro.setVisibility(View.VISIBLE);
             laly_water.setVisibility(View.GONE);
+            Log.e("trscan","trssssss");
             llay_scan.setVisibility(View.GONE);
             llay_moreService.setVisibility(View.VISIBLE);
         }else{
@@ -166,32 +168,24 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
 
         }
         tv_ro_filterRest=(TextView)findViewById(R.id.tv_ro_filterRest);
-        //判断ro水机是否为空
-        if(roWaterPurifier!=null) {
-            if (roWaterPurifier.isEnableFilterReset()) {
-                tv_ro_filterRest.setVisibility(View.VISIBLE);
-                roWaterPurifier.resetFilter();
-            } else {
-                tv_ro_filterRest.setVisibility(View.INVISIBLE);
-            }
-        }
+
         tv_ro_filterRest.setOnClickListener(this);
         tv_ro_filter=(TextView) findViewById(R.id.tv_ro_filter);
         tv_rolxa=(TextView)findViewById(R.id.tv_rolxa);
         tv_rolxb=(TextView)findViewById(R.id.tv_rolxb);
         tv_rolxc=(TextView)findViewById(R.id.tv_rolxc);
         Log.e("trfitt",fit_a+"&&&"+fit_b);
-        if(fit_a!=null&&Integer.parseInt(fit_a)!=0){
+        if(fit_a!=null&&!(Integer.parseInt(fit_a)<0)){
             tv_rolxa.setText(fit_a+"%");
         }else{
             tv_rolxa.setText(getString(R.string.text_null));
         }
-        if(fit_b!=null&&Integer.parseInt(fit_b)!=0){
+        if(fit_b!=null&&!(Integer.parseInt(fit_b)<0)){
             tv_rolxb.setText(fit_b+"%");
         }else{
             tv_rolxb.setText(getString(R.string.text_null));
         }
-        if(fit_c!=null&&Integer.parseInt(fit_c)!=0){
+        if(fit_c!=null&&!(Integer.parseInt(fit_c)<0)){
             tv_rolxc.setText(fit_c+"%");
         }else{
             tv_rolxc.setText(getString(R.string.text_null));
@@ -199,8 +193,12 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
 
         //文字呼吸灯
         try {
-            if ((Integer.parseInt(fit_a) < 30) || Integer.parseInt(fit_b)<30||Integer.parseInt(fit_c)<30) {
+            if((Integer.parseInt(fit_a) >=0) || (Integer.parseInt(fit_b)>0)||(Integer.parseInt(fit_c)>=0)){
+            if ((Integer.parseInt(fit_a) < 30) || (Integer.parseInt(fit_b)<30)||(Integer.parseInt(fit_c)<30)) {
                 timer();
+            }
+            }else{
+                tv_ro_filter.setVisibility(View.GONE);
             }
         }catch(Exception e){
             e.getStackTrace();
@@ -299,22 +297,20 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
             try {
                 device = OznerDeviceManager.Instance().getDevice(MAC);
                 if (device != null && device instanceof WaterPurifier) {
-                    deviceType = RankType.WaterType;
+                    if(device.Type()==roWaterPurifier.Type()){
+                        deviceType = RankType.ROWaterType;
+                    }else{  deviceType = RankType.WaterType;}
                     if ("0".equals(isShowewm)) {
                         llay_scan.setVisibility(View.GONE);
                     } else {
                         llay_scan.setVisibility(View.VISIBLE);
                     }
                     llay_moreService.setVisibility(View.VISIBLE);
-                }
-// else if(device != null && device instanceof WaterPurifier_RO_BLE){
-//                    deviceType = RankType.ROWaterType;
-//                    llay_scan.setVisibility(View.GONE);
-//                    llay_moreService.setVisibility(View.VISIBLE);
-//                }
-                else {
+                }else
+                {
                     deviceType = RankType.TapType;
                     llay_moreService.setVisibility(View.GONE);
+//                    llay_scan.setVisibility(View.GONE);
                 }
 //            initFilterFromLocal();
 //            new UpdateFilterAsyncTask(FilterStatusActivity.this, usertoken).execute(MAC);
@@ -413,6 +409,29 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                         }).setNegativeButton(getString(R.string.airOutside_know), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Log.e("trfilter", "复位" );
+                        //判断ro水机是否为空
+                        if(roWaterPurifier!=null) {
+                            if (roWaterPurifier.isEnableFilterReset()) {
+                                tv_ro_filterRest.setVisibility(View.VISIBLE);
+                                //复位
+                                roWaterPurifier.resetFilter(new OperateCallback<Void>() {
+                                    @Override
+                                    public void onSuccess(Void var1) {
+                                        Log.e("trfilter", "复位成功" );
+                                        tv_ro_filterRest.setVisibility(View.INVISIBLE);
+                                    }
+
+                                    @Override
+                                    public void onFailure(Throwable var1) {
+                                        Log.e("trfilter", "复位失败" );
+                                        tv_ro_filterRest.setVisibility(View.VISIBLE);
+                                    }
+                                });
+                            } else {
+                                tv_ro_filterRest.setVisibility(View.INVISIBLE);
+                            }
+                        }
                         dialog.cancel();
                     }
                 }).show();
@@ -499,7 +518,9 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
             }
         }
         if (!isHasUpdate) {
-            new UpdateWaterPurifierFilterTask(FilterStatusActivity.this, usertoken).execute(MAC);
+            if(RankType.WaterType==deviceType){
+                new UpdateWaterPurifierFilterTask(FilterStatusActivity.this, usertoken).execute(MAC);
+            }
         }
     }
 

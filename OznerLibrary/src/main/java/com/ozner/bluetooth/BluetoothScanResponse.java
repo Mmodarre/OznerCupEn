@@ -44,6 +44,8 @@ public class BluetoothScanResponse {
      * 自定义数据 最大8个字节
      */
     public byte[] ScanResponseData;
+
+    public Integer lastRSSI;
     //public boolean Available;
 
     public BluetoothScanResponse() {

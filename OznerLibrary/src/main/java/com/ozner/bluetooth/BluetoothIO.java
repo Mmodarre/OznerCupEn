@@ -42,6 +42,13 @@ public class BluetoothIO extends BaseDeviceIO {
 //    public final static int STATE_DISCONNECTING = BluetoothGatt.STATE_DISCONNECTING;
     byte[] scanResponseData = null;
     int scanResponseType = 0;
+    //2017/2/20更新库文件
+    BluetoothScanResponse scanResponse;
+
+    public BluetoothScanResponse getScanResponse() {
+        return scanResponse;
+    }
+
     BluetoothDevice device;
     BluetoothProxy bluetoothProxy;
     String Platform = "";
@@ -77,9 +84,11 @@ public class BluetoothIO extends BaseDeviceIO {
         return Platform;
     }
 
-    public void updateScanResponse(int scanResponseType, byte[] scanResponseData) {
-        this.scanResponseType = scanResponseType;
-        this.scanResponseData = scanResponseData;
+    public void updateScanResponse(BluetoothScanResponse scanResponse) {
+        this.scanResponseType = scanResponse.ScanResponseType;
+        this.scanResponseData = scanResponse.ScanResponseData;
+
+        this.scanResponse=scanResponse;
     }
 
     public int getScanResponseType() {

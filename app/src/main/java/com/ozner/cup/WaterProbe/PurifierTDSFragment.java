@@ -152,16 +152,16 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
         //增加RO水机的判断
         if(ROPurifierType.equals(roWaterPurifier.Type())) {
 
-            if (roWaterPurifier != null && roWaterPurifier.waterInfo.TDS1_RAW != 65535 && roWaterPurifier.waterInfo.TDS2_RAW != 65535) {
-                if (roWaterPurifier.waterInfo.TDS1_RAW != 0 || roWaterPurifier.waterInfo.TDS2_RAW != 0) {
-                    if (roWaterPurifier.waterInfo.TDS1_RAW > roWaterPurifier.waterInfo.TDS2_RAW) {
-                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS1_RAW+ "");
-                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS2_RAW != 0 ? roWaterPurifier.waterInfo.TDS2_RAW : 1) + "");
-                        setTdsTips(roWaterPurifier.waterInfo.TDS2_RAW);
+            if (roWaterPurifier != null && roWaterPurifier.waterInfo.TDS1 != 65535 && roWaterPurifier.waterInfo.TDS2 != 65535) {
+                if (roWaterPurifier.waterInfo.TDS1 != 0 || roWaterPurifier.waterInfo.TDS2 != 0) {
+                    if (roWaterPurifier.waterInfo.TDS1 > roWaterPurifier.waterInfo.TDS2) {
+                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS1+ "");
+                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS2 != 0 ? roWaterPurifier.waterInfo.TDS2 : 1) + "");
+                        setTdsTips(roWaterPurifier.waterInfo.TDS2);
                     } else {
-                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS2_RAW + "");
-                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS1_RAW!= 0 ? roWaterPurifier.waterInfo.TDS1_RAW : 1) + "");
-                        setTdsTips(roWaterPurifier.waterInfo.TDS1_RAW);
+                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS2 + "");
+                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS1!= 0 ? roWaterPurifier.waterInfo.TDS1 : 1) + "");
+                        setTdsTips(roWaterPurifier.waterInfo.TDS1);
                     }
                     setNumFace();
                 } else {
