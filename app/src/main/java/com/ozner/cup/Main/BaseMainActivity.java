@@ -41,6 +41,8 @@ public abstract class BaseMainActivity extends AppCompatActivity implements Foot
     public final String AirPurifierTypeTai = "FLT001";
     public final String WaterReplenishMeter = "BSY001";
     protected final String WaterAylaType = "AY001MAB1";
+    public final String WaterType2 = "16a21bd6";
+    public final String AirPurifierTypeVer2 = "580c2783";
     public boolean isResume;
     public Boolean isExit = false;
     public static final String ACTION_NetChenge = "ozner.net.chenge";

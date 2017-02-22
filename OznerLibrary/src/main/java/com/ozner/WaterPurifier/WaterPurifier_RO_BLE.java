@@ -162,12 +162,12 @@ public class WaterPurifier_RO_BLE extends WaterPurifier {
     @Override
     protected void updateStatus(OperateCallback<Void> cb) {
 
-        if ((requestCount%2)==0)
-        {
-            waterPurifierIMP.requestFilterInfo();
-        }else
-            waterPurifierIMP.requestWaterInfo();
-        requestCount++;
+            if ((requestCount%2)==0)
+            {
+                waterPurifierIMP.requestFilterInfo();
+            }else
+                waterPurifierIMP.requestWaterInfo();
+            requestCount++;
 
     }
 

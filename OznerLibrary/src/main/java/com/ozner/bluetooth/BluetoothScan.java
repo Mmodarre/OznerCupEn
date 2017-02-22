@@ -4,17 +4,26 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanRecord;
+import android.bluetooth.le.ScanResult;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.ParcelUuid;
+import android.util.SparseArray;
 
 import com.ozner.XObject;
+import com.ozner.util.ByteUtil;
 import com.ozner.util.Helper;
 import com.ozner.util.dbg;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 @SuppressLint("NewApi")
 public class BluetoothScan extends XObject {
@@ -159,14 +168,14 @@ public class BluetoothScan extends XObject {
                         {
                             case GAP_ADTYPE_MANUFACTURER_SPECIFIC:
                                 manufacturer_specific = Arrays.copyOfRange(scanRecord,
-                                        pos+1 , pos + len);
+                                        pos+1 , pos+len);
                                 break;
                             case GAP_ADTYPE_SERVICE_DATA:
                             {
                                 int uuid= (short)(scanRecord[pos]<<16)+scanRecord[pos+1];
                                 if (uuid==Service_UUID)
                                 {
-                                    service_data = Arrays.copyOfRange(scanRecord, pos + 3, pos + len);
+                                    service_data = Arrays.copyOfRange(scanRecord, pos+3 , pos + len);
                                 }
                             }
                             break;

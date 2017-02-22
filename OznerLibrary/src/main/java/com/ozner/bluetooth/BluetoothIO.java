@@ -42,7 +42,6 @@ public class BluetoothIO extends BaseDeviceIO {
 //    public final static int STATE_DISCONNECTING = BluetoothGatt.STATE_DISCONNECTING;
     byte[] scanResponseData = null;
     int scanResponseType = 0;
-    //2017/2/20更新库文件
     BluetoothScanResponse scanResponse;
 
     public BluetoothScanResponse getScanResponse() {
@@ -219,7 +218,6 @@ public class BluetoothIO extends BaseDeviceIO {
                 e.printStackTrace();
             }
         }
-
         @Override
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             super.onServicesDiscovered(gatt, status);
@@ -228,6 +226,7 @@ public class BluetoothIO extends BaseDeviceIO {
             if (mService != null) {
                 mInput = mService.getCharacteristic(Characteristic_Input);
                 mOutput = mService.getCharacteristic(Characteristic_Output);
+
                 mInput.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
             }
             setObject();

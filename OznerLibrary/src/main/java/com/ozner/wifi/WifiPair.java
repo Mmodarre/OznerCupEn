@@ -510,18 +510,18 @@ public class WifiPair {
                         String json = msg.obj.toString();
                         if (!Helper.StringIsNullOrEmpty(json)) {
 
-                            com.alibaba.fastjson.JSONArray results = com.alibaba.fastjson.JSONArray.parseArray(json);
-                            if (results.size() > 0) {
-                                for (int i=0;i<results.size();i++)
-                                {
-                                    com.alibaba.fastjson.JSONObject ap=results.getJSONObject(i);
-                                    if (ap.getString("ssid").equalsIgnoreCase(ssid))
+                                com.alibaba.fastjson.JSONArray results = com.alibaba.fastjson.JSONArray.parseArray(json);
+                                if (results.size() > 0) {
+                                    for (int i=0;i<results.size();i++)
                                     {
-                                        connectNewDeviceToService();
-                                        return;
+                                        com.alibaba.fastjson.JSONObject ap=results.getJSONObject(i);
+                                        if (ap.getString("ssid").equalsIgnoreCase(ssid))
+                                        {
+                                            connectNewDeviceToService();
+                                            return;
+                                        }
                                     }
                                 }
-                            }
 
                         }
 
@@ -625,12 +625,12 @@ public class WifiPair {
             doPairFailure(new TimeoutException());
             return;
         }
-        if ((runPairCount % 3) == 0) {
-            runHandler.post(new MXChipPairImp());
-        } else {
-            runHandler.post(new AylaPairImp());
-        }
-        //runHandler.post(new MXChipPairImp());
+//        if ((runPairCount % 3) == 0) {
+//            runHandler.post(new MXChipPairImp());
+//        } else {
+//            runHandler.post(new AylaPairImp());
+//        }
+        runHandler.post(new MXChipPairImp());
         runPairCount++;
 
     }

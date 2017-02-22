@@ -18,6 +18,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,18 +37,18 @@ import android.widget.Toast;
 
 import com.ozner.WaterPurifier.WaterPurifier;
 import com.ozner.cup.Command.OznerCommand;
+import com.ozner.cup.Command.PageState;
+import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 import com.ozner.wifi.WifiPair;
-//import com.ozner.wifi.ayla.AylaIOManager;
 import com.ozner.wifi.mxchip.MXChipIO;
-
-import com.ozner.cup.Command.PageState;
-import com.ozner.cup.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//import com.ozner.wifi.ayla.AylaIOManager;
 
 /**
  * Created by mengdongya on 2015/11/23.
@@ -175,11 +176,19 @@ public class MatchPurifierActivity extends AppCompatActivity implements SpinnerP
 
         if (ssid.length() > 0) {
             try {
-                wifiPair.pair(ssid, password);
+                if (password.length() > 0) {
+                    wifiPair.pair(ssid, password);
+                    showMatching();
+                } else {
+                    Toast toast = Toast.makeText(this,R.string.input_password,Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER,0,0);
+
+                    toast.show();
+                }
             } catch (WifiPair.PairRunningException e) {
                 e.printStackTrace();
+                showMatchFail();
             }
-            showMatching();
 
         } else {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.notice_match_wifi), Toast.LENGTH_SHORT).show();

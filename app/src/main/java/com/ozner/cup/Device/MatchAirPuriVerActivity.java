@@ -19,6 +19,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,7 +118,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
         animfadein.setInterpolator(new DecelerateInterpolator(2.0f));
         initView();
         try {
-            wifiPair = new WifiPair(this,wifiPairImp);
+            wifiPair = new WifiPair(this, wifiPairImp);
         } catch (WifiPair.NullSSIDException e) {
             e.printStackTrace();
         }
@@ -231,13 +232,20 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
 
         if (ssid.length() > 0) {
             try {
-                wifiPair.pair(ssid, password);
-                showMatching();
+                if (password.length() > 0) {
+                    wifiPair.pair(ssid, password);
+                    showMatching();
+                } else {
+                    Toast toast = Toast.makeText(this,R.string.input_password,Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER,0,0);
+                    toast.show();
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
+                showMatchFail();
             }
         } else {
-            Toast.makeText(getBaseContext(),getResources().getString(R.string.notice_match_wifi), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.notice_match_wifi), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -304,7 +312,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
 
 
     class WifiPairImp implements WifiPair.WifiPairCallback {
-//
+        //
         @Override
         public void onStartPairAyla() {
             Message msg = new Message();

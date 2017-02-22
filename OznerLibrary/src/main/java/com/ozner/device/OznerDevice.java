@@ -274,7 +274,7 @@ public abstract class OznerDevice extends XObject {
         if (deviceIO != null) {
             deviceIO.open();
             if (deviceIO.isReady()) {
-                deviceIO.reCallDoReadly();
+                deviceIO.reCallDoReady();
             }
         } else {
             glb_timerLoop.removeDevice(this);
@@ -282,6 +282,8 @@ public abstract class OznerDevice extends XObject {
 
         return true;
     }
+
+
     /**
      * 获取设备数据
      */
@@ -335,12 +337,5 @@ public abstract class OznerDevice extends XObject {
         }
         OznerDeviceManager.Instance().setDeviceAppData(this.address, jsonObject.toString());
     }
-
-
-
-
-
-
-
 
 }

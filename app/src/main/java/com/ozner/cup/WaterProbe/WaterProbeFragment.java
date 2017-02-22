@@ -382,7 +382,7 @@ public class WaterProbeFragment extends Fragment implements View.OnClickListener
             reqPars.add(new BasicNameValuePair("mac", Mac));
             String filterUrl = OznerPreference.ServerAddress(getContext()) + "/OznerDevice/FilterService";
             NetJsonObject netJsonObject = OznerDataHttp.OznerWebServer(getContext(), filterUrl, reqPars);
-//            Log.e("tag", "doInBackground:" + netJsonObject.value);
+            Log.e("tag", "doInBackground:" + netJsonObject.value);
             if (netJsonObject.state > 0) {
                 try {
                     JSONObject jo = netJsonObject.getJSONObject();

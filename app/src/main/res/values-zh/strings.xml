@@ -71,7 +71,7 @@
     <string name="cupDetail_waterUtil">ml</string>
     <string name="purifierDetail_after">经过净化后的水质健康，适合您直饮</string>
     <string name="purifierDetail_none">您未使用净水器 暂无数据显示</string>
-    <string name="ozner_text">COPYRIGHT©2015 OZNER.ALL RIGHTS RESERVED</string>s
+    <string name="ozner_text">COPYRIGHT©2015 OZNER.ALL RIGHTS RESERVED</string>
     <string name="match_failed_csir">配对失败:</string>
     <string name="match_failed_happend">已经配对过了</string>
     <string name="network_command_error">网络执行操作失败</string>
@@ -573,7 +573,7 @@
     <string name="neck_skin_notice2">颈部水份已达标，别让颈纹泄露了你的年龄。</string>
     <string name="neck_skin_notice3">颈部现在很水润，但不要松懈哦！</string>
     <string name="phone_nonet">手机未连接网络</string>
-    <string name="detail_nonet">设备已断网</string>
+    <string name="detail_nonet">设备云已断开</string>
     <string name="not_connected">未连接</string>
 
     <string name="notice_replace_lvxin">滤芯到期提醒</string>

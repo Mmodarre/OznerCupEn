@@ -45,6 +45,7 @@ public class BluetoothScanResponse {
      */
     public byte[] ScanResponseData;
 
+
     public Integer lastRSSI;
     //public boolean Available;
 

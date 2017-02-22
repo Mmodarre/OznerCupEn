@@ -147,10 +147,11 @@ public abstract class BaseDeviceIO extends XObject {
             }
         }
     }
+
     /**
-          * 重新调用Ready事件
-          */
-    public void reCallDoReadly()
+     * 重新调用Ready事件
+     */
+    public void reCallDoReady()
     {
         doReady();
     }
@@ -214,7 +215,7 @@ public abstract class BaseDeviceIO extends XObject {
     /**
      * 蓝牙连接初始化完成时的回调
      */
-    public void setOnInitCallback(OnInitCallback onInitCallback ) {
+    public void setOnInitCallback(OnInitCallback onInitCallback) {
         this.onInitCallback = onInitCallback;
     }
 

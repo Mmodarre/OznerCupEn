@@ -10,6 +10,9 @@ import com.ozner.device.BaseDeviceManager;
 import com.ozner.device.OznerDevice;
 import com.ozner.device.OznerDeviceManager;
 
+import java.util.Arrays;
+import java.util.Date;
+
 /**
  * Created by xzyxd on 2015/11/2.
  */
@@ -44,10 +47,13 @@ public class WaterPurifierManager extends BaseDeviceManager {
         {
             return true;
         }
-        if (Model.trim().equals("16a21bd6")) {
-                   return true;
-              }
+        if (Model.trim().equals("16a21bd6"))
+        {
+            return true;
+        }
+
         return false;
+
     }
 
     @Override
@@ -77,9 +83,9 @@ public class WaterPurifierManager extends BaseDeviceManager {
             return null;
     }
 
-    //检查ro水机是否在配对状态
     @Override
     public boolean checkIsBindMode(BaseDeviceIO io) {
+
         if (io instanceof BluetoothIO)
         {
             if (io.getType().equals("Ozner RO")) {
