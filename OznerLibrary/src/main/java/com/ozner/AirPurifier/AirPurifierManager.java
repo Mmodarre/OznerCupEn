@@ -29,14 +29,11 @@ public class AirPurifierManager extends BaseDeviceManager {
 
     @Override
     public boolean checkIsBindMode(BaseDeviceIO io) {
-        if (IsBluetoothAirPurifier(io.getType()))
-        {
-            BluetoothIO bluetoothIO=(BluetoothIO)io;
-            if (bluetoothIO.getScanResponseType()==0x20)
-            {
-                if ((bluetoothIO.getScanResponseData()!=null) && (bluetoothIO.getScanResponseData().length>1))
-                {
-                    return bluetoothIO.getScanResponseData()[0]!=0;
+        if (IsBluetoothAirPurifier(io.getType())) {
+            BluetoothIO bluetoothIO = (BluetoothIO) io;
+            if (bluetoothIO.getScanResponseType() == 0x20) {
+                if ((bluetoothIO.getScanResponseData() != null) && (bluetoothIO.getScanResponseData().length > 1)) {
+                    return bluetoothIO.getScanResponseData()[0] != 0;
                 }
 
             }
@@ -61,23 +58,19 @@ public class AirPurifierManager extends BaseDeviceManager {
                 return airPurifier;
             }
             return null;
-        }
-        else
+        } else
             return null;
     }
 
 
     public static boolean IsWifiAirPurifier(String Type) {
         if (Type == null) return false;
-        if (Type.trim().equals("FOG_HAOZE_AIR"))
-        {
+        if (Type.trim().equals("FOG_HAOZE_AIR")) {
             return true;
-        }else
-            if (Type.trim().equals("580c2783"))
-            {
-                return true;
-            }
-            return false;
+        } else if (Type.trim().equals("580c2783")) {
+            return true;
+        }
+        return false;
     }
 
 

@@ -234,7 +234,7 @@
     <string name="water_probe">智能水探头</string>
     <string name="water_tdspen">水质检测笔</string>
 
-    <string name="water_purifier">免安装净水器(台式/立式)</string>
+    <string name="water_purifier">免安装净水器</string>
     <string name="smart_glass">智能杯</string>
     <!--<string name="air_purifier_ver">空气净化器\n(立式)</string>-->
     <string name="air_purifier_ver">智能空气净化器</string>
@@ -554,7 +554,7 @@
     <string name="water_replenish_humEye">眼部\t35%-45%</string>
     <string name="water_replenish_humFace">脸部\t32%-42%</string>
     <string name="water_replenish_humNeck">颈部\t35%-45%</string>
-    <string name="water_replenish_humHands">手部\t32%-38%</string>
+    <string name="water_replenish_humHands">手部\t30%-38%</string>
     <string name="water_replenish_humtip">(仅供参考)</string>
     <string name="water_replenish_humSeason">不同季节各部分水分数值将有所不同。</string>
     <string name="water_replenish_humSeasonValue">夏季水分率正常值相差%1$s，冬季水分率正常值相差%2$s。</string>
