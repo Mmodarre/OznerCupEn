@@ -637,6 +637,7 @@ public class MainActivity extends BaseMainActivity {
                                     .commitAllowingStateLoss();
                             this.MAC = mac;
                             Log.e("1234", WaterType+"=============水机");
+                            return;
                             //Ro水机
                         case ROPurifierType:
                             ROWaterPurifierFragment roWaterPurifierFragment = new ROWaterPurifierFragment();

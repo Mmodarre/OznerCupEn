@@ -117,10 +117,10 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.filter_status);
         MAC = getIntent().getStringExtra("MAC");
         try {
-            roWaterPurifier = (WaterPurifier_RO_BLE) OznerDeviceManager.Instance().getDevice(MAC);
+            device = OznerDeviceManager.Instance().getDevice(MAC);
+            Log.e("filtertype", "shopUrl:" + device.Type());
         } catch (Exception ex) {
             ex.printStackTrace();
-            roWaterPurifier = null;
         }
 
         //RO水机滤芯状态
@@ -155,7 +155,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         //RO水机的界面
         laly_ro=(LinearLayout) findViewById(R.id.laly_ro);
         laly_water=(LinearLayout) findViewById(R.id.laly_water);
-        device = OznerDeviceManager.Instance().getDevice(MAC);
+//        device = OznerDeviceManager.Instance().getDevice(MAC);
         if (RankType.ROWaterType.equals(device.Type())){
             laly_ro.setVisibility(View.VISIBLE);
             laly_water.setVisibility(View.GONE);
@@ -295,9 +295,11 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         if (null != MAC && "" != MAC) {
             Log.e("tag", "Filter_Mac:" + MAC);
             try {
-                device = OznerDeviceManager.Instance().getDevice(MAC);
+//                device = OznerDeviceManager.Instance().getDevice(MAC);
                 if (device != null && device instanceof WaterPurifier) {
-                    if(device.Type()==roWaterPurifier.Type()){
+//                    Log.e("filtertype2", "shopUrl:" + device.Type());
+                    if(device.Type().equals(RankType.ROWaterType)){
+//                        Log.e("filtertype3", "shopUrl:" + device.Type());
                         deviceType = RankType.ROWaterType;
                     }else{  deviceType = RankType.WaterType;}
                     if ("0".equals(isShowewm)) {
@@ -383,12 +385,15 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                 String shopUrl = CenterUrlContants.formatTapShopUrl(mobile, usertoken, "zh", "zh");
                 if (deviceType.equals(RankType.WaterType)) {
 //                    shopUrl = CenterUrlContants.formatDeskPurifierUrl( mobile, usertoken, "zh", "zh");
-                    if (waterPuriferUrl != null && waterPuriferUrl != "") {
+                    if (waterPuriferUrl != null && waterPuriferUrl.length()>0) {
                         shopUrl = CenterUrlContants.formatUrl(waterPuriferUrl, mobile, usertoken, "zh", "zh");
 //                        shopUrl += waterPuriferUrl;
                     } else {
                         shopUrl = CenterUrlContants.formatSecurityServiceUrl(mobile, usertoken, "zh", "zh");
                     }
+                }
+                if(deviceType.equals(RankType.ROWaterType)){
+                    shopUrl = CenterUrlContants.formatRoShopUrl(mobile, usertoken, "zh", "zh");
                 }
                 Log.e("filter", "shopUrl:" + shopUrl);
 //                Log.e("tag", "tapShopUrl:" + CenterUrlContants.formatTapShopUrl(mobile, usertoken, "zh", "zh"));
@@ -441,14 +446,13 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         String mobile = UserDataPreference.GetUserData(getApplicationContext(), UserDataPreference.Mobile, null);
         String usertoken = OznerPreference.UserToken(getApplicationContext());
         Intent buyFilterIntent = new Intent(FilterStatusActivity.this, WebActivity.class);
-        String shopUrl = CenterUrlContants.formatTapShopUrl(mobile, usertoken, "zh", "zh");
-        if (buyRourl != null && buyRourl != "") {
-            shopUrl = CenterUrlContants.formatUrl(buyRourl, mobile, usertoken, "zh", "zh");
-        }
+        String shopUrl = CenterUrlContants.formatRoShopUrl(mobile, usertoken, "zh", "zh");
         buyFilterIntent.putExtra("URL", shopUrl);
         Log.e("123456", shopUrl);
         startActivity(buyFilterIntent);
     }
+
+
     @Override
     public void onBackPressed() {
 

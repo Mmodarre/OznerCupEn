@@ -106,6 +106,13 @@ public class CenterUrlContants {
         return result;
     }
 
+    //RO滤芯商城
+    public static String formatRoShopUrl(String mobile, String usertoken, String language, String area) {
+        String result = getformatUrl(mallUrl);
+        result = String.format(result, mobile, usertoken, language, area);
+        return result;
+    }
+
     //空净滤芯商城
     public static String formatKjShopUrl(String mobile, String usertoken, String language, String area) {
         String result = getformatUrl(kjShopUrl);
