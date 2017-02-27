@@ -195,7 +195,7 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
                 Message message = new Message();
                 NetWeather weather = null;
                 try {
-                    weather = OznerCommand.GetWeather(getActivity(), OznerPreference.GetValue(getContext(),OznerPreference.BDLocation,null));
+                    weather = OznerCommand.GetWeather(getActivity(), OznerPreference.GetValue(getContext(), OznerPreference.BDLocation, null));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     weather = null;
@@ -467,103 +467,100 @@ public class VerticalAirPurifierFragment extends Fragment implements View.OnClic
 
         switchLock(isLockOn);
 
-        if (isNet == 0 || isOffLine) {
-            tv_tdsValue.setText(getString(R.string.detail_nonet));
-
-        } else if (65535 == pm25 || pm25 <= 0) {
-            tv_tdsValue.setText(getString(R.string.null_text));
-            OznerApplication.setControlTextFace(tv_tdsValue);
-            tv_tds.setText(" - ");
-        } else if (pm25 > 1000) {
-            tv_tdsValue.setText(getString(R.string.null_text));
-        } else {
-            if (pm25 < 75 && pm25 > 0) {
-                tv_tds.setText(getString(R.string.excellent));
-                linearLayout_bg.setBackgroundResource(R.color.air_background);
-                toolBar.setBackgroundResource(R.color.air_background);
-                iv_xuanzhuan_x3.setImageResource(R.drawable.mengban1);
-            } else if (pm25 >= 75 && pm25 < 150) {
-                tv_tds.setText(R.string.good);
-                linearLayout_bg.setBackgroundResource(R.color.air_good);
-                toolBar.setBackgroundResource(R.color.air_good);
-                iv_xuanzhuan_x3.setImageResource(R.drawable.mengban2);
-            } else if (pm25 >= 150) {
-                tv_tds.setText(getString(R.string.bads));
-                linearLayout_bg.setBackgroundResource(R.color.air_bad);
-                toolBar.setBackgroundResource(R.color.air_bad);
-                iv_xuanzhuan_x3.setImageResource(R.drawable.mengban3);
-            }
-            if (airPurifier != null) {
-                if (isFirst) {
-                    isFirst = false;
-                    animator = ValueAnimator.ofInt(0, airPurifier.sensor().PM25());
-                    animator.setDuration(500);
-                    animator.setInterpolator(new LinearInterpolator());//线性效果变化
-                    animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                        @Override
-                        public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                            if (animator != null) {
-                                Integer integer = (Integer) animator.getAnimatedValue();
-                                tv_tdsValue.setText("" + integer);
-                                OznerApplication.setControlNumFace(tv_tdsValue);
+        if (isPowerOn) {
+            if (65535 == pm25 || pm25 <= 0) {
+                tv_tdsValue.setText(getString(R.string.null_text));
+                OznerApplication.setControlTextFace(tv_tdsValue);
+                tv_tds.setText(" - ");
+            } else if (pm25 > 1000) {
+                tv_tdsValue.setText(getString(R.string.null_text));
+            } else {
+                if (pm25 < 75 && pm25 > 0) {
+                    tv_tds.setText(getString(R.string.excellent));
+                    linearLayout_bg.setBackgroundResource(R.color.air_background);
+                    toolBar.setBackgroundResource(R.color.air_background);
+                    iv_xuanzhuan_x3.setImageResource(R.drawable.mengban1);
+                } else if (pm25 >= 75 && pm25 < 150) {
+                    tv_tds.setText(R.string.good);
+                    linearLayout_bg.setBackgroundResource(R.color.air_good);
+                    toolBar.setBackgroundResource(R.color.air_good);
+                    iv_xuanzhuan_x3.setImageResource(R.drawable.mengban2);
+                } else if (pm25 >= 150) {
+                    tv_tds.setText(getString(R.string.bads));
+                    linearLayout_bg.setBackgroundResource(R.color.air_bad);
+                    toolBar.setBackgroundResource(R.color.air_bad);
+                    iv_xuanzhuan_x3.setImageResource(R.drawable.mengban3);
+                }
+                if (airPurifier != null) {
+                    if (isFirst) {
+                        isFirst = false;
+                        animator = ValueAnimator.ofInt(0, airPurifier.sensor().PM25());
+                        animator.setDuration(500);
+                        animator.setInterpolator(new LinearInterpolator());//线性效果变化
+                        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                            @Override
+                            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                                if (animator != null) {
+                                    Integer integer = (Integer) animator.getAnimatedValue();
+                                    tv_tdsValue.setText("" + integer);
+                                    OznerApplication.setControlNumFace(tv_tdsValue);
+                                }
                             }
-                        }
-                    });
-                    animator.start();
-                } else {
-                    tv_tdsValue.setText(airPurifier.sensor().PM25() + "");
+                        });
+                        animator.start();
+                    } else {
+                        tv_tdsValue.setText(airPurifier.sensor().PM25() + "");
+                    }
                 }
             }
-        }
 
-        if (65535 == voc) {
-            tv_air_vocValue.setText(" - ");
-        } else {
-            OznerApplication.setControlTextFace(tv_air_vocValue);
-            switch (voc) {
-                case -1:
-                    tv_air_vocValue.setText(getString(R.string.query_checking));
-                    break;
-                case 0:
-                    tv_air_vocValue.setText(getString(R.string.excellent));
-                    break;
-                case 1:
-                    tv_air_vocValue.setText(getString(R.string.good));
-                    break;
-                case 2:
-                    tv_air_vocValue.setText(getString(R.string.ordinary));
-                    break;
-                case 3:
-                    tv_air_vocValue.setText(getString(R.string.bads));
-                    break;
+            if (65535 == voc) {
+                tv_air_vocValue.setText(" - ");
+            } else {
+                OznerApplication.setControlTextFace(tv_air_vocValue);
+                switch (voc) {
+                    case -1:
+                        tv_air_vocValue.setText(getString(R.string.query_checking));
+                        break;
+                    case 0:
+                        tv_air_vocValue.setText(getString(R.string.excellent));
+                        break;
+                    case 1:
+                        tv_air_vocValue.setText(getString(R.string.good));
+                        break;
+                    case 2:
+                        tv_air_vocValue.setText(getString(R.string.ordinary));
+                        break;
+                    case 3:
+                        tv_air_vocValue.setText(getString(R.string.bads));
+                        break;
+                }
             }
-        }
 
-        if (temp == 65535) {
-            tv_air_temValue.setText(" - ");
-        } else {
-            OznerApplication.setControlNumFace(tv_air_temValue);
-            switch (temDanwei) {
-                case "0":
-                    temDanwei = "℃";
-                    tv_air_temValue.setText(temp + temDanwei);
-                    break;
-                case "1":
-                    temDanwei = "℉";
-                    temp = temp * 9 / 5 + 32;
-                    tv_air_temValue.setText(temp + temDanwei);
-                    break;
+            if (temp == 65535) {
+                tv_air_temValue.setText(" - ");
+            } else {
+                OznerApplication.setControlNumFace(tv_air_temValue);
+                switch (temDanwei) {
+                    case "0":
+                        temDanwei = "℃";
+                        tv_air_temValue.setText(temp + temDanwei);
+                        break;
+                    case "1":
+                        temDanwei = "℉";
+                        temp = temp * 9 / 5 + 32;
+                        tv_air_temValue.setText(temp + temDanwei);
+                        break;
+                }
             }
-        }
 
-        if (65535 == shidu || !isPowerOn) {
-            tv_air_shidu_Value.setText(" - ");
+            if (65535 == shidu) {
+                tv_air_shidu_Value.setText(" - ");
+            } else {
+                OznerApplication.setControlNumFace(tv_air_shidu_Value);
+                tv_air_shidu_Value.setText(shidu + "%");
+            }
         } else {
-            OznerApplication.setControlNumFace(tv_air_shidu_Value);
-            tv_air_shidu_Value.setText(shidu + "%");
-        }
-
-        if (!isPowerOn) {
             showClosed();
         }
         switchOpen(isPowerOn);
