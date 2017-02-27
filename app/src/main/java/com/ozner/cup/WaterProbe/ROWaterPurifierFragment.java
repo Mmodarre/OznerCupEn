@@ -36,7 +36,7 @@ import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.Command.UserDataPreference;
 import com.ozner.cup.CupRecord;
 import com.ozner.cup.Device.OznerApplication;
-import com.ozner.cup.Device.SetupWaterPurifierActivity;
+import com.ozner.cup.Device.SetupRoWaterPurifierActivity;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.HttpHelper.NetUserVfMessage;
 import com.ozner.cup.HttpHelper.OznerDataHttp;
@@ -200,7 +200,8 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
         rlay_hot.setOnClickListener(this);
         iv_purifierSetBtn.setOnClickListener(this);
         rlay_filterStatus.setOnClickListener(this);
-        rlay_purifier_tds.setOnClickListener(this);
+//        ro水机不进二级页面
+//        rlay_purifier_tds.setOnClickListener(this);
         rlay_purifier_tds.setClickable(false);
         tv_tdsLevelText = (TextView) view.findViewById(R.id.tv_tdsLevelText);
         tv_filterStatus = (TextView) view.findViewById(R.id.tv_filterStatus);
@@ -950,7 +951,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                 }
                 break;
             case R.id.iv_purifierSetBtn:
-                Intent intentSetting = new Intent(getContext(), SetupWaterPurifierActivity.class);
+                Intent intentSetting = new Intent(getContext(), SetupRoWaterPurifierActivity.class);
                 intentSetting.putExtra("MAC", MAC);
                 if (smlinkurl != null) {
                     intentSetting.putExtra("smlinkurl", smlinkurl);

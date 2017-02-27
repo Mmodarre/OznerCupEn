@@ -123,7 +123,9 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan"/>
 
-
+        <activity
+            android:name=".Device.SetupRoWaterPurifierActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
 
 

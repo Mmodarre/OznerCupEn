@@ -44,6 +44,8 @@ public class AboutDeviceActivity extends AppCompatActivity {
     String flag="";
     ProgressBar mprogressBar;
 
+    String urlRo="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,8 @@ public class AboutDeviceActivity extends AppCompatActivity {
         flag=getIntent().getStringExtra("Flag");
         setContentView(R.layout.activity_about_device);
         try {
-            url = getIntent().getStringExtra("URL");
+            url =getIntent().getStringExtra("URL");
+            urlRo=getIntent().getStringExtra("roURL");
         } catch (NullPointerException e) {
         }
 
@@ -92,6 +95,10 @@ public class AboutDeviceActivity extends AppCompatActivity {
             } else {
                 webView.loadUrl(url);
             }
+            if(urlRo!=null&&urlRo.length()>0){
+                webView.loadUrl(urlRo);
+            }
+
         } else if (device instanceof AirPurifier_Bluetooth) {
             toolbar_text.setText(getString(R.string.my_air_purifier_tai));
             webView.loadUrl(urlAirTai);
