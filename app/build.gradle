@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.1'
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.ozner.cup"
@@ -62,7 +62,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':xzy_ui_lib')
     compile project(':dragsortlistview')
-    //    compile project(':OznerLibrary')
+    compile project(':OznerLibrary')
     compile project(':photo_choose-release')
     compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:support-v4:23.1.1'
@@ -74,5 +74,4 @@ dependencies {
     //    compile 'uk.co.chrisjenx:calligraphy:2.1.0'//自定义字库
     compile files('libs/pushservice-5.1.0.48.jar')
     compile files('libs/BaiduLBS_Android.jar')
-    compile project(':OznerLibrary')
 }

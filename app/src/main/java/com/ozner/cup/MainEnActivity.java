@@ -590,6 +590,7 @@ public class MainEnActivity extends BaseMainActivity {
                             Log.e("123456",tapPen);
                             return;
                         case WaterType:
+                        case WaterType2:
                             WaterPurifierFragment waterPurifierFragment = new WaterPurifierFragment();
                             waterPurifierFragment.setArguments(params);
                             getSupportFragmentManager().beginTransaction()
@@ -606,6 +607,7 @@ public class MainEnActivity extends BaseMainActivity {
                             this.MAC = mac;
                             return;
                         case AirPurifierTypeVer:
+                        case AirPurifierTypeVer2:
                             VerticalAirPurifierFragment verticalAirPurifierFragment = new VerticalAirPurifierFragment();
                             verticalAirPurifierFragment.setArguments(params);
                             getSupportFragmentManager().beginTransaction()

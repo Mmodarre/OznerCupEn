@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ozner.WaterPurifier.WaterPurifier;
 import com.ozner.WaterPurifier.WaterPurifier_RO_BLE;
@@ -118,6 +119,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         MAC = getIntent().getStringExtra("MAC");
         try {
             device = OznerDeviceManager.Instance().getDevice(MAC);
+            roWaterPurifier=(WaterPurifier_RO_BLE) device;
             Log.e("filtertype", "shopUrl:" + device.Type());
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -195,7 +197,8 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         try {
             if((Integer.parseInt(fit_a) >=0) || (Integer.parseInt(fit_b)>0)||(Integer.parseInt(fit_c)>=0)){
             if ((Integer.parseInt(fit_a) < 30) || (Integer.parseInt(fit_b)<30)||(Integer.parseInt(fit_c)<30)) {
-                timer();
+//                timer();
+                tv_ro_filter.setVisibility(View.GONE);
             }
             }else{
                 tv_ro_filter.setVisibility(View.GONE);
@@ -416,7 +419,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                     public void onClick(DialogInterface dialog, int which) {
                         Log.e("trfilter", "复位" );
                         //判断ro水机是否为空
-                        if(roWaterPurifier!=null) {
+                        if(device!=null&&RankType.ROWaterType.equals(device.Type())&&roWaterPurifier!=null) {
                             if (roWaterPurifier.isEnableFilterReset()) {
                                 tv_ro_filterRest.setVisibility(View.VISIBLE);
                                 //复位
@@ -424,12 +427,14 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                                     @Override
                                     public void onSuccess(Void var1) {
                                         Log.e("trfilter", "复位成功" );
+                                        Toast.makeText(FilterStatusActivity.this,"复位成功",Toast.LENGTH_SHORT).show();
                                         tv_ro_filterRest.setVisibility(View.INVISIBLE);
                                     }
 
                                     @Override
                                     public void onFailure(Throwable var1) {
                                         Log.e("trfilter", "复位失败" );
+                                        Toast.makeText(FilterStatusActivity.this,"复位失败",Toast.LENGTH_SHORT).show();
                                         tv_ro_filterRest.setVisibility(View.VISIBLE);
                                     }
                                 });
@@ -440,6 +445,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                         dialog.cancel();
                     }
                 }).show();
+                break;
         }
     }
     private void buyFilter() {

@@ -70,7 +70,7 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
         super.onCreate(savedInstanceState);
         mac = getArguments().getString("MAC");
         waterPurifier = (WaterPurifier) OznerDeviceManager.Instance().getDevice(mac);
-        roWaterPurifier=(WaterPurifier_RO_BLE) OznerDeviceManager.Instance().getDevice(mac);
+//        roWaterPurifier=(WaterPurifier_RO_BLE) OznerDeviceManager.Instance().getDevice(mac);
     }
 
     @Override
@@ -149,33 +149,33 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
         });
         OznerApplication.setControlNumFace(tv_spec);
         OznerApplication.setControlNumFace(tv_friend_shortValueText);
-        //增加RO水机的判断
-        if(ROPurifierType.equals(roWaterPurifier.Type())) {
-
-            if (roWaterPurifier != null && roWaterPurifier.waterInfo.TDS1 != 65535 && roWaterPurifier.waterInfo.TDS2 != 65535) {
-                if (roWaterPurifier.waterInfo.TDS1 != 0 || roWaterPurifier.waterInfo.TDS2 != 0) {
-                    if (roWaterPurifier.waterInfo.TDS1 > roWaterPurifier.waterInfo.TDS2) {
-                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS1+ "");
-                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS2 != 0 ? roWaterPurifier.waterInfo.TDS2 : 1) + "");
-                        setTdsTips(roWaterPurifier.waterInfo.TDS2);
-                    } else {
-                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS2 + "");
-                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS1!= 0 ? roWaterPurifier.waterInfo.TDS1 : 1) + "");
-                        setTdsTips(roWaterPurifier.waterInfo.TDS1);
-                    }
-                    setNumFace();
-                } else {
-                    setTextFace();
-                }
-            } else {
-                tv_preValue.setText(getString(R.string.text_null));
-                tv_afterValue.setText(getString(R.string.text_null));
-//            OznerApplication.setControlTextFace(tv_preValue);
-//            OznerApplication.setControlTextFace(tv_afterValue);
-                setTextFace();
-            }
-
-        }else{
+//        //增加RO水机的判断
+//        if(ROPurifierType.equals(roWaterPurifier.Type())) {
+//
+//            if (roWaterPurifier != null && roWaterPurifier.waterInfo.TDS1 != 65535 && roWaterPurifier.waterInfo.TDS2 != 65535) {
+//                if (roWaterPurifier.waterInfo.TDS1 != 0 || roWaterPurifier.waterInfo.TDS2 != 0) {
+//                    if (roWaterPurifier.waterInfo.TDS1 > roWaterPurifier.waterInfo.TDS2) {
+//                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS1+ "");
+//                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS2 != 0 ? roWaterPurifier.waterInfo.TDS2 : 1) + "");
+//                        setTdsTips(roWaterPurifier.waterInfo.TDS2);
+//                    } else {
+//                        tv_preValue.setText(roWaterPurifier.waterInfo.TDS2 + "");
+//                        tv_afterValue.setText((roWaterPurifier.waterInfo.TDS1!= 0 ? roWaterPurifier.waterInfo.TDS1 : 1) + "");
+//                        setTdsTips(roWaterPurifier.waterInfo.TDS1);
+//                    }
+//                    setNumFace();
+//                } else {
+//                    setTextFace();
+//                }
+//            } else {
+//                tv_preValue.setText(getString(R.string.text_null));
+//                tv_afterValue.setText(getString(R.string.text_null));
+////            OznerApplication.setControlTextFace(tv_preValue);
+////            OznerApplication.setControlTextFace(tv_afterValue);
+//                setTextFace();
+//            }
+//
+//        }else{
         if (waterPurifier != null && waterPurifier.sensor().TDS1() != 65535 && waterPurifier.sensor().TDS2() != 65535) {
             if (waterPurifier.sensor().TDS1() != 0 || waterPurifier.sensor().TDS2() != 0) {
                 if (waterPurifier.sensor().TDS1() > waterPurifier.sensor().TDS2()) {
@@ -199,7 +199,7 @@ public class PurifierTDSFragment extends Fragment implements View.OnClickListene
             setTextFace();
         }
 
-        }
+//        }
         btn_week.setOnClickListener(this);
         btn_month.setOnClickListener(this);
 //        rlay_share.setOnClickListener(this);

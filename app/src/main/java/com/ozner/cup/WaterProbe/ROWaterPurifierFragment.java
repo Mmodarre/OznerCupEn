@@ -115,6 +115,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
     private int filter_B_Time;
     private int filter_C_Time;
     private int filter_median1,filter_median2;
+    private String status="";
 
     public ROWaterPurifierFragment() {
         // Required empty public constructor
@@ -238,9 +239,15 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
    }
 
     public void InitData() {
-        isOffLine = waterPurifier.isOffline();
+//        isOffLine = waterPurifier.isOffline();
+        status=waterPurifier.connectStatus().toString();
+        if("Disconnect".equals(status)){
+            Log.e("trstatus",status+"===========");
+            isOffLine=true;
+        }else{
+            isOffLine=false;
+        }
 
-        Log.e("trfitt",isOffLine+"===========");
         if (waterPurifier.waterInfo.TDS1> 0 && waterPurifier.waterInfo.TDS2> 0) {
             isZero = false;
             tds1 = waterPurifier.waterInfo.TDS1;
@@ -1123,7 +1130,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
 //                    rlay_top1.setVisibility(View.VISIBLE);
 //                    break;
 //            }
-//            changeState();
+            changeState();
 
 //        }
 //        }else{
