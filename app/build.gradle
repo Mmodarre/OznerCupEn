@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.1'
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.ozner.cup"
         minSdkVersion 18
         targetSdkVersion 22
-        versionCode 298
-        versionName "2.9.8"
+        versionCode 300
+        versionName "2.9.10"
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'

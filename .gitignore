@@ -40,3 +40,5 @@ captures/
 *.jks
 .idea/libraries/BaiduLBS_Android.xml
 ozner_new.keystore
+OznerLibrary/src/main/java/com/ozner/WaterPurifier/WaterPurifierManager.java.orig
+OznerLibrary/src/main/java/com/ozner/AirPurifier/AirPurifier_MXChip.java.orig
