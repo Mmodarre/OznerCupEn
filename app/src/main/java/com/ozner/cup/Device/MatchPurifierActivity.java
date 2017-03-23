@@ -98,7 +98,7 @@ public class MatchPurifierActivity extends AppCompatActivity implements SpinnerP
         wifiPreferences = this.getSharedPreferences("WifiPassword", Context.MODE_PRIVATE);
         editor = wifiPreferences.edit();
         setContentView(R.layout.activity_match_purifier2);
-        wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         monitor = new Monitor();
         animinput = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
         animfadeout = AnimationUtils.loadAnimation(this, R.anim.abc_fade_out);

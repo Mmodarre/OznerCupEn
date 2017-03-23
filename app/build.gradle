@@ -18,7 +18,8 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            shrinkResources true
+            //true 打包不成功 false 打包成功
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }

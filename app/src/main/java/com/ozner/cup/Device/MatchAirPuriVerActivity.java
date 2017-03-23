@@ -48,6 +48,8 @@ import com.ozner.wifi.WifiPair;
 
 import com.ozner.cup.R;
 
+
+
 /**
  * Created by mengdongya on 2015/12/22.
  * 立式空净
@@ -93,7 +95,7 @@ public class MatchAirPuriVerActivity extends AppCompatActivity implements View.O
         wifiPreferences = this.getSharedPreferences("WifiPassword", Context.MODE_PRIVATE);
         setContentView(R.layout.activity_match_airli);
 
-        wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         monitor = new Monitor();
         IntentFilter filter = new IntentFilter();
         filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
