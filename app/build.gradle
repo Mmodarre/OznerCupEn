@@ -8,8 +8,8 @@ android {
         applicationId "com.ozner.cup"
         minSdkVersion 18
         targetSdkVersion 22
-        versionCode 300
-        versionName "2.9.10"
+        versionCode 301
+        versionName "2.9.11"
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
@@ -41,12 +41,12 @@ android {
 //        }
 //    }
     signingConfigs {
-//        debug {
-//            keyAlias 'ozner'
-//            keyPassword '123456789'
-//            storeFile file('D:/OznerUriage831/ozner_new.keystore')
-//            storePassword '1234567890'
-//        }
+        debug {
+            keyAlias 'ozner'
+            keyPassword '123456789'
+            storeFile file('D:/OznerUriage831/ozner_new.keystore')
+            storePassword '1234567890'
+        }
     }
 }
 

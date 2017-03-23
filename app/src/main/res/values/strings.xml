@@ -761,6 +761,8 @@
     <string name="edit_ro_name">Enter the water purifier name</string>
     <string name="rest_ro_fit">reset</string>
     <string name="rofit">Filter Status</string>
+    <string name="rofilter_success">Reset success</string>
+    <string name="rofilter_fail">Reset failed</string>
     <string name="ro_fit">Clean the front filter</string>
     <string name="rofilter_need_change">Please replace the filter</string>
 

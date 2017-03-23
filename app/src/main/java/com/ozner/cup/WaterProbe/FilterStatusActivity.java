@@ -173,6 +173,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
 
         tv_ro_filterRest.setOnClickListener(this);
         tv_ro_filter=(TextView) findViewById(R.id.tv_ro_filter);
+        tv_ro_filter.setVisibility(View.GONE);
         tv_rolxa=(TextView)findViewById(R.id.tv_rolxa);
         tv_rolxb=(TextView)findViewById(R.id.tv_rolxb);
         tv_rolxc=(TextView)findViewById(R.id.tv_rolxc);
@@ -191,6 +192,12 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
             tv_rolxc.setText(fit_c+"%");
         }else{
             tv_rolxc.setText(getString(R.string.text_null));
+        }
+        //复位键的显示
+        if((Integer.parseInt(fit_a) ==0) || (Integer.parseInt(fit_b)==0)||(Integer.parseInt(fit_c)==0)){
+            tv_ro_filterRest.setVisibility(View.VISIBLE);
+        }else{
+            tv_ro_filterRest.setVisibility(View.INVISIBLE);
         }
 
         //文字呼吸灯
@@ -421,21 +428,27 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                         //判断ro水机是否为空
                         if(device!=null&&RankType.ROWaterType.equals(device.Type())&&roWaterPurifier!=null) {
                             if (roWaterPurifier.isEnableFilterReset()) {
-                                tv_ro_filterRest.setVisibility(View.VISIBLE);
+//                                tv_ro_filterRest.setVisibility(View.VISIBLE);
                                 //复位
                                 roWaterPurifier.resetFilter(new OperateCallback<Void>() {
                                     @Override
                                     public void onSuccess(Void var1) {
                                         Log.e("trfilter", "复位成功" );
-                                        Toast.makeText(FilterStatusActivity.this,"复位成功",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(FilterStatusActivity.this,getString(R.string.rofilter_success),Toast.LENGTH_SHORT).show();
                                         tv_ro_filterRest.setVisibility(View.INVISIBLE);
+                                        tv_rolxa.setText(roWaterPurifier.filterInfo.Filter_A_Percentage+"");
+                                        tv_rolxb.setText(roWaterPurifier.filterInfo.Filter_B_Percentage+"");
+                                        tv_rolxc.setText(roWaterPurifier.filterInfo.Filter_C_Percentage+"");
                                     }
 
                                     @Override
                                     public void onFailure(Throwable var1) {
                                         Log.e("trfilter", "复位失败" );
-                                        Toast.makeText(FilterStatusActivity.this,"复位失败",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(FilterStatusActivity.this,getString(R.string.rofilter_fail),Toast.LENGTH_SHORT).show();
                                         tv_ro_filterRest.setVisibility(View.VISIBLE);
+                                        tv_rolxa.setText(fit_a+"");
+                                        tv_rolxb.setText(fit_b+"");
+                                        tv_rolxc.setText(fit_c+"");
                                     }
                                 });
                             } else {

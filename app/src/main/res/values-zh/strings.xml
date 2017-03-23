@@ -751,7 +751,8 @@
     <string name="rofit">滤芯状态</string>
     <string name="ro_fit">清洗前置滤芯</string>
     <string name="rofilter_need_change">为了您和家人的健康，请及时更换滤芯</string>
-
+    <string name="rofilter_success">复位成功</string>
+    <string name="rofilter_fail">复位失败</string>
     <string name="default_label">"闹钟"</string>
     <string name="alarm_notify_snooze_label">"<xliff:g id="LABEL">%s</xliff:g>（已暂停）"</string>
     <string name="alarm_alert_dismiss_text">"取消"</string>
