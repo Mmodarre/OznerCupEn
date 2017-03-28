@@ -267,7 +267,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
         Log.e("trfitt",isPowerOn+"===========");
         //从设备获取滤芯状态
 //        waterPurifier.resetFilter();
-        if (!isOffLine) {
+//        if (!isOffLine) {
             filter_A_Time = waterPurifier.filterInfo.Filter_A_Percentage;
             filter_B_Time = waterPurifier.filterInfo.Filter_B_Percentage;
             filter_C_Time = waterPurifier.filterInfo.Filter_C_Percentage;
@@ -275,12 +275,10 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
             filter_median2 = Math.min(filter_median1, filter_C_Time);
 //            rlay_filterStatus.setEnabled(true);
             Log.e("trfilterTime", "A------" + filter_A_Time + "\nB------" + filter_B_Time + "\nC------" + filter_C_Time + "\nMIN------" + filter_median2);
-        }else{
-            filter_A_Time = -1;
-            filter_B_Time = -1;
-            filter_C_Time = -1;
-//            rlay_filterStatus.setEnabled(false);
-        }
+//        }else{
+
+////            rlay_filterStatus.setEnabled(false);
+//        }
     }
 
     //
@@ -317,10 +315,12 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                 filter_median2 = 100;
             }
             //滤芯状态图片的更改
-            if (filter_median2 <= 8) {
+            if (filter_median2 <= 10) {
                 iv_filterState.setImageResource(R.drawable.filter_state1);
                 tv_filiteText.setText(R.string.filter_need_change);
-            } else if (filter_median2 > 8 && filter_median2 <= 60) {
+                //ro水机一级页面的滤芯提醒
+                told();
+            } else if (filter_median2 > 10 && filter_median2 <= 60) {
                 tv_filiteText.setText(R.string.filter_status);
                 iv_filterState.setImageResource(R.drawable.filter_state2);
             } else if (filter_median2 > 60 && filter_median2 <= 100) {
@@ -335,6 +335,9 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                 //iv_filterState.setImageResource(R.drawable.filter_state1);
                 tv_filiteText.setText(R.string.filter_status);
                 rlay_filterStatus.setEnabled(false);
+                filter_A_Time = -1;
+                filter_B_Time = -1;
+                filter_C_Time = -1;
             }else{
                 tv_filterStatus.setText(filter_median2+"%");
                 //iv_filterState.setImageResource(R.drawable.filter_state1);
@@ -342,7 +345,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                 rlay_filterStatus.setEnabled(true);
             }
         }
-        if (isPowerOn) {
+        if (!isOffLine) {
 //            iv_tdsLevelImg.setVisibility(View.VISIBLE);
             int tds1New = tds1;
             int tds2New = tds2;
@@ -998,10 +1001,7 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
         String mobile = UserDataPreference.GetUserData(getActivity().getApplicationContext(), UserDataPreference.Mobile, null);
         String usertoken = OznerPreference.UserToken(getActivity().getApplicationContext());
         Intent buyFilterIntent = new Intent(getActivity(), WebActivity.class);
-        String shopUrl = CenterUrlContants.formatTapShopUrl(mobile, usertoken, "zh", "zh");
-        if (buylinkurl != null && buylinkurl != "") {
-            shopUrl = CenterUrlContants.formatUrl(buylinkurl, mobile, usertoken, "zh", "zh");
-        }
+        String shopUrl = CenterUrlContants.formatRoShopUrl(mobile, usertoken, "zh", "zh");
         buyFilterIntent.putExtra("URL", shopUrl);
         Log.e("123456", shopUrl);
         startActivity(buyFilterIntent);

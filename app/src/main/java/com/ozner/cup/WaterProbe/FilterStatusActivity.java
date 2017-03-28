@@ -119,16 +119,15 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         MAC = getIntent().getStringExtra("MAC");
         try {
             device = OznerDeviceManager.Instance().getDevice(MAC);
-            roWaterPurifier=(WaterPurifier_RO_BLE) device;
+            if(RankType.ROWaterType.equals(device.Type())){
+                roWaterPurifier=(WaterPurifier_RO_BLE) device;
+            }
             Log.e("filtertype", "shopUrl:" + device.Type());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        //RO水机滤芯状态
-        fit_a=getIntent().getStringExtra("Fit_a");
-        fit_b=getIntent().getStringExtra("Fit_b");
-        fit_c=getIntent().getStringExtra("Fit_c");
+
         waterPuriferUrl = getIntent().getStringExtra("buylinkurl");
         Log.e("filter", "waterPufifierUrl:" + waterPuriferUrl);
         isShowewm = getIntent().getStringExtra("isShowewm");
@@ -157,6 +156,13 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
         //RO水机的界面
         laly_ro=(LinearLayout) findViewById(R.id.laly_ro);
         laly_water=(LinearLayout) findViewById(R.id.laly_water);
+        tv_ro_filterRest=(TextView)findViewById(R.id.tv_ro_filterRest);
+        tv_ro_filterRest.setOnClickListener(this);
+        tv_ro_filter=(TextView) findViewById(R.id.tv_ro_filter);
+        tv_ro_filter.setVisibility(View.GONE);
+        tv_rolxa=(TextView)findViewById(R.id.tv_rolxa);
+        tv_rolxb=(TextView)findViewById(R.id.tv_rolxb);
+        tv_rolxc=(TextView)findViewById(R.id.tv_rolxc);
 //        device = OznerDeviceManager.Instance().getDevice(MAC);
         if (RankType.ROWaterType.equals(device.Type())){
             laly_ro.setVisibility(View.VISIBLE);
@@ -164,57 +170,50 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
             Log.e("trscan","trssssss");
             llay_scan.setVisibility(View.GONE);
             llay_moreService.setVisibility(View.VISIBLE);
+            //RO水机滤芯状态
+            fit_a=getIntent().getStringExtra("Fit_a");
+            fit_b=getIntent().getStringExtra("Fit_b");
+            fit_c=getIntent().getStringExtra("Fit_c");
+            //复位键的显示
+            if((Integer.parseInt(fit_a) ==0) || (Integer.parseInt(fit_b)==0)||(Integer.parseInt(fit_c)==0)){
+                tv_ro_filterRest.setVisibility(View.VISIBLE);
+            }else{
+                tv_ro_filterRest.setVisibility(View.INVISIBLE);
+            }
+            Log.e("trfitt",fit_a+"&&&"+fit_b);
+            if(fit_a!=null&&!(Integer.parseInt(fit_a)<0)){
+                tv_rolxa.setText(fit_a+"%");
+            }else{
+                tv_rolxa.setText(getString(R.string.text_null));
+            }
+            if(fit_b!=null&&!(Integer.parseInt(fit_b)<0)){
+                tv_rolxb.setText(fit_b+"%");
+            }else{
+                tv_rolxb.setText(getString(R.string.text_null));
+            }
+            if(fit_c!=null&&!(Integer.parseInt(fit_c)<0)){
+                tv_rolxc.setText(fit_c+"%");
+            }else{
+                tv_rolxc.setText(getString(R.string.text_null));
+            }
+
+            //文字呼吸灯
+            try {
+                if((Integer.parseInt(fit_a) >=0) || (Integer.parseInt(fit_b)>0)||(Integer.parseInt(fit_c)>=0)){
+                    if ((Integer.parseInt(fit_a) < 30) || (Integer.parseInt(fit_b)<30)||(Integer.parseInt(fit_c)<30)) {
+//                timer();
+                        tv_ro_filter.setVisibility(View.GONE);
+                    }
+                }else{
+                    tv_ro_filter.setVisibility(View.GONE);
+                }
+            }catch(Exception e){
+                e.getStackTrace();
+            }
         }else{
             laly_ro.setVisibility(View.GONE);
             laly_water.setVisibility(View.VISIBLE);
-
         }
-        tv_ro_filterRest=(TextView)findViewById(R.id.tv_ro_filterRest);
-
-        tv_ro_filterRest.setOnClickListener(this);
-        tv_ro_filter=(TextView) findViewById(R.id.tv_ro_filter);
-        tv_ro_filter.setVisibility(View.GONE);
-        tv_rolxa=(TextView)findViewById(R.id.tv_rolxa);
-        tv_rolxb=(TextView)findViewById(R.id.tv_rolxb);
-        tv_rolxc=(TextView)findViewById(R.id.tv_rolxc);
-        Log.e("trfitt",fit_a+"&&&"+fit_b);
-        if(fit_a!=null&&!(Integer.parseInt(fit_a)<0)){
-            tv_rolxa.setText(fit_a+"%");
-        }else{
-            tv_rolxa.setText(getString(R.string.text_null));
-        }
-        if(fit_b!=null&&!(Integer.parseInt(fit_b)<0)){
-            tv_rolxb.setText(fit_b+"%");
-        }else{
-            tv_rolxb.setText(getString(R.string.text_null));
-        }
-        if(fit_c!=null&&!(Integer.parseInt(fit_c)<0)){
-            tv_rolxc.setText(fit_c+"%");
-        }else{
-            tv_rolxc.setText(getString(R.string.text_null));
-        }
-        //复位键的显示
-        if((Integer.parseInt(fit_a) ==0) || (Integer.parseInt(fit_b)==0)||(Integer.parseInt(fit_c)==0)){
-            tv_ro_filterRest.setVisibility(View.VISIBLE);
-        }else{
-            tv_ro_filterRest.setVisibility(View.INVISIBLE);
-        }
-
-        //文字呼吸灯
-        try {
-            if((Integer.parseInt(fit_a) >=0) || (Integer.parseInt(fit_b)>0)||(Integer.parseInt(fit_c)>=0)){
-            if ((Integer.parseInt(fit_a) < 30) || (Integer.parseInt(fit_b)<30)||(Integer.parseInt(fit_c)<30)) {
-//                timer();
-                tv_ro_filter.setVisibility(View.GONE);
-            }
-            }else{
-                tv_ro_filter.setVisibility(View.GONE);
-            }
-        }catch(Exception e){
-            e.getStackTrace();
-        }
-
-
 
         if (!((OznerApplication) getApplication()).isLoginPhone()) {
             findViewById(R.id.ll_en_no).setVisibility(View.GONE);

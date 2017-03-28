@@ -258,6 +258,7 @@ public abstract class OznerDevice extends XObject {
 
         BaseDeviceIO old = this.deviceIO;
 
+
         try {
             doSetDeviceIO(old, deviceIO);
         } catch (Exception e) {
@@ -277,6 +278,8 @@ public abstract class OznerDevice extends XObject {
                 deviceIO.reCallDoReady();
             }
         } else {
+            //删除设备的同时断开连接
+            old.close();
             glb_timerLoop.removeDevice(this);
         }
 

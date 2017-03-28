@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ozner.WaterPurifier.WaterPurifier;
 import com.ozner.WaterPurifier.WaterPurifier_RO_BLE;
 import com.ozner.cup.Command.PageState;
 import com.ozner.cup.R;
 import com.ozner.device.OznerDeviceManager;
+
 
 /**
  * Created by taoran on 2016/12/11.
@@ -23,7 +23,7 @@ import com.ozner.device.OznerDeviceManager;
 public class SetupRoWaterPurifierActivity extends AppCompatActivity implements View.OnClickListener {
 
     String Mac = null;
-    WaterPurifier mWaterPurifier = null;
+    WaterPurifier_RO_BLE mWaterPurifier = null;
     String url = "http://app.ozner.net:888/RoWaterPurifier.html";
     Toolbar toolbar;
     TextView toolbar_save, tv_purifier_name,water_purifier_mac;
