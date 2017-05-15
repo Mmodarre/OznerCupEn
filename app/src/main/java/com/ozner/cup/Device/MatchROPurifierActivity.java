@@ -36,7 +36,6 @@ import com.ozner.bluetooth.BluetoothIO;
 import com.ozner.bluetooth.BluetoothScan;
 import com.ozner.cup.Command.OznerCommand;
 import com.ozner.cup.Command.PageState;
-import com.ozner.cup.Cup;
 import com.ozner.cup.R;
 import com.ozner.device.BaseDeviceIO;
 import com.ozner.device.NotSupportDeviceException;
@@ -251,7 +250,7 @@ public class MatchROPurifierActivity extends AppCompatActivity {
             isSuccesShow = true;
             image.getAnimation().cancel();
             toolbarText.setText(getString(R.string.searched_device));
-            image.setImageResource(R.drawable.water_purifier_selected);
+            image.setImageResource(R.drawable.rowater_purifier_selected);
             iv_smart_glass.startAnimation(animfadeout);
             matchcup_tv_downside.startAnimation(animfadeout);
             matchcup_tv_bluetooth.startAnimation(animfadeout);
@@ -372,7 +371,7 @@ public class MatchROPurifierActivity extends AppCompatActivity {
                             if (device instanceof BluetoothIO) {
                                 BluetoothIO bluetoothIO = (BluetoothIO) device;
                                 bluetoothIO.getFirmware();
-                                //检查杯子处于倒置模式
+
                                 if (WaterPurifier_RO_BLE.isBindMode(bluetoothIO))
                                     list.add(device);
                             }
@@ -422,10 +421,10 @@ public class MatchROPurifierActivity extends AppCompatActivity {
 
             if (device != null) {
                 if (Mac != null && device.getAddress().equals(Mac)) {
-                    convertView.Cup_iv_device_item_image.setImageResource(R.drawable.water_purifier_selected);
+                    convertView.Cup_iv_device_item_image.setImageResource(R.drawable.rowater_purifier_selected);
                     convertView.item_selected.setChecked(true);
                 } else {
-                    convertView.Cup_iv_device_item_image.setImageResource(R.drawable.water_purifier_small);
+                    convertView.Cup_iv_device_item_image.setImageResource(R.drawable.rowater_purifier_small);
                     convertView.item_selected.setChecked(false);
                 }
                 convertView.Cup_tv_device_item_name.setText(getString(R.string.ro_purifier));
@@ -501,8 +500,7 @@ public class MatchROPurifierActivity extends AppCompatActivity {
         }
     }
 
-    private Cup saveCup;
-    private BaseDeviceIO baseDeviceIO;
+
 
     private void SaveDevice(BaseDeviceIO deviceIO) {
 

@@ -176,7 +176,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
             fit_c=getIntent().getStringExtra("Fit_c");
             //复位键的显示
             if((Integer.parseInt(fit_a) ==0) || (Integer.parseInt(fit_b)==0)||(Integer.parseInt(fit_c)==0)){
-                tv_ro_filterRest.setVisibility(View.VISIBLE);
+                tv_ro_filterRest.setVisibility(View.INVISIBLE);
             }else{
                 tv_ro_filterRest.setVisibility(View.INVISIBLE);
             }
@@ -444,7 +444,7 @@ public class FilterStatusActivity extends AppCompatActivity implements View.OnCl
                                     public void onFailure(Throwable var1) {
                                         Log.e("trfilter", "复位失败" );
                                         Toast.makeText(FilterStatusActivity.this,getString(R.string.rofilter_fail),Toast.LENGTH_SHORT).show();
-                                        tv_ro_filterRest.setVisibility(View.VISIBLE);
+                                        tv_ro_filterRest.setVisibility(View.INVISIBLE);
                                         tv_rolxa.setText(fit_a+"");
                                         tv_rolxb.setText(fit_b+"");
                                         tv_rolxc.setText(fit_c+"");

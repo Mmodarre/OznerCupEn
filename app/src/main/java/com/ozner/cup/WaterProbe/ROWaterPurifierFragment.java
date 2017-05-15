@@ -268,9 +268,9 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
         //从设备获取滤芯状态
 //        waterPurifier.resetFilter();
 //        if (!isOffLine) {
-            filter_A_Time = waterPurifier.filterInfo.Filter_A_Percentage;
-            filter_B_Time = waterPurifier.filterInfo.Filter_B_Percentage;
-            filter_C_Time = waterPurifier.filterInfo.Filter_C_Percentage;
+        filter_A_Time = Math.round(((float)waterPurifier.filterInfo.Filter_A_Percentage / 10)) * 10;
+        filter_B_Time = Math.round(((float)waterPurifier.filterInfo.Filter_B_Percentage / 10)) * 10;
+        filter_C_Time = Math.round(((float)waterPurifier.filterInfo.Filter_C_Percentage / 10)) * 10;
             filter_median1 = Math.min(filter_A_Time, filter_B_Time);
             filter_median2 = Math.min(filter_median1, filter_C_Time);
 //            rlay_filterStatus.setEnabled(true);
