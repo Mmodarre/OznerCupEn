@@ -149,10 +149,19 @@ public class SlideAdapter extends ArrayAdapter<DeviceData> {
                 holder.left_item_state.setImageResource(R.mipmap.icon_bluetooth);
                 //智能净水器
             } else if (WaterPurifierManager.IsWaterPurifier(type)) {
-                if (slilde.getMac().equals(Mac))
-                    holder.icon.setImageResource(R.drawable.shuiji_on);
-                else
-                    holder.icon.setImageResource(R.drawable.shuiji);
+                if (slilde.getMac().equals(Mac)) {
+                    if (ROPurifierType.equals(type)) {
+                        holder.icon.setImageResource(R.drawable.roshuiji_on);
+                    } else {
+                        holder.icon.setImageResource(R.drawable.shuiji_on);
+                    }
+                }else{
+                    if(ROPurifierType.equals(type)){
+                        holder.icon.setImageResource(R.drawable.roshuiji);
+                    }else{
+                        holder.icon.setImageResource(R.drawable.shuiji);
+                    }
+            }
                 if(ROPurifierType.equals(type)){
                     holder.left_item_state.setImageResource(R.mipmap.icon_bluetooth);
                 }else{
