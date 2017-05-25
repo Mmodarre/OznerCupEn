@@ -244,6 +244,8 @@
 
             </LinearLayout>
 
+
+
             <!--白色部分  肤质详情-->
             <RelativeLayout
                 android:id="@+id/rely_water_replenish_skin"
@@ -320,6 +322,8 @@
                     android:text=""
                     android:textSize="12dp" />
             </RelativeLayout>
+
+
         </RelativeLayout>
         <!--android:paddingLeft="20dp"-->
         <!--android:paddingRight="20dp"-->

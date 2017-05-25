@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -16,6 +17,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ozner.cup.BuildConfig;
 import com.ozner.cup.Command.OznerPreference;
 import com.ozner.cup.HttpHelper.NetJsonObject;
 import com.ozner.cup.HttpHelper.OznerDataHttp;
@@ -365,20 +368,48 @@ public class OznerUpdateManager {
         }
     };
 
+//    /**
+//     * 安装apk
+//     *
+//     * @param
+//     */
+//    private void installApk() {
+//        File apkfile = new File(folderPath + "/" + instalPackageName);
+//        if (!apkfile.exists()) {
+//            return;
+//        }
+//        Intent i = new Intent(Intent.ACTION_VIEW);
+//        Log.e("tag", "installApk: Slience:" + Uri.parse("file://" + apkfile.toString()));
+//        i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
+//        mContext.startActivity(i);
+//
+//    }
+//
     /**
      * 安装apk
      *
      * @param
      */
     private void installApk() {
-        File apkfile = new File(folderPath + "/" + instalPackageName);
+        File apkfile = new File(folderPath, instalPackageName);
         if (!apkfile.exists()) {
             return;
         }
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        Log.e("tag", "installApk: Slience:" + Uri.parse("file://" + apkfile.toString()));
-        i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
-        mContext.startActivity(i);
-
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.N) {
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri contentUri = FileProvider.getUriForFile(mContext, BuildConfig.APPLICATION_ID + ".fileprovider", apkfile);
+            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+//            LCLogUtils.E(TAG, "contentUri:" + contentUri);
+        } else {
+            intent.setDataAndType(Uri.parse("file://" + apkfile.getAbsolutePath()), "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            LCLogUtils.E(TAG, "installApk: Slience:" + Uri.parse("file://" + apkfile.toString()));
+        }
+        mContext.startActivity(intent);
     }
+
+
+
+
 }

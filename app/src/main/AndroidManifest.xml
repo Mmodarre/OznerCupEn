@@ -436,6 +436,20 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="eoV8RDhsGcgmGdERVa88GVbb8giDGoht" />       //key:开发者申请的Key
         //以上是百度定位服务信息
+
+
+
+        <!--apk下载自动安装调取文件的provider-->
+        <provider
+            android:authorities="${applicationId}.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_path" />
+        </provider>
+
     </application>
 
 </manifest>

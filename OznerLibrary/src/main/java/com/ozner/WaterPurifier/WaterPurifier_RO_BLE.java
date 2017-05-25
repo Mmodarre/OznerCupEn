@@ -2,6 +2,7 @@ package com.ozner.WaterPurifier;
 
 import android.content.Context;
 import android.text.format.Time;
+import android.util.Log;
 
 import com.ozner.bluetooth.BluetoothIO;
 import com.ozner.bluetooth.BluetoothScanResponse;
@@ -369,8 +370,6 @@ public class WaterPurifier_RO_BLE extends WaterPurifier {
             requestFilterHisInfo();
 
         }
-
-
     }
 
     /**
@@ -431,7 +430,8 @@ public class WaterPurifier_RO_BLE extends WaterPurifier {
         //return true;
         byte[] data=io.getScanResponseData();
         if ((io.getScanResponseType() == BLE_RO_ScanResponseType) && (data!= null)) {
-            return data[0]==1;
+            Log.e("trdata",data[0]+"@@@@@@@@@@");
+            return data[0]!=0;
         }
         return false;
     }

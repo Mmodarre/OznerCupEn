@@ -234,8 +234,8 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
             ex.printStackTrace();
         }
 
-        laly_buttons=(LinearLayout)view.findViewById(R.id.laly_buttons);
-        laly_buttons.setVisibility(View.INVISIBLE);
+//        laly_buttons=(LinearLayout)view.findViewById(R.id.laly_buttons);
+//        laly_buttons.setVisibility(View.INVISIBLE);
    }
 
     public void InitData() {
@@ -908,57 +908,61 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
                 }
                 break;
             case R.id.rlay_powerswitch:
-                isPowerOn = !waterPurifier.status().Power();
-                switchPower(isPowerOn);
-//                 waterPurifier.status().setPower(waterPurifier.status().Power(),this);
-                waterPurifier.status().setPower(isPowerOn, this);
+                Toast.makeText(getContext(), getString(R.string.no_available), Toast.LENGTH_SHORT).show();
+
+//                isPowerOn = !waterPurifier.status().Power();
+//                switchPower(isPowerOn);
+////                 waterPurifier.status().setPower(waterPurifier.status().Power(),this);
+//                waterPurifier.status().setPower(isPowerOn, this);
                 break;
             case R.id.rlay_coolswitch:
-                if (hasType) {
-                    if ("true".equals(cool)) {
-                        if (isPowerOn) {
-                            switchCool(!isCoolOn);
-                            waterPurifier.status().setCool(!waterPurifier.status().Cool(), this);
-                            Log.e("TR", waterPurifier.status().Cool() + "dddddddddd");
-                        } else {
-                            Toast.makeText(getContext(), getString(R.string.please_open_power), Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        if (!"".equals(tips)) {
-//                            if ("不支持此功能".equals(tips)){
-                            if (tips.contains("不支持此功能")) {
-                                Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                } else {
-                    Toast.makeText(getActivity(), getString(R.string.get_waterpurifiertype_fail), Toast.LENGTH_SHORT).show();
-                }
+//                if (hasType) {
+//                    if ("true".equals(cool)) {
+//                        if (isPowerOn) {
+//                            switchCool(!isCoolOn);
+//                            waterPurifier.status().setCool(!waterPurifier.status().Cool(), this);
+//                            Log.e("TR", waterPurifier.status().Cool() + "dddddddddd");
+//                        } else {
+//                            Toast.makeText(getContext(), getString(R.string.please_open_power), Toast.LENGTH_SHORT).show();
+//                        }
+//                    } else {
+//                        if (!"".equals(tips)) {
+////                            if ("不支持此功能".equals(tips)){
+//                            if (tips.contains("不支持此功能")) {
+//                                Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
+//                            } else {
+//                                Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(getActivity(), getString(R.string.get_waterpurifiertype_fail), Toast.LENGTH_SHORT).show();
+//                }
+                Toast.makeText(getContext(), getString(R.string.no_available), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rlay_hotswitch:
-                if (hasType) {
-                    if ("true".equals(hot)) {
-                        if (isPowerOn) {
-                            switchHot(!isHotOn);
-                            waterPurifier.status().setHot(!waterPurifier.status().Hot(), this);
-                        } else {
-                            Toast.makeText(getContext(), getString(R.string.please_open_power), Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        if (!"".equals(tips)) {
-//                            if ("不支持此功能".equals(tips)){
-                            if (tips.contains("不支持此功能")) {
-                                Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                } else {
-                    Toast.makeText(getActivity(), getString(R.string.get_waterpurifiertype_fail), Toast.LENGTH_SHORT).show();
-                }
+//                if (hasType) {
+//                    if ("true".equals(hot)) {
+//                        if (isPowerOn) {
+//                            switchHot(!isHotOn);
+//                            waterPurifier.status().setHot(!waterPurifier.status().Hot(), this);
+//                        } else {
+//                            Toast.makeText(getContext(), getString(R.string.please_open_power), Toast.LENGTH_SHORT).show();
+//                        }
+//                    } else {
+//                        if (!"".equals(tips)) {
+////                            if ("不支持此功能".equals(tips)){
+//                            if (tips.contains("不支持此功能")) {
+//                                Toast.makeText(getActivity(), getString(R.string.not_support), Toast.LENGTH_SHORT).show();
+//                            } else {
+//                                Toast.makeText(getActivity(), tips, Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(getActivity(), getString(R.string.get_waterpurifiertype_fail), Toast.LENGTH_SHORT).show();
+//                }
+                Toast.makeText(getContext(), getString(R.string.no_available), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_purifierSetBtn:
                 Intent intentSetting = new Intent(getContext(), SetupRoWaterPurifierActivity.class);
@@ -1039,17 +1043,17 @@ public class ROWaterPurifierFragment extends Fragment implements View.OnClickLis
 
 
     public void switchPower(boolean isOn) {
-        if (!isOn && isCoolOn) {
-            switchCool(isOn);
-        }
-        if (!isOn && isHotOn) {
-            switchHot(isOn);
-        }
-        iv_power.setSelected(isOn);
-        rlay_power.setSelected(isOn);
-        tv_power.setSelected(isOn);
-//        waterPurifier.status().setPower(isOn, this);
-        isPowerOn = isOn;
+//        if (!isOn && isCoolOn) {
+//            switchCool(isOn);
+//        }
+//        if (!isOn && isHotOn) {
+//            switchHot(isOn);
+//        }
+//        iv_power.setSelected(isOn);
+//        rlay_power.setSelected(isOn);
+//        tv_power.setSelected(isOn);
+////        waterPurifier.status().setPower(isOn, this);
+//        isPowerOn = isOn;
     }
 
     public void switchCool(boolean isOn) {

@@ -45,6 +45,7 @@ public class CenterUrlContants {
     //补水仪精华液购买链接
     public static String buyReplenWaterUrl = "http://www.oznerwater.com/lktnew/wap/mall/goodsDetail.aspx?gid=203";
 
+    public static String roFilterUrl="http://www.oznerwater.com/lktnew/wapnew/Mall/goodsDetail.aspx?gid=249";
 //    /*
 //    *可单独使用链接
 //     */
@@ -108,7 +109,7 @@ public class CenterUrlContants {
 
     //RO滤芯商城
     public static String formatRoShopUrl(String mobile, String usertoken, String language, String area) {
-        String result = getformatUrl(mallUrl);
+        String result = getformatUrl(roFilterUrl);
         result = String.format(result, mobile, usertoken, language, area);
         return result;
     }
